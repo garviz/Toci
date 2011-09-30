@@ -67,22 +67,22 @@ Sint maxerrormsg(void);
 
 
 #define ERROR0(F)\
-        GENERROR(sprintf(messagespace(),F))
+        GENERROR(snprintf(messagespace(),strlen(messagespace()),F))
 
 #define ERROR1(F,A1)\
-        GENERROR(sprintf(messagespace(),F,A1))
+        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1))
 
 #define ERROR2(F,A1,A2)\
-        GENERROR(sprintf(messagespace(),F,A1,A2))
+        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2))
 
 #define ERROR3(F,A1,A2,A3)\
-        GENERROR(sprintf(messagespace(),F,A1,A2,A3))
+        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2,A3))
 
 #define ERROR4(F,A1,A2,A3,A4)\
-        GENERROR(sprintf(messagespace(),F,A1,A2,A3,A4))
+        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2,A3,A4))
 
 #define ERROR5(F,A1,A2,A3,A4,A5)\
-        GENERROR(sprintf(messagespace(),F,A1,A2,A3,A4,A5))
+        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2,A3,A4,A5))
 
 //}
 

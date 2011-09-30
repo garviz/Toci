@@ -8,5 +8,5 @@
 # makefiles.
 
 CC=gcc
-DEFINECFLAGS=-Wall -Werror -O3
-DEFINELDFLAGS=
+DEFINECFLAGS=-g -pg -Wall -Werror -O3
+DEFINELDFLAGS=-pg

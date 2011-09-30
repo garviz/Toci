@@ -45,7 +45,7 @@ void initclock(void)
 double getruntime(void)
 {
    stopclock = clock();
-   return (stopclock-startclock) / (double) CLOCKS_PER_SEC;
+   return (double) (stopclock-startclock) / (double) CLOCKS_PER_SEC;
 }
 
 /*EE

@@ -39,7 +39,6 @@ MAINFUNCTION
   Uint textlen;
   Suffixtree stree;
   char *filename;
-  fprintf(stderr,"stree.c\n");
   DEBUGLEVELSET;
 
   CHECKARGNUM(2,"filename");
