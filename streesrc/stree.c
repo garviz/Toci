@@ -39,6 +39,7 @@ MAINFUNCTION
   Uint textlen;
   Suffixtree stree;
   char *filename;
+
   DEBUGLEVELSET;
 
   CHECKARGNUM(2,"filename");

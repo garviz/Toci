@@ -77,7 +77,7 @@ Sint constructprogressstree(Suffixtree *stree,SYMBOL *text,
 
 void progresswithdot(Uint nextstep,void *info)
 {
-  fputc('.',stderr);
+  fputc(',',stderr)
   fflush(stderr);
 }
 

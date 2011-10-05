@@ -13,6 +13,7 @@
 
 static Uint lcp(SYMBOL *start1,SYMBOL *end1,SYMBOL *start2,SYMBOL *end2)
 {
+  fprintf(stderr, "lcp in scanpref.c\n");
   register SYMBOL *ptr1 = start1, 
                   *ptr2 = start2;
 
@@ -30,6 +31,7 @@ static Uint lcp(SYMBOL *start1,SYMBOL *end1,SYMBOL *start2,SYMBOL *end2)
                                            Bref btptr,SYMBOL *left,
                                            SYMBOL *right,Uint rescanlength)
 {
+  fprintf(stderr, "scanprefixfromnodestree in scanpref.c\n");
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
        node, distance = 0, prefixlen, headposition, tmpnodedepth,
        edgelen, remainingtoskip;
@@ -220,6 +222,7 @@ static Uint lcp(SYMBOL *start1,SYMBOL *end1,SYMBOL *start2,SYMBOL *end2)
                                    Location *inloc,SYMBOL *left,
                                    SYMBOL *right,Uint rescanlength)
 {
+  fprintf(stderr, "scanprefixstree in scanpref.c\n");
   Uint prefixlen, remainingtoskip;
 
   DEBUG0(4,"scanprefixstree starts at location ");
@@ -306,6 +309,7 @@ static Uint lcp(SYMBOL *start1,SYMBOL *end1,SYMBOL *start2,SYMBOL *end2)
                                               SYMBOL *right,
                                               Uint rescanlength)
 {
+  fprintf(stderr, "*findprefixpathfromnodestree in scanpref.c\n");
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
        edgelen, node, distance = 0, prefixlen, headposition, 
        remainingtoskip, tmpnodedepth;
@@ -503,6 +507,7 @@ static Uint lcp(SYMBOL *start1,SYMBOL *end1,SYMBOL *start2,SYMBOL *end2)
                                        SYMBOL *right,
                                        Uint rescanlength)
 {
+  fprintf(stderr, "*findprefixpathstree in scanpref.c\n");
   Uint prefixlen, remainingtoskip;
 
   DEBUG0(4,"findprefixpathstree starts at location ");

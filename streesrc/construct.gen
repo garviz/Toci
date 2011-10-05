@@ -15,6 +15,7 @@ CONSTRUCT
   DEBUGCODE(3,showvalues());
 
   initSuffixtree(stree,text,textlen);
+  fprintf(stderr, "initSuffixtree se ha ejecutado\n");
   while(stree->tailptr < stree->sentinel || 
         stree->headnodedepth != 0 || stree->headend != NULL)
   {
@@ -22,20 +23,24 @@ CONSTRUCT
     // case (1): headloc is root
     if(stree->headnodedepth == 0 && stree->headend == NULL) 
     {
+      fprintf(stderr, "case (1): headloc is root construct.gen\nstree->headnodedepth=%x\n",stree->headnodedepth);
       (stree->tailptr)++;
       scanprefix(stree);
     } else
     {
       if(stree->headend == NULL)  // case (2.1): headloc is a node
       {
+        fprintf(stderr, "case (2.1): headloc is a node construct.gen\n");
         FOLLOWSUFFIXLINK;
         scanprefix(stree);
       } else               // case (2.2)
       {
         if(stree->headnodedepth == 0) // case (2.2.1): at root: do not use links
         {
+          fprintf(stderr, "case (2.2.1): at root: do not use links contruct.gen\n");
           if(stree->headstart == stree->headend)  // rescan not necessary
           {
+            fprintf(stderr, "rescan not necessary\n");
             stree->headend = NULL;
           } else
           {
@@ -45,10 +50,12 @@ CONSTRUCT
         } else
         {
           FOLLOWSUFFIXLINK;    // case (2.2.2)
+          fprintf(stderr, "case (2.2.2) construct.gen\n");
           rescan(stree);
         }
         if(stree->headend == NULL)  // case (2.2.3): headloc is a node
         {
+          fprintf(stderr, "case (2.2.3) headloc is a node construct.gen\n");
           SETSUFFIXLINK(BRADDR2NUM(stree,stree->headnode));
           COMPLETELARGEFIRST;
           scanprefix(stree);
@@ -56,9 +63,10 @@ CONSTRUCT
         {
           if(stree->smallnotcompleted == MAXDISTANCE)  // artifical large node
           {
-            DEBUGCODE(1,stree->artificial++);
-            DEBUG1(3,"#artifical large node %lu\n",
-                      (Showuint) stree->nextfreebranchnum);
+            fprintf(stderr, "ariticial large node construct.gen\n");
+            //fprintf(stderr, stree->artificial++);
+            //fprintf(stderr,"#artifical large node %lu\n",
+            //          (Showuint) stree->nextfreebranchnum);
             SETSUFFIXLINK(stree->nextfreebranchnum + LARGEINTS);
             COMPLETELARGESECOND;
           } else
@@ -66,9 +74,11 @@ CONSTRUCT
             if(stree->chainstart == NULL)
             {
               stree->chainstart = stree->nextfreebranch;   // start new chain
+              fprintf(stderr, "start new chain construc.gen\n");
             } 
             (stree->smallnotcompleted)++;
             (stree->nextfreebranch) += SMALLINTS;      // case (2.2.4)
+            fprintf(stderr, "case (2.2.4) construct.gen\n");
             (stree->nextfreebranchnum) += SMALLINTS;
             stree->smallnode++;
           }

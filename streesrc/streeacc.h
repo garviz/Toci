@@ -173,6 +173,7 @@
 */
 
 #define FOLLOWSUFFIXLINK\
+	fprintf(stderr, "CALL TO SUFFIX LINK\n");\
         if(ISLARGE(*(stree->headnode)))\
         {\
           stree->headnode = stree->branchtab + GETSUFFIXLINK(stree->headnode);\

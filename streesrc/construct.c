@@ -415,8 +415,8 @@ static void insertleaf(Suffixtree *stree)
     {
       stree->rootchildren[(Uint) *(stree->tailptr)] = newleaf;
       *(stree->nextfreeleafptr) = VALIDINIT;
-      /*fprintf(2,"%c-edge from root points to leaf %lu\n",
-               *(stree->tailptr),(Showuint) stree->nextfreeleafnum);*/
+      DEBUG2(4,"%c-edge from root points to leaf %lu\n",
+               *(stree->tailptr),(Showuint) stree->nextfreeleafnum);
     }
   } else
   {
@@ -1065,7 +1065,7 @@ void freestree(Suffixtree *stree)
                                  {\
                                    fputc('#',stderr);\
                                  }\
-                                 fputc('.',stderr);\
+                                 fputc('u',stderr);\
                                  fflush(stdout);\
                                } else\
                                {\
