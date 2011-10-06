@@ -12,6 +12,7 @@
 
 //\Ignore{
 
+#include <string.h>
 #include "intbits.h"
 #include "spacedef.h"
 #include "megabytes.h"
@@ -19,6 +20,7 @@
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"
+#include "visible.h"
 
 #define FUNCLEVEL 4
 
@@ -35,22 +37,6 @@
                   (Showuint) textlen,(Showuint) MAXTEXTLEN);\
           return -1;\
         }
-
-#ifdef DEBUG
-
-
-static void showvalues(void)
-{
-  SHOWVAL(SMALLINTS);
-  SHOWVAL(LARGEINTS);
-  SHOWVAL(MAXDISTANCE);
-#if defined(STREELARGE) || defined(STREESMALL)
-  SHOWVAL(SMALLDEPTH);
-#endif
-  SHOWVAL(MAXTEXTLEN);
-}
-
-#endif
 
 //}
 
@@ -91,6 +77,238 @@ static void showvalues(void)
 #define ADDFACTOR   0.05
 #define MINEXTRA    16
 
+
+void showtable(Suffixtree *stree,BOOL final)
+{
+  Uint *largeptr, *btptr, *succptr, *rcptr, i,
+       succdepth, distance, 
+       nodeaddress, succ, depth, child, brother, 
+       headposition, suffixlink;
+  Uint leafindex, edgelen;
+  SYMBOL *leftpointer;
+
+  for(rcptr = stree->rootchildren; 
+      rcptr <= stree->rootchildren + LARGESTCHARINDEX;
+      rcptr++)
+  {
+    if(*rcptr != UNDEFINEDREFERENCE)
+    {
+      printf("rootchildren[%c]=",(char) (rcptr - stree->rootchildren));
+      if(ISLEAF(*rcptr))
+      {
+        printf("Leaf %lu\n",(Showuint) GETLEAFINDEX(*rcptr));
+      } else
+      {
+        succptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
+        printf("%s %lu\n",ISLARGE(*succptr) ? "Large" : "Small",
+                         (Showuint) GETBRANCHINDEX(*rcptr));
+      }
+    }
+  }
+  if(final)
+  {
+    printf("rootchildren[~]=Leaf %lu\n",(Showuint) stree->textlen);
+  }
+  for(i=0; i<stree->nextfreeleafnum; i++)
+  {
+    printf("leaftab[%lu]=",(Showuint) i);
+    SHOWINDEX(stree->leaftab[i]);
+    printf("\n");
+    (void) fflush(stdout);
+  }
+  printf(" Root:[");
+  for(rcptr = stree->rootchildren; 
+      rcptr <= stree->rootchildren + LARGESTCHARINDEX;
+      rcptr++)
+  {
+    if(*rcptr != UNDEFINEDREFERENCE)
+    {
+      (void) putchar('(');
+      if(ISLEAF(*rcptr))
+      {
+        leftpointer = stree->text + GETLEAFINDEX(*rcptr);
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+        printf(",Leaf %lu)",(Showuint) GETLEAFINDEX(*rcptr));
+      } else
+      {
+        succptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
+        GETBOTH(succdepth,headposition,succptr);
+        leftpointer = stree->text + headposition;
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
+        printf(",%s %lu)",ISLARGE(*succptr) ? "Large" : "Small",
+                          (Showuint) GETBRANCHINDEX(*rcptr));
+      }
+      (void) fflush(stdout);
+    }
+  }
+  if(final)
+  {
+    printf(",(~,Leaf %lu)]\n",(Showuint) stree->textlen);
+  } else
+  {
+    printf("]\n");
+  }
+  btptr = stree->branchtab + LARGEINTS; // skip the root
+  printf("nodecount=%lu\n",(Showuint) stree->nodecount);
+  for(i=UintConst(1); i < stree->nodecount; i++)
+  {
+    nodeaddress = BRADDR2NUM(stree,btptr);
+    child = GETCHILD(btptr);
+    brother = GETBROTHER(btptr);
+    GETBOTH(depth,headposition,btptr);
+    if(ISLARGE(*btptr))
+    {
+      printf(" L-Node %lu\"",(Showuint) nodeaddress);
+      suffixlink = getlargelinkstree(stree,btptr,depth);
+      btptr += LARGEINTS;
+    } else
+    {
+      printf(" S-Node %lu\"",(Showuint) nodeaddress);
+      suffixlink = nodeaddress + SMALLINTS;
+      btptr += SMALLINTS;
+    }
+    showthesymbolstring(stdout,stree->sentinel,stree->text + headposition,
+                                   stree->text + headposition + depth - 1);
+    printf("\"(D=%lu,SN=%lu,SL=%lu,C=",(Showuint) depth,
+                                       (Showuint) headposition,
+                                       (Showuint) suffixlink);
+    SHOWINDEX(child);
+    printf(",B=");
+    SHOWINDEX(brother);
+    printf(")[");
+    (void) fflush(stdout);
+    succ = child;
+    do 
+    {
+      (void) putchar('(');
+      if(ISLEAF(succ))
+      {
+        leafindex = GETLEAFINDEX(succ);
+        leftpointer = stree->text + depth + leafindex;
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+        printf(",Leaf %lu)",(Showuint) leafindex);
+        succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
+      } else
+      {
+        succptr = stree->branchtab + GETBRANCHINDEX(succ);
+        GETBOTH(succdepth,headposition,succptr);
+        leftpointer = stree->text + depth + headposition;
+        edgelen = succdepth - depth;
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
+        printf(",%s %lu)",ISLARGE(*succptr) ? "Large" : "Small",
+                          (Showuint) GETBRANCHINDEX(succ));
+        succ = GETBROTHER(succptr);
+      }
+    } while(!NILPTR(succ));
+    printf("]\n");
+    (void) fflush(stdout);
+  }
+}
+
+void showthesymbolstring(FILE *fp,SYMBOL *tlast,SYMBOL *left,
+                                SYMBOL *right)
+{
+  SYMBOL *ptr;
+
+  for(ptr=left; ptr<=right; ptr++)
+  {
+    if(ptr == tlast)
+    {
+      (void) putc('~',fp);
+      return;
+    } 
+    if(ptr > left + 10)
+    {
+      fprintf(fp,"...");
+      return;
+    }
+    SHOWCHARFP(fp,*ptr);
+  }
+}
+
+static char *showsymbol(SYMBOL c)
+{
+  static char outbuf[100+1];
+
+  if(INVISIBLE(c))
+  {
+    sprintf(outbuf,"\\%lu",(Showuint) c);
+  } else
+  {
+    sprintf(outbuf,"%c",c);
+  }
+  return outbuf;
+}
+
+void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
+{
+  Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
+       depth, headposition; 
+  SYMBOL *leftpointer;
+
+  GETBOTH(depth,headposition,btptr);
+  succ = GETCHILD(btptr);
+  do 
+  {
+    printf("%*.*s",(Fieldwidthtype) indent,(Fieldwidthtype) indent,"");
+#ifdef SHOWLEAD
+    SHOWINDEX(succ);
+#endif 
+    if(ISLEAF(succ))
+    {
+      leafindex = GETLEAFINDEX(succ);
+      leftpointer = stree->text + depth + leafindex;
+      showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+      (void) putchar('\n');
+      succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
+    } else
+    {
+      succptr = stree->branchtab + GETBRANCHINDEX(succ);
+      GETBOTH(succdepth,headposition,succptr);
+      leftpointer = stree->text + depth + headposition;
+      edgelen = succdepth - depth;
+      showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
+      (void) putchar('\n');
+      showsubtree(stree,indent+6,succptr);
+      succ = GETBROTHER(succptr);
+    } 
+  } while(!NILPTR(succ));
+}
+
+void showstree(Suffixtree *stree)
+{
+  Uint *btptr, *rcptr, *largeptr, distance, headposition, succdepth;
+  SYMBOL *leftpointer;
+
+  for(rcptr = stree->rootchildren; 
+      rcptr <= stree->rootchildren + LARGESTCHARINDEX;
+      rcptr++)
+  {
+    if(*rcptr != UNDEFINEDREFERENCE)
+    {
+#ifdef SHOWLEAD
+      SHOWINDEX(*rcptr);
+#endif
+      if(ISLEAF(*rcptr))
+      {
+        leftpointer = stree->text + GETLEAFINDEX(*rcptr);
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+        (void) putchar('\n');
+      } else
+      {
+        btptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
+        GETBOTH(succdepth,headposition,btptr);
+        leftpointer = stree->text + headposition;
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
+        (void) putchar('\n');
+        showsubtree(stree,UintConst(6),btptr);
+      }
+    }
+  }
+  printf("~\n");
+}
+
+
 /*
  Before a new node is stored, we check if there is enough space available.
  If not, the space is enlarged by a small amount. Since some global pointers
@@ -99,7 +317,7 @@ static void showvalues(void)
 
 static void spaceforbranchtab(Suffixtree *stree)
 {
-  DEBUG1(FUNCLEVEL,">%s\n",__func__);
+  fprintf(stderr,">%s\n",__func__);
 
   if(stree->nextfreebranch >= stree->firstnotallocated)
   {
@@ -110,10 +328,10 @@ static void spaceforbranchtab(Suffixtree *stree)
     {
       extra = MULTBYSMALLINTS(MINEXTRA);
     }
-    DEBUG1(2,"#all suffixes up to suffix %lu have been scanned\n",
+    fprintf(stderr,"#all suffixes up to suffix %lu have been scanned\n",
               (Showuint) stree->nextfreeleafnum);
-    DEBUG1(2,"#current space peak %f\n",MEGABYTES(getspacepeak()));
-    DEBUG1(2,"#to get %lu extra space do ",(Showuint) extra);
+    fprintf(stderr,"#current space peak %f\n",MEGABYTES(getspacepeak()));
+    fprintf(stderr,"#to get %lu extra space do ",(Showuint) extra);
     stree->currentbranchtabsize += extra;
     tmpheadnode = BRADDR2NUM(stree,stree->headnode);
     if(stree->chainstart != NULL)
@@ -157,7 +375,7 @@ static void spaceforbranchtab(Suffixtree *stree)
 static void setdepthheadposition(Suffixtree *stree,Uint depth,
                                  Uint headposition)
 {
-  DEBUG4(FUNCLEVEL,">%s(%lu)=(depth=%lu,headposition=%lu)\n",
+  fprintf(stderr,">%s(%lu)=(depth=%lu,headposition=%lu)\n",
                    __func__,
                    (Showuint) stree->nextfreebranchnum,
                    (Showuint) depth,
@@ -180,7 +398,7 @@ static void setdepthheadposition(Suffixtree *stree,Uint depth,
 
 static void setsuffixlink(Suffixtree *stree,Uint slink)
 {
-  DEBUG3(FUNCLEVEL,">%s(%lu)=%lu\n",
+  fprintf(stderr,">%s(%lu)=%lu\n",
                     __func__,
                     (Showuint) stree->nextfreebranchnum,
                     (Showuint) slink);
@@ -205,7 +423,7 @@ static Uint getlargelinkconstruction(Suffixtree *stree)
   SYMBOL secondchar;
   Uint succ, slink, headnodenum;
 
-  DEBUG2(FUNCLEVEL,">%s(%lu)\n",
+  fprintf(stderr,">%s(%lu)\n",
                    __func__,
                    (Showuint) BRADDR2NUM(stree,stree->headnode));
 

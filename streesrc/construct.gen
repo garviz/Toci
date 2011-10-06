@@ -23,24 +23,24 @@ CONSTRUCT
     // case (1): headloc is root
     if(stree->headnodedepth == 0 && stree->headend == NULL) 
     {
-      fprintf(stderr, "case (1): headloc is root construct.gen\nstree->headnodedepth=%x\n",stree->headnodedepth);
+      //fprintf(stderr, "case (1): headloc is root construct.gen\nstree->headnodedepth=%x\n",stree->headnodedepth);
       (stree->tailptr)++;
       scanprefix(stree);
     } else
     {
       if(stree->headend == NULL)  // case (2.1): headloc is a node
       {
-        fprintf(stderr, "case (2.1): headloc is a node construct.gen\n");
+        //fprintf(stderr, "case (2.1): headloc is a node construct.gen\n");
         FOLLOWSUFFIXLINK;
         scanprefix(stree);
       } else               // case (2.2)
       {
         if(stree->headnodedepth == 0) // case (2.2.1): at root: do not use links
         {
-          fprintf(stderr, "case (2.2.1): at root: do not use links contruct.gen\n");
+          //fprintf(stderr, "case (2.2.1): at root: do not use links contruct.gen\n");
           if(stree->headstart == stree->headend)  // rescan not necessary
           {
-            fprintf(stderr, "rescan not necessary\n");
+            //fprintf(stderr, "rescan not necessary\n");
             stree->headend = NULL;
           } else
           {
@@ -50,12 +50,12 @@ CONSTRUCT
         } else
         {
           FOLLOWSUFFIXLINK;    // case (2.2.2)
-          fprintf(stderr, "case (2.2.2) construct.gen\n");
+          //fprintf(stderr, "case (2.2.2) construct.gen\n");
           rescan(stree);
         }
         if(stree->headend == NULL)  // case (2.2.3): headloc is a node
         {
-          fprintf(stderr, "case (2.2.3) headloc is a node construct.gen\n");
+          //fprintf(stderr, "case (2.2.3) headloc is a node construct.gen\n");
           SETSUFFIXLINK(BRADDR2NUM(stree,stree->headnode));
           COMPLETELARGEFIRST;
           scanprefix(stree);
@@ -63,7 +63,7 @@ CONSTRUCT
         {
           if(stree->smallnotcompleted == MAXDISTANCE)  // artifical large node
           {
-            fprintf(stderr, "ariticial large node construct.gen\n");
+            //fprintf(stderr, "ariticial large node construct.gen\n");
             //fprintf(stderr, stree->artificial++);
             //fprintf(stderr,"#artifical large node %lu\n",
             //          (Showuint) stree->nextfreebranchnum);
@@ -74,11 +74,11 @@ CONSTRUCT
             if(stree->chainstart == NULL)
             {
               stree->chainstart = stree->nextfreebranch;   // start new chain
-              fprintf(stderr, "start new chain construc.gen\n");
+              //fprintf(stderr, "start new chain construc.gen\n");
             } 
             (stree->smallnotcompleted)++;
             (stree->nextfreebranch) += SMALLINTS;      // case (2.2.4)
-            fprintf(stderr, "case (2.2.4) construct.gen\n");
+            //fprintf(stderr, "case (2.2.4) construct.gen\n");
             (stree->nextfreebranchnum) += SMALLINTS;
             stree->smallnode++;
           }
@@ -102,21 +102,21 @@ CONSTRUCT
 
 //\Ignore{
 
-  DEBUG1(2,"#integers for branchnodes %lu\n",
+  fprintf(stderr,"#integers for branchnodes %lu\n",
            (Showuint) stree->nextfreebranchnum);
-  DEBUG4(2,"#small %lu large %lu textlen %lu all %lu ",
+  fprintf(stderr,"#small %lu large %lu textlen %lu all %lu ",
             (Showuint) stree->smallnode,(Showuint) stree->largenode,
             (Showuint) stree->textlen,
             (Showuint) (stree->smallnode+stree->largenode));
-  DEBUG1(2,"ratio %f\n",
+  fprintf(stderr,"ratio %f\n",
          (double) (stree->smallnode+stree->largenode)/stree->nextfreeleafnum);
-  DEBUG1(2,"#splitleafedge = %lu\n",(Showuint) stree->splitleafedge);
-  DEBUG1(2,"#splitinternaledge = %lu\n",(Showuint) stree->splitinternaledge);
-  DEBUG1(2,"#insertleafcalls = %lu\n",(Showuint) stree->insertleafcalls);
-  DEBUG1(2,"#artificial = %lu\n",(Showuint) stree->artificial);
-  DEBUG1(2,"#multiplications = %lu\n",(Showuint) stree->multiplications);
-  DEBUGCODE(4,showtable(stree,True));
-  DEBUGCODE(3,showstree(stree));
+  fprintf(stderr,"#splitleafedge = %lu\n",(Showuint) stree->splitleafedge);
+  fprintf(stderr,"#splitinternaledge = %lu\n",(Showuint) stree->splitinternaledge);
+  fprintf(stderr,"#insertleafcalls = %lu\n",(Showuint) stree->insertleafcalls);
+  fprintf(stderr,"#artificial = %lu\n",(Showuint) stree->artificial);
+  fprintf(stderr,"#multiplications = %lu\n",(Showuint) stree->multiplications);
+  showtable(stree,False);
+  //showstree(stree);
 #ifdef DEBUG
   {
     DEBUG3(2,"#largelinks %lu largelinklinkwork %lu largelinkwork %lu ",

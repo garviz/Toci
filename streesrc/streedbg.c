@@ -382,7 +382,7 @@ void checkstree(Suffixtree *stree)
 #endif
 }
 
-static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
+void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
 {
   Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
        depth, headposition; 

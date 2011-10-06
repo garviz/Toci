@@ -38,7 +38,7 @@ OBJECTS4=construct.4.o access.4.o scanpref.4.o linkloc.4.o depthtab.4.o\
 
 OBJECTS=construct.o access.o scanpref.o linkloc.o depthtab.o\
           ex2leav.o dfs.o overmax.o oversucc.o\
-          addleafcount.o iterator.o
+          addleafcount.o iterator.o 
 
 DBGOBJECTS4=construct.dbg.4.o access.dbg.4.o streedbg.dbg.4.o\
              depthtab.dbg.4.o scanpref.dbg.4.o linkloc.dbg.4.o\
@@ -60,7 +60,7 @@ all: libs progs
 
 libs: libstree.a libstree.dbg.a
 
-progs: stree.x stree.dbg.x loc.x loc.dbg.x
+progs: stree.x loc.x 
 
 include Filegoals.mf
 
@@ -77,7 +77,7 @@ libstree.dbg.a: $(DBGOBJECTS)
 	ar sruv $@ $(DBGOBJECTS)
 
 
-stree.x: stree.o libstree.a
+stree.x: stree.o libstree.a 
 	$(LD) $(LDFLAGS) stree.o libstree.a $(LIBBASE) -o $@
 
 loc.x: loc.o libstree.a
