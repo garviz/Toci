@@ -8,7 +8,7 @@
  *        Version:  1.0
  *        Created:  27/09/11 19:53:29
  *       Revision:  none
- *       Compiler:  g++
+ *       Compiler:  mpic++
  *
  *         Author:  Julio Cesar Garcia Vizcaino (garviz), garviz@garviz.mx
  *        Company:  CAOS
@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 
-#include <map>
+#include "types.h"
 #include <mpi.h>
 
 using namespace std;
