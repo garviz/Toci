@@ -28,6 +28,9 @@ typedef unsigned short Ushort;
 typedef unsigned long Uint;
 typedef signed long Sint;
 
+typedef Uint * Bref;    
+typedef Uint * Lref;  
+
 struct PairUint
 {
     Uint uint0, uint1;

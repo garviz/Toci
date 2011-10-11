@@ -16,8 +16,11 @@
  * =====================================================================================
  */
 
-#include "types.h"
+#include <iostream>
 #include <mpi.h>
+#include "types.h"
+#include "STree.h"
+#include "Reference.h"
 
 using namespace std;
 
@@ -25,6 +28,10 @@ int main(int argc, char *argv[])
 {
     int numprocs, rank, namelen;
     char processor_name[MPI_MAX_PROCESSOR_NAME];
+
+    Uint *var;
+    Reference ref(true, var);
+    STree stree(1);
 
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);

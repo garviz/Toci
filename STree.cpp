@@ -16,7 +16,14 @@
  * =====================================================================================
  */
 
+#include <iostream>
 #include "STree.h"
-#include "types."
+#include "types.h"
 
-STree::Reference
+using namespace std;
+
+STree::STree(Uint a)
+{
+    prueba = a;
+    cout << "Constructor of STree" << endl;
+}
