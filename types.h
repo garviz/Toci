@@ -31,8 +31,20 @@ typedef signed long Sint;
 typedef Uint * Bref;    
 typedef Uint * Lref;  
 
+struct ListType
+{
+      Uint start, length;
+}; 
+
+typedef ListType Stringtype;
+
 struct PairUint
 {
     Uint uint0, uint1;
+};
+
+struct ThreeUint
+{
+      Uint uint0, uint1, uint2;
 };
 #endif
