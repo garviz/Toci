@@ -26,6 +26,7 @@
 typedef unsigned char Uchar;
 typedef unsigned short Ushort;
 typedef unsigned long Uint;
+typedef const unsigned long UintConst;
 typedef signed long Sint;
 
 typedef Uint * Bref;    

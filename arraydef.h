@@ -38,11 +38,11 @@
 */
 
 #define DECLAREARRAYSTRUCT(TYPE)\
-        typedef struct\
+        struct Array##TYPE\
         {\
           TYPE *space##TYPE;\
           Uint allocated##TYPE, nextfree##TYPE;\
-        } Array##TYPE
+        }
 
 /*
   \texttt{INITARRAY} initializes an empty array.

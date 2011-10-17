@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     int numprocs, rank, namelen;
     char processor_name[MPI_MAX_PROCESSOR_NAME];
 
-    Uchar *text;
+    const char *text;
     Uint textlen;
     char *filename;
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     MPI_Get_processor_name(processor_name, &namelen);
     filename =  argv[1];
 
-    text = (Uchar *) CREATEMEMORYMAP(filename, false, &textlen);
+    text = (const char *)CREATEMEMORYMAP(filename, false, &textlen);
     if (rank== 0) 
     {
         Suffixtree stree;

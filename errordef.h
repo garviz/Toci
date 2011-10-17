@@ -45,7 +45,7 @@ Sint maxerrormsg(void);
 #ifdef DEBUG
 #define THROWERRORLINE\
         DEBUG2(1,"# throw error message in %s line %lu\n",__FILE__,\
-                                                (Showuint) __LINE__)
+                                                (Uint) __LINE__)
 #else
 #define THROWERRORLINE /* Nothing */
 #endif
@@ -56,7 +56,7 @@ Sint maxerrormsg(void);
         {\
           fprintf(stderr,"file %s, line %lu: "\
                          "space for errormessage too small\n",\
-                  __FILE__,(Showuint) __LINE__);\
+                  __FILE__,(Uint) __LINE__);\
           exit(EXIT_FAILURE);\
         }
 
@@ -118,7 +118,7 @@ Sint maxerrormsg(void);
 
 #define NOTSUPPOSED\
         fprintf(stderr,"%s: line %lu: This case is not supposed to occur\n",\
-                       __FILE__,(Showuint) __LINE__);\
+                       __FILE__,(Uint) __LINE__);\
         exit(EXIT_FAILURE)
 
 /*

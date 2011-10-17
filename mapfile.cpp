@@ -16,10 +16,12 @@
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <cstring>
 #include "types.h"
 #include "errordef.h"
+#include "protodef.h"
+#include "spacedef.h"
 #include "megabytes.h"
-#include "debugdef.h"
 
 #define MAXMAPPEDFILES 32
 
@@ -81,7 +83,6 @@ static void mmaddspace(Uint space)
   if(currentspace > spacepeak)
   {
     spacepeak = currentspace;
-    DEBUG1(2,"# mmap spacepeak = %.2f reached\n",MEGABYTES(spacepeak));
   }
 }
 
@@ -98,7 +99,7 @@ static void mmsubtractspace(Uint space)
 
 Sint simplefileOpen(char *filename,Uint *numofbytes)
 {
-  Filedesctype fd;
+  int fd;
   struct stat buf;
 
   if((fd = open(filename,O_RDONLY)) == -1)
@@ -129,9 +130,8 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
 */
 
 /*@null@*/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,
-                                            BOOL writemap,Uint numofbytes)
+                                            bool writemap,Uint numofbytes)
 {
-  DEBUG1(2,"# creatememorymapforfiledesc %ld\n",(Showsint) fd);
   if(numofbytes == 0)
   {
     ERROR0("creatememorymap: file is empty");
@@ -139,22 +139,20 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
   }
   if(fd < 0)
   {
-    ERROR1("creatememorymap: filedescriptor %ld negative",(Showsint) fd);
+    ERROR1("creatememorymap: filedescriptor %ld negative",(Sint) fd);
     return NULL;
   }
   if(fd >= MAXMAPPEDFILES)
   {
-    ERROR1("creatememorymap: filedescriptor %ld is too large",(Showsint) fd);
+    ERROR1("creatememorymap: filedescriptor %ld is too large",(Sint) fd);
     return NULL;
   }
   if(memoryptr[fd] != NULL)
   {
-    ERROR1("creatememorymap: filedescriptor %ld already in use",(Showsint) fd);
+    ERROR1("creatememorymap: filedescriptor %ld already in use",(Sint) fd);
     return NULL;
   }
   mmaddspace(numofbytes);
-  DEBUG2(2,"# memorymap:fd=%ld: %lu bytes\n",(Showsint) fd,
-                                             (Showuint) numofbytes);
   mappedbytes[fd] = numofbytes;
   memoryptr[fd] 
     = (void *) mmap(0,
@@ -165,7 +163,7 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
                     (off_t) 0);
   if(memoryptr[fd] == (void *) MAP_FAILED)
   {
-    ERROR1("memorymapping for filedescriptor %ld failed",(Showsint) fd);
+    ERROR1("memorymapping for filedescriptor %ld failed",(Sint) fd);
     return NULL;
   }
   filemapped[fd] = file;
@@ -179,13 +177,10 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
 */
 
 /*@null@*/ void *creatememorymap(char *file,Uint line,char *filename,
-                                 BOOL writemap,Uint *numofbytes)
+                                 bool writemap,Uint *numofbytes)
 {
-  Filedesctype fd;
+  int fd;
 
-  DEBUG3(2,"\n# creatememorymap(file=%s,line=%ld) for file %s:\n",
-              file,(Showsint) line,
-              filename);
   fd = simplefileOpen(filename,numofbytes);
   if(fd < 0)
   {
@@ -204,12 +199,12 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
 
 Sint deletememorymap(char *file,Uint line,void *mappedfile)
 {
-  Filedesctype fd;
+  int fd;
 
   if(mappedfile == NULL)
   {
     ERROR2("%s: l. %ld: deletememorymap: mappedfile is NULL",
-             file,(Showsint) line);
+             file,(Sint) line);
     return -1;
   }
   for(fd=0; fd<MAXMAPPEDFILES; fd++)
@@ -222,7 +217,7 @@ Sint deletememorymap(char *file,Uint line,void *mappedfile)
   if(fd == MAXMAPPEDFILES)
   {
     ERROR2("%s: l. %ld: deletememorymap: cannot find filedescriptor for given address",
-           file,(Showsint) line);
+           file,(Sint) line);
     return -2;
   }
   if(munmap(memoryptr[fd],(size_t) mappedbytes[fd]) != 0)
@@ -230,18 +225,11 @@ Sint deletememorymap(char *file,Uint line,void *mappedfile)
     ERROR4("%s: l. %ld: deletememorymap: munmap failed:"
            " mapped in file \"%s\",line %lu",
             file,
-            (Showsint) line,
+            (Sint) line,
             filemapped[fd],
-            (Showuint) linemapped[fd]);
+            (Uint) linemapped[fd]);
     return -3;
   }
-  DEBUG4(2,"# file \"%s\", line %ld: deletememorymap:fd=%ld (%lu) bytes:\n",
-          file,
-          (Showsint) line,
-          (Showsint) fd,
-          (Showuint) mappedbytes[fd]);
-  DEBUG2(2,"# mapped in file \"%s\", line %lu\n",filemapped[fd],
-                                                 (Showuint) linemapped[fd]);
   memoryptr[fd] = NULL;
   mmsubtractspace(mappedbytes[fd]);
   mappedbytes[fd] = 0;
@@ -263,17 +251,17 @@ Sint deletememorymap(char *file,Uint line,void *mappedfile)
 
 void mmcheckspaceleak(void)
 {
-  Filedesctype fd;
+  int fd;
 
   for(fd=0; fd<MAXMAPPEDFILES; fd++)
   {
     if(memoryptr[fd] != NULL)
     {
       fprintf(stderr,"space leak: memory for filedescriptor %ld not freed\n",
-              (Showsint) fd);
+              (Sint) fd);
       fprintf(stderr,"mapped in file \"%s\", line %lu\n",
               filemapped[fd],
-              (Showuint) linemapped[fd]);
+              (Uint) linemapped[fd]);
       exit(EXIT_FAILURE);
     }
   }
@@ -286,7 +274,7 @@ void mmcheckspaceleak(void)
 
 Sint mmwrapspace(void)
 {
-  Filedesctype fd;
+  int fd;
 
   for(fd=0; fd<MAXMAPPEDFILES; fd++)
   {
@@ -296,15 +284,10 @@ Sint mmwrapspace(void)
       {
         ERROR2("mmwrapspace: munmap failed: mapped in file \"%s\", line %lu",
                filemapped[fd],
-               (Showuint) linemapped[fd]);
+               (Uint) linemapped[fd]);
         return -1;
       }
       memoryptr[fd] = NULL;
-      DEBUG4(2,"# file \"%s\", line %ld: munmap:fd=%ld (%lu) bytes:\n",
-              __FILE__,(Showsint) __LINE__,(Showsint) fd,
-              (Showuint) mappedbytes[fd]);
-      DEBUG2(2,"# mapped in file \"%s\", line %lu\n",filemapped[fd],
-                                                     (Showuint) linemapped[fd]);
       if(close(fd) != 0)
       {
         ERROR1("cannot close file \"%s\"",filemapped[fd]);
