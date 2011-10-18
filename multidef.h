@@ -10,8 +10,8 @@
 
 #ifndef MULTIDEF_H
 #define MULTIDEF_H
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include "arraydef.h"
 
 //}
@@ -84,7 +84,7 @@
 
 #define UNDEFFILESEP 0
 
-typedef struct 
+struct Multiseq
 {
   ArrayPosition markpos;
   Uint *startdesc,                     // of length numofsequences + 1
@@ -96,33 +96,33 @@ typedef struct
                                        // reverse complemented sequences
         *originalsequence;             // NULL or points to orig. sequence
 
-} Multiseq;                  // \Typedef{Multiseq}
+};                  // \Typedef{Multiseq}
 
 /*
   The following type describes how to format a sequence description.
 */
 
-typedef struct
+struct Showdescinfo
 {
   bool defined,          // show a description
        replaceblanks,    // replaceblanks by underscore
        untilfirstblank;  // only show sequence until first blank
   Uint skipprefix,       // always skip this number of prefixes
        maxlength;        // maximal number of chars of description to be shown
-} Showdescinfo;
+};
 
 /*
   The following type is used to store some basic information about
   a sequence stored in a \texttt{Multiseq}-record.
 */
 
-typedef struct
+struct Seqinfo
 {
   Uint seqnum,       // the sequence number in multiseq
        seqstartpos,  // the position of the first character in multiseq.sequence
        seqlength,    // the length of the sequence
        relposition;  // the relative position of the sequence
-} Seqinfo;           // \Typedef{Seqinfo}
+};           // \Typedef{Seqinfo}
 
 //\Ignore{
 

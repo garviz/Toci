@@ -79,6 +79,7 @@ void checkspaceleak(void);
 void showspace(void);
 Uint getspacepeak(void);
 void showmemsize(void);
+Uint getmaxtextlenstree(void);
 #ifdef __cplusplus
 }
 #endif

@@ -20,11 +20,11 @@
   and only if \texttt{address} points to a leaf.
 */
 
-typedef struct
+struct Reference
 {
   bool toleaf;
   Uint *address;
-} Reference;            // \Typedef{Reference}
+};            // \Typedef{Reference}
 
 /*
   The following types are used for references to leaves and
@@ -40,7 +40,7 @@ typedef Uint * Lref;    // \Typedef{Lref}
   \ref{Representation}. These values comprise the following structure.
 */
 
-typedef struct
+struct Branchinfo
 {
   Uint headposition,        // the head position of the branching node
        depth;               // the depth of the branching node
@@ -48,7 +48,7 @@ typedef struct
   Reference firstchild,     // the reference to the first child
             branchbrother;  // the reference to the right brother; 
                             // if this doesn't exist then it's \texttt{NULL}
-} Branchinfo;               // \Typedef{Branchinfo}
+};               // \Typedef{Branchinfo}
 
 /*
   For each leaf, we store a reference to its right brother, which is 
@@ -213,11 +213,11 @@ struct Pathinfo
 
 DECLAREARRAYSTRUCT(Pathinfo);
 
-typedef struct
+struct DFstate
 {
   bool secondtime;
   ArrayBref stack;
-} DFSstate;      // \Typedef{DFSstate}
+};      // \Typedef{DFSstate}
 
 #endif
 

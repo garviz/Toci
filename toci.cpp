@@ -18,7 +18,15 @@
 
 #include <iostream>
 #include <mpi.h>
+#include <cstdio>
 #include "types.h"
+#include "spacedef.h"
+#include "args.h"
+#include "protodef.h"
+#include "streedef.h"
+#include "streeacc.h"
+#include "megabytes.h"
+#include "maxmatdef.h"
 #include "streetyp.h"
 
 using namespace std;
@@ -27,8 +35,9 @@ int main(int argc, char *argv[])
 {
     int numprocs, rank, namelen;
     char processor_name[MPI_MAX_PROCESSOR_NAME];
+    double start, finish;
 
-    const char *text;
+    Uchar *text;
     Uint textlen;
     char *filename;
 
@@ -36,13 +45,31 @@ int main(int argc, char *argv[])
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Get_processor_name(processor_name, &namelen);
+    MMcallinfo mmcallinfo;
+    Multiseq subjectmultiseq;
+    start = MPI_Wtime();
     filename =  argv[1];
 
-    text = (const char *)CREATEMEMORYMAP(filename, false, &textlen);
-    if (rank== 0) 
+    text = (Uchar *)CREATEMEMORYMAP(filename, false, &textlen);
+    if (text == NULL)
     {
-        Suffixtree stree;
-        cout << "Toci application for genome alignment under HPC environments" << endl;
+        fprintf(stderr,"%s: cannot open file \"%s\" ",argv[0],filename);
+        fprintf(stderr,"or file \"%s\" is empty\n",filename);
+        return EXIT_FAILURE;
+
     }
+    if(textlen == 0)
+    {
+        fprintf(stderr,"%s: file \"%s\" is empty\n",argv[0],filename);
+        return EXIT_FAILURE;
+    }
+    fprintf(stderr,"# construct suffix tree for sequence of length %lu\n",
+           (Sint) textlen);
+    fprintf(stderr,"# (maximal input length is %lu)\n",
+           (Sint) getmaxtextlenstree());
+    Suffixtree stree;
+    cout << "Toci application for genome alignment under HPC environments" << endl;
+    finish = MPI_Wtime();
     MPI_Finalize();
+    cout << "Final Time: " << finish-start << endl;
 }

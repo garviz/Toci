@@ -11,7 +11,7 @@
 #ifndef OPTDESC_H
 #define OPTDESC_H
 #include "types.h"
-#include "errordef.h"
+#include <cstdio>
 
 //}
 
@@ -59,7 +59,7 @@
 #define OPTIONMANDATORY(A)\
         if(!ISSET(A))\
         {\
-          ERROR1("option %s is mandatory",options[A].optname);\
+          cerr << "option %s is mandatory" ,options[A].optname;\
           return -1;\
         }
 
@@ -72,8 +72,8 @@
 #define OPTIONIMPLY(A,B)\
         if(ISSET(A) && !ISSET(B))\
         {\
-          ERROR2("option %s requires option %s",\
-                  options[A].optname,options[B].optname);\
+          cerr << "option %s requires option %s",\
+                  options[A].optname,options[B].optname;\
           return -1;\
         }
 
@@ -82,9 +82,9 @@
         {\
           if(!ISSET(B) && !ISSET(C))\
           {\
-            ERROR3("option %s requires either option %s or %s",\
+            cerr << "option %s requires either option %s or %s",\
                     options[A].optname,options[B].optname,\
-                    options[C].optname);\
+                    options[C].optname;\
             return -1;\
           }\
         }
@@ -94,7 +94,7 @@
         {\
           if(!ISSET(B) && !ISSET(C) && !ISSET(D))\
           {\
-            ERROR4("option %s requires one of the options %s, %s, %s",\
+            perror("option %s requires one of the options %s, %s, %s",\
                     options[A].optname,\
                     options[B].optname,\
                     options[C].optname,\
@@ -108,7 +108,7 @@
         {\
           if(!ISSET(B) && !ISSET(C) && !ISSET(D) && !ISSET(E))\
           {\
-            ERROR5("option %s requires one of the options %s, %s, %s, %s",\
+            perror("option %s requires one of the options %s, %s, %s, %s",\
                     options[A].optname,\
                     options[B].optname,\
                     options[C].optname,\
@@ -126,7 +126,7 @@
 #define OPTIONEXCLUDE(A,B)\
         if(ISSET(A) && ISSET(B))\
         {\
-          ERROR2("option %s and option %s exclude each other",\
+          perror("option %s and option %s exclude each other",\
                   options[A].optname,options[B].optname);\
           return -1;\
         }
@@ -135,7 +135,7 @@
   An option is described by the following type.
 */
 
-typedef struct 
+struct OptionDescription
 {
   char *optname,             // the option string, begins with -
        *description;         // help text describing purpose of option
@@ -143,7 +143,7 @@ typedef struct
   bool isalreadyset,         // has the option already been set?
        declared;             // is the option declared by
                              // a line of the form \texttt{ADDOPTION}
-} OptionDescription;         // \Typedef{OptionDescription}
+};         // \Typedef{OptionDescription}
 
 //\Ignore{
 

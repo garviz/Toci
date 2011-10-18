@@ -11,7 +11,6 @@
 #ifndef ARRAYDEF_H
 #define ARRAYDEF_H
 #include "types.h"
-#include "errordef.h"
 #include "spacedef.h"
 
 //}
@@ -68,8 +67,7 @@
                                                (A)->space##TYPE,\
                                                (Uint) sizeof(TYPE),\
                                                (A)->allocated##TYPE);\
-        }\
-        NOTSUPPOSEDTOBENULL((A)->space##TYPE)
+        }
 
 /*
   The next macro is a variation of \texttt{CHECKARRAYSPACE}, 

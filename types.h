@@ -29,6 +29,8 @@ typedef unsigned long Uint;
 typedef const unsigned long UintConst;
 typedef signed long Sint;
 
+#define LOGWORDSIZE 6
+
 typedef Uint * Bref;    
 typedef Uint * Lref;  
 
