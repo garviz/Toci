@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
     MPI_Get_processor_name(processor_name, &namelen);
     MMcallinfo mmcallinfo;
     Multiseq subjectmultiseq;
+    Suffixtree stree;
     start = MPI_Wtime();
     filename =  argv[1];
 
@@ -67,7 +68,11 @@ int main(int argc, char *argv[])
            (Sint) textlen);
     fprintf(stderr,"# (maximal input length is %lu)\n",
            (Sint) getmaxtextlenstree());
-    Suffixtree stree;
+    if(constructprogressstree(&stree,text,textlen,NULL,NULL,NULL) != 0)
+    {
+        fprintf(stderr,"%s %s: %s\n",argv[0],filename,messagespace());
+        return EXIT_FAILURE;
+    }          
     cout << "Toci application for genome alignment under HPC environments" << endl;
     finish = MPI_Wtime();
     MPI_Finalize();

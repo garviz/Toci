@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <cstring>
 #include "types.h"
+#include "spacedef.h"
 #include "megabytes.h"
 
 //}

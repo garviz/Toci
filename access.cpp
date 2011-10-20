@@ -180,7 +180,7 @@ void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)
   Simpleloc *llptr;
 
   CHECKARRAYSPACE(ll,Simpleloc,stree->alphasize+1);
-  /*for(ch = 0; ch <= UCHAR_MAX; ch++)
+  for(ch = 0; ch <= UCHAR_MAX; ch++)
   {
     if((node = stree->rootchildren[ch]) != UNDEFINEDREFERENCE)
     {
@@ -203,7 +203,7 @@ void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)
       }
       CHECKADDR(stree,llptr->nextnode);
     }
-  }*/
+  }
 }
 
 // use the following functions only for non root location.
@@ -217,7 +217,7 @@ void succlocationsstree(Suffixtree *stree,bool nosentinel,Simpleloc *loc,
 
   fprintf(stderr,"succlocationsstree\n");
   ll->nextfreeSimpleloc = 0;
-  /*CHECKARRAYSPACE(ll,Simpleloc,stree->alphasize+1);
+  CHECKARRAYSPACE(ll,Simpleloc,stree->alphasize+1);
   if(loc->remain > 0)
   {
     if(nosentinel && loc->nextnode.toleaf && loc->remain <= UintConst(1))  
@@ -263,5 +263,5 @@ void succlocationsstree(Suffixtree *stree,bool nosentinel,Simpleloc *loc,
       CHECKADDR(stree,llptr->nextnode);
       succ = GETBROTHER(succptr);
     }
-  } while(!NILPTR(succ));*/
+  } while(!NILPTR(succ));
 }
