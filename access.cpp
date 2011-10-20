@@ -172,59 +172,6 @@ void showpathstree(Suffixtree *stree,Bref bnode,
   }
 }
 
-#ifdef DEBUG
-void showsimplelocstree(Suffixtree *stree,Simpleloc *loc)
-{
-  Uint bnode;
-
-  if(loc->textpos == stree->textlen)
-  {
-    printf("(~,");
-  } else
-  {
-    printf("(%s,",stree->showsymbolstree(stree->text[loc->textpos],stree->alphabet));
-  }
-  if(loc->remain > 0)
-  {
-    printf("(%lu,",(Showuint) loc->remain);
-  }
-  if(loc->nextnode.toleaf)
-  {
-    printf("Leaf %lu",(Showuint) LEAFADDR2NUM(stree,loc->nextnode.address));
-  } else
-  {
-    bnode = BRADDR2NUM(stree,loc->nextnode.address);
-    if(ISLARGE(*(loc->nextnode.address)))
-    {
-      printf("Large %lu",(Showuint) bnode);
-    } else
-    {
-      printf("Small %lu",(Showuint) bnode);
-    }
-  } 
-  if(loc->remain > 0)
-  {
-    (void) putchar(')');
-  }
-  (void) putchar(')');
-}
-
-void showsimplelocliststree(Suffixtree *stree,ArraySimpleloc *ll)
-{
-  Uint i;
-
-  for(i=0; i<ll->nextfreeSimpleloc; i++)
-  {
-    showsimplelocstree(stree,ll->spaceSimpleloc+i);
-    if(i < ll->nextfreeSimpleloc-1)
-    {
-      (void) putchar(',');
-    }
-  }
-  (void) putchar('\n');
-}
-#endif
-
 // use the following functions only for the root location.
 
 void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)
@@ -233,7 +180,7 @@ void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)
   Simpleloc *llptr;
 
   CHECKARRAYSPACE(ll,Simpleloc,stree->alphasize+1);
-  for(ch = 0; ch <= UCHAR_MAX; ch++)
+  /*for(ch = 0; ch <= UCHAR_MAX; ch++)
   {
     if((node = stree->rootchildren[ch]) != UNDEFINEDREFERENCE)
     {
@@ -256,7 +203,7 @@ void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)
       }
       CHECKADDR(stree,llptr->nextnode);
     }
-  }
+  }*/
 }
 
 // use the following functions only for non root location.
@@ -270,7 +217,7 @@ void succlocationsstree(Suffixtree *stree,bool nosentinel,Simpleloc *loc,
 
   fprintf(stderr,"succlocationsstree\n");
   ll->nextfreeSimpleloc = 0;
-  CHECKARRAYSPACE(ll,Simpleloc,stree->alphasize+1);
+  /*CHECKARRAYSPACE(ll,Simpleloc,stree->alphasize+1);
   if(loc->remain > 0)
   {
     if(nosentinel && loc->nextnode.toleaf && loc->remain <= UintConst(1))  
@@ -316,5 +263,5 @@ void succlocationsstree(Suffixtree *stree,bool nosentinel,Simpleloc *loc,
       CHECKADDR(stree,llptr->nextnode);
       succ = GETBROTHER(succptr);
     }
-  } while(!NILPTR(succ));
+  } while(!NILPTR(succ));*/
 }

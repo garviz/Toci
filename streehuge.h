@@ -88,14 +88,6 @@
 
 //\Ignore{
 
-#ifdef DEBUG
-#define CHILDREFERSTOLEAF(B)   ISLEAF(*(B))
-#endif
-
-//}
-
-//\Ignore{
-
 #if SYMBOLBYTES == 1
 #define LARGESTCHARINDEX          UCHAR_MAX
 #else
