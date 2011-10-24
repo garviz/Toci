@@ -16,6 +16,7 @@
 #include <cstring>
 #include "types.h"
 #include "spacedef.h"
+#include "protodef.h"
 #include "megabytes.h"
 
 //}

@@ -25,9 +25,40 @@
 #include "protodef.h"
 #include "streedef.h"
 #include "streeacc.h"
-#include "megabytes.h"
-#include "maxmatdef.h"
+#include "streeproto.h"
 #include "streetyp.h"
+#include "megabytes.h"
+#include "errordef.h"
+#include "maxmatdef.h"
+
+/*EE
+  This module contains the main function of maxmatch3. It calls
+  the following three functions in an appropriate order and with
+  proper arguments.
+*/
+
+/*EE
+  The following function is imported form \texttt{maxmatopt.c}.
+*/
+
+Sint parsemaxmatoptions (MMcallinfo *maxmatcallinfo,
+                         int argc,
+                         char **argv);
+
+/*EE
+  The following function is imported form \texttt{maxmatinp.c}.
+*/
+
+Sint getmaxmatinput (Multiseq *subjectmultiseq,
+                     bool matchnucleotidesonly,
+                     char *subjectfile);
+
+/*EE
+  The following function is imported form \texttt{procmaxmat.c}.
+*/
+
+Sint procmaxmatches(MMcallinfo *mmcallinfo,
+                    Multiseq *subjectmultiseq);
 
 using namespace std;
 
@@ -40,6 +71,7 @@ int main(int argc, char *argv[])
     Uchar *text;
     Uint textlen;
     char *filename;
+    int retcode;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
@@ -48,6 +80,7 @@ int main(int argc, char *argv[])
     MMcallinfo mmcallinfo;
     Multiseq subjectmultiseq;
     Suffixtree stree;
+    if (rank == 0) {
     start = MPI_Wtime();
     filename =  argv[1];
 
@@ -68,7 +101,7 @@ int main(int argc, char *argv[])
            (Sint) textlen);
     fprintf(stderr,"# (maximal input length is %lu)\n",
            (Sint) getmaxtextlenstree());
-    if(constructstree(&stree,text,textlen,NULL,NULL,NULL) != 0)
+    if(constructprogressstree(&stree,text,textlen,NULL,NULL,NULL) != 0)
     {
         fprintf(stderr,"%s %s: %s\n",argv[0],filename,messagespace());
         return EXIT_FAILURE;

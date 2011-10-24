@@ -213,7 +213,7 @@ struct Pathinfo
 
 DECLAREARRAYSTRUCT(Pathinfo);
 
-struct DFstate
+struct DFSstate
 {
   bool secondtime;
   ArrayBref stack;

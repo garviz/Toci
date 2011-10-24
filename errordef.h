@@ -45,7 +45,7 @@ Sint maxerrormsg(void);
 #ifdef DEBUG
 #define THROWERRORLINE\
         DEBUG2(1,"# throw error message in %s line %lu\n",__FILE__,\
-                                                (Uint) __LINE__)
+                                                (Showuint) __LINE__)
 #else
 #define THROWERRORLINE /* Nothing */
 #endif
@@ -56,7 +56,7 @@ Sint maxerrormsg(void);
         {\
           fprintf(stderr,"file %s, line %lu: "\
                          "space for errormessage too small\n",\
-                  __FILE__,(Uint) __LINE__);\
+                  __FILE__,(Showuint) __LINE__);\
           exit(EXIT_FAILURE);\
         }
 
@@ -67,22 +67,22 @@ Sint maxerrormsg(void);
 
 
 #define ERROR0(F)\
-        GENERROR(snprintf(messagespace(),strlen(messagespace()),F))
+        GENERROR(sprintf(messagespace(),F))
 
 #define ERROR1(F,A1)\
-        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1))
+        GENERROR(sprintf(messagespace(),F,A1))
 
 #define ERROR2(F,A1,A2)\
-        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2))
+        GENERROR(sprintf(messagespace(),F,A1,A2))
 
 #define ERROR3(F,A1,A2,A3)\
-        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2,A3))
+        GENERROR(sprintf(messagespace(),F,A1,A2,A3))
 
 #define ERROR4(F,A1,A2,A3,A4)\
-        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2,A3,A4))
+        GENERROR(sprintf(messagespace(),F,A1,A2,A3,A4))
 
 #define ERROR5(F,A1,A2,A3,A4,A5)\
-        GENERROR(snprintf(messagespace(),strlen(messagespace()),F,A1,A2,A3,A4,A5))
+        GENERROR(sprintf(messagespace(),F,A1,A2,A3,A4,A5))
 
 //}
 
@@ -118,7 +118,7 @@ Sint maxerrormsg(void);
 
 #define NOTSUPPOSED\
         fprintf(stderr,"%s: line %lu: This case is not supposed to occur\n",\
-                       __FILE__,(Uint) __LINE__);\
+                       __FILE__,(Showuint) __LINE__);\
         exit(EXIT_FAILURE)
 
 /*

@@ -178,11 +178,11 @@
 */
 
 #define RECALLNEWLEAFADDRESS(A)   stree->setlink = A;\
-                                  stree->setatnewleaf = True
+                                  stree->setatnewleaf = true
 #define RECALLLEAFADDRESS(A)      stree->setlink = A;\
-                                  stree->setatnewleaf = False
+                                  stree->setatnewleaf = false
 #define RECALLBRANCHADDRESS(A)    stree->setlink = (A) + 1;\
-                                  stree->setatnewleaf = False
+                                  stree->setatnewleaf = false
 
 #ifdef STREEHUGE
 #define SETNILBIT                 *(stree->setlink) = NILBIT
