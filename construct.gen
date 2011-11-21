@@ -14,7 +14,6 @@ CONSTRUCT
 
 
   initSuffixtree(stree,text,textlen);
-  fprintf(stderr, "initSuffixtree se ha ejecutado\n");
   while(stree->tailptr < stree->sentinel || 
         stree->headnodedepth != 0 || stree->headend != NULL)
   {

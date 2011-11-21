@@ -27,7 +27,6 @@
 #include "streeacc.h"
 #include "streeproto.h"
 #include "streetyp.h"
-#include "megabytes.h"
 #include "errordef.h"
 #include "maxmatdef.h"
 
@@ -81,33 +80,32 @@ int main(int argc, char *argv[])
     Multiseq subjectmultiseq;
     Suffixtree stree;
     if (rank == 0) {
-    start = MPI_Wtime();
-    filename =  argv[1];
+        start = MPI_Wtime();
+        filename =  argv[1];
 
-    text = (Uchar *)CREATEMEMORYMAP(filename, false, &textlen);
-    if (text == NULL)
-    {
-        fprintf(stderr,"%s: cannot open file \"%s\" ",argv[0],filename);
-        fprintf(stderr,"or file \"%s\" is empty\n",filename);
-        return EXIT_FAILURE;
-
-    }
-    if(textlen == 0)
-    {
-        fprintf(stderr,"%s: file \"%s\" is empty\n",argv[0],filename);
-        return EXIT_FAILURE;
-    }
-    fprintf(stderr,"# construct suffix tree for sequence of length %lu\n",
+        text = (Uchar *)CREATEMEMORYMAP(filename, false, &textlen);
+        if (text == NULL) {
+            fprintf(stderr,"%s: cannot open file \"%s\" ",argv[0],filename);
+            fprintf(stderr,"or file \"%s\" is empty\n",filename);
+            return EXIT_FAILURE;
+        }
+        if(textlen == 0) {
+            fprintf(stderr,"%s: file \"%s\" is empty\n",argv[0],filename);
+            return EXIT_FAILURE;
+        }
+        fprintf(stderr,"# construct suffix tree for sequence of length %lu\n",
            (Sint) textlen);
-    fprintf(stderr,"# (maximal input length is %lu)\n",
-           (Sint) getmaxtextlenstree());
-    if(constructprogressstree(&stree,text,textlen,NULL,NULL,NULL) != 0)
-    {
+        fprintf(stderr,"# (maximal input length is %lu)\n",
+           (Sint) getmaxtextlenstree()/ atoi(argv[2]));
+        if(constructprogressstree(&stree,text,textlen,NULL,NULL,NULL) != 0) {
         fprintf(stderr,"%s %s: %s\n",argv[0],filename,messagespace());
         return EXIT_FAILURE;
-    }          
-    cout << "Toci application for genome alignment under HPC environments" << endl;
-    finish = MPI_Wtime();
+        }
+        cout << "Toci application for genome alignment under HPC environments" << endl;
+        finish = MPI_Wtime();
+    } else {
+        cout << "Process: " << rank << endl;
+    }
     MPI_Finalize();
     cout << "Final Time: " << finish-start << endl;
 }

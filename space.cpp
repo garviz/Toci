@@ -14,11 +14,12 @@
 #include <sys/resource.h>
 #include <unistd.h>
 #include <cstring>
+#include <string>
 #include "types.h"
 #include "spacedef.h"
 #include "protodef.h"
-#include "megabytes.h"
 
+using namespace std;
 //}
 
 /*EE
@@ -47,9 +48,9 @@
 */
 
 #define ALLOCVIAFATAL(M) \
-        fprintf(stderr,"file \"%s\", line %lu: "\
+        fprintf(stderr,"line %lu: "\
                        " allocandusespaceviaptr(%lu,%lu) failed:%s\n",\
-                       file,(Sint) line,(Sint) size,\
+                       (Sint) line,(Sint) size,\
                        (Sint) number,M);\
         exit(EXIT_FAILURE)
 
@@ -126,7 +127,6 @@ static void addspace(Uint space)
   if(currentspace > spacepeak)
   {
     spacepeak = currentspace;
-    //DEBUG1(2,"# spacepeak = %.2f reached\n",MEGABYTES(spacepeak));
   }
 }
 
@@ -142,14 +142,14 @@ static void subtractspace(Uint space)
   to \texttt{ptr}. If there is none, then the program exits with exit code 1. 
 */
 
-/*@notnull@*/ void *allocandusespaceviaptr(char *file,Uint line, 
+/*@notnull@*/ void *allocandusespaceviaptr(char* file,Uint line, 
                                            /*@null@*/ void *ptr,
                                            Uint size,Uint number)
 {
   Uint i, blocknum;
 
-  fprintf(stderr,"\n# allocandusespaceviaptr(file=%s,line=%lu)\n",file,
-                      (Sint) line);
+  fprintf(stderr,"\n# allocandusespaceviaptr(file=%s,line=%lu)\n",
+                  file, (Sint) line);
   if(nextfreeblock > 0)
   {
     for(blocknum=0; blocknum < nextfreeblock; blocknum++)
@@ -367,7 +367,7 @@ void checkspaceleak(void)
   }
   if(numberofblocks > 0)
   {
-    fprintf(stderr,"space leak: number of blocks = %u\n",numberofblocks);
+    fprintf(stderr,"space leak: number of blocks = %u\n",(unsigned int) numberofblocks);
     exit(EXIT_FAILURE);
   } 
   free(blocks);
@@ -376,15 +376,6 @@ void checkspaceleak(void)
   nextfreeblock = 0;
   currentspace = 0;
   spacepeak = 0;
-}
-
-/*EE
-  The following function shows the space peak in megabytes on \texttt{stderr}.
-*/
-
-void showspace(void)
-{
-  fprintf(stderr,"# space peak in megabytes: %.2f\n",MEGABYTES(spacepeak));
 }
 
 /*EE

@@ -1,0 +1,607 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACCESSBRANCHBROTHER	streemac.h	25;"	d
+ACCESSDEPTH	streemac.h	21;"	d
+ACCESSFIRSTCHILD	streemac.h	24;"	d
+ACCESSHEADPOS	streemac.h	22;"	d
+ACCESSSUFFIXLINK	streemac.h	23;"	d
+ADDFACTOR	construct.cpp	73;"	d	file:
+ADDOPTION	optdesc.h	42;"	d
+ALLOCSPACE	spacedef.h	69;"	d
+ALLOCVIAFATAL	space.cpp	51;"	d	file:
+ARGS_H	args.h	12;"	d
+ARRAYDEF_H	arraydef.h	12;"	d
+ASSIGNDEFAULTSHOWDESC	multidef.h	74;"	d
+AddPrefix	streed2006.cpp	/^void AddPrefix( Suffix &active, int last_char_index )$/;"	f
+AddSuffixLink	streed2006.cpp	/^void AddSuffixLink( int &last_parent, int parent )$/;"	f
+ArrayCharacters	arraydef.h	/^typedef ArrayUchar ArrayCharacters;     \/\/ \\Typedef{ArrayCharacters}$/;"	t
+ArrayPosition	arraydef.h	/^typedef ArrayUint  ArrayPosition;       \/\/ \\Typedef{ArrayPosition}$/;"	t
+ArrayStrings	arraydef.h	/^struct ArrayStrings$/;"	s
+Aux	streed2006.cpp	/^        Aux( int rhs ){ i = rhs; }$/;"	f	class:Aux
+Aux	streed2006.cpp	/^class Aux {$/;"	c	file:
+BRADDR2NUM	streemac.h	59;"	d
+Blockdescription	space.cpp	/^struct Blockdescription$/;"	s	file:
+BranchCounts	streed2006.cpp	/^char BranchCounts[ MAX_LENGTH * 2 ] = { 0 };$/;"	v
+Branchinfo	streetyp.h	/^struct Branchinfo$/;"	s
+Bref	streetyp.h	/^DECLAREARRAYSTRUCT(Bref);$/;"	v
+Bref	streetyp.h	/^typedef Uint * Bref;    \/\/ \\Typedef{Bref}$/;"	t
+Bref	types.h	/^typedef Uint * Bref;    $/;"	t
+Buffer	streed2006.cpp	/^class Buffer {$/;"	c	file:
+CHARDEF_H	chardef.h	12;"	d
+CHECKARGNUM	args.h	28;"	d
+CHECKARRAYSPACE	arraydef.h	63;"	d
+CHECKARRAYSPACEMULTI	arraydef.h	80;"	d
+CHECKSTEP	construct.cpp	685;"	d	file:
+CHECKSTEP	construct.cpp	695;"	d	file:
+CHECKSTEP	construct.cpp	722;"	d	file:
+CHECKSTEP	construct.cpp	732;"	d	file:
+CHECKSTEP	construct.cpp	745;"	d	file:
+CHECKSTEP	construct.cpp	755;"	d	file:
+CHECKSTEP	construct.cpp	779;"	d	file:
+CHECKSTEP	construct.cpp	815;"	d	file:
+CHECKTEXTLEN	construct.cpp	28;"	d	file:
+CLEARBITTAB	intbits.h	73;"	d
+COMPLETELARGEFIRST	construct.cpp	682;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	692;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	712;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	729;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	740;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	752;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	775;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	812;"	d	file:
+COMPLETELARGESECOND	construct.cpp	683;"	d	file:
+COMPLETELARGESECOND	construct.cpp	693;"	d	file:
+COMPLETELARGESECOND	construct.cpp	717;"	d	file:
+COMPLETELARGESECOND	construct.cpp	730;"	d	file:
+COMPLETELARGESECOND	construct.cpp	741;"	d	file:
+COMPLETELARGESECOND	construct.cpp	753;"	d	file:
+COMPLETELARGESECOND	construct.cpp	776;"	d	file:
+COMPLETELARGESECOND	construct.cpp	813;"	d	file:
+CONSTRUCT	construct.cpp	680;"	d	file:
+CONSTRUCT	construct.cpp	690;"	d	file:
+CONSTRUCT	construct.cpp	700;"	d	file:
+CONSTRUCT	construct.cpp	727;"	d	file:
+CONSTRUCT	construct.cpp	737;"	d	file:
+CONSTRUCT	construct.cpp	750;"	d	file:
+CONSTRUCT	construct.cpp	763;"	d	file:
+CONSTRUCT	construct.cpp	810;"	d	file:
+CONSTRUCTSTREE	streemac.h	32;"	d
+CREATEMEMORYMAP	spacedef.h	95;"	d
+CREATEMEMORYMAPFORFILEDESC	spacedef.h	98;"	d
+Canonize	streed2006.cpp	/^void Suffix::Canonize()$/;"	f	class:Suffix
+Count	streed2006.cpp	/^        static int Count;$/;"	m	class:Node	file:
+Count	streed2006.cpp	/^int Node::Count = 1; \/\/We start with a single node 0 that has no children$/;"	m	class:Node	file:
+CurrentString	streed2006.cpp	/^char CurrentString[ MAX_LENGTH ];$/;"	v
+DECLAREARRAYSTRUCT	arraydef.h	41;"	d
+DECLAREEXTRA	construct.cpp	681;"	d	file:
+DECLAREEXTRA	construct.cpp	691;"	d	file:
+DECLAREEXTRA	construct.cpp	702;"	d	file:
+DECLAREEXTRA	construct.cpp	728;"	d	file:
+DECLAREEXTRA	construct.cpp	739;"	d	file:
+DECLAREEXTRA	construct.cpp	751;"	d	file:
+DECLAREEXTRA	construct.cpp	764;"	d	file:
+DECLAREEXTRA	construct.cpp	811;"	d	file:
+DELETEMEMORYMAP	spacedef.h	101;"	d
+DESCRIPTIONLENGTH	multidef.h	66;"	d
+DESCRIPTIONPTR	multidef.h	63;"	d
+DESCRIPTIONSTARTDESC	multidef.h	60;"	d
+DFSstate	streetyp.h	/^struct DFSstate$/;"	s
+DIVBYSMALLINTS	streehuge.h	33;"	d
+DIVWORDSIZE	intbits.h	46;"	d
+DYNAMICSTRDUP	spacedef.h	92;"	d
+ERROR0	errordef.h	69;"	d
+ERROR1	errordef.h	72;"	d
+ERROR2	errordef.h	75;"	d
+ERROR3	errordef.h	78;"	d
+ERROR4	errordef.h	81;"	d
+ERROR5	errordef.h	84;"	d
+ERRORDEF_H	errordef.h	12;"	d
+EXCEPTFIRSTBIT	intbits.h	40;"	d
+EXCEPTFIRSTTHREEBITS	intbits.h	44;"	d
+EXCEPTFIRSTTWOBITS	intbits.h	42;"	d
+Edge	streed2006.cpp	/^Edge::Edge( int init_first, int init_last, int parent_node )$/;"	f	class:Edge
+Edge	streed2006.cpp	/^Edge::Edge()$/;"	f	class:Edge
+Edge	streed2006.cpp	/^class Edge {$/;"	c	file:
+Edges	streed2006.cpp	/^Edge Edges[ HASH_TABLE_SIZE ];$/;"	v
+Explicit	streed2006.cpp	/^        int Explicit(){ return first_char_index > last_char_index; }$/;"	f	class:Suffix
+FASTASEPARATOR	multidef.h	52;"	d
+FINALPROGRESS	construct.cpp	686;"	d	file:
+FINALPROGRESS	construct.cpp	696;"	d	file:
+FINALPROGRESS	construct.cpp	723;"	d	file:
+FINALPROGRESS	construct.cpp	733;"	d	file:
+FINALPROGRESS	construct.cpp	746;"	d	file:
+FINALPROGRESS	construct.cpp	756;"	d	file:
+FINALPROGRESS	construct.cpp	797;"	d	file:
+FINALPROGRESS	construct.cpp	816;"	d	file:
+FIRSTBIT	intbits.h	28;"	d
+FIRSTTWOBITS	intbits.h	38;"	d
+FOLLOWSUFFIXLINK	streeacc.h	148;"	d
+FREEARRAY	arraydef.h	115;"	d
+FREESPACE	spacedef.h	79;"	d
+FUNCLEVEL	construct.cpp	24;"	d	file:
+Find	streed2006.cpp	/^Edge Edge::Find( int node, int c )$/;"	f	class:Edge
+GENERROR	errordef.h	53;"	d
+GETBOTH	streeacc.h	34;"	d
+GETBRANCHINDEX	streehuge.h	56;"	d
+GETBROTHER	streehuge.h	63;"	d
+GETCHAINEND	streehuge.h	85;"	d
+GETCHILD	streehuge.h	62;"	d
+GETDEPTH	streehuge.h	65;"	d
+GETDEPTHAFTERHEADPOS	streeacc.h	100;"	d
+GETDISTANCE	streehuge.h	64;"	d
+GETHEADPOS	streehuge.h	66;"	d
+GETHEADPOSAFTERDEPTH	streeacc.h	115;"	d
+GETLEAFINDEX	streehuge.h	55;"	d
+GETNEXTFREEINARRAY	arraydef.h	97;"	d
+GETONLYDEPTH	streeacc.h	82;"	d
+GETONLYHEADPOS	streeacc.h	64;"	d
+GETSUFFIXLINK	streehuge.h	67;"	d
+GetAddress	Reference.h	/^        Uint GetAddress() { return *address; }$/;"	f	class:Reference
+GetToLeaf	Reference.h	/^        bool GetToLeaf() { return toleaf; }$/;"	f	class:Reference
+GoodSuffixes	streed2006.cpp	/^char GoodSuffixes[ MAX_LENGTH ];$/;"	v
+HASH_TABLE_SIZE	streed2006.cpp	/^const int HASH_TABLE_SIZE = 2179;  \/\/A prime roughly 10% larger$/;"	v
+HIGHESTVISIBLE	visible.h	34;"	d
+Hash	streed2006.cpp	/^int Edge::Hash( int node, int c )$/;"	f	class:Edge
+INITARRAY	arraydef.h	52;"	d
+INITBITTAB	intbits.h	58;"	d
+INTBITS_H	intbits.h	12;"	d
+INTWORDSIZE	intbits.h	26;"	d
+INVISIBLE	visible.h	40;"	d
+INVISIBLECHAR	visible.h	54;"	d
+ISBITSET	intbits.h	30;"	d
+ISBRANCHUSED	streedbg.cpp	22;"	d	file:
+ISIBITSET	intbits.h	102;"	d
+ISLARGE	streehuge.h	50;"	d
+ISLEAF	streehuge.h	49;"	d
+ISLEAFUSED	streedbg.cpp	19;"	d	file:
+ISNOTSPECIAL	chardef.h	26;"	d
+ISSET	optdesc.h	52;"	d
+ISSPECIAL	chardef.h	25;"	d
+ITHBIT	intbits.h	32;"	d
+Implicit	streed2006.cpp	/^        int Implicit(){ return last_char_index >= first_char_index; }$/;"	f	class:Suffix
+Insert	streed2006.cpp	/^void Edge::Insert()$/;"	f	class:Edge
+LARGEINTS	streehuge.h	31;"	d
+LARGESTCHARINDEX	streehuge.h	92;"	d
+LARGESTCHARINDEX	streehuge.h	94;"	d
+LEADLEVEL	streeacc.h	206;"	d
+LEAFADDR2NUM	streemac.h	60;"	d
+LEAFBIT	streehuge.h	35;"	d
+LEAFBROTHERVAL	streehuge.h	82;"	d
+LEASTSHOWPROGRESS	construct.cpp	760;"	d	file:
+LOGWORDSIZE	types.h	32;"	d
+LOWESTVISIBLE	visible.h	28;"	d
+Leafinfo	streetyp.h	/^typedef Reference Leafinfo;  \/\/ \\Typedef{Leafinfo}$/;"	t
+ListType	types.h	/^struct ListType$/;"	s
+Location	streetyp.h	/^struct Location$/;"	s
+Lref	streetyp.h	/^typedef Uint * Lref;    \/\/ \\Typedef{Lref}$/;"	t
+Lref	types.h	/^typedef Uint * Lref;  $/;"	t
+MAKEBRANCHADDR	streehuge.h	86;"	d
+MAKELARGE	streehuge.h	52;"	d
+MAKELARGELEAF	streehuge.h	53;"	d
+MAKELEAF	streehuge.h	51;"	d
+MAXDISTANCE	streehuge.h	39;"	d
+MAXERRORMSG	seterror.cpp	27;"	d	file:
+MAXINDEX	streehuge.h	38;"	d
+MAXMAPPEDFILES	mapfile.cpp	26;"	d	file:
+MAXMATDEF_H	maxmatdef.h	12;"	d
+MAXNUMOFQUERYFILES	maxmatdef.h	38;"	d
+MAXTEXTLEN	streehuge.h	60;"	d
+MAX_LENGTH	streed2006.cpp	/^const int MAX_LENGTH = 1000;$/;"	v
+MINEXTRA	construct.cpp	74;"	d	file:
+MMREPLACEMENTCHARQUERY	maxmatdef.h	32;"	d
+MMREPLACEMENTCHARSUBJECT	maxmatdef.h	31;"	d
+MMcallinfo	maxmatdef.h	/^struct MMcallinfo$/;"	s
+MODWORDSIZE	intbits.h	48;"	d
+MULTBYSMALLINTS	streehuge.h	32;"	d
+MULTIDEF_H	multidef.h	12;"	d
+MULWORDSIZE	intbits.h	50;"	d
+MUMCAND_H	mumcand.h	12;"	d
+MUMcandidate	mumcand.h	/^DECLAREARRAYSTRUCT(MUMcandidate);$/;"	v
+MUMcandidate	mumcand.h	/^} MUMcandidate;     \/\/ \\Typedef{MUMcandidate}$/;"	t	typeref:struct:__anon1
+Multiseq	multidef.h	/^struct Multiseq$/;"	s
+N	streed2006.cpp	/^        int N;$/;"	m	class:Buffer	file:
+NEXTNODE	streeacc.h	130;"	d
+NILBIT	streehuge.h	37;"	d
+NILPTR	streehuge.h	58;"	d
+NOTSUPPOSED	errordef.h	119;"	d
+NOTSUPPOSEDTOBENULL	errordef.h	130;"	d
+NOTSUPPOSEDTOBENULL	errordef.h	136;"	d
+NUMOFCALLS	construct.cpp	761;"	d	file:
+Node	streed2006.cpp	/^        Node() { suffix_node = -1; }$/;"	f	class:Node
+Node	streed2006.cpp	/^class Node {$/;"	c	file:
+Nodes	streed2006.cpp	/^Node Nodes[ MAX_LENGTH * 2 ];$/;"	v
+OPTDESC_H	optdesc.h	12;"	d
+OPTION	optdesc.h	29;"	d
+OPTIONEXCLUDE	optdesc.h	126;"	d
+OPTIONIMPLY	optdesc.h	72;"	d
+OPTIONIMPLYEITHER2	optdesc.h	80;"	d
+OPTIONIMPLYEITHER3	optdesc.h	92;"	d
+OPTIONIMPLYEITHER4	optdesc.h	106;"	d
+OPTIONMANDATORY	optdesc.h	59;"	d
+OptionDescription	optdesc.h	/^struct OptionDescription$/;"	s
+PARSEFLOATARG	args.h	52;"	d
+PARSEINTARG	args.h	39;"	d
+PROCESSALL	streedbg.cpp	24;"	d	file:
+PROCESSHEAD	construct.cpp	684;"	d	file:
+PROCESSHEAD	construct.cpp	694;"	d	file:
+PROCESSHEAD	construct.cpp	721;"	d	file:
+PROCESSHEAD	construct.cpp	731;"	d	file:
+PROCESSHEAD	construct.cpp	742;"	d	file:
+PROCESSHEAD	construct.cpp	754;"	d	file:
+PROCESSHEAD	construct.cpp	777;"	d	file:
+PROCESSHEAD	construct.cpp	814;"	d	file:
+PROTODEF_H	protodef.h	10;"	d
+PairUint	arraydef.h	/^DECLAREARRAYSTRUCT(PairUint);$/;"	v
+PairUint	types.h	/^struct PairUint$/;"	s
+Pathinfo	streetyp.h	/^DECLAREARRAYSTRUCT(Pathinfo);$/;"	v
+Pathinfo	streetyp.h	/^struct Pathinfo$/;"	s
+Processmatchfunction	maxmatdef.h	/^typedef Sint (*Processmatchfunction)$/;"	t
+RECALLBRANCHADDRESS	streeacc.h	184;"	d
+RECALLLEAFADDRESS	streeacc.h	182;"	d
+RECALLNEWLEAFADDRESS	streeacc.h	180;"	d
+RECALLSUCC	streeacc.h	169;"	d
+RECALLSUCC	streeacc.h	171;"	d
+REFERENCE_H	Reference.h	20;"	d
+ROOT	streemac.h	44;"	d
+ROOTLOCATION	streemac.h	51;"	d
+Reference	Reference.cpp	/^Reference::Reference(bool ctoleaf, Uint *caddress)$/;"	f	class:Reference
+Reference	Reference.h	/^class Reference$/;"	c
+Reference	streetyp.h	/^struct Reference$/;"	s
+Remove	streed2006.cpp	/^void Edge::Remove()$/;"	f	class:Edge
+SECONDBIT	intbits.h	34;"	d
+SEPARATOR	chardef.h	22;"	d
+SETBRANCHNODEOFFSET	streehuge.h	87;"	d
+SETBRANCHUSED	streedbg.cpp	21;"	d	file:
+SETBROTHER	streehuge.h	69;"	d
+SETCHILD	streehuge.h	68;"	d
+SETDEPTHHEADPOS	streehuge.h	73;"	d
+SETDISTANCE	streehuge.h	71;"	d
+SETIBIT	intbits.h	88;"	d
+SETLEAFBROTHER	streehuge.h	83;"	d
+SETLEAFUSED	streedbg.cpp	18;"	d	file:
+SETMAXBRANCHDEPTH	streeacc.h	199;"	d
+SETNEWCHILD	streehuge.h	76;"	d
+SETNEWCHILDBROTHER	streehuge.h	77;"	d
+SETNILBIT	streeacc.h	188;"	d
+SETNILBIT	streeacc.h	190;"	d
+SETSUFFIXLINK	streehuge.h	80;"	d
+SETVAL	streeacc.h	19;"	d
+SHOWCHAR	visible.h	76;"	d
+SHOWCHARFP	visible.h	62;"	d
+SHOWREF	streedbg.cpp	565;"	d	file:
+SIMPLESTANDARDMESSAGE	errordef.h	110;"	d
+SMALLBIT	streehuge.h	36;"	d
+SMALLINTS	streehuge.h	30;"	d
+SPACEDEF_H	spacedef.h	12;"	d
+STANDARDMESSAGE	errordef.h	106;"	d
+STARTFACTOR	construct.cpp	70;"	d	file:
+STOREINARRAY	arraydef.h	107;"	d
+STREEACC_H	streeacc.h	10;"	d
+STREEDEF_H	streedef.h	10;"	d
+STREEHUGE_H	streehuge.h	16;"	d
+STREEMAC_H	streemac.h	10;"	d
+STREEPROTO_H	streeproto.h	14;"	d
+STREETYP_H	streetyp.h	10;"	d
+STREE_H	STree.h	20;"	d
+STree	STree.cpp	/^STree::STree(Uint a)$/;"	f	class:STree
+STree	STree.h	/^class STree$/;"	c
+SYMBOL	symboldef.h	/^typedef Uchar SYMBOL;$/;"	t
+SYMBOL	symboldef.h	/^typedef Uint SYMBOL;$/;"	t
+SYMBOL	symboldef.h	/^typedef Ushort SYMBOL;$/;"	t
+SYMBOLBYTES	symboldef.h	13;"	d
+SYMBOLDEF_H	symboldef.h	10;"	d
+Seqinfo	multidef.h	/^struct Seqinfo$/;"	s
+SetAddress	Reference.cpp	/^void Reference::SetAddress(Uint *caddress)$/;"	f	class:Reference
+SetToLeaf	Reference.cpp	/^void Reference::SetToLeaf(bool ctoleaf)$/;"	f	class:Reference
+Showdescinfo	multidef.h	/^struct Showdescinfo$/;"	s
+Simpleloc	streetyp.h	/^DECLAREARRAYSTRUCT(Simpleloc);$/;"	v
+Simpleloc	streetyp.h	/^struct Simpleloc$/;"	s
+Sint	arraydef.h	/^DECLAREARRAYSTRUCT(Sint);$/;"	v
+Sint	types.h	/^typedef signed long Sint;$/;"	t
+SplitEdge	streed2006.cpp	/^int Edge::SplitEdge( Suffix &s )$/;"	f	class:Edge
+Stringtype	types.h	/^typedef ListType Stringtype;$/;"	t
+Suffix	streed2006.cpp	/^        Suffix( int node, int start, int stop )$/;"	f	class:Suffix
+Suffix	streed2006.cpp	/^class Suffix {$/;"	c	file:
+Suffixtree	streetyp.h	/^typedef struct Suffixtreetype Suffixtree;$/;"	t	typeref:struct:Suffixtreetype
+Suffixtreetype	streetyp.h	/^struct Suffixtreetype$/;"	s
+T	streed2006.cpp	/^Buffer T;$/;"	v
+THIRDBIT	intbits.h	36;"	d
+THROWERRORLINE	errordef.h	46;"	d
+THROWERRORLINE	errordef.h	50;"	d
+TYPES_H	types.h	20;"	d
+ThreeUint	arraydef.h	/^DECLAREARRAYSTRUCT(ThreeUint);$/;"	v
+ThreeUint	types.h	/^struct ThreeUint$/;"	s
+UNDEFCHAR	chardef.h	24;"	d
+UNDEFFILESEP	multidef.h	85;"	d
+UNDEFINEDREFERENCE	streehuge.h	59;"	d
+UNSETIBIT	intbits.h	95;"	d
+USAGEOUT	errordef.h	95;"	d
+Uchar	types.h	/^typedef unsigned char Uchar;$/;"	t
+Uint	arraydef.h	/^DECLAREARRAYSTRUCT(Uint);$/;"	v
+Uint	types.h	/^typedef unsigned long Uint;$/;"	t
+UintConst	types.h	/^typedef const unsigned long UintConst;$/;"	t
+Ushort	arraydef.h	/^DECLAREARRAYSTRUCT(Ushort);$/;"	v
+Ushort	types.h	/^typedef unsigned short Ushort;$/;"	t
+VALIDINIT	construct.cpp	26;"	d	file:
+VISIBLECHAR	visible.h	48;"	d
+VISIBLE_H	visible.h	13;"	d
+WILDCARD	chardef.h	23;"	d
+activeblocks	space.cpp	/^void activeblocks(void)$/;"	f
+address	Reference.h	/^        Uint *address;$/;"	m	class:Reference
+address	streetyp.h	/^  Uint *address;$/;"	m	struct:Reference
+addspace	space.cpp	/^static void addspace(Uint space)$/;"	f	file:
+allocandusespaceviaptr	space.cpp	/^\/*@notnull@*\/ void *allocandusespaceviaptr(char* file,Uint line, $/;"	f
+allocatedStrings	arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:ArrayStrings
+alphabet	STree.h	/^  Uchar *alphabet;$/;"	m	class:STree
+alphabet	streetyp.h	/^  Uchar *alphabet;$/;"	m	struct:Suffixtreetype
+alphasize	STree.h	/^       alphasize,             \/\/ the number of different characters in t$/;"	m	class:STree
+alphasize	streetyp.h	/^       alphasize,             \/\/ the number of different characters in t$/;"	m	struct:Suffixtreetype
+artificial	STree.h	/^       artificial,$/;"	m	class:STree
+artificial	streetyp.h	/^       artificial,$/;"	m	struct:Suffixtreetype
+blocks	space.cpp	/^\/*@null@*\/ static Blockdescription *blocks = NULL;$/;"	v	file:
+branchbrother	streetyp.h	/^            branchbrother;  \/\/ the reference to the right brother; $/;"	m	struct:Branchinfo
+branchnodeoffset	STree.h	/^       branchnodeoffset,      \/\/ number of leafs in tree$/;"	m	class:STree
+branchnodeoffset	streetyp.h	/^       branchnodeoffset,      \/\/ number of leafs in tree$/;"	m	struct:Suffixtreetype
+branchtab	STree.h	/^       *branchtab,            \/\/ table TBranch$/;"	m	class:STree
+branchtab	streetyp.h	/^       *branchtab,            \/\/ table TBranch$/;"	m	struct:Suffixtreetype
+chainstart	STree.h	/^       *chainstart,           \/\/ address of the node, current chains starts at$/;"	m	class:STree
+chainstart	streetyp.h	/^       *chainstart,           \/\/ address of the node, current chains starts at$/;"	m	struct:Suffixtreetype
+checklocation	streedbg.cpp	/^void checklocation(Suffixtree *stree,Location *loc)$/;"	f
+checkspaceleak	space.cpp	/^void checkspaceleak(void)$/;"	f
+checkstree	streedbg.cpp	/^void checkstree(Suffixtree *stree)$/;"	f
+cmaxmatch	maxmatdef.h	/^       cmaxmatch,               \/\/ compute all maximal matches$/;"	m	struct:MMcallinfo
+cmum	maxmatdef.h	/^       cmum;                    \/\/ compute real matches unique in both sequences$/;"	m	struct:MMcallinfo
+cmumcand	maxmatdef.h	/^       cmumcand,                \/\/ compute reference-unique maximal matches$/;"	m	struct:MMcallinfo
+comparelocs	streedbg.cpp	/^static Sint comparelocs(Suffixtree *stree,Location *loc1,Location *loc2)$/;"	f	file:
+completelarge	construct.cpp	/^static void completelarge(Suffixtree *stree)$/;"	f	file:
+counter	prefix.hpp	/^        int counter;$/;"	m	class:prefix
+creatememorymap	mapfile.cpp	/^\/*@null@*\/ void *creatememorymap(char *file,Uint line,char *filename,$/;"	f
+creatememorymapforfiledesc	mapfile.cpp	/^\/*@null@*\/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,$/;"	f
+currentbranchtabsize	STree.h	/^       currentbranchtabsize,  \/\/ current number of cells in branchtab$/;"	m	class:STree
+currentbranchtabsize	streetyp.h	/^       currentbranchtabsize,  \/\/ current number of cells in branchtab$/;"	m	struct:Suffixtreetype
+currentdepth	STree.h	/^       currentdepth,          \/\/ depth of the new branch node$/;"	m	class:STree
+currentdepth	streetyp.h	/^       currentdepth,          \/\/ depth of the new branch node$/;"	m	struct:Suffixtreetype
+currentspace	mapfile.cpp	/^static Uint currentspace = 0,              \/\/ currently mapped num of bytes$/;"	v	file:
+currentspace	space.cpp	/^            currentspace = 0,   \/\/ currently allocated num of bytes$/;"	v	file:
+data	streed2006.cpp	/^        char data[ MAX_LENGTH ];$/;"	m	class:Buffer	file:
+dbstart	mumcand.h	/^       dbstart,      \/\/ start position in the subject-sequence$/;"	m	struct:__anon1
+declared	optdesc.h	/^       declared;             \/\/ is the option declared by$/;"	m	struct:OptionDescription
+defined	multidef.h	/^  bool defined,          \/\/ show a description$/;"	m	struct:Showdescinfo
+deletememorymap	mapfile.cpp	/^Sint deletememorymap(char *file,Uint line,void *mappedfile)$/;"	f
+depth	streetyp.h	/^       depth;               \/\/ the depth of the branching node$/;"	m	struct:Branchinfo
+depth	streetyp.h	/^  Uint depth, headposition;$/;"	m	struct:Pathinfo
+description	optdesc.h	/^       *description;         \/\/ help text describing purpose of option$/;"	m	struct:OptionDescription
+descspace	multidef.h	/^  ArrayCharacters descspace;           \/\/ the space for the descriptions$/;"	m	struct:Multiseq
+dump_edges	streed2006.cpp	/^void dump_edges( Suffix s1 )$/;"	f
+dynamicstrdup	space.cpp	/^\/*@notnull@*\/ char *dynamicstrdup(char *file,Uint line,char *source)$/;"	f
+edgelen	streetyp.h	/^  Uint edgelen,         \/\/ length of edge$/;"	m	struct:Location
+end_node	streed2006.cpp	/^        int end_node;$/;"	m	class:Edge	file:
+enumlocations	streedbg.cpp	/^void enumlocations(Suffixtree *stree,$/;"	f
+enumlocationssubtree	streedbg.cpp	/^static void enumlocationssubtree(Suffixtree *stree,Uint *btptr,$/;"	f	file:
+eqstr	fasta.cpp	/^struct eqstr {$/;"	s	file:
+errorcode	seterror.cpp	/^static Sint errorcode = 0;$/;"	v	file:
+errormessage	seterror.cpp	/^static char errormessage[MAXERRORMSG+1];$/;"	v	file:
+fileallocated	space.cpp	/^  char *fileallocated; \/\/ the filenames where the block was allocated$/;"	m	struct:Blockdescription	file:
+filemapped	mapfile.cpp	/^static char *filemapped[MAXMAPPEDFILES] = {NULL};  $/;"	v	file:
+first_char_index	streed2006.cpp	/^        int first_char_index;$/;"	m	class:Edge	file:
+first_char_index	streed2006.cpp	/^        int first_char_index;$/;"	m	class:Suffix	file:
+firstchild	streetyp.h	/^  Reference firstchild,     \/\/ the reference to the first child$/;"	m	struct:Branchinfo
+firstnotallocated	STree.h	/^       *firstnotallocated,    \/\/ refers to the last address, such that at$/;"	m	class:STree
+firstnotallocated	streetyp.h	/^       *firstnotallocated,    \/\/ refers to the last address, such that at$/;"	m	struct:Suffixtreetype
+firstptr	streetyp.h	/^  Uchar *firstptr;     \/\/ pointer to first character of edge label$/;"	m	struct:Location
+forward	maxmatdef.h	/^       forward,                 \/\/ compute matches on forward strand$/;"	m	struct:MMcallinfo
+fourcolumn	maxmatdef.h	/^       fourcolumn,              \/\/ always use 4 column format$/;"	m	struct:MMcallinfo
+freespaceviaptr	space.cpp	/^void freespaceviaptr(char *file,Uint line,void *ptr)$/;"	f
+freestree	construct.cpp	/^void freestree(Suffixtree *stree)$/;"	f
+generalcounter	STree.h	/^  void *generalcounter;$/;"	m	class:STree
+generalcounter	streetyp.h	/^  void *generalcounter;$/;"	m	struct:Suffixtreetype
+getCounter	prefix.hpp	/^        const int getCounter() const$/;"	f	class:prefix
+getPrefix	prefix.hpp	/^        const string getPrefix() const$/;"	f	class:prefix
+getbranchinfostree	access.cpp	/^void getbranchinfostree(Suffixtree *stree,Uint whichinfo,$/;"	f
+geterror	seterror.cpp	/^Sint geterror(void)$/;"	f
+getheadstringstree	access.cpp	/^void getheadstringstree(Suffixtree *stree,Stringtype *str)$/;"	f
+getlargelinkconstruction	construct.cpp	/^static Uint getlargelinkconstruction(Suffixtree *stree)$/;"	f	file:
+getlargelinkstree	access.cpp	/^Uint getlargelinkstree(\/*@unused@*\/ Suffixtree *stree,Bref btptr,Uint depth)$/;"	f
+getleafinfostree	access.cpp	/^void getleafinfostree(Suffixtree *stree,Leafinfo *leafinfo,Lref lptr)$/;"	f
+getmaxtextlenstree	access.cpp	/^Uint getmaxtextlenstree(void)$/;"	f
+getspacepeak	space.cpp	/^Uint getspacepeak(void)$/;"	f
+headend	STree.h	/^         *headend,            \/\/ of the head location \\((\\overline{u},v)\\). $/;"	m	class:STree
+headend	streetyp.h	/^         *headend,            \/\/ of the head location \\((\\overline{u},v)\\). $/;"	m	struct:Suffixtreetype
+headnode	STree.h	/^       *headnode,             \/\/ left component of head location$/;"	m	class:STree
+headnode	streetyp.h	/^       *headnode,             \/\/ left component of head location$/;"	m	struct:Suffixtreetype
+headnodedepth	STree.h	/^       headnodedepth,         \/\/ the depth of the headnode$/;"	m	class:STree
+headnodedepth	streetyp.h	/^       headnodedepth,         \/\/ the depth of the headnode$/;"	m	struct:Suffixtreetype
+headposition	streetyp.h	/^  Uint depth, headposition;$/;"	m	struct:Pathinfo
+headposition	streetyp.h	/^  Uint headposition,        \/\/ the head position of the branching node$/;"	m	struct:Branchinfo
+headstart	STree.h	/^  SYMBOL *headstart,          \/\/ these references represent the right component$/;"	m	class:STree
+headstart	streetyp.h	/^  Uchar *headstart,          \/\/ these references represent the right component$/;"	m	struct:Suffixtreetype
+i	streed2006.cpp	/^        int i;$/;"	m	class:Aux	file:
+initSuffixtree	construct.cpp	/^static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)$/;"	f	file:
+insertbranchnode	construct.cpp	/^static void insertbranchnode(Suffixtree *stree)$/;"	f	file:
+insertleaf	construct.cpp	/^static void insertleaf(Suffixtree *stree)$/;"	f	file:
+insertleafcalls	STree.h	/^       insertleafcalls,$/;"	m	class:STree
+insertleafcalls	streetyp.h	/^       insertleafcalls,$/;"	m	struct:Suffixtreetype
+insertnode	STree.h	/^       insertnode,            \/\/ the node the split edge leads to $/;"	m	class:STree
+insertnode	streetyp.h	/^       insertnode,            \/\/ the node the split edge leads to $/;"	m	struct:Suffixtreetype
+insertprev	STree.h	/^       insertprev,            \/\/ the edge preceeding the split edge$/;"	m	class:STree
+insertprev	streetyp.h	/^       insertprev,            \/\/ the edge preceeding the split edge$/;"	m	struct:Suffixtreetype
+int2ref	access.cpp	/^static void int2ref(Suffixtree *stree,Reference *ref,Uint i)$/;"	f	file:
+isalreadyset	optdesc.h	/^  bool isalreadyset,         \/\/ has the option already been set?$/;"	m	struct:OptionDescription
+largelinklinkwork	STree.h	/^       largelinklinkwork,$/;"	m	class:STree
+largelinklinkwork	streetyp.h	/^       largelinklinkwork,$/;"	m	struct:Suffixtreetype
+largelinks	STree.h	/^       largelinks,$/;"	m	class:STree
+largelinks	streetyp.h	/^       largelinks,$/;"	m	struct:Suffixtreetype
+largelinkwork	STree.h	/^       largelinkwork,$/;"	m	class:STree
+largelinkwork	streetyp.h	/^       largelinkwork,$/;"	m	struct:Suffixtreetype
+largenode	STree.h	/^       largenode,             \/\/ number of large nodes$/;"	m	class:STree
+largenode	streetyp.h	/^       largenode,             \/\/ number of large nodes$/;"	m	struct:Suffixtreetype
+last_char_index	streed2006.cpp	/^        int last_char_index;$/;"	m	class:Edge	file:
+last_char_index	streed2006.cpp	/^        int last_char_index;$/;"	m	class:Suffix	file:
+lastcharindex	streetyp.h	/^  Sint lastcharindex;$/;"	m	struct:Suffixtreetype
+leafcounts	STree.h	/^       *leafcounts;           \/\/ holds counts of the number of leafs in subtree$/;"	m	class:STree
+leafcounts	streetyp.h	/^       *leafcounts;           \/\/ holds counts of the number of leafs in subtree$/;"	m	struct:Suffixtreetype
+leaftab	STree.h	/^       *leaftab,              \/\/ stores the brother-references of the leafs$/;"	m	class:STree
+leaftab	streetyp.h	/^       *leaftab,              \/\/ stores the brother-references of the leafs$/;"	m	struct:Suffixtreetype
+length	types.h	/^      Uint start, length;$/;"	m	struct:ListType
+lineallocated	space.cpp	/^  Uint lineallocated;  \/\/ the linenumber where the$/;"	m	struct:Blockdescription	file:
+linemapped	mapfile.cpp	/^static Uint linemapped[MAXMAPPEDFILES] = {0};       $/;"	v	file:
+linkrootchildren	construct.cpp	/^static void linkrootchildren(Suffixtree *stree)$/;"	f	file:
+loc2stringstree	streedbg.cpp	/^static void loc2stringstree(Suffixtree *stree,Stringtype *s,Location *loc)$/;"	f	file:
+locstring	streetyp.h	/^  Stringtype locstring; \/\/ string represented by location$/;"	m	struct:Location
+main	fasta.cpp	/^int main (int argc, char *argv[]) {$/;"	f
+main	streed2006.cpp	/^int main( int argc, char *argv[] )$/;"	f
+main	toci.cpp	/^int main(int argc, char *argv[])$/;"	f
+mappedbytes	mapfile.cpp	/^            mappedbytes[MAXMAPPEDFILES] = {0};  \/\/ size of the memory map$/;"	v	file:
+markpos	multidef.h	/^  ArrayPosition markpos;$/;"	m	struct:Multiseq
+matchnucleotidesonly	maxmatdef.h	/^       matchnucleotidesonly,    \/\/ match ONLY acgt's$/;"	m	struct:MMcallinfo
+maxbranchdepth	STree.h	/^       maxbranchdepth,        \/\/ maximal depth of branching node$/;"	m	class:STree
+maxbranchdepth	streetyp.h	/^       maxbranchdepth,        \/\/ maximal depth of branching node$/;"	m	struct:Suffixtreetype
+maxerrormsg	seterror.cpp	/^Sint maxerrormsg(void)$/;"	f
+maxlength	multidef.h	/^       maxlength;        \/\/ maximal number of chars of description to be shown$/;"	m	struct:Showdescinfo
+maxset	STree.h	/^       *maxset;$/;"	m	class:STree
+maxset	streetyp.h	/^       *maxset;$/;"	m	struct:Suffixtreetype
+memoryptr	mapfile.cpp	/^static void *memoryptr[MAXMAPPEDFILES] = {NULL};$/;"	v	file:
+messagespace	seterror.cpp	/^char *messagespace(void)$/;"	f
+minmatchlength	maxmatdef.h	/^  Uint minmatchlength,          \/\/ minimal length of a match to be reported$/;"	m	struct:MMcallinfo
+mmaddspace	mapfile.cpp	/^static void mmaddspace(Uint space)$/;"	f	file:
+mmcheckspaceleak	mapfile.cpp	/^void mmcheckspaceleak(void)$/;"	f
+mmgetspacepeak	mapfile.cpp	/^Uint mmgetspacepeak(void)$/;"	f
+mmsubtractspace	mapfile.cpp	/^static void mmsubtractspace(Uint space)$/;"	f	file:
+mmwrapspace	mapfile.cpp	/^Sint mmwrapspace(void)$/;"	f
+multiplications	STree.h	/^       multiplications,$/;"	m	class:STree
+multiplications	streetyp.h	/^       multiplications,$/;"	m	struct:Suffixtreetype
+mumlength	mumcand.h	/^  Uint mumlength,    \/\/ length of the mum$/;"	m	struct:__anon1
+nextfreeStrings	arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:ArrayStrings
+nextfreeblock	space.cpp	/^            nextfreeblock = 0,  \/\/ index of next free block$/;"	v	file:
+nextfreebranch	STree.h	/^       *nextfreebranch,       \/\/ reference to next free base addr. in branchtab$/;"	m	class:STree
+nextfreebranch	streetyp.h	/^       *nextfreebranch,       \/\/ reference to next free base addr. in branchtab$/;"	m	struct:Suffixtreetype
+nextfreebranchnum	STree.h	/^       nextfreebranchnum,     \/\/ the number of the next free branch node$/;"	m	class:STree
+nextfreebranchnum	streetyp.h	/^       nextfreebranchnum,     \/\/ the number of the next free branch node$/;"	m	struct:Suffixtreetype
+nextfreeleafnum	STree.h	/^  Uint nextfreeleafnum,       \/\/ the number of the next leaf$/;"	m	class:STree
+nextfreeleafnum	streetyp.h	/^  Uint nextfreeleafnum,       \/\/ the number of the next leaf$/;"	m	struct:Suffixtreetype
+nextfreeleafptr	STree.h	/^       *nextfreeleafptr,      \/\/ points to next free entry in leaftab$/;"	m	class:STree
+nextfreeleafptr	streetyp.h	/^       *nextfreeleafptr,      \/\/ points to next free entry in leaftab$/;"	m	struct:Suffixtreetype
+nextnode	streetyp.h	/^  Reference nextnode;   \/\/ reference to node the edge points to$/;"	m	struct:Location
+nextnode	streetyp.h	/^  Reference nextnode;$/;"	m	struct:Simpleloc
+nodecount	STree.h	/^       nodecount,$/;"	m	class:STree
+nodecount	streetyp.h	/^       nodecount,$/;"	m	struct:Suffixtreetype
+nonmaximal	STree.h	/^       *nonmaximal,           \/\/ bit table: if node with headposition \\(i\\) is $/;"	m	class:STree
+nonmaximal	streetyp.h	/^       *nonmaximal,           \/\/ bit table: if node with headposition \\(i\\) is $/;"	m	struct:Suffixtreetype
+numberofblocks	space.cpp	/^static Uint numberofblocks = 0, \/\/ numberofblocks$/;"	v	file:
+numberofcells	space.cpp	/^       numberofcells;  \/\/ number of cells in the block$/;"	m	struct:Blockdescription	file:
+numofqueryfiles	maxmatdef.h	/^       numofqueryfiles;         \/\/ number of query files$/;"	m	struct:MMcallinfo
+numofsequences	multidef.h	/^       numofsequences,                 \/\/ the number of sequences$/;"	m	struct:Multiseq
+onsuccpath	STree.h	/^       onsuccpath,            \/\/ refers to node on success path of headnode$/;"	m	class:STree
+onsuccpath	streetyp.h	/^       onsuccpath,            \/\/ refers to node on success path of headnode$/;"	m	struct:Suffixtreetype
+operator ()	fasta.cpp	/^    bool operator()(string s1, string s2) const {$/;"	f	struct:eqstr
+operator <<	streed2006.cpp	/^ostream &operator<<( ostream &s, Aux &a )$/;"	f
+operator <<	streed2006.cpp	/^ostream &operator<<( ostream &s, const Edge &edge )$/;"	f
+operator <<	streed2006.cpp	/^ostream &operator<<( ostream &s, const Suffix &str )$/;"	f
+operator >>	streed2006.cpp	/^istream &operator>>( istream &s, Buffer &b )$/;"	f
+operator []	streed2006.cpp	/^inline Aux Buffer::operator[]( int i ) const$/;"	f	class:Buffer
+operator int	streed2006.cpp	/^        operator int(){ return i; }$/;"	f	class:Aux
+optname	optdesc.h	/^  char *optname,             \/\/ the option string, begins with -$/;"	m	struct:OptionDescription
+optval	optdesc.h	/^  Uint optval;               \/\/ the unique number of an option$/;"	m	struct:OptionDescription
+origin_node	streed2006.cpp	/^        int origin_node;$/;"	m	class:Suffix	file:
+originalsequence	multidef.h	/^        *originalsequence;             \/\/ NULL or points to orig. sequence$/;"	m	struct:Multiseq
+prefix	prefix.hpp	/^        string prefix;$/;"	m	class:prefix
+prefix	prefix.hpp	/^class prefix$/;"	c
+previousnode	streetyp.h	/^  Bref previousnode;    \/\/ reference to previous node (which is branching)$/;"	m	struct:Location
+print_parents	streed2006.cpp	/^void print_parents( ostream &s, int node )$/;"	f
+program	maxmatdef.h	/^  char program[PATH_MAX+1],     \/\/ the path of the program$/;"	m	struct:MMcallinfo
+queryfilelist	maxmatdef.h	/^       queryfilelist[MAXNUMOFQUERYFILES][PATH_MAX+1]; $/;"	m	struct:MMcallinfo
+queryseq	mumcand.h	/^       queryseq,     \/\/ number of the query sequence$/;"	m	struct:__anon1
+querystart	mumcand.h	/^       querystart;   \/\/ start position in the query sequence      $/;"	m	struct:__anon1
+rcsequence	multidef.h	/^        *rcsequence,                   \/\/ NULL or points to $/;"	m	struct:Multiseq
+ref	streetyp.h	/^  Bref ref;$/;"	m	struct:Pathinfo
+relposition	multidef.h	/^       relposition;  \/\/ the relative position of the sequence$/;"	m	struct:Seqinfo
+remain	streetyp.h	/^       remain;          \/\/ number of remaining characters on edge$/;"	m	struct:Location
+remain	streetyp.h	/^  Uint remain,$/;"	m	struct:Simpleloc
+replaceblanks	multidef.h	/^       replaceblanks,    \/\/ replaceblanks by underscore$/;"	m	struct:Showdescinfo
+rescan	construct.cpp	/^static void rescan (Suffixtree *stree)$/;"	f	file:
+reseterror	seterror.cpp	/^void reseterror(void)$/;"	f
+reversecomplement	maxmatdef.h	/^       reversecomplement,       \/\/ compute matches on reverse strand$/;"	m	struct:MMcallinfo
+rootchildren	STree.h	/^       *rootchildren;         \/\/ references to successors of root$/;"	m	class:STree
+rootchildren	streetyp.h	/^       *rootchildren;         \/\/ references to successors of root$/;"	m	struct:Suffixtreetype
+rootsucclocationsstree	access.cpp	/^void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)$/;"	f
+scanprefix	construct.cpp	/^static void scanprefix(Suffixtree *stree)$/;"	f	file:
+secondtime	streetyp.h	/^  bool secondtime;$/;"	m	struct:DFSstate
+sentinel	STree.h	/^         *sentinel;           \/\/ points to the position of the \\(\\$\\)-symbol$/;"	m	class:STree
+sentinel	streetyp.h	/^         *sentinel;           \/\/ points to the position of the \\(\\$\\)-symbol$/;"	m	struct:Suffixtreetype
+seqlength	multidef.h	/^       seqlength,    \/\/ the length of the sequence$/;"	m	struct:Seqinfo
+seqnum	multidef.h	/^  Uint seqnum,       \/\/ the sequence number in multiseq$/;"	m	struct:Seqinfo
+seqstartpos	multidef.h	/^       seqstartpos,  \/\/ the position of the first character in multiseq.sequence$/;"	m	struct:Seqinfo
+sequence	multidef.h	/^  Uchar *sequence,                     \/\/ the concatenated sequences$/;"	m	struct:Multiseq
+set	prefix.hpp	/^        void set (int counter)$/;"	f	class:prefix
+set	prefix.hpp	/^        void set (string prefix) $/;"	f	class:prefix
+set	prefix.hpp	/^        void set (string prefix, int counter)$/;"	f	class:prefix
+setatnewleaf	STree.h	/^  BOOL setatnewleaf;          \/\/ nil-reference is stored in new leaf$/;"	m	class:STree
+setatnewleaf	streetyp.h	/^  bool setatnewleaf;          \/\/ nil-reference is stored in new leaf$/;"	m	struct:Suffixtreetype
+seterror	seterror.cpp	/^void seterror(Sint code)$/;"	f
+setlink	STree.h	/^       *setlink,              \/\/ address of a nil-reference$/;"	m	class:STree
+setlink	streetyp.h	/^       *setlink,              \/\/ address of a nil-reference$/;"	m	struct:Suffixtreetype
+setmaxspace	space.cpp	/^static void setmaxspace(void)$/;"	f	file:
+showlocation	streedbg.cpp	/^void showlocation(FILE *fp,Suffixtree *stree,Location *loc)$/;"	f
+showpathstree	access.cpp	/^void showpathstree(Suffixtree *stree,Bref bnode,$/;"	f
+showreversepositions	maxmatdef.h	/^       showreversepositions,    \/\/ give reverse pos. rel. to orig. string$/;"	m	struct:MMcallinfo
+showsequencelengths	maxmatdef.h	/^       showsequencelengths,     \/\/ show length of sequences on header line$/;"	m	struct:MMcallinfo
+showstate	streedbg.cpp	/^void showstate(Suffixtree *stree)$/;"	f
+showstree	streedbg.cpp	/^void showstree(Suffixtree *stree)$/;"	f
+showstring	maxmatdef.h	/^  bool showstring,              \/\/ show the matching string$/;"	m	struct:MMcallinfo
+showsubtree	streedbg.cpp	/^void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)$/;"	f
+showsymbol	streedbg.cpp	/^static char *showsymbol(Uchar c)$/;"	f	file:
+showsymbolstree	STree.h	/^  char * (*showsymbolstree)(SYMBOL,Uchar *);$/;"	m	class:STree
+showsymbolstree	streetyp.h	/^  char * (*showsymbolstree)(Uchar,Uchar *);$/;"	m	struct:Suffixtreetype
+showtable	streedbg.cpp	/^void showtable(Suffixtree *stree,BOOL final)$/;"	f
+showthesymbolstring	streedbg.cpp	/^static void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,$/;"	f	file:
+simplefileOpen	mapfile.cpp	/^Sint simplefileOpen(char *filename,Uint *numofbytes)$/;"	f
+sizeofcells	space.cpp	/^  Uint sizeofcells,    \/\/ size of cells of the block$/;"	m	struct:Blockdescription	file:
+skipprefix	multidef.h	/^  Uint skipprefix,       \/\/ always skip this number of prefixes$/;"	m	struct:Showdescinfo
+smallnode	STree.h	/^       smallnode,             \/\/ number of small nodes$/;"	m	class:STree
+smallnode	streetyp.h	/^       smallnode,             \/\/ number of small nodes$/;"	m	struct:Suffixtreetype
+smallnotcompleted	STree.h	/^       smallnotcompleted,     \/\/ the number of small nodes in the current chain$/;"	m	class:STree
+smallnotcompleted	streetyp.h	/^       smallnotcompleted,     \/\/ the number of small nodes in the current chain$/;"	m	struct:Suffixtreetype
+spaceStrings	arraydef.h	/^  Stringtype *spaceStrings;$/;"	m	struct:ArrayStrings
+spaceforbranchtab	construct.cpp	/^static void spaceforbranchtab(Suffixtree *stree)$/;"	f	file:
+spacepeak	mapfile.cpp	/^            spacepeak = 0,                 \/\/ maximally mapped num of bytes$/;"	v	file:
+spacepeak	space.cpp	/^            spacepeak = 0;      \/\/ maximally allocated num of bytes$/;"	v	file:
+spaceptr	space.cpp	/^  void *spaceptr;      \/\/ ptr to the spaceblock$/;"	m	struct:Blockdescription	file:
+splitinternaledge	STree.h	/^       splitinternaledge,$/;"	m	class:STree
+splitinternaledge	streetyp.h	/^       splitinternaledge,$/;"	m	struct:Suffixtreetype
+splitleafedge	STree.h	/^  Uint splitleafedge,$/;"	m	class:STree
+splitleafedge	streetyp.h	/^  Uint splitleafedge,$/;"	m	struct:Suffixtreetype
+stack	streetyp.h	/^  ArrayBref stack;$/;"	m	struct:DFSstate
+start	types.h	/^      Uint start, length;$/;"	m	struct:ListType
+start_node	streed2006.cpp	/^        int start_node;$/;"	m	class:Edge	file:
+startdesc	multidef.h	/^  Uint *startdesc,                     \/\/ of length numofsequences + 1$/;"	m	struct:Multiseq
+stringbuffer	arraydef.h	/^  Uchar *stringbuffer;$/;"	m	struct:ArrayStrings
+stringbufferlength	arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:ArrayStrings
+subjectfile	maxmatdef.h	/^       subjectfile[PATH_MAX+1], \/\/ filename of the subject-sequence$/;"	m	struct:MMcallinfo
+subtractspace	space.cpp	/^static void subtractspace(Uint space)$/;"	f	file:
+succlocationsstree	access.cpp	/^void succlocationsstree(Suffixtree *stree,bool nosentinel,Simpleloc *loc,$/;"	f
+suffix_node	streed2006.cpp	/^        int suffix_node;$/;"	m	class:Node	file:
+suffixlink	streetyp.h	/^  Bref suffixlink;          \/\/ the suffix link is always to a branching node$/;"	m	struct:Branchinfo
+taillcp	construct.cpp	/^static Uint taillcp(Suffixtree *stree,Uchar *start1, Uchar *end1)$/;"	f	file:
+tailptr	STree.h	/^         *tailptr;            \/\/ points to the tail$/;"	m	class:STree
+tailptr	streetyp.h	/^         *tailptr;            \/\/ points to the tail$/;"	m	struct:Suffixtreetype
+text	STree.h	/^  SYMBOL *text,               \/\/ points to the input string$/;"	m	class:STree
+text	streetyp.h	/^  Uchar *text,               \/\/ points to the input string$/;"	m	struct:Suffixtreetype
+textlen	STree.h	/^        Uint textlen,               \/\/ the length of the input string$/;"	m	class:STree
+textlen	streetyp.h	/^  Uint textlen,               \/\/ the length of the input string$/;"	m	struct:Suffixtreetype
+textpos	streetyp.h	/^       textpos;  \/\/ these last two items are redundant and can be computed$/;"	m	struct:Simpleloc
+toleaf	Reference.h	/^        bool toleaf;$/;"	m	class:Reference
+toleaf	streetyp.h	/^  bool toleaf;$/;"	m	struct:Reference
+totallength	multidef.h	/^       totallength;                    \/\/ the total length of all sequences$/;"	m	struct:Multiseq
+uint0	types.h	/^      Uint uint0, uint1, uint2;$/;"	m	struct:ThreeUint
+uint0	types.h	/^    Uint uint0, uint1;$/;"	m	struct:PairUint
+uint1	types.h	/^      Uint uint0, uint1, uint2;$/;"	m	struct:ThreeUint
+uint1	types.h	/^    Uint uint0, uint1;$/;"	m	struct:PairUint
+uint2	types.h	/^      Uint uint0, uint1, uint2;$/;"	m	struct:ThreeUint
+untilfirstblank	multidef.h	/^       untilfirstblank;  \/\/ only show sequence until first blank$/;"	m	struct:Showdescinfo
+validate	streed2006.cpp	/^void validate()$/;"	f
+walk_tree	streed2006.cpp	/^int walk_tree( int start_node, int last_char_so_far )$/;"	f
+wrapspace	space.cpp	/^void wrapspace(void)$/;"	f

@@ -10,9 +10,11 @@
 
 #ifndef ARRAYDEF_H
 #define ARRAYDEF_H
+#include <string>
 #include "types.h"
 #include "spacedef.h"
 
+using namespace std;
 //}
 
 /*

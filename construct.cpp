@@ -15,7 +15,6 @@
 #include <string.h>
 #include "intbits.h"
 #include "spacedef.h"
-#include "megabytes.h"
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"
@@ -93,8 +92,6 @@ static void spaceforbranchtab(Suffixtree *stree)
     }
     fprintf(stderr,"#all suffixes up to suffix %lu have been scanned\n",
               (Sint) stree->nextfreeleafnum);
-    fprintf(stderr,"#current space peak %f\n",MEGABYTES(getspacepeak()));
-    fprintf(stderr,"#to get %lu extra space do ",(Sint) extra);
     stree->currentbranchtabsize += extra;
     tmpheadnode = BRADDR2NUM(stree,stree->headnode);
     if(stree->chainstart != NULL)

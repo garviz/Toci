@@ -21,7 +21,6 @@
 #include "types.h"
 #include "protodef.h"
 #include "spacedef.h"
-#include "megabytes.h"
 
 #define MAXMAPPEDFILES 32
 
@@ -302,15 +301,6 @@ Sint mmwrapspace(void)
     }
   }
   return 0;
-}
-
-/*EE
-  The following function shows the space peak in megabytes on \texttt{stderr}.
-*/
-
-void mmshowspace(void)
-{
-  fprintf(stderr,"# mmap space peak in megabytes: %.2f\n",MEGABYTES(spacepeak));
 }
 
 /*EE
