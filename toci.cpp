@@ -20,14 +20,12 @@
 #include <mpi.h>
 #include <cstdio>
 #include "types.h"
-#include "spacedef.h"
 #include "args.h"
 #include "protodef.h"
 #include "streedef.h"
 #include "streeacc.h"
 #include "streeproto.h"
 #include "streetyp.h"
-#include "errordef.h"
 #include "maxmatdef.h"
 
 /*EE
@@ -70,7 +68,7 @@ int main(int argc, char *argv[])
     Uchar *text;
     Uint textlen;
     char *filename;
-    int retcode;
+    Sint retcode;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
@@ -79,28 +77,38 @@ int main(int argc, char *argv[])
     MMcallinfo mmcallinfo;
     Multiseq subjectmultiseq;
     Suffixtree stree;
+    retcode = parsemaxmatoptions (&mmcallinfo, argc, argv);
+    if (retcode < 0) {
+        fprintf(stderr,"%s: %s\n",argv[0],messagespace());
+        MPI_Finalize();
+        return EXIT_FAILURE;
+    }
+    if (retcode == 1) {
+        checkspaceleak();
+        mmcheckspaceleak();
+        MPI_Finalize();
+        return EXIT_SUCCESS;
+    }
     if (rank == 0) {
         start = MPI_Wtime();
-        filename =  argv[1];
-
-        text = (Uchar *)CREATEMEMORYMAP(filename, false, &textlen);
-        if (text == NULL) {
-            fprintf(stderr,"%s: cannot open file \"%s\" ",argv[0],filename);
-            fprintf(stderr,"or file \"%s\" is empty\n",filename);
+        if (getmaxmatinput(&subjectmultiseq, mmcallinfo.matchnucleotidesonly,
+                        &mmcallinfo.subjectfile[0]) != 0) {
+            fprintf(stderr,"%s: %s\n",argv[0],messagespace());
+            MPI_Finalize();
             return EXIT_FAILURE;
         }
-        if(textlen == 0) {
-            fprintf(stderr,"%s: file \"%s\" is empty\n",argv[0],filename);
+        if(procmaxmatches(&mmcallinfo,&subjectmultiseq) != 0) {
+            fprintf(stderr,"%s: %s\n",argv[0],messagespace());
+            MPI_Finalize();
             return EXIT_FAILURE;
         }
+        freemultiseq(&subjectmultiseq);
+        checkspaceleak();
+        mmcheckspaceleak();
         fprintf(stderr,"# construct suffix tree for sequence of length %lu\n",
            (Sint) textlen);
         fprintf(stderr,"# (maximal input length is %lu)\n",
-           (Sint) getmaxtextlenstree()/ atoi(argv[2]));
-        if(constructprogressstree(&stree,text,textlen,NULL,NULL,NULL) != 0) {
-        fprintf(stderr,"%s %s: %s\n",argv[0],filename,messagespace());
-        return EXIT_FAILURE;
-        }
+           (Sint) getmaxtextlenstree());
         cout << "Toci application for genome alignment under HPC environments" << endl;
         finish = MPI_Wtime();
     } else {

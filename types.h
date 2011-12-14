@@ -28,11 +28,16 @@ typedef unsigned short Ushort;
 typedef unsigned long Uint;
 typedef const unsigned long UintConst;
 typedef signed long Sint;
+typedef int (*Qsortcomparefunction)(const void *,const void *);
+
+#define SHOWBOOL(B) ((B) ? "True" : "False")
 
 #define LOGWORDSIZE 6
 
 typedef Uint * Bref;    
 typedef Uint * Lref;  
+
+#define DIV2(N)      ((N) >> 1)
 
 struct ListType
 {

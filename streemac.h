@@ -49,7 +49,7 @@
 */
 
 #define ROOTLOCATION(LOC)\
-        (((LOC)->locstring.length == 0) ? True : False)
+        (((LOC)->locstring.length == 0) ? true : false)
 
 /*
   The following macros compute the index of a branch node and a leaf,

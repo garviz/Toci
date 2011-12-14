@@ -154,6 +154,7 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
   }
   mmaddspace(numofbytes);
   mappedbytes[fd] = numofbytes;
+  cerr << numofbytes << endl;
   memoryptr[fd] 
     = (void *) mmap(0,
                     (size_t) numofbytes,

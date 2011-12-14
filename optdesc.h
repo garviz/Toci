@@ -12,6 +12,8 @@
 #define OPTDESC_H
 #include "types.h"
 #include <cstdio>
+#include <iostream>
+#include <string>
 
 //}
 
@@ -30,8 +32,8 @@
         S[N].optname = O;\
         S[N].description = D;\
         S[N].optval = N;\
-        S[N].isalreadyset = False;\
-        S[N].declared = True
+        S[N].isalreadyset = false;\
+        S[N].declared = true
 
 /*
   The macro \texttt{ADDOPTION} has a similar effect, but adding the 
@@ -59,7 +61,7 @@
 #define OPTIONMANDATORY(A)\
         if(!ISSET(A))\
         {\
-          cerr << "option %s is mandatory" ,options[A].optname;\
+          cerr << "option " << options[A].optname << " is mandatory" << endl;\
           return -1;\
         }
 
@@ -72,8 +74,8 @@
 #define OPTIONIMPLY(A,B)\
         if(ISSET(A) && !ISSET(B))\
         {\
-          cerr << "option %s requires option %s",\
-                  options[A].optname,options[B].optname;\
+          cerr << "option " << options[A].optname << " requires option "\
+               << options[B].optname << endl;\
           return -1;\
         }
 
@@ -82,9 +84,8 @@
         {\
           if(!ISSET(B) && !ISSET(C))\
           {\
-            cerr << "option %s requires either option %s or %s",\
-                    options[A].optname,options[B].optname,\
-                    options[C].optname;\
+            cerr << "option " << options[A].optname << " requires either option "\
+                 << options[B].optname << " or " << options[C].optname << endl;\
             return -1;\
           }\
         }
@@ -126,7 +127,7 @@
 #define OPTIONEXCLUDE(A,B)\
         if(ISSET(A) && ISSET(B))\
         {\
-          perror("option %s and option %s exclude each other",\
+          fprintf(stderr,"option %s and option %s exclude each other",\
                   options[A].optname,options[B].optname);\
           return -1;\
         }

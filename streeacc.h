@@ -127,6 +127,33 @@
           }\
         }
 
+#define SHOWINDEX(NODE)\
+        if((NODE) == UNDEFINEDREFERENCE)\
+        {\
+          fprintf(stderr,"UNDEFINEDREFERENCE");\
+        } else\
+        {\
+          if(NILPTR(NODE))\
+          {\
+            fprintf(stderr,"NILPTR");\
+          } else\
+          {\
+            if(ISLEAF(NODE))\
+            {\
+              fprintf(stderr,"Leaf %lu",(long unsigned int) GETLEAFINDEX(NODE));\
+            } else\
+            {\
+              if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
+              {\
+                fprintf(stderr,"Large %lu",(long unsigned int) GETBRANCHINDEX(NODE));\
+              } else\
+              {\
+                fprintf(stderr,"Small %lu",(long unsigned int) NODE);\
+              }\
+            }\
+          }\
+        }
+
 #define NEXTNODE(PT)\
         if(ISLARGE(*(PT)))\
         {\

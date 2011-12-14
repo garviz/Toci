@@ -42,21 +42,12 @@ Sint maxerrormsg(void);
 
 //\IgnoreLatex{
 
-#ifdef DEBUG
-#define THROWERRORLINE\
-        DEBUG2(1,"# throw error message in %s line %lu\n",__FILE__,\
-                                                (Showuint) __LINE__)
-#else
-#define THROWERRORLINE /* Nothing */
-#endif
-
 #define GENERROR(C);\
-        THROWERRORLINE;\
         if((C) >= maxerrormsg())\
         {\
           fprintf(stderr,"file %s, line %lu: "\
                          "space for errormessage too small\n",\
-                  __FILE__,(Showuint) __LINE__);\
+                  __FILE__,(Uint) __LINE__);\
           exit(EXIT_FAILURE);\
         }
 
@@ -118,7 +109,7 @@ Sint maxerrormsg(void);
 
 #define NOTSUPPOSED\
         fprintf(stderr,"%s: line %lu: This case is not supposed to occur\n",\
-                       __FILE__,(Showuint) __LINE__);\
+                       __FILE__,(Uint) __LINE__);\
         exit(EXIT_FAILURE)
 
 /*
@@ -126,15 +117,11 @@ Sint maxerrormsg(void);
   program terminates with an error.
 */
 
-#ifdef DEBUG
 #define NOTSUPPOSEDTOBENULL(PTR)\
         if((PTR) == NULL)\
         {\
           NOTSUPPOSED;\
         }
-#else
-#define NOTSUPPOSEDTOBENULL(PTR) /* Nothing */
-#endif
 
 //\Ignore{
 
