@@ -368,10 +368,12 @@ void checkstree(Suffixtree *stree)
 */
   FREESPACE(leafused);
   FREESPACE(branchused);
-  fprintf(stderr,"#largedepth %lu\n",(Sint) largedepth);
+  fprintf(stderr,"#edgecount %lu identitycount %lu\n",
+              (Sint) edgecount,
+              (Sint) identitycount);
 }
 
-void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
+static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
 {
   Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
        depth, headposition; 
@@ -527,7 +529,7 @@ void showlocation(FILE *fp,Suffixtree *stree,Location *loc)
 
   showthesymbolstring(fp,stree->sentinel,stree->text+lstr.start,
                              stree->text+lstr.start+lstr.length-1);
-  fprintf(fp,"\"=(%lu,%lu,",(Uint) loc->locstring.start,
+  fprintf(fp,"\"=(Start:%lu,Length:%lu,",(Uint) loc->locstring.start,
                             (Uint) loc->locstring.length);
   if(loc->remain > 0)
   {

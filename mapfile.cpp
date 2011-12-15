@@ -10,7 +10,7 @@
   
 #include <iostream>
 #include <cstdio>
-#include <stdlib.h>
+#include <cstdlib>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/uio.h>
@@ -19,8 +19,8 @@
 #include <unistd.h>
 #include <cstring>
 #include "types.h"
+#include "errordef.h"
 #include "protodef.h"
-#include "spacedef.h"
 
 #define MAXMAPPEDFILES 32
 
@@ -129,12 +129,12 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
   size of the file to be mapped.
 */
 
-/*@null@*/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,
-                                            bool writemap,Uint numofbytes)
+/*@null@*/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,bool writemap,Uint 
+                                 numofbytes)
 {
   if(numofbytes == 0)
   {
-    perror("creatememorymap: file is empty");
+    cerr << "creatememorymap: file is empty" << endl;
     return NULL;
   }
   if(fd < 0)
@@ -154,7 +154,6 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
   }
   mmaddspace(numofbytes);
   mappedbytes[fd] = numofbytes;
-  cerr << numofbytes << endl;
   memoryptr[fd] 
     = (void *) mmap(0,
                     (size_t) numofbytes,
@@ -177,8 +176,7 @@ Sint simplefileOpen(char *filename,Uint *numofbytes)
   \texttt{NULL} if something went wrong.
 */
 
-/*@null@*/ void *creatememorymap(char *file,Uint line,char *filename,
-                                 bool writemap,Uint *numofbytes)
+/*@null@*/ void *creatememorymap(char *file,Uint line,char *filename,bool writemap,Uint *numofbytes)
 {
   int fd;
 
@@ -204,8 +202,7 @@ Sint deletememorymap(char *file,Uint line,void *mappedfile)
 
   if(mappedfile == NULL)
   {
-    cerr << file << ": " << (Sint) line << ": deletememorymap: mappedfile is NULL"
-             << endl;
+    //cerr << file << ": l. " << (Sint) line << ": deletememorymap: mappedfile is NULL" << endl;
     return -1;
   }
   for(fd=0; fd<MAXMAPPEDFILES; fd++)
@@ -217,14 +214,13 @@ Sint deletememorymap(char *file,Uint line,void *mappedfile)
   }
   if(fd == MAXMAPPEDFILES)
   {
-    cerr << file << ": " << (Sint) line << ": deletememorymap: cannot find filedescriptor for given address"
-             << endl;
+    //cerr <<  file << ": l. " << (Sint) line << ": deletememorymap: cannot find filedescriptor for given address" << endl;
     return -2;
   }
   if(munmap(memoryptr[fd],(size_t) mappedbytes[fd]) != 0)
   {
     fprintf(stderr, "%s: l. %ld: deletememorymap: munmap failed:"
-           " mapped in file \"%s\",line %lu",
+            " mapped in file \"%s\",line %lu",
             file,
             (Sint) line,
             filemapped[fd],

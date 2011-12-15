@@ -11,12 +11,21 @@
 
 #include "streehuge.h"
 
+
+
+#define SHOWVAL(S)    fprintf(stderr,"#%s %lu\n",#S,(Sint) S)
+#define SETVAL(E,VAL) *(E) = VAL;\
+                      if((E) > stree->maxset)\
+                      {\
+                        stree->maxset = E;\
+                      }
+
 /*
   This file contains some macros for retrieving depth, headpositions,
   and suffix links.
 */
 
-#define SETVAL(E,VAL) *(E) = VAL
+//#define SETVAL(E,VAL) *(E) = VAL
 
 /*
   \texttt{GETBOTH} retrieves the \emph{depth} and the \emph{headposition} of 
@@ -127,32 +136,6 @@
           }\
         }
 
-#define SHOWINDEX(NODE)\
-        if((NODE) == UNDEFINEDREFERENCE)\
-        {\
-          fprintf(stderr,"UNDEFINEDREFERENCE");\
-        } else\
-        {\
-          if(NILPTR(NODE))\
-          {\
-            fprintf(stderr,"NILPTR");\
-          } else\
-          {\
-            if(ISLEAF(NODE))\
-            {\
-              fprintf(stderr,"Leaf %lu",(long unsigned int) GETLEAFINDEX(NODE));\
-            } else\
-            {\
-              if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
-              {\
-                fprintf(stderr,"Large %lu",(long unsigned int) GETBRANCHINDEX(NODE));\
-              } else\
-              {\
-                fprintf(stderr,"Small %lu",(long unsigned int) NODE);\
-              }\
-            }\
-          }\
-        }
 
 #define NEXTNODE(PT)\
         if(ISLARGE(*(PT)))\
@@ -231,6 +214,45 @@
 //\Ignore{
 
 #define LEADLEVEL 2
+
+
+#define SHOWINDEX(NODE)\
+        if((NODE) == UNDEFINEDREFERENCE)\
+        {\
+          fprintf(stderr,"UNDEFINEDREFERENCE");\
+        } else\
+        {\
+          if(NILPTR(NODE))\
+          {\
+            fprintf(stderr,"NILPTR");\
+          } else\
+          {\
+            if(ISLEAF(NODE))\
+            {\
+              fprintf(stderr,"Leaf %lu",(long unsigned int) GETLEAFINDEX(NODE));\
+            } else\
+            {\
+              if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
+              {\
+                fprintf(stderr,"Large %lu",(long unsigned int) GETBRANCHINDEX(NODE));\
+              } else\
+              {\
+                fprintf(stderr,"Small %lu",(long unsigned int) NODE);\
+              }\
+            }\
+          }\
+        }
+
+
+
+
+
+void showtable(Suffixtree *stree,bool final);
+void checkstree(Suffixtree *stree);
+void showstate(Suffixtree *stree);
+void showstree(Suffixtree *stree);
+void enumlocations(Suffixtree *stree,void(*processloc)(Suffixtree *stree,Location *));
+void checklocation(Suffixtree *stree,Location *loc);
 
 #endif
 

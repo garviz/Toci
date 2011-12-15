@@ -11,6 +11,7 @@
 #ifndef OPTDESC_H
 #define OPTDESC_H
 #include "types.h"
+#include "errordef.h"
 #include <cstdio>
 #include <iostream>
 #include <string>
@@ -95,7 +96,7 @@
         {\
           if(!ISSET(B) && !ISSET(C) && !ISSET(D))\
           {\
-            perror("option %s requires one of the options %s, %s, %s",\
+            fprintf(stderr,"option %s requires one of the options %s, %s, %s",\
                     options[A].optname,\
                     options[B].optname,\
                     options[C].optname,\
@@ -109,7 +110,7 @@
         {\
           if(!ISSET(B) && !ISSET(C) && !ISSET(D) && !ISSET(E))\
           {\
-            perror("option %s requires one of the options %s, %s, %s, %s",\
+            fprintf(stderr,"option %s requires one of the options %s, %s, %s, %s",\
                     options[A].optname,\
                     options[B].optname,\
                     options[C].optname,\

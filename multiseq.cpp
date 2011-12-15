@@ -10,13 +10,15 @@
 
 #include <cstdio>
 #include <cstdlib>
-#include <limits.h>
-#include <string.h>
+#include <climits>
+#include <cstring>
 #include <ctype.h>
 #include <unistd.h>
 #include "types.h"
+#include "spacedef.h"
 #include "minmax.h"
 #include "protodef.h"
+#include "errordef.h"
 #include "chardef.h"
 #include "multidef.h"
 

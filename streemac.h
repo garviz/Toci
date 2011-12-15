@@ -11,6 +11,7 @@
 
 #include "types.h"
 #include "symboldef.h"
+#include "errordef.h"
 
 /*
   For each branching node we store five integers, see \cite{KUR:1999}.
@@ -32,7 +33,7 @@
 #define CONSTRUCTSTREE(ST,TEXT,TEXTLEN,ACTION)\
         if(constructstree(ST,TEXT,TEXTLEN) != 0)\
         {\
-          cerr <<messagespace();\
+          cerr << messagespace();\
           ACTION;\
         }
 
@@ -60,6 +61,28 @@
 #define LEAFADDR2NUM(ST,A)    ((Uint) ((A) - (ST)->leaftab))
 
 //\Ignore{
+
+
+#define CHECKADDR(ST,A)\
+        if((A).toleaf)\
+        {\
+          if(LEAFADDR2NUM(ST,(A).address) > (ST)->textlen)\
+          {\
+            printf("%s,%lu:",__FILE__,(Showuint) __LINE__);\
+            printf("leafaddr = %lu invalid\n",\
+                    (Showuint) LEAFADDR2NUM(ST,(A).address));\
+            exit(EXIT_FAILURE);\
+          }\
+        } else\
+        {\
+          if(BRADDR2NUM(ST,(A).address) >= (ST)->nextfreebranchnum)\
+          {\
+            printf("%s,%lu:",__FILE__,(Showuint) __LINE__);\
+            printf("branchaddr = %lu invalid\n",\
+                    (Showuint) BRADDR2NUM(ST,(A).address));\
+            exit(EXIT_FAILURE);\
+          }\
+        } 
 
 //}
 

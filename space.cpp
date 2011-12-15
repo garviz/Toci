@@ -15,8 +15,9 @@
 #include <unistd.h>
 #include <cstring>
 #include <string>
+#include <mpi.h>
 #include "types.h"
-#include "spacedef.h"
+#include "errordef.h"
 #include "protodef.h"
 
 using namespace std;
@@ -52,6 +53,7 @@ using namespace std;
                        " allocandusespaceviaptr(%lu,%lu) failed:%s\n",\
                        (Sint) line,(Sint) size,\
                        (Sint) number,M);\
+        MPI_Finalize();\
         exit(EXIT_FAILURE)
 
 struct Blockdescription
@@ -93,6 +95,7 @@ static void setmaxspace(void)
   /*@end@*/
   {
     fprintf(stderr,"cannot find rlimit[RLIMIT_DATA]\n");
+    MPI_Finalize();
     exit(EXIT_FAILURE);
   }
 
@@ -104,6 +107,7 @@ static void setmaxspace(void)
     /*@end@*/
     {
       fprintf(stderr,"cannot set rlimit[RLIMIT_DATA]\n");
+      MPI_Finalize();
       exit(EXIT_FAILURE);
     }
   }
@@ -142,16 +146,15 @@ static void subtractspace(Uint space)
   to \texttt{ptr}. If there is none, then the program exits with exit code 1. 
 */
 
-/*@notnull@*/ void *allocandusespaceviaptr(char* file,Uint line, 
+/*@notnull@*/ void *allocandusespaceviaptr(char *file,Uint line, 
                                            /*@null@*/ void *ptr,
                                            Uint size,Uint number)
 {
   Uint i, blocknum;
 
-  fprintf(stderr,"\n# allocandusespaceviaptr(file=%s,line=%lu)\n",
-                  file, (Sint) line);
   if(nextfreeblock > 0)
   {
+    NOTSUPPOSEDTOBENULL(blocks);
     for(blocknum=0; blocknum < nextfreeblock; blocknum++)
     {
       if(blocks[blocknum].spaceptr == ptr)
@@ -186,6 +189,7 @@ static void subtractspace(Uint space)
       ALLOCVIAFATAL("cannot find space block");
     }
   }
+  NOTSUPPOSEDTOBENULL(blocks);
   subtractspace(blocks[blocknum].numberofcells * blocks[blocknum].sizeofcells);
   addspace(size*number);
   blocks[blocknum].numberofcells = number;
@@ -201,7 +205,8 @@ static void subtractspace(Uint space)
   {
     ALLOCVIAFATAL("not enough memory");
   }
-  //DEBUG0(2,"# allocandusespaceviaptr Okay\n");
+
+  NOTSUPPOSEDTOBENULL(blocks[blocknum].spaceptr);
   return blocks[blocknum].spaceptr;
 }
 
@@ -215,6 +220,7 @@ static void subtractspace(Uint space)
   Uint len;
   char *dest;
 
+  NOTSUPPOSEDTOBENULL(source);
   len = (Uint) strlen(source);
   dest = (char *) allocandusespaceviaptr(file,line,NULL,(Uint) sizeof(char),
                                          len+1);
@@ -234,9 +240,11 @@ void freespaceviaptr(char *file,Uint line,void *ptr)
   if(ptr == NULL)
   {
     fprintf(stderr,"freespaceviaptr(file=%s,line=%lu): Cannot free NULL-ptr\n",
-                    file,(Sint) line);
+                    file,(Uint) line);
+    MPI_Finalize();
     exit(EXIT_SUCCESS);
   }
+  NOTSUPPOSEDTOBENULL(blocks);
   for(blocknum=0; blocknum < nextfreeblock; blocknum++)
   {
     if(blocks[blocknum].spaceptr == ptr)
@@ -248,7 +256,8 @@ void freespaceviaptr(char *file,Uint line,void *ptr)
   {
     fprintf(stderr,"freespaceviaptr(file=%s,line=%lu): "
                    " cannot find space block\n",
-            file,(Sint) line);
+            file,(Uint) line);
+    MPI_Finalize();
     exit(EXIT_FAILURE);
   }
   free(blocks[blocknum].spaceptr);
@@ -258,6 +267,10 @@ void freespaceviaptr(char *file,Uint line,void *ptr)
   blocks[blocknum].fileallocated = NULL;
   blocks[blocknum].lineallocated = 0;
   blocks[blocknum].spaceptr = NULL;
+  if(numberofblocks == 0)
+  {
+      NOTSUPPOSED;
+  }
   numberofblocks--;
 }
 
@@ -272,7 +285,8 @@ void wrapspace(void)
 {
   Uint blocknum;
 
-  //DEBUG0(2,"# wrapspace\n");
+
+  NOTSUPPOSEDTOBENULL(blocks);
   for(blocknum=0; blocknum < nextfreeblock; blocknum++)
   {
     if(blocks[blocknum].spaceptr != NULL)
@@ -302,6 +316,7 @@ void activeblocks(void)
 {
   Uint blocknum;
 
+  NOTSUPPOSEDTOBENULL(blocks);
   for(blocknum=0; blocknum < nextfreeblock; blocknum++)
   {
     if(blocks[blocknum].spaceptr != NULL)
@@ -345,12 +360,14 @@ void checkspaceleak(void)
                blocks[blocknum].fileallocated,
                (Sint) blocks[blocknum].lineallocated);
       }
+      MPI_Finalize();
       exit(EXIT_FAILURE);
     }
   }
   if(numberofblocks > 0)
   {
     fprintf(stderr,"space leak: number of blocks = %u\n",(unsigned int) numberofblocks);
+    MPI_Finalize();
     exit(EXIT_FAILURE);
   } 
   free(blocks);
@@ -369,11 +386,4 @@ Uint getspacepeak(void)
 {
   return spacepeak;
 }
-
-/*EE
-  The following function delivers the space limit of the machine 
-  in megabytes. This only works if the variable
-  \texttt{WITHSYSCONF} is defined. This is currently the case for
-  Linux and Solaris.
-*/
 

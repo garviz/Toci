@@ -9,6 +9,7 @@
 //\Ignore{
 
 #include <string.h>
+#include "errordef.h"
 #include "protodef.h"
 
 //}

@@ -13,6 +13,7 @@
 #include <climits>
 #include <cstdio>
 #include "types.h"
+#include "errordef.h"
 #include "spacedef.h"
 
 //}

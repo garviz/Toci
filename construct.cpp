@@ -18,7 +18,6 @@
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"
-#include "visible.h"
 
 #define FUNCLEVEL 4
 
@@ -33,6 +32,19 @@
           return -1;\
         }
 
+
+
+
+static void showvalues(void)
+{
+  SHOWVAL(SMALLINTS);
+  SHOWVAL(LARGEINTS);
+  SHOWVAL(MAXDISTANCE);
+#if defined(STREELARGE) || defined(STREESMALL)
+  SHOWVAL(SMALLDEPTH);
+#endif
+  SHOWVAL(MAXTEXTLEN);
+}
 //}
 
 /*
@@ -90,8 +102,6 @@ static void spaceforbranchtab(Suffixtree *stree)
     {
       extra = MULTBYSMALLINTS(MINEXTRA);
     }
-    fprintf(stderr,"#all suffixes up to suffix %lu have been scanned\n",
-              (Sint) stree->nextfreeleafnum);
     stree->currentbranchtabsize += extra;
     tmpheadnode = BRADDR2NUM(stree,stree->headnode);
     if(stree->chainstart != NULL)
@@ -133,7 +143,6 @@ static void spaceforbranchtab(Suffixtree *stree)
 static Uint getlargelinkconstruction(Suffixtree *stree)
 {
   Uchar secondchar;
-
   if(stree->headnodedepth == 1)
   {
     return 0;        // link refers to root
@@ -650,10 +659,27 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
   stree->smallnotcompleted = 0;
   stree->chainstart = NULL;
   stree->largenode = stree->smallnode = 0;
+  
+  
+  
+  
+  stree->showsymbolstree = NULL;
+  stree->alphabet = NULL;
+  stree->nodecount = 1;
+  stree->splitleafedge = 
+  stree->splitinternaledge = 
+  stree->artificial = 
+  stree->multiplications = 0;
+  stree->insertleafcalls = 1;
+  stree->maxset = stree->branchtab + LARGEINTS - 1;
+  stree->largelinks = stree->largelinkwork = stree->largelinklinkwork = 0;
 }
 
 void freestree(Suffixtree *stree)
 {
+  //fprintf(stderr,"NODES IN SUFFIX TREE %lu\n", stree->largenode+stree->smallnode);
+  ArrayUint *table;
+  makedepthtabstree(table,stree);
   FREESPACE(stree->leaftab);
   FREESPACE(stree->rootchildren);
   FREESPACE(stree->branchtab);
@@ -783,7 +809,7 @@ void freestree(Suffixtree *stree)
                                  {\
                                    fputc('#',stderr);\
                                  }\
-                                 fputc('u',stderr);\
+                                 fputc('.',stderr);\
                                  fflush(stdout);\
                                } else\
                                {\

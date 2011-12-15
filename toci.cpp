@@ -19,13 +19,11 @@
 #include <iostream>
 #include <mpi.h>
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include "types.h"
-#include "args.h"
 #include "protodef.h"
-#include "streedef.h"
-#include "streeacc.h"
-#include "streeproto.h"
-#include "streetyp.h"
+#include "errordef.h"
 #include "maxmatdef.h"
 
 /*EE
@@ -61,22 +59,17 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    Sint retcode;
+    MMcallinfo mmcallinfo;
+    Multiseq subjectmultiseq;
     int numprocs, rank, namelen;
     char processor_name[MPI_MAX_PROCESSOR_NAME];
     double start, finish;
-
-    Uchar *text;
-    Uint textlen;
-    char *filename;
-    Sint retcode;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Get_processor_name(processor_name, &namelen);
-    MMcallinfo mmcallinfo;
-    Multiseq subjectmultiseq;
-    Suffixtree stree;
     retcode = parsemaxmatoptions (&mmcallinfo, argc, argv);
     if (retcode < 0) {
         fprintf(stderr,"%s: %s\n",argv[0],messagespace());
@@ -105,10 +98,6 @@ int main(int argc, char *argv[])
         freemultiseq(&subjectmultiseq);
         checkspaceleak();
         mmcheckspaceleak();
-        fprintf(stderr,"# construct suffix tree for sequence of length %lu\n",
-           (Sint) textlen);
-        fprintf(stderr,"# (maximal input length is %lu)\n",
-           (Sint) getmaxtextlenstree());
         cout << "Toci application for genome alignment under HPC environments" << endl;
         finish = MPI_Wtime();
     } else {
@@ -116,4 +105,5 @@ int main(int argc, char *argv[])
     }
     MPI_Finalize();
     cout << "Final Time: " << finish-start << endl;
+    return EXIT_SUCCESS;
 }

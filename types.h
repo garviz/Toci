@@ -19,9 +19,9 @@
 #ifndef TYPES_H
 #define TYPES_H
 #include <sys/types.h>
-#include <climits>
-#include <cstdlib>
-#include <cstdio>
+#include <limits.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef unsigned char Uchar;
 typedef unsigned short Ushort;

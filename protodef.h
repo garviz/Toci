@@ -22,15 +22,6 @@ extern "C" {
 Sint mumuniqueinquery(void *processinfo,
                       Sint (*processmum)(void *,Uint,Uint,Uint,Uint),
                       ArrayMUMcandidate *mumcand);
-void initclock(void);
-double getruntime(void);
-Uint getclockticks(void);
-Sint getdebuglevel(void);
-bool getdebugwhere(void);
-void setdebuglevel(void);
-void setdebuglevelfilename(char *filename);
-FILE *getdbgfp(void);
-void debugclosefile(void);
 Sint simplefileOpen(char *filename,Uint *numofbytes);
 /*@null@*/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,
                                             bool writemap,Uint numofbytes);
@@ -60,7 +51,7 @@ void showoptionswithoutexclude(FILE *outfp,char *program,
                                Sint *excludetab,Uint numofopt);
 Sint checkdoubleexclude(Uint numofopts,OptionDescription *opt,
                         Sint *excludetab,Uint len);
-Sint checkexclude(OptionDescription *opt,Sint *excludetab,Uint len);
+int checkexclude(OptionDescription *opt,Sint *excludetab,Uint len);
 void showexclude(OptionDescription *opt,Sint *excludetab,Uint len);
 Sint safestringcopy(char *dest,char *source,Sint maxlen);
 Sint maxerrormsg(void);

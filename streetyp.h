@@ -123,7 +123,7 @@ struct Suffixtreetype
                               // \(\emph{headend}=\emph{NULL}\).
          *tailptr;            // points to the tail
 
-//#ifdef DEBUG
+
   char * (*showsymbolstree)(Uchar,Uchar *);
   Uchar *alphabet;
   Uint splitleafedge,
@@ -137,7 +137,6 @@ struct Suffixtreetype
        nodecount,
        *maxset;
   void *generalcounter;
-//#endif
 #if (SYMBOLBYTES == 2) || (SYMBOLBYTES == 4)
   Sint lastcharindex;
 #endif

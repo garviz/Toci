@@ -12,7 +12,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "optdesc.h"
+#include "errordef.h"
 #include "protodef.h"
+#include "spacedef.h"
 
 //}
 
@@ -53,7 +55,6 @@ Sint addoption(OptionDescription *options,Uint numofoptions,
 {
   Uint i;
 
-  //fprintf(stderr,"add option number %ld: %s\n",(long int) optnum,optname);
   if(optnum>=numofoptions)
   {
     fprintf(stderr,"option number %ld out of range [0,%lu]",
@@ -71,7 +72,6 @@ Sint addoption(OptionDescription *options,Uint numofoptions,
   options[optnum].optval = optnum;
   options[optnum].isalreadyset = false;
   options[optnum].declared = true;
-  //fprintf(stderr,"option %ld is declared\n",(long int) optnum);
   if(optnum == numofoptions-1)
   {
     for(i=0; i<numofoptions; i++)
@@ -129,7 +129,7 @@ static bool occursinlist(Uint i,int *list)
 
   for(j=0; list[j] != -1; j++)
   {
-    if(((int) i) == list[j])
+    if(((Sint) i) == list[j])
     {
       return true;
     }
@@ -275,7 +275,7 @@ int checkdoubleexclude(Uint numofopts,OptionDescription *opt,
                         int *excludetab,Uint len)
 {
   Uint i, j;
-  int indi, indj;
+  Sint indi, indj;
   bool *excludepairs = ALLOCSPACE(NULL,bool,numofopts*numofopts);
 
   for(i=0; i < numofopts * numofopts; i++)
@@ -288,7 +288,6 @@ int checkdoubleexclude(Uint numofopts,OptionDescription *opt,
     for(j=i+1; excludetab[j] != -1; j++)
     {
       indj = excludetab[j];
-      fprintf(stderr,"Exclude %s %s\n",opt[indi].optname,opt[indj].optname);
       if(excludepairs[indi*numofopts+indj])
       {
         fprintf(stderr,"option %s and option %s already specfied as excluded",
@@ -320,7 +319,7 @@ int checkdoubleexclude(Uint numofopts,OptionDescription *opt,
   The function must be called after parsing the options.
 */
 
-int checkexclude(OptionDescription *opt,int *excludetab,Uint len)
+int checkexclude(OptionDescription *opt,Sint *excludetab,Uint len)
 {
   Uint i, j;
 
@@ -328,8 +327,6 @@ int checkexclude(OptionDescription *opt,int *excludetab,Uint len)
   {
     for(j=i+1; excludetab[j] != -1; j++)
     {
-      fprintf(stderr,"Exclude %s %s\n",opt[excludetab[i]].optname,
-                                 opt[excludetab[j]].optname);
       if(opt[excludetab[i]].isalreadyset && opt[excludetab[j]].isalreadyset)
       {
         fprintf(stderr,"option %s and option %s exclude each other",
@@ -348,7 +345,7 @@ int checkexclude(OptionDescription *opt,int *excludetab,Uint len)
   the manual of a program showing which options exclude each other.
 */
 
-void showexclude(OptionDescription *opt,int *excludetab,Uint len)
+void showexclude(OptionDescription *opt,Sint *excludetab,Uint len)
 {
   Uint offset, i, j;
 

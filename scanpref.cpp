@@ -9,7 +9,6 @@
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"
-#include "errordef.h"
 
 static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
@@ -35,7 +34,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
        edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
 
-  fprintf(stderr,"scanprefixfromnodestree starts at node %lu\n",
+  fprintf(stderr,"scanprefixfromnodestree starts at node %lu",
           (unsigned long int) BRADDR2NUM(stree,btptr));
   lptr = left;
   nodeptr = btptr;
@@ -47,6 +46,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   {
     GETBOTH(nodedepth,headposition,nodeptr);
   }
+  fprintf(stderr," current depth: %lu\n", nodedepth);
   loc->nextnode.toleaf = false;
   loc->nextnode.address = nodeptr;
   loc->locstring.start = headposition;
@@ -321,6 +321,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   {
     GETBOTH(nodedepth,headposition,nodeptr);
   }
+  fprintf(stderr," current depth %lu\n", nodedepth);
   loc->nextnode.toleaf = false;
   loc->nextnode.address = nodeptr;
   loc->locstring.start = headposition;

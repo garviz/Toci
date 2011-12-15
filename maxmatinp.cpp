@@ -13,6 +13,7 @@
 #include <ctype.h>
 #include <iostream>
 #include "chardef.h"
+#include "spacedef.h"
 #include "protodef.h"
 #include "maxmatdef.h"
 

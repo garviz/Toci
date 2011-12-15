@@ -67,7 +67,7 @@ static void makeleastlengthtext(char *spacefortext)
 {
   sprintf(spacefortext,"set the minimum length of a match\n"
                        "if not set, the default value is %lu",
-                       (int) DEFAULTMINUNIQUEMATCHLEN);
+                       (long unsigned int) DEFAULTMINUNIQUEMATCHLEN);
 }
 
 /*

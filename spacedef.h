@@ -11,6 +11,7 @@
 #ifndef SPACEDEF_H
 #define SPACEDEF_H
 #include "types.h"
+#include "errordef.h"
 #include <cstdio>
 
 #ifdef __cplusplus

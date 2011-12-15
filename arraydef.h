@@ -69,7 +69,8 @@ using namespace std;
                                                (A)->space##TYPE,\
                                                (Uint) sizeof(TYPE),\
                                                (A)->allocated##TYPE);\
-        }
+        }\
+        NOTSUPPOSEDTOBENULL((A)->space##TYPE)
 
 /*
   The next macro is a variation of \texttt{CHECKARRAYSPACE}, 

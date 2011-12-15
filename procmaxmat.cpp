@@ -13,7 +13,9 @@
 #include <string.h>
 #include <ctype.h>
 #include "types.h"
+#include "errordef.h"
 #include "protodef.h"
+#include "spacedef.h"
 #include "streedef.h"
 #include "maxmatdef.h"
 
@@ -281,11 +283,11 @@ static Sint showmaximalmatch (void *info,
 {
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
-  /*if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
+  if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
      &&
      !matchprocessinfo->fourcolumn)
   {
-    printf ("%8lu  ", (Showuint) (subjectstart+1));
+    printf ("%8lu  ", (long unsigned int) (subjectstart+1));
   } else
   {
     PairUint pp;
@@ -298,18 +300,18 @@ static Sint showmaximalmatch (void *info,
     showsequencedescription(matchprocessinfo->subjectmultiseq,
                             matchprocessinfo->maxdesclength,
                             pp.uint0);
-    printf ("  %8lu  ",(Showuint) (pp.uint1+1));
+    printf ("  %8lu  ",(long unsigned int) (pp.uint1+1));
   }
   if(matchprocessinfo->currentisrcmatch && 
      matchprocessinfo->showreversepositions)
   {
-    printf ("%8lu  ", (Showuint) (matchprocessinfo->currentquerylen - 
+    printf ("%8lu  ", (long unsigned int) (matchprocessinfo->currentquerylen - 
                                   querystart));
   } else
   {
-    printf ("%8lu  ", (Showuint) (querystart+1));
+    printf ("%8lu  ", (long unsigned int) (querystart+1));
   }
-  printf ("%8lu\n", (Showuint) matchlength);*/
+  printf ("%8lu\n", (long unsigned int) matchlength);
   return 0;
 }
 

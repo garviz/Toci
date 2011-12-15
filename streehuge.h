@@ -86,6 +86,11 @@
 #define MAKEBRANCHADDR(V)         (V)
 #define SETBRANCHNODEOFFSET       /* nothing */
 
+
+
+
+#define CHILDREFERSTOLEAF(B)   ISLEAF(*(B))
+
 //\Ignore{
 
 #if SYMBOLBYTES == 1
