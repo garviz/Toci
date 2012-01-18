@@ -144,4 +144,5 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
       
     }
   } 
+  //fprintf(stderr,"%s:%lu\n",__func__,outloc->locstring.start);
 }

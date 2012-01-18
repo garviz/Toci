@@ -502,6 +502,7 @@ static void loc2stringstree(Suffixtree *stree,Stringtype *s,Location *loc)
                     (Uint) loc->locstring.length);
     exit(EXIT_FAILURE);
   }
+  fprintf(stderr,"%s:%lu\n",__func__,loc->locstring.start);
   if(s->start != loc->locstring.start)
   {
     if(memcmp(stree->text+s->start,
@@ -524,39 +525,40 @@ void showlocation(FILE *fp,Suffixtree *stree,Location *loc)
 {
   Stringtype lstr;
 
-  fprintf(fp,"\"");
+  //fprintf(fp,"\"");
   loc2stringstree(stree,&lstr,loc);
 
-  showthesymbolstring(fp,stree->sentinel,stree->text+lstr.start,
-                             stree->text+lstr.start+lstr.length-1);
-  fprintf(fp,"\"=(Start:%lu,Length:%lu,",(Uint) loc->locstring.start,
-                            (Uint) loc->locstring.length);
+  /*showthesymbolstring(fp,stree->sentinel,stree->text+lstr.start,
+                             stree->text+lstr.start+lstr.length-1);*/
+  /*fprintf(fp,"\"=(Start:%lu,Length:%lu,",(Uint) loc->locstring.start,
+                            (Uint) loc->locstring.length);*/
+  //fprintf(fp,"%lu--%lu--%lu\n",loc->locstring.start,loc->locstring.length,loc->remain);
   if(loc->remain > 0)
   {
-    fprintf(fp,"Branch %lu,",(Uint) BRADDR2NUM(stree,loc->previousnode));
-    showthesymbolstring(fp,stree->sentinel,loc->firstptr,
-                               loc->firstptr+loc->edgelen-loc->remain-1);
-    fprintf(fp,",");
+    //fprintf(fp,"Branch %lu,",(Uint) BRADDR2NUM(stree,loc->previousnode));
+    /*showthesymbolstring(fp,stree->sentinel,loc->firstptr,
+                               loc->firstptr+loc->edgelen-loc->remain-1);*/
+    //fprintf(fp,",");
     if(loc->nextnode.toleaf)
     {
-      showthesymbolstring(fp,stree->sentinel,loc->firstptr+loc->edgelen-loc->remain,
-                                 stree->sentinel);
+      /*showthesymbolstring(fp,stree->sentinel,loc->firstptr+loc->edgelen-loc->remain,
+                                 stree->sentinel);*/
     } else
     {
-      showthesymbolstring(fp,stree->sentinel,loc->firstptr+loc->edgelen-loc->remain,
-                                 loc->firstptr+loc->edgelen-1);
+      /*showthesymbolstring(fp,stree->sentinel,loc->firstptr+loc->edgelen-loc->remain,
+                                 loc->firstptr+loc->edgelen-1);*/
     }
-    fprintf(fp,",");
+    //fprintf(fp,",");
   } 
   if(loc->nextnode.toleaf)
   {
-    fprintf(fp,"Leaf %lu",
-            (Uint) LEAFADDR2NUM(stree,loc->nextnode.address));
+    /*fprintf(fp,"Leaf %lu",
+            (Uint) LEAFADDR2NUM(stree,loc->nextnode.address));*/
   } else
   {
-    fprintf(fp,"Branch %lu",(Uint) BRADDR2NUM(stree,loc->nextnode.address));
+    //fprintf(fp,"Branch %lu",(Uint) BRADDR2NUM(stree,loc->nextnode.address));
   }
-  fprintf(fp,")");
+  //fprintf(fp,")");
 }
 
 #define SHOWREF(R)\
@@ -616,6 +618,7 @@ static Sint comparelocs(Suffixtree *stree,Location *loc1,Location *loc2)
 
 void checklocation(Suffixtree *stree,Location *loc)
 {
+  fprintf(stderr,"%s\n",__func__);
   Uint rescanlength;
   Stringtype lstr, llstr;
   Uchar *rest;
@@ -733,6 +736,7 @@ static void enumlocationssubtree(Suffixtree *stree,Uint *btptr,
 void enumlocations(Suffixtree *stree,
                    void(*processloc)(Suffixtree *stree,Location *))
 {
+  fprintf(stderr,"%s\n",__func__);
   Location loc;
   Uint leafindex, *rcptr;
   Branchinfo branchinfo;

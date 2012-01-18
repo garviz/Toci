@@ -283,7 +283,7 @@ static Sint showmaximalmatch (void *info,
 {
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
-  if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
+  /*if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
      &&
      !matchprocessinfo->fourcolumn)
   {
@@ -311,7 +311,7 @@ static Sint showmaximalmatch (void *info,
   {
     printf ("%8lu  ", (long unsigned int) (querystart+1));
   }
-  printf ("%8lu\n", (long unsigned int) matchlength);
+  printf ("%8lu\n", (long unsigned int) matchlength);*/
   return 0;
 }
 

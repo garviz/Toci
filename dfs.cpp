@@ -66,10 +66,10 @@ while(true)
   }
   if(currentnode.toleaf)
   {
-    fprintf(stderr,"visit leaf %lu ",
+    /*fprintf(stderr,"visit leaf %lu ",
               (long unsigned int) LEAFADDR2NUM(stree,currentnode.address));
     fprintf(stderr,"below %lu ",(long unsigned int) BRADDR2NUM(stree,startnode->address));
-    fprintf(stderr,"depth %lu\n",stree->currentdepth);
+    fprintf(stderr,"depth %lu\n",stree->currentdepth);*/
     if(processleaf(LEAFADDR2NUM(stree,currentnode.address),lcpnode,info) != 0)
     {
       return -1;
@@ -147,10 +147,10 @@ while(true)
   }
   if(currentnode.toleaf)
   {
-    fprintf(stderr,"visit leaf %lu ",
+    /*fprintf(stderr,"visit leaf %lu ",
               (long unsigned int) LEAFADDR2NUM(stree,currentnode.address));
     fprintf(stderr,"below %lu ",(long unsigned int) BRADDR2NUM(stree,startnode->address));
-    fprintf(stderr,"depth %lu\n",stree->currentdepth);
+    fprintf(stderr,"depth %lu\n",stree->currentdepth);*/
     if(processleaf(LEAFADDR2NUM(stree,currentnode.address),lcpnode,info) != 0)
     {
       return -1;

@@ -62,7 +62,7 @@ void makedepthtabstree(ArrayUint *depthtab,Suffixtree *stree)
       depth = GETDEPTH(btptr);
       headposition = GETHEADPOS(btptr);
       //setdepthtab(depthtab,depth);
-      fprintf(stderr,"headposition:%lu, depth:%lu\n",headposition,depth);
+      //fprintf(stderr,"headposition:%lu, depth:%lu\n",headposition,depth);
       btptr += LARGEINTS;
     } else
     {
@@ -73,12 +73,12 @@ void makedepthtabstree(ArrayUint *depthtab,Suffixtree *stree)
       while(distance > 0)
       {
         //setdepthtab(depthtab,depth + distance);
-        fprintf(stderr,"headposition:%lu, depth:%lu, distance:%lu\n",headposition,depth,distance);
+        //fprintf(stderr,"headposition:%lu, depth:%lu, distance:%lu\n",headposition,depth,distance);
         distance--;
         btptr += SMALLINTS;
       }
       //setdepthtab(depthtab,depth);
-      fprintf(stderr,"headposition:%lu, depth:%lu\n",headposition,depth);
+      //fprintf(stderr,"headposition:%lu, depth:%lu\n",headposition,depth);
       btptr += LARGEINTS;
     }
   }

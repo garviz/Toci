@@ -9,6 +9,7 @@
 #ifndef STREETYP_H
 #define STREETYP_H
 
+#include <mpi.h>
 #include "types.h"
 #include "arraydef.h"
 
@@ -19,6 +20,10 @@
   or to a branching node. The boolean \texttt{toleaf} is \texttt{True} if
   and only if \texttt{address} points to a leaf.
 */
+
+/*MPI_Datatype reference_struct;
+int reference_len[2] = {1, 1};
+MPI_Aint indices[2];*/
 
 struct Reference
 {

@@ -59,11 +59,11 @@
   corresponding to \(b\) is a prefix of the query.
 */
 
-typedef struct
+struct Nodeinfo
 {
   Uint querycommondepth;
   bool onmaxpath;
-} Nodeinfo;
+};
 
 /*EE
   The stack is represented by a dynamic array of elements of type 
@@ -422,6 +422,7 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
       return -2;
     }
   }
+  //fprintf(stderr,"%s:%lu\n",__func__,ploc->locstring.start);
   return 0;
 }
 
@@ -474,6 +475,7 @@ Sint findmaxmatches(Suffixtree *stree,
        querysubstringend < query + querylen - 1; 
        maxmatchinfo.querysuffix++, querysubstringend++)
   {
+    fprintf(stderr,"%lu\n",ploc.locstring.start);
     if(ploc.locstring.length >= minmatchlength &&
        enumeratemaxmatches(&maxmatchinfo,&ploc) != 0)
     {
@@ -496,6 +498,7 @@ Sint findmaxmatches(Suffixtree *stree,
   }
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {
+    fprintf(stderr,"%lu\n",ploc.locstring.start);
     if(enumeratemaxmatches (&maxmatchinfo,&ploc) != 0)
     {
       return -2;
