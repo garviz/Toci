@@ -1,0 +1,432 @@
+> Query
+start1:140337916833793,start2:140337916837894
+start1:140337916833794,start2:140337916837921
+R:32|2,Q:1
+start1:140337916833795,start2:140337916837937
+start1:140337916833796,start2:140337916837913
+start1:140337916833797,start2:140337916837904
+R:13|4,Q:2
+start1:140337916833797,start2:140337916837904
+      13         2         5
+start1:140337916833797,start2:140337916837904
+R:14|4,Q:3
+       1         3         4
+R:15|3,Q:4
+start1:140337916833799,start2:140337916837930
+R:40|3,Q:5
+start1:140337916833799,start2:140337916837930
+R:41|2,Q:6
+start1:140337916833800,start2:140337916837942
+start1:140337916833801,start2:140337916837945
+R:55|3,Q:7
+R:56|2,Q:8
+start1:140337916833802,start2:140337916837930
+R:41|2,Q:9
+start1:140337916833803,start2:140337916837918
+start1:140337916833804,start2:140337916837942
+R:52|3,Q:10
+R:53|2,Q:11
+start1:140337916833805,start2:140337916837908
+start1:140337916833806,start2:140337916837925
+start1:140337916833807,start2:140337916837941
+R:50|4,Q:12
+start1:140337916833807,start2:140337916837941
+      19        12         5
+      50        12         5
+start1:140337916833808,start2:140337916837942
+R:51|4,Q:13
+R:52|3,Q:14
+start1:140337916833809,start2:140337916837945
+R:55|3,Q:15
+start1:140337916833810,start2:140337916837934
+start1:140337916833811,start2:140337916837924
+R:33|4,Q:16
+start1:140337916833811,start2:140337916837924
+      33        16         4
+start1:140337916833812,start2:140337916837895
+R:4|4,Q:17
+start1:140337916833812,start2:140337916837895
+       4        17         5
+start1:140337916833812,start2:140337916837895
+R:5|4,Q:18
+start1:140337916833813,start2:140337916837896
+start1:140337916833813,start2:140337916837896
+R:6|3,Q:19
+start1:140337916833814,start2:140337916837922
+R:32|3,Q:20
+R:56|2,Q:21
+start1:140337916833815,start2:140337916837930
+R:41|2,Q:22
+start1:140337916833816,start2:140337916837920
+start1:140337916833817,start2:140337916837921
+R:31|3,Q:23
+R:32|2,Q:24
+start1:140337916833818,start2:140337916837937
+R:48|2,Q:25
+start1:140337916833819,start2:140337916837945
+R:56|2,Q:26
+start1:140337916833820,start2:140337916837930
+R:41|2,Q:27
+start1:140337916833821,start2:140337916837918
+start1:140337916833822,start2:140337916837919
+R:29|3,Q:28
+R:29|2,Q:29
+start1:140337916833823,start2:140337916837914
+start1:140337916833824,start2:140337916837899
+R:9|3,Q:30
+R:27|2,Q:31
+start1:140337916833825,start2:140337916837895
+R:6|3,Q:32
+R:32|2,Q:33
+start1:140337916833827,start2:140337916837937
+start1:140337916833828,start2:140337916837913
+start1:140337916833829,start2:140337916837914
+R:23|4,Q:34
+start1:140337916833829,start2:140337916837914
+      23        34         4
+start1:140337916833830,start2:140337916837899
+R:8|4,Q:35
+start1:140337916833830,start2:140337916837899
+       8        35         5
+start1:140337916833830,start2:140337916837899
+R:9|4,Q:36
+start1:140337916833831,start2:140337916837900
+start1:140337916833831,start2:140337916837900
+R:10|3,Q:37
+start1:140337916833832,start2:140337916837906
+R:16|3,Q:38
+R:26|2,Q:39
+start1:140337916833833,start2:140337916837915
+start1:140337916833834,start2:140337916837916
+R:26|4,Q:40
+start1:140337916833835,start2:140337916837917
+      26        40         4
+start1:140337916833835,start2:140337916837917
+R:27|3,Q:41
+R:36|2,Q:42
+start1:140337916833836,start2:140337916837942
+start1:140337916833837,start2:140337916837912
+R:22|3,Q:43
+start1:140337916833838,start2:140337916837939
+R:49|3,Q:44
+R:19|2,Q:45
+start1:140337916833839,start2:140337916837921
+R:32|2,Q:46
+start1:140337916833840,start2:140337916837908
+R:19|2,Q:47
+start1:140337916833841,start2:140337916837921
+start1:140337916833842,start2:140337916837922
+R:32|3,Q:48
+R:56|2,Q:49
+start1:140337916833843,start2:140337916837916
+start1:140337916833844,start2:140337916837917
+R:27|3,Q:50
+R:36|2,Q:51
+start1:140337916833845,start2:140337916837942
+R:53|2,Q:52
+start1:140337916833846,start2:140337916837908
+start1:140337916833847,start2:140337916837925
+start1:140337916833848,start2:140337916837941
+R:50|4,Q:53
+start1:140337916833848,start2:140337916837941
+      19        53         4
+      50        53         4
+start1:140337916833849,start2:140337916837919
+R:27,Q:53
+start1:140337916833849,start2:140337916837919
+      28        54         4
+Query:140337916833792
+Large 5 edgelen:52 a
+Large 18 edgelen:39 c
+Large 23 edgelen:34 g
+Large 10 edgelen:47 t
+~
+Node 5: branch_node 4
+Node 0: outgoing 'a'-edge of length 1
+Node 18: branch_node 8
+Node 0: outgoing 'c'-edge of length 1
+Node 23: branch_node 9
+Node 0: outgoing 'g'-edge of length 1
+Node 10: branch_node 5
+Node 0: outgoing 't'-edge of length 1
+Node 0: leaf 57
+Node 0: outgoing '\0'-edge of length 1
+Node 125: branch_node 47
+Node 5: outgoing 'a'-edge of length 1
+Node 15: branch_node 7
+Node 5: outgoing 'c'-edge of length 1
+Node 144: branch_node 55
+Node 5: outgoing 'g'-edge of length 1
+Node 50: branch_node 18
+Node 5: outgoing 't'-edge of length 1
+Node 91: branch_node 31
+Node 10: outgoing 'a'-edge of length 1
+Node 102: branch_node 35
+Node 10: outgoing 'c'-edge of length 1
+Node 42: branch_node 15
+Node 10: outgoing 'g'-edge of length 1
+Node 10: leaf 5
+Node 10: outgoing 't'-edge of length 52
+Node 15: leaf 53
+Node 15: outgoing 'a'-edge of length 3
+Node 60: branch_node 23
+Node 15: outgoing 'g'-edge of length 1
+Node 36: branch_node 13
+Node 15: outgoing 't'-edge of length 2
+Node 139: branch_node 52
+Node 18: outgoing 'a'-edge of length 1
+Node 81: branch_node 28
+Node 18: outgoing 'c'-edge of length 1
+Node 63: branch_node 24
+Node 18: outgoing 'g'-edge of length 1
+Node 86: branch_node 30
+Node 18: outgoing 't'-edge of length 1
+Node 31: branch_node 11
+Node 23: outgoing 'a'-edge of length 1
+Node 23: leaf 40
+Node 23: outgoing 'c'-edge of length 17
+Node 68: branch_node 25
+Node 23: outgoing 'g'-edge of length 1
+Node 73: branch_node 26
+Node 23: outgoing 't'-edge of length 1
+Node 23: leaf 56
+Node 23: outgoing '\0'-edge of length 1
+Node 28: leaf 10
+Node 28: outgoing 'a'-edge of length 45
+Node 28: leaf 2
+Node 28: outgoing 't'-edge of length 53
+Node 122: branch_node 46
+Node 31: outgoing 'a'-edge of length 1
+Node 117: branch_node 44
+Node 31: outgoing 'g'-edge of length 2
+Node 47: branch_node 17
+Node 31: outgoing 't'-edge of length 1
+Node 36: leaf 0
+Node 36: outgoing 'a'-edge of length 54
+Node 36: leaf 13
+Node 36: outgoing 'g'-edge of length 41
+Node 39: leaf 1
+Node 39: outgoing 'a'-edge of length 54
+Node 39: leaf 14
+Node 39: outgoing 'g'-edge of length 41
+Node 28: branch_node 10
+Node 42: outgoing 'a'-edge of length 1
+Node 42: leaf 39
+Node 42: outgoing 'c'-edge of length 17
+Node 42: leaf 15
+Node 42: outgoing 'g'-edge of length 41
+Node 96: branch_node 33
+Node 47: outgoing 'c'-edge of length 1
+Node 47: leaf 37
+Node 47: outgoing 'g'-edge of length 18
+Node 47: leaf 3
+Node 47: outgoing 't'-edge of length 52
+Node 99: branch_node 34
+Node 50: outgoing 'c'-edge of length 1
+Node 50: leaf 38
+Node 50: outgoing 'g'-edge of length 18
+Node 50: leaf 4
+Node 50: outgoing 't'-edge of length 52
+Node 55: leaf 22
+Node 55: outgoing 'g'-edge of length 33
+Node 55: leaf 12
+Node 55: outgoing 't'-edge of length 43
+Node 60: leaf 23
+Node 60: outgoing 'g'-edge of length 32
+Node 60: leaf 7
+Node 60: outgoing 't'-edge of length 48
+Node 107: branch_node 41
+Node 63: outgoing 'a'-edge of length 1
+Node 63: leaf 24
+Node 63: outgoing 'g'-edge of length 32
+Node 63: leaf 8
+Node 63: outgoing 't'-edge of length 48
+Node 68: leaf 16
+Node 68: outgoing 'a'-edge of length 40
+Node 68: leaf 25
+Node 68: outgoing 't'-edge of length 31
+Node 73: leaf 26
+Node 73: outgoing 'c'-edge of length 30
+Node 73: leaf 9
+Node 73: outgoing 'g'-edge of length 47
+Node 133: branch_node 50
+Node 78: outgoing 'a'-edge of length 1
+Node 78: leaf 27
+Node 78: outgoing 'c'-edge of length 28
+Node 136: branch_node 51
+Node 81: outgoing 'a'-edge of length 1
+Node 81: leaf 28
+Node 81: outgoing 'c'-edge of length 28
+Node 81: leaf 29
+Node 81: outgoing 't'-edge of length 27
+Node 86: leaf 30
+Node 86: outgoing 'a'-edge of length 26
+Node 39: branch_node 14
+Node 86: outgoing 'g'-edge of length 1
+Node 91: leaf 6
+Node 91: outgoing 'c'-edge of length 50
+Node 91: leaf 31
+Node 91: outgoing 'g'-edge of length 25
+Node 96: leaf 17
+Node 96: outgoing 'c'-edge of length 37
+Node 96: leaf 33
+Node 96: outgoing 'g'-edge of length 21
+Node 130: branch_node 49
+Node 99: outgoing 'c'-edge of length 2
+Node 99: leaf 34
+Node 99: outgoing 'g'-edge of length 21
+Node 78: branch_node 27
+Node 102: outgoing 'c'-edge of length 1
+Node 102: leaf 35
+Node 102: outgoing 'g'-edge of length 21
+Node 107: leaf 41
+Node 107: outgoing 'g'-edge of length 14
+Node 107: leaf 36
+Node 107: outgoing 't'-edge of length 19
+Node 112: leaf 45
+Node 112: outgoing 'a'-edge of length 10
+Node 112: leaf 43
+Node 112: outgoing 'g'-edge of length 12
+Node 112: leaf 32
+Node 112: outgoing 't'-edge of length 23
+Node 117: leaf 44
+Node 117: outgoing 'a'-edge of length 10
+Node 117: leaf 42
+Node 117: outgoing 'g'-edge of length 12
+Node 122: leaf 46
+Node 122: outgoing 'a'-edge of length 9
+Node 122: leaf 11
+Node 122: outgoing 'c'-edge of length 44
+Node 125: leaf 47
+Node 125: outgoing 'a'-edge of length 9
+Node 55: branch_node 22
+Node 125: outgoing 'c'-edge of length 1
+Node 125: leaf 48
+Node 125: outgoing 't'-edge of length 8
+Node 130: leaf 18
+Node 130: outgoing 'a'-edge of length 35
+Node 130: leaf 49
+Node 130: outgoing 'c'-edge of length 4
+Node 133: leaf 19
+Node 133: outgoing 'a'-edge of length 35
+Node 133: leaf 50
+Node 133: outgoing 'c'-edge of length 4
+Node 136: leaf 20
+Node 136: outgoing 'a'-edge of length 35
+Node 136: leaf 51
+Node 136: outgoing 'c'-edge of length 4
+Node 139: leaf 21
+Node 139: outgoing 'a'-edge of length 35
+Node 139: leaf 52
+Node 139: outgoing 'c'-edge of length 4
+Node 139: leaf 54
+Node 139: outgoing 'g'-edge of length 2
+Node 112: branch_node 43
+Node 144: outgoing 'a'-edge of length 1
+Node 144: leaf 55
+Node 144: outgoing '\0'-edge of length 1
+edge: \4 to branch node with headposition 4
+Node 5(depth 1) is linked to node (0,depth 0)
+Node 5(depth 1) is linked to node (0,depth 0)
+edge: \5 to branch node with headposition 5
+Node 10(depth 1) is linked to node (0,depth 0)
+Node 10(depth 1) is linked to node (0,depth 0)
+edge: \7 to branch node with headposition 7
+Node 15(depth 2) is linked to node (18,depth 1)
+Node 15(depth 2) is linked to node (18,depth 1)
+edge: \8 to branch node with headposition 8
+Node 18(depth 1) is linked to node (0,depth 0)
+Node 18(depth 1) is linked to node (0,depth 0)
+edge: \9 to branch node with headposition 9
+Node 23(depth 1) is linked to node (0,depth 0)
+Node 23(depth 1) is linked to node (0,depth 0)
+edge: \10 to branch node with headposition 10
+Node 28(depth 3) is linked to node (31,depth 2)
+Node 28(depth 3) is linked to node (31,depth 2)
+edge: \11 to branch node with headposition 11
+Node 31(depth 2) is linked to node (5,depth 1)
+Node 31(depth 2) is linked to node (5,depth 1)
+edge: \13 to branch node with headposition 13
+Node 36(depth 4) is linked to node (39,depth 3)
+Node 36(depth 4) is linked to node (39,depth 3)
+edge: \14 to branch node with headposition 14
+Node 39(depth 3) is linked to node (42,depth 2)
+Node 39(depth 3) is linked to node (42,depth 2)
+edge: \15 to branch node with headposition 15
+Node 42(depth 2) is linked to node (23,depth 1)
+Node 42(depth 2) is linked to node (23,depth 1)
+edge: \17 to branch node with headposition 17
+Node 47(depth 3) is linked to node (50,depth 2)
+Node 47(depth 3) is linked to node (50,depth 2)
+edge: \18 to branch node with headposition 18
+Node 50(depth 2) is linked to node (10,depth 1)
+Node 50(depth 2) is linked to node (10,depth 1)
+edge: \22 to branch node with headposition 22
+Node 55(depth 3) is linked to node (15,depth 2)
+Node 55(depth 3) is linked to node (15,depth 2)
+edge: \23 to branch node with headposition 23
+Node 60(depth 3) is linked to node (63,depth 2)
+Node 60(depth 3) is linked to node (63,depth 2)
+edge: \24 to branch node with headposition 24
+Node 63(depth 2) is linked to node (23,depth 1)
+Node 63(depth 2) is linked to node (23,depth 1)
+edge: \25 to branch node with headposition 25
+Node 68(depth 2) is linked to node (23,depth 1)
+Node 68(depth 2) is linked to node (23,depth 1)
+edge: \26 to branch node with headposition 26
+Node 73(depth 2) is linked to node (10,depth 1)
+Node 73(depth 2) is linked to node (10,depth 1)
+edge: \27 to branch node with headposition 27
+Node 78(depth 3) is linked to node (81,depth 2)
+Node 78(depth 3) is linked to node (81,depth 2)
+edge: \28 to branch node with headposition 28
+Node 81(depth 2) is linked to node (18,depth 1)
+Node 81(depth 2) is linked to node (18,depth 1)
+edge: \30 to branch node with headposition 30
+Node 86(depth 2) is linked to node (10,depth 1)
+Node 86(depth 2) is linked to node (10,depth 1)
+edge: \31 to branch node with headposition 31
+Node 91(depth 2) is linked to node (5,depth 1)
+Node 91(depth 2) is linked to node (5,depth 1)
+edge: ! to branch node with headposition 33
+Node 96(depth 4) is linked to node (99,depth 3)
+Node 96(depth 4) is linked to node (99,depth 3)
+edge: " to branch node with headposition 34
+Node 99(depth 3) is linked to node (102,depth 2)
+Node 99(depth 3) is linked to node (102,depth 2)
+edge: # to branch node with headposition 35
+Node 102(depth 2) is linked to node (18,depth 1)
+Node 102(depth 2) is linked to node (18,depth 1)
+edge: ) to branch node with headposition 41
+Node 107(depth 3) is linked to node (31,depth 2)
+Node 107(depth 3) is linked to node (31,depth 2)
+edge: + to branch node with headposition 43
+Node 112(depth 3) is linked to node (31,depth 2)
+Node 112(depth 3) is linked to node (31,depth 2)
+edge: , to branch node with headposition 44
+Node 117(depth 4) is linked to node (112,depth 3)
+Node 117(depth 4) is linked to node (112,depth 3)
+edge: . to branch node with headposition 46
+Node 122(depth 3) is linked to node (125,depth 2)
+Node 122(depth 3) is linked to node (125,depth 2)
+edge: / to branch node with headposition 47
+Node 125(depth 2) is linked to node (5,depth 1)
+Node 125(depth 2) is linked to node (5,depth 1)
+edge: 1 to branch node with headposition 49
+Node 130(depth 5) is linked to node (133,depth 4)
+Node 130(depth 5) is linked to node (133,depth 4)
+edge: 2 to branch node with headposition 50
+Node 133(depth 4) is linked to node (136,depth 3)
+Node 133(depth 4) is linked to node (136,depth 3)
+edge: 3 to branch node with headposition 51
+Node 136(depth 3) is linked to node (139,depth 2)
+Node 136(depth 3) is linked to node (139,depth 2)
+edge: 4 to branch node with headposition 52
+Node 139(depth 2) is linked to node (5,depth 1)
+Node 139(depth 2) is linked to node (5,depth 1)
+edge: 7 to branch node with headposition 55
+Node 144(depth 2) is linked to node (23,depth 1)
+Node 144(depth 2) is linked to node (23,depth 1)
+#edgecount 92 identitycount 27
+Toci application for genome alignment under HPC environments
+Final Time: 0.00266218

@@ -77,7 +77,7 @@ DECLAREARRAYSTRUCT(Nodeinfo);
   computation of the maximal matches.
 */
 
-typedef struct
+struct Maxmatchinfo
 {
   Suffixtree *stree;              // reference to suffix tree of subject-seq
   ArrayNodeinfo commondepthstack; // stack to store depth values
@@ -91,7 +91,7 @@ typedef struct
        depthofpreviousmaxloc;     // the depth of the previous maxloc
   Processmatchfunction processmatch; // this function processes found match
   void *processinfo;            // first arg. when calling previous function
-} Maxmatchinfo;
+};
 
 //\IgnoreLatex{
 
@@ -99,7 +99,6 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
   Uchar *ptr1 = start1,
         *ptr2 = start2;
-
   while(ptr1 <= end1 &&
         ptr2 <= end2 &&
         *ptr1 == *ptr2)
@@ -222,6 +221,9 @@ static Sint processleaf(Uint leafindex,/*@unused@*/ Bref lcpnode,void *info)
         lcplength = father->querycommondepth;
       }
     }
+    /*fprintf(stderr,"%s:maxmatchinfo->maxloc.locstring.start:%lu:qry:%lu\n",
+            __func__,maxmatchinfo->maxloc.locstring.start,
+            (Uint) (maxmatchinfo->querysuffix-maxmatchinfo->query));*/
     if(maxmatchinfo->processmatch(
                 maxmatchinfo->processinfo,
                 lcplength,                           // length of match
@@ -422,7 +424,6 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
       return -2;
     }
   }
-  //fprintf(stderr,"%s:%lu\n",__func__,ploc->locstring.start);
   return 0;
 }
 
@@ -475,7 +476,9 @@ Sint findmaxmatches(Suffixtree *stree,
        querysubstringend < query + querylen - 1; 
        maxmatchinfo.querysuffix++, querysubstringend++)
   {
-    fprintf(stderr,"%lu\n",ploc.locstring.start);
+    fprintf(stdout,"R:%lu|%lu,Q:%lu\n",ploc.locstring.start+1, 
+                   ploc.locstring.length, (Uint) 
+                   (maxmatchinfo.querysuffix-maxmatchinfo.query)+1);
     if(ploc.locstring.length >= minmatchlength &&
        enumeratemaxmatches(&maxmatchinfo,&ploc) != 0)
     {
@@ -498,7 +501,8 @@ Sint findmaxmatches(Suffixtree *stree,
   }
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {
-    fprintf(stderr,"%lu\n",ploc.locstring.start);
+    fprintf(stdout,"R:%lu,Q:%lu\n",ploc.locstring.start, (Uint) 
+          (maxmatchinfo.querysuffix-maxmatchinfo.query));
     if(enumeratemaxmatches (&maxmatchinfo,&ploc) != 0)
     {
       return -2;
@@ -506,6 +510,7 @@ Sint findmaxmatches(Suffixtree *stree,
     linklocstree (stree, &ploc, &ploc);
     maxmatchinfo.querysuffix++;
   }
+  fprintf(stdout,"Query:%lu\n",(Uint) maxmatchinfo.query);
   FREEARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   FREEARRAY(&maxmatchinfo.matchpath,Pathinfo);
   return 0;

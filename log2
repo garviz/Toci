@@ -1,0 +1,7 @@
+# reading input file "fasta/ref.fa" of length 57
+# construct suffix tree for sequence of length 57
+# (maximum reference length is 2305843009213693948)
+# (maximum query length is 18446744073709551615)
+# reading input file "fasta/qry.fa" of length 57
+# matching query-file "fasta/qry.fa"
+# against subject-file "fasta/ref.fa"

@@ -21,13 +21,13 @@
   query sequence.
 */
 
-typedef struct
+struct MUMcandidate
 {
   Uint mumlength,    // length of the mum
        dbstart,      // start position in the subject-sequence
        queryseq,     // number of the query sequence
        querystart;   // start position in the query sequence      
-} MUMcandidate;     // \Typedef{MUMcandidate}
+};     
 
 /*
   We store MUM-candidates in a table and hence declare a corresponding

@@ -105,7 +105,7 @@ Reference *firstnodedfs(Suffixtree *stree,DFSstate *dfsstate,
                                   DFSstate *dfsstate);
 void showtable(Suffixtree *stree,bool final);
 void checkstree(Suffixtree *stree);
-void showstree(Suffixtree *stree);
+void showstree(Suffixtree *stree, Uint length);
 void showstate(Suffixtree *stree);
 void showlocation(FILE *fp,Suffixtree *stree,Location *loc);
 void checklocation(Suffixtree *stree,Location *loc);

@@ -25,8 +25,6 @@
   and suffix links.
 */
 
-//#define SETVAL(E,VAL) *(E) = VAL
-
 /*
   \texttt{GETBOTH} retrieves the \emph{depth} and the \emph{headposition} of 
   a branching node referred to by \texttt{PT}. In case, we need these values
@@ -175,11 +173,7 @@
   it is possible to start at the node referenced by \emph{onsuccpath}.
 */
 
-#if defined(STREELARGE) || defined(STREESMALL)
-#define RECALLSUCC(S)             stree->onsuccpath = S
-#else
 #define RECALLSUCC(S)             /* Nothing */
-#endif
 
 /*
   The following three macros handle the setting of the suffix link in a 
@@ -194,17 +188,7 @@
 #define RECALLBRANCHADDRESS(A)    stree->setlink = (A) + 1;\
                                   stree->setatnewleaf = false
 
-#ifdef STREEHUGE
 #define SETNILBIT                 *(stree->setlink) = NILBIT
-#else
-#define SETNILBIT                 if(stree->setatnewleaf)\
-                                  {\
-                                    *(stree->setlink) = NILBIT;\
-                                  } else\
-                                  {\
-                                    *(stree->setlink) |= NILBIT;\
-                                  }
-#endif
 
 #define SETMAXBRANCHDEPTH(D)      if((D) > stree->maxbranchdepth)\
                                   {\
@@ -219,25 +203,25 @@
 #define SHOWINDEX(NODE)\
         if((NODE) == UNDEFINEDREFERENCE)\
         {\
-          fprintf(stderr,"UNDEFINEDREFERENCE");\
+          fprintf(stdout,"UNDEFINEDREFERENCE");\
         } else\
         {\
           if(NILPTR(NODE))\
           {\
-            fprintf(stderr,"NILPTR");\
+            fprintf(stdout,"NILPTR");\
           } else\
           {\
             if(ISLEAF(NODE))\
             {\
-              fprintf(stderr,"Leaf %lu",(long unsigned int) GETLEAFINDEX(NODE));\
+              fprintf(stdout,"Leaf %lu",(long unsigned int) GETLEAFINDEX(NODE));\
             } else\
             {\
               if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
               {\
-                fprintf(stderr,"Large %lu",(long unsigned int) GETBRANCHINDEX(NODE));\
+                fprintf(stdout,"Large %lu",(long unsigned int) GETBRANCHINDEX(NODE));\
               } else\
               {\
-                fprintf(stderr,"Small %lu",(long unsigned int) NODE);\
+                fprintf(stdout,"Small %lu",(long unsigned int) NODE);\
               }\
             }\
           }\
@@ -250,7 +234,7 @@
 void showtable(Suffixtree *stree,bool final);
 void checkstree(Suffixtree *stree);
 void showstate(Suffixtree *stree);
-void showstree(Suffixtree *stree);
+void showstree(Suffixtree *stree, Uint length);
 void enumlocations(Suffixtree *stree,void(*processloc)(Suffixtree *stree,Location *));
 void checklocation(Suffixtree *stree,Location *loc);
 

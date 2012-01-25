@@ -32,7 +32,7 @@
   required while computing and processing the matches.
 */
 
-typedef struct
+struct Matchprocessinfo
 {
   Suffixtree stree;            // the suffix tree of the subject-sequence
   Multiseq *subjectmultiseq,   // reference to multiseq of subject
@@ -51,7 +51,7 @@ typedef struct
        cmumcand,               // compute MUM candidates
        cmum,                   // compute MUMs
        currentisrcmatch;       // true iff currently rc-matches are computed
-} Matchprocessinfo;            // \Typedef{Matchprocessinfo}
+};
 
 //\IgnoreLatex{
 
@@ -283,7 +283,7 @@ static Sint showmaximalmatch (void *info,
 {
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
-  /*if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
+  if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
      &&
      !matchprocessinfo->fourcolumn)
   {
@@ -311,7 +311,7 @@ static Sint showmaximalmatch (void *info,
   {
     printf ("%8lu  ", (long unsigned int) (querystart+1));
   }
-  printf ("%8lu\n", (long unsigned int) matchlength);*/
+  printf ("%8lu\n", (long unsigned int) matchlength);
   return 0;
 }
 

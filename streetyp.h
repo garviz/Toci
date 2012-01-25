@@ -53,7 +53,7 @@ struct Branchinfo
   Reference firstchild,     // the reference to the first child
             branchbrother;  // the reference to the right brother; 
                             // if this doesn't exist then it's \texttt{NULL}
-};               // \Typedef{Branchinfo}
+};
 
 /*
   For each leaf, we store a reference to its right brother, which is 
@@ -83,7 +83,7 @@ typedef Reference Leafinfo;  // \Typedef{Leafinfo}
 
 //\Ignore{
 
-struct Suffixtreetype
+struct Suffixtree
 {
   Uint textlen,               // the length of the input string
        *leaftab,              // stores the brother-references of the leafs
@@ -131,14 +131,10 @@ struct Suffixtreetype
 
   char * (*showsymbolstree)(Uchar,Uchar *);
   Uchar *alphabet;
-  Uint splitleafedge,
-       splitinternaledge,
-       artificial,
-       insertleafcalls,
+  Uint insertleafcalls,
        largelinks,
        largelinkwork,
        largelinklinkwork,
-       multiplications,
        nodecount,
        *maxset;
   void *generalcounter;
@@ -147,8 +143,6 @@ struct Suffixtreetype
 #endif
 
 };
-
-typedef struct Suffixtreetype Suffixtree;
 
 DECLAREARRAYSTRUCT(Bref);
 

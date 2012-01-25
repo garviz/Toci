@@ -23,13 +23,11 @@ use warnings;
 
 open FH, $ARGV[0] or die "Can not open $ARGV[0]";
 
-my @file=<FH>;
+my $start=140085083372389-13469;
+
+while(<FH>) {
+    chomp;
+    print $_-$start . "\n";
+}
 
 close FH;
-
-for (my $i=1;$i<$#file;$i++) {
-    next if (abs($file[$i-1]-$file[$i])==1);
-    #next if (chomp($file[$i-1])==chomp($file[$i]));
-    print $file[$i-1];
-    print $file[$i];
-}

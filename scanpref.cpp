@@ -12,6 +12,7 @@
 
 static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
+  fprintf(stdout,"start1:%lu,start2:%lu\n",(Uint) start1,(Uint) start2);
   register Uchar *ptr1 = start1, 
                   *ptr2 = start2;
 
@@ -33,9 +34,9 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
        node, distance = 0, prefixlen, headposition, tmpnodedepth,
        edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
-
-  /* fprintf(stderr,"scanprefixfromnodestree node:%lu",
-          (unsigned long int) BRADDR2NUM(stree,btptr));*/
+  /*fprintf(stderr,"%s,left:%lu,right:%lu,rescanlength:%lu\n",__func__,
+          (Uint) left, (Uint) right, rescanlength);
+  fprintf(stderr,"Branch:%lu",(unsigned long int) BRADDR2NUM(stree,btptr));*/
   lptr = left;
   nodeptr = btptr;
   if(nodeptr == stree->branchtab)
@@ -46,7 +47,6 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   {
     GETBOTH(nodedepth,headposition,nodeptr);
   }
-  /* fprintf(stderr," depth: %lu\n", nodedepth);*/
   loc->nextnode.toleaf = false;
   loc->nextnode.address = nodeptr;
   loc->locstring.start = headposition;
@@ -63,13 +63,11 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   {
     if(lptr > right)   // check for empty word
     {
-      //fprintf(stderr,"empty word\n");
       return NULL;
     }
     firstchar = *lptr;
     if(nodeptr == stree->branchtab)  // at the root
     {
-      //fprintf(stderr,"at the root\n");
       if((node = stree->rootchildren[(Uint) firstchar]) == UNDEFINEDREFERENCE)
       {
         return lptr;
@@ -323,7 +321,6 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   {
     GETBOTH(nodedepth,headposition,nodeptr);
   }
-  //fprintf(stderr," current depth %lu\n", nodedepth);
   loc->nextnode.toleaf = false;
   loc->nextnode.address = nodeptr;
   loc->locstring.start = headposition;
