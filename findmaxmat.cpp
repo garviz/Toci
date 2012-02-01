@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include "streedef.h"
+#include "streeacc.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
 

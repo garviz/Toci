@@ -18,6 +18,7 @@
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"
+#include "distribute.h"
 
 #define FUNCLEVEL 4
 
@@ -684,9 +685,11 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
 void freestree(Suffixtree *stree)
 {
   ArrayUint *table;
-//  showtable(stree,true);
-  showstree(stree, (Uint) 20);
-  checkstree(stree);
+  Uint *consumption;
+  Uint size=200;
+  consumption=(Uint *) malloc(sizeof(Uint));
+  *consumption=0;
+  splitstreeH(stree,consumption,size);
   FREESPACE(stree->leaftab);
   FREESPACE(stree->rootchildren);
   FREESPACE(stree->branchtab);

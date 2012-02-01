@@ -12,7 +12,7 @@
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"
-#include "streeproto.h"
+#include "distribute.h"
 
 #define SETLEAFUSED(V)   SETIBIT(leafused,V)
 #define ISLEAFUSED(V)    ISIBITSET(leafused,V)
@@ -25,10 +25,12 @@
         {\
           loc.remain = (Uint) r;\
           loc.locstring.length = DP + loc.edgelen - r;\
+          showlocation(stdout,stree,&loc);\
+          printf("\n");\
           processloc(stree,&loc);\
         }
 
-static void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,
+void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,
                                 Uchar *right)
 {
   Uchar *ptr;
@@ -48,7 +50,7 @@ static void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,
   }
 }
 
-static char *showsymbol(Uchar c)
+char *showsymbol(Uchar c)
 {
   static char outbuf[100+1];
 
@@ -239,9 +241,9 @@ void checkstree(Suffixtree *stree)
                           (Uint) leafindex);
           exit(EXIT_FAILURE);
         }
-        fprintf(stdout,"Node %lu: leaf %lu\n",
-                          (Uint) BRADDR2NUM(stree,btptr),
-                          (Uint) leafindex);
+        //SHOWINDEX(succ)
+        //fprintf(stdout,": leaf %lu\n",
+        //                  (Uint) leafindex);
         SETLEAFUSED(leafindex);
         if(depth + leafindex < stree->textlen)
         {
@@ -265,9 +267,8 @@ void checkstree(Suffixtree *stree)
                           (Uint) succheadposition);
           exit(EXIT_FAILURE);
         }
-        fprintf(stdout,"Node %lu: branch_node %lu\n",
-                        (Uint) GETBRANCHINDEX(succ),
-                        (Uint) succheadposition);
+        //SHOWINDEX(succ)
+        //fprintf(stdout,": branch_node %lu\n", (Uint) succheadposition);
         SETBRANCHUSED(succheadposition);
         succ = GETBROTHER(succptr);
       }
@@ -280,10 +281,10 @@ void checkstree(Suffixtree *stree)
         exit(EXIT_FAILURE);
       } else
       {
-        fprintf(stdout,"Node %lu: outgoing '%s'-edge of length %lu\n",
-                        (Uint) BRADDR2NUM(stree,btptr),
-                        showsymbol((Uchar) currentfirstchar),
-                        (Uint)edgelen);
+        //SHOWINDEX(succ)
+        //fprintf(stdout,": outgoing '%s'-edge of length %lu\n",
+        //                showsymbol((Uchar) currentfirstchar),
+        //                (Uint)edgelen);
       }
       if(prevfirstchar >= currentfirstchar)
       {
@@ -312,7 +313,7 @@ void checkstree(Suffixtree *stree)
     {
       fprintf(stderr,"no leaf edge to %lu\n",(Uint) j);
       exit(EXIT_FAILURE);
-    } 
+    }
   }
   btptr = stree->branchtab + LARGEINTS; 
   while(btptr < stree->nextfreebranch)
@@ -325,8 +326,8 @@ void checkstree(Suffixtree *stree)
       exit(EXIT_FAILURE);
     } else
     {
-      fprintf(stdout,"edge: %s to branch node with headposition %lu\n",
-                  showsymbol((Uchar) headposition), (Uint) headposition);
+      //fprintf(stdout,"edge: %s to branch node with headposition %lu\n",
+      //            showsymbol((Uchar) headposition), (Uint) headposition);
     }
     if(ISLARGE(*btptr))
     {
@@ -348,11 +349,10 @@ void checkstree(Suffixtree *stree)
       exit(EXIT_FAILURE);
     } else
     {
-      fprintf(stdout,"Node %lu(depth %lu) is linked to node (%lu,depth %lu)\n",
-                      (Uint) BRADDR2NUM(stree,btptr),
-                      (Uint) depth,
-                      (Uint) BRADDR2NUM(stree,slinkptr),
-                      (Uint) linkdepth);
+      //SHOWINDEX(*btptr)
+      //fprintf(stdout,"(depth %lu) is linked to ", (Uint) depth);
+      //SHOWINDEX(*slinkptr)
+      //fprintf(stdout,",depth %lu)\n", (Uint) linkdepth);
     }
     if(headposition + 1 < linkheadposition)
     {
@@ -365,11 +365,11 @@ void checkstree(Suffixtree *stree)
       exit(EXIT_FAILURE);
     } else
     {
-      fprintf(stdout,"Node %lu(depth %lu) is linked to node (%lu,depth %lu)\n",
-                      (Uint) BRADDR2NUM(stree,btptr),
-                      (Uint) depth,
-                      (Uint) BRADDR2NUM(stree,slinkptr),
-                      (Uint) linkdepth);
+      //fprintf(stdout,"Node %lu(depth %lu) is linked to node (%lu,depth %lu)\n",
+      //                (Uint) BRADDR2NUM(stree,btptr),
+      //                (Uint) depth,
+      //                (Uint) BRADDR2NUM(stree,slinkptr),
+      //                (Uint) linkdepth);
     }
     NEXTNODE(btptr);
   }
@@ -386,7 +386,7 @@ void checkstree(Suffixtree *stree)
               (Sint) identitycount);
 }
 
-static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr, Uint length)
+static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
 {
   Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
        depth, headposition; 
@@ -403,6 +403,7 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr, Uint length)
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
       showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+      fprintf(stdout," %lu",getEdgelength(leftpointer,stree->sentinel));
       (void) putchar('\n');
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
     } else
@@ -412,14 +413,15 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr, Uint length)
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
       showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
+      fprintf(stdout," %lu",getEdgelength(leftpointer,leftpointer+edgelen-1));
       (void) putchar('\n');
-      showsubtree(stree,indent+6,succptr, length);
+      showsubtree(stree,indent+2,succptr);
       succ = GETBROTHER(succptr);
     } 
   } while(!NILPTR(succ));
 }
 
-void showstree(Suffixtree *stree, Uint length)
+void showstree(Suffixtree *stree)
 {
   Uint *btptr, *rcptr, *largeptr, *succptr, succcount, depth, distance, headposition, succ, succdepth, edgelen, i;
   Uchar *leftpointer;
@@ -432,25 +434,21 @@ void showstree(Suffixtree *stree, Uint length)
     if(*rcptr != UNDEFINEDREFERENCE)
     {
       SHOWINDEX(*rcptr);
-      btptr = stree->branchtab;
-      GETBOTH(depth,headposition,btptr);
       if(ISLEAF(*rcptr))
       {
         leftpointer = stree->text + GETLEAFINDEX(*rcptr);
-/*      edgelen = stree->textlen + 1 - GETLEAFINDEX(*rcptr) - depth;
-        fprintf(stdout," edgelen:%lu ", edgelen);*/
         showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
-        (void) printf("IS LEAF\n");
+      fprintf(stdout," %lu",getEdgelength(leftpointer,stree->sentinel));
+        (void) putchar('\n');
       } else
       {
         btptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
         GETBOTH(succdepth,headposition,btptr);
-        edgelen = stree->textlen + 1 - GETLEAFINDEX(*rcptr) - succdepth;
-        fprintf(stdout," edgelen:%lu ", edgelen);
         leftpointer = stree->text + headposition;
         showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
+        fprintf(stdout," %lu",getEdgelength(leftpointer,leftpointer+succdepth-1));
         (void) putchar('\n');
-        //showsubtree(stree,UintConst(6),btptr, length);
+        showsubtree(stree,UintConst(2),btptr);
       }
     }
   }
@@ -757,6 +755,8 @@ void enumlocations(Suffixtree *stree,
   loc.nextnode.toleaf = false;
   loc.nextnode.address = stree->branchtab;
   loc.locstring.start = loc.locstring.length = 0;
+  showlocation(stdout,stree,&loc);
+  fprintf(stdout,"\n");
   processloc(stree,&loc);
   for(rcptr = stree->rootchildren; 
       rcptr <= stree->rootchildren + LARGESTCHARINDEX;

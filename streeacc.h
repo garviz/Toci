@@ -203,25 +203,25 @@
 #define SHOWINDEX(NODE)\
         if((NODE) == UNDEFINEDREFERENCE)\
         {\
-          fprintf(stdout,"UNDEFINEDREFERENCE");\
+          fprintf(stdout,"UNDEFINEDREFERENCE ");\
         } else\
         {\
           if(NILPTR(NODE))\
           {\
-            fprintf(stdout,"NILPTR");\
+            fprintf(stdout,"NILPTR ");\
           } else\
           {\
             if(ISLEAF(NODE))\
             {\
-              fprintf(stdout,"Leaf %lu",(long unsigned int) GETLEAFINDEX(NODE));\
+              fprintf(stdout,"Leaf %lu ",(long unsigned int) GETLEAFINDEX(NODE));\
             } else\
             {\
               if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
               {\
-                fprintf(stdout,"Large %lu",(long unsigned int) GETBRANCHINDEX(NODE));\
+                fprintf(stdout,"Large %lu ",(long unsigned int) GETBRANCHINDEX(NODE));\
               } else\
               {\
-                fprintf(stdout,"Small %lu",(long unsigned int) NODE);\
+                fprintf(stdout,"Small %lu ",(long unsigned int) NODE);\
               }\
             }\
           }\
@@ -234,9 +234,10 @@
 void showtable(Suffixtree *stree,bool final);
 void checkstree(Suffixtree *stree);
 void showstate(Suffixtree *stree);
-void showstree(Suffixtree *stree, Uint length);
+void showstree(Suffixtree *stree);
 void enumlocations(Suffixtree *stree,void(*processloc)(Suffixtree *stree,Location *));
 void checklocation(Suffixtree *stree,Location *loc);
+void showlocation(FILE *fp,Suffixtree *stree,Location *loc);
 
 #endif
 
