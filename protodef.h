@@ -71,6 +71,8 @@ void showspace(void);
 Uint getspacepeak(void);
 void showmemsize(void);
 Uint getmaxtextlenstree(void);
+void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,
+                                Uchar *right);
 #ifdef __cplusplus
 }
 #endif

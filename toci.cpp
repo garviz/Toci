@@ -25,6 +25,7 @@
 #include "protodef.h"
 #include "errordef.h"
 #include "maxmatdef.h"
+#include "distribute.h"
 
 /*EE
   This module contains the main function of maxmatch3. It calls
@@ -101,6 +102,7 @@ int main(int argc, char *argv[])
     } else {
         cout << "Process: " << rank << endl;
     }
+    encoding("ACTGGTACTGCTTGCATGCT");
     MPI_Finalize();
     cout << "Final Time: " << finish-start << endl;
     return EXIT_SUCCESS;

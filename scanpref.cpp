@@ -26,7 +26,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   return (Uint) (ptr1-start1);
 }
 
-/*@null@*/ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
+Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
                                            Bref btptr,Uchar *left,
                                            Uchar *right,Uint rescanlength)
 {
@@ -34,9 +34,6 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
        node, distance = 0, prefixlen, headposition, tmpnodedepth,
        edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
-  /*fprintf(stderr,"%s,left:%lu,right:%lu,rescanlength:%lu\n",__func__,
-          (Uint) left, (Uint) right, rescanlength);
-  fprintf(stderr,"Branch:%lu",(unsigned long int) BRADDR2NUM(stree,btptr));*/
   lptr = left;
   nodeptr = btptr;
   if(nodeptr == stree->branchtab)
@@ -70,6 +67,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
     {
       if((node = stree->rootchildren[(Uint) firstchar]) == UNDEFINEDREFERENCE)
       {
+        fprintf(stderr,"%d UNDEFINEDREFERENCE\n",__LINE__);
         return lptr;
       }
       if(ISLEAF(node))

@@ -15,6 +15,9 @@
  *
  * =====================================================================================
  */
+#include "streetyp.h"
+
 Uint getEdgelength(Uchar *left,Uchar *right);
 void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size);
 void splitsubstreeH(Suffixtree *stree,Uint *consumption,Uint size,Uint *btptr);
+void encoding(string example);

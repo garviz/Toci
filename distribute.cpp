@@ -16,6 +16,9 @@
  * =====================================================================================
  */
 #include <string.h>
+#include <bitset>
+#include <iostream>
+#include <string>
 #include "types.h"
 #include "intbits.h"
 #include "visible.h"
@@ -23,6 +26,8 @@
 #include "streeacc.h"
 #include "protodef.h"
 #include "spacedef.h"
+using namespace std;
+
 
 Uint getEdgelength(Uchar *left,Uchar *right)
 {
@@ -104,3 +109,35 @@ void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)
   fprintf(stdout,"Consumption so far: %lu\n", *consumption);
 }
 
+    
+void encoding(string example) {
+    unsigned long int enc_string;
+    for (int i=31; i>=0; i--)
+        enc_string &= ~(1<<i);
+
+    for(int i=0, j=31; i<16 && j>0; i++, j-=2) {
+        switch (example.at(i))
+        {
+            case 'A': 
+                enc_string &= ~(1<<j); enc_string &= ~(1<<(j-1));
+                break;
+            case 'C':
+                enc_string &= ~(1<<j); enc_string |= (1<<(j-1));
+                break;
+            case 'G':
+                enc_string |= (1<<j); enc_string &= ~(1<<(j-1));
+                break;
+            case 'T':
+                enc_string |= (1<<j); enc_string |= (1<<(j-1));
+                break;
+        }
+   }
+   for (int i=31;i>=0;i--) {
+       if (enc_string & (1<<i)) {
+           fprintf(stderr,"1");
+       } else {
+           fprintf(stderr,"0");
+       }
+   }
+   fprintf(stderr,"\n");
+}
