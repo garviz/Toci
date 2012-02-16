@@ -16,7 +16,6 @@ void rescanstree(Suffixtree *stree,Location *loc,
   Uint *nodeptr, *largeptr = NULL, leafindex, nodedepth, 
        node, distance = 0, prefixlen, headposition, tmpnodedepth;
   Uchar *lptr;
-
   lptr = left;
   nodeptr = btptr; 
   if(nodeptr == stree->branchtab)
@@ -144,5 +143,4 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
       
     }
   } 
-  //fprintf(stderr,"%s:%lu\n",__func__,outloc->locstring.start);
 }

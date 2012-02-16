@@ -105,8 +105,10 @@ void getbranchinfostree(Suffixtree *stree,Uint whichinfo,
                                getlargelinkstree(stree,btptr,
                                                  branchinfo->depth);
     }
-    /* fprintf(stderr,"Suffixlink:%lu,depth:%lu\n",(Uint) BRADDR2NUM(stree,
-                branchinfo->suffixlink),(Uint) branchinfo->depth);*/
+    /*SHOWINDEX((Uint) BRADDR2NUM(stree,btptr));
+    fprintf(stdout,"--> ");
+    SHOWINDEX((Uint) BRADDR2NUM(stree,branchinfo->suffixlink));
+    fprintf(stdout,"\n");*/
   }
   if(which & ACCESSFIRSTCHILD)
   {

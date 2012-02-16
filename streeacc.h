@@ -203,25 +203,25 @@
 #define SHOWINDEX(NODE)\
         if((NODE) == UNDEFINEDREFERENCE)\
         {\
-          fprintf(stdout,"UNDEFINEDREFERENCE ");\
+          fprintf(stdout,"U ");\
         } else\
         {\
           if(NILPTR(NODE))\
           {\
-            fprintf(stdout,"NILPTR ");\
+            fprintf(stdout,"N ");\
           } else\
           {\
             if(ISLEAF(NODE))\
             {\
-              fprintf(stdout,"Leaf %lu ",(long unsigned int) GETLEAFINDEX(NODE));\
+              fprintf(stdout,"Lf-%lu ",(long unsigned int) GETLEAFINDEX(NODE));\
             } else\
             {\
               if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
               {\
-                fprintf(stdout,"Large %lu ",(long unsigned int) GETBRANCHINDEX(NODE));\
+                fprintf(stdout,"L-%lu ",(long unsigned int) GETBRANCHINDEX(NODE));\
               } else\
               {\
-                fprintf(stdout,"Small %lu ",(long unsigned int) NODE);\
+                fprintf(stdout,"S-%lu ",(long unsigned int) NODE);\
               }\
             }\
           }\

@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <omp.h>
 #include "streedef.h"
 #include "streeacc.h"
 #include "spacedef.h"
@@ -222,9 +223,6 @@ static Sint processleaf(Uint leafindex,/*@unused@*/ Bref lcpnode,void *info)
         lcplength = father->querycommondepth;
       }
     }
-    /*fprintf(stderr,"%s:maxmatchinfo->maxloc.locstring.start:%lu:qry:%lu\n",
-            __func__,maxmatchinfo->maxloc.locstring.start,
-            (Uint) (maxmatchinfo->querysuffix-maxmatchinfo->query));*/
     if(maxmatchinfo->processmatch(
                 maxmatchinfo->processinfo,
                 lcplength,                           // length of match
@@ -366,15 +364,15 @@ static Sint processbranch2(/*@unused@*/ Bref nodeptr,void *info)
   The following function computes the maximal matches below location
   \(ploc\). All global information is passed via the 
   \texttt{Maxmatchinfo}-record. At first the number 
-  \texttt{rescanprefixlength} is determined. This is the length of the 
+  \texttt{rescanprefixlength} is determined. This is the length of 
   the current \texttt{querysuffix} that definitely match some suffix 
   of the subject-sequence. Then the suffix tree is scanned starting at
   \texttt{ploc} to find \texttt{maxloc}. During this matching phase,
   all branching nodes visited are stored in \texttt{matchpath}.
-  If \texttt{ploc} is a leaf location, the the corresponding leaf
+  If \texttt{ploc} is a leaf location, then the corresponding leaf
   is directly processed by the function \texttt{processleaf}.
   Otherwise, the \texttt{nextnode} component of \texttt{ploc}
-  is pushed on a stack and a depth first traveral of the 
+  is pushed on a stack and a depth first traversal of 
   the suffix tree below node \texttt{nextnode} is performed.
 */
 
@@ -455,10 +453,12 @@ Sint findmaxmatches(Suffixtree *stree,
   Uchar *querysubstringend;  // ref to end of querysubs. of len. minmatchl.
   Location ploc;
   Maxmatchinfo maxmatchinfo;
-
+  Uchar *omp_Iterator;
+  bool back = false;
+  int res = 0;
   if(querylen < minmatchlength)
   {
-    return 0;
+    return res;
   }
   maxmatchinfo.stree = stree;
   INITARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
@@ -473,46 +473,56 @@ Sint findmaxmatches(Suffixtree *stree,
   (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                   query, querysubstringend,0);
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
-  for (/* Nothing */;
-       querysubstringend < query + querylen - 1; 
-       maxmatchinfo.querysuffix++, querysubstringend++)
+  #pragma omp parallel for num_threads(1) schedule (static) ordered
+  for (omp_Iterator = querysubstringend; omp_Iterator /*querysubstringend*/ < query + querylen - 1; 
+       omp_Iterator++)
   {
-    fprintf(stdout,"R:%lu|%lu,Q:%lu\n",ploc.locstring.start+1, 
-                   ploc.locstring.length, (Uint) 
-                   (maxmatchinfo.querysuffix-maxmatchinfo.query)+1);
-    if(ploc.locstring.length >= minmatchlength &&
-       enumeratemaxmatches(&maxmatchinfo,&ploc) != 0)
-    {
-      return -1;
-    }
-    if (ROOTLOCATION (&ploc))
-    {
-      (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
+    /*fprintf(stdout,"Thread:%d omp_Iterator:%lu %lu %lu %lu\n",omp_get_thread_num(),(Uint)omp_Iterator,
+            ploc.locstring.start+1, 
+                   (Uint) 
+                   (maxmatchinfo.querysuffix-maxmatchinfo.query)+1,
+                   ploc.locstring.length);*/
+    #pragma omp flush (back)
+      if (!back)
+      {
+        if(ploc.locstring.length >= minmatchlength && 
+            enumeratemaxmatches(&maxmatchinfo,&ploc) != 0) 
+        {
+            back = true;
+            #pragma omp flush (back)
+            res = -1;
+            //return res;
+        }
+        if (ROOTLOCATION (&ploc)) 
+        {
+            (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                       maxmatchinfo.querysuffix+1, 
                                       querysubstringend+1,0);
-    }
-    else
-    {
-      linklocstree (stree, &ploc, &ploc);
-      (void) scanprefixstree (stree, &ploc, &ploc,
+        }
+        else 
+        {
+            linklocstree (stree, &ploc, &ploc);
+            (void) scanprefixstree (stree, &ploc, &ploc,
                               maxmatchinfo.querysuffix
                                  + ploc.locstring.length+1,
                               querysubstringend+1,0);
-    }
+        }
+      }
+      maxmatchinfo.querysuffix++; querysubstringend++;
   }
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {
-    fprintf(stdout,"R:%lu,Q:%lu\n",ploc.locstring.start, (Uint) 
-          (maxmatchinfo.querysuffix-maxmatchinfo.query));
+    /*fprintf(stdout,"%lu %lu %lu\n",ploc.locstring.start+1, 
+            (Uint) (maxmatchinfo.querysuffix-maxmatchinfo.query)+1,
+            ploc.locstring.length);*/
     if(enumeratemaxmatches (&maxmatchinfo,&ploc) != 0)
     {
-      return -2;
+      res = -2;
     }
     linklocstree (stree, &ploc, &ploc);
     maxmatchinfo.querysuffix++;
   }
-  fprintf(stdout,"Query:%lu\n",(Uint) maxmatchinfo.query);
   FREEARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   FREEARRAY(&maxmatchinfo.matchpath,Pathinfo);
-  return 0;
+  return res;
 }

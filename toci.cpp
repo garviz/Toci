@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
     } else {
         cout << "Process: " << rank << endl;
     }
-    encoding("ACTGGTACTGCTTGCATGCT");
+    //encoding("ACTGGTACTGCTTGCATGCT");
     MPI_Finalize();
     cout << "Final Time: " << finish-start << endl;
     return EXIT_SUCCESS;

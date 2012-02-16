@@ -28,13 +28,11 @@ my %count = ();
 while(<FH>) {
     chomp;
     my @fields = split;
-    my $src=`grep D- "$ARGV[1]"|grep -w "$fields[1]"|cut -d" " -f1|tr -d "D-"`;
+    my $src=`grep -w "$fields[0]" "$ARGV[1]"|cut -d" " -f1|tr -d "D-"`;
     chomp $src;
-    my $dst=`grep D- "$ARGV[1]"|grep -w "$fields[3]"|cut -d" " -f1|tr -d "D-"`;
+    my $dst=`grep -w "$fields[1]" "$ARGV[1]"|cut -d" " -f1|tr -d "D-"`;
     chomp $dst;
-    for(my $i=0; $i<$fields[0]; $i++) {
-        print "$src-->$dst\n";
-    }
+    print "$src-->$dst\n";
 #   $count{"$src-->$dst"}+=$fields[0];
 }
 close FH;

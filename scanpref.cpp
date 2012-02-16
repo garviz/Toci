@@ -214,7 +214,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
   }
 }
 
-/*@null@*/ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
+Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                    Location *inloc,Uchar *left,
                                    Uchar *right,Uint rescanlength)
 {
