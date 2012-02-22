@@ -13,6 +13,10 @@
 #include <climits>
 #include "chardef.h"
 #include "multidef.h"
+#include "streetyp.h"
+#include "types.h"
+#include "mumcand.h"
+#include "protodef.h"
 
 //}
 
@@ -61,6 +65,32 @@ struct MMcallinfo
        queryfilelist[MAXNUMOFQUERYFILES][PATH_MAX+1]; 
                                 // filenames of the query-sequences
 };                   // \Typedef{MMcallinfo}
+
+/*EE
+  The following structure contains all information
+  required while computing and processing the matches.
+*/
+
+struct Matchprocessinfo
+{
+  Suffixtree stree;            // the suffix tree of the subject-sequence
+  Multiseq *subjectmultiseq,   // reference to multiseq of subject
+           querymultiseq;      // the Multiseq record of the queries
+  ArrayMUMcandidate mumcandtab;// a table containing MUM-candidates
+                               // when option \texttt{-mum} is on
+  Uint minmatchlength,         // minimum length of a match
+       maxdesclength,          // maximum length of a description
+       currentquerylen;        // length of the current query sequence
+  bool showstring,             // is option \texttt{-s} on?
+       showsequencelengths,    // is option \texttt{-L} on?
+       showreversepositions,   // is option \texttt{-c} on?
+       forward,                // compute forward matches
+       fourcolumn,             // is option \texttt{-F} on?
+       reversecomplement,      // compute reverse complement matches
+       cmumcand,               // compute MUM candidates
+       cmum,                   // compute MUMs
+       currentisrcmatch;       // true iff currently rc-matches are computed
+};
 
 /*
   Functions processing a maximal match are of the following type.

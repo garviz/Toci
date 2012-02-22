@@ -17,7 +17,7 @@ ALLOCVIAFATAL	space.cpp	51;"	d	file:
 ARGS_H	args.h	12;"	d
 ARRAYDEF_H	arraydef.h	12;"	d
 ASSIGNDEFAULTSHOWDESC	multidef.h	74;"	d
-ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	135;"	d	file:
+ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	111;"	d	file:
 ArrayCharacters	arraydef.h	/^typedef ArrayUchar ArrayCharacters;     \/\/ \\Typedef{ArrayCharacters}$/;"	t
 ArrayPosition	arraydef.h	/^typedef ArrayUint  ArrayPosition;       \/\/ \\Typedef{ArrayPosition}$/;"	t
 ArrayStrings	arraydef.h	/^struct ArrayStrings$/;"	s
@@ -32,55 +32,55 @@ CHECKADDR	streemac.h	66;"	d
 CHECKARGNUM	args.h	28;"	d
 CHECKARRAYSPACE	arraydef.h	63;"	d
 CHECKARRAYSPACEMULTI	arraydef.h	81;"	d
-CHECKIFLOCATIONISVALID	findmaxmat.cpp	169;"	d	file:
-CHECKSTEP	construct.cpp	731;"	d	file:
-CHECKSTEP	construct.cpp	741;"	d	file:
-CHECKSTEP	construct.cpp	768;"	d	file:
-CHECKSTEP	construct.cpp	778;"	d	file:
-CHECKSTEP	construct.cpp	791;"	d	file:
-CHECKSTEP	construct.cpp	801;"	d	file:
-CHECKSTEP	construct.cpp	825;"	d	file:
-CHECKSTEP	construct.cpp	861;"	d	file:
+CHECKIFLOCATIONISVALID	findmaxmat.cpp	170;"	d	file:
+CHECKSTEP	construct.cpp	722;"	d	file:
+CHECKSTEP	construct.cpp	732;"	d	file:
+CHECKSTEP	construct.cpp	759;"	d	file:
+CHECKSTEP	construct.cpp	769;"	d	file:
+CHECKSTEP	construct.cpp	782;"	d	file:
+CHECKSTEP	construct.cpp	792;"	d	file:
+CHECKSTEP	construct.cpp	816;"	d	file:
+CHECKSTEP	construct.cpp	852;"	d	file:
 CHECKTEXTLEN	construct.cpp	27;"	d	file:
 CHILDREFERSTOLEAF	streehuge.h	92;"	d
 CLEARBITTAB	intbits.h	74;"	d
-COMPLETELARGEFIRST	construct.cpp	728;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	738;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	758;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	775;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	786;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	798;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	821;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	858;"	d	file:
-COMPLETELARGESECOND	construct.cpp	729;"	d	file:
-COMPLETELARGESECOND	construct.cpp	739;"	d	file:
-COMPLETELARGESECOND	construct.cpp	763;"	d	file:
-COMPLETELARGESECOND	construct.cpp	776;"	d	file:
-COMPLETELARGESECOND	construct.cpp	787;"	d	file:
-COMPLETELARGESECOND	construct.cpp	799;"	d	file:
-COMPLETELARGESECOND	construct.cpp	822;"	d	file:
-COMPLETELARGESECOND	construct.cpp	859;"	d	file:
-CONSTRUCT	construct.cpp	726;"	d	file:
-CONSTRUCT	construct.cpp	736;"	d	file:
-CONSTRUCT	construct.cpp	746;"	d	file:
-CONSTRUCT	construct.cpp	773;"	d	file:
-CONSTRUCT	construct.cpp	783;"	d	file:
-CONSTRUCT	construct.cpp	796;"	d	file:
-CONSTRUCT	construct.cpp	809;"	d	file:
-CONSTRUCT	construct.cpp	856;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	719;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	729;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	749;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	766;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	777;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	789;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	812;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	849;"	d	file:
+COMPLETELARGESECOND	construct.cpp	720;"	d	file:
+COMPLETELARGESECOND	construct.cpp	730;"	d	file:
+COMPLETELARGESECOND	construct.cpp	754;"	d	file:
+COMPLETELARGESECOND	construct.cpp	767;"	d	file:
+COMPLETELARGESECOND	construct.cpp	778;"	d	file:
+COMPLETELARGESECOND	construct.cpp	790;"	d	file:
+COMPLETELARGESECOND	construct.cpp	813;"	d	file:
+COMPLETELARGESECOND	construct.cpp	850;"	d	file:
+CONSTRUCT	construct.cpp	717;"	d	file:
+CONSTRUCT	construct.cpp	727;"	d	file:
+CONSTRUCT	construct.cpp	737;"	d	file:
+CONSTRUCT	construct.cpp	764;"	d	file:
+CONSTRUCT	construct.cpp	774;"	d	file:
+CONSTRUCT	construct.cpp	787;"	d	file:
+CONSTRUCT	construct.cpp	800;"	d	file:
+CONSTRUCT	construct.cpp	847;"	d	file:
 CONSTRUCTSTREE	streemac.h	33;"	d
 COPYMULTISEQ	multiseq.cpp	47;"	d	file:
 CREATEMEMORYMAP	spacedef.h	96;"	d
 CREATEMEMORYMAPFORFILEDESC	spacedef.h	99;"	d
 DECLAREARRAYSTRUCT	arraydef.h	41;"	d
-DECLAREEXTRA	construct.cpp	727;"	d	file:
-DECLAREEXTRA	construct.cpp	737;"	d	file:
-DECLAREEXTRA	construct.cpp	748;"	d	file:
-DECLAREEXTRA	construct.cpp	774;"	d	file:
-DECLAREEXTRA	construct.cpp	785;"	d	file:
-DECLAREEXTRA	construct.cpp	797;"	d	file:
-DECLAREEXTRA	construct.cpp	810;"	d	file:
-DECLAREEXTRA	construct.cpp	857;"	d	file:
+DECLAREEXTRA	construct.cpp	718;"	d	file:
+DECLAREEXTRA	construct.cpp	728;"	d	file:
+DECLAREEXTRA	construct.cpp	739;"	d	file:
+DECLAREEXTRA	construct.cpp	765;"	d	file:
+DECLAREEXTRA	construct.cpp	776;"	d	file:
+DECLAREEXTRA	construct.cpp	788;"	d	file:
+DECLAREEXTRA	construct.cpp	801;"	d	file:
+DECLAREEXTRA	construct.cpp	848;"	d	file:
 DEFAULTMINUNIQUEMATCHLEN	maxmatopt.cpp	33;"	d	file:
 DELETEMEMORYMAP	spacedef.h	102;"	d
 DESCRIPTIONLENGTH	multidef.h	66;"	d
@@ -102,14 +102,14 @@ EXCEPTFIRSTBIT	intbits.h	41;"	d
 EXCEPTFIRSTTHREEBITS	intbits.h	45;"	d
 EXCEPTFIRSTTWOBITS	intbits.h	43;"	d
 FASTASEPARATOR	multidef.h	52;"	d
-FINALPROGRESS	construct.cpp	732;"	d	file:
-FINALPROGRESS	construct.cpp	742;"	d	file:
-FINALPROGRESS	construct.cpp	769;"	d	file:
-FINALPROGRESS	construct.cpp	779;"	d	file:
-FINALPROGRESS	construct.cpp	792;"	d	file:
-FINALPROGRESS	construct.cpp	802;"	d	file:
-FINALPROGRESS	construct.cpp	843;"	d	file:
-FINALPROGRESS	construct.cpp	862;"	d	file:
+FINALPROGRESS	construct.cpp	723;"	d	file:
+FINALPROGRESS	construct.cpp	733;"	d	file:
+FINALPROGRESS	construct.cpp	760;"	d	file:
+FINALPROGRESS	construct.cpp	770;"	d	file:
+FINALPROGRESS	construct.cpp	783;"	d	file:
+FINALPROGRESS	construct.cpp	793;"	d	file:
+FINALPROGRESS	construct.cpp	834;"	d	file:
+FINALPROGRESS	construct.cpp	853;"	d	file:
 FIRSTBIT	intbits.h	29;"	d
 FIRSTTWOBITS	intbits.h	39;"	d
 FOLLOWSUFFIXLINK	streeacc.h	156;"	d
@@ -157,7 +157,7 @@ LEADLEVEL	streeacc.h	200;"	d
 LEAFADDR2NUM	streemac.h	61;"	d
 LEAFBIT	streehuge.h	35;"	d
 LEAFBROTHERVAL	streehuge.h	82;"	d
-LEASTSHOWPROGRESS	construct.cpp	806;"	d	file:
+LEASTSHOWPROGRESS	construct.cpp	797;"	d	file:
 LOGWORDSIZE	types.h	35;"	d
 LOWESTVISIBLE	visible.h	28;"	d
 Leafinfo	streetyp.h	/^typedef Reference Leafinfo;  \/\/ \\Typedef{Leafinfo}$/;"	t
@@ -175,13 +175,13 @@ MAXERRORMSG	seterror.cpp	27;"	d	file:
 MAXINDEX	streehuge.h	38;"	d
 MAXMAPPEDFILES	mapfile.cpp	25;"	d	file:
 MAXMATDEF_H	maxmatdef.h	12;"	d
-MAXNUMOFQUERYFILES	maxmatdef.h	38;"	d
+MAXNUMOFQUERYFILES	maxmatdef.h	42;"	d
 MAXTEXTLEN	streehuge.h	60;"	d
 MIN	minmax.h	26;"	d
 MINEXTRA	construct.cpp	86;"	d	file:
 MINMAX_H	minmax.h	12;"	d
-MMREPLACEMENTCHARQUERY	maxmatdef.h	32;"	d
-MMREPLACEMENTCHARSUBJECT	maxmatdef.h	31;"	d
+MMREPLACEMENTCHARQUERY	maxmatdef.h	36;"	d
+MMREPLACEMENTCHARSUBJECT	maxmatdef.h	35;"	d
 MMcallinfo	maxmatdef.h	/^struct MMcallinfo$/;"	s
 MODWORDSIZE	intbits.h	49;"	d
 MULTBYSMALLINTS	streehuge.h	32;"	d
@@ -190,7 +190,7 @@ MULWORDSIZE	intbits.h	51;"	d
 MUMCAND_H	mumcand.h	12;"	d
 MUMcandidate	mumcand.h	/^DECLAREARRAYSTRUCT(MUMcandidate);$/;"	v
 MUMcandidate	mumcand.h	/^struct MUMcandidate$/;"	s
-Matchprocessinfo	procmaxmat.cpp	/^struct Matchprocessinfo$/;"	s	file:
+Matchprocessinfo	maxmatdef.h	/^struct Matchprocessinfo$/;"	s
 Maxmatchinfo	findmaxmat.cpp	/^struct Maxmatchinfo$/;"	s	file:
 Multiseq	multidef.h	/^struct Multiseq$/;"	s
 NEWLINE	multiseq.cpp	35;"	d	file:
@@ -199,7 +199,7 @@ NILBIT	streehuge.h	37;"	d
 NILPTR	streehuge.h	58;"	d
 NOTSUPPOSED	errordef.h	110;"	d
 NOTSUPPOSEDTOBENULL	errordef.h	120;"	d
-NUMOFCALLS	construct.cpp	807;"	d	file:
+NUMOFCALLS	construct.cpp	798;"	d	file:
 NUMOFOPTIONS	maxmatopt.cpp	/^  NUMOFOPTIONS$/;"	e	enum:__anon1	file:
 Nodeinfo	findmaxmat.cpp	/^DECLAREARRAYSTRUCT(Nodeinfo);$/;"	v
 Nodeinfo	findmaxmat.cpp	/^struct Nodeinfo$/;"	s	file:
@@ -236,15 +236,15 @@ PROCESSBRANCH1	dfs.cpp	59;"	d	file:
 PROCESSBRANCH2	dfs.cpp	136;"	d	file:
 PROCESSBRANCH2	dfs.cpp	138;"	d	file:
 PROCESSBRANCH2	dfs.cpp	60;"	d	file:
-PROCESSHEAD	construct.cpp	730;"	d	file:
-PROCESSHEAD	construct.cpp	740;"	d	file:
-PROCESSHEAD	construct.cpp	767;"	d	file:
-PROCESSHEAD	construct.cpp	777;"	d	file:
-PROCESSHEAD	construct.cpp	788;"	d	file:
-PROCESSHEAD	construct.cpp	800;"	d	file:
-PROCESSHEAD	construct.cpp	823;"	d	file:
-PROCESSHEAD	construct.cpp	860;"	d	file:
-PROCESSREALMUMS	procmaxmat.cpp	115;"	d	file:
+PROCESSHEAD	construct.cpp	721;"	d	file:
+PROCESSHEAD	construct.cpp	731;"	d	file:
+PROCESSHEAD	construct.cpp	758;"	d	file:
+PROCESSHEAD	construct.cpp	768;"	d	file:
+PROCESSHEAD	construct.cpp	779;"	d	file:
+PROCESSHEAD	construct.cpp	791;"	d	file:
+PROCESSHEAD	construct.cpp	814;"	d	file:
+PROCESSHEAD	construct.cpp	851;"	d	file:
+PROCESSREALMUMS	procmaxmat.cpp	91;"	d	file:
 PROTODEF_H	protodef.h	10;"	d
 PairUint	arraydef.h	/^DECLAREARRAYSTRUCT(PairUint);$/;"	v
 PairUint	types.h	/^struct PairUint$/;"	s
@@ -281,7 +281,7 @@ SHOWBOOL	types.h	33;"	d
 SHOWCHAR	visible.h	76;"	d
 SHOWCHARFP	visible.h	62;"	d
 SHOWINDEX	streeacc.h	203;"	d
-SHOWREF	streedbg.cpp	577;"	d	file:
+SHOWREF	streedbg.cpp	548;"	d	file:
 SHOWVAL	streeacc.h	16;"	d
 SIMPLESTANDARDMESSAGE	errordef.h	101;"	d
 SMALLBIT	streehuge.h	36;"	d
@@ -351,21 +351,22 @@ checkquerycommonprefix	findmaxmat.cpp	/^static void checkquerycommonprefix(Maxma
 checkspaceleak	space.cpp	/^void checkspaceleak(void)$/;"	f
 checkstree	streedbg.cpp	/^void checkstree(Suffixtree *stree)$/;"	f
 cmaxmatch	maxmatdef.h	/^       cmaxmatch,               \/\/ compute all maximal matches$/;"	m	struct:MMcallinfo
+cmum	maxmatdef.h	/^       cmum,                   \/\/ compute MUMs$/;"	m	struct:Matchprocessinfo
 cmum	maxmatdef.h	/^       cmum;                    \/\/ compute real matches unique in both sequences$/;"	m	struct:MMcallinfo
-cmum	procmaxmat.cpp	/^       cmum,                   \/\/ compute MUMs$/;"	m	struct:Matchprocessinfo	file:
 cmumcand	maxmatdef.h	/^       cmumcand,                \/\/ compute reference-unique maximal matches$/;"	m	struct:MMcallinfo
-cmumcand	procmaxmat.cpp	/^       cmumcand,               \/\/ compute MUM candidates$/;"	m	struct:Matchprocessinfo	file:
+cmumcand	maxmatdef.h	/^       cmumcand,               \/\/ compute MUM candidates$/;"	m	struct:Matchprocessinfo
 commondepthstack	findmaxmat.cpp	/^  ArrayNodeinfo commondepthstack; \/\/ stack to store depth values$/;"	m	struct:Maxmatchinfo	file:
 compareMUMcandidates	cleanMUMcand.cpp	/^static Sint compareMUMcandidates(MUMcandidate *p,MUMcandidate *q)$/;"	f	file:
 comparelocs	streedbg.cpp	/^static Sint comparelocs(Suffixtree *stree,Location *loc1,Location *loc2)$/;"	f	file:
 completelarge	construct.cpp	/^static void completelarge(Suffixtree *stree)$/;"	f	file:
 counter	prefix.hpp	/^        int counter;$/;"	m	class:prefix
+createTable	distribute.cpp	/^void createTable(Matchprocessinfo *matchprocessinfo, int wordsize) {$/;"	f
 creatememorymap	mapfile.cpp	/^\/*@null@*\/ void *creatememorymap(char *file,Uint line,char *filename,bool writemap,Uint *numofbytes)$/;"	f
 creatememorymapforfiledesc	mapfile.cpp	/^\/*@null@*\/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,bool writemap,Uint $/;"	f
 currentbranchtabsize	streetyp.h	/^       currentbranchtabsize,  \/\/ current number of cells in branchtab$/;"	m	struct:Suffixtree
 currentdepth	streetyp.h	/^       currentdepth,          \/\/ depth of the new branch node$/;"	m	struct:Suffixtree
-currentisrcmatch	procmaxmat.cpp	/^       currentisrcmatch;       \/\/ true iff currently rc-matches are computed$/;"	m	struct:Matchprocessinfo	file:
-currentquerylen	procmaxmat.cpp	/^       currentquerylen;        \/\/ length of the current query sequence$/;"	m	struct:Matchprocessinfo	file:
+currentisrcmatch	maxmatdef.h	/^       currentisrcmatch;       \/\/ true iff currently rc-matches are computed$/;"	m	struct:Matchprocessinfo
+currentquerylen	maxmatdef.h	/^       currentquerylen;        \/\/ length of the current query sequence$/;"	m	struct:Matchprocessinfo
 currentspace	mapfile.cpp	/^static Uint currentspace = 0,              \/\/ currently mapped num of bytes$/;"	v	file:
 currentspace	space.cpp	/^            currentspace = 0,   \/\/ currently allocated num of bytes$/;"	v	file:
 dbstart	mumcand.h	/^       dbstart,      \/\/ start position in the subject-sequence$/;"	m	struct:MUMcandidate
@@ -380,7 +381,7 @@ description	optdesc.h	/^       *description;         \/\/ help text describing p
 descspace	multidef.h	/^  ArrayCharacters descspace;           \/\/ the space for the descriptions$/;"	m	struct:Multiseq
 dynamicstrdup	space.cpp	/^\/*@notnull@*\/ char *dynamicstrdup(char *file,Uint line,char *source)$/;"	f
 edgelen	streetyp.h	/^  Uint edgelen,         \/\/ length of edge$/;"	m	struct:Location
-encoding	distribute.cpp	/^void encoding(string example) {$/;"	f
+encoding	distribute.cpp	/^unsigned long int encoding(string example) {$/;"	f
 enumeratemaxmatches	findmaxmat.cpp	/^static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,$/;"	f	file:
 enumlocations	streedbg.cpp	/^void enumlocations(Suffixtree *stree,$/;"	f
 enumlocationssubtree	streedbg.cpp	/^static void enumlocationssubtree(Suffixtree *stree,Uint *btptr,$/;"	f	file:
@@ -397,9 +398,9 @@ firstchild	streetyp.h	/^  Reference firstchild,     \/\/ the reference to the fi
 firstnotallocated	streetyp.h	/^       *firstnotallocated,    \/\/ refers to the last address, such that at$/;"	m	struct:Suffixtree
 firstptr	streetyp.h	/^  Uchar *firstptr;     \/\/ pointer to first character of edge label$/;"	m	struct:Location
 forward	maxmatdef.h	/^       forward,                 \/\/ compute matches on forward strand$/;"	m	struct:MMcallinfo
-forward	procmaxmat.cpp	/^       forward,                \/\/ compute forward matches$/;"	m	struct:Matchprocessinfo	file:
+forward	maxmatdef.h	/^       forward,                \/\/ compute forward matches$/;"	m	struct:Matchprocessinfo
 fourcolumn	maxmatdef.h	/^       fourcolumn,              \/\/ always use 4 column format$/;"	m	struct:MMcallinfo
-fourcolumn	procmaxmat.cpp	/^       fourcolumn,             \/\/ is option \\texttt{-F} on?$/;"	m	struct:Matchprocessinfo	file:
+fourcolumn	maxmatdef.h	/^       fourcolumn,             \/\/ is option \\texttt{-F} on?$/;"	m	struct:Matchprocessinfo
 freemultiseq	multiseq.cpp	/^void freemultiseq(Multiseq *multiseq)$/;"	f
 freespaceviaptr	space.cpp	/^void freespaceviaptr(char *file,Uint line,void *ptr)$/;"	f
 freestree	construct.cpp	/^void freestree(Suffixtree *stree)$/;"	f
@@ -463,7 +464,7 @@ markpos	multidef.h	/^  ArrayPosition markpos;$/;"	m	struct:Multiseq
 matchnucleotidesonly	maxmatdef.h	/^       matchnucleotidesonly,    \/\/ match ONLY acgt's$/;"	m	struct:MMcallinfo
 matchpath	findmaxmat.cpp	/^  ArrayPathinfo matchpath;        \/\/ path of br. nodes from ploc to maxloc$/;"	m	struct:Maxmatchinfo	file:
 maxbranchdepth	streetyp.h	/^       maxbranchdepth,        \/\/ maximal depth of branching node$/;"	m	struct:Suffixtree
-maxdesclength	procmaxmat.cpp	/^       maxdesclength,          \/\/ maximum length of a description$/;"	m	struct:Matchprocessinfo	file:
+maxdesclength	maxmatdef.h	/^       maxdesclength,          \/\/ maximum length of a description$/;"	m	struct:Matchprocessinfo
 maxerrormsg	seterror.cpp	/^Sint maxerrormsg(void)$/;"	f
 maxlength	multidef.h	/^       maxlength;        \/\/ maximal number of chars of description to be shown$/;"	m	struct:Showdescinfo
 maxloc	findmaxmat.cpp	/^  Location maxloc;                \/\/ location of \\texttt{pmax}$/;"	m	struct:Maxmatchinfo	file:
@@ -472,13 +473,13 @@ memoryptr	mapfile.cpp	/^static void *memoryptr[MAXMAPPEDFILES] = {NULL};$/;"	v	f
 messagespace	seterror.cpp	/^char *messagespace(void)$/;"	f
 minmatchlength	findmaxmat.cpp	/^       minmatchlength,            \/\/ min length of a match to be reported$/;"	m	struct:Maxmatchinfo	file:
 minmatchlength	maxmatdef.h	/^  Uint minmatchlength,          \/\/ minimal length of a match to be reported$/;"	m	struct:MMcallinfo
-minmatchlength	procmaxmat.cpp	/^  Uint minmatchlength,         \/\/ minimum length of a match$/;"	m	struct:Matchprocessinfo	file:
+minmatchlength	maxmatdef.h	/^  Uint minmatchlength,         \/\/ minimum length of a match$/;"	m	struct:Matchprocessinfo
 mmaddspace	mapfile.cpp	/^static void mmaddspace(Uint space)$/;"	f	file:
 mmcheckspaceleak	mapfile.cpp	/^void mmcheckspaceleak(void)$/;"	f
 mmgetspacepeak	mapfile.cpp	/^Uint mmgetspacepeak(void)$/;"	f
 mmsubtractspace	mapfile.cpp	/^static void mmsubtractspace(Uint space)$/;"	f	file:
 mmwrapspace	mapfile.cpp	/^Sint mmwrapspace(void)$/;"	f
-mumcandtab	procmaxmat.cpp	/^  ArrayMUMcandidate mumcandtab;\/\/ a table containing MUM-candidates$/;"	m	struct:Matchprocessinfo	file:
+mumcandtab	maxmatdef.h	/^  ArrayMUMcandidate mumcandtab;\/\/ a table containing MUM-candidates$/;"	m	struct:Matchprocessinfo
 mumlength	mumcand.h	/^  Uint mumlength,    \/\/ length of the mum$/;"	m	struct:MUMcandidate
 mumuniqueinquery	cleanMUMcand.cpp	/^Sint mumuniqueinquery(void *processinfo,$/;"	f
 nextfreeStrings	arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:ArrayStrings
@@ -519,7 +520,7 @@ query	findmaxmat.cpp	/^  Uchar *query,                   \/\/ the query string$/
 querycommondepth	findmaxmat.cpp	/^  Uint querycommondepth;$/;"	m	struct:Nodeinfo	file:
 queryfilelist	maxmatdef.h	/^       queryfilelist[MAXNUMOFQUERYFILES][PATH_MAX+1]; $/;"	m	struct:MMcallinfo
 querylen	findmaxmat.cpp	/^  Uint querylen,                  \/\/ length of the current query$/;"	m	struct:Maxmatchinfo	file:
-querymultiseq	procmaxmat.cpp	/^           querymultiseq;      \/\/ the Multiseq record of the queries$/;"	m	struct:Matchprocessinfo	file:
+querymultiseq	maxmatdef.h	/^           querymultiseq;      \/\/ the Multiseq record of the queries$/;"	m	struct:Matchprocessinfo
 queryseq	mumcand.h	/^       queryseq,     \/\/ number of the query sequence$/;"	m	struct:MUMcandidate
 queryseqnum	findmaxmat.cpp	/^       queryseqnum,               \/\/ number of query sequence$/;"	m	struct:Maxmatchinfo	file:
 querystart	mumcand.h	/^       querystart;   \/\/ start position in the query sequence      $/;"	m	struct:MUMcandidate
@@ -534,14 +535,14 @@ rescan	construct.cpp	/^static void rescan (Suffixtree *stree)$/;"	f	file:
 rescanstree	linkloc.cpp	/^void rescanstree(Suffixtree *stree,Location *loc,$/;"	f
 reseterror	seterror.cpp	/^void reseterror(void)$/;"	f
 reversecomplement	maxmatdef.h	/^       reversecomplement,       \/\/ compute matches on reverse strand$/;"	m	struct:MMcallinfo
-reversecomplement	procmaxmat.cpp	/^       reversecomplement,      \/\/ compute reverse complement matches$/;"	m	struct:Matchprocessinfo	file:
+reversecomplement	maxmatdef.h	/^       reversecomplement,      \/\/ compute reverse complement matches$/;"	m	struct:Matchprocessinfo
 rootchildren	streetyp.h	/^       *rootchildren;         \/\/ references to successors of root$/;"	m	struct:Suffixtree
 rootsucclocationsstree	access.cpp	/^void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)$/;"	f
 safestringcopy	safescpy.cpp	/^Sint safestringcopy(char *dest,char *source,Sint maxlen)$/;"	f
 scanmultiplefastafile	maxmatinp.cpp	/^Sint scanmultiplefastafile (Multiseq *multiseq,$/;"	f
 scanprefix	construct.cpp	/^static void scanprefix(Suffixtree *stree)$/;"	f	file:
 scanprefixfromnodestree	scanpref.cpp	/^Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,$/;"	f
-scanprefixstree	scanpref.cpp	/^\/*@null@*\/ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,$/;"	f
+scanprefixstree	scanpref.cpp	/^Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,$/;"	f
 secondtime	streetyp.h	/^  bool secondtime;$/;"	m	struct:DFSstate
 sentinel	streetyp.h	/^         *sentinel;           \/\/ points to the position of the \\(\\$\\)-symbol$/;"	m	struct:Suffixtree
 seqlength	multidef.h	/^       seqlength,    \/\/ the length of the sequence$/;"	m	struct:Seqinfo
@@ -566,16 +567,16 @@ showoptions	procopt.cpp	/^void showoptions(FILE *outfp,char *program,OptionDescr
 showoptionswithoutexclude	procopt.cpp	/^void showoptionswithoutexclude(FILE *outfp,char *program,$/;"	f
 showpathstree	access.cpp	/^void showpathstree(Suffixtree *stree,Bref bnode,$/;"	f
 showreversepositions	maxmatdef.h	/^       showreversepositions,    \/\/ give reverse pos. rel. to orig. string$/;"	m	struct:MMcallinfo
-showreversepositions	procmaxmat.cpp	/^       showreversepositions,   \/\/ is option \\texttt{-c} on?$/;"	m	struct:Matchprocessinfo	file:
+showreversepositions	maxmatdef.h	/^       showreversepositions,   \/\/ is option \\texttt{-c} on?$/;"	m	struct:Matchprocessinfo
 showseqandmaximalmatch	procmaxmat.cpp	/^static Sint showseqandmaximalmatch (void *info,$/;"	f	file:
 showsequencedescription	procmaxmat.cpp	/^static void showsequencedescription(Multiseq *multiseq, Uint maxdesclength,$/;"	f	file:
 showsequenceheader	procmaxmat.cpp	/^static void showsequenceheader(Multiseq *multiseq,$/;"	f	file:
 showsequencelengths	maxmatdef.h	/^       showsequencelengths,     \/\/ show length of sequences on header line$/;"	m	struct:MMcallinfo
-showsequencelengths	procmaxmat.cpp	/^       showsequencelengths,    \/\/ is option \\texttt{-L} on?$/;"	m	struct:Matchprocessinfo	file:
+showsequencelengths	maxmatdef.h	/^       showsequencelengths,    \/\/ is option \\texttt{-L} on?$/;"	m	struct:Matchprocessinfo
 showstate	streedbg.cpp	/^void showstate(Suffixtree *stree)$/;"	f
 showstree	streedbg.cpp	/^void showstree(Suffixtree *stree)$/;"	f
 showstring	maxmatdef.h	/^  bool showstring,              \/\/ show the matching string$/;"	m	struct:MMcallinfo
-showstring	procmaxmat.cpp	/^  bool showstring,             \/\/ is option \\texttt{-s} on?$/;"	m	struct:Matchprocessinfo	file:
+showstring	maxmatdef.h	/^  bool showstring,             \/\/ is option \\texttt{-s} on?$/;"	m	struct:Matchprocessinfo
 showsubtree	streedbg.cpp	/^static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)$/;"	f	file:
 showsymbol	streedbg.cpp	/^char *showsymbol(Uchar c)$/;"	f
 showsymbolstree	streetyp.h	/^  char * (*showsymbolstree)(Uchar,Uchar *);$/;"	m	struct:Suffixtree
@@ -601,11 +602,11 @@ start	types.h	/^      Uint start, length;$/;"	m	struct:ListType
 startdesc	multidef.h	/^  Uint *startdesc,                     \/\/ of length numofsequences + 1$/;"	m	struct:Multiseq
 storeMUMcandidate	procmaxmat.cpp	/^static Sint storeMUMcandidate (void *info,$/;"	f	file:
 stree	findmaxmat.cpp	/^  Suffixtree *stree;              \/\/ reference to suffix tree of subject-seq$/;"	m	struct:Maxmatchinfo	file:
-stree	procmaxmat.cpp	/^  Suffixtree stree;            \/\/ the suffix tree of the subject-sequence$/;"	m	struct:Matchprocessinfo	file:
+stree	maxmatdef.h	/^  Suffixtree stree;            \/\/ the suffix tree of the subject-sequence$/;"	m	struct:Matchprocessinfo
 stringbuffer	arraydef.h	/^  Uchar *stringbuffer;$/;"	m	struct:ArrayStrings
 stringbufferlength	arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:ArrayStrings
 subjectfile	maxmatdef.h	/^       subjectfile[PATH_MAX+1], \/\/ filename of the subject-sequence$/;"	m	struct:MMcallinfo
-subjectmultiseq	procmaxmat.cpp	/^  Multiseq *subjectmultiseq,   \/\/ reference to multiseq of subject$/;"	m	struct:Matchprocessinfo	file:
+subjectmultiseq	maxmatdef.h	/^  Multiseq *subjectmultiseq,   \/\/ reference to multiseq of subject$/;"	m	struct:Matchprocessinfo
 subtractspace	space.cpp	/^static void subtractspace(Uint space)$/;"	f	file:
 succlocationsstree	access.cpp	/^void succlocationsstree(Suffixtree *stree,bool nosentinel,Simpleloc *loc,$/;"	f
 suffixlink	streetyp.h	/^  Bref suffixlink;          \/\/ the suffix link is always to a branching node$/;"	m	struct:Branchinfo

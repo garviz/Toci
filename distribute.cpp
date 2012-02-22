@@ -26,6 +26,8 @@
 #include "streeacc.h"
 #include "protodef.h"
 #include "spacedef.h"
+#include "maxmatdef.h"
+
 using namespace std;
 
 
@@ -108,9 +110,8 @@ void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)
   }
   fprintf(stdout,"Consumption so far: %lu\n", *consumption);
 }
-
     
-void encoding(string example) {
+unsigned long int encoding(string example) {
     unsigned long int enc_string;
     for (int i=31; i>=0; i--)
         enc_string &= ~(1<<i);
@@ -140,4 +141,14 @@ void encoding(string example) {
        }
    }
    fprintf(stderr,"\n");
+   return enc_string;
+}
+
+void createTable(Matchprocessinfo *matchprocessinfo, int wordsize) {
+    Location ploc;
+    (void) scanprefixfromnodestree (&matchprocessinfo->stree, &ploc, 
+          ROOT (&matchprocessinfo->stree), matchprocessinfo->stree.text, matchprocessinfo->stree.text+wordsize,0);
+    //string prefix = ploc->firstptr;
+    //unsigned long int enc=encoding(prefix);
+    showlocation(stderr,&matchprocessinfo->stree,&ploc);
 }

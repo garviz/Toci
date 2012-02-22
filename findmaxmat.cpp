@@ -473,25 +473,26 @@ Sint findmaxmatches(Suffixtree *stree,
   (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                   query, querysubstringend,0);
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
-  #pragma omp parallel for num_threads(1) schedule (static) ordered
-  for (omp_Iterator = querysubstringend; omp_Iterator /*querysubstringend*/ < query + querylen - 1; 
-       omp_Iterator++)
+  //#pragma omp parallel for num_threads(4) schedule (static) ordered
+  for (/*omp_Iterator = querysubstringend*/; /* omp_Iterator */querysubstringend < query + querylen - 1; 
+      maxmatchinfo.querysuffix++, querysubstringend++
+      /* omp_Iterator++*/)
   {
     /*fprintf(stdout,"Thread:%d omp_Iterator:%lu %lu %lu %lu\n",omp_get_thread_num(),(Uint)omp_Iterator,
             ploc.locstring.start+1, 
                    (Uint) 
                    (maxmatchinfo.querysuffix-maxmatchinfo.query)+1,
                    ploc.locstring.length);*/
-    #pragma omp flush (back)
+   /* #pragma omp flush (back)
       if (!back)
-      {
+      {*/
         if(ploc.locstring.length >= minmatchlength && 
             enumeratemaxmatches(&maxmatchinfo,&ploc) != 0) 
         {
-            back = true;
-            #pragma omp flush (back)
+         /* back = true;
+            #pragma omp flush (back)*/
             res = -1;
-            //return res;
+            return res;
         }
         if (ROOTLOCATION (&ploc)) 
         {
@@ -507,8 +508,7 @@ Sint findmaxmatches(Suffixtree *stree,
                                  + ploc.locstring.length+1,
                               querysubstringend+1,0);
         }
-      }
-      maxmatchinfo.querysuffix++; querysubstringend++;
+      //}
   }
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {

@@ -18,6 +18,7 @@
 #include "spacedef.h"
 #include "streedef.h"
 #include "maxmatdef.h"
+#include "distribute.h"
 
 //}
 
@@ -27,31 +28,6 @@
   and to process their result according to the options given by the user.
 */
 
-/*EE
-  The following structure contains all information
-  required while computing and processing the matches.
-*/
-
-struct Matchprocessinfo
-{
-  Suffixtree stree;            // the suffix tree of the subject-sequence
-  Multiseq *subjectmultiseq,   // reference to multiseq of subject
-           querymultiseq;      // the Multiseq record of the queries
-  ArrayMUMcandidate mumcandtab;// a table containing MUM-candidates
-                               // when option \texttt{-mum} is on
-  Uint minmatchlength,         // minimum length of a match
-       maxdesclength,          // maximum length of a description
-       currentquerylen;        // length of the current query sequence
-  bool showstring,             // is option \texttt{-s} on?
-       showsequencelengths,    // is option \texttt{-L} on?
-       showreversepositions,   // is option \texttt{-c} on?
-       forward,                // compute forward matches
-       fourcolumn,             // is option \texttt{-F} on?
-       reversecomplement,      // compute reverse complement matches
-       cmumcand,               // compute MUM candidates
-       cmum,                   // compute MUMs
-       currentisrcmatch;       // true iff currently rc-matches are computed
-};
 
 //\IgnoreLatex{
 
@@ -382,7 +358,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
   Processmatchfunction processmatch;
   Findmatchfunction findmatchfunction;
-
+  createTable(matchprocessinfo,10);
   if(matchprocessinfo->cmum)
   {
     processmatch = storeMUMcandidate;
