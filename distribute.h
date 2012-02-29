@@ -21,5 +21,5 @@
 Uint getEdgelength(Uchar *left,Uchar *right);
 void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size);
 void splitsubstreeH(Suffixtree *stree,Uchar *buffer,Uint *btptr);
-Uint encoding(char *example);
+Uint encoding(Uchar *example);
 void createTable(Matchprocessinfo *matchprocessinfo, int wordsize);
