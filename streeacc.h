@@ -60,6 +60,28 @@
           }\
         }
 
+#define MYGETBOTH(DP,HP,PT) \
+        if(matchprocessinfo->stree.chainstart != NULL && (PT) >= matchprocessinfo->stree.chainstart)\
+        {\
+          distance = 1 + \
+                     DIVBYSMALLINTS((Uint) (matchprocessinfo->stree.nextfreebranch - (PT)));\
+          DP = matchprocessinfo->stree.currentdepth + distance;\
+          HP = matchprocessinfo->stree.nextfreeleafnum - distance;\
+        } else\
+        {\
+          if(ISLARGE(*(PT)))\
+          {\
+            DP = GETDEPTH(PT);\
+            HP = GETHEADPOS(PT);\
+          } else\
+          {\
+            distance = GETDISTANCE(PT);\
+            GETCHAINEND(largeptr,PT,distance);\
+            DP = GETDEPTH(largeptr) + distance;\
+            HP = GETHEADPOS(largeptr) - distance;\
+          }\
+        }
+
 /*
   The macros \texttt{GETONLYHEADPOS}, \texttt{GETONLYDEPTH}, and
   \texttt{GETDEPTHAFTERHEADPOS} retrieve the depth or the head position.

@@ -67,7 +67,6 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
     {
       if((node = stree->rootchildren[(Uint) firstchar]) == UNDEFINEDREFERENCE)
       {
-        fprintf(stderr,"%d UNDEFINEDREFERENCE\n",__LINE__);
         return lptr;
       }
       if(ISLEAF(node))

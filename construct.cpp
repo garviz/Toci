@@ -291,6 +291,7 @@ static void insertbranchnode(Suffixtree *stree)
   SETMAXBRANCHDEPTH(stree->currentdepth);
   stree->nextfreeleafnum++;
   stree->nextfreeleafptr++;
+  stree->nodecount++;
 }
 
 //\subsection{Finding the Head-Locations}
@@ -685,13 +686,6 @@ void freestree(Suffixtree *stree)
       fprintf(stderr,"result=%lu\n", (Uint) result);
   }
   fprintf(stderr,"edgelen:%lu remain:%lu locstring.start:%lu locstring.length:%lu ploc.nextnode.address:%lu\n", ploc.edgelen, ploc.remain, ploc.locstring.start, ploc.locstring.length, (Uint) ploc.nextnode.address);*/
-  ArrayUint *table;
-  Uint *consumption;
-  Uint size=200;
-  consumption=(Uint *) malloc(sizeof(Uint));
-  *consumption=0;
-  //splitstreeH(stree,consumption,size);
-  //showstree(stree);
   FREESPACE(stree->leaftab);
   FREESPACE(stree->rootchildren);
   FREESPACE(stree->branchtab);

@@ -358,7 +358,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
   Processmatchfunction processmatch;
   Findmatchfunction findmatchfunction;
-  createTable(matchprocessinfo,10);
+  createTable(matchprocessinfo,15);
   if(matchprocessinfo->cmum)
   {
     processmatch = storeMUMcandidate;

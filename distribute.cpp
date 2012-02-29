@@ -19,6 +19,10 @@
 #include <bitset>
 #include <iostream>
 #include <string>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <vector>
 #include "types.h"
 #include "intbits.h"
 #include "visible.h"
@@ -28,48 +32,96 @@
 #include "spacedef.h"
 #include "maxmatdef.h"
 
-using namespace std;
-
-
 Uint getEdgelength(Uchar *left,Uchar *right)
 {
     return (Uint)(right-left+1);
 }
 
-void splitsubstreeH(Suffixtree *stree,Uint *consumption,Uint size,Uint *btptr)
+Uint encoding(char *example) 
+{
+    Uint encoded=0;
+    for (int i=31; i>=0; i--)
+        encoded &= ~(1<<i);
+    int len=(int) strlen(example);
+    int bits=pow(4,strlen(example));
+    
+/*     if ( len < 13 ) {
+ *         for (int i=31;i>26;i--) {
+ *             if ( len & 0x01 ) {
+ *                 *encoded |= (1<<i);
+ *             }
+ *             else {
+ *                 *encoded &= ~(1<<i);
+ *             }
+ *         }
+ *     }
+ *     else {
+ *         for ( int i=31;i>26 ;i-- )
+ *             *encoded |= (1<<i);
+ *     }
+ */
+    for(int i=0, j=0; i<len && j<bits; i++, j+=2) {
+        switch (*(example+i))
+        {
+            case 'A':
+            case 'a': 
+                encoded &= ~(1<<j); encoded &= ~(1<<(j+1));
+                break;
+            case 'C':
+            case 'c':
+                encoded &= ~(1<<j); encoded |= (1<<(j+1));
+                break;
+            case 'G':
+            case 'g':
+                encoded |= (1<<j); encoded &= ~(1<<(j+1));
+                break;
+            case 'T':
+            case 't':
+                encoded |= (1<<j); encoded |= (1<<(j+1));
+                break;
+        }
+   }
+/*    for (int i=31;i>=0;i--) {
+ *        if (encoded & (1<<i)) {
+ *            fprintf(stderr,"1");
+ *        } else {
+ *            fprintf(stderr,"0");
+ *        }
+ *    }
+ */
+   return encoded;
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  splitsubstreeH
+ *  Description:  Traverse every branch of suffix tree and it stops when it
+ *  reaches the max characters to save in table.
+ * =====================================================================================
+ */
+void splitsubstreeH(Suffixtree *stree,Uchar *buffer,Uint *btptr)
 {
   Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
-       depth, headposition; 
+       depth, headposition, *table;
+  table=(Uint *)malloc(sizeof(Uint)); 
   Uchar *leftpointer;
 
   GETBOTH(depth,headposition,btptr);
   succ = GETCHILD(btptr);
   do 
   {
-    printf("%*.*s",(int) 2,(int) 2,"");
-    SHOWINDEX(succ);
     if(ISLEAF(succ))
     {
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
-      *consumption+=getEdgelength(leftpointer,stree->sentinel);
-      showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
-      fprintf(stdout," %lu",getEdgelength(leftpointer,stree->sentinel));
-      (void) putchar('\n');
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
-      if (*consumption>size) break;
     } else
     {
       succptr = stree->branchtab + GETBRANCHINDEX(succ);
       GETBOTH(succdepth,headposition,succptr);
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
-      showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
-      fprintf(stdout," %lu",getEdgelength(leftpointer,leftpointer+edgelen-1));
-      (void) putchar('\n');
-      *consumption+=getEdgelength(leftpointer,leftpointer+edgelen-1);
-      if (*consumption>size) break;
-      splitsubstreeH(stree,consumption,size,succptr);
+      //splitsubstreeH(stree,consumption,size,succptr);
       succ = GETBROTHER(succptr);
     } 
   } while(!NILPTR(succ));
@@ -84,71 +136,126 @@ void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)
       rcptr <= stree->rootchildren + LARGESTCHARINDEX;
       rcptr++)
   {
+    char *string;
+    string = (char *)malloc(sizeof(char*));
     succcount = 0;
     if(*rcptr != UNDEFINEDREFERENCE)
     {
-      SHOWINDEX(*rcptr);
       if(ISLEAF(*rcptr))
       {
         leftpointer = stree->text + GETLEAFINDEX(*rcptr);
         *consumption+=getEdgelength(leftpointer,stree->sentinel);
-        showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
-        fprintf(stdout," %lu",getEdgelength(leftpointer,stree->sentinel));
-        (void) putchar('\n');
       } else
       {
         btptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
         GETBOTH(succdepth,headposition,btptr);
         leftpointer = stree->text + headposition;
         *consumption+=getEdgelength(leftpointer,leftpointer+succdepth-1);
-        showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
-        fprintf(stdout," %lu",getEdgelength(leftpointer,leftpointer+succdepth-1));
-        (void) putchar('\n');
-        splitsubstreeH(stree,consumption,size,btptr);
+        //splitsubstreeH(stree,consumption,size,btptr);
       }
+      fprintf(stderr,"string: %s\n", string);
     }
   }
-  fprintf(stdout,"Consumption so far: %lu\n", *consumption);
 }
+
+void createTable(Matchprocessinfo *matchprocessinfo, int wordsize) 
+{
+    Uint size = pow(4,wordsize);
+    vector <unsigned int> table(size,0);
+    Uint *largeptr, *btptr, *succptr, *rcptr, i, succdepth, distance, 
+         nodeaddress, succ, depth, child, brother, headposition, suffixlink;
+    Uint leafindex, edgelen;
+    Uchar *leftpointer, *buffer;
     
-unsigned long int encoding(string example) {
-    unsigned long int enc_string;
-    for (int i=31; i>=0; i--)
-        enc_string &= ~(1<<i);
-
-    for(int i=0, j=31; i<16 && j>0; i++, j-=2) {
-        switch (example.at(i))
+    buffer = (Uchar *)malloc(sizeof(Uchar *)*wordsize);
+    for(rcptr = matchprocessinfo->stree.rootchildren; 
+        rcptr <= matchprocessinfo->stree.rootchildren + LARGESTCHARINDEX;rcptr++)
+    {
+        if(*rcptr != UNDEFINEDREFERENCE)
         {
-            case 'A': 
-                enc_string &= ~(1<<j); enc_string &= ~(1<<(j-1));
-                break;
-            case 'C':
-                enc_string &= ~(1<<j); enc_string |= (1<<(j-1));
-                break;
-            case 'G':
-                enc_string |= (1<<j); enc_string &= ~(1<<(j-1));
-                break;
-            case 'T':
-                enc_string |= (1<<j); enc_string |= (1<<(j-1));
-                break;
+            printf("rootchildren[%c]\n",(char) (rcptr - matchprocessinfo->stree.rootchildren));
+                 (void) fflush(stdout);
+                //strncat((char *)buffer,(const char *)leftpointer,(size_t) (leftpointer + succdepth - 1));
+                btptr = matchprocessinfo->stree.branchtab + GETBRANCHINDEX(*rcptr);
+                MYGETBOTH(succdepth,headposition,btptr);
+                leftpointer = stree->text + headposition;
+                for (i=UintConst(1); i < matchprocessinfo->stree.nodecount; i++)
+                {
+                    nodeaddress = btptr - matchprocessinfo->stree.branchtab;
+                    child = GETCHILD(btptr);
+                    brother = GETBROTHER(btptr);
+                    if (matchprocessinfo->stree.chainstart != NULL && btptr >= matchprocessinfo->stree.chainstart)
+                    {
+                        distance = 1 + DIVBYSMALLINTS((Uint) (matchprocessinfo->stree.nextfreebranch - btptr));
+                        succdepth = matchprocessinfo->stree.currentdepth + distance;
+                        headposition = matchprocessinfo->stree.nextfreeleafnum - distance;
+                    } else
+                    {
+                        if(ISLARGE(*btptr))
+                        {
+                            succdepth = GETDEPTH(btptr);
+                            headposition = GETHEADPOS(btptr);
+                        } else
+                        {
+                            distance = GETDISTANCE(btptr);
+                            GETCHAINEND(largeptr,btptr,distance);
+                            succdepth = GETDEPTH(largeptr) + distance;
+                            headposition = GETHEADPOS(largeptr) - distance;
+                        }
+                    }
+                    if (ISLARGE(*btptr))
+                        btptr += LARGEINTS;
+                    else
+                        btptr += SMALLINTS;
+                    //showthesymbolstring(stdout,matchprocessinfo->stree.sentinel,matchprocessinfo->stree.text + headposition,
+                    //                   matchprocessinfo->stree.text + headposition + depth - 1);
+                    succ = child;
+                    do 
+                    {
+                        if (ISLEAF(succ))
+                        {
+                            leafindex = GETLEAFINDEX(succ);
+                            leftpointer = matchprocessinfo->stree.text + depth + leafindex;
+                //            showthesymbolstring(stdout,matchprocessinfo->stree.sentinel,leftpointer,matchprocessinfo->stree.sentinel);
+                //            printf(",Leaf %lu)",(Uint) leafindex);
+                            succ = LEAFBROTHERVAL(matchprocessinfo->stree.leaftab[leafindex]);
+                        } else
+                        {
+                            succptr = matchprocessinfo->stree.branchtab + GETBRANCHINDEX(succ);
+                            if (matchprocessinfo->stree.chainstart != NULL && succptr >= matchprocessinfo->stree.chainstart)
+                            {
+                                distance = 1 + DIVBYSMALLINTS((Uint) (matchprocessinfo->stree.nextfreebranch - succptr));
+                                succdepth = matchprocessinfo->stree.currentdepth + distance;
+                                headposition = matchprocessinfo->stree.nextfreeleafnum - distance;
+                            } else
+                            {
+                                if (ISLARGE(*succptr))
+                                {
+                                    succdepth = GETDEPTH(succptr);
+                                    headposition = GETHEADPOS(succptr);
+                                } else
+                                {
+                                    distance = GETDISTANCE(succptr);
+                                    GETCHAINEND(largeptr,succptr,distance);
+                                    succdepth = GETDEPTH(largeptr) + distance;
+                                    headposition = GETHEADPOS(largeptr) - distance;
+                                }
+                            }
+                            leftpointer = matchprocessinfo->stree.text + depth + headposition;
+                            edgelen = succdepth - depth;
+                //            showthesymbolstring(stdout,matchprocessinfo->stree.sentinel,leftpointer,leftpointer + edgelen - 1);
+                //            printf(",%s %lu)",ISLARGE(*succptr) ? "Large" : "Small",
+                //                   (Uint) GETBRANCHINDEX(succ));
+                            succ = GETBROTHER(succptr);
+                        }
+                    } while(!NILPTR(succ));
+                }
         }
-   }
-   for (int i=31;i>=0;i--) {
-       if (enc_string & (1<<i)) {
-           fprintf(stderr,"1");
-       } else {
-           fprintf(stderr,"0");
-       }
-   }
-   fprintf(stderr,"\n");
-   return enc_string;
-}
-
-void createTable(Matchprocessinfo *matchprocessinfo, int wordsize) {
-    Location ploc;
-    (void) scanprefixfromnodestree (&matchprocessinfo->stree, &ploc, 
-          ROOT (&matchprocessinfo->stree), matchprocessinfo->stree.text, matchprocessinfo->stree.text+wordsize,0);
+    }
+    //Location ploc;
+    //(void) scanprefixfromnodestree (&matchprocessinfo->stree, &ploc, 
+    //      ROOT (&matchprocessinfo->stree), matchprocessinfo->stree.text, matchprocessinfo->stree.text+wordsize,0);
     //string prefix = ploc->firstptr;
     //unsigned long int enc=encoding(prefix);
-    showlocation(stderr,&matchprocessinfo->stree,&ploc);
+   //showlocation(stderr,&matchprocessinfo->stree,&ploc);
 }
