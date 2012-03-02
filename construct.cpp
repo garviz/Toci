@@ -675,17 +675,6 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
 
 void freestree(Suffixtree *stree)
 {
-  /*Location ploc;
-  Uchar *qry = (Uchar *) "AACTGGATC";
-  Uchar *qryend=qry+8;
-  Uchar *result = scanprefixfromnodestree(stree,&ploc,ROOT(stree),qry,qryend,0);
-  if (result == NULL)  {
-      fprintf(stderr,"NULL\n");
-  }
-  else {
-      fprintf(stderr,"result=%lu\n", (Uint) result);
-  }
-  fprintf(stderr,"edgelen:%lu remain:%lu locstring.start:%lu locstring.length:%lu ploc.nextnode.address:%lu\n", ploc.edgelen, ploc.remain, ploc.locstring.start, ploc.locstring.length, (Uint) ploc.nextnode.address);*/
   FREESPACE(stree->leaftab);
   FREESPACE(stree->rootchildren);
   FREESPACE(stree->branchtab);

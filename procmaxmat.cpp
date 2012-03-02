@@ -358,7 +358,11 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
   Processmatchfunction processmatch;
   Findmatchfunction findmatchfunction;
-  createTable(matchprocessinfo,15);
+    double start, finish;
+        start = MPI::Wtime();
+  createTable(matchprocessinfo,12);
+        finish = MPI::Wtime();
+    cout << "createTable Time: " << finish-start << endl;
   if(matchprocessinfo->cmum)
   {
     processmatch = storeMUMcandidate;

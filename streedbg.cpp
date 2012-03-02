@@ -368,14 +368,14 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
   succ = GETCHILD(btptr);
   do 
   {
-    //printf("%*.*s",(int) indent,(int) indent,"");
+    printf("%*.*s",(int) indent,(int) indent,"");
     fprintf(stdout,"D-%lu ", indent+1);
     SHOWINDEX(succ);
     if(ISLEAF(succ))
     {
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
-      //showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+      showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
       fprintf(stdout,"%lu\n",getEdgelength(leftpointer,stree->sentinel));
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
     } else
@@ -384,7 +384,7 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
       GETBOTH(succdepth,headposition,succptr);
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
-      //showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
+      showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
       fprintf(stdout,"%lu\n",getEdgelength(leftpointer,leftpointer+edgelen-1));
       showsubtree(stree,indent+1,succptr);
       succ = GETBROTHER(succptr);
@@ -409,7 +409,7 @@ void showstree(Suffixtree *stree)
       if(ISLEAF(*rcptr))
       {
         leftpointer = stree->text + GETLEAFINDEX(*rcptr);
-        //showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
         fprintf(stdout,"%lu\n",getEdgelength(leftpointer,stree->sentinel));
         (void) putchar('\n');
       } else

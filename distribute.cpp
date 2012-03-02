@@ -25,6 +25,8 @@
 #include <vector>
 #include <iostream>
 #include <google/sparse_hash_map>
+#include <sparsehash/sparsetable>
+#include "distribute.h"
 #include "types.h"
 #include "intbits.h"
 #include "visible.h"
@@ -34,74 +36,82 @@
 #include "spacedef.h"
 #include "maxmatdef.h"
 
-struct eqstr
-{
-    bool operator ()(const char *s1, const char *s2) const
-    {
-        return (s1==s2) || (s1 && s2 && strcmp(1, s2) == 0);
-    }
-};
+//Table table;
+
+using google::sparsetable;
 
 Uint getEdgelength(Uchar *left,Uchar *right)
 {
     return (Uint)(right-left+1);
 }
 
-Uint encoding(Uchar *example) 
+Uint encoding(Uchar *example, int wordsize) 
 {
-    Uint encoded=0;
-    for (int i=31; i>=0; i--)
-        encoded &= ~(1<<i);
+    Uchar *s;
+    s=example;
+    Uint encoded;//, mask=16;
+
     int len=strlen((char*)example);
-    int bits=pow(4,len);
-    
-/*     if ( len < 13 ) {
- *         for (int i=31;i>26;i--) {
- *             if ( len & 0x01 ) {
- *                 *encoded |= (1<<i);
- *             }
- *             else {
- *                 *encoded &= ~(1<<i);
- *             }
- *         }
- *     }
- *     else {
- *         for ( int i=31;i>26 ;i-- )
- *             *encoded |= (1<<i);
- *     }
- */ 
-    for(int i=0, j=0; i<len && j<bits; i++, j+=3) {
+/*    for (int i =0; i<len;++i)
+            encoded ^= (encoded<<5)+(encoded>>2)+*(example+i);*/
+/*    int bits;
+    if ( len < 13 ) {
+        bits=26-2*len;
+        for (int i=31;i>26 && mask>0;i--) {
+            if ( len & mask ) {
+                printf("1");
+                encoded |= (1<<i);
+            } else { 
+                printf("0");
+                encoded &= ~(1<<i);
+            }
+            mask>>=1;
+        }
+    }
+    else {
+        return (Uint) 0;
+    }
+ */
+    for(int i=0, j=wordsize*2; j>=0; i++, j-=2) {
         switch (*(example+i))
         {
             case 'A':
+                encoded &= ~(1<<(j+1)); encoded &= ~(1<<j);//00
+                printf("00");
+                break;
             case 'a': 
-                encoded &= ~(1<<(j+2)); encoded &= ~(1<<(j+1)); encoded |= (1<<j);//001
+                encoded &= ~(1<<(j+1)); encoded &= ~(1<<j);//00
+                printf("00");
                 break;
             case 'C':
+                encoded &= ~(1<<(j+1)); encoded |= (1<<j); //01
+                printf("01");
+                break;
             case 'c':
-                encoded &= ~(1<<(j+2)); encoded |= (1<<(j+1)); encoded &= ~(1<<j);//010
+                encoded &= ~(1<<(j+1)); encoded |= (1<<j); //01
+                printf("01");
                 break;
             case 'G':
+                encoded |= (1<<(j+1)); encoded &= (1<<j); //10
+                printf("10");
+                break;
             case 'g':
-                encoded &= ~(1<<(j+2)); encoded |= (1<<(j+1)); encoded |= (1<<j);//011
+                encoded |= (1<<(j+1)); encoded &= (1<<j); //10
+                printf("10");
                 break;
             case 'T':
-            case 't':
-                encoded |= (1<<(j+2)); encoded &= ~(1<<(j+1)); encoded &= ~(1<<j);//100
+                encoded |= (1<<(j+1)); encoded |= (1<<j); //11
+                printf("11");
                 break;
-            default:
+            case 't':
+                encoded |= (1<<(j+1)); encoded |= (1<<j); //11
+                printf("11");
                 break;
          }
    } 
-/*    for (int i=31;i>=0;i--) {
- *        if (encoded & (1<<i)) {
- *            fprintf(stderr,"1");
- *        } else {
- *            fprintf(stderr,"0");
- *        }
- *    }
- */
-   return encoded;
+                printf(" %lu ", encoded);
+   //return ((*(size_t*)s)>>wordsize)%wordsize;
+    return encoded%wordsize;
 }
 
 /* 
@@ -111,15 +121,14 @@ Uint encoding(Uchar *example)
  *  reaches the max characters to save in table.
  * =====================================================================================
  */
-void splitsubstreeH(Suffixtree *stree,Uchar *buffer,Uint *btptr)
+void splitsubstreeH(Suffixtree *stree, sparsetable<Uint> &table, Uchar *buffer,Uint *btptr, short int wordsize)
 {
   Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
-       depth, headposition, *table;
-  table=(Uint *)malloc(sizeof(Uint)); 
+       depth, headposition;
   Uchar *leftpointer;
   
-  std::fprintf(stdout,"table[%lu]=%lu\n",encoding(buffer),BRADDR2NUM(stree,btptr));
-
+  size_t size = std::strlen((const char*)buffer);
+  int i;
   GETBOTH(depth,headposition,btptr);
   succ = GETCHILD(btptr);
   do 
@@ -128,20 +137,60 @@ void splitsubstreeH(Suffixtree *stree,Uchar *buffer,Uint *btptr)
     {
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
+      Uchar *ptr;
+      for (i=0, ptr=leftpointer; ptr<=stree->sentinel; ptr++, i++)
+      {
+          if (ptr == stree->sentinel) 
+          {
+              buffer[size+i]='\0';
+              break;
+           }
+          if (ptr > leftpointer + wordsize)
+           {
+              buffer[size+i]='\0';
+              break;
+          }
+          buffer[size+i]=*ptr;
+       }
+       if (std::strlen((const char*)buffer) > (size_t) wordsize) {
+          //table[(int)(((*(size_t*)buffer)>> (size_t)wordsize)%wordsize)]=btptr;
+          std::fprintf(stdout,"%s[%lu]=%lu\n",buffer,encoding(buffer,wordsize),BRADDR2NUM(stree,btptr));
+          break;
+      }
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
-    } else
+     } else
     {
       succptr = stree->branchtab + GETBRANCHINDEX(succ);
       GETBOTH(succdepth,headposition,succptr);
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
-      //if (std::strlen((const char*)buffer) > (size_t) 6) break;
-      std::strncat((char *)buffer,(const char *)leftpointer,edgelen);
-      splitsubstreeH(stree,buffer,succptr);
+      Uchar *ptr, *end;
+      end=leftpointer + edgelen - 1;
+      for (i=0, ptr=leftpointer; ptr<=end; ptr++, i++)
+       {
+          if (ptr == end) 
+           {
+              buffer[size+i]='\0';
+              break;
+          }
+          if (ptr > leftpointer + wordsize)
+           {
+              buffer[size+i]='\0';
+              break;
+          }
+          buffer[size+i]=*ptr;
+      }
+      if (std::strlen((const char*)buffer) > (size_t) wordsize) {
+          //table[((*(size_t*)buffer)>> (size_t)wordsize)%wordsize]=btptr;
+          //std::fprintf(stdout,"table[%s]=%lu\n",buffer,BRADDR2NUM(stree,btptr));
+          std::fprintf(stdout,"%s[%lu]=%lu\n",buffer,encoding(buffer,wordsize),BRADDR2NUM(stree,btptr));
+          break;
+      }
+      splitsubstreeH(stree,table,buffer,succptr,wordsize);
       succ = GETBROTHER(succptr);
-    } 
-  } while(!NILPTR(succ));
-}
+    }  
+   } while(!NILPTR(succ));
+} 
 
 void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)
 {
@@ -174,15 +223,17 @@ void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)
   }
 }
 
-void createTable(Matchprocessinfo *matchprocessinfo, int wordsize) 
+void createTable(Matchprocessinfo *matchprocessinfo, short int wordsize) 
 {
     Uint size = pow(4,wordsize);
-    vector <unsigned int> table(size,0);
+    //vector <Uint> table(size,0);
+    sparsetable<Uint> table(size);
+    //google::sparse_hash_map<Uchar*, Uint*, std::tr1::hash<Uchar*>, eqstr> table;
+    //table.set_deleted_key(NULL);
     Uint *largeptr, *btptr, *succptr, *rcptr, i, succdepth, distance, 
          nodeaddress, succ, depth, child, brother, headposition, suffixlink;
     Uint leafindex, edgelen;
     Uchar *leftpointer, *buffer;
-    
     buffer = (Uchar *)malloc(sizeof(Uchar *)*wordsize);
     for(rcptr = matchprocessinfo->stree.rootchildren; 
         rcptr <= matchprocessinfo->stree.rootchildren + LARGESTCHARINDEX;rcptr++)
@@ -192,9 +243,18 @@ void createTable(Matchprocessinfo *matchprocessinfo, int wordsize)
             buffer[0]=(Uchar) (rcptr - matchprocessinfo->stree.rootchildren);
             buffer[1]='\0';
             btptr = matchprocessinfo->stree.branchtab + GETBRANCHINDEX(*rcptr);
-            splitsubstreeH(&matchprocessinfo->stree,buffer,btptr);
-        }
-    }
+            splitsubstreeH(&matchprocessinfo->stree,table,buffer,btptr,wordsize);
+         }
+     }
+    
+    //for ( Table::iterator it = table.begin(); it != table.end(); ++it)
+    //    std::cout <<"Key '" << it->first <<"' NODE " << BRADDR2NUM(&matchprocessinfo->stree,it->second) << endl;
+
+    /*Table::iterator t = table.find(buffer);
+    if ( t == table.end() )
+        std::cout<<"Not found"<<endl;
+    else
+        std::cout <<"Entry in map for key '" << t->first <<"' is " << BRADDR2NUM(&matchprocessinfo->stree,t->second) <<"\n";*/
     Location ploc;
     (void) scanprefixfromnodestree (&matchprocessinfo->stree, &ploc, 
           ROOT (&matchprocessinfo->stree), matchprocessinfo->stree.text, matchprocessinfo->stree.text+wordsize,0);
