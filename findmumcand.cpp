@@ -10,10 +10,12 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <sparsehash/sparsetable>
 #include "streedef.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
 
+using google::sparsetable;
 //}
 
 /*EE
@@ -139,7 +141,9 @@ static Sint checkiflocationisMUMcand (Location *loc,
 */
 
 Sint findmumcandidates(Suffixtree *stree,
+                       //sparsetable<Uint*> &table,
                        Uint minmatchlength,
+                       Uint wordsize,
                        Processmatchfunction processmumcandidate,
                        void *processinfo,
                        Uchar *query,

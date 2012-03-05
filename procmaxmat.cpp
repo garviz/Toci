@@ -12,6 +12,8 @@
 #include <cstdlib>
 #include <string.h>
 #include <ctype.h>
+#include <sparsehash/sparsetable>
+#include <math.h>
 #include "types.h"
 #include "errordef.h"
 #include "protodef.h"
@@ -20,6 +22,7 @@
 #include "maxmatdef.h"
 #include "distribute.h"
 
+using google::sparsetable;
 //}
 
 /*EE
@@ -37,6 +40,8 @@
 */
 
 typedef Sint (*Findmatchfunction)(Suffixtree *,
+                                 // sparsetable<Uint*>,
+                                  Uint,
                                   Uint,
                                   Processmatchfunction,
                                   void *,
@@ -49,7 +54,9 @@ typedef Sint (*Findmatchfunction)(Suffixtree *,
 */
 
 Sint findmumcandidates(Suffixtree *stree,
+                       //sparsetable<Uint*> &table,
                        Uint minmatchlength,
+                       Uint wordsize,
                        Processmatchfunction processmatch,
                        void *processinfo,
                        Uchar *query,
@@ -61,7 +68,9 @@ Sint findmumcandidates(Suffixtree *stree,
 */
 
 Sint findmaxmatches(Suffixtree *stree,
+                    //sparsetable<Uint*> &table,
                     Uint minmatchlength,
+                    Uint wordsize,
                     Processmatchfunction processmatch,
                     void *processinfo,
                     Uchar *query,
@@ -269,9 +278,7 @@ static Sint showmaximalmatch (void *info,
     PairUint pp;
 
     if(pos2pospair(matchprocessinfo->subjectmultiseq,&pp,subjectstart) != 0)
-    {
       return -1;
-    }
     printf("  ");
     showsequencedescription(matchprocessinfo->subjectmultiseq,
                             matchprocessinfo->maxdesclength,
@@ -358,11 +365,6 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
   Processmatchfunction processmatch;
   Findmatchfunction findmatchfunction;
-    double start, finish;
-        start = MPI::Wtime();
-  createTable(matchprocessinfo,12);
-        finish = MPI::Wtime();
-    cout << "createTable Time: " << finish-start << endl;
   if(matchprocessinfo->cmum)
   {
     processmatch = storeMUMcandidate;
@@ -395,6 +397,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     matchprocessinfo->currentisrcmatch = false;
     if(findmatchfunction(&matchprocessinfo->stree,
                          matchprocessinfo->minmatchlength,
+                         matchprocessinfo->wordsize,
                          processmatch,
                          info,
                          query,
@@ -418,8 +421,9 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
                        querylen);
     wccSequence(query,querylen);
     matchprocessinfo->currentisrcmatch = true;
-    if(findmatchfunction(&matchprocessinfo->stree,
+    if(findmatchfunction(&matchprocessinfo->stree, 
                          matchprocessinfo->minmatchlength,
+                         matchprocessinfo->wordsize,
                          processmatch,
                          info,
                          query,
@@ -495,6 +499,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   matchprocessinfo.cmum = mmcallinfo->cmum;
   matchprocessinfo.cmumcand = mmcallinfo->cmumcand;
   matchprocessinfo.reversecomplement = mmcallinfo->reversecomplement;
+  matchprocessinfo.wordsize = mmcallinfo->wordsize;
   if(mmcallinfo->cmum)
   {
     INITARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);

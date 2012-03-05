@@ -59,6 +59,7 @@ struct MMcallinfo
        cmumcand,                // compute reference-unique maximal matches
        cmum;                    // compute real matches unique in both sequences
   Uint minmatchlength,          // minimal length of a match to be reported
+       wordsize,                // length of word to store in Direct Access Table
        numofqueryfiles;         // number of query files
   char program[PATH_MAX+1],     // the path of the program
        subjectfile[PATH_MAX+1], // filename of the subject-sequence
@@ -80,6 +81,7 @@ struct Matchprocessinfo
                                // when option \texttt{-mum} is on
   Uint minmatchlength,         // minimum length of a match
        maxdesclength,          // maximum length of a description
+       wordsize,               // wordsize for Direct access table
        currentquerylen;        // length of the current query sequence
   bool showstring,             // is option \texttt{-s} on?
        showsequencelengths,    // is option \texttt{-L} on?

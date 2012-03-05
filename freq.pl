@@ -40,7 +40,7 @@ my @permutaciones;
 #    }
     @permutaciones = variations_with_repetition(\@n,$ARGV[0]);
     for my $c (@permutaciones) {
-        print @$c, "\n";
+        encoding($c);
     }
 #}
 #foreach my $left (@permutaciones) {
@@ -53,3 +53,10 @@ my @permutaciones;
 #    }
 #}
 #close FH;
+
+sub encoding() {
+    my $string = shift;
+    for my $c (@$string)
+        print "$c,";
+    print "\n"; 
+}

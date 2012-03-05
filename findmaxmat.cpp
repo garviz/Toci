@@ -11,11 +11,16 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <omp.h>
+#include <google/sparsetable>
+#include <math.h>
+#include "distribute.h"
 #include "streedef.h"
 #include "streeacc.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
+#include "distribute.h"
 
+using google::sparsetable;
 //}
 
 /*EE
@@ -444,6 +449,7 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
 
 Sint findmaxmatches(Suffixtree *stree,
                     Uint minmatchlength,
+                    Uint wordsize,
                     Processmatchfunction processmatch,
                     void *processinfo,
                     Uchar *query,
@@ -457,9 +463,7 @@ Sint findmaxmatches(Suffixtree *stree,
   bool back = false;
   int res = 0;
   if(querylen < minmatchlength)
-  {
     return res;
-  }
   maxmatchinfo.stree = stree;
   INITARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   INITARRAY(&maxmatchinfo.matchpath,Pathinfo);
@@ -469,14 +473,27 @@ Sint findmaxmatches(Suffixtree *stree,
   maxmatchinfo.queryseqnum = queryseqnum;
   maxmatchinfo.processmatch = processmatch;
   maxmatchinfo.processinfo = processinfo;
+  Uint size = pow(2,3*wordsize);
+  double start, finish;
+  start = MPI::Wtime();
+  sparsetable<Uint*> table(size);
+  createTable(stree,table,wordsize);
+  finish = MPI::Wtime();
+  cerr << "createTable Time: " << finish-start << endl;
+  Uint tmp = pow(2,3*wordsize);
+  /*Uint sum=0;
+  for ( Uint it = 0; it < tmp; ++it ) {
+      if ( table[it] != 0)
+          sum++;
+  }
+  cerr << "Total " << sum << endl;*/
   querysubstringend = query + minmatchlength - 1;
   (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                   query, querysubstringend,0);
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
   //#pragma omp parallel for num_threads(4) schedule (static) ordered
   for (/*omp_Iterator = querysubstringend*/; /* omp_Iterator */querysubstringend < query + querylen - 1; 
-      maxmatchinfo.querysuffix++, querysubstringend++
-      /* omp_Iterator++*/)
+      maxmatchinfo.querysuffix++, querysubstringend++/* omp_Iterator++*/)
   {
     /*fprintf(stdout,"Thread:%d omp_Iterator:%lu %lu %lu %lu\n",omp_get_thread_num(),(Uint)omp_Iterator,
             ploc.locstring.start+1, 
@@ -486,6 +503,10 @@ Sint findmaxmatches(Suffixtree *stree,
    /* #pragma omp flush (back)
       if (!back)
       {*/
+        string s1 ((char *)maxmatchinfo.querysuffix,wordsize);
+        //cout << s1 << " " << 
+        (void) table[encoding((Uchar*)s1.c_str(),wordsize)];
+        //<< endl;
         if(ploc.locstring.length >= minmatchlength && 
             enumeratemaxmatches(&maxmatchinfo,&ploc) != 0) 
         {
@@ -509,7 +530,7 @@ Sint findmaxmatches(Suffixtree *stree,
                               querysubstringend+1,0);
         }
       //}
-  }
+  } 
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {
     /*fprintf(stdout,"%lu %lu %lu\n",ploc.locstring.start+1, 

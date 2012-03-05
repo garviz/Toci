@@ -22,18 +22,10 @@
 #include "maxmatdef.h"
 
 using google::sparse_hash_map;
+using google::sparsetable;
 
-struct eqstr
-{
-    bool operator ()(Uchar *s1, Uchar *s2) const
-    { 
-        return (s1==s2) || (s1 && s2 && strcmp((const char *)s1, (const char *)s2) == 0);
-    }
-}; 
-
-typedef google::sparse_hash_map<Uchar*, Uint*, std::tr1::hash<Uchar*>, eqstr> Table;
 Uint getEdgelength(Uchar *left,Uchar *right);
 void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size);
-void splitsubstreeH(Suffixtree *stree,const Table &table, Uchar *buffer,Uint *btptr, short int wordsize);
-Uint encoding(Uchar *example);
-void createTable(Matchprocessinfo *matchprocessinfo, short int wordsize);
+void splitsubstreeH(Suffixtree *stree,sparsetable<Uint*>  &table, Uchar *buffer,Uint *btptr, short int wordsize);
+Uint encoding(Uchar *example, int wordsize);
+void createTable(Suffixtree *stree, sparsetable<Uint*> &table,Uint wordsize);

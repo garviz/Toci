@@ -103,6 +103,6 @@ int main(int argc, char *argv[])
         cout << "Process: " << rank << endl;
     }
     MPI_Finalize();
-    cout << "Final Time: " << finish-start << endl;
+    cerr << "Final Time: " << finish-start << endl;
     return EXIT_SUCCESS;
 }

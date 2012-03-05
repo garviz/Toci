@@ -52,6 +52,7 @@ typedef enum
   OPTSHOWREVERSEPOSITIONS,
   OPTFOURCOLUMN,
   OPTSHOWSEQUENCELENGTHS,
+  OPTTABLE,
   OPTH,
   OPTHELP,
   NUMOFOPTIONS
@@ -86,7 +87,7 @@ static void showusage(char *program,OptionDescription *options,
   showoptions(stdout,program,options,numofoptions);
 }
 
-/*EE
+/*EE 
   The following function declares the possible options
   in a record \texttt{options}. It then ananlyzes the \texttt{argv}-vector
   step by step. If everything is okay, 0 is returned and the 
@@ -131,6 +132,7 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char **argv)
 	    "reference sequence inputs");
   ADDOPTION(OPTSHOWSEQUENCELENGTHS,"-L",
             "show the length of the query sequences on the header line");
+  ADDOPTION(OPTTABLE,"-T","size of the word to store in Direct access table");
   ADDOPTION(OPTH,"-h",
 	    "show possible options");
   ADDOPTION(OPTHELP,"-help",
@@ -189,8 +191,8 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char **argv)
         mmcallinfo->minmatchlength = (Uint) readint;
         break;
       case OPTFOURCOLUMN:
-	mmcallinfo->fourcolumn = true;
-	break;
+	    mmcallinfo->fourcolumn = true;
+	    break;
       case OPTSHOWSEQUENCELENGTHS:
         mmcallinfo->showsequencelengths = true; 
         break;
@@ -202,14 +204,30 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char **argv)
         mmcallinfo->reversecomplement = true; 
         break;
       case OPTMAXMATCH:
-	mmcallinfo->cmaxmatch = true;
-	break;
+	    mmcallinfo->cmaxmatch = true;
+	    break;
       case OPTMUMREF:
       case OPTMUMCAND:
         mmcallinfo->cmumcand = true;
         break;
       case OPTMUM:
         mmcallinfo->cmum = true;
+        break;
+      case OPTTABLE:
+        argnum++;
+        if(argnum > (Uint) (argc-2))
+        {
+          ERROR1("missing argument for option %s",
+                  options[OPTTABLE].optname);
+          return -2;
+        }
+        if(sscanf(argv[argnum],"%ld",&readint) != 1 || readint <= 0)
+        {
+          ERROR2("argument %s for option %s is not a positive integer",
+                  argv[argnum],options[OPTTABLE].optname);
+          return -3;
+        }
+        mmcallinfo->wordsize = (Uint) readint;
         break;
       case OPTH:
       case OPTHELP:
