@@ -95,7 +95,7 @@ static void showusage(char *program,OptionDescription *options,
   Otherwise, a negative value is returned.
 */
 
-Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char **argv)
+Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])
 {
   OptionDescription options[NUMOFOPTIONS];   // store the options
   Sint optval;         // neg. return val. if error, otherwise option number

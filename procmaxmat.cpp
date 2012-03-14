@@ -19,6 +19,7 @@
 #include "protodef.h"
 #include "spacedef.h"
 #include "streedef.h"
+#include "streeacc.h"
 #include "maxmatdef.h"
 #include "distribute.h"
 
@@ -266,7 +267,7 @@ static Sint showmaximalmatch (void *info,
                               /*@unused@*/ Uint seqnum,
                               Uint querystart)
 {
-  Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
+  /*Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
   if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
      &&
@@ -294,7 +295,7 @@ static Sint showmaximalmatch (void *info,
   {
     printf ("%8lu  ", (long unsigned int) (querystart+1));
   }
-  printf ("%8lu\n", (long unsigned int) matchlength);
+  printf ("%8lu\n", (long unsigned int) matchlength);*/
   return 0;
 }
 
@@ -480,6 +481,8 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
            (long unsigned int) getmaxtextlenstree());
   fprintf(stderr,"# (maximum query length is %lu)\n",
           (long unsigned int) ~((Uint)0));
+  double start, finish;
+  start = MPI::Wtime();
   if(constructprogressstree (&matchprocessinfo.stree,
                              subjectmultiseq->sequence,
                              subjectmultiseq->totallength,
@@ -489,6 +492,9 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   {
     return -1;
   }
+  finish = MPI::Wtime();
+  cerr << "createST Time: " << finish-start << endl;
+  showstree(&matchprocessinfo.stree);
   matchprocessinfo.subjectmultiseq = subjectmultiseq;
   matchprocessinfo.minmatchlength = mmcallinfo->minmatchlength;
   matchprocessinfo.showstring = mmcallinfo->showstring;

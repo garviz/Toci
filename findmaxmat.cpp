@@ -459,11 +459,8 @@ Sint findmaxmatches(Suffixtree *stree,
   Uchar *querysubstringend;  // ref to end of querysubs. of len. minmatchl.
   Location ploc;
   Maxmatchinfo maxmatchinfo;
-  Uchar *omp_Iterator;
-  bool back = false;
-  int res = 0;
   if(querylen < minmatchlength)
-    return res;
+    return 0;
   maxmatchinfo.stree = stree;
   INITARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   INITARRAY(&maxmatchinfo.matchpath,Pathinfo);
@@ -477,11 +474,11 @@ Sint findmaxmatches(Suffixtree *stree,
   double start, finish;
   start = MPI::Wtime();
   sparsetable<Uint*> table(size);
-  createTable(stree,table,wordsize);
+  //createTable(stree,table,wordsize);
   finish = MPI::Wtime();
   cerr << "createTable Time: " << finish-start << endl;
-  Uint tmp = pow(2,3*wordsize);
-  /*Uint sum=0;
+  /*Uint tmp = pow(2,3*wordsize);
+  Uint sum=0;
   for ( Uint it = 0; it < tmp; ++it ) {
       if ( table[it] != 0)
           sum++;
@@ -491,36 +488,16 @@ Sint findmaxmatches(Suffixtree *stree,
   (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                   query, querysubstringend,0);
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
-  //#pragma omp parallel for num_threads(4) schedule (static) ordered
-  for (/*omp_Iterator = querysubstringend*/; /* omp_Iterator */querysubstringend < query + querylen - 1; 
-      maxmatchinfo.querysuffix++, querysubstringend++/* omp_Iterator++*/)
+  for ( ;querysubstringend < query + querylen - 1; 
+      maxmatchinfo.querysuffix++, querysubstringend++)
   {
-    /*fprintf(stdout,"Thread:%d omp_Iterator:%lu %lu %lu %lu\n",omp_get_thread_num(),(Uint)omp_Iterator,
-            ploc.locstring.start+1, 
-                   (Uint) 
-                   (maxmatchinfo.querysuffix-maxmatchinfo.query)+1,
-                   ploc.locstring.length);*/
-   /* #pragma omp flush (back)
-      if (!back)
-      {*/
-        string s1 ((char *)maxmatchinfo.querysuffix,wordsize);
-        //cout << s1 << " " << 
-        (void) table[encoding((Uchar*)s1.c_str(),wordsize)];
-        //<< endl;
         if(ploc.locstring.length >= minmatchlength && 
             enumeratemaxmatches(&maxmatchinfo,&ploc) != 0) 
-        {
-         /* back = true;
-            #pragma omp flush (back)*/
-            res = -1;
-            return res;
-        }
+            return -1;
         if (ROOTLOCATION (&ploc)) 
-        {
             (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                       maxmatchinfo.querysuffix+1, 
                                       querysubstringend+1,0);
-        }
         else 
         {
             linklocstree (stree, &ploc, &ploc);
@@ -529,21 +506,15 @@ Sint findmaxmatches(Suffixtree *stree,
                                  + ploc.locstring.length+1,
                               querysubstringend+1,0);
         }
-      //}
   } 
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {
-    /*fprintf(stdout,"%lu %lu %lu\n",ploc.locstring.start+1, 
-            (Uint) (maxmatchinfo.querysuffix-maxmatchinfo.query)+1,
-            ploc.locstring.length);*/
     if(enumeratemaxmatches (&maxmatchinfo,&ploc) != 0)
-    {
-      res = -2;
-    }
+      return -2;
     linklocstree (stree, &ploc, &ploc);
     maxmatchinfo.querysuffix++;
   }
   FREEARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   FREEARRAY(&maxmatchinfo.matchpath,Pathinfo);
-  return res;
+  return 0;
 }

@@ -68,18 +68,20 @@
         {\
           if(LEAFADDR2NUM(ST,(A).address) > (ST)->textlen)\
           {\
-            printf("%s,%lu:",__FILE__,(Showuint) __LINE__);\
+            printf("%s,%lu:",__FILE__,(Uint) __LINE__);\
             printf("leafaddr = %lu invalid\n",\
-                    (Showuint) LEAFADDR2NUM(ST,(A).address));\
+                    (Uint) LEAFADDR2NUM(ST,(A).address));\
+            MPI::Finalize;\
             exit(EXIT_FAILURE);\
           }\
         } else\
         {\
           if(BRADDR2NUM(ST,(A).address) >= (ST)->nextfreebranchnum)\
           {\
-            printf("%s,%lu:",__FILE__,(Showuint) __LINE__);\
+            printf("%s,%lu:",__FILE__,(Uint) __LINE__);\
             printf("branchaddr = %lu invalid\n",\
-                    (Showuint) BRADDR2NUM(ST,(A).address));\
+                    (Uint) BRADDR2NUM(ST,(A).address));\
+            MPI::Finalize;\
             exit(EXIT_FAILURE);\
           }\
         } 

@@ -45,7 +45,7 @@ Uint getEdgelength(Uchar *left,Uchar *right)
     return (Uint)(right-left+1);
 }
 
-Uint encoding(Uchar *example, int wordsize) 
+Uint encoding(Uchar *example, Uint wordsize) 
 {
     const int len=3*wordsize;
     string binary;
@@ -90,14 +90,14 @@ Uint encoding(Uchar *example, int wordsize)
  *  reaches the max characters to save in table.
  * =====================================================================================
  */
-void splitsubstreeH(Suffixtree *stree, sparsetable<Uint*> &table, Uchar *buffer,Uint *btptr, short int wordsize)
+void splitsubstreeH(Suffixtree *stree, sparsetable<Uint*> &table, Uchar *buffer,Uint *btptr, Uint wordsize)
 {
   Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
        depth, headposition;
   Uchar *leftpointer;
+  int i;
   
   size_t size = std::strlen((const char*)buffer);
-  int i;
   GETBOTH(depth,headposition,btptr);
   succ = GETCHILD(btptr);
   do 
@@ -107,48 +107,40 @@ void splitsubstreeH(Suffixtree *stree, sparsetable<Uint*> &table, Uchar *buffer,
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
       Uchar *ptr;
-      for (i=0, ptr=leftpointer; ptr<=stree->sentinel; ptr++, i++)
-      {
-          if (ptr == stree->sentinel) 
-          {
-              buffer[size+i]='\0';
-              break;
-           }
-          if (ptr > leftpointer + wordsize)
-           {
-              buffer[size+i]='\0';
-              break;
-          }
-          buffer[size+i]=*ptr;
-       }
-       if (std::strlen((const char*)buffer) > (size_t) wordsize) {
+      if ((size+getEdgelength(leftpointer,stree->sentinel))>wordsize)
           table[encoding(buffer,wordsize)]=btptr;
-          break;
+      else
+      {
+          for (i=0, ptr=leftpointer; ptr<=stree->sentinel; ptr++, i++)
+          {
+              if (ptr == stree->sentinel) 
+              {
+                 buffer[size+i]='\0';
+                 break;
+              }
+              buffer[size+i]=*ptr;
+          }
+          table[encoding(buffer,wordsize)]=(Uint*)succ;
       }
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
      } else
-    {
+     {
       succptr = stree->branchtab + GETBRANCHINDEX(succ);
       GETBOTH(succdepth,headposition,succptr);
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
       Uchar *ptr, *end;
       end=leftpointer + edgelen - 1;
-      for (i=0, ptr=leftpointer; ptr<=end; ptr++, i++)
-       {
-          if (ptr == end) 
-           {
-              buffer[size+i]='\0';
-              break;
-          }
-          if (ptr > leftpointer + wordsize)
-           {
-              buffer[size+i]='\0';
-              break;
-          }
-          buffer[size+i]=*ptr;
+      if ((size+edgelen)>wordsize)
+          fprintf(stderr,"No cabe %lu %lu\n",size,size+edgelen);
+      else
+      {
+          for (i=0, ptr=leftpointer; i<edgelen; ptr++, i++)
+              buffer[size+i]=*ptr;
+          buffer[size+i]='\0';
       }
-      if (std::strlen((const char*)buffer) > (size_t) wordsize) {
+      if (std::strlen((const char*)buffer) > (size_t) wordsize) 
+      {
           table[encoding(buffer,wordsize)]=btptr;
           break;
       }
@@ -156,6 +148,7 @@ void splitsubstreeH(Suffixtree *stree, sparsetable<Uint*> &table, Uchar *buffer,
       succ = GETBROTHER(succptr);
     }  
    } while(!NILPTR(succ));
+   //fprintf(stderr,"%s %lu\n",buffer, BRADDR2NUM(stree,btptr));
 } 
 
 void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)

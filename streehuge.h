@@ -89,7 +89,6 @@
 
 
 
-#define CHILDREFERSTOLEAF(B)   ISLEAF(*(B))
 
 //\Ignore{
 

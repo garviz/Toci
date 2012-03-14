@@ -10,14 +10,14 @@ ACCESSFIRSTCHILD	streemac.h	25;"	d
 ACCESSHEADPOS	streemac.h	23;"	d
 ACCESSSUFFIXLINK	streemac.h	24;"	d
 ADDAMOUNT	depthtab.cpp	17;"	d	file:
-ADDFACTOR	construct.cpp	85;"	d	file:
+ADDFACTOR	construct.cpp	75;"	d	file:
 ADDOPTION	optdesc.h	45;"	d
 ALLOCSPACE	spacedef.h	70;"	d
 ALLOCVIAFATAL	space.cpp	51;"	d	file:
 ARGS_H	args.h	12;"	d
 ARRAYDEF_H	arraydef.h	12;"	d
 ASSIGNDEFAULTSHOWDESC	multidef.h	74;"	d
-ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	120;"	d	file:
+ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	121;"	d	file:
 ArrayCharacters	arraydef.h	/^typedef ArrayUchar ArrayCharacters;     \/\/ \\Typedef{ArrayCharacters}$/;"	t
 ArrayPosition	arraydef.h	/^typedef ArrayUint  ArrayPosition;       \/\/ \\Typedef{ArrayPosition}$/;"	t
 ArrayStrings	arraydef.h	/^struct ArrayStrings$/;"	s
@@ -33,54 +33,54 @@ CHECKARGNUM	args.h	28;"	d
 CHECKARRAYSPACE	arraydef.h	63;"	d
 CHECKARRAYSPACEMULTI	arraydef.h	81;"	d
 CHECKIFLOCATIONISVALID	findmaxmat.cpp	175;"	d	file:
-CHECKSTEP	construct.cpp	705;"	d	file:
-CHECKSTEP	construct.cpp	715;"	d	file:
-CHECKSTEP	construct.cpp	742;"	d	file:
-CHECKSTEP	construct.cpp	752;"	d	file:
-CHECKSTEP	construct.cpp	765;"	d	file:
-CHECKSTEP	construct.cpp	775;"	d	file:
-CHECKSTEP	construct.cpp	799;"	d	file:
-CHECKSTEP	construct.cpp	835;"	d	file:
-CHECKTEXTLEN	construct.cpp	27;"	d	file:
-CHILDREFERSTOLEAF	streehuge.h	92;"	d
+CHECKSTEP	construct.cpp	685;"	d	file:
+CHECKSTEP	construct.cpp	695;"	d	file:
+CHECKSTEP	construct.cpp	726;"	d	file:
+CHECKSTEP	construct.cpp	736;"	d	file:
+CHECKSTEP	construct.cpp	749;"	d	file:
+CHECKSTEP	construct.cpp	759;"	d	file:
+CHECKSTEP	construct.cpp	783;"	d	file:
+CHECKSTEP	construct.cpp	819;"	d	file:
+CHECKTEXTLEN	construct.cpp	30;"	d	file:
 CLEARBITTAB	intbits.h	74;"	d
-COMPLETELARGEFIRST	construct.cpp	702;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	682;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	692;"	d	file:
 COMPLETELARGEFIRST	construct.cpp	712;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	732;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	749;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	760;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	772;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	795;"	d	file:
-COMPLETELARGEFIRST	construct.cpp	832;"	d	file:
-COMPLETELARGESECOND	construct.cpp	703;"	d	file:
-COMPLETELARGESECOND	construct.cpp	713;"	d	file:
-COMPLETELARGESECOND	construct.cpp	737;"	d	file:
-COMPLETELARGESECOND	construct.cpp	750;"	d	file:
-COMPLETELARGESECOND	construct.cpp	761;"	d	file:
-COMPLETELARGESECOND	construct.cpp	773;"	d	file:
-COMPLETELARGESECOND	construct.cpp	796;"	d	file:
-COMPLETELARGESECOND	construct.cpp	833;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	733;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	744;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	756;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	779;"	d	file:
+COMPLETELARGEFIRST	construct.cpp	816;"	d	file:
+COMPLETELARGESECOND	construct.cpp	683;"	d	file:
+COMPLETELARGESECOND	construct.cpp	693;"	d	file:
+COMPLETELARGESECOND	construct.cpp	719;"	d	file:
+COMPLETELARGESECOND	construct.cpp	734;"	d	file:
+COMPLETELARGESECOND	construct.cpp	745;"	d	file:
+COMPLETELARGESECOND	construct.cpp	757;"	d	file:
+COMPLETELARGESECOND	construct.cpp	780;"	d	file:
+COMPLETELARGESECOND	construct.cpp	817;"	d	file:
+CONSTRUCT	construct.cpp	680;"	d	file:
+CONSTRUCT	construct.cpp	690;"	d	file:
 CONSTRUCT	construct.cpp	700;"	d	file:
-CONSTRUCT	construct.cpp	710;"	d	file:
-CONSTRUCT	construct.cpp	720;"	d	file:
-CONSTRUCT	construct.cpp	747;"	d	file:
-CONSTRUCT	construct.cpp	757;"	d	file:
-CONSTRUCT	construct.cpp	770;"	d	file:
-CONSTRUCT	construct.cpp	783;"	d	file:
-CONSTRUCT	construct.cpp	830;"	d	file:
+CONSTRUCT	construct.cpp	731;"	d	file:
+CONSTRUCT	construct.cpp	741;"	d	file:
+CONSTRUCT	construct.cpp	754;"	d	file:
+CONSTRUCT	construct.cpp	767;"	d	file:
+CONSTRUCT	construct.cpp	814;"	d	file:
 CONSTRUCTSTREE	streemac.h	33;"	d
 COPYMULTISEQ	multiseq.cpp	47;"	d	file:
 CREATEMEMORYMAP	spacedef.h	96;"	d
 CREATEMEMORYMAPFORFILEDESC	spacedef.h	99;"	d
+DEBUGDEFAULT	construct.cpp	25;"	d	file:
 DECLAREARRAYSTRUCT	arraydef.h	41;"	d
-DECLAREEXTRA	construct.cpp	701;"	d	file:
-DECLAREEXTRA	construct.cpp	711;"	d	file:
-DECLAREEXTRA	construct.cpp	722;"	d	file:
-DECLAREEXTRA	construct.cpp	748;"	d	file:
-DECLAREEXTRA	construct.cpp	759;"	d	file:
-DECLAREEXTRA	construct.cpp	771;"	d	file:
-DECLAREEXTRA	construct.cpp	784;"	d	file:
-DECLAREEXTRA	construct.cpp	831;"	d	file:
+DECLAREEXTRA	construct.cpp	681;"	d	file:
+DECLAREEXTRA	construct.cpp	691;"	d	file:
+DECLAREEXTRA	construct.cpp	702;"	d	file:
+DECLAREEXTRA	construct.cpp	732;"	d	file:
+DECLAREEXTRA	construct.cpp	743;"	d	file:
+DECLAREEXTRA	construct.cpp	755;"	d	file:
+DECLAREEXTRA	construct.cpp	768;"	d	file:
+DECLAREEXTRA	construct.cpp	815;"	d	file:
 DEFAULTMINUNIQUEMATCHLEN	maxmatopt.cpp	33;"	d	file:
 DELETEMEMORYMAP	spacedef.h	102;"	d
 DESCRIPTIONLENGTH	multidef.h	66;"	d
@@ -102,14 +102,14 @@ EXCEPTFIRSTBIT	intbits.h	41;"	d
 EXCEPTFIRSTTHREEBITS	intbits.h	45;"	d
 EXCEPTFIRSTTWOBITS	intbits.h	43;"	d
 FASTASEPARATOR	multidef.h	52;"	d
-FINALPROGRESS	construct.cpp	706;"	d	file:
-FINALPROGRESS	construct.cpp	716;"	d	file:
-FINALPROGRESS	construct.cpp	743;"	d	file:
-FINALPROGRESS	construct.cpp	753;"	d	file:
-FINALPROGRESS	construct.cpp	766;"	d	file:
-FINALPROGRESS	construct.cpp	776;"	d	file:
-FINALPROGRESS	construct.cpp	817;"	d	file:
-FINALPROGRESS	construct.cpp	836;"	d	file:
+FINALPROGRESS	construct.cpp	686;"	d	file:
+FINALPROGRESS	construct.cpp	696;"	d	file:
+FINALPROGRESS	construct.cpp	727;"	d	file:
+FINALPROGRESS	construct.cpp	737;"	d	file:
+FINALPROGRESS	construct.cpp	750;"	d	file:
+FINALPROGRESS	construct.cpp	760;"	d	file:
+FINALPROGRESS	construct.cpp	801;"	d	file:
+FINALPROGRESS	construct.cpp	820;"	d	file:
 FIRSTBIT	intbits.h	29;"	d
 FIRSTTWOBITS	intbits.h	39;"	d
 FOLLOWSUFFIXLINK	streeacc.h	178;"	d
@@ -151,13 +151,13 @@ ISSET	optdesc.h	55;"	d
 ISSPECIAL	chardef.h	25;"	d
 ITHBIT	intbits.h	33;"	d
 LARGEINTS	streehuge.h	31;"	d
-LARGESTCHARINDEX	streehuge.h	97;"	d
-LARGESTCHARINDEX	streehuge.h	99;"	d
+LARGESTCHARINDEX	streehuge.h	96;"	d
+LARGESTCHARINDEX	streehuge.h	98;"	d
 LEADLEVEL	streeacc.h	222;"	d
 LEAFADDR2NUM	streemac.h	61;"	d
 LEAFBIT	streehuge.h	35;"	d
 LEAFBROTHERVAL	streehuge.h	82;"	d
-LEASTSHOWPROGRESS	construct.cpp	780;"	d	file:
+LEASTSHOWPROGRESS	construct.cpp	764;"	d	file:
 LOGWORDSIZE	types.h	35;"	d
 LOWESTVISIBLE	visible.h	28;"	d
 Leafinfo	streetyp.h	/^typedef Reference Leafinfo;  \/\/ \\Typedef{Leafinfo}$/;"	t
@@ -178,7 +178,7 @@ MAXMATDEF_H	maxmatdef.h	12;"	d
 MAXNUMOFQUERYFILES	maxmatdef.h	42;"	d
 MAXTEXTLEN	streehuge.h	60;"	d
 MIN	minmax.h	26;"	d
-MINEXTRA	construct.cpp	86;"	d	file:
+MINEXTRA	construct.cpp	76;"	d	file:
 MINMAX_H	minmax.h	12;"	d
 MMREPLACEMENTCHARQUERY	maxmatdef.h	36;"	d
 MMREPLACEMENTCHARSUBJECT	maxmatdef.h	35;"	d
@@ -200,7 +200,7 @@ NILBIT	streehuge.h	37;"	d
 NILPTR	streehuge.h	58;"	d
 NOTSUPPOSED	errordef.h	110;"	d
 NOTSUPPOSEDTOBENULL	errordef.h	120;"	d
-NUMOFCALLS	construct.cpp	781;"	d	file:
+NUMOFCALLS	construct.cpp	765;"	d	file:
 NUMOFOPTIONS	maxmatopt.cpp	/^  NUMOFOPTIONS$/;"	e	enum:__anon1	file:
 Nodeinfo	findmaxmat.cpp	/^DECLAREARRAYSTRUCT(Nodeinfo);$/;"	v
 Nodeinfo	findmaxmat.cpp	/^struct Nodeinfo$/;"	s	file:
@@ -229,8 +229,8 @@ OPTSHOWSTRING	maxmatopt.cpp	/^  OPTSHOWSTRING,$/;"	e	enum:__anon1	file:
 OPTTABLE	maxmatopt.cpp	/^  OPTTABLE,$/;"	e	enum:__anon1	file:
 OptionDescription	optdesc.h	/^struct OptionDescription$/;"	s
 Optionnumber	maxmatopt.cpp	/^} Optionnumber;$/;"	t	typeref:enum:__anon1	file:
-PARSEFLOATARG	args.h	52;"	d
-PARSEINTARG	args.h	39;"	d
+PARSEFLOATARG	args.h	53;"	d
+PARSEINTARG	args.h	40;"	d
 PROCESSALL	streedbg.cpp	23;"	d	file:
 PROCESSBRANCH1	dfs.cpp	135;"	d	file:
 PROCESSBRANCH1	dfs.cpp	137;"	d	file:
@@ -238,15 +238,15 @@ PROCESSBRANCH1	dfs.cpp	59;"	d	file:
 PROCESSBRANCH2	dfs.cpp	136;"	d	file:
 PROCESSBRANCH2	dfs.cpp	138;"	d	file:
 PROCESSBRANCH2	dfs.cpp	60;"	d	file:
-PROCESSHEAD	construct.cpp	704;"	d	file:
-PROCESSHEAD	construct.cpp	714;"	d	file:
-PROCESSHEAD	construct.cpp	741;"	d	file:
-PROCESSHEAD	construct.cpp	751;"	d	file:
-PROCESSHEAD	construct.cpp	762;"	d	file:
-PROCESSHEAD	construct.cpp	774;"	d	file:
-PROCESSHEAD	construct.cpp	797;"	d	file:
-PROCESSHEAD	construct.cpp	834;"	d	file:
-PROCESSREALMUMS	procmaxmat.cpp	100;"	d	file:
+PROCESSHEAD	construct.cpp	684;"	d	file:
+PROCESSHEAD	construct.cpp	694;"	d	file:
+PROCESSHEAD	construct.cpp	725;"	d	file:
+PROCESSHEAD	construct.cpp	735;"	d	file:
+PROCESSHEAD	construct.cpp	746;"	d	file:
+PROCESSHEAD	construct.cpp	758;"	d	file:
+PROCESSHEAD	construct.cpp	781;"	d	file:
+PROCESSHEAD	construct.cpp	818;"	d	file:
+PROCESSREALMUMS	procmaxmat.cpp	101;"	d	file:
 PROTODEF_H	protodef.h	10;"	d
 PairUint	arraydef.h	/^DECLAREARRAYSTRUCT(PairUint);$/;"	v
 PairUint	types.h	/^struct PairUint$/;"	s
@@ -290,7 +290,7 @@ SMALLBIT	streehuge.h	36;"	d
 SMALLINTS	streehuge.h	30;"	d
 SPACEDEF_H	spacedef.h	12;"	d
 STANDARDMESSAGE	errordef.h	97;"	d
-STARTFACTOR	construct.cpp	82;"	d	file:
+STARTFACTOR	construct.cpp	72;"	d	file:
 STOREINARRAY	arraydef.h	108;"	d
 STORESTARTDESC	maxmatinp.cpp	37;"	d	file:
 STORESTARTDESC	multiseq.cpp	53;"	d	file:
@@ -328,7 +328,7 @@ Uint	types.h	/^typedef unsigned long Uint;$/;"	t
 UintConst	types.h	/^typedef const unsigned long UintConst;$/;"	t
 Ushort	arraydef.h	/^DECLAREARRAYSTRUCT(Ushort);$/;"	v
 Ushort	types.h	/^typedef unsigned short Ushort;$/;"	t
-VALIDINIT	construct.cpp	25;"	d	file:
+VALIDINIT	construct.cpp	28;"	d	file:
 VISIBLECHAR	visible.h	48;"	d
 VISIBLE_H	visible.h	13;"	d
 WILDCARD	chardef.h	23;"	d
@@ -383,8 +383,7 @@ description	optdesc.h	/^       *description;         \/\/ help text describing p
 descspace	multidef.h	/^  ArrayCharacters descspace;           \/\/ the space for the descriptions$/;"	m	struct:Multiseq
 dynamicstrdup	space.cpp	/^\/*@notnull@*\/ char *dynamicstrdup(char *file,Uint line,char *source)$/;"	f
 edgelen	streetyp.h	/^  Uint edgelen,         \/\/ length of edge$/;"	m	struct:Location
-encoding	distribute.cpp	/^Uint encoding(Uchar *example, int wordsize) $/;"	f
-encoding	freq.pl	/^sub encoding() {$/;"	s
+encoding	distribute.cpp	/^Uint encoding(Uchar *example, Uint wordsize) $/;"	f
 encoding	test.cpp	/^unsigned int encoding(char *example, int wordsize) $/;"	f
 enumeratemaxmatches	findmaxmat.cpp	/^static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,$/;"	f	file:
 enumlocations	streedbg.cpp	/^void enumlocations(Suffixtree *stree,$/;"	f
@@ -508,7 +507,7 @@ optname	optdesc.h	/^  char *optname,             \/\/ the option string, begins 
 optval	optdesc.h	/^  Uint optval;               \/\/ the unique number of an option$/;"	m	struct:OptionDescription
 originalsequence	multidef.h	/^        *originalsequence;             \/\/ NULL or points to orig. sequence$/;"	m	struct:Multiseq
 overallsequences	multiseq.cpp	/^Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,$/;"	f
-parsemaxmatoptions	maxmatopt.cpp	/^Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char **argv)$/;"	f
+parsemaxmatoptions	maxmatopt.cpp	/^Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])$/;"	f
 pos2pospair	multiseq.cpp	/^Sint pos2pospair(Multiseq *multiseq,PairUint *pos,Uint position)$/;"	f
 prefix	prefix.hpp	/^        string prefix;$/;"	m	class:prefix
 prefix	prefix.hpp	/^class prefix$/;"	c
@@ -588,7 +587,6 @@ showsymbolstree	streetyp.h	/^  char * (*showsymbolstree)(Uchar,Uchar *);$/;"	m	s
 showtable	streedbg.cpp	/^void showtable(Suffixtree *stree,bool final)$/;"	f
 showthesymbolstring	streedbg.cpp	/^void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,$/;"	f
 showusage	maxmatopt.cpp	/^static void showusage(char *program,OptionDescription *options,$/;"	f	file:
-showvalues	construct.cpp	/^static void showvalues(void)$/;"	f	file:
 simplefileOpen	mapfile.cpp	/^Sint simplefileOpen(char *filename,Uint *numofbytes)$/;"	f
 sizeofcells	space.cpp	/^  Uint sizeofcells,    \/\/ size of cells of the block$/;"	m	struct:Blockdescription	file:
 skipprefix	multidef.h	/^  Uint skipprefix,       \/\/ always skip this number of prefixes$/;"	m	struct:Showdescinfo
@@ -601,7 +599,7 @@ spacepeak	mapfile.cpp	/^            spacepeak = 0,                 \/\/ maximall
 spacepeak	space.cpp	/^            spacepeak = 0;      \/\/ maximally allocated num of bytes$/;"	v	file:
 spaceptr	space.cpp	/^  void *spaceptr;      \/\/ ptr to the spaceblock$/;"	m	struct:Blockdescription	file:
 splitstreeH	distribute.cpp	/^void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)$/;"	f
-splitsubstreeH	distribute.cpp	/^void splitsubstreeH(Suffixtree *stree, sparsetable<Uint*> &table, Uchar *buffer,Uint *btptr, short int wordsize)$/;"	f
+splitsubstreeH	distribute.cpp	/^void splitsubstreeH(Suffixtree *stree, sparsetable<Uint*> &table, Uchar *buffer,Uint *btptr, Uint wordsize)$/;"	f
 stack	streetyp.h	/^  ArrayBref stack;$/;"	m	struct:DFSstate
 start	types.h	/^      Uint start, length;$/;"	m	struct:ListType
 startdesc	multidef.h	/^  Uint *startdesc,                     \/\/ of length numofsequences + 1$/;"	m	struct:Multiseq

@@ -22,30 +22,20 @@
 
 #define FUNCLEVEL 4
 
+#define DEBUGDEFAULT DEBUG1(FUNCLEVEL,">%s\n",__func__);\
+                     DEBUGCODE(5,showstree(stree))
+
 #define VALIDINIT     0
 
 #define CHECKTEXTLEN\
         if(textlen > MAXTEXTLEN)\
         {\
-          fprintf(stderr, "suffix tree construction failed: "\
+          fprintf(stderr,"suffix tree construction failed: "\
                  "textlen=%lu larger than maximal textlen=%lu",\
-                  (Sint) textlen,(Sint) MAXTEXTLEN);\
+                  (Uint) textlen,(Uint) MAXTEXTLEN);\
           return -1;\
         }
 
-
-
-
-static void showvalues(void)
-{
-  SHOWVAL(SMALLINTS);
-  SHOWVAL(LARGEINTS);
-  SHOWVAL(MAXDISTANCE);
-#if defined(STREELARGE) || defined(STREESMALL)
-  SHOWVAL(SMALLDEPTH);
-#endif
-  SHOWVAL(MAXTEXTLEN);
-}
 //}
 
 /*
@@ -144,11 +134,12 @@ static void spaceforbranchtab(Suffixtree *stree)
 static Uint getlargelinkconstruction(Suffixtree *stree)
 {
   Uchar secondchar;
+
   if(stree->headnodedepth == 1)
   {
     return 0;        // link refers to root
   }
-  if(stree->headnodedepth == 2)  // determine second char of edge
+  if(stree->headnodedepth == 2)  // determine second char of egde
   {
     if(stree->headend == NULL)
     {
@@ -161,7 +152,6 @@ static Uint getlargelinkconstruction(Suffixtree *stree)
   }
   return *(stree->headnode+4);
 }
-
 //\subsection{Insertion of Nodes}
 
 /*
@@ -304,7 +294,6 @@ static void insertbranchnode(Suffixtree *stree)
 
 static void rescan (Suffixtree *stree)
 {
-  //fprintf(stderr,"%s|%s:%d\n",__FILE__,__func__,__LINE__);
   Uint *nodeptr, *largeptr = NULL, distance = 0, node, prevnode, 
        nodedepth, edgelen, wlen, leafindex, headposition;
   Uchar headchar, edgechar;
@@ -547,7 +536,6 @@ static void scanprefix(Suffixtree *stree)
 
 static void completelarge(Suffixtree *stree)
 {
-  //fprintf(stderr,"%s|%s:%d headstart:%lu headend:%lu tailptr:%lu depth:%lu\n",__FILE__,__func__,__LINE__,(Uint) stree->headstart - (Uint) stree->text  , (Uint) stree->headend - (Uint) stree->text, (Uint) stree->tailptr - (Uint) stree->text, stree->currentdepth);
   Uint distance, *backwards;
 
   if(stree->smallnotcompleted > 0)
@@ -574,7 +562,6 @@ static void completelarge(Suffixtree *stree)
 
 static void linkrootchildren(Suffixtree *stree)
 {
-  //fprintf(stderr,"%s|%s:%d\n",__FILE__,__func__,__LINE__);
   Uint *rcptr, *prevnodeptr, prev = UNDEFINEDREFERENCE;
 
   stree->alphasize = 0;
@@ -620,7 +607,6 @@ static void linkrootchildren(Suffixtree *stree)
 
 static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
 {
-  //fprintf(stderr,"%s|%s:%d\n",__FILE__,__func__,__LINE__);
   Uint i, *ptr;
 
   stree->currentbranchtabsize 
@@ -665,12 +651,6 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
   stree->smallnotcompleted = 0;
   stree->chainstart = NULL;
   stree->largenode = stree->smallnode = 0;
-  stree->showsymbolstree = NULL;
-  stree->alphabet = NULL;
-  stree->nodecount = 1;
-  stree->insertleafcalls = 1;
-  stree->maxset = stree->branchtab + LARGEINTS - 1;
-  stree->largelinks = stree->largelinkwork = stree->largelinklinkwork = 0;
 }
 
 void freestree(Suffixtree *stree)
@@ -789,7 +769,7 @@ void freestree(Suffixtree *stree)
         if(progress == NULL && textlen >= LEASTSHOWPROGRESS)\
         {\
           fprintf(stderr,"# process %lu characters per dot\n",\
-                 (Sint) textlen/NUMOFCALLS);\
+                 (Uint) textlen/NUMOFCALLS);\
         }
 
 #define COMPLETELARGEFIRST  completelarge(stree)

@@ -28,7 +28,8 @@
 #define CHECKARGNUM(N,S)\
         if (argc != N)\
         {\
-          cerr << "Usage: %s %s\n",argv[0],S);\
+          fprintf(stderr,"Usage: %s %s\n",argv[0],S);\
+          MPI::Finalize();\
           exit(EXIT_FAILURE);\
         }
 
