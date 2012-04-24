@@ -160,14 +160,6 @@ void getheadstringstree(Suffixtree *stree,Stringtype *str)
 
 Uint getmaxtextlenstree(void)
 {
-    unsigned long long int n = 1 << 63; // \(10^{w-1}\)
-    cerr << "UintConst(1) " << UintConst(1) << endl;
-    cerr << "INTWORDSIZE " << INTWORDSIZE << endl;// \(10^{w-1}\)
-    cerr << "shifting " << n << endl;
-    cerr << "NILBIT " << NILBIT << endl;
-    cerr << "MAXINDEX " << MAXINDEX << endl;
-    cerr << "LARGEINTS " << LARGEINTS << endl;
-    cerr << "SMALLINTS " << SMALLINTS << endl;
   return MAXTEXTLEN;
 }
 

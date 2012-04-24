@@ -622,6 +622,7 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
   stree->text = stree->tailptr = text;
   stree->textlen = textlen;
   stree->sentinel = text + textlen;
+  //fprintf(stderr,"%s text:%lu textlen:%lu sentinel:%lu\n",__func__,stree->text,stree->textlen,stree->sentinel);
   stree->firstnotallocated 
     = stree->branchtab + stree->currentbranchtabsize - LARGEINTS;
   stree->headnode = stree->nextfreebranch = stree->branchtab;
@@ -677,86 +678,6 @@ void freestree(Suffixtree *stree)
   \cite{KUR:1998}.
 */
 
-#define CONSTRUCT Sint constructstree(Suffixtree *stree,Uchar *text,Uint textlen)
-#define DECLAREEXTRA        stree->nonmaximal = NULL
-#define COMPLETELARGEFIRST  completelarge(stree)
-#define COMPLETELARGESECOND completelarge(stree)
-#define PROCESSHEAD         /* Nothing */
-#define CHECKSTEP           /* Nothing */
-#define FINALPROGRESS       /* Nothing */
-
-#include "construct.gen"
-
-#undef CONSTRUCT
-#undef DECLAREEXTRA
-#undef COMPLETELARGEFIRST
-#undef COMPLETELARGESECOND
-#undef PROCESSHEAD 
-#undef CHECKSTEP
-#undef FINALPROGRESS
-
-/* --------------------------------------------------- */
-
-#define CONSTRUCT Sint constructmarkmaxstree(Suffixtree *stree,Uchar *text,Uint textlen)
-
-#define DECLAREEXTRA  Uint distance, headposition = 0, *largeptr,\
-                           tabsize = 1 + DIVWORDSIZE(textlen+1), *tabptr;\
-                      stree->nonmaximal = ALLOCSPACE(NULL,Uint,tabsize);\
-                      for(tabptr = stree->nonmaximal;\
-                          tabptr < stree->nonmaximal + tabsize;\
-                          tabptr++)\
-                          {\
-                            *tabptr = 0;\
-                          }
-
-#define COMPLETELARGEFIRST\
-        GETONLYHEADPOS(headposition,stree->headnode);\
-        SETIBIT(stree->nonmaximal,headposition);\
-        completelarge(stree);
-
-#define COMPLETELARGESECOND\
-        SETIBIT(stree->nonmaximal,stree->nextfreeleafnum);\
-        completelarge(stree)
-
-#define PROCESSHEAD          /* Nothing */
-#define CHECKSTEP            /* Nothing */
-#define FINALPROGRESS        /* Nothing */
-
-#include "construct.gen"
-
-#undef CONSTRUCT
-#undef DECLAREEXTRA
-#undef COMPLETELARGEFIRST
-#undef COMPLETELARGESECOND
-#undef PROCESSHEAD 
-#undef CHECKSTEP
-#undef FINALPROGRESS
-
-/* --------------------------------------------------- */
-
-#define CONSTRUCT Sint constructheadstree(Suffixtree *stree,Uchar *text,Uint textlen,void(*processhead)(Suffixtree *,Uint,void *),void *processheadinfo)
-
-#define DECLAREEXTRA         stree->nonmaximal = NULL
-#define COMPLETELARGEFIRST   completelarge(stree)
-#define COMPLETELARGESECOND  completelarge(stree)
-#define PROCESSHEAD          processhead(stree,stree->nextfreeleafnum,\
-                                               processheadinfo)
-
-#define CHECKSTEP            /* Nothing */
-#define FINALPROGRESS        /* Nothing */
-
-#include "construct.gen"
-
-#undef CONSTRUCT
-#undef DECLAREEXTRA
-#undef COMPLETELARGEFIRST
-#undef COMPLETELARGESECOND
-#undef PROCESSHEAD 
-#undef CHECKSTEP
-#undef FINALPROGRESS
-
-/* --------------------------------------------------- */
-
 #define LEASTSHOWPROGRESS 100000
 #define NUMOFCALLS 100
 
@@ -770,7 +691,8 @@ void freestree(Suffixtree *stree)
         {\
           fprintf(stderr,"# process %lu characters per dot\n",\
                  (Uint) textlen/NUMOFCALLS);\
-        }
+        }\
+        fprintf(stderr,"#....................................................................................................\n");
 
 #define COMPLETELARGEFIRST  completelarge(stree)
 #define COMPLETELARGESECOND completelarge(stree)
@@ -805,8 +727,88 @@ void freestree(Suffixtree *stree)
                                }\
                              }
 
-#include "construct.gen"
+CONSTRUCT
+{
+  DECLAREEXTRA;
 
+  CHECKTEXTLEN;
+
+
+  initSuffixtree(stree,text,textlen);
+  while(stree->tailptr < stree->sentinel || 
+        stree->headnodedepth != 0 || stree->headend != NULL)
+  {
+    CHECKSTEP;
+    // case (1): headloc is root
+    if(stree->headnodedepth == 0 && stree->headend == NULL) 
+    {
+      (stree->tailptr)++;
+      scanprefix(stree);
+    } else
+    {
+      if(stree->headend == NULL)  // case (2.1): headloc is a node
+      {
+        FOLLOWSUFFIXLINK;
+        scanprefix(stree);
+      } else               // case (2.2)
+      {
+        if(stree->headnodedepth == 0) // case (2.2.1): at root: do not use links
+        {
+          if(stree->headstart == stree->headend)  // rescan not necessary
+          {
+            stree->headend = NULL;
+          } else
+          {
+            (stree->headstart)++;
+            rescan(stree);
+          }
+        } else
+        {
+          FOLLOWSUFFIXLINK;    // case (2.2.2)
+          rescan(stree);
+        }
+        if(stree->headend == NULL)  // case (2.2.3): headloc is a node
+        {
+          SETSUFFIXLINK(BRADDR2NUM(stree,stree->headnode));
+          COMPLETELARGEFIRST;
+          scanprefix(stree);
+        } else
+        {
+          if(stree->smallnotcompleted == MAXDISTANCE)  // artificial large node
+          {
+            SETSUFFIXLINK(stree->nextfreebranchnum + LARGEINTS);
+            COMPLETELARGESECOND;
+          } else
+          { 
+            if(stree->chainstart == NULL)
+            {
+              stree->chainstart = stree->nextfreebranch;   // start new chain
+            } 
+            (stree->smallnotcompleted)++;
+            (stree->nextfreebranch) += SMALLINTS;      // case (2.2.4)
+            (stree->nextfreebranchnum) += SMALLINTS;
+            stree->smallnode++;
+          }
+        }
+      } 
+    }
+
+    PROCESSHEAD;
+
+    if(stree->headend == NULL)
+    {
+      insertleaf(stree);  // case (a)
+    } else
+    {
+      insertbranchnode(stree);  // case (b)
+    }
+  }
+  stree->chainstart = NULL;
+  linkrootchildren(stree);
+
+  FINALPROGRESS;
+  return 0;
+}
 #undef CONSTRUCT
 #undef DECLAREEXTRA
 #undef COMPLETELARGEFIRST

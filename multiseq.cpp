@@ -14,6 +14,7 @@
 #include <cstring>
 #include <ctype.h>
 #include <unistd.h>
+#include <omp.h>
 #include "types.h"
 #include "spacedef.h"
 #include "minmax.h"
@@ -140,27 +141,25 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
   {
     seq = multiseq->sequence;
   }
-  for(i = 0; i < multiseq->numofsequences; i++)
-  {
-    if(i == 0)
+  #pragma omp parallel for
+    for(i = 0; i < multiseq->numofsequences; i++)
     {
-      start = seq;
-    } else
-    {
-      start = seq + multiseq->markpos.spaceUint[i-1] + 1;
+        if(i == 0)
+        {
+            start = seq;
+        } else
+        {
+            start = seq + multiseq->markpos.spaceUint[i-1] + 1;
+        }
+        if(i == multiseq->numofsequences - 1)
+        {
+            end = seq + multiseq->totallength;
+        } else
+        {
+            end = seq + multiseq->markpos.spaceUint[i];
+        }
+        apply(applyinfo,i,start,(Uint) (end - start)); 
     }
-    if(i == multiseq->numofsequences - 1)
-    {
-      end = seq + multiseq->totallength;
-    } else
-    {
-      end = seq + multiseq->markpos.spaceUint[i];
-    }
-    if(apply(applyinfo,i,start,(Uint) (end - start)) != 0)
-    {
-      return -1;
-    }
-  }
   return 0;
 }
 

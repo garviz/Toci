@@ -472,18 +472,8 @@ Sint findmaxmatches(Suffixtree *stree,
   maxmatchinfo.processinfo = processinfo;
   Uint size = pow(2,3*wordsize);
   double start, finish;
-  start = MPI::Wtime();
   sparsetable<Uint*> table(size);
   //createTable(stree,table,wordsize);
-  finish = MPI::Wtime();
-  cerr << "createTable Time: " << finish-start << endl;
-  /*Uint tmp = pow(2,3*wordsize);
-  Uint sum=0;
-  for ( Uint it = 0; it < tmp; ++it ) {
-      if ( table[it] != 0)
-          sum++;
-  }
-  cerr << "Total " << sum << endl;*/
   querysubstringend = query + minmatchlength - 1;
   (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                   query, querysubstringend,0);

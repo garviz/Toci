@@ -155,10 +155,8 @@ Sint scanmultiplefastafile (Multiseq *multiseq,
               case 't':
                 break;
               default:
-                /*
                    fprintf(stderr,"filename %s: replace '%c' by '%c'\n",
                    filename,tmpchar,replacewildcardchar);
-                 */
                 tmpchar = replacewildcardchar;
             }
           }
