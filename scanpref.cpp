@@ -15,7 +15,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   //fprintf(stdout,"start1:%lu,start2:%lu\n",(Uint) start1,(Uint) start2);
   register Uchar *ptr1 = start1, 
                   *ptr2 = start2;
-
+#pragma omp parallel
   while(ptr1 <= end1 && 
         ptr2 <= end2 &&
         *ptr1 == *ptr2)
