@@ -6,6 +6,7 @@
   code base.
 */
 
+#include <omp.h>
 #include "streedef.h"
 #include "protodef.h"
 #include "streeacc.h"
@@ -13,6 +14,7 @@
 void rescanstree(Suffixtree *stree,Location *loc,
                  Bref btptr,Uchar *left,Uchar *right)
 {
+  //fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
   Uint *nodeptr, *largeptr = NULL, leafindex, nodedepth, 
        node, distance = 0, prefixlen, headposition, tmpnodedepth;
   Uchar *lptr;
@@ -117,6 +119,7 @@ void rescanstree(Suffixtree *stree,Location *loc,
 
 void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
 {
+  //fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
   Branchinfo branchinfo;
 
   if(inloc->remain == 0)
@@ -132,10 +135,12 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
   {
     if(inloc->previousnode == stree->branchtab)
     {
+      fprintf(stderr,"Jump=%d\n",inloc->firstptr+1);
       rescanstree(stree,outloc,stree->branchtab,inloc->firstptr+1,
                   inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
     } else
     {
+      fprintf(stderr,"Jump=%d\n",inloc->firstptr);
       getbranchinfostree(stree,ACCESSSUFFIXLINK,&branchinfo,
                          inloc->previousnode);
       rescanstree(stree,outloc,branchinfo.suffixlink,inloc->firstptr,

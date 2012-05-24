@@ -6,13 +6,13 @@
   code base.
 */
 
+#include <omp.h>
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"
 
 static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
-  //fprintf(stdout,"start1:%lu,start2:%lu\n",(Uint) start1,(Uint) start2);
   register Uchar *ptr1 = start1, 
                   *ptr2 = start2;
 #pragma omp parallel
@@ -30,6 +30,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
                                            Bref btptr,Uchar *left,
                                            Uchar *right,Uint rescanlength)
 {
+  //fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
        node, distance = 0, prefixlen, headposition, tmpnodedepth,
        edgelen, remainingtoskip;
@@ -125,13 +126,10 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
           {
             if(remainingtoskip > 0)
             {
-              prefixlen = remainingtoskip +
-                          lcp(lptr+remainingtoskip,right,
-                              leftborder+remainingtoskip,stree->sentinel-1);
+              prefixlen = remainingtoskip + lcp(lptr+remainingtoskip,right,leftborder+remainingtoskip,stree->sentinel-1);
             } else
             {
-              prefixlen = 1 + lcp(lptr+1,right,
-                                  leftborder+1,stree->sentinel-1);
+              prefixlen = 1 + lcp(lptr+1,right,leftborder+1,stree->sentinel-1);
             }
             loc->firstptr = leftborder;
             loc->previousnode = loc->nextnode.address;
@@ -177,16 +175,13 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
       } else
       {
         NOTSUPPOSEDTOBENULL(leftborder);
-        prefixlen = remainingtoskip + 
-                    lcp(lptr+remainingtoskip,right,
-                        leftborder+remainingtoskip,leftborder+edgelen-1);
+        prefixlen = remainingtoskip + lcp(lptr+remainingtoskip,right,leftborder+remainingtoskip,leftborder+edgelen-1);
         remainingtoskip = 0;
       }
     } else
     {
       NOTSUPPOSEDTOBENULL(leftborder);
-      prefixlen = 1 + lcp(lptr+1,right,
-                          leftborder+1,leftborder+edgelen-1);
+      prefixlen = 1 + lcp(lptr+1,right,leftborder+1,leftborder+edgelen-1);
     }
     loc->nextnode.toleaf = false;
     loc->locstring.start = headposition;
@@ -217,11 +212,9 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                    Location *inloc,Uchar *left,
                                    Uchar *right,Uint rescanlength)
 {
+  //fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
   Uint prefixlen, remainingtoskip;
 
-  /*fprintf(stderr,"scanprefixstree starts at location ");
-  showlocation(stderr,stree,inloc);
-  fprintf(stderr,"\n");*/
   if(inloc->remain == 0)
   {
     return scanprefixfromnodestree(stree,outloc,inloc->nextnode.address,
@@ -239,11 +232,9 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     
     if(remainingtoskip > 0)
     {
-      prefixlen = remainingtoskip +
-                  lcp(left+remainingtoskip,right,
-                      inloc->firstptr+(inloc->edgelen-inloc->remain)
-                                     +remainingtoskip,
-                      stree->sentinel-1);
+      prefixlen = remainingtoskip + lcp(left+remainingtoskip,right,
+                                    inloc->firstptr+(inloc->edgelen-inloc->remain)+remainingtoskip,
+                                    stree->sentinel-1);
     } else
     {
       prefixlen = lcp(left,right,
@@ -267,11 +258,9 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
       prefixlen = inloc->remain;
     } else
     {
-      prefixlen = remainingtoskip + 
-                  lcp(left+remainingtoskip,right,
-                      inloc->firstptr+(inloc->edgelen-inloc->remain)
-                                     +remainingtoskip,
-                      inloc->firstptr+inloc->edgelen-1);
+      prefixlen = remainingtoskip + lcp(left+remainingtoskip,right,
+                                    inloc->firstptr+(inloc->edgelen-inloc->remain)+remainingtoskip,
+                                    inloc->firstptr+inloc->edgelen-1);
     }
   } else
   {
@@ -303,6 +292,7 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                               Uchar *right,
                                               Uint rescanlength)
 {
+  //fprintf(stderr,"%s Thread:%d ArrayPathinfo:%lu\n",__func__, omp_get_thread_num(),path);
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
        edgelen, node, distance = 0, prefixlen, headposition, 
        remainingtoskip, tmpnodedepth;
@@ -349,13 +339,10 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
         loc->firstptr = stree->text + leafindex;
         if(remainingtoskip > 0)
         {
-          prefixlen = remainingtoskip +
-                      lcp(lptr+remainingtoskip,right,
-                          loc->firstptr+remainingtoskip,stree->sentinel-1);
+          prefixlen = remainingtoskip + lcp(lptr+remainingtoskip,right,loc->firstptr+remainingtoskip,stree->sentinel-1);
         } else
         {
-          prefixlen = 1 + lcp(lptr+1,right,
-                              loc->firstptr+1,stree->sentinel-1);
+          prefixlen = 1 + lcp(lptr+1,right,loc->firstptr+1,stree->sentinel-1);
         }
         loc->previousnode = stree->branchtab;
         loc->edgelen = stree->textlen - leafindex + 1;
@@ -379,33 +366,30 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
       while(true)
       {
         if(NILPTR(node))
-        {
+        { 
           return lptr;
         }
         if(ISLEAF(node))
-        {
+        { 
           leafindex = GETLEAFINDEX(node);
           leftborder = stree->text + (nodedepth + leafindex);
           if(leftborder == stree->sentinel)
           {
             return lptr;
-          }
+          } 
           edgechar = *leftborder;
           if(edgechar > firstchar)
-          {
+          { 
             return lptr;
           }
           if(edgechar == firstchar)
           {
             if(remainingtoskip > 0)
-            {
-              prefixlen = remainingtoskip +
-                          lcp(lptr+remainingtoskip,right,
-                              leftborder+remainingtoskip,stree->sentinel-1);
+             {
+              prefixlen = remainingtoskip+lcp(lptr+remainingtoskip,right,leftborder+remainingtoskip,stree->sentinel-1);
             } else
-            {
-              prefixlen = 1 + lcp(lptr+1,right,
-                                  leftborder+1,stree->sentinel-1);
+            { 
+              prefixlen = 1 + lcp(lptr+1,right,leftborder+1,stree->sentinel-1);
             }
             loc->firstptr = leftborder;
             loc->previousnode = loc->nextnode.address;
@@ -418,22 +402,22 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
             if(prefixlen == (Uint) (right - lptr + 1))
             {
               return NULL;
-            }
+            } 
             return lptr + prefixlen;
-          }
+           }
           node = LEAFBROTHERVAL(stree->leaftab[leafindex]);
         } else
-        {
+        { 
           nodeptr = stree->branchtab + GETBRANCHINDEX(node);
           GETONLYHEADPOS(headposition,nodeptr);
           leftborder = stree->text + (nodedepth + headposition);
           edgechar = *leftborder;
           if (edgechar > firstchar)
-          {
+           {
             return lptr;
           }
           if(edgechar == firstchar)
-          {
+          { 
             /*@innerbreak@*/ break;
           }
           node = GETBROTHER(nodeptr);
@@ -443,7 +427,7 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     GETONLYDEPTH(tmpnodedepth,nodeptr);
     edgelen = tmpnodedepth - nodedepth;
     if(remainingtoskip > 0)
-    {
+    { 
       if(remainingtoskip >= edgelen)
       {
         prefixlen = edgelen;
@@ -451,16 +435,13 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
       } else
       {
         NOTSUPPOSEDTOBENULL(leftborder);
-        prefixlen = remainingtoskip +
-                    lcp(lptr+remainingtoskip,right,
-                        leftborder+remainingtoskip,leftborder+edgelen-1);
+        prefixlen = remainingtoskip+lcp(lptr+remainingtoskip,right,leftborder+remainingtoskip,leftborder+edgelen-1);
         remainingtoskip = 0;
       }
     } else
-    {
+    { 
       NOTSUPPOSEDTOBENULL(leftborder);
-      prefixlen = 1 + lcp(lptr+1,right,
-                          leftborder+1,leftborder+edgelen-1);
+      prefixlen = 1 + lcp(lptr+1,right,leftborder+1,leftborder+edgelen-1);
     }
     loc->nextnode.toleaf = false;
     loc->locstring.start = headposition;
@@ -500,24 +481,17 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                        Uchar *right,
                                        Uint rescanlength)
 {
+  //fprintf(stderr,"%s Thread:%d ArrayPathinfo:%lu\n",__func__, omp_get_thread_num(),path);
   Uint prefixlen, remainingtoskip;
 
-  /*fprintf(stderr,"findprefixpathstree starts at location ");
-  showlocation(stderr,stree,inloc);
-  fprintf(stderr,"\n");*/
   if(inloc->remain == 0)
   {
     CHECKARRAYSPACE(path,Pathinfo,128);
-    path->spacePathinfo[path->nextfreePathinfo].ref 
-      = inloc->nextnode.address;
-    path->spacePathinfo[path->nextfreePathinfo].depth 
-      = inloc->locstring.length;
-    path->spacePathinfo[path->nextfreePathinfo].headposition 
-      = inloc->locstring.start;
+    path->spacePathinfo[path->nextfreePathinfo].ref = inloc->nextnode.address;
+    path->spacePathinfo[path->nextfreePathinfo].depth = inloc->locstring.length;
+    path->spacePathinfo[path->nextfreePathinfo].headposition = inloc->locstring.start;
     path->nextfreePathinfo++;
-    return findprefixpathfromnodestree(stree,path,outloc,
-                                       inloc->nextnode.address,
-                                       left,right,rescanlength);
+    return findprefixpathfromnodestree(stree,path,outloc,inloc->nextnode.address,left,right,rescanlength);
   } 
   if(rescanlength <= inloc->locstring.length)
   {
@@ -530,16 +504,10 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
   {
     if(remainingtoskip > 0)
     {
-      prefixlen = remainingtoskip +
-                  lcp(left+remainingtoskip,right,
-                      inloc->firstptr+(inloc->edgelen-inloc->remain)
-                                     +remainingtoskip,
-                      stree->sentinel-1);
+      prefixlen = remainingtoskip+lcp(left+remainingtoskip,right,inloc->firstptr+(inloc->edgelen-inloc->remain)+remainingtoskip,stree->sentinel-1);
     } else
-    {
-      prefixlen = lcp(left,right,
-                      inloc->firstptr+(inloc->edgelen-inloc->remain),
-                      stree->sentinel-1);
+    { 
+      prefixlen = lcp(left,right,inloc->firstptr+(inloc->edgelen-inloc->remain),stree->sentinel-1);
     }
     outloc->firstptr = inloc->firstptr;
     outloc->edgelen = inloc->edgelen;
@@ -552,26 +520,20 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     return left + prefixlen;
   }
   if(remainingtoskip > 0)
-  {
+  { 
     if(remainingtoskip >= inloc->remain)
-    {
+     {
       prefixlen = inloc->remain;
     } else
-    {
-      prefixlen = remainingtoskip +
-                  lcp(left+remainingtoskip,right,
-                      inloc->firstptr+(inloc->edgelen-inloc->remain)
-                                     +remainingtoskip,
-                      inloc->firstptr+inloc->edgelen-1);
+    { 
+      prefixlen = remainingtoskip+lcp(left+remainingtoskip,right,inloc->firstptr+(inloc->edgelen-inloc->remain)+remainingtoskip,inloc->firstptr+inloc->edgelen-1);
     }
   } else
-  {
-    prefixlen = lcp(left,right,
-                    inloc->firstptr+(inloc->edgelen-inloc->remain),
-                    inloc->firstptr+inloc->edgelen-1);
+  { 
+    prefixlen = lcp(left,right,inloc->firstptr+(inloc->edgelen-inloc->remain),inloc->firstptr+inloc->edgelen-1);
   }
   if(prefixlen < inloc->remain)
-  {
+  { 
     outloc->firstptr = inloc->firstptr;
     outloc->edgelen = inloc->edgelen;
     outloc->remain = inloc->remain - prefixlen;
@@ -584,12 +546,8 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
   }
   CHECKARRAYSPACE(path,Pathinfo,128);
   path->spacePathinfo[path->nextfreePathinfo].ref = inloc->nextnode.address;
-  path->spacePathinfo[path->nextfreePathinfo].depth 
-    = inloc->locstring.length + prefixlen;
-  path->spacePathinfo[path->nextfreePathinfo].headposition 
-      = inloc->locstring.start;
+  path->spacePathinfo[path->nextfreePathinfo].depth = inloc->locstring.length + prefixlen;
+  path->spacePathinfo[path->nextfreePathinfo].headposition = inloc->locstring.start;
   path->nextfreePathinfo++;
-  return findprefixpathfromnodestree(stree,path,outloc,
-                                     inloc->nextnode.address,
-                                     left+prefixlen,right,rescanlength);
+  return findprefixpathfromnodestree(stree,path,outloc,inloc->nextnode.address,left+prefixlen,right,rescanlength);
 }

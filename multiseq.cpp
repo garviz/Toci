@@ -15,6 +15,7 @@
 #include <ctype.h>
 #include <unistd.h>
 #include <omp.h>
+#include <pthread.h>
 #include "types.h"
 #include "spacedef.h"
 #include "minmax.h"
@@ -141,7 +142,7 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
   {
     seq = multiseq->sequence;
   }
-  #pragma omp parallel for
+  #pragma omp parallel for shared (applyinfo) private(i)
     for(i = 0; i < multiseq->numofsequences; i++)
     {
         if(i == 0)
@@ -158,7 +159,18 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
         {
             end = seq + multiseq->markpos.spaceUint[i];
         }
-        apply(applyinfo,i,start,(Uint) (end - start)); 
+        fprintf(stderr,"Start: %lu, End: %lu, Threads:%d, Chunks:%d\n",start,end,omp_get_num_threads(),(end-start)/omp_get_num_threads());
+#pragma omp parallel sections
+        {
+        #pragma omp section
+            {
+            apply(applyinfo,i,start,(Uint) (end - start)/omp_get_num_threads()+1000); 
+            }
+        #pragma omp section
+            {
+            apply(applyinfo,i,start + (Uint) ((end-start)/omp_get_num_threads()) - 1000,(Uint) (end - start)); 
+            }
+        }
     }
   return 0;
 }

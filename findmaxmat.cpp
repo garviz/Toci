@@ -106,6 +106,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
   Uchar *ptr1 = start1,
         *ptr2 = start2;
+#pragma omp parallel
   while(ptr1 <= end1 &&
         ptr2 <= end2 &&
         *ptr1 == *ptr2)
@@ -148,30 +149,6 @@ static void checkquerycommonprefix(Maxmatchinfo *maxmatchinfo,
   }
 }
 
-static void showgreedymatchresult(Maxmatchinfo *maxmatchinfo,
-                                  Location *ploc)
-{
-  Uint i;
-
-  printf("greedymatchresult: start at ploc ");
-  showlocation(stdout,maxmatchinfo->stree,ploc);
-  printf("\n");
-  printf("and ends at location ");
-  showlocation(stdout,maxmatchinfo->stree,&maxmatchinfo->maxloc);
-  printf("\n");
-  if(maxmatchinfo->matchpath.nextfreePathinfo > 0)
-  {
-    printf("and the matchpath is a follows\n");
-  }
-  for(i=0; i<maxmatchinfo->matchpath.nextfreePathinfo; i++)
-  {
-    printf("matchpath[%lu]=Branch %lu\n",(long unsigned int) i,
-           (long unsigned int) BRADDR2NUM(maxmatchinfo->stree,
-                                 maxmatchinfo->matchpath.
-                                               spacePathinfo[i].ref));
-  }
-}
-
 #define CHECKIFLOCATIONISVALID(LOC)\
         if((LOC)->remain == 0)\
         {\
@@ -201,6 +178,7 @@ static void showgreedymatchresult(Maxmatchinfo *maxmatchinfo,
 
 static Sint processleaf(Uint leafindex,/*@unused@*/ Bref lcpnode,void *info)
 {
+  //fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
   Maxmatchinfo *maxmatchinfo = (Maxmatchinfo *) info;
 
   if(leafindex == 0 ||
@@ -247,10 +225,7 @@ static Sint processleaf(Uint leafindex,/*@unused@*/ Bref lcpnode,void *info)
   to the stack used in the depth first traversal.
 */
 
-static void inheritfrompath(ArrayPathinfo *matchpath,Location *maxloc,
-                            Nodeinfo *stacktop,Bref nodeptr,
-                            Uint accessindex,
-                            Uint inheritdepth)
+static void inheritfrompath(ArrayPathinfo *matchpath,Location *maxloc,Nodeinfo *stacktop,Bref nodeptr,Uint accessindex,Uint inheritdepth)
 {
   if(accessindex > matchpath->nextfreePathinfo)
   {
@@ -287,8 +262,7 @@ static void inheritfrompath(ArrayPathinfo *matchpath,Location *maxloc,
       if(matchpath->spacePathinfo[accessindex].ref == nodeptr)
       {
         stacktop->onmaxpath = true;
-        stacktop->querycommondepth 
-          = matchpath->spacePathinfo[accessindex].depth;
+        stacktop->querycommondepth = matchpath->spacePathinfo[accessindex].depth;
       } else
       {
         stacktop->onmaxpath = false;
@@ -296,6 +270,7 @@ static void inheritfrompath(ArrayPathinfo *matchpath,Location *maxloc,
       }
     }
   }
+    //fprintf(stderr,"%s: matchpath->nextfreePathinfo:%lu, Location:%lu, stacktop->onmaxpath:%lu, stacktop->querycommondepth:%lu, Bref:%lu, accessindex:%lu, inheritdepth:%lu\n",__FILE__,matchpath->nextfreePathinfo,maxloc,stacktop->onmaxpath,stacktop->querycommondepth,nodeptr,accessindex,inheritdepth);
 }
 
 /*
@@ -384,6 +359,7 @@ static Sint processbranch2(/*@unused@*/ Bref nodeptr,void *info)
 static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
                                  Location *ploc)
 {
+  //fprintf(stderr,"%s Thread:%d Maxmatchinfo->matchpath:%lu\n",__func__, omp_get_thread_num(),&maxmatchinfo->matchpath);
   Uint rescanprefixlength;
 
   maxmatchinfo->matchpath.nextfreePathinfo = 0;
@@ -456,6 +432,7 @@ Sint findmaxmatches(Suffixtree *stree,
                     Uint querylen,
                     Uint queryseqnum)
 {
+  fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
   Uchar *querysubstringend;  // ref to end of querysubs. of len. minmatchl.
   Location ploc;
   Maxmatchinfo maxmatchinfo;
@@ -472,18 +449,21 @@ Sint findmaxmatches(Suffixtree *stree,
   maxmatchinfo.processinfo = processinfo;
   Uint size = pow(2,3*wordsize);
   double start, finish;
-  sparsetable<Uint*> table(size);
+  //sparsetable<Uint*> table(size);
   //createTable(stree,table,wordsize);
   querysubstringend = query + minmatchlength - 1;
   (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                   query, querysubstringend,0);
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
-  for ( ;querysubstringend < query + querylen - 1; 
-      maxmatchinfo.querysuffix++, querysubstringend++)
+  Uchar *final;
+  final=query+querylen-1;
+//#pragma omp parallel for private (querysubstringend,maxmatchinfo)
+  for (querysubstringend=query+minmatchlength-1;querysubstringend<final;querysubstringend++,maxmatchinfo.querysuffix++)
   {
-        if(ploc.locstring.length >= minmatchlength && 
-            enumeratemaxmatches(&maxmatchinfo,&ploc) != 0) 
-            return -1;
+        if(ploc.locstring.length >= minmatchlength)
+        {
+            (void) enumeratemaxmatches(&maxmatchinfo,&ploc);
+        }
         if (ROOTLOCATION (&ploc)) 
             (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
                                       maxmatchinfo.querysuffix+1, 
@@ -499,8 +479,7 @@ Sint findmaxmatches(Suffixtree *stree,
   } 
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {
-    if(enumeratemaxmatches (&maxmatchinfo,&ploc) != 0)
-      return -2;
+    enumeratemaxmatches (&maxmatchinfo,&ploc); 
     linklocstree (stree, &ploc, &ploc);
     maxmatchinfo.querysuffix++;
   }

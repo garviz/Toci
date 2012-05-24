@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <omp.h>
 #include "types.h"
 #include "protodef.h"
 #include "errordef.h"
@@ -97,7 +98,7 @@ int main(int argc, char *argv[])
         freemultiseq(&subjectmultiseq);
         checkspaceleak();
         mmcheckspaceleak();
-        cout << "Toci application for genome alignment under HPC environments" << endl;
+        cerr << "Toci application for genome alignment under HPC environments" << endl;
         finish = MPI::Wtime();
     } else {
         cout << "Process: " << rank << endl;

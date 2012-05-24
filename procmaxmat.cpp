@@ -280,7 +280,7 @@ static Sint showmaximalmatch (void *info,
     PairUint pp;
 
     if(pos2pospair(matchprocessinfo->subjectmultiseq,&pp,subjectstart) != 0)
-      return -1;
+     return -1;
     printf("  ");
     showsequencedescription(matchprocessinfo->subjectmultiseq,
                             matchprocessinfo->maxdesclength,
@@ -542,10 +542,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
 	    "# matching query-file \"%s\"\n# against subject-file \"%s\"\n",
             mmcallinfo->queryfilelist[filenum],
             mmcallinfo->subjectfile);
-    if (overallsequences (false,
-                          &matchprocessinfo.querymultiseq,
-                          (void *) &matchprocessinfo,
-                          findmaxmatchesonbothstrands) != 0)
+    if (overallsequences (false,&matchprocessinfo.querymultiseq,(void *) &matchprocessinfo,findmaxmatchesonbothstrands) != 0)
     {
       return -5;
     }
