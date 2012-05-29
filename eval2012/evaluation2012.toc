@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Problem definition}{3}{0}{1}
+\beamer@sectionintoc {2}{Objectives}{8}{0}{2}
+\beamer@sectionintoc {3}{Distributed suffix tree}{13}{0}{3}
+\beamer@sectionintoc {4}{Distributed and parallel search of maximal matches}{22}{0}{4}
+\beamer@sectionintoc {5}{Conclusions}{23}{0}{5}

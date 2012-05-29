@@ -1,0 +1,482 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.5.4)  29 MAY 2012 12:45
+entering extended mode
+ %&-line parsing enabled.
+**wga_parallelization.tex
+(./wga_parallelization.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(./Jornadas.cls
+Hoha de estilo `IEEEtran' <30-Agosto-1993>.
+Actualizada a `IEEEtran.cls' <10-Enero-1996>.
+Rev. <15-Mayo-1996>.
+Adaptada a las Jornadas Sarteco.
+(/usr/share/texmf-texlive/tex/latex/tools/rawfonts.sty
+Package: rawfonts 1994/05/08 Low-level LaTeX 2.09 font compatibility
+
+(/usr/share/texmf-texlive/tex/latex/tools/somedefs.sty
+Package: somedefs 1994/06/01 v0.03 Toolkit for optional definitions
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 45.
+
+(/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+))
+(/usr/share/texmf-texlive/tex/latex/base/oldlfont.sty
+Package: oldlfont 1994/11/29 v2.2k Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/tracefnt.sty
+Package: tracefnt 1997/05/29 v3.0j Standard LaTeX package (font tracing)
+\tracingfonts=\count79
+LaTeX Info: Redefining \selectfont on input line 101.
+)
+\symbold=\mathgroup4
+\symsans=\mathgroup5
+\symtypewriter=\mathgroup6
+\symitalic=\mathgroup7
+\symsmallcaps=\mathgroup8
+\symslanted=\mathgroup9
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 71.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 72.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 73.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 79.
+LaTeX Info: Redefining \em on input line 89.
+
+(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup10
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+))
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+-- This is a 10 point document
+\tmpitemindent=\dimen102
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\captionindent=\skip41
+\c@figure=\count84
+\c@table=\count85
+) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+)) (./epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+\epsfxsize=\dimen105
+\epsfysize=\dimen106
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/ulem.sty
+\UL@box=\box26
+\UL@hyphenbox=\box27
+\UL@skip=\skip42
+\UL@hook=\toks17
+\UL@pe=\count86
+\UL@pixel=\dimen107
+\ULC@box=\box28
+Package: ulem 2000/05/26
+\ULdepth=\dimen108
+)
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@ALC@unique=\count87
+\c@ALC@line=\count88
+\c@ALC@rem=\count89
+\c@ALC@depth=\count90
+\ALC@tlm=\skip43
+\algorithmicindent=\skip44
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2009/10/17 v2.4 Conversion with epstopdf on the fly (HO)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2009/10/17 v2.4 Base part for package epstopdf
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/grfext.sty
+Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)
+
+Package epstopdf Warning: Other drivers than `pdftex.def' are not supported.
+
+)) (/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+
+Package subfig Warning: Your document class has a bad definition
+ of \endfigure, most likely
+ \let\endfigure=\end@float
+ which has now been changed to
+ \def\endfigure{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endfigure.
+ Please complain to your document class author.
+
+
+Package subfig Warning: Your document class has a bad definition
+ of \endtable, most likely
+ \let\endtable=\end@float
+ which has now been changed to
+ \def\endtable{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endtable.
+ Please complain to your document class author.
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen109
+\captionmargin@=\dimen110
+\captionwidth=\dimen111
+\caption@indent=\dimen112
+\caption@parindent=\dimen113
+\caption@hangindent=\dimen114
+\abovecaptionskip=\skip45
+\belowcaptionskip=\skip46
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used on input line 1068.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2#3-> \ifx \figurestring #
+3 \vskip 5pt \setbox \@tempboxa \hbox {\small #1.~ #2} \ifdim \wd \@tempboxa >\
+hsize \setbox \@tempboxa \hbox {\small #1.~ } \setlength \captionindent {\wd \@
+tempboxa } \divide \captionindent by 2 \parbox [t]{\hsize }{\small \hangindent 
+\captionindent \hangafter =1\unhbox \@tempboxa #2} \else \hbox to\hsize {\small
+ \hfil \box \@tempboxa \hfil } \fi \else \begin {center}{\small #1}\\{\small \s
+c #2}\end {center} \vskip 8pt \fi .
+\c@ContinuedFloat=\count91
+)
+\c@KVtest=\count92
+\sf@farskip=\skip47
+\sf@captopadj=\dimen115
+\sf@capskip=\skip48
+\sf@nearskip=\skip49
+\c@subfigure=\count93
+\c@subfigure@save=\count94
+\c@lofdepth=\count95
+\c@subtable=\count96
+\c@subtable@save=\count97
+\c@lotdepth=\count98
+\sf@top=\skip50
+\sf@bottom=\skip51
+)
+\c@theorem=\count99
+\c@mydef=\count100
+ (./wga_parallelization.aux)
+\openout1 = `wga_parallelization.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 20.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 29.
+\tmpht=\dimen116
+
+Underfull \vbox (badness 4084) has occurred while \output is active []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 53.
+
+Underfull \hbox (badness 1609) in paragraph at lines 62--64
+\OT1/cmr/m/n/10 short-com-ings of pure dynamic-programming ap-
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10 Exact word match-ing or index-based lo-cal
+ []
+
+[1
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--97
+\OT1/cmr/m/n/10 The MUM search al-go-rithm con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--97
+\OT1/cmr/m/n/10 sists of three steps, they are as fol-
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 113--114
+[]\OT1/cmr/m/n/10 The space com-plex-ity of this method is
+ []
+
+File: algorithm.eps Graphic file (type eps)
+<algorithm.eps> [2]
+File: xipe-totec1.eps Graphic file (type eps)
+ <xipe-totec1.eps> [3]
+File: xt.eps Graphic file (type eps)
+ <xt.eps>
+Underfull \hbox (badness 1303) in paragraph at lines 202--214
+\OT1/cmr/m/n/10 them and find those matches that are unique.
+ []
+
+
+Underfull \hbox (badness 1648) in paragraph at lines 202--214
+\OT1/cmr/m/n/10 we fil-ter those MEMs that are unique in the
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 202--214
+\OT1/cmr/m/n/10 LIS[] al-go-rithm. The al-go-rithm is shown be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--245
+[]\OT1/cmr/m/n/10 Linux Ker-nel 2.6.16.46-0.12-smp x86[]64
+ []
+
+File: split_qry.eps Graphic file (type eps)
+<split_qry.eps>
+File: split_ref.eps Graphic file (type eps)
+ <split_ref.eps> [4]
+File: hspan_st_r.eps Graphic file (type eps)
+ <hspan_st_r.eps>
+Underfull \hbox (badness 4193) in paragraph at lines 302--302
+[]\OT1/cmr/m/n/8 (a) |Con-struc-tion of ST
+ []
+
+File: hspan_st_q.eps Graphic file (type eps)
+<hspan_st_q.eps>
+Underfull \hbox (badness 3803) in paragraph at lines 305--305
+[]\OT1/cmr/m/n/8 (b) |Con-struc-tion of ST
+ []
+
+
+Underfull \hbox (badness 4792) in paragraph at lines 305--305
+\OT1/cmr/m/n/8 split Chim-panzee Chr13
+ []
+
+File: hspan_find_r_5000.eps Graphic file (type eps)
+<hspan_find_r_5000.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
+[]\OT1/cmr/m/n/8 (a) |Find-ing MEMs
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
+\OT1/cmr/m/n/8 split Hu-man Chr13,
+ []
+
+File: hspan_find_q_5000.eps Graphic file (type eps)
+<hspan_find_q_5000.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
+\OT1/cmr/m/n/8 Chim-panzee Chr13,
+ []
+
+File: hspan_ram.eps Graphic file (type eps)
+<hspan_ram.eps>
+File: hspan_mums.eps Graphic file (type eps)
+ <hspan_mums.eps>
+Underfull \hbox (badness 3907) in paragraph at lines 331--331
+\OT1/cmr/m/n/8 align-ing Hu-man Chr13
+ []
+
+File: hspan_drop.eps Graphic file (type eps)
+<hspan_drop.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+[]\OT1/cmr/m/n/8 (b) |Per-cent-age of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\OT1/cmr/m/n/8 ver-sion of MUM-mer,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\OT1/cmr/m/n/8 when align-ing Hu-man
+ []
+
+File: hspan_mums_20.eps Graphic file (type eps)
+<hspan_mums_20.eps>
+Underfull \hbox (badness 3168) in paragraph at lines 339--339
+\OT1/cmr/m/n/8 length of 20bp, found
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--339
+\OT1/cmr/m/n/8 when align-ing Hu-man
+ []
+
+File: hspan_mums_50.eps Graphic file (type eps)
+<hspan_mums_50.eps>
+Underfull \hbox (badness 3168) in paragraph at lines 342--342
+\OT1/cmr/m/n/8 length of 50bp, found
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\OT1/cmr/m/n/8 when align-ing Hu-man
+ []
+
+File: hspan_mums_100.eps Graphic file (type eps)
+<hspan_mums_100.eps>
+Underfull \hbox (badness 1127) in paragraph at lines 347--347
+\OT1/cmr/m/n/8 length of 100bp, found
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\OT1/cmr/m/n/8 when align-ing Hu-man
+ []
+
+File: hspan_mums_500.eps Graphic file (type eps)
+<hspan_mums_500.eps>
+Underfull \hbox (badness 1127) in paragraph at lines 351--351
+\OT1/cmr/m/n/8 length of 500bp, found
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--351
+\OT1/cmr/m/n/8 when align-ing Hu-man
+ []
+
+File: hspan_mums_1000.eps Graphic file (type eps)
+<hspan_mums_1000.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 356--356
+\OT1/cmr/m/n/8 when align-ing Hu-man
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
+[]\OT1/cmr/m/n/10 Distributed Max-i-mal Unique
+ []
+
+
+Underfull \hbox (badness 7415) in paragraph at lines 364--365
+\OT1/cmr/m/n/10 Match(DMUM) sub-string is a com-mon sub-
+ []
+
+
+Underfull \vbox (badness 7777) has occurred while \output is active []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 376--377
+[]\OT1/cmr/m/n/10 Our ap-proach does not take ad-van-tage of
+ []
+
+
+Underfull \hbox (badness 1460) in paragraph at lines 428--431
+|   []   |   []   |   []   |   []   |   []   |   []   |   []\OT1/cmr/m/n/8 ,
+ []
+
+[6] (./wga_parallelization.aux) ) 
+Here is how much of TeX's memory you used:
+ 2549 strings out of 493849
+ 38332 string characters out of 1152847
+ 117098 words of memory out of 3000000
+ 5741 multiletter control sequences out of 15000+50000
+ 26611 words of font info for 98 fonts, out of 3000000 for 9000
+ 725 hyphenation exceptions out of 8191
+ 44i,10n,45p,711b,364s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on wga_parallelization.dvi (6 pages, 43804 bytes).

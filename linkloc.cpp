@@ -135,14 +135,14 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
   {
     if(inloc->previousnode == stree->branchtab)
     {
-      fprintf(stderr,"Jump=%d\n",inloc->firstptr+1);
+      fprintf(stderr,"J1=%lu\n",inloc->firstptr+1);
       rescanstree(stree,outloc,stree->branchtab,inloc->firstptr+1,
                   inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
     } else
     {
-      fprintf(stderr,"Jump=%d\n",inloc->firstptr);
       getbranchinfostree(stree,ACCESSSUFFIXLINK,&branchinfo,
                          inloc->previousnode);
+      fprintf(stderr,"J2 start=%lu end=%lu\n",inloc->firstptr,inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
       rescanstree(stree,outloc,branchinfo.suffixlink,inloc->firstptr,
              inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
       
