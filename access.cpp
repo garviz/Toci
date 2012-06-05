@@ -98,10 +98,10 @@ void getbranchinfostree(Suffixtree *stree,Uint whichinfo,
     if((stree->chainstart != NULL && btptr >= stree->chainstart) || 
        !ISLARGE(*btptr))
     {
-      branchinfo->suffixlink = btptr + SMALLINTS;
+      branchinfo->suffixlink = NULL;//btptr + SMALLINTS;
     } else
     {
-      branchinfo->suffixlink = stree->branchtab + 
+      branchinfo->suffixlink = NULL;//stree->branchtab + 
                                getlargelinkstree(stree,btptr,
                                                  branchinfo->depth);
     }
