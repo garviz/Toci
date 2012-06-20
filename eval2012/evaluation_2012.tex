@@ -1,61 +1,80 @@
-\documentclass[11pt,a4paper,english]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{graphics}
+\usepackage{epsfig}
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{url,hyperref,times}
 \usepackage[T1]{fontenc}
 \usepackage{color,listings,tikz}
-\usetikzlibrary{trees}
+\selectlanguage{spanish}
+\usepackage{times}
 \usepackage{verbatim,scalefnt,colortbl}
 \newtheorem{mydef}{Definición}
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+
+\title{ {\bf Whole genome alignment in high performance computing environments} \\
+\it Informe del progreso de trabajo de investigaci\'on} 
+\author{ {\bf Julio C\'esar Garc\'ia Vizca\'ino}  \\ 
+Departamento de Arquitectura de Computadores y Sistemas Operativos \\ 
+Universidad Aut\'onoma de Barcelona\\ 
+{\small jcgarcia@aomail.uab.es} 
+}
+\date{\today}
+
 \begin{document}
-
-%\begin{center}
-%\huge{Departamento de Arquitectura de Computadores y Sistemas Operativos.}\\
-%\vspace{5mm}
-%
-%\Large{Informe de progreso del trabajo de investigaci\'on.}\\
-%\vspace{5mm}
-%\LARGE {\bfseries{Whole genome alignment in high performance computing environments}}\\
-%\vspace{5mm}
-%Julio C\'esar Garc\'ia Vizca\'ino\\
-%\vspace{1cm}
-%\end{center}
-%%\begin{flushleft}
-%%\begin{small}
-%%\left 
-%
-%\normalsize
-%\noindent
-%NIE: Y1497678R\\
-%Directores: Antonio Espinosa. \indent Juan Carlos Moure.\\
-%Línea de investigación: Aplicaciones bioinformáticas.\\
-%Año de inscripción: 2011\\
-%Año previsto para la presentación de Tesis Doctoral: 2014\\
-
+\pagestyle{plain}
+\pagenumbering{roman}
+\maketitle
+\pagebreak
+{\Huge{\bf Datos del doctorando}}\\
+{\Large \\Nombre Completo: Julio Csar García Vizcaíno\\}
+\vspace{0.3cm}
+{\Large NIE: Y1497678R\\}
+{\Huge{\bf Datos del proyecto de tesis}}\\
+\vspace{0.3cm}
+{\Large \\Estudio de doctorado: Computación de Altas Prestaciones\\}
+\vspace{0.3cm}
+{\Large \\Título del proyecto de tesis doctoral: \emph{
+Whole genome alignment in high performance computing environments.}\\}
+\vspace{0.3cm}
+%{\Large \\Palabras claves: Alineamiento de genoma, cadena coincidente,
+%datos de secuencia biol\'ogica a gran escala, C\'omputo de altas prestaciones.\\}
+%\vspace{0.5cm}
+{\Large \\Directores de la tesis: Antonio Espinosa, Juan Carlos Moure.\\}
+\vspace{0.3cm}
+{\Large \\Línea de investigación: Aplicaciones bioinformáticas.\\}
+\vspace{0.3cm}
+{\Large \\Rgimen de dedicación: completa.\\}
+\vspace{0.3cm}
+{\Large \\A\~no de inscripci\'on: 2011.\\}
+\vspace{0.3cm}
+{\Large \\A\~no previsto para la presentaci\'on de Tesis Doctoral: 2014\\}
+\vspace{0.3cm}
+{\large \\Firmado\\}
+\vspace{2.8cm}
+\begin{center}
+\begin{tabular}{ c c c }
+Director & Director & Estudiante\\
+Antonio Espinos & Juan Carlos Moure & Julio C\'esar García Vizcaíno\\
+\end{tabular}
+\end{center}
+\pagebreak
+\cleardoublepage
+\pagenumbering{arabic}
 \section{Resumen}
 \indent
-Dado un texto $t$ de longitud $n$ y una cadena $s$ de longitud $m$ sobre un alfabeto $\Sigma$, el problema de la coincidencia de cadena
-consiste en encontrar \textit{todas} las ocurrencias de la cadena $s$ en el texto
-$t$. Es un problema estudiado desde hace tiempo en la ciencia de la computaci\'on,
-debido principalmente a sus aplicaciones directas en áreas diversas como texto,
-procesamiento de imagen, compresión de datos, extracci\'on de informaci\'on,
-bioinform\'atica, etc.\\ 
+\cleardoublepage
+\pagenumbering{arabic}
 \indent
-A pesar de que el principal problema est\'a bien estudiado, avances recientes en 
-investigaci\'on gen\'omica y los nuevos desarrollos en las arquitecturas de 
-procesadores introducen nuevos retos en el \'area.\\
+Actualmente la generación de nueva información genómica ha creado la necesidad de almacenar y procesar estos nuevos datos computacionalmente hablando. Una de las tareas en la que nos centramos es en el alineamiento de genomas. Los algoritmos utilizados para el alineamiento de genomas presentan una alta demanda computacional debido al tamaño de los datos genómicos.\\
 \indent
-Son las aplicaciones bioinform\'aticas las que dan motivaci\'on para la
-investigaci\'on de la b\'usqueda de cadenas de longitud variable en una cadena.\\
+Existe una gran cantidad de algoritmos propuestos para el alineamiento de dos secuencias como \cite{Needleman1970General} y \cite{Waterman}. Estos algoritmos funcionan bien con tamaños de secuencias pequeños como un gen. Sin embargo, son ineficaces al alinear genomas enteros. La complejidad computacional y espacial es $O(nm)$, donde $n$ y $m$ son las longitudes de los genomas a alinear. Estos algoritmos tienen problemas de mayores requerimientos de memoria o de tiempos de ejecución inaceptables.\\
 \indent
-Una de las tareas de computaci\'on m\'as b\'asica que realizamos en el genoma es
-identificar las relaciones evolutivas entre el ADN de dos o m\'as especies.\\
+Para grandes secuencias, como el genoma humano (3Gbp), el tiempo de ejecución puede ser extremadamente grande. Es por ello que han surgido alternativas para reducir el tiempo de ejecución del alineamiento de secuencias. Una de esas alternativas es la utilización de la heurística basada en las coincidencias exactas máximas en las secuencias a alinear.\\
 \indent
 El \'arbol de sufijos es una estructura de datos que permite la b\'usqueda de 
 coincidencias exactas de longitud variable en tiempo lineal. Sin embargo los 
@@ -76,56 +95,36 @@ memoria}. Las consideraciones que se toman en cuenta son el tama\~no de la caden
 de referencia (sobre la que se realiza la b\'usqueda) y la longitud de la 
 coincidencia a buscar.
 \section{Introducción}
-\subsection{MUMmer}
+\subsection{MUM y MEM}
 \indent
-MUMmer es una aplicación para el alineamiento de secuencias basado en una
-heurística; que consiste en asumir que las secuencias a alinear son
-muy similares, es decir, comparten regiones de la secuencia entre sí. Utiliza el
-concepto de MUM, como heurística, para agilizar el alineamiento.\\
-\indent
-La clave de MUMmer es la búsqueda de MUMs (Maximal Unique Match), es decir, identificar las
-cadenas mas grandes en el genoma $R$ que tienen una coincidencia idéntica en el
-genoma $Q$, la complejidad computacional de realizar esta operación es:
-\begin{itemize}
-  \item Método simple: $O(n^2)$
-  \item Usando árbol de sufijos: $O(n)$
-\end{itemize}
-\indent
-El objetivo de MUMmer es buscar todas aquellas subcadenas que son comunes a las
-secuencias de referencia $R$ y consulta $Q$ que son máximas de longitud y
-únicas. Un MUM (Maximal Unique Match) tiene las siguientes propiedades:
-\begin{itemize}
-  \item Ocurre exactamente una vez en ambas secuencias $R$ y $Q$ (único a ambos
-    $R$ y $Q$).  \item No está contenida en ningún MUM más grande (longitud
-    máxima).
-\end{itemize}
-\begin{mydef}Un MUM (Maximal Unique Match) es una subcadena que es común a dos
+La heurística basada en la búsqueda de coincidencias exactas máximas para el alineamiento de genomas requiere de la definición formal de una coincidencia exacta máxima (MEM).\\
+\begin{mydef}Un MEM (Maximal Exact Match) es una subcadena común a dos
   genomas que es mayor que una longitud mínima específica $d$ de tal manera
   que es máxima, esto es, que no puede ser extendida en ambos extremos sin
-  incurrir en una discrepancia y es única en ambas secuencias. 
+  incurrir en una discrepancia. 
 \end{mydef}
 \indent
-La heurística basada en MUMs para el alineamiento de genomas tiene un
-inconveniente en secuencias que tienen regiones que se repiten en toda la
-secuencia. Es por ello que se define el MEM, el cual mantiene las mismas
-propiedades que el MUM pero que elimina la unicidad de sus características.\\
-\begin{mydef}Un MEM (Maximal Exact Match) es una subcadena que es común a dos
-  genomas que es mayor que una longitud mínima específica $d$ de tal manera
-  que es máxima, esto es, que no puede ser extendida en ambos extremos sin
-  incurrir en una discrepancia.
+Adicionalmente, a partir de la definición de MEM surge el concepto de la coincidencia única maxima (MUM).\\
+\begin{mydef}Un MUM (Maximal Unique Match) es una subcadena única común a dos genomas que es mayor que una longitud mínima específica $d$ de tal manera que es máxima, esto es, que no puede ser extendida en ambos extremos sin incurrir en una discrepancia.
 \end{mydef}
+Identificar las cadenas, $k$, mas grandes en el genoma $Q$ que tienen una coincidencia de longitud $l$ idéntica en el genoma $R$, tiene la siguiente complejidad computacional:
+\begin{itemize}
+  \item Método simple: $O(nl)$
+  \item Usando árbol de sufijos: $O(l+k)$
+\end{itemize}
+\indent
+El objetivo es buscar todas aquellas subcadenas que son comunes a las secuencias de referencia $R$ y consulta $Q$ que son máximas de longitud.\\
 \subsection{Árbol de sufijos}
 \indent
- Cualquier cadena de referencia de longitud $n$ puede ser descompuesta en $m$ sufijos, ver
+ Cualquier cadena de referencia de longitud $n$ puede ser descompuesta en $s$ sufijos, ver
  Figura \ref{fig:st}, y estos sufijos pueden almacenarse en un árbol de sufijos.
  Para crear esta estructura de datos se requiere de un tiempo $O(n)$ y para
- buscar una cadena en él requiere de un tiempo $O(w)$ donde $w$ es la longitud
+ buscar una cadena en él requiere de un tiempo $O(l)$ donde $l$ es la longitud
  de la cadena \cite{Gusfield2007Algorithms}. Estas dos propiedades hacen al árbol
  de sufijos una estructura útil para un rango diverso de aplicaciones
- bioinformáticas, incluyendo: alineamiento de genomas \cite{Mummer1,
- mummer2,Mummer3}.\\
+ bioinformáticas, incluyendo: alineamiento de genomas \cite{Mummer3}.\\
 %\vspace{6cm}
- \begin{figure}[h]
+ \begin{figure}[h] 
    \centering 
    \includegraphics[scale=0.3]{st.png} 
    \caption{Árbol de sufijos para la palabra atgtgtgtc\$.} 
@@ -137,7 +136,7 @@ y eficiente en espacio fue propuesto en \cite{McCreight:1976:SST:321941.321946}
 , y Ukkonen produjo una variante ``on-line'' de ese algoritmo en \cite{Ukkonen1992}. 
 La clave para la búsqueda veloz en un árbol de sufijos es que 
 hay un camino desde la raíz para cada sufijo del texto. Esto significa que se 
-necesitan $w$ comparaciones para encontrar una cadena de longitud $w$.\\
+necesitan $l$ comparaciones para encontrar una cadena de longitud $l$.\\
 \indent
 Otra mejora de implementación necesario para conseguir un tiempo y espacio 
 lineal es el uso de enlaces de sufijos. Un enlace de sufijo es un puntero de un 
@@ -149,7 +148,7 @@ y la compresión de las etiquetas de las aristas son los requerimientos claves
 para la implementación del árbol de sufijos en $O(n)$.\\
 \indent
 Existen diferentes implementaciones de árboles de sufijos, cada uno con 
-complejidades espaciales diferenes como se muestra en el Cuadro \ref{tab:stmem}.\\
+complejidades espaciales diferentes como se muestra en el Cuadro \ref{tab:stmem}.\\
 \begin{table}[h!]  
 \begin{small}
 \begin{center}
@@ -184,58 +183,15 @@ Estrictamente hablando:
       \item Tiempo de creación: $min (O(n\log n), O(n\log |\Sigma|))$ 
       \item Tiempo de búsqueda: $min (O(|C|\log n), O(|C|\log |\Sigma|))$ 
     \end{itemize}
-%\subsection{Arreglo de sufijos}
-%Existen estructuras de datos mas eficientes en espacio que un árbol de un sufijos.
-%La mas prominente es el arreglo de sufijos. Un arreglo de sufijos para una cadena
-%de $n$ caracteres es un arreglo de enteros que indica la posición inicial de los 
-%sufijos de una cadena en orden lexicográfico, ver Figura \ref{fig:sufar}.
-%\begin{figure}[h]
-%\begin{center}
-%\includegraphics[scale=1.0]{sa.jpeg}
-%\caption{Arreglo de sufijos para la cadena ATTGCAGTCCG.}
-%\label{fig:sufar}
-%\end{center}
-%\end{figure}
-%\\ \indent
-%La complejidad espacial de un arreglo de sufijos es $O(10,9n)$, si se almacena 
-%el genoma humano la cantidad de memoria que ocuparía sería de 31.69GB.\\
-%\indent
-%La primera y última ocurrencia de una cadena puede encontrarse en el arreglo de sufijos
-%usando una búsqueda binaria en tiempo $O(n)$. Buscar una cadena, $C$, en el arreglo 
-%de sufijos, $A$, consiste en buscar el intervalo $A[i,j]$ que contiene todos los 
-%sufijos que comienzan con la cadena $C$. Esto se logra mediante una búsqueda binaria
-%sobre $A$, buscando el menor lexicográficamente sufijo que parte con $C$ y otra
-%búsqueda binaria buscando el mayor sufijo que parte con $C$. En cada comparación de 
-%la búsqueda binaria se compara un sufijo con la cadena $C$.\\
-%\indent
-%Por ejemplo buscar la cadena $C=CA$ en el arreglo de sufijos de la Figura 
-%\ref{fig:sufar} se realiza de la siguiente manera:
-%\begin{itemize}
-%  \item Ubicamos la posición central del arreglo, que es 6.
-%  \item Comparamos la cadena $C$ con el sufijo en la posición 6.
-%  \item La comparación nos indica que la cadena se encuentra en la parte superior
-%    del arreglo de sufijos.
-%  \item Ubicamos la posición central de esa parte del arreglo, que es 3.
-%  \item Comparamos la cadena $C$ con el sufijo en la posición 3.
-%  \item La cadena coincide con el sufijo en 3: \textbf{CA}GTCCG.
-%\end{itemize}
-%\indent
-%Un árbol de sufijos puede convertirse en un arreglo de sufijos en tiempo $O(n)$
-%\cite{Abouelhoda2004}. Esto es útil cuando no hay memoria disponible para crear
-%el árbol de sufijos. Si no hay suficiente memoria disponible para crear y
-%convertir el árbol de sufijos hay métodos mas lentos disponibles para crear el
-%arreglo de sufijos directamente de la secuencia.\\ 
 \subsection{Definición del problema a resolver}
-El problema del tiempo de búsqueda necesario para encontrar las coincidencias
-exactas máximas de una longitud mínima han sido identificados en varias 
-aplicaciones, entre ellas MUMmer \cite{Mummer3}.\\
+\indent
+El problema de la búsqueda de las coincidencias exactas máximas de una longitud mínima han sido identificados en varias aplicaciones, entre ellas MUMmer \cite{Mummer3}. Aunque el algoritmo de MUMmer realiza la búsqueda de coincidencias exactas máximas rápidamente, los requerimientos de recursos de cómputo aún son altos debido al tamaño de los datos de entrada.\\
+\indent
 Se ha realizado un experimento para comparar las prestaciones de la búsqueda de
 coincidencias exactas máximas utilizando un árbol de sufijos. En el Cuadro 
 \ref{tab:buscar} se muestra el tiempo de procesamiento de búsqueda 
 para coincidencias de tamaño mínimo $L$, utilizando el árbol de sufijos. El tiempo 
-de cómputo invertido en la búsqueda involucra la
-operación individual de cadenas de longitud mínima $L$ hasta la longitud de la cadena 
-máxima de coincidencia. \\
+de cómputo invertido en la búsqueda involucra la operación individual de cadenas de longitud mínima $L$ hasta la longitud de la cadena máxima de coincidencia. \\
 \begin{table}[ h!] 
   \begin{small}
     \begin{center}
@@ -254,18 +210,18 @@ máxima de coincidencia. \\
   29,38Mbp y una cadena de consulta de 29,69Mbp}
   \label{tab:buscar}
 \end{table}
-\\El tiempo de búsqueda del Cuadro \ref{tab:buscar} para cadenas de tamaño de 30Mbp
+\indent
+El tiempo de búsqueda del Cuadro \ref{tab:buscar} para cadenas de tamaño de 30Mbp
 es relativamente alto debido a que involucra realizar millones de búsquedas en
 serie. La cantidad de operaciones de búsqueda que se realizan son 11 veces la 
 longitud de las cadenas de referencia y consulta. En consecuencia, la búsqueda 
-de coincidencias exactas máximas es una operación 
-computacionalmente intensiva. La razón de este uso intensivo de cómputo se debe a 
-la cantidad de operaciones de búsqueda.\\
+de coincidencias exactas máximas es una operación computacionalmente intensiva. La razón de este uso intensivo de cómputo se debe a la cantidad de operaciones de búsqueda.\\
+\indent
 Al aumentar la longitud de las cadenas de referencia y consulta por un factor de 10, 
 los tiempos de búsqueda se incrementan linealmente por un factor de 10, el uso de 
 memoria aumenta aproximadamente 8 veces y la cantidad de búsquedas a realizar se
 multiplica \e{3} veces, como se observa en el Cuadro \ref{tab:buscar2}.\\
-\begin{table}[ h!]
+\begin{table}[ h! ]
   \begin{small}
     \begin{center}
       \begin{tabular}{lllll}
@@ -283,7 +239,8 @@ multiplica \e{3} veces, como se observa en el Cuadro \ref{tab:buscar2}.\\
   227,69Mbp y una cadena de consulta de 238,62Mbp}
   \label{tab:buscar2}
 \end{table} 
-\\\\\\Si la longitud de las cadenas crece por un factor de 10, ver Cuadro \ref{tab:buscar3}, 
+\indent
+Si la longitud de las cadenas crece por un factor de 10, ver Cuadro \ref{tab:buscar3}, 
 la cantidad de búsquedas son aproximadamente \e{18}, el tiempo de búsqueda
 crece linealmente y el uso de memoria se convierte en un problema a analizar si
 se considera la disponibilidad finita de memoria en la mayoría de sistemas de
@@ -306,19 +263,22 @@ cómputo personales.\\
   2960,21Mbp y una cadena de consulta de 2716,96Mbp}
   \label{tab:buscar3}
 \end{table}
-\\De acuerdo a los datos de los Cuadros \ref{tab:buscar}, \ref{tab:buscar2} y 
+\indent
+De acuerdo a los datos de los Cuadros \ref{tab:buscar}, \ref{tab:buscar2} y 
 \ref{tab:buscar3} se hace necesario la búsqueda de alternativas que 
 permitan llevar a cabo la búsqueda de manera eficiente. El uso de HPC nos permitiría
 resolver los problemas de escalabilidad (tiempo de búsqueda, uso de memoria) cuando 
 se tienen cadenas muy grandes, como el genoma humano.\\
 \subsection*{Problema}
+\indent
 La búsqueda de coincidencias exactas máximas es un problema computacionalmente
 intensivo. Dadas una cadena de referencia $R$ de longitud $n$ y una cadena de consulta 
-$Q$ de longitud $m$, encontrar todas las coincidencias de longitud mínima $L$ de $Q$
+$Q$ de longitud $m$, encontrar todas las coincidencias de longitud mínima $l$ de $Q$
 en la cadena de referencia $R$ implica recorrer la cadena de consulta $Q$ para $todas$
 sus subcadenas. Para cada subcadena se determina la posición o posiciones en donde 
-existe una coincidencia, de longitud mínima $L$, entre la subcadena y la cadena de 
+existe una coincidencia, de longitud mínima $l$, entre la subcadena y la cadena de 
 referencia $R$. La posición de la subcadena en $Q$ es determinada.\\
+\indent
 En la Figura \ref{fig:problema} se muestra gráficamente el problema de la búsqueda
 de coincidencias exactas máximas.
 \begin{figure}[h]

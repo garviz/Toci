@@ -268,7 +268,7 @@ static Sint showmaximalmatch (void *info,
                               /*@unused@*/ Uint seqnum,
                               Uint querystart)
 {
-  Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
+  /*Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
   if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
      &&
@@ -296,7 +296,7 @@ static Sint showmaximalmatch (void *info,
   {
     printf ("%8lu  ", (long unsigned int) (querystart+1));
   }
-  printf ("%8lu\n", (long unsigned int) matchlength);
+  printf ("%8lu\n", (long unsigned int) matchlength);*/
   return 0;
 }
 
@@ -496,6 +496,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   finish = MPI::Wtime();
   cerr << "createST Time: " << finish-start << endl;
   //showstree(&matchprocessinfo.stree);
+  showtable(&matchprocessinfo.stree,true);
   matchprocessinfo.subjectmultiseq = subjectmultiseq;
   matchprocessinfo.minmatchlength = mmcallinfo->minmatchlength;
   matchprocessinfo.showstring = mmcallinfo->showstring;
@@ -552,6 +553,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   {
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
+  //fprintf(stderr,"nextfreeleafnum:%lu, nextfreeleafptr:%lu, nodecount++:%lu\n",(Uint) &matchprocessinfo.stree.nextfreeleafnum,(Uint) &matchprocessinfo.stree.nextfreeleafptr,(Uint) &matchprocessinfo.stree.nodecount);
   freestree (&matchprocessinfo.stree);
   return 0;
 }

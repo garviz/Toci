@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: evaluation_2012.aux
+The style file: apalike.bst
+Database file #1: references.bib
+Warning--there's a number but no volume in Clifford2005
+Warning--there's a number but no volume in Japp2004
+Warning--empty journal in Mansour2012
+Warning--empty year in Sadakane
+Warning--can't use both volume and number fields in Ukkonen1992
+You've used 13 entries,
+            1935 wiz_defined-function locations,
+            569 strings with 6007 characters,
+and the built_in function-call counts, 5004 in all, are:
+= -- 501
+> -- 161
+< -- 14
++ -- 53
+- -- 51
+* -- 412
+:= -- 862
+add.period$ -- 40
+call.type$ -- 13
+change.case$ -- 89
+chr.to.int$ -- 13
+cite$ -- 18
+duplicate$ -- 200
+empty$ -- 368
+format.name$ -- 72
+if$ -- 985
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 14
+newline$ -- 68
+num.names$ -- 41
+pop$ -- 70
+preamble$ -- 1
+purify$ -- 90
+quote$ -- 0
+skip$ -- 157
+stack$ -- 0
+substring$ -- 380
+swap$ -- 30
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 76
+warning$ -- 5
+while$ -- 46
+width$ -- 0
+write$ -- 170
+(There were 5 warnings)

@@ -106,9 +106,9 @@ void getbranchinfostree(Suffixtree *stree,Uint whichinfo,
                                                  branchinfo->depth);
     }
     /*SHOWINDEX((Uint) BRADDR2NUM(stree,btptr));
-    fprintf(stdout,"--> ");
+    fprintf(stdout,"(%u) --> ", GETDEPTH(btptr));
     SHOWINDEX((Uint) BRADDR2NUM(stree,branchinfo->suffixlink));
-    fprintf(stdout,"\n");*/
+    fprintf(stdout," (%u)\n", GETDEPTH(branchinfo->suffixlink));*/
   }
   if(which & ACCESSFIRSTCHILD)
   {
