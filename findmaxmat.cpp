@@ -370,37 +370,21 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
   {
     rescanprefixlength = 0;
   }
-  (void) findprefixpathstree (maxmatchinfo->stree, 
-                              &maxmatchinfo->matchpath,
-                              &maxmatchinfo->maxloc, 
-                              ploc,
-                              maxmatchinfo->querysuffix
-                                  + maxmatchinfo->minmatchlength,
-                              maxmatchinfo->query 
-			          + maxmatchinfo->querylen - 1,
-                              rescanprefixlength);
-  maxmatchinfo->depthofpreviousmaxloc 
-    = maxmatchinfo->maxloc.locstring.length;
+  (void) findprefixpathstree (maxmatchinfo->stree, &maxmatchinfo->matchpath, &maxmatchinfo->maxloc, ploc, maxmatchinfo->querysuffix+maxmatchinfo->minmatchlength, 
+          maxmatchinfo->query+maxmatchinfo->querylen-1, rescanprefixlength);
+  maxmatchinfo->depthofpreviousmaxloc = maxmatchinfo->maxloc.locstring.length;
   maxmatchinfo->commondepthstack.nextfreeNodeinfo = 0;
   if(ploc->nextnode.toleaf)
   {
-    if(processleaf(LEAFADDR2NUM(maxmatchinfo->stree,ploc->nextnode.address),
-                   NULL,(void *) maxmatchinfo) != 0)
+    if(processleaf(LEAFADDR2NUM(maxmatchinfo->stree,ploc->nextnode.address), NULL,(void *) maxmatchinfo) != 0)
     {
       return -1;
     }
   } else
   {
     (void) processbranch1(ploc->nextnode.address,(void *) maxmatchinfo);
-    if(depthfirststree(maxmatchinfo->stree,
-                       &ploc->nextnode,
-                       processleaf,
-                       processbranch1,
-                       processbranch2,
-                       NULL,
-                       NULL,
-                       (void *) maxmatchinfo) != 0)
-    {
+    if(depthfirststree(maxmatchinfo->stree, &ploc->nextnode, processleaf, processbranch1, processbranch2, NULL, NULL, (void *) maxmatchinfo) != 0)
+    { 
       return -2;
     }
   }
@@ -432,7 +416,6 @@ Sint findmaxmatches(Suffixtree *stree,
                     Uint querylen,
                     Uint queryseqnum)
 {
-  fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
   Uchar *querysubstringend;  // ref to end of querysubs. of len. minmatchl.
   Location ploc;
   Maxmatchinfo maxmatchinfo;
@@ -452,29 +435,21 @@ Sint findmaxmatches(Suffixtree *stree,
   //sparsetable<Uint*> table(size);
   //createTable(stree,table,wordsize);
   querysubstringend = query + minmatchlength - 1;
-  (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
-                                  query, querysubstringend,0);
+  (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), query, querysubstringend,0);
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
-  Uchar *final;
-  final=query+querylen-1;
-//#pragma omp parallel for private (querysubstringend,maxmatchinfo)
-  for (querysubstringend=query+minmatchlength-1;querysubstringend<final;querysubstringend++,maxmatchinfo.querysuffix++)
+  for (;querysubstringend<query+querylen-1;querysubstringend++,maxmatchinfo.querysuffix++)
   {
-        if(ploc.locstring.length >= minmatchlength)
+      //fprintf(stdout,"%s Thread:%d *query:%lu querylen:%lu querysubstringend:%lu\n",__func__, omp_get_thread_num(), (Uint)query,querylen,(Uint)querysubstringend);
+        if(ploc.locstring.length >= minmatchlength &&  enumeratemaxmatches(&maxmatchinfo,&ploc) != 0)
         {
-            (void) enumeratemaxmatches(&maxmatchinfo,&ploc);
+            return -1;
         }
         if (ROOTLOCATION (&ploc)) 
-            (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), 
-                                      maxmatchinfo.querysuffix+1, 
-                                      querysubstringend+1,0);
+            (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), maxmatchinfo.querysuffix+1, querysubstringend+1,0);
         else 
         {
             linklocstree (stree, &ploc, &ploc);
-            (void) scanprefixstree (stree, &ploc, &ploc,
-                              maxmatchinfo.querysuffix
-                                 + ploc.locstring.length+1,
-                              querysubstringend+1,0);
+            (void) scanprefixstree (stree, &ploc, &ploc, maxmatchinfo.querysuffix+ploc.locstring.length+1, querysubstringend+1,0);
         }
   } 
   while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)

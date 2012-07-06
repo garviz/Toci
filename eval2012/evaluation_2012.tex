@@ -63,42 +63,65 @@ Antonio Espinos & Juan Carlos Moure & Julio C\'esar García Vizcaíno\\
 \end{tabular}
 \end{center}
 \pagebreak
-\cleardoublepage
+%\cleardoublepage
 \pagenumbering{arabic}
 \section{Resumen}
 \indent
-\cleardoublepage
-\pagenumbering{arabic}
+Actualmente la generación de nueva información genómica ha creado la necesidad de almacenar y procesar estos nuevos datos computacionalmente hablando. Una de las tareas en la que nos centramos es en el alineamiento de genomas. La información básica de un genoma es el ADN. El ADN es una cadena compuesta por el alfabeto $\sigma={a,c,g,t}$, cada uno de estos elementos es llamado nucleótido. El alineamiento de genomas consiste en encontrar las similitudes y diferencias de las cadenas de ADN entre genomas.\\
+El alineamiento de genomas es un modelo matemático utilizado por los biólogos para determinar la similitud entre genomas. Un alineamiento involucra tres operaciones básicas:
+\begin{itemize}
+  \item Coincidencia: los nucleótidos en ambos genomas son iguales.
+  \item Discrepancia: los nucleótidos no coinciden en ambos genomas.
+  \item Mutaciones: uno o varios cambios de nucleótidos en el genoma:
+    \begin{itemize}
+      \item Sustitución: un nucleótido es reemplazado por otro.
+      \item Inserción: uno o varios nucleótidos se insertan en una posición en el genoma.
+      \item Eliminación: uno o varios nucleótidos se borran del genoma.
+    \end{itemize}
+\end{itemize}
+Los algoritmos utilizados para el alineamiento de genomas presentan una alta demanda computacional debido al tamaño de los datos genómicos.\\
 \indent
-Actualmente la generación de nueva información genómica ha creado la necesidad de almacenar y procesar estos nuevos datos computacionalmente hablando. Una de las tareas en la que nos centramos es en el alineamiento de genomas. Los algoritmos utilizados para el alineamiento de genomas presentan una alta demanda computacional debido al tamaño de los datos genómicos.\\
+Existe diferentes algoritmos propuestos para el alineamiento de dos secuencias como \cite{Needleman1970General} y \cite{Waterman}. Estos algoritmos funcionan bien con tamaños de secuencias pequeños como un gen, 20-30kbp\footnote{bp es la únidad básica de medida en las secuencias de ADN y representa la longitud de un nucleótido}. Sin embargo, son ineficaces al alinear genomas enteros. La complejidad computacional y espacial es $O(nm)$, donde $n$ y $m$ son las longitudes de los genomas a alinear. Estos algoritmos tienen problemas de mayores requerimientos de memoria o de tiempos de ejecución inaceptables.\\
 \indent
-Existe una gran cantidad de algoritmos propuestos para el alineamiento de dos secuencias como \cite{Needleman1970General} y \cite{Waterman}. Estos algoritmos funcionan bien con tamaños de secuencias pequeños como un gen. Sin embargo, son ineficaces al alinear genomas enteros. La complejidad computacional y espacial es $O(nm)$, donde $n$ y $m$ son las longitudes de los genomas a alinear. Estos algoritmos tienen problemas de mayores requerimientos de memoria o de tiempos de ejecución inaceptables.\\
+Para grandes secuencias, como el genoma humano (3Gbp), el uso de recursos computacionales pueden ser extremadamente grande y con un largo tiempo de ejecución. Es por ello que han surgido alternativas para reducir el tiempo de ejecución del alineamiento de secuencias. Una de esas alternativas es la utilización de la heurística basada en las coincidencias exactas máximas en las secuencias a alinear. Al encontrar las coincidencias exactas máximas se puede realizar el alineamiento de genomas enteros reduciendo el espacio del alineamiento a las regiones entre las coincidencias exactas máximas.\\
 \indent
-Para grandes secuencias, como el genoma humano (3Gbp), el tiempo de ejecución puede ser extremadamente grande. Es por ello que han surgido alternativas para reducir el tiempo de ejecución del alineamiento de secuencias. Una de esas alternativas es la utilización de la heurística basada en las coincidencias exactas máximas en las secuencias a alinear.\\
+Formalmente el problema de la búsqueda de coincidencias exactas máximas se define como:
+\begin{mydef}
+  Dadas dos secuencias (genomas) $R=r_{1}r_{2}\hdots r_{n}$ y $Q=q_{1}q_{2}\hdots q_{m}$, y una longitud mínima $l$, se requiere encontrar todas las ocurrencias de las coincidencias exactas máximas de longitud mínima $l$, entre $R$ y $Q$.
+\end{mydef}
+Existen diferentes aproximaciones para resolver el problema ver Figura \ref{fig:state}, todas ellas involucran un sacrificio de recursos de cómputo (memoria, procesador).
+\begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.3]{state.png} 
+   \caption{Diferentes soluciones al problema de la búsqueda de coincidencias exactas máximas para el genoma humano como referencia.} 
+   \label{fig:state} 
+ \end{figure}
 \indent
-El \'arbol de sufijos es una estructura de datos que permite la b\'usqueda de 
-coincidencias exactas de longitud variable en tiempo lineal. Sin embargo los 
-requerimientos de espacio necesario para almacenar el \'arbol de sufijos en 
+El árbol de sufijos es una estructura de datos que permite la b\'usqueda de 
+coincidencias exactas de longitud variable en tiempo lineal. Una coincidencia exacta de longitud $w$ ocurre en $r_{i}r_{i+1}\hdots r_{i+l-1}$ y $q_{j}q_{j+1}\hdots q_{j+l-1}$ si y solo si los sufijos $r_{i}r_{i+1}\hdots r_{n}$ y $q_{j}q_{j+1}\hdots q_{m}$ comparten un prefijo común de longitud mínima $l$. La búsqueda de coincidencias máximas exactas en un árbol de sufijos se realiza recorriendo el trayecto que es común a la secuencia de consulta hasta encontrar una discrepancia. Si la búsqueda termina en un nodo hoja, la coincidencia es única en la secuencia de referencia. Verificando el carácter inmediato anterior al inicio de esta coincidencia se puede determinar si es una coincidencia  máxima.\\
+\indent
+Sin embargo los requerimientos de espacio necesario para almacenar el \'arbol de sufijos en 
 memoria principal la hacen una estructura inviable cuando el \'arbol de sufijos a
 almacenar supera la memoria disponible.\\
 \indent
 Este problema se presenta en aplicaciones de alineamiento de genomas donde el
-tama\~no de los genomas son de millones de caracteres y su representaci\'on en un
-\'arbol de sufijos se hace inviable si no se tiene la cantidad de memoria 
-disponible. Adicionalmente, la raz\'on de utilizar un árbol de sufijos radica en
-que la b\'usqueda de coincidencias exactas de longitud variable en un \'arbol de 
-sufijos se realiza en tiempo lineal.\\
+tama\~no de los genomas son de millones de caracteres y su representación en un
+árbol de sufijos se hace inviable si no se tiene la cantidad de memoria 
+disponible. Además, la razón de utilizar un árbol de sufijos radica en
+que la búsqueda de coincidencias exactas de longitud variable en un árbol de 
+sufijos se realiza en tiempo lineal, gracias al uso de los enlaces de sufijos.\\
 \indent
-En consecuencia se busca \textbf{acelerar la b\'usqueda eficiente de 
-coincidencias exactas y que tenga en cuenta el uso de recursos de c\'omputo y
-memoria}. Las consideraciones que se toman en cuenta son el tama\~no de la cadena 
-de referencia (sobre la que se realiza la b\'usqueda) y la longitud de la 
+En consecuencia se busca \textbf{acelerar la búsqueda eficiente de 
+coincidencias exactas y que tenga en cuenta el uso de recursos de cómputo y
+memoria}. Las consideraciones que se toman en cuenta son la longitud del genoma 
+de referencia (sobre la que se realiza la búsqueda), del genoma de consulta y la longitud de la 
 coincidencia a buscar.
-\section{Introducción}
-\subsection{MUM y MEM}
+\section{Introducción} 
+\subsection{MUM y MEM} 
 \indent
 La heurística basada en la búsqueda de coincidencias exactas máximas para el alineamiento de genomas requiere de la definición formal de una coincidencia exacta máxima (MEM).\\
-\begin{mydef}Un MEM (Maximal Exact Match) es una subcadena común a dos
+\begin{mydef}
+  Un MEM (Maximal Exact Match) es una subcadena común a dos
   genomas que es mayor que una longitud mínima específica $d$ de tal manera
   que es máxima, esto es, que no puede ser extendida en ambos extremos sin
   incurrir en una discrepancia. 
@@ -123,14 +146,45 @@ El objetivo es buscar todas aquellas subcadenas que son comunes a las secuencias
  de la cadena \cite{Gusfield2007Algorithms}. Estas dos propiedades hacen al árbol
  de sufijos una estructura útil para un rango diverso de aplicaciones
  bioinformáticas, incluyendo: alineamiento de genomas \cite{Mummer3}.\\
-%\vspace{6cm}
- \begin{figure}[h] 
+  \begin{figure}[h] 
    \centering 
-   \includegraphics[scale=0.3]{st.png} 
+   \includegraphics[scale=0.8]{st-mum.png} 
    \caption{Árbol de sufijos para la palabra atgtgtgtc\$.} 
    \label{fig:st} 
  \end{figure}
-\\ \indent
+\indent
+La búsqueda de coincidencias exactas máximas en un árbol de sufijos se realiza recorriendo el árbol
+con la cadena que se requiere encontrar la coincidencia exacta máxima. Si la coincidencia termina en 
+un nodo hoja, la coincidencia exacta máxima es única en la secuencia de referencia. Verificando el 
+carácter inmediato anterior al inicio de la posición de la coincidencia es posible determinar si es
+máxima.\\
+\indent
+Por lo tanto es posible identificar todas las coincidencias exactas máximas en tiempo proporcional a
+la longitud del genoma de consulta. Es importante resaltar que las coincidencias encontradas no son
+necesariamente únicas en el genoma de consulta. Esto se debe a que al recorrer el genoma de consulta, 
+las coincidencias encontradas no nos permiten identificar si son únicas ya que no es posible determinar
+que coincidencias se encontrarán posteriormente en el genoma de consulta.\\
+\indent
+En la Figura \ref{fig:st} se muestra como una secuencia de consulta es buscada en el árbol de sufijos. El
+árbol representa la secuencia de referencia atgtgtgtc\$. Las hojas representadas por cuadrados indican la
+posición en la que inicia el sufijo. Por ejemplo, la hoja 7 representa el sufijo gtc\$ que inicia en la 
+posición 7 de la secuencia de referencia y que está formado por la secuencia de aristas etiquetadas desde la
+raíz hasta el nodo hoja 7. En el punto mostrado en la figura, se ha encontrado la coincidencia en la posición $i$,
+indicada por la flecha. La coincidencia se extiende a la correspondiente posición en el árbol. En este caso sabemos
+que la coincidencia es única en la referencia por que estamos ubicados en un nodo hoja. El número del nodo hoja
+nos da la posición de inicio de la coincidencia en la referencia.\\
+\indent
+Para encontrar la siguiente coincidencia, usamos los enlaces de sufijos, señalados en la Figura \ref{fig:st} por
+flechas punteadas. Estos enlaces son construidos para cada nodo interno en el árbol. Un enlace apunta de un nodo
+$x$ a un nodo $y$ si el sufijo de la raíz a $y$ es igual al sufijo desde la raíz a $x$ con el primer carácter 
+eliminado. Por ejemplo, la cadena del nodo $i$ en la Figura \ref{fig:st} es tgt y del nodo $i+1$ es gt. Esa es la
+posición en el árbol correspondiente a la siguiente posición en la secuencia de consulta. Desde el nodo $i$ podemos
+continuar la coincidencia bajando en el árbol para determinar que tan grande es la coincidencia puede extenderse. Las 
+coincidencias son máximas hacia la derecha cuando se buscan en el árbol de sufijos. Para verificar si son máximas a
+la izquierda comparamos los caracteres precedentes en cada cadena. En el ejemplo de la Figura \ref{fig:st}, la
+coincidencia inicia en $i+1$ en la cadena de consulta y en el nodo 7 de la cadena del árbol no es máxima a la izquierda
+porque el carácter precedente en ambas cadenas es $t$.\\
+\indent
 El primer algoritmo para la construcción de un árbol de sufijos en tiempo lineal 
 y eficiente en espacio fue propuesto en \cite{McCreight:1976:SST:321941.321946}
 , y Ukkonen produjo una variante ``on-line'' de ese algoritmo en \cite{Ukkonen1992}. 
@@ -183,9 +237,10 @@ Estrictamente hablando:
       \item Tiempo de creación: $min (O(n\log n), O(n\log |\Sigma|))$ 
       \item Tiempo de búsqueda: $min (O(|C|\log n), O(|C|\log |\Sigma|))$ 
     \end{itemize}
+\indent
 \subsection{Definición del problema a resolver}
 \indent
-El problema de la búsqueda de las coincidencias exactas máximas de una longitud mínima han sido identificados en varias aplicaciones, entre ellas MUMmer \cite{Mummer3}. Aunque el algoritmo de MUMmer realiza la búsqueda de coincidencias exactas máximas rápidamente, los requerimientos de recursos de cómputo aún son altos debido al tamaño de los datos de entrada.\\
+El problema de la búsqueda de las coincidencias exactas máximas de una longitud mínima han sido identificados en varias aplicaciones, entre ellas MUMmer \cite{Mummer3}. Aunque el algoritmo de MUMmer realiza la búsqueda de coincidencias exactas máximas, los requerimientos de recursos de cómputo aún son altos debido al tamaño de los datos de entrada.\\
 \indent
 Se ha realizado un experimento para comparar las prestaciones de la búsqueda de
 coincidencias exactas máximas utilizando un árbol de sufijos. En el Cuadro 
@@ -215,7 +270,9 @@ El tiempo de búsqueda del Cuadro \ref{tab:buscar} para cadenas de tamaño de 30
 es relativamente alto debido a que involucra realizar millones de búsquedas en
 serie. La cantidad de operaciones de búsqueda que se realizan son 11 veces la 
 longitud de las cadenas de referencia y consulta. En consecuencia, la búsqueda 
-de coincidencias exactas máximas es una operación computacionalmente intensiva. La razón de este uso intensivo de cómputo se debe a la cantidad de operaciones de búsqueda.\\
+de coincidencias exactas máximas es una operación computacionalmente intensiva. 
+La razón de este uso intensivo de cómputo se debe a la cantidad de operaciones de búsqueda
+y a los accesos aleatorios en memoria al hacer cada operación de búsqueda.\\
 \indent
 Al aumentar la longitud de las cadenas de referencia y consulta por un factor de 10, 
 los tiempos de búsqueda se incrementan linealmente por un factor de 10, el uso de 
@@ -269,7 +326,7 @@ De acuerdo a los datos de los Cuadros \ref{tab:buscar}, \ref{tab:buscar2} y
 permitan llevar a cabo la búsqueda de manera eficiente. El uso de HPC nos permitiría
 resolver los problemas de escalabilidad (tiempo de búsqueda, uso de memoria) cuando 
 se tienen cadenas muy grandes, como el genoma humano.\\
-\subsection*{Problema}
+\subsection*{Problema} 
 \indent
 La búsqueda de coincidencias exactas máximas es un problema computacionalmente
 intensivo. Dadas una cadena de referencia $R$ de longitud $n$ y una cadena de consulta 
@@ -298,7 +355,7 @@ Realizar una búsqueda de coincidencia exacta de longitud fija es sencilla
 computacionalmente hablando. Pero al realizar una búsqueda de coincidencia exacta de 
 longitud variable ocurren los siguientes problemas:
 \begin{itemize}
-  \item Acceso aleatorio a la cadena de referencia $R$: el conjunto de coincidencias
+  \item Acceso aleatorio a la cadena indexada de referencia $R$: el conjunto de coincidencias
     podría estar en posiciones de la cadena $R$ distantes.
   \item Longitud variable de la cadena a buscar: la búsqueda a realizar se incrementa
     con la longitud de la cadena.

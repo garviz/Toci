@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  20 JUN 2012 15:28
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  6 JUL 2012 13:18
 entering extended mode
  %&-line parsing enabled.
 **evaluation_2012.tex
@@ -887,65 +887,62 @@ Overfull \hbox (2.22073pt too wide) in paragraph at lines 33--59
 [2]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 68.
- [1
-
-]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 77.
+ (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 77.
+ [1]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 94.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.101 \begin{mydef}U
-                    n MEM (Maximal Exact Match) es una subcadena común a dos
-[1
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 90.
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 115--117
+<state.png, id=96, 890.19635pt x 439.50244pt>
+File: state.png Graphic file (type png)
+ <use state.png> [2 <./state.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 138--140
 
  []
 
-<st.png, id=98, 793.96625pt x 583.17876pt>
-File: st.png Graphic file (type png)
- <use st.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2] [3 <./st.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 187--272
-
- []
-
+<st-mum.png, id=111, 406.8801pt x 250.0542pt>
+File: st-mum.png Graphic file (type png)
+ <use st-mum.png> [3] [4 <./st-mum.png>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4] <gaps.png, id=145, 544.0325pt x 92.345pt>
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 242--329
+
+ []
+
+[6] <gaps.png, id=163, 544.0325pt x 92.345pt>
 File: gaps.png Graphic file (type png)
- <use gaps.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5] <naive.png, id=158, 517.935pt x 567.62062pt>
+ <use gaps.png> [7]
+<naive.png, id=175, 517.935pt x 567.62062pt>
 File: naive.png Graphic file (type png)
  <use naive.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6 <./gaps.png>] <distributed.png, id=174, 366.36874pt x 274.02374pt>
+[8 <./gaps.png>] [9 <./naive.png (PNG copy)>]
+<distributed.png, id=195, 366.36874pt x 274.02374pt>
 File: distributed.png Graphic file (type png)
-
-<use distributed.png> [7 <./naive.png (PNG copy)>] [8 <./distributed.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 443--449
+ <use distributed.png>
+[10 <./distributed.png>] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 500--506
 
  []
 
-[9] <freq.png, id=205, 642.4pt x 481.8pt>
+<freq.png, id=221, 642.4pt x 481.8pt>
 File: freq.png Graphic file (type png)
- <use freq.png> [10 <./freq.png (PNG copy)>] <dst2.png, id=214, 715.67375pt x 4
-80.79625pt>
+ <use freq.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12] <dst2.png, id=230, 715.67375pt x 480.79625pt>
 File: dst2.png Graphic file (type png)
  <use dst2.png>
-Overfull \hbox (22.07594pt too wide) in paragraph at lines 475--496
+Overfull \hbox (22.07594pt too wide) in paragraph at lines 532--553
 \T1/ptm/m/n/12 El ob-je-ti-vo es en-con-trar un con-jun-to de pa-res de en-tra-
 da va-li-do tal que $\OMS/cmsy/m/n/12 8\OML/cmm/m/it/12 p^^OV[]; \OT1/cmr/m/n/1
 2 2\OML/cmm/m/it/12 xf\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 ) \OML
@@ -953,20 +950,20 @@ da va-li-do tal que $\OMS/cmsy/m/n/12 8\OML/cmm/m/it/12 p^^OV[]; \OT1/cmr/m/n/1
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--496
+Underfull \hbox (badness 10000) in paragraph at lines 532--553
 
  []
 
-[11 <./dst2.png (PNG copy)>] <r57-q57-l5.png, id=223, 642.4pt x 385.44pt>
+[13 <./freq.png (PNG copy)>] <r57-q57-l5.png, id=240, 642.4pt x 385.44pt>
 File: r57-q57-l5.png Graphic file (type png)
 
-<use r57-q57-l5.png> <r312kbp-q308kbp-l20.png, id=224, 642.4pt x 385.44pt>
+<use r57-q57-l5.png> <r312kbp-q308kbp-l20.png, id=241, 642.4pt x 385.44pt>
 File: r312kbp-q308kbp-l20.png Graphic file (type png)
 
-<use r312kbp-q308kbp-l20.png> <histogram2.png, id=227, 642.4pt x 385.44pt>
+<use r312kbp-q308kbp-l20.png> <histogram2.png, id=244, 642.4pt x 385.44pt>
 File: histogram2.png Graphic file (type png)
 
-<use histogram2.png> <histogram.png, id=228, 642.4pt x 385.44pt>
+<use histogram2.png> <histogram.png, id=245, 642.4pt x 385.44pt>
 File: histogram.png Graphic file (type png)
 
 <use histogram.png>
@@ -976,34 +973,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[14 <./dst2.png (PNG copy)>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <./r57-q57-l5.png (PNG copy)>] [13 <./r312kbp-q308kbp-l20.png (PNG copy)> <
-./histogram2.png (PNG copy)>] <dst_search.png, id=243, 722.7pt x 542.025pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15 <./r57-q57-l5.png (PNG copy)> <./r312kbp-q308kbp-l20.png (PNG copy)>]
+<dst_search.png, id=259, 722.7pt x 542.025pt>
 File: dst_search.png Graphic file (type png)
-
-<use dst_search.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14 <./histogram.png (PNG copy)>] [15 <./dst_search.png>]
-(./evaluation_2012.bbl [16]
+ <use dst_search.png> [16 <./histogram2.png (PNG copy)> <./histogram.png (PNG c
+opy)>] [17 <./dst_search.png>]
+[18] (./evaluation_2012.bbl [19]
 Underfull \hbox (badness 5388) in paragraph at lines 57--61
 []\T1/ptm/m/n/12 Phoophakdee, B. and Za-ki, M. J. (2007).
  []
 
-[17]) [18] (./evaluation_2012.aux) ) 
+) [20] (./evaluation_2012.aux) ) 
 Here is how much of TeX's memory you used:
- 15914 strings out of 493848
- 268573 string characters out of 1152824
- 339550 words of memory out of 3000000
- 18755 multiletter control sequences out of 15000+50000
- 58506 words of font info for 69 fonts, out of 3000000 for 9000
+ 15944 strings out of 493848
+ 269003 string characters out of 1152824
+ 342550 words of memory out of 3000000
+ 18774 multiletter control sequences out of 15000+50000
+ 60662 words of font info for 71 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 56i,18n,55p,550b,460s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.1} ha
-s been referenced but does not exist, replaced by a fixed one
+ 56i,18n,55p,748b,433s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.2} has be
+en referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive
 /fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type
@@ -1016,9 +1013,9 @@ nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/p
 ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utm
 b8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/
 texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on evaluation_2012.pdf (21 pages, 594960 bytes).
+Output written on evaluation_2012.pdf (22 pages, 759548 bytes).
 PDF statistics:
- 333 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 351 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 

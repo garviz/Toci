@@ -77,6 +77,7 @@ void showtable(Suffixtree *stree,bool final)
   Branchinfo branchinfo;
 
   btptr = stree->branchtab + LARGEINTS; // skip the root
+  cerr << stree->nodecount << endl;
   for(i=UintConst(1); i < stree->nodecount; i++)
   {
     /*nodeaddress = BRADDR2NUM(stree,btptr);

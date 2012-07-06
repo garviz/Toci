@@ -30,8 +30,8 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
                                            Bref btptr,Uchar *left,
                                            Uchar *right,Uint rescanlength)
 {
-  //fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
-  Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
+  fprintf(stdout,"%s *left:%lu *right:%lu\n",__func__, (Uint)left,(Uint)right);
+  /*Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
        node, distance = 0, prefixlen, headposition, tmpnodedepth,
        edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
@@ -76,13 +76,10 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
         loc->firstptr = stree->text + leafindex;
         if(remainingtoskip > 0)
         {
-          prefixlen = remainingtoskip + 
-                      lcp(lptr+remainingtoskip,right,
-                          loc->firstptr+remainingtoskip,stree->sentinel-1);
+          prefixlen = remainingtoskip + lcp(lptr+remainingtoskip,right,loc->firstptr+remainingtoskip,stree->sentinel-1);
         } else
         {
-          prefixlen = 1 + lcp(lptr+1,right,
-                              loc->firstptr+1,stree->sentinel-1);
+          prefixlen = 1 + lcp(lptr+1,right,loc->firstptr+1,stree->sentinel-1);
         }
         loc->previousnode = stree->branchtab;
         loc->edgelen = stree->textlen - leafindex + 1;
@@ -92,7 +89,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
         loc->locstring.start = leafindex;
         loc->locstring.length = prefixlen;
         if(prefixlen == (Uint) (right - lptr + 1))
-        {
+        { 
           return NULL;
         }
         return lptr + prefixlen;
@@ -101,25 +98,25 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
       GETONLYHEADPOS(headposition,nodeptr);
       leftborder = stree->text + headposition;
     } else
-    {
+    { 
       node = GETCHILD(nodeptr);
       while(true)
-      {
+       {
         if(NILPTR(node))
-        {
+         {
           return lptr;
         }
         if(ISLEAF(node))
-        {
+         {
           leafindex = GETLEAFINDEX(node);
           leftborder = stree->text + (nodedepth + leafindex);
           if(leftborder == stree->sentinel)
-          {
+           {
             return lptr;
           }
           edgechar = *leftborder;
           if(edgechar > firstchar)
-          {
+           {
             return lptr;
           }
           if(edgechar == firstchar)
@@ -127,10 +124,10 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
             if(remainingtoskip > 0)
             {
               prefixlen = remainingtoskip + lcp(lptr+remainingtoskip,right,leftborder+remainingtoskip,stree->sentinel-1);
-            } else
+             } else
             {
               prefixlen = 1 + lcp(lptr+1,right,leftborder+1,stree->sentinel-1);
-            }
+            } 
             loc->firstptr = leftborder;
             loc->previousnode = loc->nextnode.address;
             loc->edgelen = stree->textlen - (nodedepth + leafindex) + 1;
@@ -140,14 +137,14 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
             loc->locstring.start = leafindex;
             loc->locstring.length = nodedepth + prefixlen;
             if(prefixlen == (Uint) (right - lptr + 1))
-            {
+            { 
               return NULL;
             }
             return lptr + prefixlen;
-          }
+          } 
           node = LEAFBROTHERVAL(stree->leaftab[leafindex]);
         } else
-        {
+        { 
           nodeptr = stree->branchtab + GETBRANCHINDEX(node);
           GETONLYHEADPOS(headposition,nodeptr);
           leftborder = stree->text + (nodedepth + headposition);
@@ -155,10 +152,10 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
           if (edgechar > firstchar)
           {
             return lptr;
-          }
+           }
           if(edgechar == firstchar)
-          {
-            /*@innerbreak@*/ break;
+          { 
+            break;
           }
           node = GETBROTHER(nodeptr);
         }
@@ -177,9 +174,9 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
         NOTSUPPOSEDTOBENULL(leftborder);
         prefixlen = remainingtoskip + lcp(lptr+remainingtoskip,right,leftborder+remainingtoskip,leftborder+edgelen-1);
         remainingtoskip = 0;
-      }
-    } else
-    {
+      } 
+    } else 
+    { 
       NOTSUPPOSEDTOBENULL(leftborder);
       prefixlen = 1 + lcp(lptr+1,right,leftborder+1,leftborder+edgelen-1);
     }
@@ -187,13 +184,13 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
     loc->locstring.start = headposition;
     loc->locstring.length = nodedepth + prefixlen;
     if(prefixlen == edgelen)
-    {
+    { 
       lptr += edgelen;
       nodedepth += edgelen;
       loc->nextnode.address = nodeptr;
       loc->remain = 0;
     } else
-    {
+    { 
       loc->firstptr = leftborder;
       loc->previousnode = loc->nextnode.address;
       loc->nextnode.address = nodeptr;
@@ -205,15 +202,15 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
       }
       return lptr + prefixlen;
     }
-  }
+  }*/
 }
 
 Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                    Location *inloc,Uchar *left,
                                    Uchar *right,Uint rescanlength)
 {
-  //fprintf(stderr,"%s Thread:%d\n",__func__, omp_get_thread_num());
-  Uint prefixlen, remainingtoskip;
+  fprintf(stdout,"%s *left:%lu *right:%lu\n",__func__, (Uint)left,(Uint)right);
+  /*Uint prefixlen, remainingtoskip;
 
   if(inloc->remain == 0)
   {
@@ -281,7 +278,7 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     return left + prefixlen;
   }
   return scanprefixfromnodestree(stree,outloc,inloc->nextnode.address,
-                                   left+prefixlen,right,rescanlength);
+                                   left+prefixlen,right,rescanlength);*/
 }
 
 /*@null@*/Uchar *findprefixpathfromnodestree(Suffixtree *stree,

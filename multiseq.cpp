@@ -159,18 +159,18 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
         {
             end = seq + multiseq->markpos.spaceUint[i];
         }
-        fprintf(stderr,"Start: %lu, End: %lu, Threads:%d, Chunks:%d\n",start,end,omp_get_num_threads(),(end-start)/omp_get_num_threads());
-#pragma omp parallel sections
+/*#pragma omp parallel sections
         {
         #pragma omp section
             {
-            apply(applyinfo,i,start,(Uint) (end - start)/omp_get_num_threads()+1000); 
+            apply(applyinfo,i,start,(Uint) (end - start)/omp_get_num_threads()+10); 
             }
         #pragma omp section
             {
-            apply(applyinfo,i,start + (Uint) ((end-start)/omp_get_num_threads()) - 1000,(Uint) (end - start)); 
+            apply(applyinfo,i,start + (Uint) ((end-start)/omp_get_num_threads()) - 10,(Uint) (end - start)); 
             }
-        }
+        }*/
+            apply(applyinfo,i,start,(Uint) (end - start)); 
     }
   return 0;
 }

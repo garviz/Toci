@@ -13,6 +13,7 @@
 //\Ignore{
 
 #include <string.h>
+#include <assert.h>
 #include "intbits.h"
 #include "spacedef.h"
 #include "streedef.h"
@@ -622,7 +623,6 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
   stree->text = stree->tailptr = text;
   stree->textlen = textlen;
   stree->sentinel = text + textlen;
-  //fprintf(stderr,"%s text:%lu textlen:%lu sentinel:%lu\n",__func__,stree->text,stree->textlen,stree->sentinel);
   stree->firstnotallocated 
     = stree->branchtab + stree->currentbranchtabsize - LARGEINTS;
   stree->headnode = stree->nextfreebranch = stree->branchtab;
@@ -652,6 +652,7 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
   stree->smallnotcompleted = 0;
   stree->chainstart = NULL;
   stree->largenode = stree->smallnode = 0;
+  stree->nodecount = 0;
 }
 
 void freestree(Suffixtree *stree)
@@ -681,7 +682,6 @@ void freestree(Suffixtree *stree)
 #define LEASTSHOWPROGRESS 100000
 #define NUMOFCALLS 100
 
-#define CONSTRUCT Sint constructprogressstree(Suffixtree *stree,Uchar *text,Uint textlen,void (*progress)(Uint,void *),void (*finalprogress)(void *),void *info)
 #define DECLAREEXTRA\
         Uint j = 0, step, nextstep;\
         stree->nonmaximal = NULL;\
@@ -727,7 +727,7 @@ void freestree(Suffixtree *stree)
                                }\
                              }
 
-CONSTRUCT
+Sint constructprogressstree(Suffixtree *stree,Uchar *text,Uint textlen,void (*progress)(Uint,void *),void (*finalprogress)(void *),void *info)
 {
   DECLAREEXTRA;
 
@@ -809,7 +809,6 @@ CONSTRUCT
   FINALPROGRESS;
   return 0;
 }
-#undef CONSTRUCT
 #undef DECLAREEXTRA
 #undef COMPLETELARGEFIRST
 #undef COMPLETELARGESECOND
