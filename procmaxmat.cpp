@@ -55,6 +55,8 @@ typedef Sint (*Findmatchfunction)(Suffixtree *,
   The following function is imported from \texttt{findmumcand.c}.
 */
 
+Uint MEMs=0;
+
 Sint findmumcandidates(Suffixtree *stree,
                        //sparsetable<Uint*> &table,
                        Uint minmatchlength,
@@ -274,29 +276,32 @@ static Sint showmaximalmatch (void *info,
      &&
      !matchprocessinfo->fourcolumn)
   {
-    printf ("%8lu  ", (long unsigned int) (subjectstart+1));
+    //printf ("%8lu  ", (long unsigned int) (subjectstart+1));
   } else
-  {
+  { 
     PairUint pp;
 
-    if(pos2pospair(matchprocessinfo->subjectmultiseq,&pp,subjectstart) != 0)
-     return -1;
-    printf("  ");
-    showsequencedescription(matchprocessinfo->subjectmultiseq,
-                            matchprocessinfo->maxdesclength,
-                            pp.uint0);
-    printf ("  %8lu  ",(long unsigned int) (pp.uint1+1));
+    /*if(pos2pospair(matchprocessinfo->subjectmultiseq,&pp,subjectstart) != 0)
+     return -1;*/
+    pp.uint0 = 0;
+    pp.uint1 = subjectstart;
+    //printf("  ");
+    //showsequencedescription(matchprocessinfo->subjectmultiseq,
+    //                        matchprocessinfo->maxdesclength,
+    //                        pp.uint0);
+    //printf ("  %8lu  ",(long unsigned int) (pp.uint1+1));
   }
   if(matchprocessinfo->currentisrcmatch && 
      matchprocessinfo->showreversepositions)
   {
-    printf ("%8lu  ", (long unsigned int) (matchprocessinfo->currentquerylen - 
-                                  querystart));
+    //printf ("%8lu  ", (long unsigned int) (matchprocessinfo->currentquerylen - 
+    //                              querystart));
   } else
   {
-    printf ("%8lu  ", (long unsigned int) (querystart+1));
+    //printf ("%8lu  ", (long unsigned int) (querystart+1));
   }
-  printf ("%8lu\n", (long unsigned int) matchlength);
+  //printf ("%8lu\n", (long unsigned int) matchlength);
+  MEMs++;
   return 0;
 }
 
@@ -494,10 +499,13 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     return -1;
   }
   finish = MPI::Wtime();
-  cerr << "createST Time: " << finish-start << endl;
+  cerr << "# createST Time: " << finish-start << endl;
+  cerr << "nodecount: " << matchprocessinfo.stree.nodecount << endl;
+  sparsetable<Uint> tNodes(matchprocessinfo.stree.nodecount);
+  extractsubtree(&matchprocessinfo.stree,*(&matchprocessinfo.stree.branchtab),tNodes);
   //showstree(&matchprocessinfo.stree);
   //showtable(&matchprocessinfo.stree,true);
-  matchprocessinfo.subjectmultiseq = subjectmultiseq;
+  /*matchprocessinfo.subjectmultiseq = subjectmultiseq;
   matchprocessinfo.minmatchlength = mmcallinfo->minmatchlength;
   matchprocessinfo.showstring = mmcallinfo->showstring;
   matchprocessinfo.showsequencelengths = mmcallinfo->showsequencelengths;
@@ -553,6 +561,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   {
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
+  fprintf(stdout,"MEMs=%lu\n",(Sint)MEMs);*/
   freestree (&matchprocessinfo.stree);
   return 0;
 }

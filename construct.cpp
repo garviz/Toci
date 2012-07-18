@@ -21,11 +21,6 @@
 #include "protodef.h"
 #include "distribute.h"
 
-#define FUNCLEVEL 4
-
-#define DEBUGDEFAULT DEBUG1(FUNCLEVEL,">%s\n",__func__);\
-                     DEBUGCODE(5,showstree(stree))
-
 #define VALIDINIT     0
 
 #define CHECKTEXTLEN\
@@ -652,7 +647,7 @@ static void initSuffixtree(Suffixtree *stree,Uchar *text,Uint textlen)
   stree->smallnotcompleted = 0;
   stree->chainstart = NULL;
   stree->largenode = stree->smallnode = 0;
-  stree->nodecount = 0;
+  stree->nodecount = 1;
 }
 
 void freestree(Suffixtree *stree)

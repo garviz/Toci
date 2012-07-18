@@ -98,12 +98,10 @@ void getbranchinfostree(Suffixtree *stree,Uint whichinfo,
     if((stree->chainstart != NULL && btptr >= stree->chainstart) || 
        !ISLARGE(*btptr))
     {
-      branchinfo->suffixlink = NULL;//btptr + SMALLINTS;
+      branchinfo->suffixlink = btptr + SMALLINTS;
     } else
     {
-      branchinfo->suffixlink = NULL;//stree->branchtab + 
-                               getlargelinkstree(stree,btptr,
-                                                 branchinfo->depth);
+      branchinfo->suffixlink = stree->branchtab + getlargelinkstree(stree,btptr,branchinfo->depth);
     }
     /*SHOWINDEX((Uint) BRADDR2NUM(stree,btptr));
     fprintf(stdout,"(%u) --> ", GETDEPTH(btptr));

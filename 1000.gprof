@@ -1,0 +1,463 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 50.09   1305.22  1305.22   325375     0.00     0.00  depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*)
+ 40.32   2355.98  1050.75 2635193338     0.00     0.00  pos2pospair
+  5.94   2510.72   154.74 621874672     0.00     0.00  succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*)
+  1.11   2539.53    28.81 44102718     0.00     0.00  scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long)
+  0.90   2563.02    23.49 40491528     0.00     0.00  rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*)
+  0.59   2578.35    15.33 251512533     0.00     0.00  allocandusespaceviaptr
+  0.39   2588.61    10.26   325045     0.00     0.00  findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long)
+  0.23   2594.60     5.99        6     1.00    26.79  constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*)
+  0.08   2596.58     1.98 91669896     0.00     0.00  getrecordnum
+  0.06   2598.18     1.60        2     0.80     0.80  scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long)
+  0.05   2599.56     1.38 503350452     0.00     0.00  mmgetspacepeak
+  0.05   2600.77     1.21 61943263     0.00     0.00  getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*)
+  0.04   2601.77     1.00        2     0.50    28.71  findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long)
+  0.04   2602.75     0.98 63880129     0.00     0.00  enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*))
+  0.04   2603.70     0.96 61943263     0.00     0.00  scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long)
+  0.03   2604.47     0.77 61943264     0.00     0.00  linklocstree(Suffixtree*, Location*, Location*)
+  0.03   2605.24     0.77 91669900     0.00     0.00  getmaxmatinput(Multiseq*, bool, char*)
+  0.01   2605.63     0.39 91669896     0.00     0.00  getseqnum
+  0.01   2605.85     0.22 43027251     0.00     0.00  getlargelinkstree(Suffixtree*, unsigned long*, unsigned long)
+  0.00   2605.93     0.08   325385     0.00     0.00  freespaceviaptr
+  0.00   2605.99     0.06                             getleafinfostree(Suffixtree*, Reference*, unsigned long*)
+  0.00   2606.04     0.06   325460     0.00     0.00  findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long)
+  0.00   2606.09     0.05        1     0.05   411.92  overallsequences
+  0.00   2606.12     0.03                             MPI::Win::Set_name(char const*)
+  0.00   2606.14     0.02                             MPI::Datatype::Set_name(char const*)
+  0.00   2606.16     0.02                             dynamicstrdup
+  0.00   2606.16     0.00   650922     0.00     0.00  MPI::Wtime()
+  0.00   2606.16     0.00       15     0.00     0.00  addoption
+  0.00   2606.16     0.00        8     0.00     6.70  deletememorymap
+  0.00   2606.16     0.00        4     0.00     0.00  safestringcopy
+  0.00   2606.16     0.00        2     0.00   452.48  procmaxmatches(MMcallinfo*, Multiseq*)
+  0.00   2606.16     0.00        2     0.00     0.00  parsemaxmatoptions(MMcallinfo*, int, char**)
+  0.00   2606.16     0.00        2     0.00     0.00  MPI::Is_initialized()
+  0.00   2606.16     0.00        2     0.00     0.00  MPI::Comm::~Comm()
+  0.00   2606.16     0.00        2     0.00     0.00  MPI::Comm_Null::~Comm_Null()
+  0.00   2606.16     0.00        2     0.00    26.79  creatememorymap
+  0.00   2606.16     0.00        2     0.00    26.79  creatememorymapforfiledesc
+  0.00   2606.16     0.00        2     0.00    26.79  freemultiseq
+  0.00   2606.16     0.00        2     0.00     0.00  initmultiseq
+  0.00   2606.16     0.00        2     0.00     0.00  procoption
+  0.00   2606.16     0.00        2     0.00     0.00  reseterror
+  0.00   2606.16     0.00        2     0.00     0.00  simplefileOpen
+  0.00   2606.16     0.00        1     0.00     0.00  createTable(Suffixtree*, google::sparsetable<unsigned long*, (unsigned short)48, google::libc_allocator_with_realloc<unsigned long*> >&, unsigned long)
+  0.00   2606.16     0.00        1     0.00     0.00  makeleaflist(Suffixtree*, ArrayUint*, Reference*)
+  0.00   2606.16     0.00        1     0.00     0.00  findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long)
+  0.00   2606.16     0.00        1     0.00     0.00  makedepthtabstree(ArrayUint*, Suffixtree*)
+  0.00   2606.16     0.00        1     0.00     0.00  freestree(Suffixtree*)
+  0.00   2606.16     0.00        1     0.00     0.00  MPI::Init(int&, char**&)
+  0.00   2606.16     0.00        1     0.00     0.00  MPI::Real_init()
+  0.00   2606.16     0.00        1     0.00     0.00  MPI::Comm::Get_rank() const
+  0.00   2606.16     0.00        1     0.00     0.00  MPI::Comm::Get_size() const
+  0.00   2606.16     0.00        1     0.00     0.00  __gnu_cxx::__promote_2<int, unsigned long, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<unsigned long, std::__is_integer<unsigned long>::__value>::__type>::__type std::pow<int, unsigned long>(int, unsigned long)
+  0.00   2606.16     0.00        1     0.00     0.00  getmaxtextlenstree
+  0.00   2606.16     0.00        1     0.00     0.00  getspacepeak
+  0.00   2606.16     0.00        1     0.00     0.00  initoptions
+  0.00   2606.16     0.00        1     0.00   891.14  main
+  0.00   2606.16     0.00        1     0.00     0.00  mumuniqueinquery
+  0.00   2606.16     0.00        1     0.00     0.00  showexclude
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.00% of 2606.16 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00 2606.03                 __libc_csu_init [1]
+                0.00  891.14       1/1           main [6]
+                0.00  452.48       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+              392.96   18.92       1/6           findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+              392.96   18.92       1/6           pos2pospair <cycle 1> [4]
+              392.96   18.92       1/6           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                1.00   25.79       1/6           constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+                0.00    0.00       1/325460      findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+                0.00    0.00       1/61943264     linklocstree(Suffixtree*, Location*, Location*) [18]
+                0.00    0.00       1/621874672     succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*) [9]
+                0.00    0.00       1/63880129     enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+                0.00    0.00       1/503350452     mmgetspacepeak [27]
+                0.00    0.00       1/1           createTable(Suffixtree*, google::sparsetable<unsigned long*, (unsigned short)48, google::libc_allocator_with_realloc<unsigned long*> >&, unsigned long) [65]
+                0.00    0.00       1/1           makedepthtabstree(ArrayUint*, Suffixtree*) [68]
+                0.00    0.00       1/1           makeleaflist(Suffixtree*, ArrayUint*, Reference*) [66]
+                0.00    0.00       1/1           mumuniqueinquery [45]
+                0.00    0.00       1/1           findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [67]
+                0.00    0.00       1/4           safestringcopy [37]
+                0.00    0.00       1/1           showexclude [46]
+                0.00    0.00       1/2           parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+                0.00    0.00       1/2           reseterror [40]
+                0.00    0.00       1/1           getspacepeak [43]
+-----------------------------------------------
+[2]     94.8 2357.75  113.49       6+2727188609 <cycle 1 as a whole> [2]
+             1305.22   16.79  325375             depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) <cycle 1> [3]
+             1050.75   12.69 2635193338+320819069     pos2pospair <cycle 1> [4]
+                1.00   56.43       2+1           findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+                0.77   27.59 91669900+3           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+-----------------------------------------------
+                              325375             pos2pospair <cycle 1> [4]
+[3]     50.7 1305.22   16.79  325375         depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) <cycle 1> [3]
+               15.33    1.38 251509406/251512533     allocandusespaceviaptr [20]
+                0.08    0.00  325375/325385      freespaceviaptr [30]
+                             2543197982             pos2pospair <cycle 1> [4]
+-----------------------------------------------
+                             320819069             pos2pospair <cycle 1> [4]
+                              325459             findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+                             91669896             getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                             2543197982             depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) <cycle 1> [3]
+              392.96   18.92       1/6           __libc_csu_init [1]
+[4]     40.8 1050.75   12.69 2635193338+320819069 pos2pospair <cycle 1> [4]
+                0.06   10.26  325459/325460      findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+                0.39    1.98 91669896/91669896     getseqnum [23]
+                0.00    0.00    3094/251512533     allocandusespaceviaptr [20]
+                0.00    0.00  650918/650922      MPI::Wtime() [60]
+                             91669896             getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                              325375             depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) <cycle 1> [3]
+                             320819069             pos2pospair <cycle 1> [4]
+-----------------------------------------------
+                                   1             procmaxmatches(MMcallinfo*, Multiseq*) [5]
+                0.00  452.48       1/2           main [6]
+                0.00  452.48       1/2           __libc_csu_init [1]
+[5]     34.7    0.00  904.96       2+1       procmaxmatches(MMcallinfo*, Multiseq*) [5]
+                0.05  411.87       1/1           overallsequences [7]
+              392.96   18.92       1/6           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                0.00   26.79       1/2           freemultiseq [11]
+                1.00   25.79       1/6           constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+                0.00   26.79       1/2           creatememorymap [13]
+                0.80    0.00       1/2           scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [25]
+                0.00    0.00       1/1           freestree(Suffixtree*) [35]
+                0.00    0.00       2/650922      MPI::Wtime() [60]
+                0.00    0.00       1/1           getmaxtextlenstree [42]
+                                   1             procmaxmatches(MMcallinfo*, Multiseq*) [5]
+-----------------------------------------------
+                                   1             main [6]
+                0.00  891.14       1/1           __libc_csu_init [1]
+[6]     34.2    0.00  891.14       1+1       main [6]
+                0.00  452.48       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+              392.96   18.92       1/6           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                0.00   26.79       1/2           freemultiseq [11]
+                0.00    0.00       2/650922      MPI::Wtime() [60]
+                0.00    0.00       1/1           MPI::Init(int&, char**&) [69]
+                0.00    0.00       1/1           MPI::Comm::Get_size() const [72]
+                0.00    0.00       1/1           MPI::Comm::Get_rank() const [71]
+                0.00    0.00       1/2           parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+                0.00    0.00       0/0           messagespace [53]
+                0.00    0.00       0/0           MPI::Finalize() [147]
+                0.00    0.00       0/0           checkspaceleak [49]
+                0.00    0.00       0/0           mmcheckspaceleak [54]
+                                   1             main [6]
+-----------------------------------------------
+                0.05  411.87       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+[7]     15.8    0.05  411.87       1         overallsequences [7]
+              392.96   18.92       1/6           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+-----------------------------------------------
+                                   1             constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+                1.00   25.79       1/6           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+                1.00   25.79       1/6           __libc_csu_init [1]
+                2.00   51.58       2/6           creatememorymapforfiledesc [14]
+                2.00   51.58       2/6           deletememorymap [12]
+[8]      6.2    5.99  154.74       6+1       constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+              154.74    0.00 621874671/621874672     succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*) [9]
+                                   1             constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+-----------------------------------------------
+                             251693984             succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*) [9]
+                0.00    0.00       1/621874672     __libc_csu_init [1]
+              154.74    0.00 621874671/621874672     constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+[9]      5.9  154.74    0.00 621874672+251693984 succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*) [9]
+                0.00    0.00      12/251512533     allocandusespaceviaptr [20]
+                             251693984             succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*) [9]
+-----------------------------------------------
+                                   1             findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+                                   1             getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+              392.96   18.92       1/6           __libc_csu_init [1]
+[10]     2.2    1.00   56.43       2+1       findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+                0.96   29.78 61943263/61943263     scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [15]
+                0.77   24.92 61943263/61943264     linklocstree(Suffixtree*, Location*, Location*) [18]
+                0.00    0.00       1/44102718     scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [16]
+                0.00    0.00       2/325385      freespaceviaptr [30]
+                0.00    0.00       1/1           __gnu_cxx::__promote_2<int, unsigned long, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<unsigned long, std::__is_integer<unsigned long>::__value>::__type>::__type std::pow<int, unsigned long>(int, unsigned long) [73]
+                              325459             pos2pospair <cycle 1> [4]
+                                   1             findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+-----------------------------------------------
+                0.00   26.79       1/2           main [6]
+                0.00   26.79       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+[11]     2.1    0.00   53.58       2         freemultiseq [11]
+                0.00   53.58       8/8           deletememorymap [12]
+                0.00    0.00       5/325385      freespaceviaptr [30]
+-----------------------------------------------
+                0.00   53.58       8/8           freemultiseq [11]
+[12]     2.1    0.00   53.58       8         deletememorymap [12]
+                2.00   51.58       2/6           constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+-----------------------------------------------
+                0.00   26.79       1/2           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                0.00   26.79       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+[13]     2.1    0.00   53.58       2         creatememorymap [13]
+                0.00   53.58       2/2           creatememorymapforfiledesc [14]
+                0.00    0.00       2/2           simplefileOpen [41]
+-----------------------------------------------
+                0.00   53.58       2/2           creatememorymap [13]
+[14]     2.1    0.00   53.58       2         creatememorymapforfiledesc [14]
+                2.00   51.58       2/6           constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [8]
+-----------------------------------------------
+                0.00    0.00       0/61943263     findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [67]
+                0.96   29.78 61943263/61943263     findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+[15]     1.2    0.96   29.78 61943263         scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [15]
+               28.81    0.70 44102717/44102718     scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [16]
+                0.27    0.00 17840595/63880129     enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+-----------------------------------------------
+                0.00    0.00       0/44102718     findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [67]
+                0.00    0.00       0/44102718     checklocation(Suffixtree*, Location*) [79]
+                0.00    0.00       1/44102718     findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+               28.81    0.70 44102717/44102718     scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [15]
+[16]     1.1   28.81    0.70 44102718         scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [16]
+                0.70    0.00 45735306/63880129     enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+-----------------------------------------------
+                                   3             getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                             91669896             pos2pospair <cycle 1> [4]
+              392.96   18.92       1/6           main [6]
+              392.96   18.92       1/6           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+              392.96   18.92       1/6           overallsequences [7]
+              392.96   18.92       1/6           __libc_csu_init [1]
+[17]     1.1    0.77   27.59 91669900+3       getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                0.00   26.79       1/2           creatememorymap [13]
+                0.80    0.00       1/2           scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [25]
+                0.00    0.00       0/1           mumuniqueinquery [45]
+                             91669896             pos2pospair <cycle 1> [4]
+                                   1             findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+                                   3             getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+-----------------------------------------------
+                                   1             linklocstree(Suffixtree*, Location*, Location*) [18]
+                0.00    0.00       0/61943264     findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [67]
+                0.00    0.00       0/61943264     checklocation(Suffixtree*, Location*) [79]
+                0.00    0.00       1/61943264     __libc_csu_init [1]
+                0.77   24.92 61943263/61943264     findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+[18]     1.0    0.77   24.92 61943264+1       linklocstree(Suffixtree*, Location*, Location*) [18]
+               23.49    0.00 40491528/40491528     rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*) [19]
+                1.21    0.22 61943263/61943263     getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [26]
+                                   1             linklocstree(Suffixtree*, Location*, Location*) [18]
+-----------------------------------------------
+                0.00    0.00       0/40491528     checklocation(Suffixtree*, Location*) [79]
+               23.49    0.00 40491528/40491528     linklocstree(Suffixtree*, Location*, Location*) [18]
+[19]     0.9   23.49    0.00 40491528         rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*) [19]
+-----------------------------------------------
+                0.00    0.00       0/251512533     rootsucclocationsstree(Suffixtree*, ArraySimpleloc*) [85]
+                0.00    0.00       1/251512533     findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+                0.00    0.00       5/251512533     scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [25]
+                0.00    0.00      12/251512533     succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*) [9]
+                0.00    0.00      15/251512533     findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [22]
+                0.00    0.00    3094/251512533     pos2pospair <cycle 1> [4]
+               15.33    1.38 251509406/251512533     depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) <cycle 1> [3]
+[20]     0.6   15.33    1.38 251512533         allocandusespaceviaptr [20]
+                1.38    0.00 503025066/503350452     mmgetspacepeak [27]
+-----------------------------------------------
+                                   1             findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+                0.00    0.00       1/325460      __libc_csu_init [1]
+                0.06   10.26  325459/325460      pos2pospair <cycle 1> [4]
+[21]     0.4    0.06   10.26  325460+1       findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+               10.26    0.00  325045/325045      findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [22]
+                0.00    0.00     415/63880129     enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+                0.00    0.00       1/251512533     allocandusespaceviaptr [20]
+                                   1             findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+-----------------------------------------------
+               10.26    0.00  325045/325045      findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+[22]     0.4   10.26    0.00  325045         findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [22]
+                0.00    0.00  303812/63880129     enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+                0.00    0.00      15/251512533     allocandusespaceviaptr [20]
+-----------------------------------------------
+                0.39    1.98 91669896/91669896     pos2pospair <cycle 1> [4]
+[23]     0.1    0.39    1.98 91669896         getseqnum [23]
+                1.98    0.00 91669896/91669896     getrecordnum [24]
+-----------------------------------------------
+                1.98    0.00 91669896/91669896     getseqnum [23]
+[24]     0.1    1.98    0.00 91669896         getrecordnum [24]
+-----------------------------------------------
+                0.80    0.00       1/2           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                0.80    0.00       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+[25]     0.1    1.60    0.00       2         scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [25]
+                0.00    0.00       5/251512533     allocandusespaceviaptr [20]
+                0.00    0.00       2/2           initmultiseq [38]
+-----------------------------------------------
+                1.21    0.22 61943263/61943263     linklocstree(Suffixtree*, Location*, Location*) [18]
+[26]     0.1    1.21    0.22 61943263         getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [26]
+                0.22    0.00 43027251/43027251     getlargelinkstree(Suffixtree*, unsigned long*, unsigned long) [29]
+-----------------------------------------------
+                                   2             mmgetspacepeak [27]
+                0.00    0.00       1/503350452     __libc_csu_init [1]
+                0.00    0.00  325385/503350452     freespaceviaptr [30]
+                1.38    0.00 503025066/503350452     allocandusespaceviaptr [20]
+[27]     0.1    1.38    0.00 503350452+2       mmgetspacepeak [27]
+                                   2             mmgetspacepeak [27]
+-----------------------------------------------
+                                   1             enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+                0.00    0.00       1/63880129     __libc_csu_init [1]
+                0.00    0.00     415/63880129     findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [21]
+                0.00    0.00  303812/63880129     findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [22]
+                0.27    0.00 17840595/63880129     scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [15]
+                0.70    0.00 45735306/63880129     scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [16]
+[28]     0.0    0.98    0.00 63880129+1       enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+                                   1             enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [28]
+-----------------------------------------------
+                0.22    0.00 43027251/43027251     getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [26]
+[29]     0.0    0.22    0.00 43027251         getlargelinkstree(Suffixtree*, unsigned long*, unsigned long) [29]
+-----------------------------------------------
+                0.00    0.00       2/325385      findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+                0.00    0.00       3/325385      freestree(Suffixtree*) [35]
+                0.00    0.00       5/325385      freemultiseq [11]
+                0.08    0.00  325375/325385      depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) <cycle 1> [3]
+[30]     0.0    0.08    0.00  325385         freespaceviaptr [30]
+                0.00    0.00  325385/503350452     mmgetspacepeak [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[31]     0.0    0.06    0.00                 getleafinfostree(Suffixtree*, Reference*, unsigned long*) [31]
+-----------------------------------------------
+                                                 <spontaneous>
+[32]     0.0    0.03    0.00                 MPI::Win::Set_name(char const*) [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[33]     0.0    0.02    0.00                 dynamicstrdup [33]
+-----------------------------------------------
+                                                 <spontaneous>
+[34]     0.0    0.02    0.00                 MPI::Datatype::Set_name(char const*) [34]
+-----------------------------------------------
+                0.00    0.00       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+[35]     0.0    0.00    0.00       1         freestree(Suffixtree*) [35]
+                0.00    0.00       3/325385      freespaceviaptr [30]
+-----------------------------------------------
+                0.00    0.00      15/15          parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+[36]     0.0    0.00    0.00      15         addoption [36]
+-----------------------------------------------
+                                   1             safestringcopy [37]
+                0.00    0.00       1/4           __libc_csu_init [1]
+                0.00    0.00       3/4           parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+[37]     0.0    0.00    0.00       4+1       safestringcopy [37]
+                                   1             safestringcopy [37]
+-----------------------------------------------
+                0.00    0.00       2/2           scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [25]
+[38]     0.0    0.00    0.00       2         initmultiseq [38]
+-----------------------------------------------
+                0.00    0.00       2/2           parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+[39]     0.0    0.00    0.00       2         procoption [39]
+-----------------------------------------------
+                                   1             reseterror [40]
+                0.00    0.00       1/2           parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+                0.00    0.00       1/2           __libc_csu_init [1]
+[40]     0.0    0.00    0.00       2+1       reseterror [40]
+                0.00    0.00       0/0           showoptions [57]
+                                   1             reseterror [40]
+-----------------------------------------------
+                0.00    0.00       2/2           creatememorymap [13]
+[41]     0.0    0.00    0.00       2         simplefileOpen [41]
+-----------------------------------------------
+                0.00    0.00       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [5]
+[42]     0.0    0.00    0.00       1         getmaxtextlenstree [42]
+-----------------------------------------------
+                                   1             getspacepeak [43]
+                0.00    0.00       1/1           __libc_csu_init [1]
+[43]     0.0    0.00    0.00       1+1       getspacepeak [43]
+                                   1             getspacepeak [43]
+-----------------------------------------------
+                0.00    0.00       1/1           parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+[44]     0.0    0.00    0.00       1         initoptions [44]
+-----------------------------------------------
+                                   1             mumuniqueinquery [45]
+                0.00    0.00       0/1           getmaxmatinput(Multiseq*, bool, char*) <cycle 1> [17]
+                0.00    0.00       1/1           __libc_csu_init [1]
+[45]     0.0    0.00    0.00       1+1       mumuniqueinquery [45]
+                                   1             mumuniqueinquery [45]
+-----------------------------------------------
+                                   1             showexclude [46]
+                0.00    0.00       1/1           __libc_csu_init [1]
+[46]     0.0    0.00    0.00       1+1       showexclude [46]
+                                   1             showexclude [46]
+-----------------------------------------------
+                0.00    0.00       2/650922      main [6]
+                0.00    0.00       2/650922      procmaxmatches(MMcallinfo*, Multiseq*) [5]
+                0.00    0.00  650918/650922      pos2pospair <cycle 1> [4]
+[60]     0.0    0.00    0.00  650922         MPI::Wtime() [60]
+-----------------------------------------------
+                                   1             parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+                0.00    0.00       1/2           main [6]
+                0.00    0.00       1/2           __libc_csu_init [1]
+[61]     0.0    0.00    0.00       2+1       parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+                0.00    0.00      15/15          addoption [36]
+                0.00    0.00       3/4           safestringcopy [37]
+                0.00    0.00       2/2           procoption [39]
+                0.00    0.00       1/1           initoptions [44]
+                0.00    0.00       1/2           reseterror [40]
+                                   1             parsemaxmatoptions(MMcallinfo*, int, char**) [61]
+-----------------------------------------------
+                0.00    0.00       2/2           MPI::Intracomm::Intracomm(ompi_communicator_t*) [167]
+[62]     0.0    0.00    0.00       2         MPI::Is_initialized() [62]
+-----------------------------------------------
+                0.00    0.00       2/2           MPI::Intracomm::~Intracomm() [170]
+[63]     0.0    0.00    0.00       2         MPI::Comm::~Comm() [63]
+                0.00    0.00       2/2           MPI::Comm_Null::~Comm_Null() [64]
+-----------------------------------------------
+                0.00    0.00       2/2           MPI::Comm::~Comm() [63]
+[64]     0.0    0.00    0.00       2         MPI::Comm_Null::~Comm_Null() [64]
+-----------------------------------------------
+                                   1             createTable(Suffixtree*, google::sparsetable<unsigned long*, (unsigned short)48, google::libc_allocator_with_realloc<unsigned long*> >&, unsigned long) [65]
+                0.00    0.00       1/1           __libc_csu_init [1]
+[65]     0.0    0.00    0.00       1+1       createTable(Suffixtree*, google::sparsetable<unsigned long*, (unsigned short)48, google::libc_allocator_with_realloc<unsigned long*> >&, unsigned long) [65]
+                                   1             createTable(Suffixtree*, google::sparsetable<unsigned long*, (unsigned short)48, google::libc_allocator_with_realloc<unsigned long*> >&, unsigned long) [65]
+-----------------------------------------------
+                                   1             makeleaflist(Suffixtree*, ArrayUint*, Reference*) [66]
+                0.00    0.00       1/1           __libc_csu_init [1]
+[66]     0.0    0.00    0.00       1+1       makeleaflist(Suffixtree*, ArrayUint*, Reference*) [66]
+                                   1             makeleaflist(Suffixtree*, ArrayUint*, Reference*) [66]
+-----------------------------------------------
+                                   1             findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [67]
+                0.00    0.00       1/1           __libc_csu_init [1]
+[67]     0.0    0.00    0.00       1+1       findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [67]
+                0.00    0.00       0/44102718     scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [16]
+                0.00    0.00       0/61943264     linklocstree(Suffixtree*, Location*, Location*) [18]
+                0.00    0.00       0/61943263     scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [15]
+                                   1             findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [67]
+-----------------------------------------------
+                                   1             makedepthtabstree(ArrayUint*, Suffixtree*) [68]
+                0.00    0.00       1/1           __libc_csu_init [1]
+[68]     0.0    0.00    0.00       1+1       makedepthtabstree(ArrayUint*, Suffixtree*) [68]
+                                   1             makedepthtabstree(ArrayUint*, Suffixtree*) [68]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[69]     0.0    0.00    0.00       1         MPI::Init(int&, char**&) [69]
+                0.00    0.00       1/1           MPI::Real_init() [70]
+-----------------------------------------------
+                0.00    0.00       1/1           MPI::Init(int&, char**&) [69]
+[70]     0.0    0.00    0.00       1         MPI::Real_init() [70]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[71]     0.0    0.00    0.00       1         MPI::Comm::Get_rank() const [71]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[72]     0.0    0.00    0.00       1         MPI::Comm::Get_size() const [72]
+-----------------------------------------------
+                0.00    0.00       1/1           findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) <cycle 1> [10]
+[73]     0.0    0.00    0.00       1         __gnu_cxx::__promote_2<int, unsigned long, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<unsigned long, std::__is_integer<unsigned long>::__value>::__type>::__type std::pow<int, unsigned long>(int, unsigned long) [73]
+-----------------------------------------------
+
+Index by function name
+
+  [65] createTable(Suffixtree*, google::sparsetable<unsigned long*, (unsigned short)48, google::libc_allocator_with_realloc<unsigned long*> >&, unsigned long) [16] scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [11] freemultiseq
+  [19] rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*) [22] findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [30] freespaceviaptr
+  [18] linklocstree(Suffixtree*, Location*, Location*) [35] freestree(Suffixtree*) [42] getmaxtextlenstree
+  [66] makeleaflist(Suffixtree*, ArrayUint*, Reference*) [62] MPI::Is_initialized() [24] getrecordnum
+  [28] enumlocations(Suffixtree*, void (*)(Suffixtree*, Location*)) [32] MPI::Win::Set_name(char const*) [23] getseqnum
+  [10] findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [63] MPI::Comm::~Comm() [43] getspacepeak
+  [17] getmaxmatinput(Multiseq*, bool, char*) [69] MPI::Init(int&, char**&) [38] initmultiseq
+   [5] procmaxmatches(MMcallinfo*, Multiseq*) [60] MPI::Wtime() [44] initoptions
+   [3] depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) [34] MPI::Datatype::Set_name(char const*) [6] main
+  [15] scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [64] MPI::Comm_Null::~Comm_Null() [27] mmgetspacepeak
+  [31] getleafinfostree(Suffixtree*, Reference*, unsigned long*) [70] MPI::Real_init() [45] mumuniqueinquery
+  [67] findmumcandidates(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [71] MPI::Comm::Get_rank() const [7] overallsequences
+  [29] getlargelinkstree(Suffixtree*, unsigned long*, unsigned long) [72] MPI::Comm::Get_size() const [4] pos2pospair
+  [68] makedepthtabstree(ArrayUint*, Suffixtree*) [73] __gnu_cxx::__promote_2<int, unsigned long, __gnu_cxx::__promote<int, std::__is_integer<int>::__value>::__type, __gnu_cxx::__promote<unsigned long, std::__is_integer<unsigned long>::__value>::__type>::__type std::pow<int, unsigned long>(int, unsigned long) [39] procoption
+  [26] getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [36] addoption [40] reseterror
+  [61] parsemaxmatoptions(MMcallinfo*, int, char**) [20] allocandusespaceviaptr [37] safestringcopy
+   [9] succlocationsstree(Suffixtree*, bool, Simpleloc*, ArraySimpleloc*) [13] creatememorymap [46] showexclude
+  [21] findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [14] creatememorymapforfiledesc [41] simplefileOpen
+  [25] scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [12] deletememorymap [2] <cycle 1>
+   [8] constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [33] dynamicstrdup

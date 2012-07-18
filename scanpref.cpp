@@ -15,7 +15,6 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
   register Uchar *ptr1 = start1, 
                   *ptr2 = start2;
-#pragma omp parallel
   while(ptr1 <= end1 && 
         ptr2 <= end2 &&
         *ptr1 == *ptr2)
@@ -30,8 +29,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
                                            Bref btptr,Uchar *left,
                                            Uchar *right,Uint rescanlength)
 {
-  fprintf(stdout,"%s *left:%lu *right:%lu\n",__func__, (Uint)left,(Uint)right);
-  /*Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
+  Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
        node, distance = 0, prefixlen, headposition, tmpnodedepth,
        edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
@@ -202,15 +200,14 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
       }
       return lptr + prefixlen;
     }
-  }*/
+  }
 }
 
 Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                    Location *inloc,Uchar *left,
                                    Uchar *right,Uint rescanlength)
 {
-  fprintf(stdout,"%s *left:%lu *right:%lu\n",__func__, (Uint)left,(Uint)right);
-  /*Uint prefixlen, remainingtoskip;
+  Uint prefixlen, remainingtoskip;
 
   if(inloc->remain == 0)
   {
@@ -278,7 +275,7 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     return left + prefixlen;
   }
   return scanprefixfromnodestree(stree,outloc,inloc->nextnode.address,
-                                   left+prefixlen,right,rescanlength);*/
+                                   left+prefixlen,right,rescanlength);
 }
 
 /*@null@*/Uchar *findprefixpathfromnodestree(Suffixtree *stree,

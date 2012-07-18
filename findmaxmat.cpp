@@ -23,6 +23,34 @@
 using google::sparsetable;
 //}
 
+#define LEASTSHOWPROGRESS 100000
+#define NUMOFCALLS 100
+
+#define DECLAREEXTRA\
+        Uint j = 0, step, nextstep;\
+        stree->nonmaximal = NULL;\
+        step = querylen/NUMOFCALLS;\
+        nextstep = (querylen >= LEASTSHOWPROGRESS) ? step : (querylen+1);\
+        if(querylen >= LEASTSHOWPROGRESS)\
+        {\
+          fprintf(stderr,"# process %lu characters per dot\n",\
+                 (Uint) querylen/NUMOFCALLS);\
+        }\
+        fprintf(stderr,"#....................................................................................................\n");
+
+#define CHECKSTEP            if(j == nextstep)\
+                             {\
+                                 if(nextstep == step)\
+                                 {\
+                                   fputc('#',stderr);\
+                                 }\
+                                 fputc('.',stderr);\
+                                 fflush(stdout);\
+                               nextstep += step;\
+                             }\
+                             j++
+
+
 /*EE
   This file contains functions to compute maximal matches of some
   minimum length between the subject-sequence and the query-sequence.
@@ -102,52 +130,6 @@ struct Maxmatchinfo
 
 //\IgnoreLatex{
 
-static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
-{
-  Uchar *ptr1 = start1,
-        *ptr2 = start2;
-#pragma omp parallel
-  while(ptr1 <= end1 &&
-        ptr2 <= end2 &&
-        *ptr1 == *ptr2)
-  {
-    ptr1++;
-    ptr2++;
-  }
-  return (Uint) (ptr1-start1);
-}
-
-static void checkquerycommonprefix(Maxmatchinfo *maxmatchinfo,
-                                   Bref nodeptr,
-                                   Uint computeddepth)
-{
-  Uint prefixlength;
-  Uchar *nodestring;
-  Branchinfo branchinfo;
-
-  getbranchinfostree(maxmatchinfo->stree,
-                     ACCESSDEPTH | ACCESSHEADPOS,&branchinfo,
-                     nodeptr);
-  nodestring = maxmatchinfo->stree->text + branchinfo.headposition;
-  prefixlength = lcp(nodestring,nodestring+branchinfo.depth-1,
-                     maxmatchinfo->querysuffix,
-                     maxmatchinfo->query+maxmatchinfo->querylen-1);
-  if(prefixlength != computeddepth)
-  {
-    printf("prefixlength=%lu!=%lu=computeddepth\n",
-            (long unsigned int) prefixlength,
-            (long unsigned int) computeddepth);
-    printf("nodepath=");
-    (void) fwrite(nodestring,sizeof(Uchar),(size_t) branchinfo.depth,stdout);
-    printf("\nquery=");
-    (void) fwrite(maxmatchinfo->querysuffix,sizeof(Uchar),
-                  (size_t) (maxmatchinfo->querylen - 
-                            (Uint) (maxmatchinfo->querysuffix - 
-                                    maxmatchinfo->query)),stdout);
-    printf("\n");
-    exit(EXIT_FAILURE);
-  }
-}
 
 #define CHECKIFLOCATIONISVALID(LOC)\
         if((LOC)->remain == 0)\
@@ -190,7 +172,6 @@ static Sint processleaf(Uint leafindex,/*@unused@*/ Bref lcpnode,void *info)
 
     if(maxmatchinfo->commondepthstack.nextfreeNodeinfo == 0)
     {
-      CHECKIFLOCATIONISVALID(&maxmatchinfo->maxloc);
       lcplength = maxmatchinfo->maxloc.locstring.length;
     } else
     {
@@ -296,30 +277,19 @@ static bool processbranch1(Bref nodeptr,void *info)
   GETNEXTFREEINARRAY(stacktop,&maxmatchinfo->commondepthstack,Nodeinfo,32);
   if(stacktop == maxmatchinfo->commondepthstack.spaceNodeinfo)
   {
-    inheritfrompath(&maxmatchinfo->matchpath,
-                    &maxmatchinfo->maxloc,
-                    stacktop,
-                    nodeptr,
-                    0,
-                    maxmatchinfo->minmatchlength);
+    inheritfrompath(&maxmatchinfo->matchpath,&maxmatchinfo->maxloc,stacktop,nodeptr,0,maxmatchinfo->minmatchlength);
   } else
   {
     father = stacktop-1;
     if(father->onmaxpath)
     {
-      inheritfrompath(&maxmatchinfo->matchpath,
-                      &maxmatchinfo->maxloc,
-                      stacktop,
-                      nodeptr,
-                      maxmatchinfo->commondepthstack.nextfreeNodeinfo-1,
-                      father->querycommondepth);
+      inheritfrompath(&maxmatchinfo->matchpath,&maxmatchinfo->maxloc,stacktop,nodeptr,maxmatchinfo->commondepthstack.nextfreeNodeinfo-1,father->querycommondepth);
     } else
     {
       stacktop->onmaxpath = false;
       stacktop->querycommondepth = father->querycommondepth;
     }
   }
-  checkquerycommonprefix(maxmatchinfo,nodeptr,stacktop->querycommondepth);
   return true;
 }
 
@@ -375,7 +345,7 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
   maxmatchinfo->depthofpreviousmaxloc = maxmatchinfo->maxloc.locstring.length;
   maxmatchinfo->commondepthstack.nextfreeNodeinfo = 0;
   if(ploc->nextnode.toleaf)
-  {
+  { 
     if(processleaf(LEAFADDR2NUM(maxmatchinfo->stree,ploc->nextnode.address), NULL,(void *) maxmatchinfo) != 0)
     {
       return -1;
@@ -389,7 +359,7 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
     }
   }
   return 0;
-}
+} 
 
 /*EE
   The following function finds all maximal matches between the 
@@ -421,6 +391,7 @@ Sint findmaxmatches(Suffixtree *stree,
   Maxmatchinfo maxmatchinfo;
   if(querylen < minmatchlength)
     return 0;
+  DECLAREEXTRA;
   maxmatchinfo.stree = stree;
   INITARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   INITARRAY(&maxmatchinfo.matchpath,Pathinfo);
@@ -439,7 +410,8 @@ Sint findmaxmatches(Suffixtree *stree,
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
   for (;querysubstringend<query+querylen-1;querysubstringend++,maxmatchinfo.querysuffix++)
   {
-      //fprintf(stdout,"%s Thread:%d *query:%lu querylen:%lu querysubstringend:%lu\n",__func__, omp_get_thread_num(), (Uint)query,querylen,(Uint)querysubstringend);
+        CHECKSTEP;
+        //    (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), maxmatchinfo.querysuffix+1, querysubstringend+1,0);
         if(ploc.locstring.length >= minmatchlength &&  enumeratemaxmatches(&maxmatchinfo,&ploc) != 0)
         {
             return -1;
@@ -448,17 +420,24 @@ Sint findmaxmatches(Suffixtree *stree,
             (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), maxmatchinfo.querysuffix+1, querysubstringend+1,0);
         else 
         {
+            fprintf(stderr,"# ");
+            SHOWINDEX((Uint) BRADDR2NUM(stree,ploc.previousnode));
+            fprintf(stderr,"| -->");
             linklocstree (stree, &ploc, &ploc);
             (void) scanprefixstree (stree, &ploc, &ploc, maxmatchinfo.querysuffix+ploc.locstring.length+1, querysubstringend+1,0);
         }
-  } 
-  while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
+  }
+ while (!ROOTLOCATION (&ploc) && ploc.locstring.length >= minmatchlength)
   {
-    enumeratemaxmatches (&maxmatchinfo,&ploc); 
+    if(enumeratemaxmatches (&maxmatchinfo,&ploc) != 0)
+    {
+      return -2;
+    }
     linklocstree (stree, &ploc, &ploc);
     maxmatchinfo.querysuffix++;
   }
   FREEARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   FREEARRAY(&maxmatchinfo.matchpath,Pathinfo);
+  cerr << endl;
   return 0;
 }

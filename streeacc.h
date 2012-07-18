@@ -9,9 +9,10 @@
 #ifndef STREEACC_H
 #define STREEACC_H
 
+#include <sparsehash/sparsetable>
 #include "streehuge.h"
 
-
+using google::sparsetable;
 
 #define SHOWVAL(S)    fprintf(stderr,"#%s %lu\n",#S,(Sint) S)
 #define SETVAL(E,VAL) *(E) = VAL;\
@@ -45,28 +46,6 @@
                      DIVBYSMALLINTS((Uint) (stree->nextfreebranch - (PT)));\
           DP = stree->currentdepth + distance;\
           HP = stree->nextfreeleafnum - distance;\
-        } else\
-        {\
-          if(ISLARGE(*(PT)))\
-          {\
-            DP = GETDEPTH(PT);\
-            HP = GETHEADPOS(PT);\
-          } else\
-          {\
-            distance = GETDISTANCE(PT);\
-            GETCHAINEND(largeptr,PT,distance);\
-            DP = GETDEPTH(largeptr) + distance;\
-            HP = GETHEADPOS(largeptr) - distance;\
-          }\
-        }
-
-#define MYGETBOTH(DP,HP,PT) \
-        if(matchprocessinfo->stree.chainstart != NULL && (PT) >= matchprocessinfo->stree.chainstart)\
-        {\
-          distance = 1 + \
-                     DIVBYSMALLINTS((Uint) (matchprocessinfo->stree.nextfreebranch - (PT)));\
-          DP = matchprocessinfo->stree.currentdepth + distance;\
-          HP = matchprocessinfo->stree.nextfreeleafnum - distance;\
         } else\
         {\
           if(ISLARGE(*(PT)))\
@@ -225,25 +204,25 @@
 #define SHOWINDEX(NODE)\
         if((NODE) == UNDEFINEDREFERENCE)\
         {\
-          fprintf(stdout,"U ");\
+          fprintf(stderr,"U");\
         } else\
         {\
           if(NILPTR(NODE))\
           {\
-            fprintf(stdout,"N ");\
+            fprintf(stderr,"N");\
           } else\
           {\
             if(ISLEAF(NODE))\
             {\
-              fprintf(stdout,"Lf-%lu ",(long unsigned int) GETLEAFINDEX(NODE));\
+              fprintf(stderr,"Lf-%lu",(long unsigned int) GETLEAFINDEX(NODE));\
             } else\
             {\
               if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
               {\
-                fprintf(stdout,"L-%lu ",(long unsigned int) GETBRANCHINDEX(NODE));\
+                fprintf(stderr,"L-%lu",(long unsigned int) GETBRANCHINDEX(NODE));\
               } else\
               {\
-                fprintf(stdout,"S-%lu ",(long unsigned int) NODE);\
+                fprintf(stderr,"S-%lu",(long unsigned int) NODE);\
               }\
             }\
           }\
@@ -260,6 +239,7 @@ void showstree(Suffixtree *stree);
 void enumlocations(Suffixtree *stree,void(*processloc)(Suffixtree *stree,Location *));
 void checklocation(Suffixtree *stree,Location *loc);
 void showlocation(FILE *fp,Suffixtree *stree,Location *loc);
+void extractsubtree(Suffixtree *stree,Uint *btptr,sparsetable<Uint> &tNodes);
 
 #endif
 

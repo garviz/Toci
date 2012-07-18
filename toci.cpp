@@ -96,14 +96,12 @@ int main(int argc, char *argv[])
             return EXIT_FAILURE;
         }
         freemultiseq(&subjectmultiseq);
-        checkspaceleak();
-        mmcheckspaceleak();
-        cerr << "Toci application for genome alignment under HPC environments" << endl;
+        cerr << "# Toci application for genome alignment for HPC environments" << endl;
         finish = MPI::Wtime();
     } else {
         cout << "Process: " << rank << endl;
     }
     MPI_Finalize();
-    cerr << "Final Time: " << finish-start << endl;
+    cerr << "# Final Time: " << finish-start << endl;
     return EXIT_SUCCESS;
 }
