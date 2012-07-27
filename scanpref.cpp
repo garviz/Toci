@@ -29,9 +29,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
                                            Bref btptr,Uchar *left,
                                            Uchar *right,Uint rescanlength)
 {
-  Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, 
-       node, distance = 0, prefixlen, headposition, tmpnodedepth,
-       edgelen, remainingtoskip;
+  Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, node, distance = 0, prefixlen, headposition, tmpnodedepth, edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
   lptr = left;
   nodeptr = btptr;
@@ -62,6 +60,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
       return NULL;
     }
     firstchar = *lptr;
+    //firstchar = 't';
     if(nodeptr == stree->branchtab)  // at the root
     {
       if((node = stree->rootchildren[(Uint) firstchar]) == UNDEFINEDREFERENCE)
@@ -105,7 +104,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
           return lptr;
         }
         if(ISLEAF(node))
-         {
+        {
           leafindex = GETLEAFINDEX(node);
           leftborder = stree->text + (nodedepth + leafindex);
           if(leftborder == stree->sentinel)

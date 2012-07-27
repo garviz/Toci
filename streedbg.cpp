@@ -276,9 +276,11 @@ void checkstree(Suffixtree *stree)
 
 void extractsubtree(Suffixtree *stree,Uint *btptr,sparsetable<Uint> &tNodes)
 {
-    Uint nodeaddress, suffixlink, *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, depth, headposition; 
-
+    Uint nodeaddress, suffixlink, depth, headposition, *largeptr, distance; 
+  for(Uint i=UintConst(1); i < stree->nodecount; i++)
+  {
     nodeaddress = BRADDR2NUM(stree,btptr);
+    GETBOTH(depth,headposition,btptr);
     if(ISLARGE(*btptr))
     {
         suffixlink = getlargelinkstree(stree,btptr,depth);
@@ -288,33 +290,32 @@ void extractsubtree(Suffixtree *stree,Uint *btptr,sparsetable<Uint> &tNodes)
         suffixlink = nodeaddress + SMALLINTS;
         btptr += SMALLINTS;
     }
-    //tNodes[nodeaddress] = suffixlink;
+    if (nodeaddress < tNodes.size())
+        tNodes[nodeaddress] = suffixlink;
+    else
+        cerr << "# nodeaddress " << nodeaddress << endl;
+  }
+}
+
+Uint getMaxNodesNumber(Suffixtree *stree)
+{
+  Uint nodeaddress, suffixlink, depth, headposition, *btptr, *largeptr, distance; 
+  btptr = ROOT(stree);
+  for(Uint i=UintConst(1); i < stree->nodecount; i++)
+  {
+    nodeaddress = BRADDR2NUM(stree,btptr);
     GETBOTH(depth,headposition,btptr);
-    succ = GETCHILD(btptr);
-    do
+    if(ISLARGE(*btptr))
     {
-        if(ISLEAF(succ))
-        { 
-            leafindex = GETLEAFINDEX(succ);
-            succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
-        } else
-        {
-            succptr = stree->branchtab + GETBRANCHINDEX(succ);
-            nodeaddress = BRADDR2NUM(stree,succptr);
-            if(ISLARGE(*succptr))
-            {
-                suffixlink = getlargelinkstree(stree,succptr,depth);
-                btptr += LARGEINTS;
-            } else
-            { 
-                suffixlink = nodeaddress + SMALLINTS;
-                btptr += SMALLINTS;
-            }
-            //tNodes[nodeaddress] = suffixlink;
-            extractsubtree(stree,succptr,tNodes);
-            succ = GETBROTHER(succptr);
-        }
-    } while(!NILPTR(succ));
+        suffixlink = getlargelinkstree(stree,btptr,depth);
+        btptr += LARGEINTS;
+    } else
+    { 
+        suffixlink = nodeaddress + SMALLINTS;
+        btptr += SMALLINTS;
+    }
+  }
+  return nodeaddress;
 }
 
 static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
@@ -335,7 +336,7 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
       showthesymbolstring(stderr,stree->sentinel,leftpointer,stree->sentinel);
-      cerr << endl;
+      //cerr << endl;
       /*fprintf(stdout,"%lu\n",getEdgelength(leftpointer,stree->sentinel));*/
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
     } else
@@ -345,7 +346,7 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
       showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
-      cerr << endl;
+      //cerr << endl;
       /*fprintf(stdout,"%lu\n",getEdgelength(leftpointer,leftpointer+edgelen-1));*/
       showsubtree(stree,indent+1,succptr);
       succ = GETBROTHER(succptr);
@@ -372,7 +373,7 @@ void showstree(Suffixtree *stree)
         leftpointer = stree->text + GETLEAFINDEX(*rcptr);
         showthesymbolstring(stderr,stree->sentinel,leftpointer,stree->sentinel);
         //fprintf(stdout,"%lu\n",getEdgelength(leftpointer,stree->sentinel));
-        cerr << endl;
+        //cerr << endl;
       } else
       {
         btptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
@@ -381,8 +382,8 @@ void showstree(Suffixtree *stree)
         showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
         //fprintf(stdout,"%lu\n",getEdgelength(leftpointer,leftpointer+succdepth-1));
         showsubtree(stree,UintConst(1),btptr);
-        cerr << endl;
       }
+      cerr << endl;
     }
   }
   fprintf(stderr,"# ~\n");

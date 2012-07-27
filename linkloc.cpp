@@ -130,8 +130,8 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
     outloc->nextnode.address = branchinfo.suffixlink;
     outloc->locstring.start = inloc->locstring.start + 1;
     outloc->locstring.length = inloc->locstring.length - 1;
-  SHOWINDEX((Uint) BRADDR2NUM(stree,branchinfo.suffixlink));
-  fprintf(stderr,"|%u\n", GETDEPTH(branchinfo.suffixlink));
+  /*SHOWINDEX((Uint) BRADDR2NUM(stree,branchinfo.suffixlink));
+  fprintf(stderr,"|%u\n", GETDEPTH(branchinfo.suffixlink));*/
   } else
   {
     if(inloc->previousnode == stree->branchtab)
@@ -140,8 +140,8 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
     } else
     {
       getbranchinfostree(stree,ACCESSSUFFIXLINK,&branchinfo,inloc->previousnode);
-  SHOWINDEX((Uint) BRADDR2NUM(stree,branchinfo.suffixlink));
-  fprintf(stderr,"|%u\n", GETDEPTH(branchinfo.suffixlink));
+  /*SHOWINDEX((Uint) BRADDR2NUM(stree,branchinfo.suffixlink));
+  fprintf(stderr,"|%u\n", GETDEPTH(branchinfo.suffixlink));*/
       rescanstree(stree,outloc,branchinfo.suffixlink,inloc->firstptr,inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
     }
   } 

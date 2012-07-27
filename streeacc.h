@@ -240,7 +240,7 @@ void enumlocations(Suffixtree *stree,void(*processloc)(Suffixtree *stree,Locatio
 void checklocation(Suffixtree *stree,Location *loc);
 void showlocation(FILE *fp,Suffixtree *stree,Location *loc);
 void extractsubtree(Suffixtree *stree,Uint *btptr,sparsetable<Uint> &tNodes);
-
+Uint getMaxNodesNumber(Suffixtree *stree);
 #endif
 
 //}

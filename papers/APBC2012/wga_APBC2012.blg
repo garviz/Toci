@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: wga_APBC2012.aux
+The style file: bmc_article.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 472446405560.
+Database file #1: wga_APBC2012.bib
+You've used 4 entries,
+            3603 wiz_defined-function locations,
+            725 strings with 6087 characters,
+and the built_in function-call counts, 7779 in all, are:
+= -- 711
+> -- 43
+< -- 16
++ -- 51
+- -- 13
+* -- 886
+:= -- 1326
+add.period$ -- 7
+call.type$ -- 4
+change.case$ -- 13
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 511
+empty$ -- 605
+format.name$ -- 55
+if$ -- 1534
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 189
+newline$ -- 82
+num.names$ -- 6
+pop$ -- 140
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 8
+skip$ -- 83
+stack$ -- 0
+substring$ -- 1174
+swap$ -- 125
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 2
+warning$ -- 0
+while$ -- 36
+width$ -- 5
+write$ -- 134

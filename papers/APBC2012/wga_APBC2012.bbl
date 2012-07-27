@@ -1,0 +1,95 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{[#1]}
+\providecommand{\urlprefix}{}
+
+\bibitem{Delcher1999}
+Delcher AL, Kasif S, Fleischmann RD, Peterson J, White O, Salzberg SL:
+  \textbf{{Alignment of whole genomes MUMMER}}. \emph{Nucl Acids Res} 1999,
+  \textbf{27}(11):2369.
+
+\bibitem{Delcher2002}
+Delcher AL, Phillippy A, Carlton J, Salzberg SL: \textbf{{MUMmer: comparative
+  applications Fast algorithms for large-scale genome alignment and
+  comparison}}. \emph{Nucleic Acids Research} 2002, \textbf{30}:2478--2483,
+  \urlprefix\url{[http://www.tigr.org/software/mummer/applications.html]}.
+
+\bibitem{Delcher2003}
+Delcher AL, Salzberg SL, Phillippy AM: \textbf{{Using MUMmer to identify
+  similar regions in large sequence sets.}} \emph{Current protocols in
+  bioinformatics editoral board Andreas D Baxevanis et al} 2003,
+  \textbf{Chapter 10}(1934-340X (Electronic) LA - eng PT - Journal Article SB -
+  IM):Unit 10.3, \urlprefix\url{[http://www.ncbi.nlm.nih.gov/pubmed/18428693]}.
+
+\bibitem{ncbi}
+\textbf{U.S. National Library of Medicine}
+  \urlprefix\url{[http://www.ncbi.nlm.nih.gov/books/NBK62051/]}.
+
+\end{thebibliography}
+
+\newcommand{\BMCxmlcomment}[1]{}
+
+\BMCxmlcomment{
+
+<refgrp>
+
+<bibl id="B1">
+  <title><p>{Alignment of whole genomes MUMMER}</p></title>
+  <aug>
+    <au><snm>Delcher</snm><fnm>A L</fnm></au>
+    <au><snm>Kasif</snm><fnm>S</fnm></au>
+    <au><snm>Fleischmann</snm><fnm>R D</fnm></au>
+    <au><snm>Peterson</snm><fnm>J</fnm></au>
+    <au><snm>White</snm><fnm>O</fnm></au>
+    <au><snm>Salzberg</snm><fnm>S L</fnm></au>
+  </aug>
+  <source>Nucl Acids Res</source>
+  <publisher>Oxford Univ Press</publisher>
+  <pubdate>1999</pubdate>
+  <volume>27</volume>
+  <issue>11</issue>
+  <fpage>2369</fpage>
+</bibl>
+
+<bibl id="B2">
+  <title><p>{MUMmer: comparative applications Fast algorithms for large-scale
+  genome alignment and comparison}</p></title>
+  <aug>
+    <au><snm>Delcher</snm><fnm>A L</fnm></au>
+    <au><snm>Phillippy</snm><fnm>A</fnm></au>
+    <au><snm>Carlton</snm><fnm>J</fnm></au>
+    <au><snm>Salzberg</snm><fnm>S L</fnm></au>
+  </aug>
+  <source>Nucleic Acids Research</source>
+  <pubdate>2002</pubdate>
+  <volume>30</volume>
+  <fpage>2478</fpage>
+  <lpage>-2483</lpage>
+  <url>http://www.tigr.org/software/mummer/applications.html</url>
+</bibl>
+
+<bibl id="B3">
+  <title><p>{Using MUMmer to identify similar regions in large sequence
+  sets.}</p></title>
+  <aug>
+    <au><snm>Delcher</snm><fnm>AL</fnm></au>
+    <au><snm>Salzberg</snm><fnm>SL</fnm></au>
+    <au><snm>Phillippy</snm><fnm>AM</fnm></au>
+  </aug>
+  <source>Current protocols in bioinformatics editoral board Andreas D
+  Baxevanis et al</source>
+  <pubdate>2003</pubdate>
+  <volume>Chapter 10</volume>
+  <issue>1934-340X (Electronic) LA - eng PT - Journal Article SB - IM</issue>
+  <fpage>Unit10.3</fpage>
+  <url>http://www.ncbi.nlm.nih.gov/pubmed/18428693</url>
+</bibl>
+
+<bibl id="B4">
+  <title><p>U.S. National Library of Medicine</p></title>
+  <url>http://www.ncbi.nlm.nih.gov/books/NBK62051/</url>
+</bibl>
+
+</refgrp>
+} % end of \BMCxmlcomment

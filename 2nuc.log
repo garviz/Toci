@@ -1,0 +1,97 @@
+garviz@otomi:~/Toci$ mpirun -np 1 toci -maxmatch -l 20 fasta/EcoliK12.fa fasta/EcoliO157H7.fa
+# reading input file "fasta/EcoliK12.fa" of length 4639675
+# construct suffix tree for sequence of length 4639675
+# (maximum reference length is 2305843009213693948)
+# (maximum query length is 18446744073709551615)
+# process 46396 characters per dot
+#....................................................................................................
+#....................................................................................................
+# createST Time: 3.05507
+# nodeaddress 12902769
+# nodeaddress 12902774
+# nodeaddress 12902779
+# nodeaddress 12902784
+=========
+# nodeaddress 12902769
+# nodeaddress 12902774
+# nodeaddress 12902779
+# no empty 2977575
+# DSL 65
+# reading input file "fasta/EcoliO157H7.fa" of length 5498450
+# matching query-file "fasta/EcoliO157H7.fa"
+# against subject-file "fasta/EcoliK12.fa"
+# numofsequences: 1
+> gi|15829254|ref|NC_002695.1|
+# process 54984 characters per dot
+#....................................................................................................
+#....................................................................................................
+MEMs=48569
+# Toci application for genome alignment for HPC environments
+# Final Time: 11.7888
+garviz@otomi:~/Toci$ mpirun -np 1 toci -maxmatch -l 20 fasta/EcoliK12.fa fasta/EcoliO157H7.fa
+# reading input file "fasta/EcoliK12.fa" of length 4639675
+# construct suffix tree for sequence of length 4639675
+# (maximum reference length is 2305843009213693948)
+# (maximum query length is 18446744073709551615)
+# process 46396 characters per dot
+#....................................................................................................
+#....................................................................................................
+# createST Time: 3.20655
+# nodeaddress 12902769
+# nodeaddress 12902774
+# nodeaddress 12902779
+# nodeaddress 12902784
+# nodeaddress 12902789
+# nodeaddress 12902794
+# nodeaddress 12902799
+# nodeaddress 12902804
+=========
+# nodeaddress 12902769
+# nodeaddress 12902774
+# no empty 2977576
+# DSL 54
+# reading input file "fasta/EcoliO157H7.fa" of length 5498450
+# matching query-file "fasta/EcoliO157H7.fa"
+# against subject-file "fasta/EcoliK12.fa"
+# numofsequences: 1
+> gi|15829254|ref|NC_002695.1|
+# process 54984 characters per dot
+#....................................................................................................
+#....................................................................................................
+MEMs=48569
+# Toci application for genome alignment for HPC environments
+# Final Time: 13.2901
+garviz@otomi:~/Toci$ mpirun -np 1 toci -maxmatch -l 20 fasta/EcoliK12.fa fasta/EcoliO157H7.fa 
+# reading input file "fasta/EcoliK12.fa" of length 4639675
+# construct suffix tree for sequence of length 4639675
+# (maximum reference length is 2305843009213693948)
+# (maximum query length is 18446744073709551615)
+# process 46396 characters per dot
+#....................................................................................................
+#....................................................................................................
+# createST Time: 3.05397
+# max 12902759
+# nodeaddress 12902759
+# nodeaddress 12902764
+# nodeaddress 12902769
+# nodeaddress 12902774
+# nodeaddress 12902779
+# nodeaddress 12902784
+# nodeaddress 12902789
+# nodeaddress 12902794
+# nodeaddress 12902799
+# nodeaddress 12902804
+# no empty 2977568
+# DSL 140
+# reading input file "fasta/EcoliO157H7.fa" of length 5498450
+# matching query-file "fasta/EcoliO157H7.fa"
+# against subject-file "fasta/EcoliK12.fa"
+# numofsequences: 1
+> gi|15829254|ref|NC_002695.1|
+# process 54984 characters per dot
+#....................................................................................................
+#....................................................................................................
+MEMs=48569
+# Toci application for genome alignment for HPC environments
+# Final Time: 11.4188
+

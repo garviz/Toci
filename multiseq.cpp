@@ -144,7 +144,7 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
   {
     seq = multiseq->sequence;
   }
-  cerr << "#numofsequences: " << multiseq->numofsequences << endl;
+  cerr << "# numofsequences: " << multiseq->numofsequences << endl;
     for(i = 0; i < multiseq->numofsequences; i++)
     {
         if(i == 0)

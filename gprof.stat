@@ -1,0 +1,696 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00       73     0.00     0.00  lcp(unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  0.00      0.00     0.00       54     0.00     0.00  linklocstree(Suffixtree*, Location*, Location*)
+  0.00      0.00     0.00       54     0.00     0.00  getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*)
+  0.00      0.00     0.00       53     0.00     0.00  scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long)
+  0.00      0.00     0.00       46     0.00     0.00  scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long)
+  0.00      0.00     0.00       46     0.00     0.00  taillcp(Suffixtree*, unsigned char*, unsigned char*)
+  0.00      0.00     0.00       45     0.00     0.00  getlargelinkstree(Suffixtree*, unsigned long*, unsigned long)
+  0.00      0.00     0.00       44     0.00     0.00  scanprefix(Suffixtree*)
+  0.00      0.00     0.00       42     0.00     0.00  getlargelinkconstruction(Suffixtree*)
+  0.00      0.00     0.00       34     0.00     0.00  rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*)
+  0.00      0.00     0.00       34     0.00     0.00  insertbranchnode(Suffixtree*)
+  0.00      0.00     0.00       34     0.00     0.00  spaceforbranchtab(Suffixtree*)
+  0.00      0.00     0.00       30     0.00     0.00  rescan(Suffixtree*)
+  0.00      0.00     0.00       26     0.00     0.00  subtractspace(unsigned long)
+  0.00      0.00     0.00       23     0.00     0.00  insertleaf(Suffixtree*)
+  0.00      0.00     0.00       21     0.00     0.00  completelarge(Suffixtree*)
+  0.00      0.00     0.00       18     0.00     0.00  processleaf(unsigned long, unsigned long*, void*)
+  0.00      0.00     0.00       15     0.00     0.00  findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long)
+  0.00      0.00     0.00       15     0.00     0.00  enumeratemaxmatches(Maxmatchinfo*, Location*)
+  0.00      0.00     0.00       15     0.00     0.00  addoption
+  0.00      0.00     0.00       14     0.00     0.00  addspace(unsigned long)
+  0.00      0.00     0.00       14     0.00     0.00  allocandusespaceviaptr
+  0.00      0.00     0.00       12     0.00     0.00  showmaximalmatch(void*, unsigned long, unsigned long, unsigned long, unsigned long)
+  0.00      0.00     0.00       12     0.00     0.00  freespaceviaptr
+  0.00      0.00     0.00        8     0.00     0.00  deletememorymap
+  0.00      0.00     0.00        4     0.00     0.00  MPI::Wtime()
+  0.00      0.00     0.00        3     0.00     0.00  depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*)
+  0.00      0.00     0.00        3     0.00     0.00  processbranch1(unsigned long*, void*)
+  0.00      0.00     0.00        3     0.00     0.00  inheritfrompath(ArrayPathinfo*, Location*, Nodeinfo*, unsigned long*, unsigned long, unsigned long)
+  0.00      0.00     0.00        3     0.00     0.00  safestringcopy
+  0.00      0.00     0.00        2     0.00     0.00  scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long)
+  0.00      0.00     0.00        2     0.00     0.00  findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long)
+  0.00      0.00     0.00        2     0.00     0.00  mmaddspace(unsigned long)
+  0.00      0.00     0.00        2     0.00     0.00  mmsubtractspace(unsigned long)
+  0.00      0.00     0.00        2     0.00     0.00  MPI::Is_initialized()
+  0.00      0.00     0.00        2     0.00     0.00  MPI::Comm::~Comm()
+  0.00      0.00     0.00        2     0.00     0.00  MPI::Comm_Null::~Comm_Null()
+  0.00      0.00     0.00        2     0.00     0.00  creatememorymap
+  0.00      0.00     0.00        2     0.00     0.00  creatememorymapforfiledesc
+  0.00      0.00     0.00        2     0.00     0.00  freemultiseq
+  0.00      0.00     0.00        2     0.00     0.00  initmultiseq
+  0.00      0.00     0.00        2     0.00     0.00  procoption
+  0.00      0.00     0.00        2     0.00     0.00  simplefileOpen
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_MEMs
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z11rescanstreeP10SuffixtreeP8LocationPmPhS4_
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z12showdepthtabP9ArrayUint
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z13getEdgelengthPhS_
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z14findmaxmatchesP10SuffixtreemmPFlPvmmmmES1_Phmm
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z15depthfirststreeP10SuffixtreeP9ReferencePFlmPmPvEPFbS3_S4_EPFlS3_S4_EPFbS4_ES4_S4_
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z17findmumcandidatesP10SuffixtreemmPFlPvmmmmES1_Phmm
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z17getlargelinkstreeP10SuffixtreePmm
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z18parsemaxmatoptionsP10MMcallinfoiPPc
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z21scanmultiplefastafileP8MultiseqPchPhm
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z23scanprefixfromnodestreeP10SuffixtreeP8LocationPmPhS4_m
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z9freestreeP10Suffixtree
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_allocandusespaceviaptr
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_initmultiseq
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_initoptions
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_main
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_maxerrormsg
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_mumuniqueinquery
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_safestringcopy
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_showthesymbolstring
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_simplefileOpen
+  0.00      0.00     0.00        1     0.00     0.00  findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long)
+  0.00      0.00     0.00        1     0.00     0.00  getmaxmatinput(Multiseq*, bool, char*)
+  0.00      0.00     0.00        1     0.00     0.00  procmaxmatches(MMcallinfo*, Multiseq*)
+  0.00      0.00     0.00        1     0.00     0.00  parsemaxmatoptions(MMcallinfo*, int, char**)
+  0.00      0.00     0.00        1     0.00     0.00  constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  freestree(Suffixtree*)
+  0.00      0.00     0.00        1     0.00     0.00  setmaxspace()
+  0.00      0.00     0.00        1     0.00     0.00  getmaxdesclen(Multiseq*)
+  0.00      0.00     0.00        1     0.00     0.00  initSuffixtree(Suffixtree*, unsigned char*, unsigned long)
+  0.00      0.00     0.00        1     0.00     0.00  linkrootchildren(Suffixtree*)
+  0.00      0.00     0.00        1     0.00     0.00  showsequenceheader(Multiseq*, bool, bool, unsigned long, unsigned long)
+  0.00      0.00     0.00        1     0.00     0.00  makeleastlengthtext(char*)
+  0.00      0.00     0.00        1     0.00     0.00  showsequencedescription(Multiseq*, unsigned long, unsigned long)
+  0.00      0.00     0.00        1     0.00     0.00  findmaxmatchesonbothstrands(void*, unsigned long, unsigned char*, unsigned long)
+  0.00      0.00     0.00        1     0.00     0.00  MPI::Init(int&, char**&)
+  0.00      0.00     0.00        1     0.00     0.00  MPI::Real_init()
+  0.00      0.00     0.00        1     0.00     0.00  MPI::Comm::Get_rank() const
+  0.00      0.00     0.00        1     0.00     0.00  MPI::Comm::Get_size() const
+  0.00      0.00     0.00        1     0.00     0.00  getmaxtextlenstree
+  0.00      0.00     0.00        1     0.00     0.00  initoptions
+  0.00      0.00     0.00        1     0.00     0.00  overallsequences
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00      15/15          parsemaxmatoptions(MMcallinfo*, int, char**) [98]
+[1]      0.0    0.00    0.00      15         addoption [1]
+-----------------------------------------------
+                0.00    0.00       1/14          processbranch1(unsigned long*, void*) [65]
+                0.00    0.00       1/14          findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [59]
+                0.00    0.00       2/14          spaceforbranchtab(Suffixtree*) [53]
+                0.00    0.00       3/14          initSuffixtree(Suffixtree*, unsigned char*, unsigned long) [124]
+                0.00    0.00       3/14          depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) [64]
+                0.00    0.00       4/14          scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [67]
+[2]      0.0    0.00    0.00      14         allocandusespaceviaptr [2]
+                0.00    0.00      14/26          subtractspace(unsigned long) [55]
+                0.00    0.00      14/14          addspace(unsigned long) [61]
+-----------------------------------------------
+                0.00    0.00       2/12          findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [95]
+                0.00    0.00       3/12          freestree(Suffixtree*) [121]
+                0.00    0.00       3/12          depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) [64]
+                0.00    0.00       4/12          freemultiseq [8]
+[3]      0.0    0.00    0.00      12         freespaceviaptr [3]
+                0.00    0.00      12/26          subtractspace(unsigned long) [55]
+-----------------------------------------------
+                0.00    0.00       8/8           freemultiseq [8]
+[4]      0.0    0.00    0.00       8         deletememorymap [4]
+                0.00    0.00       2/2           mmsubtractspace(unsigned long) [70]
+-----------------------------------------------
+                0.00    0.00       3/3           parsemaxmatoptions(MMcallinfo*, int, char**) [98]
+[5]      0.0    0.00    0.00       3         safestringcopy [5]
+-----------------------------------------------
+                0.00    0.00       1/2           getmaxmatinput(Multiseq*, bool, char*) [96]
+                0.00    0.00       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[6]      0.0    0.00    0.00       2         creatememorymap [6]
+                0.00    0.00       2/2           simplefileOpen [11]
+                0.00    0.00       2/2           creatememorymapforfiledesc [7]
+-----------------------------------------------
+                0.00    0.00       2/2           creatememorymap [6]
+[7]      0.0    0.00    0.00       2         creatememorymapforfiledesc [7]
+                0.00    0.00       2/2           mmaddspace(unsigned long) [69]
+-----------------------------------------------
+                0.00    0.00       1/2           main [28]
+                0.00    0.00       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[8]      0.0    0.00    0.00       2         freemultiseq [8]
+                0.00    0.00       8/8           deletememorymap [4]
+                0.00    0.00       4/12          freespaceviaptr [3]
+-----------------------------------------------
+                0.00    0.00       2/2           scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [67]
+[9]      0.0    0.00    0.00       2         initmultiseq [9]
+-----------------------------------------------
+                0.00    0.00       2/2           parsemaxmatoptions(MMcallinfo*, int, char**) [98]
+[10]     0.0    0.00    0.00       2         procoption [10]
+-----------------------------------------------
+                0.00    0.00       2/2           creatememorymap [6]
+[11]     0.0    0.00    0.00       2         simplefileOpen [11]
+-----------------------------------------------
+                0.00    0.00       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[12]     0.0    0.00    0.00       1         getmaxtextlenstree [12]
+-----------------------------------------------
+                0.00    0.00       1/1           parsemaxmatoptions(MMcallinfo*, int, char**) [98]
+[13]     0.0    0.00    0.00       1         initoptions [13]
+-----------------------------------------------
+                0.00    0.00       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[14]     0.0    0.00    0.00       1         overallsequences [14]
+                0.00    0.00       1/1           findmaxmatchesonbothstrands(void*, unsigned long, unsigned char*, unsigned long) [129]
+-----------------------------------------------
+                0.00    0.00       8/73          scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [45]
+                0.00    0.00      14/73          findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [59]
+                0.00    0.00      51/73          scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [46]
+[42]     0.0    0.00    0.00      73         lcp(unsigned char*, unsigned char*, unsigned char*, unsigned char*) [42]
+-----------------------------------------------
+                0.00    0.00      54/54          findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [95]
+[43]     0.0    0.00    0.00      54         linklocstree(Suffixtree*, Location*, Location*) [43]
+                0.00    0.00      54/54          getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [44]
+                0.00    0.00      34/34          rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*) [51]
+-----------------------------------------------
+                0.00    0.00      54/54          linklocstree(Suffixtree*, Location*, Location*) [43]
+[44]     0.0    0.00    0.00      54         getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [44]
+                0.00    0.00      45/45          getlargelinkstree(Suffixtree*, unsigned long*, unsigned long) [48]
+-----------------------------------------------
+                0.00    0.00      53/53          findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [95]
+[45]     0.0    0.00    0.00      53         scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [45]
+                0.00    0.00      45/46          scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [46]
+                0.00    0.00       8/73          lcp(unsigned char*, unsigned char*, unsigned char*, unsigned char*) [42]
+-----------------------------------------------
+                0.00    0.00       1/46          findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [95]
+                0.00    0.00      45/46          scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [45]
+[46]     0.0    0.00    0.00      46         scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [46]
+                0.00    0.00      51/73          lcp(unsigned char*, unsigned char*, unsigned char*, unsigned char*) [42]
+-----------------------------------------------
+                0.00    0.00      46/46          scanprefix(Suffixtree*) [49]
+[47]     0.0    0.00    0.00      46         taillcp(Suffixtree*, unsigned char*, unsigned char*) [47]
+-----------------------------------------------
+                0.00    0.00      45/45          getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [44]
+[48]     0.0    0.00    0.00      45         getlargelinkstree(Suffixtree*, unsigned long*, unsigned long) [48]
+-----------------------------------------------
+                0.00    0.00      44/44          constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[49]     0.0    0.00    0.00      44         scanprefix(Suffixtree*) [49]
+                0.00    0.00      46/46          taillcp(Suffixtree*, unsigned char*, unsigned char*) [47]
+-----------------------------------------------
+                0.00    0.00      42/42          constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[50]     0.0    0.00    0.00      42         getlargelinkconstruction(Suffixtree*) [50]
+-----------------------------------------------
+                0.00    0.00      34/34          linklocstree(Suffixtree*, Location*, Location*) [43]
+[51]     0.0    0.00    0.00      34         rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*) [51]
+-----------------------------------------------
+                0.00    0.00      34/34          constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[52]     0.0    0.00    0.00      34         insertbranchnode(Suffixtree*) [52]
+                0.00    0.00      34/34          spaceforbranchtab(Suffixtree*) [53]
+-----------------------------------------------
+                0.00    0.00      34/34          insertbranchnode(Suffixtree*) [52]
+[53]     0.0    0.00    0.00      34         spaceforbranchtab(Suffixtree*) [53]
+                0.00    0.00       2/14          allocandusespaceviaptr [2]
+-----------------------------------------------
+                0.00    0.00      30/30          constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[54]     0.0    0.00    0.00      30         rescan(Suffixtree*) [54]
+-----------------------------------------------
+                0.00    0.00      12/26          freespaceviaptr [3]
+                0.00    0.00      14/26          allocandusespaceviaptr [2]
+[55]     0.0    0.00    0.00      26         subtractspace(unsigned long) [55]
+-----------------------------------------------
+                0.00    0.00      23/23          constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[56]     0.0    0.00    0.00      23         insertleaf(Suffixtree*) [56]
+-----------------------------------------------
+                0.00    0.00      21/21          constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[57]     0.0    0.00    0.00      21         completelarge(Suffixtree*) [57]
+-----------------------------------------------
+                0.00    0.00       6/18          depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) [64]
+                0.00    0.00      12/18          enumeratemaxmatches(Maxmatchinfo*, Location*) [60]
+[58]     0.0    0.00    0.00      18         processleaf(unsigned long, unsigned long*, void*) [58]
+                0.00    0.00      12/12          showmaximalmatch(void*, unsigned long, unsigned long, unsigned long, unsigned long) [62]
+-----------------------------------------------
+                0.00    0.00      15/15          enumeratemaxmatches(Maxmatchinfo*, Location*) [60]
+[59]     0.0    0.00    0.00      15         findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [59]
+                0.00    0.00      14/73          lcp(unsigned char*, unsigned char*, unsigned char*, unsigned char*) [42]
+                0.00    0.00       2/2           findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [68]
+                0.00    0.00       1/14          allocandusespaceviaptr [2]
+-----------------------------------------------
+                0.00    0.00      15/15          findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [95]
+[60]     0.0    0.00    0.00      15         enumeratemaxmatches(Maxmatchinfo*, Location*) [60]
+                0.00    0.00      15/15          findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [59]
+                0.00    0.00      12/18          processleaf(unsigned long, unsigned long*, void*) [58]
+                0.00    0.00       3/3           processbranch1(unsigned long*, void*) [65]
+                0.00    0.00       3/3           depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) [64]
+-----------------------------------------------
+                0.00    0.00      14/14          allocandusespaceviaptr [2]
+[61]     0.0    0.00    0.00      14         addspace(unsigned long) [61]
+                0.00    0.00       1/1           setmaxspace() [122]
+-----------------------------------------------
+                0.00    0.00      12/12          processleaf(unsigned long, unsigned long*, void*) [58]
+[62]     0.0    0.00    0.00      12         showmaximalmatch(void*, unsigned long, unsigned long, unsigned long, unsigned long) [62]
+-----------------------------------------------
+                0.00    0.00       2/4           main [28]
+                0.00    0.00       2/4           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[63]     0.0    0.00    0.00       4         MPI::Wtime() [63]
+-----------------------------------------------
+                0.00    0.00       3/3           enumeratemaxmatches(Maxmatchinfo*, Location*) [60]
+[64]     0.0    0.00    0.00       3         depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) [64]
+                0.00    0.00       6/18          processleaf(unsigned long, unsigned long*, void*) [58]
+                0.00    0.00       3/14          allocandusespaceviaptr [2]
+                0.00    0.00       3/12          freespaceviaptr [3]
+-----------------------------------------------
+                0.00    0.00       3/3           enumeratemaxmatches(Maxmatchinfo*, Location*) [60]
+[65]     0.0    0.00    0.00       3         processbranch1(unsigned long*, void*) [65]
+                0.00    0.00       3/3           inheritfrompath(ArrayPathinfo*, Location*, Nodeinfo*, unsigned long*, unsigned long, unsigned long) [66]
+                0.00    0.00       1/14          allocandusespaceviaptr [2]
+-----------------------------------------------
+                0.00    0.00       3/3           processbranch1(unsigned long*, void*) [65]
+[66]     0.0    0.00    0.00       3         inheritfrompath(ArrayPathinfo*, Location*, Nodeinfo*, unsigned long*, unsigned long, unsigned long) [66]
+-----------------------------------------------
+                0.00    0.00       1/2           getmaxmatinput(Multiseq*, bool, char*) [96]
+                0.00    0.00       1/2           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[67]     0.0    0.00    0.00       2         scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [67]
+                0.00    0.00       4/14          allocandusespaceviaptr [2]
+                0.00    0.00       2/2           initmultiseq [9]
+-----------------------------------------------
+                0.00    0.00       2/2           findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [59]
+[68]     0.0    0.00    0.00       2         findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [68]
+-----------------------------------------------
+                0.00    0.00       2/2           creatememorymapforfiledesc [7]
+[69]     0.0    0.00    0.00       2         mmaddspace(unsigned long) [69]
+-----------------------------------------------
+                0.00    0.00       2/2           deletememorymap [4]
+[70]     0.0    0.00    0.00       2         mmsubtractspace(unsigned long) [70]
+-----------------------------------------------
+                0.00    0.00       2/2           MPI::Intracomm::Intracomm(ompi_communicator_t*) [256]
+[71]     0.0    0.00    0.00       2         MPI::Is_initialized() [71]
+-----------------------------------------------
+                0.00    0.00       2/2           MPI::Intracomm::~Intracomm() [259]
+[72]     0.0    0.00    0.00       2         MPI::Comm::~Comm() [72]
+                0.00    0.00       2/2           MPI::Comm_Null::~Comm_Null() [73]
+-----------------------------------------------
+                0.00    0.00       2/2           MPI::Comm::~Comm() [72]
+[73]     0.0    0.00    0.00       2         MPI::Comm_Null::~Comm_Null() [73]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[74]     0.0    0.00    0.00       1         _GLOBAL__sub_I_MEMs [74]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [110]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[75]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z11rescanstreeP10SuffixtreeP8LocationPmPhS4_ [75]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [117]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[76]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z12showdepthtabP9ArrayUint [76]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [119]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[77]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z13getEdgelengthPhS_ [77]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [120]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[78]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z14findmaxmatchesP10SuffixtreemmPFlPvmmmmES1_Phmm [78]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [112]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[79]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z15depthfirststreeP10SuffixtreeP9ReferencePFlmPmPvEPFbS3_S4_EPFlS3_S4_EPFbS4_ES4_S4_ [79]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [118]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[80]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z17findmumcandidatesP10SuffixtreemmPFlPvmmmmES1_Phmm [80]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [113]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[81]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z17getlargelinkstreeP10SuffixtreePmm [81]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [101]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[82]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z18parsemaxmatoptionsP10MMcallinfoiPPc [82]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [106]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[83]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z21scanmultiplefastafileP8MultiseqPchPhm [83]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [109]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[84]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z23scanprefixfromnodestreeP10SuffixtreeP8LocationPmPhS4_m [84]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [116]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[85]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z9freestreeP10Suffixtree [85]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [102]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[86]     0.0    0.00    0.00       1         _GLOBAL__sub_I_allocandusespaceviaptr [86]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [104]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[87]     0.0    0.00    0.00       1         _GLOBAL__sub_I_initmultiseq [87]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [111]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[88]     0.0    0.00    0.00       1         _GLOBAL__sub_I_initoptions [88]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [107]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[89]     0.0    0.00    0.00       1         _GLOBAL__sub_I_main [89]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [100]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[90]     0.0    0.00    0.00       1         _GLOBAL__sub_I_maxerrormsg [90]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [105]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[91]     0.0    0.00    0.00       1         _GLOBAL__sub_I_mumuniqueinquery [91]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [114]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[92]     0.0    0.00    0.00       1         _GLOBAL__sub_I_safestringcopy [92]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [108]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[93]     0.0    0.00    0.00       1         _GLOBAL__sub_I_showthesymbolstring [93]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [115]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [457]
+[94]     0.0    0.00    0.00       1         _GLOBAL__sub_I_simplefileOpen [94]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [103]
+-----------------------------------------------
+                0.00    0.00       1/1           findmaxmatchesonbothstrands(void*, unsigned long, unsigned char*, unsigned long) [129]
+[95]     0.0    0.00    0.00       1         findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [95]
+                0.00    0.00      54/54          linklocstree(Suffixtree*, Location*, Location*) [43]
+                0.00    0.00      53/53          scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [45]
+                0.00    0.00      15/15          enumeratemaxmatches(Maxmatchinfo*, Location*) [60]
+                0.00    0.00       2/12          freespaceviaptr [3]
+                0.00    0.00       1/46          scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [46]
+-----------------------------------------------
+                0.00    0.00       1/1           main [28]
+[96]     0.0    0.00    0.00       1         getmaxmatinput(Multiseq*, bool, char*) [96]
+                0.00    0.00       1/2           creatememorymap [6]
+                0.00    0.00       1/2           scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [67]
+-----------------------------------------------
+                0.00    0.00       1/1           main [28]
+[97]     0.0    0.00    0.00       1         procmaxmatches(MMcallinfo*, Multiseq*) [97]
+                0.00    0.00       2/4           MPI::Wtime() [63]
+                0.00    0.00       1/1           getmaxtextlenstree [12]
+                0.00    0.00       1/1           constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+                0.00    0.00       1/1           getmaxdesclen(Multiseq*) [123]
+                0.00    0.00       1/2           creatememorymap [6]
+                0.00    0.00       1/2           scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [67]
+                0.00    0.00       1/1           overallsequences [14]
+                0.00    0.00       1/2           freemultiseq [8]
+                0.00    0.00       1/1           freestree(Suffixtree*) [121]
+-----------------------------------------------
+                0.00    0.00       1/1           main [28]
+[98]     0.0    0.00    0.00       1         parsemaxmatoptions(MMcallinfo*, int, char**) [98]
+                0.00    0.00      15/15          addoption [1]
+                0.00    0.00       3/3           safestringcopy [5]
+                0.00    0.00       2/2           procoption [10]
+                0.00    0.00       1/1           initoptions [13]
+                0.00    0.00       1/1           makeleastlengthtext(char*) [127]
+-----------------------------------------------
+                0.00    0.00       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[99]     0.0    0.00    0.00       1         constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+                0.00    0.00      44/44          scanprefix(Suffixtree*) [49]
+                0.00    0.00      42/42          getlargelinkconstruction(Suffixtree*) [50]
+                0.00    0.00      34/34          insertbranchnode(Suffixtree*) [52]
+                0.00    0.00      30/30          rescan(Suffixtree*) [54]
+                0.00    0.00      23/23          insertleaf(Suffixtree*) [56]
+                0.00    0.00      21/21          completelarge(Suffixtree*) [57]
+                0.00    0.00       1/1           initSuffixtree(Suffixtree*, unsigned char*, unsigned long) [124]
+                0.00    0.00       1/1           linkrootchildren(Suffixtree*) [125]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_main [89]
+[100]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [100]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z17getlargelinkstreeP10SuffixtreePmm [81]
+[101]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [101]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z9freestreeP10Suffixtree [85]
+[102]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [102]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_simplefileOpen [94]
+[103]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [103]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_allocandusespaceviaptr [86]
+[104]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [104]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_maxerrormsg [90]
+[105]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [105]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z18parsemaxmatoptionsP10MMcallinfoiPPc [82]
+[106]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [106]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_initoptions [88]
+[107]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [107]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_safestringcopy [92]
+[108]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [108]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z21scanmultiplefastafileP8MultiseqPchPhm [83]
+[109]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [109]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_MEMs [74]
+[110]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [110]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_initmultiseq [87]
+[111]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [111]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z14findmaxmatchesP10SuffixtreemmPFlPvmmmmES1_Phmm [78]
+[112]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [112]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z17findmumcandidatesP10SuffixtreemmPFlPvmmmmES1_Phmm [80]
+[113]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [113]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_mumuniqueinquery [91]
+[114]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [114]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_showthesymbolstring [93]
+[115]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [115]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z23scanprefixfromnodestreeP10SuffixtreeP8LocationPmPhS4_m [84]
+[116]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [116]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z11rescanstreeP10SuffixtreeP8LocationPmPhS4_ [75]
+[117]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [117]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z15depthfirststreeP10SuffixtreeP9ReferencePFlmPmPvEPFbS3_S4_EPFlS3_S4_EPFbS4_ES4_S4_ [79]
+[118]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [118]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z12showdepthtabP9ArrayUint [76]
+[119]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [119]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z13getEdgelengthPhS_ [77]
+[120]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [120]
+-----------------------------------------------
+                0.00    0.00       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[121]    0.0    0.00    0.00       1         freestree(Suffixtree*) [121]
+                0.00    0.00       3/12          freespaceviaptr [3]
+-----------------------------------------------
+                0.00    0.00       1/1           addspace(unsigned long) [61]
+[122]    0.0    0.00    0.00       1         setmaxspace() [122]
+-----------------------------------------------
+                0.00    0.00       1/1           procmaxmatches(MMcallinfo*, Multiseq*) [97]
+[123]    0.0    0.00    0.00       1         getmaxdesclen(Multiseq*) [123]
+-----------------------------------------------
+                0.00    0.00       1/1           constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[124]    0.0    0.00    0.00       1         initSuffixtree(Suffixtree*, unsigned char*, unsigned long) [124]
+                0.00    0.00       3/14          allocandusespaceviaptr [2]
+-----------------------------------------------
+                0.00    0.00       1/1           constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [99]
+[125]    0.0    0.00    0.00       1         linkrootchildren(Suffixtree*) [125]
+-----------------------------------------------
+                0.00    0.00       1/1           findmaxmatchesonbothstrands(void*, unsigned long, unsigned char*, unsigned long) [129]
+[126]    0.0    0.00    0.00       1         showsequenceheader(Multiseq*, bool, bool, unsigned long, unsigned long) [126]
+                0.00    0.00       1/1           showsequencedescription(Multiseq*, unsigned long, unsigned long) [128]
+-----------------------------------------------
+                0.00    0.00       1/1           parsemaxmatoptions(MMcallinfo*, int, char**) [98]
+[127]    0.0    0.00    0.00       1         makeleastlengthtext(char*) [127]
+-----------------------------------------------
+                0.00    0.00       1/1           showsequenceheader(Multiseq*, bool, bool, unsigned long, unsigned long) [126]
+[128]    0.0    0.00    0.00       1         showsequencedescription(Multiseq*, unsigned long, unsigned long) [128]
+-----------------------------------------------
+                0.00    0.00       1/1           overallsequences [14]
+[129]    0.0    0.00    0.00       1         findmaxmatchesonbothstrands(void*, unsigned long, unsigned char*, unsigned long) [129]
+                0.00    0.00       1/1           showsequenceheader(Multiseq*, bool, bool, unsigned long, unsigned long) [126]
+                0.00    0.00       1/1           findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [95]
+-----------------------------------------------
+                0.00    0.00       1/1           main [28]
+[130]    0.0    0.00    0.00       1         MPI::Init(int&, char**&) [130]
+                0.00    0.00       1/1           MPI::Real_init() [131]
+-----------------------------------------------
+                0.00    0.00       1/1           MPI::Init(int&, char**&) [130]
+[131]    0.0    0.00    0.00       1         MPI::Real_init() [131]
+-----------------------------------------------
+                0.00    0.00       1/1           main [28]
+[132]    0.0    0.00    0.00       1         MPI::Comm::Get_rank() const [132]
+-----------------------------------------------
+                0.00    0.00       1/1           main [28]
+[133]    0.0    0.00    0.00       1         MPI::Comm::Get_size() const [133]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+  [74] _GLOBAL__sub_I_MEMs (procmaxmat.cpp) [100] __static_initialization_and_destruction_0(int, int) (toci.cpp) [62] showmaximalmatch(void*, unsigned long, unsigned long, unsigned long, unsigned long) (procmaxmat.cpp)
+  [75] _GLOBAL__sub_I__Z11rescanstreeP10SuffixtreeP8LocationPmPhS4_ (linkloc.cpp) [101] __static_initialization_and_destruction_0(int, int) (access.cpp) [53] spaceforbranchtab(Suffixtree*) (construct.cpp)
+  [76] _GLOBAL__sub_I__Z12showdepthtabP9ArrayUint (depthtab.cpp) [102] __static_initialization_and_destruction_0(int, int) (construct.cpp) [126] showsequenceheader(Multiseq*, bool, bool, unsigned long, unsigned long) (procmaxmat.cpp)
+  [77] _GLOBAL__sub_I__Z13getEdgelengthPhS_ (distribute.cpp) [103] __static_initialization_and_destruction_0(int, int) (mapfile.cpp) [60] enumeratemaxmatches(Maxmatchinfo*, Location*) (findmaxmat.cpp)
+  [78] _GLOBAL__sub_I__Z14findmaxmatchesP10SuffixtreemmPFlPvmmmmES1_Phmm (findmaxmat.cpp) [104] __static_initialization_and_destruction_0(int, int) (space.cpp) [127] makeleastlengthtext(char*) (maxmatopt.cpp)
+  [79] _GLOBAL__sub_I__Z15depthfirststreeP10SuffixtreeP9ReferencePFlmPmPvEPFbS3_S4_EPFlS3_S4_EPFbS4_ES4_S4_ (dfs.cpp) [105] __static_initialization_and_destruction_0(int, int) (seterror.cpp) [128] showsequencedescription(Multiseq*, unsigned long, unsigned long) (procmaxmat.cpp)
+  [80] _GLOBAL__sub_I__Z17findmumcandidatesP10SuffixtreemmPFlPvmmmmES1_Phmm (findmumcand.cpp) [106] __static_initialization_and_destruction_0(int, int) (maxmatopt.cpp) [50] getlargelinkconstruction(Suffixtree*) (construct.cpp)
+  [81] _GLOBAL__sub_I__Z17getlargelinkstreeP10SuffixtreePmm (access.cpp) [107] __static_initialization_and_destruction_0(int, int) (procopt.cpp) [129] findmaxmatchesonbothstrands(void*, unsigned long, unsigned char*, unsigned long) (procmaxmat.cpp)
+  [82] _GLOBAL__sub_I__Z18parsemaxmatoptionsP10MMcallinfoiPPc (maxmatopt.cpp) [108] __static_initialization_and_destruction_0(int, int) (safescpy.cpp) [42] lcp(unsigned char*, unsigned char*, unsigned char*, unsigned char*) (scanpref.cpp)
+  [83] _GLOBAL__sub_I__Z21scanmultiplefastafileP8MultiseqPchPhm (maxmatinp.cpp) [109] __static_initialization_and_destruction_0(int, int) (maxmatinp.cpp) [54] rescan(Suffixtree*) (construct.cpp)
+  [84] _GLOBAL__sub_I__Z23scanprefixfromnodestreeP10SuffixtreeP8LocationPmPhS4_m (scanpref.cpp) [110] __static_initialization_and_destruction_0(int, int) (procmaxmat.cpp) [47] taillcp(Suffixtree*, unsigned char*, unsigned char*) (construct.cpp)
+  [85] _GLOBAL__sub_I__Z9freestreeP10Suffixtree (construct.cpp) [111] __static_initialization_and_destruction_0(int, int) (multiseq.cpp) [61] addspace(unsigned long) (space.cpp)
+  [86] _GLOBAL__sub_I_allocandusespaceviaptr (space.cpp) [112] __static_initialization_and_destruction_0(int, int) (findmaxmat.cpp) [71] MPI::Is_initialized()
+  [87] _GLOBAL__sub_I_initmultiseq (multiseq.cpp) [113] __static_initialization_and_destruction_0(int, int) (findmumcand.cpp) [72] MPI::Comm::~Comm()
+  [88] _GLOBAL__sub_I_initoptions (procopt.cpp) [114] __static_initialization_and_destruction_0(int, int) (cleanMUMcand.cpp) [130] MPI::Init(int&, char**&)
+  [89] _GLOBAL__sub_I_main (toci.cpp) [115] __static_initialization_and_destruction_0(int, int) (streedbg.cpp) [63] MPI::Wtime()
+  [90] _GLOBAL__sub_I_maxerrormsg (seterror.cpp) [116] __static_initialization_and_destruction_0(int, int) (scanpref.cpp) [73] MPI::Comm_Null::~Comm_Null()
+  [91] _GLOBAL__sub_I_mumuniqueinquery (cleanMUMcand.cpp) [117] __static_initialization_and_destruction_0(int, int) (linkloc.cpp) [131] MPI::Real_init()
+  [92] _GLOBAL__sub_I_safestringcopy (safescpy.cpp) [118] __static_initialization_and_destruction_0(int, int) (dfs.cpp) [132] MPI::Comm::Get_rank() const
+  [93] _GLOBAL__sub_I_showthesymbolstring (streedbg.cpp) [119] __static_initialization_and_destruction_0(int, int) (depthtab.cpp) [133] MPI::Comm::Get_size() const
+  [94] _GLOBAL__sub_I_simplefileOpen (mapfile.cpp) [120] __static_initialization_and_destruction_0(int, int) (distribute.cpp) [1] addoption
+  [51] rescanstree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*) [121] freestree(Suffixtree*) [2] allocandusespaceviaptr
+  [43] linklocstree(Suffixtree*, Location*, Location*) [56] insertleaf(Suffixtree*) (construct.cpp) [6] creatememorymap
+  [95] findmaxmatches(Suffixtree*, unsigned long, unsigned long, long (*)(void*, unsigned long, unsigned long, unsigned long, unsigned long), void*, unsigned char*, unsigned long, unsigned long) [69] mmaddspace(unsigned long) (mapfile.cpp) [7] creatememorymapforfiledesc
+  [96] getmaxmatinput(Multiseq*, bool, char*) [49] scanprefix(Suffixtree*) (construct.cpp) [4] deletememorymap
+  [97] procmaxmatches(MMcallinfo*, Multiseq*) [58] processleaf(unsigned long, unsigned long*, void*) (findmaxmat.cpp) [8] freemultiseq
+  [64] depthfirststree(Suffixtree*, Reference*, long (*)(unsigned long, unsigned long*, void*), bool (*)(unsigned long*, void*), long (*)(unsigned long*, void*), bool (*)(void*), void*, void*) [122] setmaxspace() (space.cpp) [3] freespaceviaptr
+  [45] scanprefixstree(Suffixtree*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [57] completelarge(Suffixtree*) (construct.cpp) [12] getmaxtextlenstree
+  [48] getlargelinkstree(Suffixtree*, unsigned long*, unsigned long) [123] getmaxdesclen(Multiseq*) (procmaxmat.cpp) [9] initmultiseq
+  [44] getbranchinfostree(Suffixtree*, unsigned long, Branchinfo*, unsigned long*) [55] subtractspace(unsigned long) (space.cpp) [13] initoptions
+  [98] parsemaxmatoptions(MMcallinfo*, int, char**) [124] initSuffixtree(Suffixtree*, unsigned char*, unsigned long) (construct.cpp) [14] overallsequences
+  [59] findprefixpathstree(Suffixtree*, ArrayPathinfo*, Location*, Location*, unsigned char*, unsigned char*, unsigned long) [65] processbranch1(unsigned long*, void*) (findmaxmat.cpp) [10] procoption
+  [67] scanmultiplefastafile(Multiseq*, char*, unsigned char, unsigned char*, unsigned long) [66] inheritfrompath(ArrayPathinfo*, Location*, Nodeinfo*, unsigned long*, unsigned long, unsigned long) (findmaxmat.cpp) [5] safestringcopy
+  [99] constructprogressstree(Suffixtree*, unsigned char*, unsigned long, void (*)(unsigned long, void*), void (*)(void*), void*) [70] mmsubtractspace(unsigned long) (mapfile.cpp) [11] simplefileOpen
+  [46] scanprefixfromnodestree(Suffixtree*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [52] insertbranchnode(Suffixtree*) (construct.cpp)
+  [68] findprefixpathfromnodestree(Suffixtree*, ArrayPathinfo*, Location*, unsigned long*, unsigned char*, unsigned char*, unsigned long) [125] linkrootchildren(Suffixtree*) (construct.cpp)

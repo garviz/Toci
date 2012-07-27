@@ -5,6 +5,7 @@
 \usepackage{graphics}
 \usepackage{epsfig}
 \usepackage{amsmath}
+\usepackage{caption}
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{url,hyperref,times}
@@ -15,6 +16,8 @@
 \usepackage{verbatim,scalefnt,colortbl}
 \newtheorem{mydef}{Definición}
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\DeclareCaptionType{myeq}[][Lista de ecuaciones]
+\captionsetup[myeq]{labelformat=empty}
 
 \title{ {\bf Whole genome alignment in high performance computing environments} \\
 \it Informe del progreso de trabajo de investigaci\'on} 
@@ -31,7 +34,7 @@ Universidad Aut\'onoma de Barcelona\\
 \maketitle
 \pagebreak
 {\Huge{\bf Datos del doctorando}}\\
-{\Large \\Nombre Completo: Julio Csar García Vizcaíno\\}
+{\Large \\Nombre Completo: Julio César García Vizcaíno\\}
 \vspace{0.3cm}
 {\Large NIE: Y1497678R\\}
 {\Huge{\bf Datos del proyecto de tesis}}\\
@@ -67,7 +70,7 @@ Antonio Espinos & Juan Carlos Moure & Julio C\'esar García Vizcaíno\\
 \pagenumbering{arabic}
 \section{Resumen}
 \indent
-Actualmente la generación de nueva información genómica ha creado la necesidad de almacenar y procesar estos nuevos datos computacionalmente hablando. Una de las tareas en la que nos centramos es en el alineamiento de genomas. La información básica de un genoma es el ADN. El ADN es una cadena compuesta por el alfabeto $\sigma={a,c,g,t}$, cada uno de estos elementos es llamado nucleótido. El alineamiento de genomas consiste en encontrar las similitudes y diferencias de las cadenas de ADN entre genomas.\\
+Actualmente la generación de nueva información genómica ha creado la necesidad de almacenar y procesar estos nuevos datos computacionalmente hablando. Una de las tareas en la que nos centramos es el alineamiento de genomas ya que es una tarea computacionalmente intensiva. La información básica de un genoma es el ADN. El ADN es una cadena compuesta por el alfabeto $\sigma={a,c,g,t}$, cada uno de estos elementos es llamado nucleótido. El alineamiento de genomas consiste en encontrar un mapeo de cada posición en un genoma de consulta a su correspondiente positición en el genoma de referencia. Es decir, encontrar las similitudes y diferencias de las cadenas de ADN entre genomas.\\
 El alineamiento de genomas es un modelo matemático utilizado por los biólogos para determinar la similitud entre genomas. Un alineamiento involucra tres operaciones básicas:
 \begin{itemize}
   \item Coincidencia: los nucleótidos en ambos genomas son iguales.
@@ -100,22 +103,19 @@ Existen diferentes aproximaciones para resolver el problema ver Figura \ref{fig:
 El árbol de sufijos es una estructura de datos que permite la b\'usqueda de 
 coincidencias exactas de longitud variable en tiempo lineal. Una coincidencia exacta de longitud $w$ ocurre en $r_{i}r_{i+1}\hdots r_{i+l-1}$ y $q_{j}q_{j+1}\hdots q_{j+l-1}$ si y solo si los sufijos $r_{i}r_{i+1}\hdots r_{n}$ y $q_{j}q_{j+1}\hdots q_{m}$ comparten un prefijo común de longitud mínima $l$. La búsqueda de coincidencias máximas exactas en un árbol de sufijos se realiza recorriendo el trayecto que es común a la secuencia de consulta hasta encontrar una discrepancia. Si la búsqueda termina en un nodo hoja, la coincidencia es única en la secuencia de referencia. Verificando el carácter inmediato anterior al inicio de esta coincidencia se puede determinar si es una coincidencia  máxima.\\
 \indent
-Sin embargo los requerimientos de espacio necesario para almacenar el \'arbol de sufijos en 
-memoria principal la hacen una estructura inviable cuando el \'arbol de sufijos a
-almacenar supera la memoria disponible.\\
-\indent
 Este problema se presenta en aplicaciones de alineamiento de genomas donde el
-tama\~no de los genomas son de millones de caracteres y su representación en un
-árbol de sufijos se hace inviable si no se tiene la cantidad de memoria 
-disponible. Además, la razón de utilizar un árbol de sufijos radica en
+tama\~no de los genomas son de millones de caracteres y en consecuencia la búsqueda de MEMs es una tarea computacionalmente intensiva. Además, la razón de utilizar un árbol de sufijos radica en
 que la búsqueda de coincidencias exactas de longitud variable en un árbol de 
 sufijos se realiza en tiempo lineal, gracias al uso de los enlaces de sufijos.\\
 \indent
 En consecuencia se busca \textbf{acelerar la búsqueda eficiente de 
 coincidencias exactas y que tenga en cuenta el uso de recursos de cómputo y
-memoria}. Las consideraciones que se toman en cuenta son la longitud del genoma 
-de referencia (sobre la que se realiza la búsqueda), del genoma de consulta y la longitud de la 
-coincidencia a buscar.
+memoria en un clúster multicore}. Las consideraciones que se toman en cuenta son:
+\begin{itemize}
+\item Reducir el número de operaciones en la búsqueda de MEMs.
+\item Almacenar genomas de mayor tamaño con la memoria disponible.
+\item Reducir los problemas de localidad en el árbol de sufijos.
+\end{itemize}
 \section{Introducción} 
 \subsection{MUM y MEM} 
 \indent
@@ -200,106 +200,106 @@ sufijos permiten agilizar el recorrido del árbol sin visitar la raíz del árbo
 debido a que apuntan a la siguiente extensión del sufijo. Los enlaces de sufijos 
 y la compresión de las etiquetas de las aristas son los requerimientos claves 
 para la implementación del árbol de sufijos en $O(n)$.\\
-\indent
-Existen diferentes implementaciones de árboles de sufijos, cada uno con 
-complejidades espaciales diferentes como se muestra en el Cuadro \ref{tab:stmem}.\\
-\begin{table}[h!]  
-\begin{small}
-\begin{center}
-\begin{tabular}{lll}
-Algoritmo & Complejidad espacial & Tamaño \\
-\hline
-McCreight & $O(28n)$ & 81.48GB \\
-\hline
-Ukkonen & $O(26.4n)$ & 76.95GB \\
-\hline
-Kurtz & $O(15.5n)$ & 45.31GB \\
-\hline
-Sadakane\footnote{Compresión de árbol de sufijos} & $O(n\log|\Sigma|)$ & 8.8GB \\
-\hline
-TRELLIS \cite{Phoophakdee2007} & $O(24.6n)$ & 71.6GB \\
-\hline
-TDD \cite{Barsky2010} & $O(18.5n)$ & 54GB \\
-\end{tabular}
-\end{center}
-\end{small}
-\caption{Algoritmos de creación de árboles de sufijos y su uso de memoria al
-almacenar el genoma humano (n=2.91Gbp).}
-\label{tab:stmem}
-\end{table}
-\\ \indent
-Los árboles de sufijos son dependientes del alfabeto, $\Sigma$, el tamaño 
-del alfabeto, $|\Sigma|$, afecta los tiempos de creación y búsqueda de 
-cadenas en el árbol, $C$, para una cadena de referencia de longitud $n$. 
-Estrictamente hablando:
-    \begin{itemize} 
-      \item Requerimiento de espacio: $O(n)$ 
-      \item Tiempo de creación: $min (O(n\log n), O(n\log |\Sigma|))$ 
-      \item Tiempo de búsqueda: $min (O(|C|\log n), O(|C|\log |\Sigma|))$ 
-    \end{itemize}
-\indent
+%\indent
+%Existen diferentes implementaciones de árboles de sufijos, cada uno con 
+%complejidades espaciales diferentes como se muestra en el Cuadro \ref{tab:stmem}.\\
+%\begin{table}[h!]  
+%\begin{small}
+%\begin{center}
+%\begin{tabular}{lll}
+%Algoritmo & Complejidad espacial & Tamaño \\
+%\hline
+%McCreight & $O(28n)$ & 81.48GB \\
+%\hline
+%Ukkonen & $O(26.4n)$ & 76.95GB \\
+%\hline
+%Kurtz & $O(15.5n)$ & 45.31GB \\
+%\hline
+%Sadakane\footnote{Compresión de árbol de sufijos} & $O(n\log|\Sigma|)$ & 8.8GB \\
+%\hline
+%TRELLIS \cite{Phoophakdee2007} & $O(24.6n)$ & 71.6GB \\
+%\hline
+%TDD \cite{Barsky2010} & $O(18.5n)$ & 54GB \\
+%\end{tabular}
+%\end{center}
+%\end{small}
+%\caption{Algoritmos de creación de árboles de sufijos y su uso de memoria al
+%almacenar el genoma humano (n=2.91Gbp).}
+%\label{tab:stmem}
+%\end{table}
+%\\ \indent
+%Los árboles de sufijos son dependientes del alfabeto, $\Sigma$, el tamaño 
+%del alfabeto, $|\Sigma|$, afecta los tiempos de creación y búsqueda de 
+%cadenas en el árbol, $C$, para una cadena de referencia de longitud $n$. 
+%Estrictamente hablando:
+%    \begin{itemize} 
+%      \item Requerimiento de espacio: $O(n)$ 
+%      \item Tiempo de creación: $min (O(n\log n), O(n\log |\Sigma|))$ 
+%      \item Tiempo de búsqueda: $min (O(|C|\log n), O(|C|\log |\Sigma|))$ 
+%    \end{itemize}
+%\indent
 \subsection{Definición del problema a resolver}
 \indent
 El problema de la búsqueda de las coincidencias exactas máximas de una longitud mínima han sido identificados en varias aplicaciones, entre ellas MUMmer \cite{Mummer3}. Aunque el algoritmo de MUMmer realiza la búsqueda de coincidencias exactas máximas, los requerimientos de recursos de cómputo aún son altos debido al tamaño de los datos de entrada.\\
 \indent
-Se ha realizado un experimento para comparar las prestaciones de la búsqueda de
-coincidencias exactas máximas utilizando un árbol de sufijos. En el Cuadro 
-\ref{tab:buscar} se muestra el tiempo de procesamiento de búsqueda 
-para coincidencias de tamaño mínimo $L$, utilizando el árbol de sufijos. El tiempo 
-de cómputo invertido en la búsqueda involucra la operación individual de cadenas de longitud mínima $L$ hasta la longitud de la cadena máxima de coincidencia. \\
-\begin{table}[ h!] 
-  \begin{small}
-    \begin{center}
-      \begin{tabular}{lllll}
-        Estructura & L [bp] & Cantidad  & Búsqueda [s] & Uso de\\
-        & & de búsquedas & & memoria [MB] \\
-        \hline
-        Árbol de sufijos & 20 & 344,46\e{6}  & 1679,2 & 483 \\
-        %\hline
-        %Arreglo de sufijos & 20 & 344,46\e{6}  & 5885,7 & 320\\
-        \hline
-      \end{tabular}
-    \end{center}
-  \end{small}
-  \caption{Búsqueda coincidencias exactas para una cadena de referencia de 
-  29,38Mbp y una cadena de consulta de 29,69Mbp}
-  \label{tab:buscar}
-\end{table}
-\indent
-El tiempo de búsqueda del Cuadro \ref{tab:buscar} para cadenas de tamaño de 30Mbp
-es relativamente alto debido a que involucra realizar millones de búsquedas en
-serie. La cantidad de operaciones de búsqueda que se realizan son 11 veces la 
-longitud de las cadenas de referencia y consulta. En consecuencia, la búsqueda 
-de coincidencias exactas máximas es una operación computacionalmente intensiva. 
-La razón de este uso intensivo de cómputo se debe a la cantidad de operaciones de búsqueda
-y a los accesos aleatorios en memoria al hacer cada operación de búsqueda.\\
-\indent
-Al aumentar la longitud de las cadenas de referencia y consulta por un factor de 10, 
-los tiempos de búsqueda se incrementan linealmente por un factor de 10, el uso de 
-memoria aumenta aproximadamente 8 veces y la cantidad de búsquedas a realizar se
-multiplica \e{3} veces, como se observa en el Cuadro \ref{tab:buscar2}.\\
-\begin{table}[ h! ]
-  \begin{small}
-    \begin{center}
-      \begin{tabular}{lllll}
-        Estructura & L [bp] & Cantidad  & Búsqueda [s] & Uso de\\
-        & & de búsquedas & & memoria [MB] \\
-        \hline
-        Árbol de sufijos & 20 & 3,78\e{9}  & 13013,5 & 3890 \\
-        %\hline
-        %Arreglo de sufijos & 20 & 3,78\e{9}  & 45616,2 & 2293\\
-        \hline
-      \end{tabular}
-    \end{center}
-  \end{small}
-  \caption{Búsqueda coincidencias exactas para una cadena de referencia de 
-  227,69Mbp y una cadena de consulta de 238,62Mbp}
-  \label{tab:buscar2}
-\end{table} 
-\indent
-Si la longitud de las cadenas crece por un factor de 10, ver Cuadro \ref{tab:buscar3}, 
-la cantidad de búsquedas son aproximadamente \e{18}, el tiempo de búsqueda
-crece linealmente y el uso de memoria se convierte en un problema a analizar si
+%Se ha realizado un experimento para comparar las prestaciones de la búsqueda de
+%coincidencias exactas máximas utilizando un árbol de sufijos. En el Cuadro 
+%\ref{tab:buscar} se muestra el tiempo de procesamiento de búsqueda 
+%para coincidencias de tamaño mínimo $L$, utilizando el árbol de sufijos. El tiempo 
+%de cómputo invertido en la búsqueda involucra la operación individual de cadenas de longitud mínima $L$ hasta la longitud de la cadena máxima de coincidencia. \\
+%\begin{table}[ h!] 
+%  \begin{small}
+%    \begin{center}
+%      \begin{tabular}{lllll}
+%        Estructura & L [bp] & Cantidad  & Búsqueda [s] & Uso de\\
+%        & & de búsquedas & & memoria [MB] \\
+%        \hline
+%        Árbol de sufijos & 20 & 344,46\e{6}  & 1679,2 & 483 \\
+%        %\hline
+%        %Arreglo de sufijos & 20 & 344,46\e{6}  & 5885,7 & 320\\
+%        \hline
+%      \end{tabular}
+%    \end{center}
+%  \end{small}
+%  \caption{Búsqueda coincidencias exactas para una cadena de referencia de 
+%  29,38Mbp y una cadena de consulta de 29,69Mbp}
+%  \label{tab:buscar}
+%\end{table}
+%\indent
+%El tiempo de búsqueda del Cuadro \ref{tab:buscar} para cadenas de tamaño de 30Mbp
+%es relativamente alto debido a que involucra realizar millones de búsquedas en
+%serie. La cantidad de operaciones de búsqueda que se realizan son 11 veces la 
+%longitud de las cadenas de referencia y consulta. En consecuencia, la búsqueda 
+%de coincidencias exactas máximas es una operación computacionalmente intensiva. 
+%La razón de este uso intensivo de cómputo se debe a la cantidad de operaciones de búsqueda
+%y a los accesos aleatorios en memoria al hacer cada operación de búsqueda.\\
+%\indent
+%Al aumentar la longitud de las cadenas de referencia y consulta por un factor de 10, 
+%los tiempos de búsqueda se incrementan linealmente por un factor de 10, el uso de 
+%memoria aumenta aproximadamente 8 veces y la cantidad de búsquedas a realizar se
+%multiplica \e{3} veces, como se observa en el Cuadro \ref{tab:buscar2}.\\
+%\begin{table}[ h! ]
+%  \begin{small}
+%    \begin{center}
+%      \begin{tabular}{lllll}
+%        Estructura & L [bp] & Cantidad  & Búsqueda [s] & Uso de\\
+%        & & de búsquedas & & memoria [MB] \\
+%        \hline
+%        Árbol de sufijos & 20 & 3,78\e{9}  & 13013,5 & 3890 \\
+%        %\hline
+%        %Arreglo de sufijos & 20 & 3,78\e{9}  & 45616,2 & 2293\\
+%        \hline
+%      \end{tabular}
+%    \end{center}
+%  \end{small}
+%  \caption{Búsqueda coincidencias exactas para una cadena de referencia de 
+%  227,69Mbp y una cadena de consulta de 238,62Mbp}
+%  \label{tab:buscar2}
+%\end{table} 
+%\indent
+Si la longitud de los genomas son muy grandes, ver Cuadro \ref{tab:buscar3}, 
+la cantidad de búsquedas son aumentan, el tiempo de búsqueda
+crece linealmente y el uso de memoria se convierte en un problema a resolver si
 se considera la disponibilidad finita de memoria en la mayoría de sistemas de
 cómputo personales.\\
 \begin{table}[ h!]
@@ -321,66 +321,65 @@ cómputo personales.\\
   \label{tab:buscar3}
 \end{table}
 \indent
-De acuerdo a los datos de los Cuadros \ref{tab:buscar}, \ref{tab:buscar2} y 
-\ref{tab:buscar3} se hace necesario la búsqueda de alternativas que 
+De acuerdo a los datos del Cuadrs \ref{tab:buscar3} se hace necesario la búsqueda de alternativas que 
 permitan llevar a cabo la búsqueda de manera eficiente. El uso de HPC nos permitiría
 resolver los problemas de escalabilidad (tiempo de búsqueda, uso de memoria) cuando 
 se tienen cadenas muy grandes, como el genoma humano.\\
-\subsection*{Problema} 
-\indent
-La búsqueda de coincidencias exactas máximas es un problema computacionalmente
-intensivo. Dadas una cadena de referencia $R$ de longitud $n$ y una cadena de consulta 
-$Q$ de longitud $m$, encontrar todas las coincidencias de longitud mínima $l$ de $Q$
-en la cadena de referencia $R$ implica recorrer la cadena de consulta $Q$ para $todas$
-sus subcadenas. Para cada subcadena se determina la posición o posiciones en donde 
-existe una coincidencia, de longitud mínima $l$, entre la subcadena y la cadena de 
-referencia $R$. La posición de la subcadena en $Q$ es determinada.\\
-\indent
-En la Figura \ref{fig:problema} se muestra gráficamente el problema de la búsqueda
-de coincidencias exactas máximas.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.5]{gaps.png}
-\caption{Problema de la búsqueda de coincidencias exactas máximas.}
-\label{fig:problema}
-\end{center}
-\end{figure}
-\\ \indent El total de búsquedas, indicado en los Cuadros \ref{tab:buscar} y \ref{tab:buscar2} 
-a realizar está determinada por la fórmula \ref{eq:operaciones}.
-\begin{equation}
-  \sum_{i=0}^{i\le m}{\frac{n}{L+i}}
-  \label{eq:operaciones}
-\end{equation}
-Realizar una búsqueda de coincidencia exacta de longitud fija es sencilla 
-computacionalmente hablando. Pero al realizar una búsqueda de coincidencia exacta de 
-longitud variable ocurren los siguientes problemas:
-\begin{itemize}
-  \item Acceso aleatorio a la cadena indexada de referencia $R$: el conjunto de coincidencias
-    podría estar en posiciones de la cadena $R$ distantes.
-  \item Longitud variable de la cadena a buscar: la búsqueda a realizar se incrementa
-    con la longitud de la cadena.
-  \item Uso de memoria: para poder buscar una coincidencia se requiere volcar la 
-    cadena de referencia $R$ en memoria. Dependiendo del método utilizado la 
-    cantidad de memoria se podría incrementar e incluso agotar la memoria disponible.
-    Adicionalmente el tiempo de búsqueda se incrementará, como se observa en el 
-    Cuadro \ref{tab:buscar3},debido al acceso a disco cuando no se tiene toda la 
-    cantidad de memoria necesaria.
-\end{itemize}
-Para resolver este problema de forma distribuida existen diferentes estrategias. La 
-solución mas obvia es realizar una división de las cadenas de referencia y
-de consulta, ver Figura \ref{fig:para}.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.3]{naive.png}
-\caption{Solución obvia de paralelización de búsqueda de coincidencias exactas máximas.}
-\label{fig:para}
-\end{center}
-\end{figure}
-\\Esta técnica ocasiona que exista una fase de procesamiento posterior a la búsqueda de 
-coincidencias exactas máximas en cada segmento de la cadena procesada, para determinar
-las coincidencias máximas de forma global. Adicionalmente, puede haber pérdidas de 
-coincidencias máximas exactas y coincidencias máximas que solo son válidas dentro del 
-segmento evaluado y no de manera global.\\
+%\subsection*{Problema} 
+%\indent
+%La búsqueda de coincidencias exactas máximas es un problema computacionalmente
+%intensivo. Dadas una cadena de referencia $R$ de longitud $n$ y una cadena de consulta 
+%$Q$ de longitud $m$, encontrar todas las coincidencias de longitud mínima $l$ de $Q$
+%en la cadena de referencia $R$ implica recorrer la cadena de consulta $Q$ para $todas$
+%sus subcadenas. Para cada subcadena se determina la posición o posiciones en donde 
+%existe una coincidencia, de longitud mínima $l$, entre la subcadena y la cadena de 
+%referencia $R$. La posición de la subcadena en $Q$ es determinada.\\
+%\indent
+%En la Figura \ref{fig:problema} se muestra gráficamente el problema de la búsqueda
+%de coincidencias exactas máximas.
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.5]{gaps.png}
+%\caption{Problema de la búsqueda de coincidencias exactas máximas.}
+%\label{fig:problema}
+%\end{center}
+%\end{figure}
+%\\ \indent El total de búsquedas, indicado en los Cuadros \ref{tab:buscar} y \ref{tab:buscar2} 
+%a realizar está determinada por la fórmula \ref{eq:operaciones}.
+%\begin{equation}
+%  \sum_{i=0}^{i\le m}{\frac{n}{L+i}}
+%  \label{eq:operaciones}
+%\end{equation}
+%Realizar una búsqueda de coincidencia exacta de longitud fija es sencilla 
+%computacionalmente hablando. Pero al realizar una búsqueda de coincidencia exacta de 
+%longitud variable ocurren los siguientes problemas:
+%\begin{itemize}
+%  \item Acceso aleatorio a la cadena indexada de referencia $R$: el conjunto de coincidencias
+%    podría estar en posiciones de la cadena $R$ distantes.
+%  \item Longitud variable de la cadena a buscar: la búsqueda a realizar se incrementa
+%    con la longitud de la cadena.
+%  \item Uso de memoria: para poder buscar una coincidencia se requiere volcar la 
+%    cadena de referencia $R$ en memoria. Dependiendo del método utilizado la 
+%    cantidad de memoria se podría incrementar e incluso agotar la memoria disponible.
+%    Adicionalmente el tiempo de búsqueda se incrementará, como se observa en el 
+%    Cuadro \ref{tab:buscar3},debido al acceso a disco cuando no se tiene toda la 
+%    cantidad de memoria necesaria.
+%\end{itemize}
+%Para resolver este problema de forma distribuida existen diferentes estrategias. La 
+%solución mas obvia es realizar una división de las cadenas de referencia y
+%de consulta, ver Figura \ref{fig:para}.
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.3]{naive.png}
+%\caption{Solución obvia de paralelización de búsqueda de coincidencias exactas máximas.}
+%\label{fig:para}
+%\end{center}
+%\end{figure}
+%\\Esta técnica ocasiona que exista una fase de procesamiento posterior a la búsqueda de 
+%coincidencias exactas máximas en cada segmento de la cadena procesada, para determinar
+%las coincidencias máximas de forma global. Adicionalmente, puede haber pérdidas de 
+%coincidencias máximas exactas y coincidencias máximas que solo son válidas dentro del 
+%segmento evaluado y no de manera global.\\
 En consecuencia, para resolver este problema se utiliza alguna estructura de datos que 
 permita realizar una búsqueda distribuida de coincidencias exactas máximas de forma ágil 
 en la cadena entera. Los árboles de sufijos permiten hacer 
@@ -418,6 +417,7 @@ Una de las consultas en que se requiere realizar rápidamente, para el alineamie
 de genomas, es la búsqueda exacta de coincidencias máximas. 
 \section{Estado de la investigación}
 \subsection{Búsqueda distribuida de coincidencias exactas: árbol de sufijos distribuido}
+\indent
 El problema de mejorar el tiempo de cómputo de las búsquedas de coincidencias 
 exactas nos da una oportunidad de utilizar el poder del HPC para reducir el
 tiempo de procesamiento. Se propone modificar la estructura de datos utilizada en 
@@ -425,10 +425,12 @@ MUMmer (árbol de sufijos) para mejorar las búsquedas de coincidencias exactas 
 grandes volúmenes de datos, considerando un uso eficiente de los recursos. Para 
 ello se tomarán en cuenta los siguientes parámetros: 
 \begin{itemize}
+\item Reducir el número de operaciones en la búsqueda de MEMs.
 \item Tamaño del genoma de referencia y consulta.
 \item Memoria principal disponible en cada nodo de cómputo.
 %\item Búsqueda distribuida de coincidencias exactas.
 \end{itemize}
+\indent
 Basado en dichos parámetros se distribuirá el árbol de sufijos en subárboles, 
 ver Figura \ref{fig:estructura}. Dicha aproximación ha sido llevada a cabo de distintas maneras por \cite{Mansour2012}, 
 \cite{Japp2004}, \cite{Ghoting2010} y \cite{Sadakane}.
@@ -441,41 +443,42 @@ de la búsqueda de coincidencias: la frecuencia de prefijos en los sufijos del g
 \label{fig:estructura}
 \end{center}
 \end{figure}
-Para definir formalmente el árbol de sufijos distribuido es necesario definir 
+\indent
+Para definir formalmente el árbol de sufijos distribuido es necesario mostrar
 algunos conceptos, extraídos de \cite{Clifford2005} y \cite{Ghoting2010}. 
 \begin{mydef}
   Si $t=uvw$ entonces $u$ es un \textit{prefijo} y $w$ es un \textit{sufijo}
 de $t$.
 \end{mydef}
+\indent
 Un sufijo de $t$ se repite si ocurre al menos una vez como una subcadena no sufijo de $t$.
-Además requerimos poder especificar que sufijos de $t$ se incluyen en un subárbol de sufijos. Esto
-se hace considerando un prefijo corto $z$, y un conjunto de posiciones iniciales, $V_{z}$.
-\begin{mydef}
-  Para aquellos sufijos de la referencia que tienen la cadena $z$ como un prefijo.$V_{z}$ es el conjunto válido.
-\end{mydef}
-\begin{mydef}
-Una subcadena $s$ de $t$ es válida si $z$ es un prefijo de $s$ y que un intervalo de enteros $I[i,j]$ es
-\textit{válido} (con respecto a $V_{z}$ y $t$) si $i$ $\epsilon$ $V_{z}$.
-\end{mydef}
-\begin{mydef}
-  $s$ es un \textit{sufijo válido} para $I[i,j]$ si $s=t[k,j]$ para algún $k$ $\epsilon$ $V_{z}$ y $k>i$. 
-\end{mydef}
-Es posible que un sufijo válido para un intervalo puede ser mas corto que el prefijo fijo $z$, dependiendo de 
-los caracteres que siguen directamente en la referencia.\\
-\begin{mydef}
-  Sea $z$ una cadena de longitud mayor o igual a 1. Decimos que $(t,V_{z})$ es un \textit{par de entrada} si $V_{z}$ es
-el conjunto válido (para $t$ con respecto a $z$).
-\end{mydef}
-Escribimos $sst(t,V_{z})$ para el árbol de sufijos poco denso de $t$ usando el conjunto válido $V_{z}$. 
-\begin{mydef}
-  Para un árbol de sufijos poco denso $T=sst(t,V_{z})$ y un conjunto arbitrario de cadenas $S$, decimos que
-  $T'=T aumentado$ por $S$ si $T'$ es una trie compactada de la unión de $S$ y el conjunto sufijos válidos de
-  $t$ (con respecto a $V_{z}$).
-\end{mydef}
-Para construir el árbol de sufijos distribuido DST en tiempo lineal se construye un SST en tiempo lineal
-y se ejecuta el algoritmo de construcción del árbol para diferentes prefijos escogidos. El algoritmo
-resultante usa el espacio en cada nodo que es proporcional al tamaño del SST construido.
+Además requerimos especificar que sufijos de $t$ se incluyen en un subárbol de sufijos. Esto
+se hace considerando un prefijo de longitud variable $z$, y el conjunto de prefijos de longitud variable representan 
+los subárboles que se almacenan en cada uno de los nodos de cómputo del clúster multicore HPC. El conjunto de prefijos de longitud variable es una idea ya propuesta en \cite{Ghoting2010} que consiste en encontrar la frecuencia de prefijos que cumplen la ecuación \ref{eq:fp}, en la que $f(p)$ es la frecuencia del prefijo $p$, $MTS$ es el tamaño máximo del árbol de sufijos y $NS$ es el tamaño del nodo de un árbol de sufijos en bytes. El factor de 2 es debido a que podemos tener a lo sumo $f(p)$ nodos internos y $f(p)$ nodos hojas.
+\begin{center}
+\begin{myeq}[!ht]
+\begin{equation}
+f(p)\le \frac{MTS}{2*NS}
+\end{equation}
+\caption{Ecuación para el cálculo de prefijos de longitud variable.}
+\end{myeq}
+\label{eq:fp}
+\end{center}
+Para generar el árbol de sufijos distribuido DST:
+\begin{enumerate}
+\item Construir el árbol de sufijos entero en tiempo lineal.
+\item Generar el conjunto de prefijos de longitud variable que serán la raíz de cada SST.
+\item Para cada prefijo de longitud variable
+\begin{enumerate}
+\item Extraer el subárbol debajo de ese prefijo, ese subárbol se convierte en el SST.
+\item Generar la tabla de direccionamiento de los enlaces de sufijos que apuntan hacia nodos que están fuera del SST. 
+\end{enumerate}
+\item Refinar la tabla de direccionamiento de los enlaces de sufijos distribuidos con el identificador del SST al que corresponde el nodo hacia el cual apunta.
+\end{enumerate}
+\indent
+El algoritmo resultante usa el espacio en cada nodo que es proporcional al tamaño del SST construido. La generación de los SSTs obliga a contar con un esquema de enlaces de sufijos que apuntan hacia nodos que no están dentro del SST recien creado. Este esquema de enlaces de sufijos distribuido será almacenado en cada uno de los SSTs generados.
 \subsection{Importancia del enlace de sufijo}
+\indent
 Los enlaces de sufijos juegan un rol crítico en la construcción lineal de árboles de sufijos y en su
 recorrido.
 \begin{mydef}
@@ -484,56 +487,151 @@ recorrido.
   etiqueta $\alpha$. Si $\alpha$ está vacío, entonces el enlace de sufijo de v, por ejemplo s(v) es la
   raíz. 
 \end{mydef}
+\indent
 Los enlaces de sufijo existen para cada nodo interno (no hoja) de un árbol de sufijo. Siguiendo un 
 enlace de sufijo, se puede saltar de un sufijo a otro, cada sufijo iniciando exactamente un carácter
-siguiente del primer carácter de su sufijo precedente. De tal manera que usando enlaces de sufijos es
-posible obtener un algoritmo lineal para la búsqueda de coincidencias exactas máximas. Esto es porque
+siguiente del primer carácter de su sufijo precedente. De tal manera que usando \textbf{enlaces de sufijos} es
+posible obtener un \textbf{algoritmo lineal para la búsqueda de coincidencias exactas máximas}. Esto es porque
 los enlaces de sufijos hacen un seguimiento de que o cuanto de la cadena ha coincidido hasta ahora.
-Cuando encontramos una falta de coincidencia, podemos saltar a lo largo del enlace de sufijo para 
-ver si hay cualquier coincidencia despu\'es en la referencia y en la consulta.
-\begin{mydef}
-  Considerar un par de entrada $(t,V_{z})$ y un árbol de sufijos poco denso $T=sst(t,V_{z})$. Un enlace
-  de sufijo disperso es un borde sin etiquetar de $\overline{aw}$ a la raíz si $|v|<|z|$ y de $\overline{aw}$
-  a $\overline{v}$, de otra manera.
-\end{mydef}
+Cuando encontramos una discrepancia, podemos saltar a lo largo del enlace de sufijo para 
+ver si hay cualquier coincidencia después en la referencia y en la consulta.\\
+\indent
+La creación de un DST genera un nuevo problema a resolver, los enlaces de sufijos. Esto es, al construir árboles dispersos SST puede ocurrir que existan enlaces de sufijos que apunten a nodos de otro árbol SST. Para ello es necesario contar con algun esquema que permite seguir el nuevo enlace de sufijo distribuido. Si el número de enlaces de sufijos distribuido de un SST es muy grande pueden ocurrir problemas de sobrecarga de procesamiento en algunos SSTs. Adicionalmente puede trasladar nuestro problema de procesamiento a uno de comunicaciones en el que se tendría que lidiar con el uso de los enlaces de sufijos distribuido.\\
+\indent
+La solución es contar con un esquema que permita la utilización de enlaces de sufijos distribuido:
+\begin{enumerate}
+\item Tabla de búsqueda directa del nodo al que apunta el enlace de sufijo distribuido, compartido por todos los SSTs.
+\item Sistema de cola para el procesamiento de las peticiones de búsqueda en el SST hacia el cual apunta el enlace de sufijo distribuido.
+\end{enumerate}
+\indent
 Mediante la organización del nuevo árbol de sufijos distribuido de esta manera, 
 podemos realizar búsquedas de coincidencias exactas máximas de forma distribuida. Al
 utilizar una búsqueda distribuida es posible mejorar el tiempo de cómputo de 
 las búsquedas exactas. Se requiere que el tiempo de cómputo sea menor que el 
-mostrado por propuestas existentes en el estado del arte y que pueda manejar
-genomas de gran tamaño.\\
+mostrado por propuestas existentes en el estado del arte.\\
 \subsection{Evaluación experimental}
-Para determinar el par de entrada $(t,V_{z})$ es necesario determinar el acceso a los prefijos dentro del
-árbol de sufijos. Es por ello que se realizó un experimento para ubicar la longitud necesaria para la 
-elección de los prefijos. En la siguiente figura \ref{fig:top} se muestra en la zona azul la parte superior
-del árbol de sufijos y las líneas rojas muestran el pintado del árbol para indicar la ubicación de una 
-coincidencia máxima en el árbol.Para determinar el par de entrada $(t,V_{z})$ es necesario determinar el acceso a los prefijos dentro del
-árbol de sufijos. Es por ello que se realizó un experimento para ubicar la longitud necesaria para la 
-elección de los prefijos. 
+\indent
+Los experimentos realizados se ejecutaron en el siguiente ambiente de pruebas:
+\begin{enumerate}
+\item GCC 4.6.3
+\item MUMmer 3.23
+\item SparseHash 2.0.2-1
+\item Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+\item RAM 6GB
+\end{enumerate}
+\indent
+Los genomas utilizados en las pruebas fueron:
+\begin{itemize}
+\item Genoma humano (2,96Gbp).
+\item Cromosoma 2 humano (238,6Mbp).
+\item Cromosoma 1 chimpancé (232,7Mbp).
+\item EcoliK12 (4,6Mbp).
+\item EcoliO157H7 (5,3Mbp).
+\end{itemize}
+\indent
+El primer elemento a evaluar fue la viabilidad de los enlaces de sufijos al buscar MEMs de diferentes longitudes. Este experimento se realiza para el cromosoma 2 del ser humano como referencia y el cromosoma 1 del chimpancé como consulta. La búsqueda a realizar es de MEM. Se evalúan dos mecanismos de búsqueda de MEMs:
+\begin{itemize}
+\item Cada sufijo inicia la búsqueda desde la raíz.
+\item Cada sufijo utiliza el enlace de sufijo.
+\end{itemize}
+\indent
+En la figura \ref{fig:sl-nosl} se muestra que para diferentes longitudes de MEMs y se comprueba que la ganancia en tiempo de cómputo es siempre mayor al utilizar los enlaces de sufijos que si no se utilizarán. Esta mejora se explica porque al utilizar un enlace de sufijo se evita una comparación cada que se utiliza el enlace de sufijo.\\
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.4]{freq.png}
-\caption{Identificación de coincidencias máximas en árbol de sufijos.}
-\label{fig:top}
+\includegraphics[scale=0.4]{sl-nosl.png}
+\caption{Comparación de búsqueda de MEMs con y sin utilización de enlaces de sufijos.}
+\label{fig:sl-nosl}
 \end{center}
 \end{figure}
-Este experimento nos permite confirmar que la ubicación de cada uno de los prefijos difiere en longitud, debido a 
-esto se hace necesario definir prefijos de longitud variable. Al utilizar prefijos de longitud variable es posible
-tener árboles de sufijos dispersos balanceados debido a que se podrían agrupar aquellos prefijos con mayor frecuencia
-de ocurrencia.\\
-Es por ello que debemos encontrar un conjunto valido de prefijos para dividir el árbol de sufijos en árboles de sufijos
-dispersos con el requerimiento de que puedan construirse en memoria principal.
+El tiempo de procesamiento también se ve afectado, evidentemente por la cantidad de MEMs encontrados, como se muestra en la figura \ref{fig:mems}.\\
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{mems.png}
+\caption{Conjunto de MEMs encontrados para distintos tamaños mínimos de longitud.}
+\label{fig:mems}
+\end{center}
+\end{figure}
+\indent
+Una vez que se ha comprobado la efectividad de los enlaces de sufijos se procede a evaluar como son accesados estos enlaces de sufijos y en que zonas del árbol se encuentran. Esto se hace con el fin de evaluar como se verá afectado la búsqueda de MEMs al hacer la división vertical del árbol de sufijos en nuestra propuesta.\\
+\indent
+Para ello se realizó la búsqueda de MEMs con el genoma de referencia EcoliK12 y con el genoma de consulta EcoliO157H7 con una longitud mínima de 20 de MEM. En la figura \ref{fig:use-sl} se muestra que la longitud mínima de MEM restringe la profundidad del árbol en el cual los enlaces de sufijos son utilizados.\\
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{use-sl.png}
+\caption{Frecuencia de uso de los enlaces de sufijos al buscar MEMs de longitud mínima de 20bp.}
+\label{fig:use-sl}
+\end{center}
+\end{figure}
+\indent
+Una posible mejora de optimización consistiría en mejorar la localidad de los nodos que se encuentran en los niveles de profundidad de 8 a 12 que son en donde se utilizan los enlaces de sufijos con mayor frecuencia. Esta posible heurística estaría basada en la longitud mínima de MEM a buscar y que depende del usuario.\\
+\indent
+Una vez que se ha evaluado la importancia del enlace de sufijo en un árbol de sufijos para la búsqueda de coincidencias exactas máximas se procede a evaluar experimentalmente la propuesta de distribución del árbol de sufijos. Se debe de mantener el enlace de sufijo al hacer la distribución del árbol debido a que esto nos garantiza la complejidad lineal de la búsqueda de MEMs.\\
+\indent
+El primer paso es determinar el conjunto de prefijos de longitud variable necesario para distribuir el árbol de sufijos. Es por ello que se realizó un experimento para ubicar la longitud necesaria para la elección de los prefijos.\\
+\indent 
+Al utilizar prefijos de longitud variable es posible tener árboles de sufijos dispersos balanceados debido a que se podrían agrupar aquellos prefijos con mayor frecuencia
+de ocurrencia. Es por ello que debemos encontrar un conjunto valido de prefijos para dividir el árbol de sufijos en árboles de sufijos dispersos con el requerimiento de que puedan construirse en memoria principal.\\
 \begin{mydef}
-Sea $f(p)$ el número de veces que un prefijo ocurre en S. Sea MSSTS (tamaño máximo del árbol de sufijos disperso) la cantidad
-máxima de espacio de memoria en bytes que puede ser reservado al árbol de sufijos disperso durante la construcción del árbol. 
-Sea NS el tamaño de un nodo del árbol de sufijos en bytes.
+Sea $f(p)$ el número de veces que un prefijo ocurre en el genoma de referencia $R$. Sea $MTS$ (tamaño máximo del árbol de sufijos) la cantidad
+máxima de espacio de memoria en bytes que puede ser reservado al árbol de sufijos durante la construcción del árbol. 
+Sea $NS$ el tamaño de un nodo del árbol de sufijos en bytes.
+El objetivo es encontrar un conjunto de prefijos de longitud variable en $R$, tal que $\forall p \epsilon R, f(p)<\frac{MSSTS}{2*NS}$.
 \end{mydef}
-El objetivo es encontrar un conjunto de pares de entrada valido tal que $\forall p \epsilon V_{z}, 2xf(p)<\frac{MSSTS}{NS}$.\\
+\indent
 Una vez definido el conjunto de prefijos se procede a la construcción del árbol de sufijos disperso. Para ello se ubican en cada
-árbol de sufijos disperso el conjunto de pares de entrada valido que serán las raíces de cada árbol de sufijos disperso. Una vez 
-definido el conjunto de prefijos se procede a la construcción del árbol de sufijos disperso.\\
-La construcción del árbol de sufijos disperso se realiza siguiendo el algoritmo de Ukkonen y removiendo aquellos nodos y bordes
-que no tienen en común el prefijo de la raíz del árbol de sufijo disperso.\\
+árbol de sufijos disperso el prefijo de longitud variable que será la raíz de cada árbol de sufijos disperso. Una vez 
+definido el conjunto de prefijos se procede a la división del árbol de sufijos para obtener el árbol de sufijos disperso. Finalmente se genera la tabla de enlaces de sufijos distribuido correspondiente a cada árbol de sufijos disperso.\\
+\indent
+Para demostrar como la creación de los prefijos de longitud variable permiten generar árboles de sufijos dispersos, se muestra la frecuencia de prefijos para el genoma humano en las figuras \ref{fig:human-freq2} y \ref{fig:human-freq3}.\\
+\begin{figure}[!ht]
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[scale=0.6]{human-freq2.png}
+\caption{Frecuencia prefijos de longitud variable en genoma humano.}
+\label{fig:human-freq2}
+\end{minipage}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[scale=0.6]{human-freq3.png}
+\caption{Frecuencia prefijos de longitud variable en genoma humano.}
+\label{fig:human-freq3}
+\end{minipage}
+\end{figure}
+\indent
+Si definimos $F_{m}=\frac{MTS}{2*NS}$ entonces de las figuras \ref{fig:human-freq2} y \ref{fig:human-freq3} se obtendrían las raíces de los árboles de sufijos dispersos que son menores que el valor $F_{m}$. Si $F_{m}$ es igual a 1.2\e{8} entonces de la figura \ref{fig:human-freq2} se muestra que se debe de extender los prefijos AA y TT con una longitud mayor hasta que se cumpla que sea menor que $F_{m}$.\\
+\indent
+Para un genoma real se evalúa la creación del árbol de sufijos distribuido. Con el genoma EcoliK12 se procede a generar el árbol de sufijos distribuido. Se toma en consideración que $F_{m}=150K$, se recorre el genoma de referencia para encontrar el conjunto de prefijos de longitud variable que cumplen la ecuación \ref{eq:fp}. El resultado de este proceso se muestra en las figuras \ref{fig:table-freq2} y \ref{fig:table-freq3}.\\
+\begin{figure}[!ht]
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[scale=0.4]{table-freq2.png}
+\caption{Frecuencia prefijos de longitud variable en genoma EcoliK12.}
+\label{fig:table-freq2}
+\end{minipage}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[scale=0.4]{table-freq3.png}
+\caption{Frecuencia prefijos de longitud variable en genoma EcoliK12.}
+\label{fig:table-freq3}
+\end{minipage}
+\end{figure}
+El siguiente paso es determinar los enlaces de sufijos distribuidos para cada uno de los árboles de sufijos dispersos creados a partir del conjunto de prefijos de longitud variable. En las figuras \ref{fig:dsl1} y \ref{fig:dsl2} se muestra que el porcentaje de enlaces de sufijos distribuido es inferior 1\%.\\
+\begin{figure}[!ht]
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[scale=0.4]{dsl1.png}
+\caption{Enlaces de sufijo distribuidos para genoma EcoliK12.}
+\label{fig:dsl1}
+\end{minipage}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[scale=0.4]{dsl2.png}
+\caption{Enlaces de sufijo distribuidos para genoma EcoliK12.}
+\label{fig:dsl2}
+\end{minipage}
+\end{figure}
+El resultado del árbol de sufijos distribuido es garantizar la búsqueda de coincidencias exactas máximas en el árbol de sufijos disperso y minizar el traslado de peticiones de búsqueda en árboles externos, las figuras \ref{fig:dsl1,fig:dsl2} demuestran que el impacto de distribuir el árbol de sufijos será mínimo.\\
+\indent
 En la figura \ref{fig:dst} se muestra el árbol de sufijos distribuido con cada uno de los árboles de sufijos disperso. Para una
 cadena aacacccacacaccacaaa\$ con sus respectivos nodos raíz etiquetados como $r_{aa}, r_{ac}, r_{ca}, r_{cc}, r_{a\$}$ and $r_{\$}$.
 \begin{figure}[h]
@@ -545,7 +643,7 @@ cadena aacacccacacaccacaaa\$ con sus respectivos nodos raíz etiquetados como $r
 \end{figure}
 Una característica que el árbol de sufijos distribuido tiene es que únicamente mantiene los enlaces de sufijos que pertenecen al 
 árbol de sufijos disperso. Aquellos enlaces de sufijos que apunten a otros nodos que no están en el árbol de sufijos disperso
-son descartados en la fase de construcción del árbol.\\
+son agregados a la tabla de enlaces de sufijos distribuidos.\\
 Como se mencionó anteriormente el enlace de sufijo no solo permite la construcción en tiempo lineal del árbol de sufijos sino
 que hace que las búsquedas de coincidencias sean tambi\'en lineales. En consecuencia surge ahora un nuevo problema al proponer
 esta estructura de datos modificada:\\
@@ -553,51 +651,12 @@ esta estructura de datos modificada:\\
   ¿Es posible mantener la complejidad de búsqueda de coincidencias en un árbol de sufijos $O(m+k)$, en donde $m$ es la
   longitud de la secuencia de consulta y $k$ es el número de ocurrencias al utilizar un árbol de sufijos distribuido?
 \end{center}
-Para determinar el impacto del uso de los enlaces de sufijos en un árbol de sufijos se ejecutaron algunos experimentos para
-conocer la utilización de los enlaces de sufijos al hacer la búsqueda de coincidencias y la ubicación de los enlaces de sufijos
-dentro del árbol de sufijos.\\
-En las figuras \ref{fig:st_sl} y \ref{fig:st_sl2} se muestra el recorrido del árbol de sufijos. Para cada uno de los sufijos
-de la secuencia de consulta al utilizar el enlace de sufijo se avanza en el árbol de sufijos hacia arriba o abajo. Al navegar
-con el enlace de sufijo se evita hacer comparaciones de acuerdo a la ubicación del nodo dentro del árbol de sufijos, es decir,
-se consumen $x$ caracteres.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.4]{r57-q57-l5.png}
-\caption{Recorrido del árbol de sufijos al utilizar los enlaces de sufijos.}
-\label{fig:st_sl}
-\end{center}
-\end{figure}
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.4]{r312kbp-q308kbp-l20.png}
-\caption{Recorrido del árbol de sufijos al utilizar los enlaces de sufijos.}
-\label{fig:st_sl2}
-\end{center}
-\end{figure} 
-Una vez definido la utilización de los enlaces de sufijos se procede a determinar en que posiciones dentro del árbol de sufijos
-se ubican los enlaces de sufijos. Para ello se realizó un conteo del número de enlaces de sufijos. En las figuras \ref{fig:hist_sl}
-y \ref{fig:hist_sl2}. Esta evaluación nos permite identificar que el uso de los enlaces de sufijos es dependiente de la secuencia
-de referencia y que la mayoría de los enlaces de sufijos se encuentran en la zona inferior del árbol de sufijos.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.4]{histogram2.png}
-\caption{Frecuencia de enlaces de sufijos.}
-\label{fig:hist_sl}
-\end{center}
-\end{figure}
-\begin{figure}[h] 
-\begin{center}
-\includegraphics[scale=0.4]{histogram.png}
-\caption{Frecuencia de enlaces de sufijos.}
-\label{fig:hist_sl2}
-\end{center}
-\end{figure}
 \subsection{Búsqueda de coincidencias exactas en un DST}
 El propósito de adaptar una estructura de datos como el árbol de sufijos es lograr reducir el tiempo de búsqueda de coincidencias
 exactas. Para ello se propone una primera aproximación a la búsqueda de coincidencias exactas máximas en un árbol de sufijos 
 distribuido.\\
 La idea general se basa en dividir la secuencia de consulta en segmentos y asignar la búsqueda de cada sufijo dentro de cada
-segmento en el árbol de sufijos disperso correspondiente. La búsqueda de coincidencias exactas sigue en el árbol de sufijos y 
+segmento en el árbol de sufijos disperso correspondiente. La búsqueda de coincidencias exactas se realiza de manera paralela en el árbol de sufijos disperso y 
 posteriormente determina las posiciones en las cuales se encuentran las coincidencias. Al evaluar el siguiente sufijo pueden
 ocurrir dos casos:
 \begin{enumerate}
@@ -606,9 +665,7 @@ ocurrir dos casos:
 \end{enumerate}
 El segundo caso es de especial relevancia ya que implica el proponer una estrategia de búsqueda del árbol de sufijos disperso
 en donde se debe realizar la búsqueda y adicionalmente continuar la búsqueda en ese árbol.\\
-Para solucionar este caso, se propone el envío de la petición de búsqueda del sufijo en el árbol correspondiente. Para determinar
-el árbol de sufijos disperso que le corresponde el árbol consulta el prefijo del sufijo y envía la ubicación del sufijo al árbol 
-de sufijos disperso correspondiente. El árbol que recibe la petición la encola en la lista de sufijos que tiene que procesar y 
+Para solucionar este caso, se propone el envío de la petición de búsqueda del sufijo en el árbol correspondiente utilizando la tabla de enlaces de sufijos distribuido. El árbol que recibe la petición la encola en la lista de sufijos que tiene que procesar y 
 resuelve la búsqueda de coincidencias exactas máximas del sufijo que se le ha asignado.\\
 En la figura \ref{fig:dst_search} se muestra de manera gráfica la búsqueda de coincidencias exactas para una secuencia de consulta,
 la división en segmentos de la misma y la búsqueda del primer sufijo de cada segmento en el árbol de sufijos distribuido.
@@ -639,12 +696,11 @@ ejecución en las instalaciones de EMBL. Redactar la tesis doctoral y preparar s
 \noindent
 Ninguna.
 \section{Publicaciones previstas}
-European Symposium on Algorithms - \href{http://esa-symposium.org/}{ESA} - Abril 2013\\
-International Symposium on Algorithms and Computation - \href{http://www.is.titech.ac.jp/isaac11/}{ISAAC} - 2013\\
-International Conference on Parallel Processing - \href{http://www.grs-sim.de/news-events/news-archive/euro-par-2013.html}{Euro-Par} - 2013\\
-Asia Pacific Bioinformatics Conference - \href{http://www.bioinformatics.ubc.ca/2012/01/30/apbc2013-the-eleventh-asia-pacific-bioinformatics-conference/}{APBC} - Julio 2012\\
-IEEE International Symposium on Parallel and Distributed Processing with Applications - \href{http://www.arcos.inf.uc3m.es/ispa12/}{ISPA} - 2013
-
+Asia Pacific Bioinformatics Conference - \href{http://www.apbc2013.org/}{APBC} - Julio 2012 : Una tema de investigación en el congreso es Comparative genomics que forma parte del problema que se está resolviendo, el alineamiento de genomas.\\
+IEEE International Symposium on Parallel and Distributed Processing with Applications - \href{http://www.arcos.inf.uc3m.es/ispa12/}{ISPA} - Enero 2013 : La estructura del árbol de sufijos distribuidos forma parte de los temas de investigación en este congreso.\\
+International Conference on Parallel Processing - \href{http://www.grs-sim.de/news-events/news-archive/euro-par-2013.html}{Euro-Par} - Febrero 2013 : El algoritmo de búsqueda de coincidencias exactas máximas distribuida forma parte de los temas aboradados en este congreso.\\
+European Symposium on Algorithms - \href{http://esa-symposium.org/}{ESA} - Abril 2013 : El algoritmo de búsqueda distribuida de coincidencias exactas máximas distribuida forma parte de los temas abordados en este congreso.\\
+International Symposium on Algorithms and Computation - \href{http://www.is.titech.ac.jp/isaac11/}{ISAAC} - Junio 2013 :  El algoritmo de búsqueda distribuida de coincidencias exactas máximas distribuida forma parte de los temas abordados en este congreso.\\
 \section{Conclusiones}
 \indent
 Durante este primer año de investigación doctoral se ha estudiado y evaluado la estructura de datos utilizada en la aplicación MUMMer.

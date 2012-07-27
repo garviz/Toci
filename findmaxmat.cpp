@@ -401,28 +401,22 @@ Sint findmaxmatches(Suffixtree *stree,
   maxmatchinfo.queryseqnum = queryseqnum;
   maxmatchinfo.processmatch = processmatch;
   maxmatchinfo.processinfo = processinfo;
-  Uint size = pow(2,3*wordsize);
-  double start, finish;
-  //sparsetable<Uint*> table(size);
-  //createTable(stree,table,wordsize);
   querysubstringend = query + minmatchlength - 1;
   (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), query, querysubstringend,0);
   maxmatchinfo.depthofpreviousmaxloc = ploc.locstring.length;
-  for (;querysubstringend<query+querylen-1;querysubstringend++,maxmatchinfo.querysuffix++)
+  for (;querysubstringend<query+querylen-1;++querysubstringend,++maxmatchinfo.querysuffix)
   {
+        //(void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), maxmatchinfo.querysuffix, querysubstringend,0);
         CHECKSTEP;
-        //    (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), maxmatchinfo.querysuffix+1, querysubstringend+1,0);
         if(ploc.locstring.length >= minmatchlength &&  enumeratemaxmatches(&maxmatchinfo,&ploc) != 0)
-        {
             return -1;
-        }
         if (ROOTLOCATION (&ploc)) 
             (void) scanprefixfromnodestree (stree, &ploc, ROOT (stree), maxmatchinfo.querysuffix+1, querysubstringend+1,0);
         else 
         {
-            fprintf(stderr,"# ");
-            SHOWINDEX((Uint) BRADDR2NUM(stree,ploc.previousnode));
-            fprintf(stderr,"| -->");
+            //fprintf(stderr,"# ");
+            //SHOWINDEX((Uint) BRADDR2NUM(stree,ploc.previousnode));
+            //fprintf(stderr,"| -->");
             linklocstree (stree, &ploc, &ploc);
             (void) scanprefixstree (stree, &ploc, &ploc, maxmatchinfo.querysuffix+ploc.locstring.length+1, querysubstringend+1,0);
         }

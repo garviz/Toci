@@ -1,11 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Barsky et~al., 2010]{Barsky2010}
-Barsky, M., Stege, U., and Thomo, a. (2010).
-\newblock {A survey of practical algorithms for suffix tree construction in
-  external memory}.
-\newblock {\em Software: Practice and Experience}, 40(11):965--988.
-
 \bibitem[Clifford, 2005]{Clifford2005}
 Clifford, R. (2005).
 \newblock {Distributed suffix trees}.
@@ -52,12 +46,6 @@ Needleman, S.~B. and Wunsch, C.~D. (1970).
 \newblock {A general method applicable to the search for similarities in the
   amino acid sequence of two proteins.}
 \newblock {\em Journal of molecular biology}, 48(3):443--453.
-
-\bibitem[Phoophakdee and Zaki, 2007]{Phoophakdee2007}
-Phoophakdee, B. and Zaki, M.~J. (2007).
-\newblock {Genome-scale disk-based suffix tree indexing}.
-\newblock {\em Proceedings of the 2007 ACM SIGMOD international conference on
-  Management of data - SIGMOD '07}, page 833.
 
 \bibitem[Sadakane, ]{Sadakane}
 Sadakane, K.
