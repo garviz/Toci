@@ -199,7 +199,6 @@ static void  Filter_Matches (Match_t * A, int & N)
 
   {
    int  i, j;
-   cerr << "N=" << N << endl;
    for  (i = 0;  i < N;  i ++)
      A [i] . Good = TRUE;
 
@@ -310,7 +309,6 @@ static void  Filter_Matches (Match_t * A, int & N)
          }
    N = j;
 
-   cerr << "N=" << N << endl;
    for  (i = 0;  i < N;  i ++)
      A [i] . Good = FALSE;
 
