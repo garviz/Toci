@@ -41,96 +41,38 @@
 \end{frame}
 \section{Problem definition}
 \begin{frame}
+  \frametitle{Whole Genome Alignment in MUMmer}
+  \begin{figure}\includegraphics[scale=0.4]{wga.png}\end{figure}
+\end{frame}
+\begin{frame}
 \frametitle{Search of Maximal Exact Matches}
-\begin{figure}\includegraphics[scale=0.4]{mem.png}\end{figure}
+\begin{figure}\includegraphics[scale=0.4]{mem-mum.png}\end{figure}
 \end{frame}
 \begin{frame}
 \frametitle{Genome alignment: search of Maximal Exact Matches}
 \begin{figure}\includegraphics[scale=0.4]{problem.png}\end{figure}
 \end{frame}
 \begin{frame}
-\frametitle{Search of Maximal Exact Matches}
-\begin{figure}\includegraphics[scale=0.4]{search.png}\end{figure}
-\end{frame}
-\begin{frame}
  \frametitle{Ways of finding exact matches}
 \begin{figure}\includegraphics[scale=0.39]{state.png}\end{figure}
 \end{frame}
-%\begin{frame}
-%  \frametitle{Brute force analysis}
-%  \begin{block}{}
-%    \begin{itemize}
-%      \item Simple, easy to understand.
-%      \item Reference length = n
-%      \item Query length = m
-%      \item Comparisons: $(n-m+l)*m$
-%      \item Overall runtime: $O(nm)$
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-%\begin{frame}
-%  \frametitle{Suffix arrays}
-%  \begin{block}{}
-%    \begin{itemize}
-%      \item Sort every suffix of the genome.
-%      \item Binary search.
-%      \item Overall runtime: $O(m\log n)$
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-%\begin{frame}
-%  \frametitle{Suffix trees}
-%  \begin{block}{}
-%    \begin{itemize}
-%      \item It indexes \textbf{all} substrings of a sequence.
-%      \item Nodes have at least 2 and at most 5 children (A,C,G,T,\$)
-%      \item Query lookup in 2 phases:
-%        \begin{itemize}
-%          \item Walk along edges to find matches.
-%          \item Walk subtree to find positions.
-%        \end{itemize}
-%      \item Number of Nodes/Edges: $O(n)$
-%      \item Tree size: $O(n)$
-%      \item Max Depth: $O(n)$
-%      \item Construction time: $O(n)$
-%        \begin{itemize}
-%          \item Uses suffix links to jump between nodes without rechecking.
-%          \item Tricky to implement, prove efficiency.
-%        \end{itemize}
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-%\begin{frame}
-%  \frametitle{Use of suffix tree}
-%  \begin{block}{}
-%    \begin{itemize}
-%      \item Check for query: $O(m)$
-%      \item Find all z occurences of a query: $O(m+z)$
-%      \item Find maximal exact matches $O(m)$
-%      \item Longest common substring $O(m)$
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-%\begin{frame}
-%  \frametitle{Hash table}
-%  \begin{block}{}
-%    Running time:
-%    \begin{itemize}
-%      \item Construction: $0(n)$
-%      \item Lookup: $O(l)+O(z)$
-%    \end{itemize}
-%    Seed and extend to find end-to-end exact matches.
-%  \end{block}
-%\end{frame}
 \begin{frame}
   \frametitle{Traversal of suffix tree}
   \begin{figure}\includegraphics[scale=0.8]{st-mum.pdf}\end{figure}
+\end{frame}
+\begin{frame}
+  \frametitle{Find MEM in suffix tree}
+  \begin{figure}\includegraphics[scale=0.8]{mem.png}\end{figure}
+\end{frame}
+\begin{frame}
+  \frametitle{Find MUM in suffix tree}
+  \begin{figure}\includegraphics[scale=0.8]{mum.png}\end{figure}
 \end{frame}
 \section{Objectives}
 \begin{frame}
  \frametitle{General objective}
  \begin{block}{General objective}
-Speed up the search of exact matches (distributed) and adapt it to application MUMmer for its execution in HPC environments.
+Speed up the search of exact matches (distributed) considering the use of computer and memory resources; and adapt it to application MUMmer for its execution in HPC cluster multicore environments.
 \end{block}
 \end{frame}
 \begin{frame}
@@ -147,15 +89,13 @@ Speed up the search of exact matches (distributed) and adapt it to application M
 \end{frame}
 \begin{frame}
   \frametitle{Naive solution}
-  \begin{figure}\includegraphics[scale=0.6]{algorithm.pdf}\end{figure}
+  \begin{figure}\includegraphics[scale=0.45]{algorithm.png}\end{figure}
 \end{frame}
 \begin{frame}
   \frametitle{Split sequence}
   \begin{columns}
     \begin{column}{0.5\textwidth}
-  \begin{figure}
-    \includegraphics[scale=0.3]{split_ref.pdf}
-  \end{figure}
+  \begin{figure}\includegraphics[scale=0.3]{split_ref.pdf}\end{figure}
   \end{column}
   \begin{column}{0.5\textwidth}
   \begin{figure}
@@ -164,20 +104,45 @@ Speed up the search of exact matches (distributed) and adapt it to application M
 \end{column}
 \end{columns}
 \end{frame}
+%\begin{frame}
+%  \frametitle{Naive solution cont.}
+%  \begin{figure}\includegraphics[scale=0.4]{memsvsmums.pdf}\end{figure}
+%\end{frame}
 \begin{frame}
 \frametitle{Naive solution cont.}
   \begin{columns}
     \begin{column}{0.5\textwidth}
     \begin{figure}
-      \includegraphics[scale=0.5]{ref_naive.png}
+      \includegraphics[scale=0.5]{ex3.png}
     \end{figure}
   \end{column}
   \begin{column}{0.5\textwidth}
   \begin{figure}
-    \includegraphics[scale=0.5]{qry_naive.png}
+    \includegraphics[scale=0.5]{ex6.png}
   \end{figure}
 \end{column}
 \end{columns}
+\end{frame}
+\begin{frame}
+  \frametitle{Merge phase algorithm}
+  \begin{block}{}
+    We require to drop those MEMs that are covered by a bigger MEM.
+  \end{block}
+  \begin{figure}\includegraphics[scale=0.3]{merge.pdf}\end{figure}
+\end{frame}
+\begin{frame}
+  \frametitle{Merge phase algorithm}
+  \begin{block}{}
+    Drop MEMs that are covered by the MEM of reference.
+  \end{block}
+  \begin{figure}\includegraphics[scale=0.3]{case3.pdf}\end{figure}
+\end{frame}
+\begin{frame}
+  \frametitle{Results of Merge phase}
+  \begin{block}{}
+    Merge of MEMs for chromosome 19 of homo sapiens and chimpanzee.
+  \end{block}
+  \begin{figure}\includegraphics[scale=0.4]{hspanMEMGlobal.pdf}\end{figure}
 \end{frame}
 \section{Distributed suffix tree}
 \begin{frame}
@@ -197,63 +162,59 @@ Speed up the search of exact matches (distributed) and adapt it to application M
     \includegraphics[scale=0.8]{distributed.png}
   \end{figure}
 \end{frame}
-\begin{frame}
-  \frametitle{Traversal of a suffix tree}
-  \begin{block}{}
-   Every suffix of query (pointer) is searched in suffix tree. By using suffix links 
-   we jump to other depth of suffix tree and we avoid to check $x$ characters.
- \end{block}
-  \begin{figure}\includegraphics[scale=0.4]{r57-q57-l5.png}\end{figure}
-\end{frame}
-\begin{frame}
-  \frametitle{Traversal of a suffix tree}
-  \begin{block}{}
-    The jumps in suffix tree are done while checking the parent node after finishing the last match.
-  \end{block}
-  \begin{figure}\includegraphics[scale=0.4]{r312kbp-q308kbp-l20.png}\end{figure}
-\end{frame}
-\begin{frame}
-  \frametitle{Suffix links}
-  \begin{block}{}
-    The location of suffix links are made during suffix tree construction.
-  \end{block}
-  \begin{figure}\includegraphics[scale=0.5]{histogram2.png}\end{figure}
-\end{frame}
-\begin{frame}
-  \frametitle{Suffix links}
-  \begin{block}{}
-    The location of suffix links are more likely to be in deeper regions of suffix tree.
-  \end{block}
-  \begin{figure}\includegraphics[scale=0.4]{histogram.png}\end{figure}
-\end{frame}
-\begin{frame}
-  \frametitle{Access to suffix tree}
-  \begin{block}{}
-    Finding of maximal matches (path from root) are marked in suffix tree.\\
-    Improved detection of maximal matches.
-  \end{block}
-  \begin{figure}
-    \includegraphics[scale=0.38]{freq.png}
-  \end{figure}
-\end{frame}
-\begin{frame}
-  \frametitle{Suffix tree: example}
-  \begin{block}{}
-  Standard suffix tree of aacacccacacaccacaaa\$ with standard suffix links.
-\end{block}
-  \begin{figure}
-    \includegraphics[scale=0.4]{dst1.png}
-  \end{figure}
-\end{frame}
-\begin{frame}
-  \frametitle{Distributed suffix tree}
-  \begin{block}{}
-  The SSTs for aacacccacacaccacaaa\$ with their respective root nodes labelled $r_{aa}, r_{ac}, r_{ca}, r_{cc}, r_{a\$}$ and $r_{\$}$.
-\end{block}
-\begin{figure} 
-\includegraphics[scale=0.36]{dst2.png}
-\end{figure}
-\end{frame}
+%\begin{frame}
+%  \frametitle{Traversal of a suffix tree}
+%  \begin{block}{}
+%   Every suffix of query (pointer) is searched in suffix tree. By using suffix links 
+%   we jump to other depth of suffix tree and we avoid to check $x$ characters.
+% \end{block}
+% \begin{figure}\includegraphics[scale=0.4]{sl-nosl.png}\end{figure}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Frequency of use of suffix links by depth}
+%  \begin{block}{}
+%    The minimum length of MEM rules the depth of traversal of suffix tree.
+%  \end{block}
+%  \begin{figure}\includegraphics[scale=0.4]{use-sl.png}\end{figure}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Distributed suffix tree}
+%  \begin{block}{}
+%    Let $f(p)$ be the frequency of prefix $p$ in reference genome $R$. Let $MTS$ be (Maximum Tree Size) the size of suffix tree in memory.\\
+%    Let $NS$ be size of a node of suffix tree in bytes.\\
+%    Our goal is to find a set of variable-length prefixes in $R$, so that $\forall p \epsilon R, f(p)<\frac{MTS}{2*NS}$
+%  \end{block}
+%  \begin{figure}\includegraphics[scale=0.5]{distributed.png}\end{figure}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Variable-length prefixes: human genome example}
+%  \begin{columns}
+%    \begin{column}{0.5\textwidth}
+%  \begin{figure}\includegraphics[scale=0.38]{human-freq2.png}\end{figure}
+%  \end{column}
+%  \begin{column}{0.5\textwidth}
+%  \begin{figure}\includegraphics[scale=0.38]{human-freq3.png}\end{figure}
+%  \end{column}
+%  \end{columns}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Suffix tree: example}
+%  \begin{block}{}
+%  Standard suffix tree of aacacccacacaccacaaa\$ with standard suffix links.
+%\end{block}
+%  \begin{figure}
+%   \includegraphics[scale=0.4]{dst1.png}
+%  \end{figure}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Distributed suffix tree}
+%  \begin{block}{}
+%  The SSTs for aacacccacacaccacaaa\$ with their respective root nodes labelled $r_{aa}, r_{ac}, r_{ca}, r_{cc}, r_{a\$}$ and $r_{\$}$.
+%\end{block}
+%\begin{figure} 
+%\includegraphics[scale=0.36]{dst2.png}
+%\end{figure}
+%\end{frame}
 %\begin{frame}
 %  \frametitle{Some definitions}
 %  \begin{block}{Sparse suffix tree (SST)}
@@ -314,12 +275,13 @@ Speed up the search of exact matches (distributed) and adapt it to application M
   \frametitle{Distributed and parallel search of maximal matches}
   \begin{figure}
     \includegraphics[scale=0.4]{dst_search.png}
-  \end{figure}
+   \end{figure}
 \end{frame}
 \section{Conclusions}
     \begin{frame}
     \frametitle{Conclusions}
     \begin{block}{First year}
+It has been improved the merge phase of naive parallelization.\\
 It has been adapted a data structure which can be deployed in HPC environments.\\
 It may be used to implement parallel and distributed techniques for search of maximal matches.\\
 This data structure is able of handling large input sequences to search maximal exact matches.
@@ -328,7 +290,9 @@ This data structure is able of handling large input sequences to search maximal 
 \begin{frame}
   \frametitle{Future work}
 \begin{block}{}
-Perform massive searchs of maximal matches: design and test a parallel and distributed algorithm to perform the search of maximal matches in HPC environments.
+Design and test the search of maximal matches in multicore environments.\\
+Implement Distributed Suffix Tree.\\
+Perform massive searches of maximal matches: design and test a parallel and distributed algorithm to perform the search of maximal matches in Distributed Suffix Tree for HPC multicore environments.
 \end{block}
 \end{frame}
 \section{}

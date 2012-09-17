@@ -82,7 +82,7 @@ El alineamiento de genomas es un modelo matemático utilizado por los biólogos 
       \item Eliminación: uno o varios nucleótidos se borran del genoma.
     \end{itemize}
 \end{itemize}
-Los algoritmos utilizados para el alineamiento de genomas presentan una alta demanda computacional debido al tamaño de los datos genómicos.\\
+%Los algoritmos utilizados para el alineamiento de genomas presentan una alta demanda computacional debido al tamaño de los datos genómicos.\\
 \indent
 Existe diferentes algoritmos propuestos para el alineamiento de dos secuencias como \cite{Needleman1970General} y \cite{Waterman}. Estos algoritmos funcionan bien con tamaños de secuencias pequeños como un gen, 20-30kbp\footnote{bp es la únidad básica de medida en las secuencias de ADN y representa la longitud de un nucleótido}. Sin embargo, son ineficaces al alinear genomas enteros. La complejidad computacional y espacial es $O(nm)$, donde $n$ y $m$ son las longitudes de los genomas a alinear. Estos algoritmos tienen problemas de mayores requerimientos de memoria o de tiempos de ejecución inaceptables.\\
 \indent
@@ -96,25 +96,22 @@ Existen diferentes aproximaciones para resolver el problema ver Figura \ref{fig:
 \begin{figure}[h] 
    \centering 
    \includegraphics[scale=0.3]{state.png} 
-   \caption{Diferentes soluciones al problema de la búsqueda de coincidencias exactas máximas para el genoma humano como referencia.} 
+   \caption{Diferentes estructuras de indexación para el problema de la búsqueda de coincidencias exactas máximas para el genoma humano como referencia.} 
    \label{fig:state} 
  \end{figure}
 \indent
-El árbol de sufijos es una estructura de datos que permite la b\'usqueda de 
-coincidencias exactas de longitud variable en tiempo lineal. Una coincidencia exacta de longitud $w$ ocurre en $r_{i}r_{i+1}\hdots r_{i+l-1}$ y $q_{j}q_{j+1}\hdots q_{j+l-1}$ si y solo si los sufijos $r_{i}r_{i+1}\hdots r_{n}$ y $q_{j}q_{j+1}\hdots q_{m}$ comparten un prefijo común de longitud mínima $l$. La búsqueda de coincidencias máximas exactas en un árbol de sufijos se realiza recorriendo el trayecto que es común a la secuencia de consulta hasta encontrar una discrepancia. Si la búsqueda termina en un nodo hoja, la coincidencia es única en la secuencia de referencia. Verificando el carácter inmediato anterior al inicio de esta coincidencia se puede determinar si es una coincidencia  máxima.\\
+El árbol de sufijos es una estructura de datos que permite la b\'usqueda de coincidencias exactas de longitud variable en tiempo lineal respecto a la longitud de la secuencia de consulta. Una coincidencia exacta de longitud $w$ ocurre en $r_{i}r_{i+1}\hdots r_{i+l-1}$ y $q_{j}q_{j+1}\hdots q_{j+l-1}$ si y solo si los sufijos $r_{i}r_{i+1}\hdots r_{n}$ y $q_{j}q_{j+1}\hdots q_{m}$ comparten un prefijo común de longitud mínima $l$. La búsqueda de coincidencias máximas exactas en un árbol de sufijos se realiza recorriendo el trayecto que es común a la secuencia de consulta hasta encontrar una discrepancia. Si la búsqueda termina en un nodo hoja, la coincidencia es única en la secuencia de referencia. Verificando el carácter inmediato anterior al inicio de esta coincidencia se puede determinar si es una coincidencia  máxima.\\
 \indent
-Este problema se presenta en aplicaciones de alineamiento de genomas donde el
-tama\~no de los genomas son de millones de caracteres y en consecuencia la búsqueda de MEMs es una tarea computacionalmente intensiva. Además, la razón de utilizar un árbol de sufijos radica en
-que la búsqueda de coincidencias exactas de longitud variable en un árbol de 
+Este problema se presenta en aplicaciones de alineamiento de genomas donde el tama\~no de los genomas son de millones de caracteres y en consecuencia la búsqueda de MEMs es una tarea computacionalmente intensiva. Además, la razón de utilizar un árbol de sufijos radica en que la búsqueda de coincidencias exactas de longitud variable en un árbol de 
 sufijos se realiza en tiempo lineal, gracias al uso de los enlaces de sufijos.\\
 \indent
 En consecuencia se busca \textbf{acelerar la búsqueda eficiente de 
 coincidencias exactas y que tenga en cuenta el uso de recursos de cómputo y
 memoria en un clúster multicore}. Las consideraciones que se toman en cuenta son:
 \begin{itemize}
-\item Reducir el número de operaciones en la búsqueda de MEMs.
-\item Almacenar genomas de mayor tamaño con la memoria disponible.
-\item Reducir los problemas de localidad en el árbol de sufijos.
+\item Reducir el número de operaciones en la búsqueda de MEMs: al agilizar la búsqueda se reduce el tiempo utilizado por cada MEM encontrado debido a que los MEMs son dependientes de los datos de entrada.
+\item Almacenar genomas de mayor tamaño con la memoria disponible: al utilizar un árbol de sufijos como estructura de indexación el tamaño del árbol se convierte en un problema cuando este no cabe en la memoria disponible. Se hace necesario diseñar estructuras de datos que permitan la indexación de genomas mayores.
+\item Reducir los problemas de localidad en el árbol de sufijos: al navegar en un árbol de sufijos puede ocurrir que ocurran fallos de cache.
 \end{itemize}
 \section{Introducción} 
 \subsection{MUM y MEM} 
@@ -146,7 +143,7 @@ El objetivo es buscar todas aquellas subcadenas que son comunes a las secuencias
  de la cadena \cite{Gusfield2007Algorithms}. Estas dos propiedades hacen al árbol
  de sufijos una estructura útil para un rango diverso de aplicaciones
  bioinformáticas, incluyendo: alineamiento de genomas \cite{Mummer3}.\\
-  \begin{figure}[h] 
+   \begin{figure}[h] 
    \centering 
    \includegraphics[scale=0.8]{st-mum.png} 
    \caption{Árbol de sufijos para la palabra atgtgtgtc\$.} 
@@ -166,7 +163,7 @@ las coincidencias encontradas no nos permiten identificar si son únicas ya que 
 que coincidencias se encontrarán posteriormente en el genoma de consulta.\\
 \indent
 En la Figura \ref{fig:st} se muestra como una secuencia de consulta es buscada en el árbol de sufijos. El
-árbol representa la secuencia de referencia atgtgtgtc\$. Las hojas representadas por cuadrados indican la
+árbol representa la secuencia de referencia atgtgtgtc\$. Las hojas representadas en la figura \ref{fig:st} por cuadrados indican la
 posición en la que inicia el sufijo. Por ejemplo, la hoja 7 representa el sufijo gtc\$ que inicia en la 
 posición 7 de la secuencia de referencia y que está formado por la secuencia de aristas etiquetadas desde la
 raíz hasta el nodo hoja 7. En el punto mostrado en la figura, se ha encontrado la coincidencia en la posición $i$,
@@ -174,7 +171,7 @@ indicada por la flecha. La coincidencia se extiende a la correspondiente posici�
 que la coincidencia es única en la referencia por que estamos ubicados en un nodo hoja. El número del nodo hoja
 nos da la posición de inicio de la coincidencia en la referencia.\\
 \indent
-Para encontrar la siguiente coincidencia, usamos los enlaces de sufijos, señalados en la Figura \ref{fig:st} por
+Para encontrar la siguiente coincidencia en la cadena de consulta, usamos los enlaces de sufijos, señalados en la Figura \ref{fig:st} por
 flechas punteadas. Estos enlaces son construidos para cada nodo interno en el árbol. Un enlace apunta de un nodo
 $x$ a un nodo $y$ si el sufijo de la raíz a $y$ es igual al sufijo desde la raíz a $x$ con el primer carácter 
 eliminado. Por ejemplo, la cadena del nodo $i$ en la Figura \ref{fig:st} es tgt y del nodo $i+1$ es gt. Esa es la
@@ -240,7 +237,7 @@ para la implementación del árbol de sufijos en $O(n)$.\\
 %\indent
 \subsection{Definición del problema a resolver}
 \indent
-El problema de la búsqueda de las coincidencias exactas máximas de una longitud mínima han sido identificados en varias aplicaciones, entre ellas MUMmer \cite{Mummer3}. Aunque el algoritmo de MUMmer realiza la búsqueda de coincidencias exactas máximas, los requerimientos de recursos de cómputo aún son altos debido al tamaño de los datos de entrada.\\
+El problema de la búsqueda de las coincidencias exactas máximas de una longitud mínima ha sido identificado en varias aplicaciones, entre ellas MUMmer \cite{Mummer3}. Aunque el algoritmo de MUMmer realiza la búsqueda de coincidencias exactas máximas, los requerimientos de recursos de cómputo aún son altos debido al tamaño de los datos de entrada.\\
 \indent
 %Se ha realizado un experimento para comparar las prestaciones de la búsqueda de
 %coincidencias exactas máximas utilizando un árbol de sufijos. En el Cuadro 
@@ -298,7 +295,7 @@ El problema de la búsqueda de las coincidencias exactas máximas de una longitu
 %\end{table} 
 %\indent
 Si la longitud de los genomas son muy grandes, ver Cuadro \ref{tab:buscar3}, 
-la cantidad de búsquedas son aumentan, el tiempo de búsqueda
+la cantidad de búsquedas aumentan, el tiempo de búsqueda
 crece linealmente y el uso de memoria se convierte en un problema a resolver si
 se considera la disponibilidad finita de memoria en la mayoría de sistemas de
 cómputo personales.\\
@@ -306,7 +303,7 @@ cómputo personales.\\
   \begin{small}
     \begin{center}
       \begin{tabular}{lllll}
-        Estructura & L [bp] & Cantidad  & Búsqueda [s] & Uso de\\
+        Estructura & L [bp\footnote{Par base, unidad básica de medición de nucleótidos en una secuencia de ADN.}] & Cantidad  & Búsqueda [s] & Uso de\\
         & & de búsquedas & & memoria [MB]\\
         \hline
         Árbol de sufijos & 20 & 9,87\e{18}  & 169189,4 & 48665,12\\
@@ -411,21 +408,168 @@ resolverse con estructuras de datos como el árbol de sufijos.
 %\caption{Estructuras de datos para la búsqueda de coincidencia exacta de cadenas.}
 %\label{tab:estructuras}
 %\end{table}
-\\Independientemente de la estructura de datos utilizada, lo que se desea es poder
+\indent
+Independientemente de la estructura de datos utilizada, lo que se desea es poder
 realizar búsquedas de coincidencias exactas a esa estructura de manera eficiente. 
 Una de las consultas en que se requiere realizar rápidamente, para el alineamiento 
 de genomas, es la búsqueda exacta de coincidencias máximas. 
 \section{Estado de la investigación}
+\subsection{Paralelización a nivel de datos: alineamiento de genomas}
+\indent
+La versión secuencial del algoritmo de MUMmer\footnote{Aplicación para el alineamiento de genomas con más de 700 referencias en artículos de investigación.}, requiere mayores recursos de cómputo conforme los genomas a alinear son de longitudes mayores. Un primer problema es cuando la referencia a indexar mediante el árbol de sufijos resulta en un árbol de mayor tamaño a la memoria disponible. El segundo problema es el tiempo empleado para procesar un genoma de consulta.\\
+\indent
+Es por ello que se realizó una evaluación de la viabilidad de utilizar la t\'ecnica de paralelización de datos en el alineamiento de genomas. Específicamente se evalúa que t\'ecnica de paralelización es mejor: dividir el genoma de referencia o dividir el genoma de consulta. En la figura \ref{fig:algo} se muestra la propuesta evaluada de paralelización a nivel de datos. La paralelización involucra que se realice una división del genoma con un tamaño fijo y una área de solapamiento. El tamaño del bloque es determinado por el número de instancias de ejecución que se tendrán y el solapamiento es utilizado para evitar perder alguna coincidencia debido a la división del genoma. Una vez hecha la división se procede a ejecutar la búsqueda de coincidencias exactas máximas. Al realizar la búsqueda de MEMs se tiene un conjunto de listas parciales de MEMs que se mezclan para obtener la lista global de MEMs que debe ser la misma a una ejecución serie.\\
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.4]{algorithm.png} 
+   \caption{Paralelización del alineamiento de genomas.} 
+   \label{fig:algo} 
+ \end{figure}
+\indent
+En las figuras \ref{fig:ecoli} y \ref{fig:hspan} se muestran los resultados de la paralelización del alineamiento de genomas reseñado en la figure \ref{fig:algo}. El problema que surge al realizar este tipo de paralelización es en la fase final de obtener la lista global de MEms. Esto es, se requiere contar con un algoritmo que permita descartar aquellos MEMs que están contenidos por otro MEM de mayor tamaño y que no son posible eliminar en la fase previa debido a que se requiere evaluar el resto de los MEMs.\\
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.4]{ecoli2012.pdf} 
+   \caption{Paralelización del alineamiento del genoma Ecoli con longitud de 5,4Mbp.} 
+   \label{fig:ecoli} 
+ \end{figure}
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.4]{hspan.pdf} 
+   \caption{Paralelización del alineamiento del cromosoma 19 del homo sapiens y el chimpanc\'e con longitud de 59Mbp.} 
+   \label{fig:hspan} 
+ \end{figure}
+\indent
+Una primera solución es evaluar para cada MEM si está cubierto por un MEM mayor en toda la lista. Esta solución simple ayuda debido a que tiene una complejidad $O(g^2)$ donde $g$ es la cantidad total de MEMs encontrados, es por ello que se necesita un algoritmo que permita efizcamente descartar aquellos MEMs que están repetidos y/o contenidos por otro MEM.\\
+\indent
+La propuesta para un nuevo algoritmo de mezcla final de MEMs toma en cuenta el principio de que basta con evaluar solo aquella región que contiene al MEM que estamos evaluando. De esa manera es posible disminuir la complejidad del algoritmo y el tiempo de cómputo total de la paralelización no sería penalizado por la última fase. El algoritmos es descrito a continuación:
+\begin{algorithmic}
+  \STATE Conjunto de MEMs parciales: A.
+  \STATE Quicksort de MEMs parciales por la posición en la consulta.
+  \FOR{$i=0$ a $N$}
+      \STATE $A[i].Good=TRUE$
+  \ENDFOR
+  \FOR{$i=0$ a $i<N-1$}
+      \IF{$!A[i].Good$}
+          \STATE Continuar.
+      \ENDIF
+      \STATE $i\_diag=A[i].Q-A[i].R$
+      \STATE $i\_fin=A[i].Q+A[i].Len$
+      \FOR{$j=i+1;j<N\&\&A[j].Q\le i\_fin;j++$}
+          \IF{$!A[j].Good$}
+              \STATE Continuar.
+          \ENDIF
+          \STATE $j\_diag=A[j].Q-A[j].R$
+          \IF{$i\_diag==j\_diag$}
+              \STATE $j\_extent=A[j].Len+A[j].Q-A[i].Q$
+              \IF{$j\_extent>A[i].Len$}
+                  \STATE $A[i].Len=j\_extent$
+                  \STATE $i\_end=A[i].Q+j\_extent$
+              \ENDIF
+              \STATE $A[j].Good=FALSE$
+          \ELSIF{$A[i].R==A[j].R$}
+              \STATE $olap=A[i].Q+A[i].Len-A[j].Q$
+              \IF{$A[i].Len<A[j].Len$}
+                  \IF{$olap\ge A[i].Len/2$}
+                      \STATE $A[i].Good=FALSE$
+                      \STATE Romper.
+                  \ENDIF
+              \ELSIF{$A[j].Len<A[i].Len$}
+                  \IF{$olap\ge A[j].Len/2$}
+                      \STATE $A[j].Good=FALSE$
+                  \ENDIF
+              \ELSE
+                  \IF{$olap\ge A[i].Len/2$}
+                      \STATE $A[j].Tentative=TRUE$
+                      \IF{$A[i].Tentative$}
+                          \STATE $A[i].Good=FALSE$
+                          \STATE Romper.
+                      \ENDIF
+                  \ENDIF
+              \ENDIF
+          \ELSIF{$A[i].Q==A[j].Q$}
+              \STATE $olap=A[i].R+A[i].Len-A[j].R$
+              \IF{$A[i].Len<A[j].Len$}
+                  \IF{$olap\ge A[i].Len/2$}
+                      \STATE $A[i].Good=FALSE$
+                      \STATE Romper.
+                  \ENDIF
+              \ELSIF{$A[j].Len<A[i].Len$}
+                  \IF{$olap\ge A[j].Len/2$}
+                      \STATE $A[j].Good=FALSE$
+                  \ENDIF
+              \ELSE
+                  \IF{$olap\ge A[i].Len/2$}
+                      \STATE $A[j].Tentative=TRUE$
+                      \IF{$A[i].Tentative$}
+                          \STATE $A[i].Good=FALSE$
+                          \STATE Romper.
+                      \ENDIF
+                  \ENDIF
+              \ENDIF
+          \ENDIF
+      \ENDFOR
+  \ENDFOR
+  \FOR{$i=j=0;i<N;i++$}
+      \IF{$A[i].Good$}
+          \IF{$i\ne j$}
+              \STATE $A[j]=A[i]$
+          \ENDIF
+          \STATE $j++$
+      \ENDIF
+  \ENDFOR
+  \STATE $N=j$
+  \FOR{$i=0;I<N;i++$}
+      \STATE $A[i].Good=FALSE$
+  \ENDFOR
+\end{algorithmic}
+\indent
+La complejidad del algoritmo descrito en el peor de los casos es $O(g)$ donde $g$ es el tamaño de la lista total de MEMs parciales, en el mejor de los casos es $O(g)$. Para el genoma Ecoli de longitud 5,4Mbp en donde se buscaron MEMs de longitud mínima de 20, la figura \ref{fig:ecoliFind} muestra el tiempo de cómputo utilizado en la fase de búsqueda de MEMs, en las figuras \ref{fig:ecoliMEMR} y \ref{fig:ecoliMEMQ} se muestra el tiempo utilizado en la fase de obtención de la lista de MEMs global.\\
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.4]{ecoli2012.pdf} 
+   \caption{Búsqueda de MEMs para el genoma Ecoli de longitud mínima 20.} 
+   \label{fig:ecoliFind} 
+ \end{figure}
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.7]{ex3.png} 
+   \caption{Evaluación de algoritmo de obtención de lista de MEMs global para el genoma Ecoli.} 
+   \label{fig:ecoliMEMR} 
+ \end{figure}
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.7]{ex6.png} 
+   \caption{Evaluación de algoritmo de obtención de lista de MEMs global para el genoma Ecoli.} 
+   \label{fig:ecoliMEMQ} 
+ \end{figure}
+\indent
+Un segundo experimento se llevo a cabo evaluando la viabilidad de la propuesta descrita utilizando el cromosoma 19 del homo sapiens y del chimpanc\'e. La búsqueda de MEMs de longitud mínima de 2000 se muestra en la figura \ref{fig:hspanFind} y en la figura \ref{fig:hspanMEMGlobal} se muestra el tiempo de cómputo para la fase final.\\
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.4]{hspan.pdf} 
+   \caption{Búsqueda de MEMs para el cromosoma 19 del homo sapiens y el chimpanc\'e de longitud mínima 2000.} 
+   \label{fig:hspanFind} 
+ \end{figure}
+   \begin{figure}[h] 
+   \centering 
+   \includegraphics[scale=0.4]{hspanMEMGlobal.pdf} 
+   \caption{Evaluación de algoritmo de obtención de lista de MEMs global para el cromosoma 19 del homo sapiens y el chimpanc\'e.} 
+   \label{fig:hspanMEMGlobal} 
+ \end{figure}
+Un detalle importante de resaltar de la mejora realizada al algoritmo simple es la reducción de tiempo obtenido ya que el algoritmo simple tuvo un tiempo de ejecución de más de 7 horas. La mejora en el algoritmo de mezcla de las listas parciales de MEMs en una lista global de MEMs es debido a que el algoritmo simple era muy lento debido a su complejidad computacional $O(g^2)$, donde $g$ es la lista total de MEMs.\\
+El primer algoritmo simple realizaba la comparación de cada MEM contra toda la lista de MEMs para determinar si estaba contenido o no por otro MEM. La segunda versión propuesta permite realizar la mezcla de MEMs parciales considerando solo la región en la que se podrían encontrar MEMs cubiertos por un MEM mayor. Está mejora ha permitido reducir el tiempo de cómputo y garantizar que la última fase de esta primera aproximación de paralelización del alineamiento de genomas no se vea afectado por la última fase incluida en la figura \ref{fig:algo}.
 \subsection{Búsqueda distribuida de coincidencias exactas: árbol de sufijos distribuido}
 \indent
 El problema de mejorar el tiempo de cómputo de las búsquedas de coincidencias 
-exactas nos da una oportunidad de utilizar el poder del HPC para reducir el
+exactas nos da una oportunidad de utilizar el HPC para reducir el
 tiempo de procesamiento. Se propone modificar la estructura de datos utilizada en 
-MUMmer (árbol de sufijos) para mejorar las búsquedas de coincidencias exactas en 
-grandes volúmenes de datos, considerando un uso eficiente de los recursos. Para 
+MUMmer (árbol de sufijos) para mejorar las búsquedas de coincidencias exactas entre
+un genoma de referencia y uno de consulta dada una longitud mínima de coincidencia,
+considerando un uso eficiente de los recursos. Para 
 ello se tomarán en cuenta los siguientes parámetros: 
 \begin{itemize}
-\item Reducir el número de operaciones en la búsqueda de MEMs.
+\item Optimizar el número de operaciones en la búsqueda de MEMs.
 \item Tamaño del genoma de referencia y consulta.
 \item Memoria principal disponible en cada nodo de cómputo.
 %\item Búsqueda distribuida de coincidencias exactas.
@@ -454,7 +598,7 @@ de $t$.
 Un sufijo de $t$ se repite si ocurre al menos una vez como una subcadena no sufijo de $t$.
 Además requerimos especificar que sufijos de $t$ se incluyen en un subárbol de sufijos. Esto
 se hace considerando un prefijo de longitud variable $z$, y el conjunto de prefijos de longitud variable representan 
-los subárboles que se almacenan en cada uno de los nodos de cómputo del clúster multicore HPC. El conjunto de prefijos de longitud variable es una idea ya propuesta en \cite{Ghoting2010} que consiste en encontrar la frecuencia de prefijos que cumplen la ecuación \ref{eq:fp}, en la que $f(p)$ es la frecuencia del prefijo $p$, $MTS$ es el tamaño máximo del árbol de sufijos y $NS$ es el tamaño del nodo de un árbol de sufijos en bytes. El factor de 2 es debido a que podemos tener a lo sumo $f(p)$ nodos internos y $f(p)$ nodos hojas.
+los subárboles que se almacenan en cada uno de los nodos de cómputo del clúster multicore. El conjunto de prefijos de longitud variable es una idea ya propuesta en \cite{Ghoting2010} que consiste en encontrar la frecuencia de prefijos que cumplen la ecuación \ref{eq:fp}, en la que $f(p)$ es la frecuencia del prefijo $p$, $MTS$ es el tamaño máximo del árbol de sufijos y $NS$ es el tamaño del nodo de un árbol de sufijos en bytes. El factor de 2 es debido a que podemos tener a lo sumo $f(p)$ nodos internos y $f(p)$ nodos hojas.
 \begin{center}
 \begin{myeq}[!ht]
 \begin{equation}
@@ -529,7 +673,7 @@ Los genomas utilizados en las pruebas fueron:
 \item EcoliO157H7 (5,3Mbp).
 \end{itemize}
 \indent
-El primer elemento a evaluar fue la viabilidad de los enlaces de sufijos al buscar MEMs de diferentes longitudes. Este experimento se realiza para el cromosoma 2 del ser humano como referencia y el cromosoma 1 del chimpancé como consulta. La búsqueda a realizar es de MEM. Se evalúan dos mecanismos de búsqueda de MEMs:
+El primer elemento a evaluar fue la utilización de los enlaces de sufijos al buscar MEMs de diferentes longitudes. Este experimento se realiza para el cromosoma 2 del ser humano como referencia y el cromosoma 1 del chimpancé como consulta. La búsqueda a realizar es de MEM. Se evalúan dos mecanismos de búsqueda de MEMs:
 \begin{itemize}
 \item Cada sufijo inicia la búsqueda desde la raíz.
 \item Cada sufijo utiliza el enlace de sufijo.
@@ -630,7 +774,7 @@ El siguiente paso es determinar los enlaces de sufijos distribuidos para cada un
 \label{fig:dsl2}
 \end{minipage}
 \end{figure}
-El resultado del árbol de sufijos distribuido es garantizar la búsqueda de coincidencias exactas máximas en el árbol de sufijos disperso y minizar el traslado de peticiones de búsqueda en árboles externos, las figuras \ref{fig:dsl1,fig:dsl2} demuestran que el impacto de distribuir el árbol de sufijos será mínimo.\\
+El resultado del árbol de sufijos distribuido es garantizar la búsqueda de coincidencias exactas máximas en el árbol de sufijos disperso y minizar el traslado de peticiones de búsqueda en árboles externos, las figuras \ref{fig:dsl1} y \ref{fig:dsl2} demuestran que el impacto de distribuir el árbol de sufijos será mínimo.\\
 \indent
 En la figura \ref{fig:dst} se muestra el árbol de sufijos distribuido con cada uno de los árboles de sufijos disperso. Para una
 cadena aacacccacacaccacaaa\$ con sus respectivos nodos raíz etiquetados como $r_{aa}, r_{ac}, r_{ca}, r_{cc}, r_{a\$}$ and $r_{\$}$.
@@ -696,7 +840,7 @@ ejecución en las instalaciones de EMBL. Redactar la tesis doctoral y preparar s
 \noindent
 Ninguna.
 \section{Publicaciones previstas}
-Asia Pacific Bioinformatics Conference - \href{http://www.apbc2013.org/}{APBC} - Julio 2012 : Una tema de investigación en el congreso es Comparative genomics que forma parte del problema que se está resolviendo, el alineamiento de genomas.\\
+%Asia Pacific Bioinformatics Conference - \href{http://www.apbc2013.org/}{APBC} - Julio 2012 : Una tema de investigación en el congreso es Comparative genomics que forma parte del problema que se está resolviendo, el alineamiento de genomas.\\
 IEEE International Symposium on Parallel and Distributed Processing with Applications - \href{http://www.arcos.inf.uc3m.es/ispa12/}{ISPA} - Enero 2013 : La estructura del árbol de sufijos distribuidos forma parte de los temas de investigación en este congreso.\\
 International Conference on Parallel Processing - \href{http://www.grs-sim.de/news-events/news-archive/euro-par-2013.html}{Euro-Par} - Febrero 2013 : El algoritmo de búsqueda de coincidencias exactas máximas distribuida forma parte de los temas aboradados en este congreso.\\
 European Symposium on Algorithms - \href{http://esa-symposium.org/}{ESA} - Abril 2013 : El algoritmo de búsqueda distribuida de coincidencias exactas máximas distribuida forma parte de los temas abordados en este congreso.\\
@@ -704,6 +848,7 @@ International Symposium on Algorithms and Computation - \href{http://www.is.tite
 \section{Conclusiones}
 \indent
 Durante este primer año de investigación doctoral se ha estudiado y evaluado la estructura de datos utilizada en la aplicación MUMMer.
+Se ha mejorado la fase de obtención de la lista final de MEMs reduciendo la complejidad del algoritmo utilizado previamente.
 Se han diseñado diferentes experimentos para determinar la mejor manera de dividir dicha estructura y aprovechar la nueva estructura
 en entornos de HPC. Se evalúo la utilidad de los enlaces de sufijos en un árbol de sufijos y como se pueden aprovechar para la 
 búsqueda de coincidencias exactas máximas.\\
@@ -717,7 +862,7 @@ permite mejorar el tiempo de ejecución bajo entornos de HPC. Adicionalmente se 
 \begin{itemize}
   \item Política de carga de trabajo para cada árbol de sufijos disperso: garantizar que todas las búsquedas se resuelvan de manera local.
   \item Búsqueda de coincidencias exactas máximas en el árbol de sufijos disperso de forma paralela, es decir, realizar múltiples búsquedas
-    para distintos sufijos. 
+    para distintos sufijos bajo el paradigma de las arquitecturas multicore. 
 \end{itemize}
 \bibliographystyle{apalike} 
 \bibliography{references}	

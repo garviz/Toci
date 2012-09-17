@@ -222,9 +222,7 @@ Sint scanmultiplefastafile (Multiseq *multiseq,
   code is 0.
 */
 
-Sint getmaxmatinput (Multiseq *subjectmultiseq,
-                     bool matchnucleotidesonly,
-                     char *subjectfile)
+Sint getmaxmatinput (Multiseq *subjectmultiseq, bool matchnucleotidesonly, char *subjectfile)
 {
   Uint filelen;
   Uchar *filecontent;
