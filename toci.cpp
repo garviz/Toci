@@ -90,11 +90,11 @@ int main(int argc, char *argv[])
             MPI::Finalize();
             return EXIT_FAILURE;
         }
-        /*if(procmaxmatches(&mmcallinfo,&subjectmultiseq) != 0) {
+        if(procmaxmatches(&mmcallinfo,&subjectmultiseq) != 0) {
             fprintf(stderr,"%s: %s\n",argv[0],messagespace());
             MPI::Finalize();
             return EXIT_FAILURE;
-        }*/
+        }
         freemultiseq(&subjectmultiseq);
         cerr << "# Toci application for genome alignment for HPC environments" << endl;
         finish = MPI::Wtime();

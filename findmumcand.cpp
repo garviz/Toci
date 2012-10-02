@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
-#include <sparsehash/sparsetable>
+#include <google/sparsetable>
 #include "streedef.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
@@ -155,8 +155,7 @@ Sint findmumcandidates(Suffixtree *stree,
         *querysuffix;
   Location loc;
 
-  lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), 
-                                  query, right, 0);
+  lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), query, right, 0);
   for (querysuffix = query; lptr != NULL; querysuffix++)
   {
     if(loc.locstring.length >= minmatchlength &&
@@ -171,8 +170,7 @@ Sint findmumcandidates(Suffixtree *stree,
     }
     if (ROOTLOCATION (&loc))
     {
-      lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), 
-                                      lptr + 1, right, 0);
+      lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
     }
     else
     {

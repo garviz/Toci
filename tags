@@ -3,7 +3,8 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_VERSION	5.8	//
+A	procmaxmat.cpp	/^Match_t  * A = NULL;$/;"	v
 ACCESSBRANCHBROTHER	streemac.h	26;"	d
 ACCESSDEPTH	streemac.h	22;"	d
 ACCESSFIRSTCHILD	streemac.h	25;"	d
@@ -17,28 +18,17 @@ ALLOCVIAFATAL	space.cpp	51;"	d	file:
 ARGS_H	args.h	12;"	d
 ARRAYDEF_H	arraydef.h	12;"	d
 ASSIGNDEFAULTSHOWDESC	multidef.h	74;"	d
-ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	125;"	d	file:
-Acknowledgements	papers/APBC2012/wga_APBC2012.tex	/^    Text for this section \\ldots$/;"	s
-Additional Files	papers/APBC2012/wga_APBC2012.tex	/^    still be described here.$/;"	s
-Additional file 1 --- Sample additional file title	papers/APBC2012/wga_APBC2012.tex	/^\\section*{Additional Files}$/;"	u
-Additional file 2 --- Sample additional file title	papers/APBC2012/wga_APBC2012.tex	/^    refer to a multi-page table or a figure.$/;"	u
-Another methods sub-heading for this section	papers/APBC2012/wga_APBC2012.tex	/^    Text for this sub-section \\ldots$/;"	u
-Another results sub-heading	papers/APBC2012/wga_APBC2012.tex	/^      Text for this sub-sub-section \\ldots$/;"	u
-Another sub-sub-sub-heading	papers/APBC2012/wga_APBC2012.tex	/^	  Text for this sub-sub-section \\ldots$/;"	b
+ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	344;"	d	file:
 ArrayCharacters	arraydef.h	/^typedef ArrayUchar ArrayCharacters;     \/\/ \\Typedef{ArrayCharacters}$/;"	t
 ArrayPosition	arraydef.h	/^typedef ArrayUint  ArrayPosition;       \/\/ \\Typedef{ArrayPosition}$/;"	t
 ArrayStrings	arraydef.h	/^struct ArrayStrings$/;"	s
-Authors contributions	papers/APBC2012/wga_APBC2012.tex	/^    Text for this sub-section \\ldots$/;"	s
 BRADDR2NUM	streemac.h	60;"	d
-Background	papers/APBC2012/wga_APBC2012.tex	/^\\ifthenelse{\\boolean{publ}}{\\begin{multicols}{2}}{}$/;"	s
-Background 	papers/APBC2012/wga_APBC2012.tex	/^\\begin{abstract}$/;"	P
 Blockdescription	space.cpp	/^struct Blockdescription$/;"	s	file:
 Branchinfo	streetyp.h	/^struct Branchinfo$/;"	s
 Bref	streetyp.h	/^DECLAREARRAYSTRUCT(Bref);$/;"	v
 Bref	streetyp.h	/^typedef Uint * Bref;    \/\/ \\Typedef{Bref}$/;"	t
 Bref	types.h	/^typedef Uint * Bref;    $/;"	t
-By_Cluster	mgaps.cpp	/^static int  By_Cluster$/;"	f	file:
-By_Start2	mgaps.cpp	/^static int  By_Start2$/;"	f	file:
+By_Q	procmaxmat.cpp	/^static int  By_Q (const void * A, const void * B)$/;"	f	file:
 CHARDEF_H	chardef.h	12;"	d
 CHECKADDR	streemac.h	66;"	d
 CHECKARGNUM	args.h	28;"	d
@@ -58,21 +48,11 @@ CONSTRUCTSTREE	streemac.h	33;"	d
 COPYMULTISEQ	multiseq.cpp	51;"	d	file:
 CREATEMEMORYMAP	spacedef.h	96;"	d
 CREATEMEMORYMAPFORFILEDESC	spacedef.h	99;"	d
-Check_Labels	mgaps.cpp	/^static int  Check_Labels = FALSE;$/;"	v	file:
-CompareIUPAC	tigrinc.cpp	/^bool CompareIUPAC (char x, char y)$/;"	f
-Complement	tigrinc.cpp	/^char  Complement  (char Ch)$/;"	f
-Conclusions	eval2012/evaluation2012.tex	/^\\end{frame}$/;"	s
-Conclusions	papers/APBC2012/wga_APBC2012.tex	/^    Text for this sub-section.  More results \\ldots$/;"	s
-Conclusions 	papers/APBC2012/wga_APBC2012.tex	/^        \\paragraph*{Results:} Text for this section of the abstract \\ldots$/;"	P
 DECLAREARRAYSTRUCT	arraydef.h	41;"	d
 DECLAREEXTRA	construct.cpp	680;"	d	file:
 DECLAREEXTRA	construct.cpp	807;"	d	file:
 DECLAREEXTRA	findmaxmat.cpp	29;"	d	file:
 DEFAULTMINUNIQUEMATCHLEN	maxmatopt.cpp	33;"	d	file:
-DEFAULT_FIXED_SEPARATION	mgaps.cpp	/^const int  DEFAULT_FIXED_SEPARATION = 5;$/;"	v
-DEFAULT_MAX_SEPARATION	mgaps.cpp	/^const long int  DEFAULT_MAX_SEPARATION = 1000;$/;"	v
-DEFAULT_MIN_OUTPUT_SCORE	mgaps.cpp	/^const long int  DEFAULT_MIN_OUTPUT_SCORE = 200;$/;"	v
-DEFAULT_SEPARATION_FACTOR	mgaps.cpp	/^const double  DEFAULT_SEPARATION_FACTOR = 0.05;$/;"	v
 DELETEMEMORYMAP	spacedef.h	102;"	d
 DESCRIPTIONLENGTH	multidef.h	66;"	d
 DESCRIPTIONPTR	multidef.h	63;"	d
@@ -82,8 +62,6 @@ DIV2	types.h	40;"	d
 DIVBYSMALLINTS	streehuge.h	33;"	d
 DIVWORDSIZE	intbits.h	47;"	d
 DYNAMICSTRDUP	spacedef.h	93;"	d
-Distributed and parallel search of maximal matches	eval2012/evaluation2012.tex	/^\\end{frame}$/;"	s
-Distributed suffix tree	eval2012/evaluation2012.tex	/^\\end{frame}$/;"	s
 ERROR0	errordef.h	60;"	d
 ERROR1	errordef.h	63;"	d
 ERROR2	errordef.h	66;"	d
@@ -94,9 +72,6 @@ ERRORDEF_H	errordef.h	12;"	d
 EXCEPTFIRSTBIT	intbits.h	41;"	d
 EXCEPTFIRSTTHREEBITS	intbits.h	45;"	d
 EXCEPTFIRSTTWOBITS	intbits.h	43;"	d
-EXIT_FAILURE	tigrinc.hh	21;"	d
-EXIT_SUCCESS	tigrinc.hh	24;"	d
-FALSE	tigrinc.hh	19;"	d
 FASTASEPARATOR	multidef.h	52;"	d
 FINALPROGRESS	construct.cpp	714;"	d	file:
 FINALPROGRESS	construct.cpp	812;"	d	file:
@@ -105,14 +80,8 @@ FIRSTTWOBITS	intbits.h	39;"	d
 FOLLOWSUFFIXLINK	streeacc.h	157;"	d
 FREEARRAY	arraydef.h	116;"	d
 FREESPACE	spacedef.h	80;"	d
-Figure 1 - Sample figure title	papers/APBC2012/wga_APBC2012.tex	/^\\section*{Figures}$/;"	u
-Figure 2 - Sample figure title	papers/APBC2012/wga_APBC2012.tex	/^      should go here.$/;"	u
-Figures	papers/APBC2012/wga_APBC2012.tex	/^\\ifthenelse{\\boolean{publ}}{\\end{multicols}}{}$/;"	s
-File_Open	tigrinc.cpp	/^FILE *  File_Open  (const char * Filename, const char * Mode)$/;"	f
-Filter_Matches	mgaps.cpp	/^static void  Filter_Matches$/;"	f	file:
-Find	mgaps.cpp	/^static int  Find$/;"	f	file:
+Filter_Matches	procmaxmat.cpp	/^static void  Filter_Matches (Match_t * A, int & N)$/;"	f	file:
 Findmatchfunction	procmaxmat.cpp	/^typedef Sint (*Findmatchfunction)(Suffixtree *,$/;"	t	file:
-Fixed_Separation	mgaps.cpp	/^static int  Fixed_Separation = DEFAULT_FIXED_SEPARATION;$/;"	v	file:
 GENERROR	errordef.h	45;"	d
 GETBOTH	streeacc.h	42;"	d
 GETBRANCHINDEX	streehuge.h	56;"	d
@@ -129,12 +98,10 @@ GETNEXTFREEINARRAY	arraydef.h	98;"	d
 GETONLYDEPTH	streeacc.h	90;"	d
 GETONLYHEADPOS	streeacc.h	72;"	d
 GETSUFFIXLINK	streehuge.h	67;"	d
-Good	mgaps.cpp	/^   unsigned int  Good : 1;$/;"	m	struct:Match_t	file:
+Good	procmaxmat.cpp	/^   unsigned int  Good : 1;$/;"	m	struct:Match_t	file:
 HIGHESTVISIBLE	visible.h	34;"	d
-INCR_SIZE	tigrinc.hh	27;"	d
 INITARRAY	arraydef.h	52;"	d
 INITBITTAB	intbits.h	59;"	d
-INIT_SIZE	tigrinc.hh	29;"	d
 INTBITS_H	intbits.h	12;"	d
 INTWORDSIZE	intbits.h	27;"	d
 INVISIBLE	visible.h	40;"	d
@@ -161,7 +128,7 @@ LEASTSHOWPROGRESS	findmaxmat.cpp	26;"	d	file:
 LOGWORDSIZE	types.h	35;"	d
 LOWESTVISIBLE	visible.h	28;"	d
 Leafinfo	streetyp.h	/^typedef Reference Leafinfo;  \/\/ \\Typedef{Leafinfo}$/;"	t
-Len	mgaps.cpp	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match_t	file:
+Len	procmaxmat.cpp	/^   long int  R, Q, Len;$/;"	m	struct:Match_t	file:
 ListType	types.h	/^struct ListType$/;"	s
 Location	streetyp.h	/^struct Location$/;"	s
 Lref	streetyp.h	/^typedef Uint * Lref;    \/\/ \\Typedef{Lref}$/;"	t
@@ -178,8 +145,6 @@ MAXMAPPEDFILES	mapfile.cpp	25;"	d	file:
 MAXMATDEF_H	maxmatdef.h	12;"	d
 MAXNUMOFQUERYFILES	maxmatdef.h	42;"	d
 MAXTEXTLEN	streehuge.h	60;"	d
-MAX_LINE	tigrinc.hh	30;"	d
-MEMs	procmaxmat.cpp	/^Uint MEMs=0;$/;"	v
 MIN	minmax.h	26;"	d
 MINEXTRA	construct.cpp	72;"	d	file:
 MINMAX_H	minmax.h	12;"	d
@@ -193,16 +158,11 @@ MULWORDSIZE	intbits.h	51;"	d
 MUMCAND_H	mumcand.h	12;"	d
 MUMcandidate	mumcand.h	/^DECLAREARRAYSTRUCT(MUMcandidate);$/;"	v
 MUMcandidate	mumcand.h	/^struct MUMcandidate$/;"	s
-MUMmer	papers/APBC2012/wga_APBC2012.tex	/^More complex dynamic programming methods can be used for alignment when the alignment error is expected to be low. For example, one can align two similar sequences with at most E differences (or errors) in time proportional to E times the length of the longer sequence.$/;"	u
-Match_t	mgaps.cpp	/^struct  Match_t$/;"	s	file:
+Match_t	procmaxmat.cpp	/^struct  Match_t$/;"	s	file:
 Matchprocessinfo	maxmatdef.h	/^struct Matchprocessinfo$/;"	s
-Max	mgaps.cpp	/^long int  Max  (long int A, long int B)$/;"	f
-Max_Separation	mgaps.cpp	/^static long int  Max_Separation = DEFAULT_MAX_SEPARATION;$/;"	v	file:
 Maxmatchinfo	findmaxmat.cpp	/^struct Maxmatchinfo$/;"	s	file:
-Methods	papers/APBC2012/wga_APBC2012.tex	/^  Text for this section \\ldots$/;"	s
-Methods sub-heading for this section	papers/APBC2012/wga_APBC2012.tex	/^\\section*{Methods}$/;"	u
-Min_Output_Score	mgaps.cpp	/^static long int  Min_Output_Score = DEFAULT_MIN_OUTPUT_SCORE;$/;"	v	file:
 Multiseq	multidef.h	/^struct Multiseq$/;"	s
+N	procmaxmat.cpp	/^long int  N = 0, Size = 500;$/;"	v
 NEWLINE	multiseq.cpp	39;"	d	file:
 NEXTNODE	streeacc.h	139;"	d
 NILBIT	streehuge.h	37;"	d
@@ -237,7 +197,6 @@ OPTSHOWREVERSEPOSITIONS	maxmatopt.cpp	/^  OPTSHOWREVERSEPOSITIONS,$/;"	e	enum:__
 OPTSHOWSEQUENCELENGTHS	maxmatopt.cpp	/^  OPTSHOWSEQUENCELENGTHS,$/;"	e	enum:__anon1	file:
 OPTSHOWSTRING	maxmatopt.cpp	/^  OPTSHOWSTRING,$/;"	e	enum:__anon1	file:
 OPTTABLE	maxmatopt.cpp	/^  OPTTABLE,$/;"	e	enum:__anon1	file:
-Objectives	eval2012/evaluation2012.tex	/^\\end{frame}$/;"	s
 OptionDescription	optdesc.h	/^struct OptionDescription$/;"	s
 Optionnumber	maxmatopt.cpp	/^} Optionnumber;$/;"	t	typeref:enum:__anon1	file:
 PARSEFLOATARG	args.h	53;"	d
@@ -251,31 +210,24 @@ PROCESSBRANCH2	dfs.cpp	138;"	d	file:
 PROCESSBRANCH2	dfs.cpp	60;"	d	file:
 PROCESSHEAD	construct.cpp	694;"	d	file:
 PROCESSHEAD	construct.cpp	810;"	d	file:
-PROCESSREALMUMS	procmaxmat.cpp	105;"	d	file:
+PROCESSREALMUMS	procmaxmat.cpp	324;"	d	file:
 PROTODEF_H	protodef.h	10;"	d
 PairUint	arraydef.h	/^DECLAREARRAYSTRUCT(PairUint);$/;"	v
 PairUint	types.h	/^struct PairUint$/;"	s
-Parallelism technique	papers/JP2012/wga_parallelization.tex	/^Based on some experiments, it is found that MUMs can cover 100\\% of the known conserved gene pairs. Moreover, finding all MUMs can be done in linear time.$/;"	s
-Parse_Command_Line	mgaps.cpp	/^static void  Parse_Command_Line$/;"	f	file:
 Pathinfo	streetyp.h	/^DECLAREARRAYSTRUCT(Pathinfo);$/;"	v
 Pathinfo	streetyp.h	/^struct Pathinfo$/;"	s
-Problem definition	eval2012/evaluation2012.tex	/^\\end{frame}$/;"	s
-Process_Cluster	mgaps.cpp	/^static int  Process_Cluster$/;"	f	file:
-Process_Matches	mgaps.cpp	/^static void  Process_Matches$/;"	f	file:
+Process_Matches	procmaxmat.cpp	/^static void  Process_Matches (Match_t * A, int N) \/\/  Process matches  A [1 .. N].$/;"	f	file:
 Processmatchfunction	maxmatdef.h	/^typedef Sint (*Processmatchfunction)$/;"	t
+Q	procmaxmat.cpp	/^   long int  R, Q, Len;$/;"	m	struct:Match_t	file:
 Qsortcomparefunction	types.h	/^typedef int (*Qsortcomparefunction)(const void *,const void *);$/;"	t
+R	procmaxmat.cpp	/^   long int  R, Q, Len;$/;"	m	struct:Match_t	file:
 RECALLBRANCHADDRESS	streeacc.h	189;"	d
 RECALLLEAFADDRESS	streeacc.h	187;"	d
 RECALLNEWLEAFADDRESS	streeacc.h	185;"	d
 RECALLSUCC	streeacc.h	177;"	d
 ROOT	streemac.h	45;"	d
 ROOTLOCATION	streemac.h	52;"	d
-Read_String	tigrinc.cpp	/^int Read_String  (FILE * fp, char * & T, long int & Size, char Name [],$/;"	f
 Reference	streetyp.h	/^struct Reference$/;"	s
-Results 	papers/APBC2012/wga_APBC2012.tex	/^        \\paragraph*{Background:} Text for this section of the abstract. $/;"	P
-Results and Discussion	papers/APBC2012/wga_APBC2012.tex	/^MUMmer, a widely-used bioinformatic application, is the tool that we use to solve the whole genome alignment problem. MUMmer assumes the sequences are closely related, and using this assumption can quickly compare sequences that are millions of nucleotides in length. The basis of the algorithm is a data structure known as a suffix tree, which allows one to find, extremely efficiently, all distinct subsequences in a given sequence. However the requirements of space needed to store the suffix tree in main memory make a non-viable structure when the suffix tree to be stored exceeds the available memory. The space complexity of the suffix tree used in MUMmer is $O(17n)$, where n is the length of the reference genome.\\\\$/;"	s
-Results sub-heading	papers/APBC2012/wga_APBC2012.tex	/^\\section*{Results and Discussion}$/;"	u
-Reverse_Complement	tigrinc.cpp	/^void  Reverse_Complement$/;"	f
 SECONDBIT	intbits.h	35;"	d
 SEPARATOR	chardef.h	22;"	d
 SETBRANCHNODEOFFSET	streehuge.h	87;"	d
@@ -303,7 +255,6 @@ SHOWVAL	streeacc.h	17;"	d
 SIMPLESTANDARDMESSAGE	errordef.h	101;"	d
 SMALLBIT	streehuge.h	36;"	d
 SMALLINTS	streehuge.h	30;"	d
-SMALL_INIT_SIZE	tigrinc.hh	28;"	d
 SPACEDEF_H	spacedef.h	12;"	d
 STANDARDMESSAGE	errordef.h	97;"	d
 STARTFACTOR	construct.cpp	68;"	d	file:
@@ -320,34 +271,22 @@ SYMBOL	symboldef.h	/^typedef Uint SYMBOL;$/;"	t
 SYMBOL	symboldef.h	/^typedef Ushort SYMBOL;$/;"	t
 SYMBOLBYTES	symboldef.h	13;"	d
 SYMBOLDEF_H	symboldef.h	10;"	d
-Safe_calloc	tigrinc.cpp	/^void *  Safe_calloc  (size_t N, size_t Len)$/;"	f
-Safe_malloc	tigrinc.cpp	/^void *  Safe_malloc  (size_t Len)$/;"	f
-Safe_realloc	tigrinc.cpp	/^void *  Safe_realloc  (void * Q, size_t Len)$/;"	f
-Separation_Factor	mgaps.cpp	/^static double  Separation_Factor = DEFAULT_SEPARATION_FACTOR;$/;"	v	file:
+Safe_malloc	procmaxmat.cpp	/^static void *  Safe_malloc  (size_t Len)$/;"	f	file:
+Safe_realloc	procmaxmat.cpp	/^static void *  Safe_realloc  (void * Q, size_t Len)$/;"	f	file:
 Seqinfo	multidef.h	/^struct Seqinfo$/;"	s
 Showdescinfo	multidef.h	/^struct Showdescinfo$/;"	s
-Simple_Adj	mgaps.cpp	/^   long int  Simple_Adj;$/;"	m	struct:Match_t	file:
-Simple_From	mgaps.cpp	/^   long int  Simple_From;$/;"	m	struct:Match_t	file:
-Simple_Score	mgaps.cpp	/^   long int  Simple_Score;$/;"	m	struct:Match_t	file:
 Simpleloc	streetyp.h	/^DECLAREARRAYSTRUCT(Simpleloc);$/;"	v
 Simpleloc	streetyp.h	/^struct Simpleloc$/;"	s
 Sint	arraydef.h	/^DECLAREARRAYSTRUCT(Sint);$/;"	v
 Sint	types.h	/^typedef signed long Sint;$/;"	t
-Start1	mgaps.cpp	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match_t	file:
-Start2	mgaps.cpp	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match_t	file:
+Size	procmaxmat.cpp	/^long int  N = 0, Size = 500;$/;"	v
 Stringtype	types.h	/^typedef ListType Stringtype;$/;"	t
 Suffixtree	streetyp.h	/^struct Suffixtree$/;"	s
 THIRDBIT	intbits.h	37;"	d
-TRUE	tigrinc.hh	18;"	d
 TYPES_H	types.h	20;"	d
-Table 1 - Sample table title	papers/APBC2012/wga_APBC2012.tex	/^\\section*{Tables}$/;"	u
-Table 2 - Sample table title	papers/APBC2012/wga_APBC2012.tex	/^      }$/;"	u
-Tables	papers/APBC2012/wga_APBC2012.tex	/^      Figure legend text.$/;"	s
-Tentative	mgaps.cpp	/^   unsigned int  Tentative : 1;$/;"	m	struct:Match_t	file:
-This is a sub-sub-heading	papers/APBC2012/wga_APBC2012.tex	/^  \\subsection*{Results sub-heading}$/;"	b
+Tentative	procmaxmat.cpp	/^   unsigned int  Tentative : 1;$/;"	m	struct:Match_t	file:
 ThreeUint	arraydef.h	/^DECLAREARRAYSTRUCT(ThreeUint);$/;"	v
 ThreeUint	types.h	/^struct ThreeUint$/;"	s
-UF	mgaps.cpp	/^static int  * UF = NULL;$/;"	v	file:
 UNDEFCHAR	chardef.h	24;"	d
 UNDEFFILESEP	multidef.h	85;"	d
 UNDEFINEDREFERENCE	streehuge.h	59;"	d
@@ -358,18 +297,12 @@ Uchar	types.h	/^typedef unsigned char Uchar;$/;"	t
 Uint	arraydef.h	/^DECLAREARRAYSTRUCT(Uint);$/;"	v
 Uint	types.h	/^typedef unsigned long Uint;$/;"	t
 UintConst	types.h	/^typedef const unsigned long UintConst;$/;"	t
-Union	mgaps.cpp	/^static void  Union$/;"	f	file:
-Usage	mgaps.cpp	/^static void  Usage$/;"	f	file:
-Use_Extents	mgaps.cpp	/^static int  Use_Extents = FALSE;$/;"	v	file:
 Ushort	arraydef.h	/^DECLAREARRAYSTRUCT(Ushort);$/;"	v
 Ushort	types.h	/^typedef unsigned short Ushort;$/;"	t
 VALIDINIT	construct.cpp	24;"	d	file:
 VISIBLECHAR	visible.h	48;"	d
 VISIBLE_H	visible.h	13;"	d
 WILDCARD	chardef.h	23;"	d
-Yet another results sub-heading	papers/APBC2012/wga_APBC2012.tex	/^    Text for this sub-section \\ldots$/;"	u
-Yet another sub-heading for this section	papers/APBC2012/wga_APBC2012.tex	/^    Text for this sub-section \\ldots$/;"	u
-__TIGRINC_HH	tigrinc.hh	2;"	d
 activeblocks	space.cpp	/^void activeblocks(void)$/;"	f
 addoption	procopt.cpp	/^Sint addoption(OptionDescription *options,Uint numofoptions,$/;"	f
 address	streetyp.h	/^  Uint *address;$/;"	m	struct:Reference
@@ -389,8 +322,6 @@ checkiflocationisMUMcand	findmumcand.cpp	/^static Sint checkiflocationisMUMcand 
 checklocation	streedbg.cpp	/^void checklocation(Suffixtree *stree,Location *loc)$/;"	f
 checkspaceleak	space.cpp	/^void checkspaceleak(void)$/;"	f
 checkstree	streedbg.cpp	/^void checkstree(Suffixtree *stree)$/;"	f
-chunk	mems.pl	/^sub chunk$/;"	s
-cluster_id	mgaps.cpp	/^   int  cluster_id : 30;$/;"	m	struct:Match_t	file:
 cmaxmatch	maxmatdef.h	/^       cmaxmatch,               \/\/ compute all maximal matches$/;"	m	struct:MMcallinfo
 cmum	maxmatdef.h	/^       cmum,                   \/\/ compute MUMs$/;"	m	struct:Matchprocessinfo
 cmum	maxmatdef.h	/^       cmum;                    \/\/ compute real matches unique in both sequences$/;"	m	struct:MMcallinfo
@@ -401,6 +332,7 @@ compareMUMcandidates	cleanMUMcand.cpp	/^static Sint compareMUMcandidates(MUMcand
 comparelocs	streedbg.cpp	/^static Sint comparelocs(Suffixtree *stree,Location *loc1,Location *loc2)$/;"	f	file:
 completelarge	construct.cpp	/^static void completelarge(Suffixtree *stree)$/;"	f	file:
 constructprogressstree	construct.cpp	/^Sint constructprogressstree(Suffixtree *stree,Uchar *text,Uint textlen,void (*progress)(Uint,void *),void (*finalprogress)(void *),void *info)$/;"	f
+counter	prefix.hpp	/^        int counter;$/;"	m	class:prefix
 createTable	distribute.cpp	/^void createTable(Suffixtree *stree, sparsetable<Uint*> &table, Uint wordsize) $/;"	f
 creatememorymap	mapfile.cpp	/^\/*@null@*\/ void *creatememorymap(char *file,Uint line,char *filename,bool writemap,Uint *numofbytes)$/;"	f
 creatememorymapforfiledesc	mapfile.cpp	/^\/*@null@*\/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,bool writemap,Uint $/;"	f
@@ -447,8 +379,10 @@ freemultiseq	multiseq.cpp	/^void freemultiseq(Multiseq *multiseq)$/;"	f
 freespaceviaptr	space.cpp	/^void freespaceviaptr(char *file,Uint line,void *ptr)$/;"	f
 freestree	construct.cpp	/^void freestree(Suffixtree *stree)$/;"	f
 generalcounter	streetyp.h	/^  void *generalcounter;$/;"	m	struct:Suffixtree
+getCounter	prefix.hpp	/^        const int getCounter() const$/;"	f	class:prefix
 getEdgelength	distribute.cpp	/^Uint getEdgelength(Uchar *left,Uchar *right)$/;"	f
 getMaxNodesNumber	streedbg.cpp	/^Uint getMaxNodesNumber(Suffixtree *stree)$/;"	f
+getPrefix	prefix.hpp	/^        const string getPrefix() const$/;"	f	class:prefix
 getbranchinfostree	access.cpp	/^void getbranchinfostree(Suffixtree *stree,Uint whichinfo,$/;"	f
 geterror	seterror.cpp	/^Sint geterror(void)$/;"	f
 getheadstringstree	access.cpp	/^void getheadstringstree(Suffixtree *stree,Stringtype *str)$/;"	f
@@ -456,7 +390,7 @@ getlargelinkconstruction	construct.cpp	/^static Uint getlargelinkconstruction(Su
 getlargelinkstree	access.cpp	/^Uint getlargelinkstree(\/*@unused@*\/ Suffixtree *stree,Bref btptr,Uint depth)$/;"	f
 getleafinfostree	access.cpp	/^void getleafinfostree(Suffixtree *stree,Leafinfo *leafinfo,Lref lptr)$/;"	f
 getmaxdesclen	procmaxmat.cpp	/^static Sint getmaxdesclen(Multiseq *multiseq)$/;"	f	file:
-getmaxmatinput	maxmatinp.cpp	/^Sint getmaxmatinput (Multiseq *subjectmultiseq,$/;"	f
+getmaxmatinput	maxmatinp.cpp	/^Sint getmaxmatinput (Multiseq *subjectmultiseq, bool matchnucleotidesonly, char *subjectfile)$/;"	f
 getmaxtextlenstree	access.cpp	/^Uint getmaxtextlenstree(void)$/;"	f
 getoptindent	procopt.cpp	/^static Uint getoptindent(int *excludetab,OptionDescription *opt,Uint numofopt)$/;"	f	file:
 getrecordnum	multiseq.cpp	/^Sint getrecordnum(Uint *recordseps,Uint numofrecords,Uint totalwidth,$/;"	f
@@ -495,7 +429,6 @@ linklocstree	linkloc.cpp	/^void linklocstree(Suffixtree *stree,Location *outloc,
 linkrootchildren	construct.cpp	/^static void linkrootchildren(Suffixtree *stree)$/;"	f	file:
 loc2stringstree	streedbg.cpp	/^static void loc2stringstree(Suffixtree *stree,Stringtype *s,Location *loc)$/;"	f	file:
 locstring	streetyp.h	/^  Stringtype locstring; \/\/ string represented by location$/;"	m	struct:Location
-main	mgaps.cpp	/^int  main$/;"	f
 main	toci.cpp	/^int main(int argc, char *argv[])$/;"	f
 makedepthtabstree	depthtab.cpp	/^void makedepthtabstree(ArrayUint *depthtab,Suffixtree *stree)$/;"	f
 makeleaflist	dfs.cpp	/^Sint makeleaflist(Suffixtree *stree,ArrayUint *leaflist,Reference *start)$/;"	f
@@ -546,6 +479,8 @@ originalsequence	multidef.h	/^        *originalsequence;             \/\/ NULL o
 overallsequences	multiseq.cpp	/^Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,$/;"	f
 parsemaxmatoptions	maxmatopt.cpp	/^Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])$/;"	f
 pos2pospair	multiseq.cpp	/^Sint pos2pospair(Multiseq *multiseq,PairUint *pos,Uint position)$/;"	f
+prefix	prefix.hpp	/^        string prefix;$/;"	m	class:prefix
+prefix	prefix.hpp	/^class prefix$/;"	c
 previousnode	streetyp.h	/^  Bref previousnode;    \/\/ reference to previous node (which is branching)$/;"	m	struct:Location
 processbranch1	findmaxmat.cpp	/^static bool processbranch1(Bref nodeptr,void *info)$/;"	f	file:
 processbranch2	findmaxmat.cpp	/^static Sint processbranch2(\/*@unused@*\/ Bref nodeptr,void *info)$/;"	f	file:
@@ -580,7 +515,7 @@ rootsucclocationsstree	access.cpp	/^void rootsucclocationsstree(Suffixtree *stre
 safestringcopy	safescpy.cpp	/^Sint safestringcopy(char *dest,char *source,Sint maxlen)$/;"	f
 scanmultiplefastafile	maxmatinp.cpp	/^Sint scanmultiplefastafile (Multiseq *multiseq,$/;"	f
 scanprefix	construct.cpp	/^static void scanprefix(Suffixtree *stree)$/;"	f	file:
-scanprefixfromnodestree	scanpref.cpp	/^Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,$/;"	f
+scanprefixfromnodestree	scanpref.cpp	/^Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar *left,Uchar *right,Uint rescanlength)$/;"	f
 scanprefixstree	scanpref.cpp	/^Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,$/;"	f
 secondtime	streetyp.h	/^  bool secondtime;$/;"	m	struct:DFSstate
 sentinel	streetyp.h	/^         *sentinel;           \/\/ points to the position of the \\(\\$\\)-symbol$/;"	m	struct:Suffixtree
@@ -588,6 +523,9 @@ seqlength	multidef.h	/^       seqlength,    \/\/ the length of the sequence$/;"	
 seqnum	multidef.h	/^  Uint seqnum,       \/\/ the sequence number in multiseq$/;"	m	struct:Seqinfo
 seqstartpos	multidef.h	/^       seqstartpos,  \/\/ the position of the first character in multiseq.sequence$/;"	m	struct:Seqinfo
 sequence	multidef.h	/^  Uchar *sequence,                     \/\/ the concatenated sequences$/;"	m	struct:Multiseq
+set	prefix.hpp	/^        void set (int counter)$/;"	f	class:prefix
+set	prefix.hpp	/^        void set (string prefix) $/;"	f	class:prefix
+set	prefix.hpp	/^        void set (string prefix, int counter)$/;"	f	class:prefix
 setatnewleaf	streetyp.h	/^  bool setatnewleaf;          \/\/ nil-reference is stored in new leaf$/;"	m	struct:Suffixtree
 setdepthtab	depthtab.cpp	/^static void setdepthtab(ArrayUint *depthtab,Uint depth)$/;"	f	file:
 seterror	seterror.cpp	/^void seterror(Sint code)$/;"	f

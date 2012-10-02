@@ -161,7 +161,10 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
         {
             end = seq + multiseq->markpos.spaceUint[i];
         }
-        apply(applyinfo,i,start,(Uint) (end - start)); 
+        Uint border=(end-start)/3;
+        apply(applyinfo,i,start,border); 
+        /*apply(applyinfo,i,&start[border],(Uint) (end - start)); */
+        //apply(applyinfo,i,start,(Uint) (end - start)); 
     }
   return 0;
 }

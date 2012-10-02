@@ -9,7 +9,7 @@
 #ifndef STREEACC_H
 #define STREEACC_H
 
-#include <sparsehash/sparsetable>
+#include <google/sparsetable>
 #include "streehuge.h"
 
 using google::sparsetable;

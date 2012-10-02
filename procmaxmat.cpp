@@ -12,7 +12,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <ctype.h>
-#include <sparsehash/sparsetable>
+#include <google/sparsetable>
 #include <math.h>
 #include <omp.h>
 #include <iterator>
@@ -56,7 +56,226 @@ typedef Sint (*Findmatchfunction)(Suffixtree *,
   The following function is imported from \texttt{findmumcand.c}.
 */
 
-Uint MEMs=0;
+
+struct  Match_t
+  {
+   long int  R, Q, Len;
+   unsigned int  Good : 1;
+   unsigned int  Tentative : 1;
+  };
+
+Match_t  * A = NULL;
+long int  N = 0, Size = 500;
+
+static void *  Safe_realloc  (void * Q, size_t Len)
+
+/* Reallocate memory for  Q  to  Len  bytes and return a
+*  pointer to the new memory.  Exit if fail. */
+
+  {
+   void  * P;
+
+   P = realloc (Q, Len);
+   if  (P == NULL)
+       {
+        fprintf (stderr,
+		 "ERROR:  realloc failed, there is not enough memory\n");
+        exit (EXIT_FAILURE);
+       }
+
+   return  P;
+  }
+
+static void *  Safe_malloc  (size_t Len)
+
+/* Allocate and return a pointer to  Len  bytes of memory.
+*  Exit if fail. */
+
+  {
+   void  * P;
+
+   P = malloc (Len);
+   if  (P == NULL)
+       {
+        fprintf (stderr,
+		 "ERROR:  malloc failed, there is not enough memory\n");
+        exit (EXIT_FAILURE);
+       }
+
+   return  P;
+  }
+
+static void  Filter_Matches (Match_t * A, int & N)
+
+//  Remove from  A [0 .. (N - 1)]  any matches that are internal to a repeat,
+//  e.g., if seq1 has 27 As and seq2 has 20 then the first and
+//  last matches will be kept, but the 6 matches in the middle will
+//  be eliminated.  Also combine overlapping matches on the same
+//  diagonal.  Pack all remaining matches into the front of  A  and
+//  reduce the value of  N  if any matches are removed.
+//  Matches in  A  *MUST* be sorted by  Start2  value.
+
+  {
+   int  i, j;
+   for  (i = 0;  i < N;  i ++)
+     A [i] . Good = true;
+
+   for  (i = 0;  i < N - 1;  i ++)
+     {
+      int  i_diag, i_end;
+
+      if  (! A [i] . Good)
+          continue;
+
+      i_diag = A [i] . Q - A [i] . R;
+      i_end = A [i] . Q + A [i] . Len;
+
+      for  (j = i + 1;  j < N && A [j].Q <= i_end;  j ++)
+        {
+         int  olap;
+         int  j_diag;
+
+         assert (A[i].Q <= A[j].Q);
+
+         if  (! A[j].Good)
+             continue;
+
+         j_diag = A[j].Q - A[j].R;
+         if  (i_diag == j_diag)
+             {
+              int  j_extent;
+
+              j_extent = A [j] . Len + A[j].Q - A[i].Q;
+              if  (j_extent > A[i].Len)
+                  {
+                   A[i].Len = j_extent;
+                   i_end = A[i].Q + j_extent;
+                  }
+              A[j].Good = false;
+             }
+         else if  (A[i].R == A[j].R)
+             {
+              olap = A[i].Q + A[i].Len - A[j].Q;
+              if  (A[i].Len < A[j].Len)
+                  {
+                   if  (olap >=  A[i].Len/2)
+                       {
+                        A[i].Good = false;
+                        break;
+                       }
+                  }
+              else if  (A[j].Len < A[i].Len)
+                  {
+                   if  (olap >= A[j].Len/2)
+                       {
+                        A[j].Good = false;
+                       }
+                  }
+                else
+                  {
+                   if  (olap >= A[i].Len/2)
+                       {
+                        A[j].Tentative = true;
+                        if  (A[i].Tentative)
+                            {
+                             A[i].Good = false;
+                             break;
+                            }
+                       }
+                  }
+             }
+         else if  (A[i].Q == A[j].Q)
+             {
+              olap = A[i].R + A[i].Len - A[j].R;
+              if  (A[i].Len < A[j].Len)
+                  {
+                   if  (olap >=  A[i].Len/2)
+                       {
+                        A[i].Good = false;
+                        break;
+                       }
+                  }
+              else if  (A[j].Len < A[i].Len)
+                  {
+                   if  (olap >= A[j].Len/2)
+                       {
+                        A[j].Good = false;
+                       }
+                  }
+                else
+                  {
+                   if  (olap >= A[i].Len/2)
+                       {
+                        A[j].Tentative = true;
+                        if  (A[i].Tentative)
+                            {
+                             A[i].Good = false;
+                             break;
+                            }
+                       }
+                  }
+             }
+        }
+     }
+
+   for  (i = j = 0;  i < N;  i ++)
+     if  (A[i].Good)
+         {
+          if  (i != j)
+              A[j] = A[i];
+          j ++;
+         }
+   N = j;
+
+   for  (i = 0;  i < N;  i ++)
+     A[i].Good = false;
+
+   return;
+  }
+
+static int  By_Q (const void * A, const void * B)
+
+//  Return how  A  and  B  compare if converted to  Match_t
+//  based on Query pos.  If  Query pos  values are equal use
+//  Reference pos  values for comparison.
+
+  {
+   Match_t  * x, * y;
+
+   x = (Match_t *) A;
+   y = (Match_t *) B;
+
+   if  (x->Q < y->Q)
+       return  -1;
+   else if  (x->Q > y->Q)
+       return  1;
+   else if  (x->R < y->R)
+       return  -1;
+   else if  (x->R > y->R)
+       return  1;
+     else
+       return  0;
+  }
+
+static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N].
+  {
+   long int  cluster_size, sep;
+   int  i;
+
+   if  (N <= 0)
+       return;
+
+   qsort (A + 1, N, sizeof (Match_t), By_Q);
+
+   //Filter_Matches (A + 1, N);
+
+   for  (i = 1;  i < N;  i ++)
+   { 
+       if  (!A[i].Good)
+           printf ("%8ld  %8ld  %8ld\n", A[i].R, A[i].Q, A[i].Len);
+   }
+   return;
+  }
 
 Sint findmumcandidates(Suffixtree *stree,
                        //sparsetable<Uint*> &table,
@@ -271,11 +490,18 @@ static Sint showmaximalmatch (void *info,
                               /*@unused@*/ Uint seqnum,
                               Uint querystart)
 {
+  if  (N >= Size - 1)
+  {
+      Size *= 2;
+      A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+  }
+  N++;
+  
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
   if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)  && !matchprocessinfo->fourcolumn)
   {
-    printf ("%8lu  ", (long unsigned int) (subjectstart+1));
+    A[N].R = (long unsigned int) (subjectstart+1);
   } else
   {       
     PairUint pp;
@@ -284,19 +510,19 @@ static Sint showmaximalmatch (void *info,
      return -1;
     pp.uint0 = 0;
     pp.uint1 = subjectstart;
-    /*printf("  ");
-    showsequencedescription(matchprocessinfo->subjectmultiseq,matchprocessinfo->maxdesclength,pp.uint0);*/
-    printf ("%8lu  ",(long unsigned int) (pp.uint1+1));
+    showsequencedescription(matchprocessinfo->subjectmultiseq,matchprocessinfo->maxdesclength,pp.uint0);
+    A[N].R =(long unsigned int) (pp.uint1+1);
   }
   if(matchprocessinfo->currentisrcmatch && matchprocessinfo->showreversepositions)
   {
-    printf ("%8lu  ", (long unsigned int) (matchprocessinfo->currentquerylen - querystart));
+    A[N].Q = (long unsigned int) (matchprocessinfo->currentquerylen - querystart);
   } else
   {
-    printf ("%8lu  ", (long unsigned int) (querystart+1));
+    A[N].Q = (long unsigned int) (querystart+1);
   }
-  printf ("%8lu\n", (long unsigned int) matchlength);
-  MEMs++;
+  A[N].Len = (long unsigned int) matchlength;
+  A[N].Good = false;
+  A[N].Tentative = false;
   return 0;
 }
 
@@ -408,6 +634,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     {
       return -1;
     }
+    cerr << "# Va por aquí " << __func__ << ":" << __LINE__ << endl;
     PROCESSREALMUMS;
   }
   if(matchprocessinfo->reversecomplement)
@@ -535,6 +762,8 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     return -2;
   }
   matchprocessinfo.maxdesclength = (Uint) retcode;
+  Size = 500;
+  A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
   for(filenum=0; filenum < mmcallinfo->numofqueryfiles; filenum++)
   {
     filecontent = (Uchar *) CREATEMEMORYMAP (mmcallinfo->queryfilelist[filenum],true,&filelen);
@@ -557,12 +786,13 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
       return -5;
     }
     freemultiseq(&matchprocessinfo.querymultiseq);
-  }
+   }
+  Process_Matches (A, N);
   if(mmcallinfo->cmum)
   {
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
-  //fprintf(stdout,"MEMs=%lu\n",(Sint)MEMs);
+  fprintf(stderr,"# Matches=%lu\n",(Sint)N);
   freestree (&matchprocessinfo.stree);
   return 0;
 }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  3 SEP 2012 11:54
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  27 SEP 2012 12:49
 entering extended mode
  %&-line parsing enabled.
 **simple.tex
@@ -347,17 +347,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 [2] [3] (./simple.aux) ) 
 Here is how much of TeX's memory you used:
  1459 strings out of 493848
- 16595 string characters out of 1152824
+ 16595 string characters out of 1152823
  74605 words of memory out of 3000000
  4763 multiletter control sequences out of 15000+50000
  8501 words of font info for 30 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 24i,7n,27p,636b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 24i,7n,27p,665b,235s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
 e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on simple.pdf (3 pages, 55055 bytes).
+Output written on simple.pdf (3 pages, 56646 bytes).
 PDF statistics:
  28 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

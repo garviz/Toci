@@ -25,9 +25,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
   return (Uint) (ptr1-start1);
 }
 
-Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
-                                           Bref btptr,Uchar *left,
-                                           Uchar *right,Uint rescanlength)
+Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar *left,Uchar *right,Uint rescanlength)
 {
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, node, distance = 0, prefixlen, headposition, tmpnodedepth, edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
@@ -50,15 +48,15 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,
   {
     remainingtoskip = 0;
   } else
-  {
-    remainingtoskip = rescanlength - nodedepth;
-  }
-  while(true)
-  {
-    if(lptr > right)   // check for empty word
-    {
-      return NULL;
-    }
+  { 
+    remainingtoskip = rescanlength - nodedepth; 
+  } 
+  while(true) 
+  { 
+    if(lptr > right)   // check for empty word 
+    { 
+      return NULL; 
+    } 
     firstchar = *lptr;
     //firstchar = 't';
     if(nodeptr == stree->branchtab)  // at the root

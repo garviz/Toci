@@ -73,6 +73,7 @@ Sint mumuniqueinquery(void *processinfo,
                      mumcand->nextfreeMUMcandidate;
         mumcandptr++)
     {
+      cerr << "# mumcandptr" << mumcandptr << endl;
       ignorecurrent = false;
       currentright = mumcandptr->dbstart + mumcandptr->mumlength - 1;
       if(dbright > currentright)

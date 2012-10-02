@@ -1,5 +1,5 @@
-# Fdb version 3
-["pdflatex"] 1346666076 "simple.tex" "simple.pdf" "simple" 
+# Fdb version 2
+["pdflatex"] 1348742993 "simple.tex" "simple.pdf" "simple" 
   "/usr/share/texmf-texlive/tex/generic/babel/babel.def" 1215520807 29228 699ca4762be67572f34cbe7344a39df8 ""
   "/usr/share/texmf-texlive/tex/generic/babel/spanish.ldf" 1254151917 22411 1e6267b5c158d44547eab536bce21408 ""
   "/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty" 1251330371 3249 15763257e50278eef5db1952ccde229c ""
@@ -15,10 +15,6 @@
   "/usr/share/texmf-texlive/tex/latex/base/utf8.def" 1254151887 6350 d390538f995713c986118b8607d58f49 ""
   "/usr/share/texmf-texlive/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
   "/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty" 1156702488 2266 7054435e4584a41cf53b0a7ca624d0cb ""
-  "/var/lib/texmf/tex/generic/babel/babel.sty" 1336147122 9196 7941d7b30577f4c2f84c82751b796f66 ""
-  "simple.aux" 1346666076 591 1875fb434740ca7d94e28820054defb6 ""
-  "simple.tex" 1346666075 3794 46e6dccdaba9d014cd4b729cc852182e ""
-  (generated)
-  "simple.pdf"
-  "simple.log"
-  "simple.aux"
+  "/var/lib/texmf/tex/generic/babel/babel.sty" 1348742439 9196 7941d7b30577f4c2f84c82751b796f66 ""
+  "simple.aux" 1348742993 591 1875fb434740ca7d94e28820054defb6 ""
+  "simple.tex" 1348673672 4979 d962bb01ac44226220a39f194431c5cc ""

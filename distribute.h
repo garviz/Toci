@@ -15,8 +15,8 @@
  *
  * =====================================================================================
  */
-#include <sparsehash/sparsetable>
-#include <sparsehash/sparse_hash_map>
+#include <google/sparsetable>
+#include <google/sparse_hash_map>
 #include <iostream>
 #include "streetyp.h"
 #include "maxmatdef.h"
