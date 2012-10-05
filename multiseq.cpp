@@ -144,7 +144,6 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
   {
     seq = multiseq->sequence;
   }
-  cerr << "# numofsequences: " << multiseq->numofsequences << endl;
     for(i = 0; i < multiseq->numofsequences; i++)
     {
         if(i == 0)
@@ -161,10 +160,7 @@ Sint overallsequences(bool rcmode,Multiseq *multiseq,void *applyinfo,
         {
             end = seq + multiseq->markpos.spaceUint[i];
         }
-        Uint border=(end-start)/3;
-        apply(applyinfo,i,start,border); 
-        /*apply(applyinfo,i,&start[border],(Uint) (end - start)); */
-        //apply(applyinfo,i,start,(Uint) (end - start)); 
+        apply(applyinfo,i,start,(Uint) (end - start)); 
     }
   return 0;
 }

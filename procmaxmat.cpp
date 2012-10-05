@@ -264,7 +264,6 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
 
    if  (N <= 0)
        return;
-
    qsort (A + 1, N, sizeof (Match_t), By_Q);
 
    //Filter_Matches (A + 1, N);
@@ -625,7 +624,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     matchprocessinfo->currentisrcmatch = false;
     if(findmatchfunction(&matchprocessinfo->stree,
                          matchprocessinfo->minmatchlength,
-                         matchprocessinfo->wordsize,
+                         matchprocessinfo->chunks,
                          processmatch,
                          info,
                          query,
@@ -634,7 +633,6 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     {
       return -1;
     }
-    cerr << "# Va por aquí " << __func__ << ":" << __LINE__ << endl;
     PROCESSREALMUMS;
   }
   if(matchprocessinfo->reversecomplement)
@@ -652,7 +650,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     matchprocessinfo->currentisrcmatch = true;
     if(findmatchfunction(&matchprocessinfo->stree, 
                          matchprocessinfo->minmatchlength,
-                         matchprocessinfo->wordsize,
+                         matchprocessinfo->chunks,
                          processmatch,
                          info,
                          query,
@@ -751,7 +749,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   matchprocessinfo.cmum = mmcallinfo->cmum;
   matchprocessinfo.cmumcand = mmcallinfo->cmumcand;
   matchprocessinfo.reversecomplement = mmcallinfo->reversecomplement;
-  matchprocessinfo.wordsize = mmcallinfo->wordsize;
+  matchprocessinfo.chunks = mmcallinfo->chunks;
   if(mmcallinfo->cmum)
   {
     INITARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);

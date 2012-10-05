@@ -73,7 +73,6 @@ Sint mumuniqueinquery(void *processinfo,
                      mumcand->nextfreeMUMcandidate;
         mumcandptr++)
     {
-      cerr << "# mumcandptr" << mumcandptr << endl;
       ignorecurrent = false;
       currentright = mumcandptr->dbstart + mumcandptr->mumlength - 1;
       if(dbright > currentright)
@@ -95,11 +94,7 @@ Sint mumuniqueinquery(void *processinfo,
       }
       if(mumcandptr > mumcand->spaceMUMcandidate && !ignoreprevious)
       {
-        if(processmum(processinfo, 
-                      (mumcandptr-1)->mumlength, 
-                      (mumcandptr-1)->dbstart, 
-                      (mumcandptr-1)->queryseq, 
-                      (mumcandptr-1)->querystart) != 0)
+        if(processmum(processinfo, (mumcandptr-1)->mumlength, (mumcandptr-1)->dbstart, (mumcandptr-1)->queryseq, (mumcandptr-1)->querystart) != 0)
         {
           return -1;
         }
@@ -108,13 +103,8 @@ Sint mumuniqueinquery(void *processinfo,
     }
     if(!ignoreprevious)
     {
-      mumcandptr = mumcand->spaceMUMcandidate + 
-                   mumcand->nextfreeMUMcandidate - 1;
-      if(processmum(processinfo, 
-                    mumcandptr->mumlength, 
-                    mumcandptr->dbstart, 
-                    mumcandptr->queryseq,
-                    mumcandptr->querystart) != 0)
+      mumcandptr = mumcand->spaceMUMcandidate + mumcand->nextfreeMUMcandidate - 1;
+      if(processmum(processinfo, mumcandptr->mumlength, mumcandptr->dbstart, mumcandptr->queryseq, mumcandptr->querystart) != 0)
       {
         return -1;
       }

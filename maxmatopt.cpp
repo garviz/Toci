@@ -32,6 +32,11 @@
 
 #define DEFAULTMINUNIQUEMATCHLEN 20
 
+/*
+ * The default chunk for a query sequence
+ */
+
+#define DEFAULTCHUNK 2
 //}
 
 /*EE
@@ -52,7 +57,7 @@ typedef enum
   OPTSHOWREVERSEPOSITIONS,
   OPTFOURCOLUMN,
   OPTSHOWSEQUENCELENGTHS,
-  OPTTABLE,
+  OPTCHUNKS,
   OPTH,
   OPTHELP,
   NUMOFOPTIONS
@@ -132,7 +137,7 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])
 	    "reference sequence inputs");
   ADDOPTION(OPTSHOWSEQUENCELENGTHS,"-L",
             "show the length of the query sequences on the header line");
-  ADDOPTION(OPTTABLE,"-T","size of the word to store in Direct access table");
+  ADDOPTION(OPTCHUNKS,"-C","number of chunks to split query sequence");
   ADDOPTION(OPTH,"-h",
 	    "show possible options");
   ADDOPTION(OPTHELP,"-help",
@@ -148,6 +153,7 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])
   mmcallinfo->cmumcand = false;
   mmcallinfo->cmaxmatch = false;
   mmcallinfo->minmatchlength = (Uint) DEFAULTMINUNIQUEMATCHLEN;
+  mmcallinfo->chunks = (Uint) DEFAULTCHUNK;
 
   if(argc == 1)
   {
@@ -213,21 +219,21 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])
       case OPTMUM:
         mmcallinfo->cmum = true;
         break;
-      case OPTTABLE:
+      case OPTCHUNKS:
         argnum++;
         if(argnum > (Uint) (argc-2))
         {
           ERROR1("missing argument for option %s",
-                  options[OPTTABLE].optname);
+                  options[OPTCHUNKS].optname);
           return -2;
         }
         if(sscanf(argv[argnum],"%ld",&readint) != 1 || readint <= 0)
         {
           ERROR2("argument %s for option %s is not a positive integer",
-                  argv[argnum],options[OPTTABLE].optname);
+                  argv[argnum],options[OPTCHUNKS].optname);
           return -3;
         }
-        mmcallinfo->wordsize = (Uint) readint;
+        mmcallinfo->chunks = (Uint) readint;
         break;
       case OPTH:
       case OPTHELP:

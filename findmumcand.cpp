@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <google/sparsetable>
+#include <omp.h>
 #include "streedef.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
@@ -38,10 +39,6 @@ using google::sparsetable;
   \item
   \texttt{seqnum} is the number of the query sequence currently considered
   \item
-  \texttt{processmumcandidate} is the function to further process a 
-  MUM-candidate.
-  \item
-  \texttt{processinfo} points to some values additionally required by
   the function \texttt{processmumcandidate}.
   \end{enumerate}
   By construction, the location in the suffix tree represents a 
@@ -94,15 +91,11 @@ static Sint checkiflocationisMUMcand (Location *loc,
 			       || *(querysuffix - 1) != 
                                   subjectseq[loc->locstring.start - 1]))
   {
-    if(processmumcandidate(processinfo,
-                           loc->locstring.length,   // matchlength
-	                   loc->locstring.start,    // subject start
-                           seqnum,                  // queryseq
-                           (Uint) (querysuffix -   
-                                   query)) != 0)    // querystart
+      cout << loc->locstring.start << " " << (Uint) (querysuffix-query) << " "<<  loc->locstring.length << endl;
+    /*if (processmumcandidate(processinfo, loc->locstring.length, loc->locstring.start, seqnum, (Uint) (querysuffix - query)) != 0)  
     {
       return -1;
-    }
+    }*/
   }
   return 0;
 }
@@ -141,57 +134,51 @@ static Sint checkiflocationisMUMcand (Location *loc,
 */
 
 Sint findmumcandidates(Suffixtree *stree,
-                       //sparsetable<Uint*> &table,
                        Uint minmatchlength,
-                       Uint wordsize,
+                       Uint chunks,
                        Processmatchfunction processmumcandidate,
                        void *processinfo,
                        Uchar *query,
                        Uint querylen,
                        Uint seqnum)
 {
-  Uchar *lptr, 
-        *right = query + querylen - 1, 
+  Uchar *lptr, *left, *right = query + querylen - 1, 
         *querysuffix;
   Location loc;
-
-  lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), query, right, 0);
-  for (querysuffix = query; lptr != NULL; querysuffix++)
-  {
-    if(loc.locstring.length >= minmatchlength &&
-       checkiflocationisMUMcand(&loc,stree->text, 
-                                querysuffix, 
-                                query,
-                                seqnum,
-                                processmumcandidate,
-                                processinfo) != 0)
-    {
-      return -1;
-    }
-    if (ROOTLOCATION (&loc))
-    {
-      lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
-    }
-    else
-    {
-      linklocstree (stree, &loc, &loc);
-      lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
-    }
-  }
-  while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
-  {
-    if(checkiflocationisMUMcand (&loc,
-                                 stree->text, 
-                                 querysuffix, 
-                                 query,
-                                 seqnum,
-                                 processmumcandidate,
-                                 processinfo) != 0)
-    {
-      return -2;
-    }
-    linklocstree (stree, &loc, &loc);
-    querysuffix++;
+  bool flag;
+  
+  omp_set_num_threads(chunks);
+  #pragma omp parallel for //private(left,right) lastprivate(querysuffix)
+  for (int i=0; i<chunks; i++)
+  { 
+      left = query + (Uint)(querylen/chunks*i);
+      right = query + (Uint)(querylen/chunks*(i+1))-1;
+      cerr << "# " << omp_get_thread_num() << " s=" << (Uint) (left-query) << " e=" << (Uint) (right-query) << endl;
+      lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
+      for (querysuffix = left; querysuffix<right || lptr != NULL;  querysuffix++)
+      { 
+          if (loc.locstring.length >= minmatchlength && checkiflocationisMUMcand(&loc,stree->text, querysuffix, query, seqnum, processmumcandidate, processinfo) != 0)
+          {
+                  flag=false;
+          }
+          if (ROOTLOCATION (&loc))
+          {
+              lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
+          }
+          else
+          {
+              linklocstree (stree, &loc, &loc);
+              lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
+          }
+      }
+  cerr << "# llega? thread " << omp_get_thread_num() << endl;
+      while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
+      {
+          if (checkiflocationisMUMcand (&loc, stree->text, querysuffix, query, seqnum, processmumcandidate, processinfo) != 0)
+              flag=false;
+          linklocstree (stree, &loc, &loc);
+          querysuffix++;
+      }
   }
   return 0;
 }
