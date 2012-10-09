@@ -31,7 +31,6 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
   lptr = left;
   nodeptr = btptr;
-  cerr << (Uint) (right-left) << " ";
   if(nodeptr == stree->branchtab)
   {
     nodedepth = 0;
@@ -54,18 +53,18 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
   } 
   while(true) 
   { 
+    //cout << (Uint) lptr << endl;
     if(lptr > right)   // check for empty word 
     { 
       cerr << "# NULL " << __LINE__ << endl;
       return NULL; 
     } 
     firstchar = *lptr;
-    //firstchar = 't';
     if(nodeptr == stree->branchtab)  // at the root
     {
       if((node = stree->rootchildren[(Uint) firstchar]) == UNDEFINEDREFERENCE)
       {
-          //cerr << "# UNDEFINEDREFERENCE" << endl;
+        cerr << "# UNDEFINEDREFERENCE" << endl;
         return lptr;
       }
       if(ISLEAF(node))
@@ -91,20 +90,20 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
           cerr << "# NULL " << __LINE__ << endl;
           return NULL;
         }
-        //cerr << "# lptr+prefixlen" << endl;
+        cerr << "# lptr+prefixlen " << __LINE__ << endl;
         return lptr + prefixlen;
       } 
       nodeptr = stree->branchtab + GETBRANCHINDEX(node);
       GETONLYHEADPOS(headposition,nodeptr);
       leftborder = stree->text + headposition;
-    } else
+     } else
     { 
       node = GETCHILD(nodeptr);
       while(true)
        {
         if(NILPTR(node))
          {
-          //cerr <<"# nilptr(node)" << endl;
+          cerr <<"# nilptr(node) " << __LINE__ << endl;
           return lptr;
         }
         if(ISLEAF(node))
@@ -113,13 +112,13 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
           leftborder = stree->text + (nodedepth + leafindex);
           if(leftborder == stree->sentinel)
           {
-            //cerr << "# sentinel" << endl;
+            cerr << "# sentinel" << endl;
             return lptr;
           }
           edgechar = *leftborder;
           if(edgechar > firstchar)
           {
-            //cerr << "# edgechar > firstchar" << endl;
+            cerr << "# edgechar > firstchar" << endl;
             return lptr;
           }
           if(edgechar == firstchar)
@@ -144,8 +143,9 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
               cerr << "# NULL " << __LINE__ << endl;
               return NULL;
             }
+            cerr << "# lptr + prefixlen " << __LINE__ << endl;
             return lptr + prefixlen;
-          } 
+          }  
           node = LEAFBROTHERVAL(stree->leaftab[leafindex]);
         } else
         { 
@@ -155,6 +155,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
           edgechar = *leftborder;
           if (edgechar > firstchar)
           {
+            cerr << "# lptr " << __LINE__ << endl;
             return lptr;
            }
           if(edgechar == firstchar)
@@ -205,9 +206,10 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
         cerr << "# NULL " << __LINE__ << endl;
         return NULL;
       }
+      cerr << "# lptr + prefixlen " << __LINE__ << endl;
       return lptr + prefixlen;
-    }
-  }
+    } 
+  } 
 }
 
 Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
