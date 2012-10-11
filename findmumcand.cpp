@@ -91,11 +91,8 @@ static Sint checkiflocationisMUMcand (Location *loc,
 			       || *(querysuffix - 1) != 
                                   subjectseq[loc->locstring.start - 1]))
   {
-      cout << loc->locstring.start << " " << (Uint) (querysuffix-query) << " "<<  loc->locstring.length << endl;
-    /*if (processmumcandidate(processinfo, loc->locstring.length, loc->locstring.start, seqnum, (Uint) (querysuffix - query)) != 0)  
-    {
-      return -1;
-    }*/
+/* #pragma omp critical*/
+  //(void) processmumcandidate(processinfo, loc->locstring.length, loc->locstring.start, seqnum, (Uint) (querysuffix - query));
   }
   return 0;
 }
@@ -146,16 +143,17 @@ Sint findmumcandidates(Suffixtree *stree,
         *querysuffix;
   Location loc;
   bool flag;
+  int i;
   
   omp_set_num_threads(chunks);
-  #pragma omp parallel for private(left,right,lptr) lastprivate(querysuffix)
-  for (int i=0; i<chunks; i++)
+  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,processinfo,loc,flag) shared(stderr,chunks,query,querylen,stree,minmatchlength,seqnum,processmumcandidate)
+  for (i=0; i<chunks; i++)
   { 
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
-      cerr << "# " << omp_get_thread_num() << " ";
+      fprintf(stderr,"# %d ", omp_get_thread_num());
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
-      cerr << "# query:" << (Uint) query << " lptr:" << (Uint) lptr << endl;
+      fprintf(stderr, "# query: %u lptr:%u\n", (Uint) query, (Uint) lptr);
       for (querysuffix = left; querysuffix<right && lptr != NULL;  querysuffix++)
       { 
           if (loc.locstring.length >= minmatchlength && checkiflocationisMUMcand(&loc,stree->text, querysuffix, query, seqnum, processmumcandidate, processinfo) != 0)
@@ -168,11 +166,11 @@ Sint findmumcandidates(Suffixtree *stree,
           }
           else
           {
-              //linklocstree (stree, &loc, &loc);
+              linklocstree (stree, &loc, &loc);
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
-          } 
+          }  
       }
-  cerr << "# llega? thread " << omp_get_thread_num() << " left: " << (Uint) left << " lptr: " << (Uint) lptr << endl;
+      fprintf(stderr, "# llega? thread %d left: %u lptr: %u\n", omp_get_thread_num(), (Uint) left, (Uint) lptr);
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
       {
           if (checkiflocationisMUMcand (&loc, stree->text, querysuffix, query, seqnum, processmumcandidate, processinfo) != 0)

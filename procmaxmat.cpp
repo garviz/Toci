@@ -566,6 +566,7 @@ static Sint storeMUMcandidate (void *info,
                                Uint seqnum,
                                Uint querystart)
 {
+  cerr << "# " << __func__ << endl;
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
   MUMcandidate *mumcandptr;
 
