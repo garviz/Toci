@@ -57,53 +57,7 @@ typedef Sint (*Findmatchfunction)(Suffixtree *,
 */
 
 
-struct  Match_t
-  {
-   long int  R, Q, Len;
-   unsigned int  Good : 1;
-   unsigned int  Tentative : 1;
-  };
 
-Match_t  * A = NULL;
-long int  N = 0, Size = 500;
-
-static void *  Safe_realloc  (void * Q, size_t Len)
-
-/* Reallocate memory for  Q  to  Len  bytes and return a
-*  pointer to the new memory.  Exit if fail. */
-
-  {
-   void  * P;
-
-   P = realloc (Q, Len);
-   if  (P == NULL)
-       {
-        fprintf (stderr,
-		 "ERROR:  realloc failed, there is not enough memory\n");
-        exit (EXIT_FAILURE);
-       }
-
-   return  P;
-  }
-
-static void *  Safe_malloc  (size_t Len)
-
-/* Allocate and return a pointer to  Len  bytes of memory.
-*  Exit if fail. */
-
-  {
-   void  * P;
-
-   P = malloc (Len);
-   if  (P == NULL)
-       {
-        fprintf (stderr,
-		 "ERROR:  malloc failed, there is not enough memory\n");
-        exit (EXIT_FAILURE);
-       }
-
-   return  P;
-  }
 
 static void  Filter_Matches (Match_t * A, int & N)
 
@@ -266,7 +220,7 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
        return;
    qsort (A + 1, N, sizeof (Match_t), By_Q);
 
-   //Filter_Matches (A + 1, N);
+   Filter_Matches (A + 1, N);
 
    for  (i = 1;  i < N;  i ++)
    { 
@@ -277,7 +231,6 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
   }
 
 Sint findmumcandidates(Suffixtree *stree,
-                       //sparsetable<Uint*> &table,
                        Uint minmatchlength,
                        Uint wordsize,
                        Processmatchfunction processmatch,
@@ -291,7 +244,6 @@ Sint findmumcandidates(Suffixtree *stree,
 */
 
 Sint findmaxmatches(Suffixtree *stree,
-                    //sparsetable<Uint*> &table,
                     Uint minmatchlength,
                     Uint wordsize,
                     Processmatchfunction processmatch,
@@ -489,18 +441,18 @@ static Sint showmaximalmatch (void *info,
                               /*@unused@*/ Uint seqnum,
                               Uint querystart)
 {
-  if  (N >= Size - 1)
+  /*if  (N >= Size - 1)
   {
       Size *= 2;
       A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
   }
   N++;
-  
+  */
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
   if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)  && !matchprocessinfo->fourcolumn)
   {
-    A[N].R = (long unsigned int) (subjectstart+1);
+    //A[N].R = (long unsigned int) (subjectstart+1);
   } else
   {       
     PairUint pp;
@@ -510,18 +462,18 @@ static Sint showmaximalmatch (void *info,
     pp.uint0 = 0;
     pp.uint1 = subjectstart;
     showsequencedescription(matchprocessinfo->subjectmultiseq,matchprocessinfo->maxdesclength,pp.uint0);
-    A[N].R =(long unsigned int) (pp.uint1+1);
+    //A[N].R =(long unsigned int) (pp.uint1+1);
   }
   if(matchprocessinfo->currentisrcmatch && matchprocessinfo->showreversepositions)
   {
-    A[N].Q = (long unsigned int) (matchprocessinfo->currentquerylen - querystart);
+    //A[N].Q = (long unsigned int) (matchprocessinfo->currentquerylen - querystart);
   } else
   {
-    A[N].Q = (long unsigned int) (querystart+1);
+    //A[N].Q = (long unsigned int) (querystart+1);
   }
-  A[N].Len = (long unsigned int) matchlength;
-  A[N].Good = false;
-  A[N].Tentative = false;
+  //A[N].Len = (long unsigned int) matchlength;
+  //A[N].Good = true;
+  //A[N].Tentative = false;
   return 0;
 }
 
@@ -560,23 +512,31 @@ static Sint showseqandmaximalmatch (void *info,
   in the next free position of the dynamic array \texttt{mumcandtab}.
 */
 
-static Sint storeMUMcandidate (void *info,
-                               Uint matchlength,
-                               Uint subjectstart,
-                               Uint seqnum,
-                               Uint querystart)
+static Sint storeMUMcandidate (void *info, Uint matchlength, Uint subjectstart, Uint seqnum, Uint querystart)
 {
-  cerr << "# " << __func__ << endl;
+/*#pragma omp shared (A,size)
+    {
+  if  (N >= Size - 1)
+  {
+      Size *= 2;
+      A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+  }
+  N++;
+  A[N].R = subjectstart;
+  A[N].Q = querystart;
+  A[N].Len = matchlength;
+    }*/
+#pragma omp critical
+  {
   Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
   MUMcandidate *mumcandptr;
-
-  GETNEXTFREEINARRAY(mumcandptr,
-                     &matchprocessinfo->mumcandtab,
-                     MUMcandidate,1024);
-  mumcandptr->mumlength = matchlength;
+  //fprintf(stdout,"%lu,%lu,%lu\n",subjectstart,querystart,matchlength);
+  //GETNEXTFREEINARRAY(mumcandptr, &matchprocessinfo->mumcandtab, MUMcandidate,1024);
+  }
+  /*mumcandptr->mumlength = matchlength;
   mumcandptr->dbstart = subjectstart;
   mumcandptr->queryseq = seqnum;
-  mumcandptr->querystart = querystart;
+  mumcandptr->querystart = querystart;*/
   return 0;
 }
 
@@ -705,41 +665,13 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   double start, finish;
 
   fprintf(stderr,"# construct suffix tree for sequence of length %lu\n", (long unsigned int) subjectmultiseq->totallength);
-  fprintf(stderr,"# (maximum reference length is %lu)\n", (long unsigned int) getmaxtextlenstree());
-  fprintf(stderr,"# (maximum query length is %lu)\n", (long unsigned int) ~((Uint)0));
+  /*fprintf(stderr,"# (maximum reference length is %lu)\n", (long unsigned int) getmaxtextlenstree());
+  fprintf(stderr,"# (maximum query length is %lu)\n", (long unsigned int) ~((Uint)0));*/
   start = MPI::Wtime();
   if(constructprogressstree (&matchprocessinfo.stree,subjectmultiseq->sequence,subjectmultiseq->totallength,NULL,NULL,NULL) != 0)
     return -1;
   finish = MPI::Wtime();
   cerr << "# createST Time: " << finish-start << endl;
-  /*sparsetable<Uint> tNodes(getMaxNodesNumber(&matchprocessinfo.stree));
-  cerr << "# getMaxNodesNumber: " << tNodes.size() << endl;
-  Uchar *search = (Uchar *) "a";
-  (void) scanprefixfromnodestree (&matchprocessinfo.stree, &ploc, ROOT (&matchprocessinfo.stree), search, search+0,0);
-  extractsubtree(&matchprocessinfo.stree,ploc.nextnode.address,tNodes);
-  cerr << "=========" << endl;*/
-  /*search = (Uchar *) "ttc";
-  (void) scanprefixfromnodestree (&matchprocessinfo.stree, &ploc, ROOT (&matchprocessinfo.stree), search, search+2,0);
-  extractsubtree(&matchprocessinfo.stree,ploc.nextnode.address,tNodes);
-  cerr << "=========" << endl;
-  search = (Uchar *) "ttg";
-  (void) scanprefixfromnodestree (&matchprocessinfo.stree, &ploc, ROOT (&matchprocessinfo.stree), search, search+2,0);
-  extractsubtree(&matchprocessinfo.stree,ploc.nextnode.address,tNodes);
-  cerr << "=========" << endl;
-  search = (Uchar *) "ttt";
-  (void) scanprefixfromnodestree (&matchprocessinfo.stree, &ploc, ROOT (&matchprocessinfo.stree), search, search+2,0);
-  extractsubtree(&matchprocessinfo.stree,ploc.nextnode.address,tNodes);
-  cerr << "=========" << endl;*/
-  //cerr << "# no empty " << tNodes.num_nonempty() << endl;
-  /*for (sparsetable<Uint>::iterator it = tNodes.begin(); it != tNodes.end(); ++it)
-  {
-      cerr << "# " << *it << " = " << tNodes[*it] << endl;
-      //if (!tNodes.test(tNodes[*it]))
-          dsl++;
-  }
-  cerr << "# DSL " << dsl << endl;*/
-  //showstree(&matchprocessinfo.stree);
-  //showtable(&matchprocessinfo.stree,true);
   matchprocessinfo.subjectmultiseq = subjectmultiseq;
   matchprocessinfo.minmatchlength = mmcallinfo->minmatchlength;
   matchprocessinfo.showstring = mmcallinfo->showstring;
@@ -761,8 +693,8 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     return -2;
   }
   matchprocessinfo.maxdesclength = (Uint) retcode;
-  Size = 500;
-  A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
+  /*Size = 500;
+  A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));*/
   for(filenum=0; filenum < mmcallinfo->numofqueryfiles; filenum++)
   {
     filecontent = (Uchar *) CREATEMEMORYMAP (mmcallinfo->queryfilelist[filenum],true,&filelen);
@@ -786,12 +718,12 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     }
     freemultiseq(&matchprocessinfo.querymultiseq);
    }
-  Process_Matches (A, N);
+  //Process_Matches (A, N);
   if(mmcallinfo->cmum)
   {
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
-  fprintf(stderr,"# Matches=%lu\n",(Sint)N);
+  //fprintf(stderr,"# Matches=%lu\n",(Sint)N);
   freestree (&matchprocessinfo.stree);
   return 0;
 }

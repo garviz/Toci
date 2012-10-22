@@ -12,9 +12,15 @@
 #include <ctype.h>
 #include <google/sparsetable>
 #include <omp.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <iostream>
+#include <sstream>
+#include <string>
 #include "streedef.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
+#include "distribute.h"
 
 using google::sparsetable;
 //}
@@ -76,23 +82,29 @@ using google::sparsetable;
   0 is returned.
 */
 
-static Sint checkiflocationisMUMcand (Location *loc,
-                                      Uchar *subjectseq,
-				      Uchar *querysuffix,
-				      Uchar *query,
-                                      Uint seqnum,
-                                      Processmatchfunction 
-                                        processmumcandidate,
-                                      void *processinfo)
+static Sint checkiflocationisMUMcand (Location *loc, Uchar *subjectseq, Uchar *querysuffix, Uchar *query, Uint seqnum, Match_t *A, Uint N, Uint Size)
 {
-  if (loc->remain > 0 
-      && loc->nextnode.toleaf
-      && (querysuffix == query || loc->locstring.start == 0
-			       || *(querysuffix - 1) != 
-                                  subjectseq[loc->locstring.start - 1]))
+  if (loc->remain > 0 && loc->nextnode.toleaf)
   {
-/* #pragma omp critical*/
-  //(void) processmumcandidate(processinfo, loc->locstring.length, loc->locstring.start, seqnum, (Uint) (querysuffix - query));
+      /*if (*(querysuffix - 1) != subjectseq[loc->locstring.start - 1])
+          cerr << loc->locstring.start << "," << (Uint) (querysuffix-query) << "," << loc->locstring.length << endl;*/
+      if (querysuffix == query || loc->locstring.start == 0 || *(querysuffix - 1) != subjectseq[loc->locstring.start - 1])
+      {
+/*#pragma omp critical
+          {*/
+          if (N >= Size-1)
+          {
+              Size *= 2;
+              A = (Match_t *) Safe_realloc(A, Size*sizeof(Match_t));
+              cerr << "Safe_realloc " << Size << endl;
+          }
+          N++;
+          cerr << N << " ";
+          A[N].R = loc->locstring.start;
+          A[N].Q = (Uint) (querysuffix-query);
+          A[N].Len = loc->locstring.length;
+          //}
+      }
   }
   return 0;
 }
@@ -144,21 +156,39 @@ Sint findmumcandidates(Suffixtree *stree,
   Location loc;
   bool flag;
   int i;
-  
+  char buf[40];
+  string file;
+  ostringstream name;
+  int files[chunks];
+  Uint N = 0;
+
+  for (i=0; i<chunks; i++)
+  { 
+      name << i;
+      files[i]=open(name.str().c_str(),O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+      if (files[i] < 0)
+          return -1;
+      name.str(std::string());
+  }
   omp_set_num_threads(chunks);
-  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,processinfo,loc,flag) shared(stderr,chunks,query,querylen,stree,minmatchlength,seqnum,processmumcandidate)
+  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf) shared(std::cerr,stderr,files,chunks,query,querylen,stree,minmatchlength,seqnum)  reduction(+:N)
   for (i=0; i<chunks; i++)
   { 
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
-      fprintf(stderr,"# %d ", omp_get_thread_num());
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
-      fprintf(stderr, "# query: %u lptr:%u\n", (Uint) query, (Uint) lptr);
       for (querysuffix = left; querysuffix<right && lptr != NULL;  querysuffix++)
       { 
-          if (loc.locstring.length >= minmatchlength && checkiflocationisMUMcand(&loc,stree->text, querysuffix, query, seqnum, processmumcandidate, processinfo) != 0)
+          if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
           {
-                  flag=false;
+               if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
+               {
+                   std::fill(&buf[0],&buf[40],0);
+                   sprintf(buf,"%lu,%lu,%lu\n",loc.locstring.start,(Uint) (querysuffix-query),loc.locstring.length);
+                   if (write(files[omp_get_thread_num()],buf,sizeof(buf))!=sizeof(buf))
+                   fprintf(stderr,"ERROR R\n");
+                   N++;
+               }
           }
           if (ROOTLOCATION (&loc))
           {
@@ -169,15 +199,25 @@ Sint findmumcandidates(Suffixtree *stree,
               linklocstree (stree, &loc, &loc);
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
           }  
-      }
-      fprintf(stderr, "# llega? thread %d left: %u lptr: %u\n", omp_get_thread_num(), (Uint) left, (Uint) lptr);
+       }
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
       {
-          if (checkiflocationisMUMcand (&loc, stree->text, querysuffix, query, seqnum, processmumcandidate, processinfo) != 0)
-              flag=false;
+          if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
+          {
+               if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
+               {
+                   std::fill(&buf[0],&buf[40],0);
+                   sprintf(buf,"%lu,%lu,%lu\n",loc.locstring.start,(Uint) (querysuffix-query),loc.locstring.length);
+                   if (write(files[omp_get_thread_num()],buf,sizeof(buf))!=sizeof(buf))
+                       fprintf(stderr,"ERROR R\n");
+                   N++;
+               }
+          }
           linklocstree (stree, &loc, &loc);
           querysuffix++;
       }
-  }
+  } 
+  for (i=0; i<chunks;i++)
+      close(files[i]);
   return 0;
 }

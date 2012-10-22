@@ -152,6 +152,13 @@ struct ArrayStrings
   Uint stringbufferlength, nextfreeStrings, allocatedStrings;
 };
 
+struct  Match_t
+  {
+   long int  R, Q, Len;
+   unsigned int  Good : 1;
+   unsigned int  Tentative : 1;
+  };
+
 //\Ignore{
 
 #endif

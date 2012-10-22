@@ -13,6 +13,7 @@
 
 static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
+  //cerr << __func__ ;
   register Uchar *ptr1 = start1, 
                   *ptr2 = start2;
   while(ptr1 <= end1 && 
@@ -27,6 +28,7 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 
 Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar *left,Uchar *right,Uint rescanlength)
 {
+  //cerr << __func__ ;
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, node, distance = 0, prefixlen, headposition, tmpnodedepth, edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
   lptr = left;
@@ -215,6 +217,7 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                    Location *inloc,Uchar *left,
                                    Uchar *right,Uint rescanlength)
 {
+  //cerr << __func__ ;
   Uint prefixlen, remainingtoskip;
 
   if(inloc->remain == 0)

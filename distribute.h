@@ -29,3 +29,5 @@ void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size);
 void splitsubstreeH(Suffixtree *stree,sparsetable<Uint*>  &table, Uchar *buffer,Uint *btptr, short int wordsize);
 Uint encoding(Uchar *example, int wordsize);
 void createTable(Suffixtree *stree, sparsetable<Uint*> &table,Uint wordsize);
+void *Safe_realloc  (void * Q, size_t Len);
+void *Safe_malloc  (size_t Len);
