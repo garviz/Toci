@@ -15,19 +15,19 @@
  *
  * =====================================================================================
  */
-#include <google/sparsetable>
-#include <google/sparse_hash_map>
+/*#include <google/sparsetable>
+#include <google/sparse_hash_map>*/
 #include <iostream>
 #include "streetyp.h"
 #include "maxmatdef.h"
 
-using google::sparse_hash_map;
-using google::sparsetable;
+/*using google::sparse_hash_map;
+using google::sparsetable;*/
 
 Uint getEdgelength(Uchar *left,Uchar *right);
 void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size);
-void splitsubstreeH(Suffixtree *stree,sparsetable<Uint*>  &table, Uchar *buffer,Uint *btptr, short int wordsize);
+void splitsubstreeH(Suffixtree *stree,/*sparsetable<Uint*>  &table,*/ Uchar *buffer,Uint *btptr, short int wordsize);
 Uint encoding(Uchar *example, int wordsize);
-void createTable(Suffixtree *stree, sparsetable<Uint*> &table,Uint wordsize);
+void createTable(Suffixtree *stree, /*sparsetable<Uint*> &table,*/Uint wordsize);
 void *Safe_realloc  (void * Q, size_t Len);
 void *Safe_malloc  (size_t Len);

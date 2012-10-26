@@ -24,8 +24,8 @@
 #include <cstdlib>
 #include <vector>
 #include <iostream>
-#include <google/sparse_hash_map>
-#include <sparsehash/sparsetable>
+/*#include <google/sparse_hash_map>
+#include <sparsehash/sparsetable>*/
 #include "distribute.h"
 #include "types.h"
 #include "intbits.h"
@@ -38,7 +38,7 @@
 
 //Table table;
 
-using google::sparsetable;
+//using google::sparsetable;
 
 Uint getEdgelength(Uchar *left,Uchar *right)
 {
@@ -121,7 +121,7 @@ Uint encoding(Uchar *example, int wordsize)
  *  reaches the max characters to save in table.
  * =====================================================================================
  */
-void splitsubstreeH(Suffixtree *stree, sparsetable<Uint> &table, Uchar *buffer,Uint *btptr, short int wordsize)
+void splitsubstreeH(Suffixtree *stree, /*sparsetable<Uint> &table,*/ Uchar *buffer,Uint *btptr, short int wordsize)
 {
   Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
        depth, headposition;
@@ -186,7 +186,7 @@ void splitsubstreeH(Suffixtree *stree, sparsetable<Uint> &table, Uchar *buffer,U
           std::fprintf(stdout,"%s[%lu]=%lu\n",buffer,encoding(buffer,wordsize),BRADDR2NUM(stree,btptr));
           break;
       }
-      splitsubstreeH(stree,table,buffer,succptr,wordsize);
+      splitsubstreeH(stree,/*table,*/buffer,succptr,wordsize);
       succ = GETBROTHER(succptr);
     }  
    } while(!NILPTR(succ));
@@ -227,7 +227,7 @@ void createTable(Matchprocessinfo *matchprocessinfo, short int wordsize)
 {
     Uint size = pow(4,wordsize);
     //vector <Uint> table(size,0);
-    sparsetable<Uint> table(size);
+    //sparsetable<Uint> table(size);
     //google::sparse_hash_map<Uchar*, Uint*, std::tr1::hash<Uchar*>, eqstr> table;
     //table.set_deleted_key(NULL);
     Uint *largeptr, *btptr, *succptr, *rcptr, i, succdepth, distance, 
@@ -243,7 +243,7 @@ void createTable(Matchprocessinfo *matchprocessinfo, short int wordsize)
             buffer[0]=(Uchar) (rcptr - matchprocessinfo->stree.rootchildren);
             buffer[1]='\0';
             btptr = matchprocessinfo->stree.branchtab + GETBRANCHINDEX(*rcptr);
-            splitsubstreeH(&matchprocessinfo->stree,table,buffer,btptr,wordsize);
+            splitsubstreeH(&matchprocessinfo->stree,/*table,*/buffer,btptr,wordsize);
          }
      }
     

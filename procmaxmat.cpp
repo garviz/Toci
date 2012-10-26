@@ -12,7 +12,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <ctype.h>
-#include <google/sparsetable>
+//#include <google/sparsetable>
 #include <math.h>
 #include <omp.h>
 #include <iterator>
@@ -25,7 +25,7 @@
 #include "maxmatdef.h"
 #include "distribute.h"
 
-using google::sparsetable;
+//using google::sparsetable;
 //}
 
 /*EE

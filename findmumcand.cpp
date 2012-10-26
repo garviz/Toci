@@ -10,7 +10,8 @@
 
 #include <stdio.h>
 #include <ctype.h>
-#include <google/sparsetable>
+//#include <google/sparsetable>
+#include <google/profiler.h>
 #include <omp.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -22,7 +23,7 @@
 #include "maxmatdef.h"
 #include "distribute.h"
 
-using google::sparsetable;
+//using google::sparsetable;
 //}
 
 /*EE
@@ -159,11 +160,13 @@ Sint findmumcandidates(Suffixtree *stree,
   char buf[40];
   string file;
   ostringstream name;
+  ostringstream store[chunks];
   int files[chunks];
   Uint N = 0;
 
+  ProfilerStart("toci.txt");
   for (i=0; i<chunks; i++)
-  { 
+  {  
       name << i;
       files[i]=open(name.str().c_str(),O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
       if (files[i] < 0)
@@ -188,8 +191,8 @@ Sint findmumcandidates(Suffixtree *stree,
                    if (write(files[omp_get_thread_num()],buf,sizeof(buf))!=sizeof(buf))
                    fprintf(stderr,"ERROR R\n");
                    N++;
-               }
-          }
+                }
+           }
           if (ROOTLOCATION (&loc))
           {
               lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
@@ -199,7 +202,7 @@ Sint findmumcandidates(Suffixtree *stree,
               linklocstree (stree, &loc, &loc);
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
           }  
-       }
+        }
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
       {
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
@@ -216,8 +219,9 @@ Sint findmumcandidates(Suffixtree *stree,
           linklocstree (stree, &loc, &loc);
           querysuffix++;
       }
-  } 
+  }  
   for (i=0; i<chunks;i++)
       close(files[i]);
+  ProfilerStop();
   return 0;
 }

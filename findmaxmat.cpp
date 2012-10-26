@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <omp.h>
-#include <google/sparsetable>
+//#include <google/sparsetable>
 #include <math.h>
 #include "distribute.h"
 #include "streedef.h"
@@ -20,7 +20,7 @@
 #include "maxmatdef.h"
 #include "distribute.h"
 
-using google::sparsetable;
+//using google::sparsetable;
 //}
 
 #define LEASTSHOWPROGRESS 100000
