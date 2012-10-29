@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 #include <ctype.h>
-//#include <google/sparsetable>
 #include <google/profiler.h>
 #include <omp.h>
 #include <unistd.h>
@@ -161,8 +160,9 @@ Sint findmumcandidates(Suffixtree *stree,
   string file;
   ostringstream name;
   ostringstream store[chunks];
-  int files[chunks];
+  int tid, nthreads, files[chunks];
   Uint N = 0;
+  double start, end;
 
   ProfilerStart("toci.txt");
   for (i=0; i<chunks; i++)
@@ -174,9 +174,13 @@ Sint findmumcandidates(Suffixtree *stree,
       name.str(std::string());
   }
   omp_set_num_threads(chunks);
-  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf) shared(std::cerr,stderr,files,chunks,query,querylen,stree,minmatchlength,seqnum)  reduction(+:N)
+  start = omp_get_wtime();
+  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf,tid) shared(std::cerr,stderr,files,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads)  reduction(+:N)
   for (i=0; i<chunks; i++)
-  { 
+  {  
+      tid = omp_get_thread_num();
+      if (tid == 0)
+          nthreads = omp_get_num_threads();
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
@@ -220,6 +224,8 @@ Sint findmumcandidates(Suffixtree *stree,
           querysuffix++;
       }
   }  
+  end = omp_get_wtime();
+  fprintf(stderr,"# Thread =%d omp_time=%f sec\n",nthreads,(double) (end-start));
   for (i=0; i<chunks;i++)
       close(files[i]);
   ProfilerStop();
