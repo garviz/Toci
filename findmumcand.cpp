@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 #include <ctype.h>
-#include <google/profiler.h>
 #include <omp.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -164,7 +163,6 @@ Sint findmumcandidates(Suffixtree *stree,
   Uint N = 0;
   double start, end;
 
-  ProfilerStart("toci.txt");
   for (i=0; i<chunks; i++)
   {  
       name << i;
@@ -228,6 +226,5 @@ Sint findmumcandidates(Suffixtree *stree,
   fprintf(stderr,"# Thread =%d omp_time=%f sec\n",nthreads,(double) (end-start));
   for (i=0; i<chunks;i++)
       close(files[i]);
-  ProfilerStop();
   return 0;
 }
