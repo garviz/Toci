@@ -156,29 +156,25 @@ Sint findmumcandidates(Suffixtree *stree,
   bool flag;
   int i;
   char buf[40];
-  string file;
-  ostringstream name;
-  ostringstream store[chunks];
-  int tid, nthreads, files[chunks];
-  Uint N = 0;
+  int tid, nthreads, *chunk_schedule;
+  omp_sched_t *schedule;
+  Uint N = 0, Size = 32768;
   double start, end;
+  Match_t  *A = NULL;
+  chunk_schedule = (int *) malloc(sizeof(int));
+  schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
 
-  for (i=0; i<chunks; i++)
-  {  
-      name << i;
-      files[i]=open(name.str().c_str(),O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
-      if (files[i] < 0)
-          return -1;
-      name.str(std::string());
-  }
-  omp_set_num_threads(chunks);
   start = omp_get_wtime();
-  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf,tid) shared(std::cerr,stderr,files,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads)  reduction(+:N)
+  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf,tid) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,A,Size)  reduction(+:N) schedule(runtime)
   for (i=0; i<chunks; i++)
-  {  
+  {
+      A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
       tid = omp_get_thread_num();
       if (tid == 0)
+      {
           nthreads = omp_get_num_threads();
+          omp_get_schedule(schedule,chunk_schedule);
+      }
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
@@ -188,11 +184,18 @@ Sint findmumcandidates(Suffixtree *stree,
           {
                if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
                {
-                   std::fill(&buf[0],&buf[40],0);
-                   sprintf(buf,"%lu,%lu,%lu\n",loc.locstring.start,(Uint) (querysuffix-query),loc.locstring.length);
-                   if (write(files[omp_get_thread_num()],buf,sizeof(buf))!=sizeof(buf))
-                   fprintf(stderr,"ERROR R\n");
-                   N++;
+#pragma omp critical
+                   {
+                       if (N >= Size -1)
+                       {
+                           Size *= 2;
+                           A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                       }
+                       N++;
+                       A[N].R = loc.locstring.start;
+                       A[N].Q = (Uint) (querysuffix-query);
+                       A[N].Len = loc.locstring.length;
+                   }
                 }
            }
           if (ROOTLOCATION (&loc))
@@ -211,20 +214,25 @@ Sint findmumcandidates(Suffixtree *stree,
           {
                if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
                {
-                   std::fill(&buf[0],&buf[40],0);
-                   sprintf(buf,"%lu,%lu,%lu\n",loc.locstring.start,(Uint) (querysuffix-query),loc.locstring.length);
-                   if (write(files[omp_get_thread_num()],buf,sizeof(buf))!=sizeof(buf))
-                       fprintf(stderr,"ERROR R\n");
-                   N++;
+#pragma omp critical
+                   {
+                       if (N >= Size -1)
+                       {
+                           Size *= 2;
+                           A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                       }
+                       N++;
+                       A[N].R = loc.locstring.start;
+                       A[N].Q = (Uint) (querysuffix-query);
+                       A[N].Len = loc.locstring.length;
+                   }
                }
           }
           linklocstree (stree, &loc, &loc);
           querysuffix++;
       }
   }  
-  end = omp_get_wtime();
-  fprintf(stderr,"# Thread =%d omp_time=%f sec\n",nthreads,(double) (end-start));
-  for (i=0; i<chunks;i++)
-      close(files[i]);
+  end = omp_get_wtime(); 
+  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Matches=%lu,Size=%lu,MUM=%d,Schedule=%d,Chunk_Schedule=%d\n",nthreads,chunks,querylen/chunks,(double) (end-start),N,Size,minmatchlength,*schedule,*chunk_schedule);
   return 0;
 }

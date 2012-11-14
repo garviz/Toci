@@ -5,7 +5,7 @@ OMPP=./ompp-0.7.1/lib/libompp.a
 
 SPARSETABLE=./sparsehash-2.0.2/src
 
-CFLAGS  = -lrt -std=gnu++0x -m64 -lgomp -fopenmp -lstdc++ -Wno-write-strings -Wno-format -O3
+CFLAGS  = -lrt -std=gnu++0x -m64 -lgomp -fopenmp -lstdc++ -Wno-write-strings -Wno-format -msse4.2 -O3
 
 INCLUDE = -I$(SPARSETABLE)
 

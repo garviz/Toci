@@ -271,13 +271,13 @@ void *  Safe_realloc  (void * Q, size_t Len)
 
    P = realloc (Q, Len);
    if  (P == NULL)
-       {
-        fprintf (stderr, "ERROR:  realloc failed, there is not enough memory\n");
-        exit (EXIT_FAILURE);
-       }
+   { 
+      fprintf (stderr, "# ERROR:  realloc failed, there is not enough memory\n");
+      MPI_Finalize();
+   } 
 
    return  P;
-  }
+  }  
 
 /* Allocate and return a pointer to  Len  bytes of memory.
 *  Exit if fail. */
@@ -287,10 +287,10 @@ void *  Safe_malloc  (size_t Len)
 
    P = malloc (Len);
    if  (P == NULL)
-       {
-        fprintf (stderr,"ERROR:  malloc failed, there is not enough memory\n");
-        exit (EXIT_FAILURE);
-       }
+   {
+      fprintf (stderr,"# ERROR:  malloc failed, there is not enough memory\n");
+      MPI_Finalize();
+   }
 
    return  P;
   }
