@@ -1,0 +1,75 @@
+# reading input file "fasta/EcoliK12.fa" of length 4639675
+# construct suffix tree for sequence of length 4639675
+# process 46396 characters per dot
+#....................................................................................................
+#....................................................................................................
+# createST Time: 2.51349
+# reading input file "fasta/EcoliO157H7.fa" of length 5498450
+# matching query-file "fasta/EcoliO157H7.fa"
+# against subject-file "fasta/EcoliK12.fa"
+> gi|15829254|ref|NC_002695.1|
+[1;34m[pthread wrapper] [pthread wrapper] PIN_MASK: 0->1  
+[pthread wrapper] SKIP MASK: 0x0
+	threadid 139668882581248 -> core 1 - OK
+[0m[1;34m	threadid 139668874188544 -> core 0 - OK
+[0m[1;34m	threadid 139668865795840 -> core 0 - OK
+[0m[1;34m	threadid 139668857403136 -> core 0 - OK
+[0m[1;34m	threadid 139668849010432 -> core 0 - OK
+[0m[1;34m	threadid 139668840617728 -> core 0 - OK
+[0m[1;34m	threadid 139668832225024 -> core 0 - OK
+[0m[1;34m	threadid 139668823832320 -> core 0 - OK
+[0m[1;34m	threadid 139668815439616 -> core 0 - OK
+[0m[1;34m	threadid 139668807046912 -> core 0 - OK
+[0m[1;34m	threadid 139668798654208 -> core 0 - OK
+[0m[1;34m	threadid 139668790261504 -> core 0 - OK
+[0m[1;34m	threadid 139668781868800 -> core 0 - OK
+[0m[1;34m	threadid 139668773476096 -> core 0 - OK
+[0m[1;34m	threadid 139668765083392 -> core 0 - OK
+[0m[1;34m	threadid 139668756690688 -> core 0 - OK
+[0m[1;34m	threadid 139668748297984 -> core 0 - OK
+[0m[1;34m	threadid 139668739905280 -> core 0 - OK
+[0m[1;34m	threadid 139668731512576 -> core 0 - OK
+[0m[1;34m	threadid 139668723119872 -> core 0 - OK
+[0m[1;34m	threadid 139668714727168 -> core 0 - OK
+[0m[1;34m	threadid 139668706334464 -> core 0 - OK
+[0m[1;34m	threadid 139668697941760 -> core 0 - OK
+[0m# Threads=0,Chunks=8,Chunk_Size=687306,OMP_time=2.539024,Matches=38183,Size=65536,MUM=20
+# Toci application for genome alignment for HPC environments
+# Final Time: 5.14193
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core 2 45nm processor 
+CPU clock:	1.35 GHz 
+Measuring group FLOPS_DP
+-------------------------------------------------------------
+mpirun -np 1 ./toci -C 8 -mum -l 20 fasta/EcoliK12.fa fasta/EcoliO157H7.fa
++--------------------------------------+-------------+-------------+
+|                Event                 |   core 0    |   core 1    |
++--------------------------------------+-------------+-------------+
+|          INSTR_RETIRED_ANY           | 2.01056e+09 | 2.41363e+09 |
+|        CPU_CLK_UNHALTED_CORE         | 7.85088e+09 |  8.733e+09  |
+| SIMD_COMP_INST_RETIRED_PACKED_DOUBLE |      0      |      0      |
+| SIMD_COMP_INST_RETIRED_SCALAR_DOUBLE |   159387    |   463629    |
++--------------------------------------+-------------+-------------+
++-------------------------------------------+-------------+-------------+-------------+-------------+
+|                   Event                   |     Sum     |     Max     |     Min     |     Avg     |
++-------------------------------------------+-------------+-------------+-------------+-------------+
+|          INSTR_RETIRED_ANY STAT           | 4.42418e+09 | 2.41363e+09 | 2.01056e+09 | 2.21209e+09 |
+|        CPU_CLK_UNHALTED_CORE STAT         | 1.65839e+10 |  8.733e+09  | 7.85088e+09 | 8.29194e+09 |
+| SIMD_COMP_INST_RETIRED_PACKED_DOUBLE STAT |      0      |      0      |      0      |      0      |
+| SIMD_COMP_INST_RETIRED_SCALAR_DOUBLE STAT |   623016    |   463629    |   159387    |   311508    |
++-------------------------------------------+-------------+-------------+-------------+-------------+
++-------------+-----------+-----------+
+|   Metric    |  core 0   |  core 1   |
++-------------+-----------+-----------+
+| Runtime [s] |  5.83128  |  6.48648  |
+|     CPI     |  3.90483  |  3.61821  |
+| DP MFlops/s | 0.0138621 | 0.0403224 |
++-------------+-----------+-----------+
++------------------+-----------+-----------+-----------+-----------+
+|      Metric      |    Sum    |    Max    |    Min    |    Avg    |
++------------------+-----------+-----------+-----------+-----------+
+| Runtime [s] STAT |  12.3178  |  6.48648  |  5.83128  |  6.15888  |
+|     CPI STAT     |  7.52304  |  3.90483  |  3.61821  |  3.76152  |
+| DP MFlops/s STAT | 0.0541844 | 0.0403224 | 0.0138621 | 0.0270922 |
++------------------+-----------+-----------+-----------+-----------+

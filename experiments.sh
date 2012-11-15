@@ -24,10 +24,10 @@ export length=20
 export ref=`basename $1`
 export qry=`basename $2`
 
-for chunks in {1..128}
+for chunks in {1..8}
 do
     export OMP_SCHEDULE="$3,$chunks"
-    likwid-perfctr -C 0-23 -g FLOPS_DP mpirun -np 1 ./toci -C $chunks -mum -l $length $1 $2 1> results/$(date +"%m-%d-%Y_%T")_"$ref"_"$qry"_$OMP_SCHEDULE.dat 2>&1
+    likwid-perfctr -C 0-1 -g FLOPS_DP mpirun -np 1 ./toci -C $chunks -mum -l $length $1 $2 1> results/$(date +"%m-%d-%Y_%T")_"$ref"_"$qry"_$OMP_SCHEDULE.dat 2>&1
     echo $chunks
 done
 

@@ -154,9 +154,8 @@ Sint findmumcandidates(Suffixtree *stree,
         *querysuffix;
   Location loc;
   bool flag;
-  int i;
   char buf[40];
-  int tid, nthreads, *chunk_schedule;
+  int i, nthreads, *chunk_schedule;
   omp_sched_t *schedule;
   Uint N = 0, Size = 32768;
   double start, end;
@@ -165,16 +164,12 @@ Sint findmumcandidates(Suffixtree *stree,
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
 
   start = omp_get_wtime();
-  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf,tid) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,A,Size)  reduction(+:N) schedule(runtime)
+  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,A,Size)  reduction(+:N) schedule(runtime)
   for (i=0; i<chunks; i++)
   {
+      omp_get_schedule(schedule,chunk_schedule);
+      nthreads = omp_get_num_threads();
       A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
-      tid = omp_get_thread_num();
-      if (tid == 0)
-      {
-          nthreads = omp_get_num_threads();
-          omp_get_schedule(schedule,chunk_schedule);
-      }
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
@@ -233,6 +228,6 @@ Sint findmumcandidates(Suffixtree *stree,
       }
   }  
   end = omp_get_wtime(); 
-  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Matches=%lu,Size=%lu,MUM=%d\n",nthreads,chunks,querylen/chunks,(double) (end-start),N,Size,minmatchlength);
+  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,Matches=%lu,Size=%lu,MUM=%d\n",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,N,Size,minmatchlength);
   return 0;
 }
