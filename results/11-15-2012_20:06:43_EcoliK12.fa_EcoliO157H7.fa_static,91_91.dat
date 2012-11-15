@@ -1,0 +1,95 @@
+Generated pathname is /tmp/likwid-39343
+Successfully opened socket to daemon.
+# reading input file "fasta/EcoliK12.fa" of length 4639675
+# construct suffix tree for sequence of length 4639675
+# process 46396 characters per dot
+#....................................................................................................
+#....................................................................................................
+# createST Time: 2.14751
+# reading input file "fasta/EcoliO157H7.fa" of length 5498450
+# matching query-file "fasta/EcoliO157H7.fa"
+# against subject-file "fasta/EcoliK12.fa"
+> gi|15829254|ref|NC_002695.1|
+[1;34m[pthread wrapper] [pthread wrapper] PIN_MASK: 0->1  
+[pthread wrapper] SKIP MASK: 0x0
+	threadid 140546795509504 -> core 1 - OK
+[0m[1;34m	threadid 140546785019648 -> core 0 - OK
+[0m[1;34m	threadid 140546774529792 -> core 0 - OK
+[0m[1;34m	threadid 140546764039936 -> core 0 - OK
+[0m[1;34m	threadid 140546753550080 -> core 0 - OK
+[0m[1;34m	threadid 140546743060224 -> core 0 - OK
+[0m[1;34m	threadid 140546732570368 -> core 0 - OK
+[0m[1;34m	threadid 140546722080512 -> core 0 - OK
+[0m[1;34m	threadid 140546711590656 -> core 0 - OK
+[0m[1;34m	threadid 140546701100800 -> core 0 - OK
+[0m[1;34m	threadid 140546690610944 -> core 0 - OK
+[0m[1;34m	threadid 140546680121088 -> core 0 - OK
+[0m[1;34m	threadid 140546669631232 -> core 0 - OK
+[0m[1;34m	threadid 140546659141376 -> core 0 - OK
+[0m[1;34m	threadid 140546648651520 -> core 0 - OK
+[0m[1;34m	threadid 140546638161664 -> core 0 - OK
+[0m[1;34m	threadid 140546627671808 -> core 0 - OK
+[0m[1;34m	threadid 140546617181952 -> core 0 - OK
+[0m[1;34m	threadid 140546606692096 -> core 0 - OK
+[0m[1;34m	threadid 140546596202240 -> core 0 - OK
+[0m[1;34m	threadid 140546585712384 -> core 0 - OK
+[0m[1;34m	threadid 140546575222528 -> core 0 - OK
+[0m[1;34m	threadid 140546564732672 -> core 0 - OK
+[0m# Threads=24,Chunks=91,Chunk_Size=60422,OMP_time=2.647800,Schedule=1,Chunk_Schd=91,Matches=38178,Size=65536,MUM=20
+# Toci application for genome alignment for HPC environments
+# Final Time: 4.88293
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group FLOPS_DP
+-------------------------------------------------------------
+mpirun -np 1 ./toci -C 91 -mum -l 20 fasta/EcoliK12.fa fasta/EcoliO157H7.fa
+Status: 0x0 
+Status: 0x0 
++--------------------------------------+-------------+--------+
+|                Event                 |   core 0    | core 1 |
++--------------------------------------+-------------+--------+
+|          INSTR_RETIRED_ANY           | 3.39149e+09 |  6070  |
+|        CPU_CLK_UNHALTED_CORE         | 1.34714e+10 | 32059  |
+|         CPU_CLK_UNHALTED_REF         | 1.15472e+10 | 27468  |
+|    FP_COMP_OPS_EXE_SSE_FP_PACKED     |      4      |   0    |
+|    FP_COMP_OPS_EXE_SSE_FP_SCALAR     |     500     |   0    |
+| FP_COMP_OPS_EXE_SSE_SINGLE_PRECISION |      0      |   0    |
+| FP_COMP_OPS_EXE_SSE_DOUBLE_PRECISION |     504     |   0    |
++--------------------------------------+-------------+--------+
++-------------------------------------------+-------------+-------------+-------+-------------+
+|                   Event                   |     Sum     |     Max     |  Min  |     Avg     |
++-------------------------------------------+-------------+-------------+-------+-------------+
+|          INSTR_RETIRED_ANY STAT           | 3.3915e+09  | 3.39149e+09 | 6070  | 1.69575e+09 |
+|        CPU_CLK_UNHALTED_CORE STAT         | 1.34715e+10 | 1.34714e+10 | 32059 | 6.73573e+09 |
+|         CPU_CLK_UNHALTED_REF STAT         | 1.15473e+10 | 1.15472e+10 | 27468 | 5.77363e+09 |
+|    FP_COMP_OPS_EXE_SSE_FP_PACKED STAT     |      4      |      4      |   0   |      2      |
+|    FP_COMP_OPS_EXE_SSE_FP_SCALAR STAT     |     500     |     500     |   0   |     250     |
+| FP_COMP_OPS_EXE_SSE_SINGLE_PRECISION STAT |      0      |      0      |   0   |      0      |
+| FP_COMP_OPS_EXE_SSE_DOUBLE_PRECISION STAT |     504     |     504     |   0   |     252     |
++-------------------------------------------+-------------+-------------+-------+-------------+
++----------------+-------------+-------------+
+|     Metric     |   core 0    |   core 1    |
++----------------+-------------+-------------+
+|  Runtime [s]   |   5.62736   | 1.33919e-05 |
+|  Clock [MHz]   |   2792.83   |   2794.03   |
+|      CPI       |   3.97213   |   5.28155   |
+|  DP MFlops/s   | 0.000103425 |      0      |
+| Packed MUOPS/s | 8.14372e-07 |      0      |
+| Scalar MUOPS/s | 0.000101797 |      0      |
+|   SP MUOPS/s   |      0      |      0      |
+|   DP MUOPS/s   | 0.000102611 |      0      |
++----------------+-------------+-------------+
++---------------------+-------------+-------------+-------------+-------------+
+|       Metric        |     Sum     |     Max     |     Min     |     Avg     |
++---------------------+-------------+-------------+-------------+-------------+
+|  Runtime [s] STAT   |   5.62738   |   5.62736   | 1.33919e-05 |   2.81369   |
+|  Clock [MHz] STAT   |   5586.87   |   2794.03   |   2792.83   |   2793.43   |
+|      CPI STAT       |   9.25368   |   5.28155   |   3.97213   |   4.62684   |
+|  DP MFlops/s STAT   | 0.000103425 | 0.000103425 |      0      | 5.17127e-05 |
+| Packed MUOPS/s STAT | 8.14372e-07 | 8.14372e-07 |      0      | 4.07186e-07 |
+| Scalar MUOPS/s STAT | 0.000101797 | 0.000101797 |      0      | 5.08983e-05 |
+|   SP MUOPS/s STAT   |      0      |      0      |      0      |      0      |
+|   DP MUOPS/s STAT   | 0.000102611 | 0.000102611 |      0      | 5.13055e-05 |
++---------------------+-------------+-------------+-------------+-------------+
