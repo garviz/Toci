@@ -233,6 +233,6 @@ Sint findmumcandidates(Suffixtree *stree,
       }
   }  
   end = omp_get_wtime(); 
-  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Matches=%lu,Size=%lu,MUM=%d,Schedule=%d,Chunk_Schedule=%d\n",nthreads,chunks,querylen/chunks,(double) (end-start),N,Size,minmatchlength,*schedule,*chunk_schedule);
+  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Matches=%lu,Size=%lu,MUM=%d\n",nthreads,chunks,querylen/chunks,(double) (end-start),N,Size,minmatchlength);
   return 0;
 }
