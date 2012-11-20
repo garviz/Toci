@@ -22,7 +22,7 @@
 #include "errordef.h"
 #include "protodef.h"
 
-#define MAXMAPPEDFILES 32
+#define MAXMAPPEDFILES 64
 
 using namespace std;
 //}

@@ -1,0 +1,13 @@
+# reading input file "fasta/human21.fa" of length 35451703
+# construct suffix tree for sequence of length 35451703
+# process 354517 characters per dot
+#....................................................................................................
+#....................................................................................................
+# createST Time: 20.5879
+# reading input file "fasta/mouse16.fa" > gi|149268225|ref|NT_039625.7|Mm16_39665_37
+of length 95283144
+# matching query-file "fasta/mouse16.fa"
+# against subject-file "fasta/human21.fa"
+# Threads=4,Chunks=4,Chunk_Size=23820786,OMP_time=16.802731,Schedule=2,Chunk_Schd=1,Matches=588561,Size=524288,MUM=20
+# Toci application for genome alignment for HPC environments
+# Final Time: 38.4759

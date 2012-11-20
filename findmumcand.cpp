@@ -16,6 +16,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <likwid.h>
 #include "streedef.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
@@ -149,7 +150,7 @@ Sint findmumcandidates(Suffixtree *stree,
                        Uchar *query,
                        Uint querylen,
                        Uint seqnum)
-{
+{ 
   Uchar *lptr, *left, *right = query + querylen - 1, 
         *querysuffix;
   Location loc;
@@ -162,7 +163,8 @@ Sint findmumcandidates(Suffixtree *stree,
   Match_t  *A = NULL;
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
-
+  
+  likwid_markerStartRegion("Find MUMs");
   start = omp_get_wtime();
   #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,A,Size)  reduction(+:N) schedule(runtime)
   for (i=0; i<chunks; i++)
@@ -228,6 +230,7 @@ Sint findmumcandidates(Suffixtree *stree,
       }
   }  
   end = omp_get_wtime(); 
+  likwid_markerStopRegion("Find MUMs");
   fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,Matches=%lu,Size=%lu,MUM=%d\n",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,N,Size,minmatchlength);
   return 0;
 }

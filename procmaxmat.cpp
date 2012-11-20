@@ -16,6 +16,7 @@
 #include <math.h>
 #include <omp.h>
 #include <iterator>
+#include <likwid.h>
 #include "types.h"
 #include "errordef.h"
 #include "protodef.h"
@@ -656,7 +657,7 @@ static Sint getmaxdesclen(Multiseq *multiseq)
 */
 
 Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
-{
+{ 
   Matchprocessinfo matchprocessinfo;
   Uint filenum, filelen, dsl=0;
   Sint retcode;
@@ -708,16 +709,13 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     {
       return -4;
     }
-    fprintf(stderr,
-	    "# matching query-file \"%s\"\n# against subject-file \"%s\"\n",
-            mmcallinfo->queryfilelist[filenum],
-            mmcallinfo->subjectfile);
+    fprintf(stderr, "# matching query-file \"%s\"\n# against subject-file \"%s\"\n", mmcallinfo->queryfilelist[filenum], mmcallinfo->subjectfile);
     if (overallsequences (false,&matchprocessinfo.querymultiseq,(void *) &matchprocessinfo,findmaxmatchesonbothstrands) != 0)
-    {
+    { 
       return -5;
     }
     freemultiseq(&matchprocessinfo.querymultiseq);
-   }
+    }
   //Process_Matches (A, N);
   if(mmcallinfo->cmum)
   {

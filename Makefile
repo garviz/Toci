@@ -5,11 +5,11 @@ OMPP=./ompp-0.7.1/lib/libompp.a
 
 SPARSETABLE=./sparsehash-2.0.2/src
 
-CFLAGS  = -lrt -std=gnu++0x -m64 -lgomp -fopenmp -lstdc++ -Wno-write-strings -Wno-format -msse4.2 -O3
+CFLAGS  = -std=gnu++0x -m64 -fopenmp -lstdc++ -Wno-write-strings -Wno-format -msse4.2 -O3 -L/soft/likwid-2.3/lib/ -I/soft/likwid-2.3/include/
 
 INCLUDE = -I$(SPARSETABLE)
 
-LIBS    = $(TAU_MPI_LIBS) $(TAU_LIBS) -lm
+LIBS    = $(TAU_MPI_LIBS) $(TAU_LIBS) -llikwid
 
 LDFLAGS	= $(CFLAGS)  $(TAU_LDFLAGS)
 
