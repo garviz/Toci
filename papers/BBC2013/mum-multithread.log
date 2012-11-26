@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  22 NOV 2012 23:04
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  26 NOV 2012 00:54
 entering extended mode
  %&-line parsing enabled.
 **mum-multithread.tex
@@ -86,7 +86,7 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@enLab=\toks16
 \@sep=\skip43
 \@@sep=\skip44
-
+ (./mum-multithread.spl)
 (/usr/share/texmf-texlive/tex/latex/natbib/natbib.sty
 Package: natbib 2009/07/16 8.31 (PWD, AO)
 \bibhang=\skip45
@@ -458,46 +458,65 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \rotFPbot=\skip48
 \rot@float@box=\box30
 \rot@mess@toks=\toks19
-) (./mum-multithread.aux)
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/ulem.sty
+\UL@box=\box31
+\UL@hyphenbox=\box32
+\UL@skip=\skip49
+\UL@hook=\toks20
+\UL@pe=\count99
+\UL@pixel=\dimen114
+\ULC@box=\box33
+Package: ulem 2000/05/26
+\ULdepth=\dimen115
+)
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count100
+\c@ALC@line=\count101
+\c@ALC@rem=\count102
+\c@ALC@depth=\count103
+\ALC@tlm=\skip50
+\algorithmicindent=\skip51
+)
+(./mum-multithread.aux)
 \openout1 = `mum-multithread.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 105.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 105
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 108.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 108
 .
-
-(/usr/share/texmf-texlive/tex/latex/txfonts/omltxmi.fd
+ (/usr/share/texmf-texlive/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 105.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 105
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 108.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 108
 .
-
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 105.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 105
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 108.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 108
 .
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 105.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 105.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 108.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 108.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 105.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 108.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/ot1txr.fd
@@ -505,16 +524,16 @@ File: ot1txr.fd 2000/12/15 v3.1
 )
 (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count99
-\scratchdimen=\dimen114
-\scratchbox=\box31
-\nofMPsegments=\count100
-\nofMParguments=\count101
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count102
-\MPscratchDim=\dimen115
-\MPnumerator=\count103
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count104
+\scratchdimen=\dimen116
+\scratchbox=\box34
+\nofMPsegments=\count105
+\nofMParguments=\count106
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count107
+\MPscratchDim=\dimen117
+\MPnumerator=\count108
+\everyMPtoPDFconversion=\toks22
 )
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -557,113 +576,98 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-LaTeX Font Info:    Try loading font information for U+txmia on input line 158.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 161.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 158.
+LaTeX Font Info:    Try loading font information for U+msa on input line 161.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 158.
+LaTeX Font Info:    Try loading font information for U+msb on input line 161.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 158.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 161.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-No file mum-multithread.bbl.
-
-LaTeX Warning: File `elsevier-logo-3p.pdf' not found on input line 204.
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 177.
 
 
-! Package pdftex.def Error: File `elsevier-logo-3p.pdf' not found.
+(/usr/share/texmf-texlive/tex/latex/txfonts/omstxr.fd
+File: omstxr.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 177.
 
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.204 \end{document}
-                    
-? 
+Underfull \hbox (badness 10000) in paragraph at lines 180--202
 
-LaTeX Warning: File `SDlogo-3p.pdf' not found on input line 204.
+ []
 
 
-! Package pdftex.def Error: File `SDlogo-3p.pdf' not found.
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.204 \end{document}
-                    
-? 
+ []
 
-LaTeX Warning: File `elsevier-logo-3p.pdf' not found on input line 204.
+<elsevier-logo-3p.pdf, id=1, 46.37325pt x 51.19125pt>
+File: elsevier-logo-3p.pdf Graphic file (type pdf)
 
+<use elsevier-logo-3p.pdf> <SDlogo-3p.pdf, id=2, 140.9265pt x 27.82394pt>
+File: SDlogo-3p.pdf Graphic file (type pdf)
 
-! Package pdftex.def Error: File `elsevier-logo-3p.pdf' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.204 \end{document}
-                    
-? 
-
-LaTeX Warning: File `SDlogo-3p.pdf' not found on input line 204.
-
-
-! Package pdftex.def Error: File `SDlogo-3p.pdf' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.204 \end{document}
-                    
-? 
-
-LaTeX Warning: Reference `lastpage' on page 1 undefined on input line 204.
-
-
-Overfull \vbox (85.26999pt too high) has occurred while \output is active []
+<use SDlogo-3p.pdf>
+File: elsevier-logo-3p.pdf Graphic file (type pdf)
+ <use elsevier-logo-3p.pdf>
+File: SDlogo-3p.pdf Graphic file (type pdf)
+ <use SDlogo-3p.pdf>
+Overfull \vbox (41.19112pt too high) has occurred while \output is active []
 
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] (./mum-multithread.aux)
+ <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>]
 
-LaTeX Warning: There were undefined references.
+Package natbib Warning: Citation `McCreight:1976:SST:321941.321946' on page 2 u
+ndefined on input line 260.
 
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 353--365
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+ []
 
- ) 
+[4]
+No file mum-multithread.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+[5] (./mum-multithread.aux) ) 
 Here is how much of TeX's memory you used:
- 2793 strings out of 493848
- 34130 string characters out of 1152823
- 86206 words of memory out of 3000000
- 6014 multiletter control sequences out of 15000+50000
- 27216 words of font info for 67 fonts, out of 3000000 for 9000
+ 3080 strings out of 493848
+ 37486 string characters out of 1152823
+ 93457 words of memory out of 3000000
+ 6280 multiletter control sequences out of 15000+50000
+ 39581 words of font info for 102 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 32i,12n,30p,850b,252s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/txfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utm
-b8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/
-texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mum-multithread.pdf (1 page, 50284 bytes).
+ 32i,17n,30p,850b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.
+enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texmf-texlive/font
+s/type1/public/txfonts/rtxmi.pfb></usr/share/texmf-texlive/fonts/type1/public/t
+xfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/public/txfonts/txex.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/txfonts/txsy.pfb></usr/share/texmf-
+texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/
+urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pf
+b>
+Output written on mum-multithread.pdf (5 pages, 136278 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
+ 69 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
