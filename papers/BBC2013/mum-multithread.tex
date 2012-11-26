@@ -103,6 +103,7 @@
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \usepackage[normalem]{ulem}
 \usepackage{algorithmic}
+\usepackage{epsfig}
 % declarations for front matter
 
 \begin{document}
@@ -224,124 +225,79 @@ For example, assuming d = 3, sequences R and Q in the previous example has four 
 The concept of MUM is important in whole genome alignment because a significantly long MUM is very likely to be part of the global alignment.
 \subsubsection{Finding MUMs in a suffix tree} 
 The key idea in this method is to build a suffix tree for genome R, a data structure which allows finding, extremely efficiently, all distinct subsequences in a given sequence.\\
-  By construction, the location in the suffix tree represents a 
-  substring of the subject sequence which maximaly matches a prefix of
-  \texttt{querysuffix}. Thus it is only necessary to verify that,
-  the substring of the subject sequence is long enough, that it
-  is unique in the subject sequence and that the match
-  is also left maximal. This is done as follows:
+  By construction, the location of a match in the suffix tree represents a substring of the subject sequence which maximaly matches a prefix of
+  \texttt{query suffix}. Thus it is only necessary to verify that, the substring of the subject sequence is long enough, that it is unique in the subject sequence and that 
+  the match is also left maximal. This is done as follows:
   
   \begin{enumerate}
   \item
-  does \texttt{loc} represent a substring of length at least 
-  \texttt{minmatchlength}?
-  \item
-  does \texttt{loc} correspond to a leaf edge? Then then the string 
-  represented by the location is unique in the subject sequence.
-  \item
-  is the substring left maximal? This is true if one of the following
-  conditions hold:
+  Does \texttt{location} represent a substring of length at least \texttt{minimum match length}?
+  \item 
+  Does \texttt{location} correspond to a leaf edge? Then then the string represented by the location is unique in the subject sequence.
+  \item 
+  Is the substring left maximal? This is true if one of the following conditions hold:
   \begin{itemize}
+  \item 
+  The suffix of the query currently considered is the first suffix, or 
   \item
-  the suffix of the query currently considered is the first suffix, or 
-  \item
-  the string represented by \texttt{loc} is a prefix of the subject string,
-  or
-  \item
-  the characters immediately to the left of the matching strings
-  in the subject sequence and the query sequence are different
+  The string represented by \texttt{loc} is a prefix of the subject string,  or
+  \item 
+  The characters immediately to the left of the matching strings in the subject sequence and the query sequence are different
   \end{itemize}
   \end{enumerate}
-  If all conditions 1-3 are true, then a function 
-  \texttt{processmumcandidate} is called. It takes the necessary 
-  information about the MUM-candidate as its arguments. 
-\subsubsection{Complexity analysis} 
-\begin{itemize}
-  \item \textbf{Step 1:} Building a suffix tree can be done in $O(n)$ time using McGreight's algorithm ~\cite{McCreight:1976:SST:321941.321946}.
-  \item \textbf{Step 2:} Marking internal nodes takes $O(n)$ time. 
-  \item \textbf{Step 3:} Comparing R[i-1] and Q[i-1] for each marked nodes takes $O(n+m)$ time as the number of marked nodes is at most $n+m-2$. By the same reasoning, traversing all internal nodes to extracting MUMs also takes $(n+m)$ time.
-  \item In total,this algorithm takes $O(n+m)$ time to find all MUMs of the input sequences.
-  \item The space complexity of this method is $O\left(n\log n\right)$ bits as we need to store the suffix tree of the input sequence.
-\end{itemize}
-Based on some experiments, it is found that MUMs can cover 100\% of the known conserved gene pairs. Moreover, finding all MUMs can be done in linear time.
-\section{Parallelism technique}
-%General-purpose, commodity CPUs currently have SIMD (Single Instruction Multiple Data) functional units and corresponding SIMD instructions. This kind of CPUs allow to be used in several ways of parallel techniques, such as data-level parallelism. \\
-%In addition to using SIMD technology, the availability of HPC clusters makes possible to execute the same task with a different kind of data.\\
+  If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates. It takes the necessary information about the MUM-candidate:
+  \begin{itemize}
+    \item Position in reference sequence.
+    \item Position in query genome.
+    \item Length of match.
+  \end{itemize}
+MUMs can cover 100\% of the known conserved gene pairs. Moreover, finding all MUMs can be done in almost linear time.
+\section{Parallelism technique} 
+General-purpose, commodity CPUs currently have SIMD (Single Instruction Multiple Data) functional units and corresponding SIMD instructions. This kind of CPUs allow to be used in several ways of parallel techniques, such as data-level parallelism. \\
+In addition to using SIMD technology, the availability of multicore architecture makes possible to execute the same task with a different kind of data.\\
 The sequential version of the MUMmer's algorithm trades extra computation for memory and high computation time when executed in a single machine. \\
-Previously the algorithm for sequence alignment was described in detail. Now our own proposal of a parallelization of WGA with MUMmer is explained, Xipe Totec. There are two resources to improve in this algorithm:
+Previously the algorithm for sequence alignment was described in detail. Now our own proposal of a parallelization of WGA within multicore architecture is explained. There are two resources to improve in this algorithm:
 \begin{itemize}
 \item Memory usage.
 \item Running time.
 \end{itemize}
-%The former was generally improved because it allows to be executed in environments where there is no restriction memory. 
-To improve the performance of the algorithm a data-level parallelism technique is deployed in advance to genome alignment.\\
+The former was generally improved because it allows being executed in architecures where there is no restriction memory. To improve the performance of the algorithm a data-level parallelism technique is deployed in advance to genome alignment.\\
 Our technique is divided in three phases following:
 \begin{enumerate}
-\item Splitting genome data according to the number of available cores.
-\item Parallel execution of as many instances of mummer as available cores.
-\item Get the list of MUMs from the whole set of MEMs\footnote{Maximal Exact Match} found in the previous phase.
+\item Splitting genome data (chunks) according to the number of available cores using 1 thread per core.
+\item Parallel execution of the task of finding MUMs for every chunk where every thread has its own list of MUM-candidate.
+\item Get the final list of MUMs from every MUM-candidate list of all threads.
 \end{enumerate}
 The following Figure \ref{algorithm} shows the process of our data-level parallelism technique.
-\begin{figure}[htb] 
+\begin{figure}[htb]  
 \begin{center} 
-  %\epsfig{file=algorithm.eps,width=4.5cm,height=4cm} 
+  \includegraphics[width=4.5cm,height=4cm]{algorithm.png}
 \end{center} 
-\caption{Data-level parallelism technique for whole genome alignment.} 
+\caption{Data-level parallelism in multicore architectures for whole genome alignment.} 
 \label{algorithm} 
 \end{figure} 
-The division of genome data was used using the paradigm of data-level parallelism which consists of a generation of chunks of a sequence with a fixed size and a fixed overlap. One issue arises when a genome is splitted because of the heuristic used in the algorithm is affected. So that, a longer sequence is more likely to have a better finding of MUMs while a smaller one can produce MUMs which are not effective MUMS.\\
-Another consideration was the genome structure, because a genome is build from a finite alphabet $\Sigma=\{a,g,c,t,n\}$ but according to the MUMmer's algorithm each alignment is made using only the nucleotide base pairs, this means that letter "n" in a biological way can mean anything: (a,g,c,t). A complex structure of a genome can have a huge impact of our data level parallelism.\\
-%The main idea in MUMmer is its heuristic, Maximal Unique Match (MUM), based on this concept it is possible to cover a huge region of a genome when reference and query genomes are very closely related. However 
+The division of genome data was used using the paradigm of data-level parallelism which consists of a generation of chunks of a query sequence with a fixed size. 
+The main idea behind using a Maximal Unique Match (MUM): it is possible to cover a huge region of a genome when reference and query genomes are very closely related. However 
 To get a MUM, it requires an important feature its uniqueness. 
 %We had to face with concept while we evaluated different ways to implement the data-level parallelism. 
-Uniqueness can only be found when a whole genome is checked.
-%if some part of it is only evaluated we could miss the rest of the genome. 
-In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known.\\
-One solution to solve this problem is to drop the MUMmer's heuristic in order to be able to find the correct MUMs when we apply our data-level parallelism. The new approach is to find a Maximal Exact Match (MEM), a MEM allows to drop the uniqueness of a match but with a high computational cost: a brute-force approach.\\
-%A MEM as shown in Figure \ref{mem} has the advantage of getting the true MUMs regardless a division of genome data. In Figure \ref{mem} R stands for reference genome and Q stands for query genome, this example shows that blue and red matches have exact matches but turn out not to be unique, then not a valid MUM; a true MUM is the green match.\\
-Nevertheless, the major problem with the use of MEM is that the number of occurrences increases exponentially when \emph{shorter MEM} are used. Moreover, the high ratio of MEMs requires to save them in some place, memory or disk, that means a heavy use of resources in both CPU and Memory. This drawback is the main disadvantage because the hits of MEMs are increasing with the size of the genome. A new phase has to be designed to reduce the use of resources when a short MEM is searched.
-%\begin{figure}[htb] 
-%\begin{center} 
-%  \epsfig{file=mem.eps,width=6cm, height=3cm} 
-%\end{center} 
-%\caption{Types of matches}
-%\label{mem} 
-%\end{figure} 
+Uniqueness can only be found when a whole genome is checked. If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read.\\
 \section{Implementation} 
 \label{implementation}
-%When there is only one query sequence, one can try to split the query sequence and assign each part to a processor. This part covers in detail every aspect of Xipe Totec.
-This section explains in detail how our proposal is implemented and the modifications in order to be executed in MUMmer. The following diagram, see Figure \ref{xipe-totec}, shows the add-ons of our approach, one is executed before MUMmer and the another after MUMmer.
-\begin{figure}[htb]  
+This section explains in detail how our novel implementation works. The following diagram, see Figure \ref{xipe-totec}, shows the add-ons of our approach, one is executed before MUMmer and the another after MUMmer.
+\begin{figure}[htb]   
  \begin{center} 
-   % \epsfig{file=xipe-totec1.eps,width=7.5cm} 
+   \includegraphics[width=7.5cm]{toci.png}
  \end{center}
- \caption{Xipe Totec: proposal for parallelization of whole genome alignment} 
+ \caption{Finding MUMs in multicore architectures.} 
  \label{xipe-totec} 
 \end{figure}
-The following sections explain how the split of genome data, search of MEMs and get MUMs are carried out in our proposal.
-\subsection{Split genome data} 
-As it was previously explained, the approach is to use a fixed size division of genome data in as many chunks as  many available cores. Xipe Totec needs to know how many cores will be used in order to divide the genome data.\\
-One key aspect of Xipe Totec is the way to split a genome. To align a genome requires a reference genome so that, there are two ways of using Xipe Totec:
-\begin{itemize}
-\item Splitting reference genome.
-\item Splitting query genome.
-\end{itemize}
-Both of them can reduce the computation time or memory usage.\\
-To split genome data a perl script was coded to do this task, the script requires the following arguments:
-\begin{itemize}
-\item Genome data to be splitted.
-\item Number of chunks.
-\item Overlap size.
-\item Location to save the genome data.
-\end{itemize}
-\subsection{Finding MEMs}
-This phase requires the mummer program, one of the several small programs in the MUMmer suite. mummer has several options.
-In order to get a correct alignment, our proposal requires to compute MEMs instead of MUMs, so that mummer is executed with:
-\begin{itemize}
-  \item -n: to match only nucleotides.
-  \item -maxmatch: option to get MEMs.
-  \item -l \emph{length}: to find MEMs of a some minimum length.
-\end{itemize}
+The following sections explain how to split query genome, search of MUMs and get real MUMs in our proposal.
+\subsection*{Split query genome}  
+As it was previously explained, the approach is to use a fixed size division of query genome in as many chunks as  many available cores. 
+To split query genome the algorithm needs to know in advance how many chunks will be used. Then every chunk is computed with two pointers (left and right end)
+which points out query genome in main memory.
+\subsection*{Finding MUMs}
+The parallelization is carried out with OpenMP 
 List of MEMs is saved to a file which has the following format:
 \begin{verbatim}
 >Information about the sequence
@@ -416,22 +372,7 @@ To verify that our approach, Xipe Totec, can align a whole genome a set of tests
 %% References with BibTeX database:
 \section*{References}
 \bibliographystyle{elsarticle-num}
-\bibliography{<your-bib-database>}
-
-%% Authors are advised to use a BibTeX database file for their reference list.
-%% The provided style file elsarticle-num.bst formats references in the required Procedia style
-
-%% For references without a BibTeX database:
-
-% \begin{thebibliography}{00}
-
-%% \bibitem must have the following form:
-%%   \bibitem{key}...
-%%
-
-% \bibitem{}
-
-% \end{thebibliography}
+\bibliography{mum-multithread}
 
 \end{document}
 

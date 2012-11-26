@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  26 NOV 2012 00:54
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  26 NOV 2012 15:51
 entering extended mode
  %&-line parsing enabled.
 **mum-multithread.tex
@@ -479,44 +479,49 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip50
 \algorithmicindent=\skip51
 )
-(./mum-multithread.aux)
+(/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+\epsfxsize=\dimen116
+\epsfysize=\dimen117
+) (./mum-multithread.aux)
 \openout1 = `mum-multithread.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 108.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 108
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 109.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 109
 .
  (/usr/share/texmf-texlive/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 108.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 108
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 109.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 109
 .
+
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 108.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 108
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 109.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 109
 .
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 108.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 108.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 109.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 109.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 108.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 109.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/ot1txr.fd
@@ -525,13 +530,13 @@ File: ot1txr.fd 2000/12/15 v3.1
 (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count104
-\scratchdimen=\dimen116
+\scratchdimen=\dimen118
 \scratchbox=\box34
 \nofMPsegments=\count105
 \nofMParguments=\count106
 \everyMPshowfont=\toks21
 \MPscratchCnt=\count107
-\MPscratchDim=\dimen117
+\MPscratchDim=\dimen119
 \MPnumerator=\count108
 \everyMPtoPDFconversion=\toks22
 )
@@ -576,42 +581,42 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-LaTeX Font Info:    Try loading font information for U+txmia on input line 161.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 162.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 161.
+LaTeX Font Info:    Try loading font information for U+msa on input line 162.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 161.
+LaTeX Font Info:    Try loading font information for U+msb on input line 162.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 161.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 162.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for OMS+txr on input line 177.
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 178.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxr.fd
 File: omstxr.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 177.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 178.
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--202
+Underfull \hbox (badness 10000) in paragraph at lines 181--203
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
@@ -631,43 +636,47 @@ Overfull \vbox (41.19112pt too high) has occurred while \output is active []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>]
+ <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>] [2] <algorithm.png, id=26, 157.548
+6pt x 200.9106pt>
+File: algorithm.png Graphic file (type png)
 
-Package natbib Warning: Citation `McCreight:1976:SST:321941.321946' on page 2 u
-ndefined on input line 260.
-
-[2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 353--365
+<use algorithm.png>
+Underfull \hbox (badness 10000) in paragraph at lines 271--284
 
  []
 
-[4]
-No file mum-multithread.bbl.
+[3 <./algorithm.png (PNG copy)>] <toci.png, id=30, 672.8337pt x 291.9708pt>
+File: toci.png Graphic file (type png)
 
-Package natbib Warning: There were undefined citations.
+<use toci.png>
+Underfull \hbox (badness 10000) in paragraph at lines 309--321
 
-[5] (./mum-multithread.aux) ) 
+ []
+
+[4 <./toci.png (PNG copy)>] (./mum-multithread.bbl
+
+Package natbib Warning: Empty `thebibliography' environment on input line 8.
+
+) [5] (./mum-multithread.aux) ) 
 Here is how much of TeX's memory you used:
- 3080 strings out of 493848
- 37486 string characters out of 1152823
- 93457 words of memory out of 3000000
- 6280 multiletter control sequences out of 15000+50000
+ 3127 strings out of 493848
+ 38068 string characters out of 1152823
+ 93901 words of memory out of 3000000
+ 6319 multiletter control sequences out of 15000+50000
  39581 words of font info for 102 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  32i,17n,30p,850b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.
-enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texmf-texlive/font
-s/type1/public/txfonts/rtxmi.pfb></usr/share/texmf-texlive/fonts/type1/public/t
-xfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/public/txfonts/txex.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/txfonts/txsy.pfb></usr/share/texmf-
-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/
-urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pf
-b>
-Output written on mum-multithread.pdf (5 pages, 136278 bytes).
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8
+r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr/share
+/texmf-texlive/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/txfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/public/
+txfonts/txsy.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></u
+sr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texli
+ve/fonts/type1/urw/times/utmri8a.pfb>
+Output written on mum-multithread.pdf (5 pages, 202741 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
+ 63 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
