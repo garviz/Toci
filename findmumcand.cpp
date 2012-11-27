@@ -166,7 +166,7 @@ Sint findmumcandidates(Suffixtree *stree,
   
   likwid_markerStartRegion("Find MUMs");
   start = omp_get_wtime();
-  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc,flag,buf) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,A,Size)  reduction(+:N) schedule(runtime)
+  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,A,Size)  reduction(+:N) schedule(runtime)
   for (i=0; i<chunks; i++)
   {
       omp_get_schedule(schedule,chunk_schedule);
@@ -193,8 +193,8 @@ Sint findmumcandidates(Suffixtree *stree,
                        A[N].Q = (Uint) (querysuffix-query);
                        A[N].Len = loc.locstring.length;
                    }
-                }
-           }
+               }
+          }
           if (ROOTLOCATION (&loc))
           {
               lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
@@ -204,7 +204,7 @@ Sint findmumcandidates(Suffixtree *stree,
               linklocstree (stree, &loc, &loc);
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
           }  
-        }
+      }
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
       {
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)

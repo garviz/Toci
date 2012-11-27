@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  26 NOV 2012 15:51
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  27 NOV 2012 15:37
 entering extended mode
  %&-line parsing enabled.
 **mum-multithread.tex
@@ -636,34 +636,34 @@ Overfull \vbox (41.19112pt too high) has occurred while \output is active []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>] [2] <algorithm.png, id=26, 157.548
-6pt x 200.9106pt>
-File: algorithm.png Graphic file (type png)
+ <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>] <MUM-candidates.png, id=20, 475.77
+75pt x 299.1175pt>
+File: MUM-candidates.png Graphic file (type png)
 
-<use algorithm.png>
-Underfull \hbox (badness 10000) in paragraph at lines 271--284
+<use MUM-candidates.png> [2] <Phases.png, id=28, 667.49374pt x 438.63875pt>
+File: Phases.png Graphic file (type png)
 
- []
+<use Phases.png> <Whole-MUM.png, id=29, 600.2425pt x 155.58125pt>
+File: Whole-MUM.png Graphic file (type png)
 
-[3 <./algorithm.png (PNG copy)>] <toci.png, id=30, 672.8337pt x 291.9708pt>
-File: toci.png Graphic file (type png)
-
-<use toci.png>
-Underfull \hbox (badness 10000) in paragraph at lines 309--321
-
- []
-
-[4 <./toci.png (PNG copy)>] (./mum-multithread.bbl
+<use Whole-MUM.png> [3 <./MUM-candidates.png>] [4 <./Phases.png> <./Whole-MUM.p
+ng>] <MUMs.png, id=39, 632.3625pt x 409.53pt>
+File: MUMs.png Graphic file (type png)
+ <use MUMs.png>
+<Remove-MUMs.png, id=40, 632.3625pt x 410.53375pt>
+File: Remove-MUMs.png Graphic file (type png)
+ <use Remove-MUMs.png>
+[5 <./MUMs.png> <./Remove-MUMs.png>] (./mum-multithread.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 8.
 
-) [5] (./mum-multithread.aux) ) 
+) [6] (./mum-multithread.aux) ) 
 Here is how much of TeX's memory you used:
- 3127 strings out of 493848
- 38068 string characters out of 1152823
- 93901 words of memory out of 3000000
- 6319 multiletter control sequences out of 15000+50000
- 39581 words of font info for 102 fonts, out of 3000000 for 9000
+ 3109 strings out of 493848
+ 38085 string characters out of 1152823
+ 94899 words of memory out of 3000000
+ 6300 multiletter control sequences out of 15000+50000
+ 38265 words of font info for 100 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  32i,17n,30p,850b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8
@@ -674,9 +674,9 @@ nts/type1/public/txfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/public/
 txfonts/txsy.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></u
 sr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texli
 ve/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mum-multithread.pdf (5 pages, 202741 bytes).
+Output written on mum-multithread.pdf (6 pages, 309559 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

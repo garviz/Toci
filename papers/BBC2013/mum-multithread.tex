@@ -245,14 +245,22 @@ The key idea in this method is to build a suffix tree for genome R, a data struc
   The characters immediately to the left of the matching strings in the subject sequence and the query sequence are different
   \end{itemize}
   \end{enumerate}
-  If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates. It takes the necessary information about the MUM-candidate:
+  If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates, see Figure \ref{candidates}. 
+ \begin{figure}[htb]  
+ \begin{center} 
+  \includegraphics[width=6.5cm,height=4cm]{MUM-candidates.png}
+ \end{center} 
+ \caption{Finding MUMs in a suffix tree.} 
+ \label{candidates} 
+ \end{figure}  
+  It takes the necessary information about the MUM-candidate:
   \begin{itemize}
     \item Position in reference sequence.
     \item Position in query genome.
     \item Length of match.
   \end{itemize}
-MUMs can cover 100\% of the known conserved gene pairs. Moreover, finding all MUMs can be done in almost linear time.
-\section{Parallelism technique} 
+MUMs can cover 100\% of the known  conserved gene pairs. Moreover, finding all MUMs can be done in almost linear time.
+\section{Parallelism technique}  
 General-purpose, commodity CPUs currently have SIMD (Single Instruction Multiple Data) functional units and corresponding SIMD instructions. This kind of CPUs allow to be used in several ways of parallel techniques, such as data-level parallelism. \\
 In addition to using SIMD technology, the availability of multicore architecture makes possible to execute the same task with a different kind of data.\\
 The sequential version of the MUMmer's algorithm trades extra computation for memory and high computation time when executed in a single machine. \\
@@ -271,91 +279,89 @@ Our technique is divided in three phases following:
 The following Figure \ref{algorithm} shows the process of our data-level parallelism technique.
 \begin{figure}[htb]  
 \begin{center} 
-  \includegraphics[width=4.5cm,height=4cm]{algorithm.png}
+  \includegraphics[width=4.5cm,height=4cm]{Phases.png}
 \end{center} 
 \caption{Data-level parallelism in multicore architectures for whole genome alignment.} 
 \label{algorithm} 
 \end{figure} 
 The division of genome data was used using the paradigm of data-level parallelism which consists of a generation of chunks of a query sequence with a fixed size. 
 The main idea behind using a Maximal Unique Match (MUM): it is possible to cover a huge region of a genome when reference and query genomes are very closely related. However 
-To get a MUM, it requires an important feature its uniqueness. 
+to get a MUM, it requires an important feature its uniqueness. 
 %We had to face with concept while we evaluated different ways to implement the data-level parallelism. 
-Uniqueness can only be found when a whole genome is checked. If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read.\\
+Uniqueness can only be found when a whole genome is checked, see Figure \ref{Whole-MUM}. If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read, see Figure \ref{Whole-MUM}.\\
+\begin{figure}[htb]  
+\begin{center} 
+  \includegraphics[width=6cm,height=3cm]{Whole-MUM.png}
+\end{center} 
+\caption{MUM in reference genome but not in query genome.} 
+\label{Whole-MUM} 
+\end{figure}
 \section{Implementation} 
 \label{implementation}
-This section explains in detail how our novel implementation works. The following diagram, see Figure \ref{xipe-totec}, shows the add-ons of our approach, one is executed before MUMmer and the another after MUMmer.
-\begin{figure}[htb]   
- \begin{center} 
-   \includegraphics[width=7.5cm]{toci.png}
- \end{center}
- \caption{Finding MUMs in multicore architectures.} 
- \label{xipe-totec} 
-\end{figure}
-The following sections explain how to split query genome, search of MUMs and get real MUMs in our proposal.
 \subsection*{Split query genome}  
 As it was previously explained, the approach is to use a fixed size division of query genome in as many chunks as  many available cores. 
 To split query genome the algorithm needs to know in advance how many chunks will be used. Then every chunk is computed with two pointers (left and right end)
 which points out query genome in main memory.
 \subsection*{Finding MUMs}
-The parallelization is carried out with OpenMP 
-List of MEMs is saved to a file which has the following format:
-\begin{verbatim}
->Information about the sequence
-Position_in_R Position_in_Q Length_of_MEM
-\end{verbatim}
-This list has to be joined with the output of every chunk computed and then the whole list is  manipulated in the following phase, \ref{getting}.
-\subsection{Getting MUMs}
-\label{getting}
-This is the most important phase in our approach because it outputs the final list of MUMs those that are the same to the serial execution of mummer.\\
-This phase needs the list of MEMs to process them and find those matches that are unique. The following diagram shows the basic idea behind this phase, see Figure \ref{xt}.
+The parallelization is carried out with OpenMP. The algorithm to find MUMs is a process which can be executed without any data dependency. However, when we split a query sequence the following problems arise:
+\begin{itemize}
+  \item Chunk size is a performance factor.
+  \item Different MUM-candidate in query sequence:
+    \begin{itemize}
+      \item Additional MUMs.
+      \item Lost MUMs.
+    \end{itemize}
+\end{itemize}
+OpenMP defines the schedule for the loop iterations among the total number of threads. The total number of iterations is the number of chunks created. Every iteration means the whole search of MUMs within a chunk, if the right end of chunk is not the end of the query sequence and there are still nucleotides to match then traversal of suffix tree until it occurs a mismatch or a MUM-candidate is found.\\
+The key factors in this phase are:
+\begin{itemize}
+  \item Number of chunks.
+  \item Size of chunks.
+  \item Number of threads.
+  \item OpenMP schedule and its own chunk size.
+\end{itemize}
+\subsection*{Get real MUMs}
+List of MUM-candidates are ordered with quicksort according to position in query sequence. Every thread has found a set of MUM-candidates from previous phase but the all threads don't produce the MUM-candidates in order. That's why a quicksort is required.\\
+After quicksort we need to get the real MUMs. A real MUM is unique in the whole reference and query genome. Those MUM-candidates which are overlapped by bigger MUMs are discarded, see Figure \ref{real-mums}.\\
 \begin{figure}[htb]  
- \begin{center} 
-   %\epsfig{file=xt.eps,width=5cm, height=2cm} 
- \end{center} 
- \caption{Xipe Totec: Finding the real MUMs} 
-   \label{xt} 
+\begin{center} 
+  \includegraphics[width=4.5cm,height=4cm]{MUMs.png}
+  \includegraphics[width=4.5cm,height=4cm]{Remove-MUMs.png}
+\end{center} 
+\caption{Getting Real MUMs.} 
+\label{real-mums} 
 \end{figure}
-To get the MUMs we filter those MEMs that are unique in the list and order them using a modified version of LIS\footnote{Longest Increasing Subsequence} algorithm.
-The algorithm is shown below:
-\begin{algorithmic}
-\STATE{Input: List of MEMs: Position in R, position in Q, length of MEM}
-\STATE{Sort MEMs by increasing position and decreasing length in R}
-\FOR{$i:=0$ to $n$ in Total\_MEMs}
-\IF{MEM[$i$] is not unique}
-\STATE{Sort this subset by increasing position in Q and pick up the first MEM and drop the rest}
-\ELSE {}
-\STATE{MEM[$i$] is a MUM}
-\ENDIF
-\ENDFOR
-\STATE{Sort MEMs by increasing position and decreasing length in Q}
-\FOR{$i:=0$ to $n$ in Total\_MEMs}
-\IF{MEM[$i$] is not unique}
-\STATE{Sort this subset by increasing position in R and pick up the first MEM and drop the rest}
-\ELSE {}
-\STATE{MEM[$i$] is a MUM}
-\ENDIF
-\ENDFOR
-\end{algorithmic}
-The output of this algorithm gives the MUMs.
+The final output has the following format:
+\begin{verbatim} 
+>Information about the query sequence
+Position_in_R Position_in_Q Length_of_MUM
+\end{verbatim}
 \section{Experiments and results}
-To verify that our approach, Xipe Totec, can align a whole genome a set of tests were analyzed. These tests were carried out in a cluster with the following features:
+To verify that our approach, can have a better performance to align a whole genome a set of tests were deployed. These tests were carried out in the following node:
 \begin{itemize}
-\item Hardware: 
+\item Hardware:  
 \begin{itemize}
-\item Processor Dual-Core Intel(R) Xeon(R) CPU 5160 @ 3.00GHz 4MB L2 (2x2)
-\item Number of processors: 2
-\item RAM: 12 GB Fully Buffered DIMM 667 MHz
+\item 2 Processor Intel(R) Xeon(R) E5645 @ 2.4GHz of 6 cores each one, 32KB L1 cache, 256KB L2 and 12MB L3 shared cache per socket.
+\item RAM: 96 GB
 \end{itemize}
-\item  Software:
+\item  Software: 
 \begin{itemize}
-\item Linux Kernel 2.6.16.46-0.12-smp x86\_64 GNU/Linux
-\item gcc 4.3.2
-\item MUMmer 3.22
-\item Perl 5.8.8
+\item Linux Kernel 2.6.32-220.el6.x86\_64 \#1 SMP
+\item gcc 4.7.0 with OpenMP support
+\item Likwid 2.3.0
 \end{itemize}
+\item Genomes:
+  \begin{itemize}
+    \item Reference: Human chromosome 21 single fasta file
+    \item Query: Mouse chromosome 16 single fasta file
+  \end{itemize}
 \end{itemize}
-%% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
+The main objective of the tests was check the performance of finding MUMs in multicore architectures by using OpenMP (threads). The variables to control were:
+\begin{enumerate}
+  \item Number of chunks.
+  \item Number of threads.
+\end{enumerate}
+
 %% \appendix
 
 %% \section{}
