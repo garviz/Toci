@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  27 NOV 2012 15:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  28 NOV 2012 08:23
 entering extended mode
  %&-line parsing enabled.
 **mum-multithread.tex
@@ -483,45 +483,107 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \epsfxsize=\dimen116
 \epsfysize=\dimen117
+)
+(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@indent=\dimen121
+\caption@parindent=\dimen122
+\caption@hangindent=\dimen123
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used on input line 1068.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\vskip \abovecaptionski
+p \footnotesize \sbox \@tempboxa {#1: #2}\ifdim \wd \@tempboxa >\hsize #1: #2\p
+ar \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }\
+fi \vskip \belowcaptionskip .
+\c@ContinuedFloat=\count104
+Package caption Info: rotating package is loaded.
+)
+\c@KVtest=\count105
+\sf@farskip=\skip52
+\sf@captopadj=\dimen124
+\sf@capskip=\skip53
+\sf@nearskip=\skip54
+\c@subfigure=\count106
+\c@subfigure@save=\count107
+\c@lofdepth=\count108
+\c@subtable=\count109
+\c@subtable@save=\count110
+\c@lotdepth=\count111
+\sf@top=\skip55
+\sf@bottom=\skip56
+) (/usr/share/texmf-texlive/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen125
+\extrarowheight=\dimen126
+\NC@list=\toks21
+\extratabsurround=\skip57
+\backup@length=\skip58
+)
+\TX@col@width=\dimen127
+\TX@old@table=\dimen128
+\TX@old@col=\dimen129
+\TX@target=\dimen130
+\TX@delta=\dimen131
+\TX@cols=\count112
+\TX@ftn=\toks22
 ) (./mum-multithread.aux)
 \openout1 = `mum-multithread.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 109.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 109
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 111.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 111
 .
- (/usr/share/texmf-texlive/tex/latex/txfonts/omltxmi.fd
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 109.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 109
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 111.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 111
 .
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 109.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 109
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 111.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 111
 .
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 109.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 109.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 111.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 111.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 109.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 111.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/ot1txr.fd
@@ -529,16 +591,16 @@ File: ot1txr.fd 2000/12/15 v3.1
 )
 (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count104
-\scratchdimen=\dimen118
+\scratchcounter=\count113
+\scratchdimen=\dimen132
 \scratchbox=\box34
-\nofMPsegments=\count105
-\nofMParguments=\count106
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count107
-\MPscratchDim=\dimen119
-\MPnumerator=\count108
-\everyMPtoPDFconversion=\toks22
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen133
+\MPnumerator=\count117
+\everyMPtoPDFconversion=\toks24
 )
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -581,42 +643,41 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-LaTeX Font Info:    Try loading font information for U+txmia on input line 162.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 111.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 164.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 162.
+LaTeX Font Info:    Try loading font information for U+msa on input line 164.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 162.
+LaTeX Font Info:    Try loading font information for U+msb on input line 164.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 162.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 164.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for OMS+txr on input line 178.
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 180.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxr.fd
 File: omstxr.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 178.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 180.
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--203
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
+Underfull \hbox (badness 10000) in paragraph at lines 183--205
 
  []
 
@@ -636,47 +697,129 @@ Overfull \vbox (41.19112pt too high) has occurred while \output is active []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>] <MUM-candidates.png, id=20, 475.77
-75pt x 299.1175pt>
+ <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
+
+ []
+
+<MUM-candidates.png, id=20, 475.7775pt x 299.1175pt>
 File: MUM-candidates.png Graphic file (type png)
-
-<use MUM-candidates.png> [2] <Phases.png, id=28, 667.49374pt x 438.63875pt>
+ <use MUM-candidates.png>
+[2] <Phases.png, id=28, 667.49374pt x 438.63875pt>
 File: Phases.png Graphic file (type png)
-
-<use Phases.png> <Whole-MUM.png, id=29, 600.2425pt x 155.58125pt>
+ <use Phases.png>
+<Whole-MUM.png, id=29, 600.2425pt x 155.58125pt>
 File: Whole-MUM.png Graphic file (type png)
-
-<use Whole-MUM.png> [3 <./MUM-candidates.png>] [4 <./Phases.png> <./Whole-MUM.p
-ng>] <MUMs.png, id=39, 632.3625pt x 409.53pt>
+ <use Whole-MUM.png> [3 <./MUM-candidates.png>] [4 <./Phases.png> <./Whole-MUM.
+png>]
+<MUMs.png, id=39, 632.3625pt x 409.53pt>
 File: MUMs.png Graphic file (type png)
  <use MUMs.png>
 <Remove-MUMs.png, id=40, 632.3625pt x 410.53375pt>
 File: Remove-MUMs.png Graphic file (type png)
  <use Remove-MUMs.png>
-[5 <./MUMs.png> <./Remove-MUMs.png>] (./mum-multithread.bbl
+[5 <./MUMs.png> <./Remove-MUMs.png>]
+<static-ft.pdf, id=46, 679.53876pt x 462.72874pt>
+File: static-ft.pdf Graphic file (type pdf)
+ <use static-ft.pdf>
+<dynamic-ft.pdf, id=47, 679.53876pt x 462.72874pt>
+File: dynamic-ft.pdf Graphic file (type pdf)
+ <use dynamic-ft.pdf>
+<guided-ft.pdf, id=48, 679.53876pt x 462.72874pt>
+File: guided-ft.pdf Graphic file (type pdf)
+ <use guided-ft.pdf>
+<static-fm.pdf, id=49, 679.53876pt x 462.72874pt>
+File: static-fm.pdf Graphic file (type pdf)
+ <use static-fm.pdf>
+<dynamic-fm.pdf, id=50, 679.53876pt x 462.72874pt>
+File: dynamic-fm.pdf Graphic file (type pdf)
+ <use dynamic-fm.pdf>
+<guided-fm.pdf, id=51, 679.53876pt x 462.72874pt>
+File: guided-fm.pdf Graphic file (type pdf)
+ <use guided-fm.pdf>
+<dcm11.pdf, id=52, 679.53876pt x 462.72874pt>
+File: dcm11.pdf Graphic file (type pdf)
+ <use dcm11.pdf>
+<dcm12.pdf, id=53, 679.53876pt x 462.72874pt>
+File: dcm12.pdf Graphic file (type pdf)
+ <use dcm12.pdf>
+<dcm14.pdf, id=54, 679.53876pt x 462.72874pt>
+File: dcm14.pdf Graphic file (type pdf)
+ <use dcm14.pdf>
+<dcm21.pdf, id=55, 679.53876pt x 462.72874pt>
+File: dcm21.pdf Graphic file (type pdf)
+ <use dcm21.pdf>
+<dcm22.pdf, id=56, 679.53876pt x 462.72874pt>
+File: dcm22.pdf Graphic file (type pdf)
+ <use dcm22.pdf>
+<dcm24.pdf, id=57, 679.53876pt x 462.72874pt>
+File: dcm24.pdf Graphic file (type pdf)
+ <use dcm24.pdf>
+<dcm31.pdf, id=58, 679.53876pt x 462.72874pt>
+File: dcm31.pdf Graphic file (type pdf)
+ <use dcm31.pdf>
+<dcm32.pdf, id=59, 679.53876pt x 462.72874pt>
+File: dcm32.pdf Graphic file (type pdf)
+ <use dcm32.pdf>
+<dcm34.pdf, id=60, 679.53876pt x 462.72874pt>
+File: dcm34.pdf Graphic file (type pdf)
+ <use dcm34.pdf>
+<l1d11.pdf, id=61, 679.53876pt x 462.72874pt>
+File: l1d11.pdf Graphic file (type pdf)
+ <use l1d11.pdf>
+<l1d12.pdf, id=62, 679.53876pt x 462.72874pt>
+File: l1d12.pdf Graphic file (type pdf)
+ <use l1d12.pdf>
+<l1d14.pdf, id=63, 679.53876pt x 462.72874pt>
+File: l1d14.pdf Graphic file (type pdf)
+ <use l1d14.pdf>
+<l1d21.pdf, id=64, 679.53876pt x 462.72874pt>
+File: l1d21.pdf Graphic file (type pdf)
+ <use l1d21.pdf>
+<l1d22.pdf, id=65, 679.53876pt x 462.72874pt>
+File: l1d22.pdf Graphic file (type pdf)
+ <use l1d22.pdf>
+<l1d24.pdf, id=66, 679.53876pt x 462.72874pt>
+File: l1d24.pdf Graphic file (type pdf)
+ <use l1d24.pdf>
+<l1d31.pdf, id=67, 679.53876pt x 462.72874pt>
+File: l1d31.pdf Graphic file (type pdf)
+ <use l1d31.pdf>
+<l1d32.pdf, id=68, 679.53876pt x 462.72874pt>
+File: l1d32.pdf Graphic file (type pdf)
+ <use l1d32.pdf>
+<l1d34.pdf, id=69, 679.53876pt x 462.72874pt>
+File: l1d34.pdf Graphic file (type pdf)
+ <use l1d34.pdf>
+(./mum-multithread.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 8.
 
-) [6] (./mum-multithread.aux) ) 
+) [6] [7 <./static-ft.pdf> <./dynamic-ft.pdf> <./guided-ft.pdf> <./static-fm.pd
+f> <./dynamic-fm.pdf> <./guided-fm.pdf>] [8 <./dcm11.pdf> <./dcm12.pdf> <./dcm1
+4.pdf> <./dcm21.pdf> <./dcm22.pdf> <./dcm24.pdf> <./dcm31.pdf> <./dcm32.pdf> <.
+/dcm34.pdf>] [9 <./l1d11.pdf> <./l1d12.pdf> <./l1d14.pdf> <./l1d21.pdf> <./l1d2
+2.pdf> <./l1d24.pdf> <./l1d31.pdf> <./l1d32.pdf> <./l1d34.pdf>]
+(./mum-multithread.aux) ) 
 Here is how much of TeX's memory you used:
- 3109 strings out of 493848
- 38085 string characters out of 1152823
- 94899 words of memory out of 3000000
- 6300 multiletter control sequences out of 15000+50000
- 38265 words of font info for 100 fonts, out of 3000000 for 9000
+ 4402 strings out of 493848
+ 59881 string characters out of 1152823
+ 131653 words of memory out of 3000000
+ 7551 multiletter control sequences out of 15000+50000
+ 39581 words of font info for 102 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 32i,17n,30p,850b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8
-r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr/share
-/texmf-texlive/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/txfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/public/
-txfonts/txsy.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></u
-sr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texli
-ve/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mum-multithread.pdf (6 pages, 309559 bytes).
+ 44i,17n,45p,850b,419s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr/share/texmf
+-texlive/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/txfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/public/txfont
+s/txsy.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/sha
+re/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on mum-multithread.pdf (9 pages, 5361028 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 17576 PDF objects out of 18468 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

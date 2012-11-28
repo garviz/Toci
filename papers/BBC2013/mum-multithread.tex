@@ -104,6 +104,8 @@
 \usepackage[normalem]{ulem}
 \usepackage{algorithmic}
 \usepackage{epsfig}
+\usepackage{subfig}
+\usepackage{tabularx}
 % declarations for front matter
 
 \begin{document}
@@ -199,7 +201,7 @@ The use of parallelism could help reduce the execution time for the search of ma
 parallelism is to take advantage of multicore architectures nowadays.\\
 This problem has a time complexity of $O(m+k)$ where $m$ is the length of the query sequence and $k$ is the number of 
 maximal unique matches of some minimum length. This problem is a very high intensive computing task, for every substring
-in the query sequence the search for a maximum unique match has to be performed.\\
+in the query sequence the search for a maximum unique match has to be performed.\\ 
 \section{The MUM: an heuristic approach}
 \subsection{Definition MUM}
 Although a pair of conserved genes rarely contain the same entire sequence, they share a lot of short common substrings and some of them are indeed unique to this pair of genes. For example the following two sequences, R and Q:\\
@@ -259,7 +261,7 @@ The key idea in this method is to build a suffix tree for genome R, a data struc
     \item Position in query genome.
     \item Length of match.
   \end{itemize}
-MUMs can cover 100\% of the known  conserved gene pairs. Moreover, finding all MUMs can be done in almost linear time.
+MUMs can cover 100\% of the known  conserved gene pairs. Moreover, finding all MUMs  can be done in almost linear time.
 \section{Parallelism technique}  
 General-purpose, commodity CPUs currently have SIMD (Single Instruction Multiple Data) functional units and corresponding SIMD instructions. This kind of CPUs allow to be used in several ways of parallel techniques, such as data-level parallelism. \\
 In addition to using SIMD technology, the availability of multicore architecture makes possible to execute the same task with a different kind of data.\\
@@ -358,10 +360,71 @@ To verify that our approach, can have a better performance to align a whole geno
 \end{itemize}
 The main objective of the tests was check the performance of finding MUMs in multicore architectures by using OpenMP (threads). The variables to control were:
 \begin{enumerate}
-  \item Number of chunks.
-  \item Number of threads.
+  \item Number of chunks: fixed for query.
+  \item Number of threads: from 1 to 12 threads with affinity to 1 thread per core.
+  \item OpenMP chunk scheduling policy: from 1, 2 and 4 chunks per thread.
+  \item OpenMP scheduling: static, dynamic and guided.
 \end{enumerate}
-
+Moreover, the use of cache was measured with the tool likwid\footnote{Measure hardware performance counters on Intel and AMD processors.}, the use of cache included the whole application.  The times were collected for the total execution time and the time spent in the parallel region of OpenMP. This parallel region is the algorithm to find MUMs.\\
+One key aspect of the several tests deployed was to assure the execution of every thread in a single core, that is no other thread is competing for the same cache. Affinity is a requirement because we need to ensure the scalability of our proposal.\\
+The construction of the suffix tree for the reference genome of length 35.45[Mbp] takes 20.66[s] to construct and it uses 608[MB] of memory. The minimum length for a MUM was fixed in all tests, 20[bp]. The query sequence of length 95.28[Mbp] was divided in 96 chunks with a fixed size of 992.53[Kbp], the total number of MUMs found were 102844.\\
+Two times were collected during the execution of the experiments: total execution time and execution time to find mums. The experiments were executed 10 times to get accuracy in the measures.\\
+In Figure \ref{fig:finaltime} shows the final time for the application to find MUMs, from this Figure we can conclude that for these sequences the dominant time since 6 threads because the serial part of the application has not be improved; that is phase 1 and phase 3 in Figure \ref{algorithm}. However it is shown that phase 2 (finding MUMs) have a near linear speedup because of the forced affinity of one thread per core, in Figure \ref{fig:mumtime} is shown the execution time for this phase with several configurations of OpenMP scheduling policy. The difference between scheduling policy and chunk size is negligible for the sizes of the sequences for performance purposes.\\
+\begin{figure}
+  \centering
+  \subfloat[]{\includegraphics[width=2.1in]{static-ft.pdf}}
+  \subfloat[]{\includegraphics[width=2.1in]{dynamic-ft.pdf}}
+  \subfloat[]{\includegraphics[width=2.1in]{guided-ft.pdf}}
+  \caption{Total execution time for OpenMP scheduling.}
+  \label{fig:finaltime}
+\end{figure}
+\begin{figure}
+  \centering
+  \subfloat[]{\includegraphics[width=2.1in]{static-fm.pdf}}
+  \subfloat[]{\includegraphics[width=2.1in]{dynamic-fm.pdf}}
+  \subfloat[]{\includegraphics[width=2.1in]{guided-fm.pdf}}
+  \caption{Execution time to find MUMs with OpenMP scheduling.}
+  \label{fig:mumtime}
+\end{figure}
+To check the performance of our approach it was measured the use of cache of Level 1 in the multicore architecture. The size of this L1 cache is of 32[KB] for every core. The high cache misses observed in Figure \ref{fig:dcm} and the replacements in L1 cache in Figure \ref{fig:l1d} are an obvious conclusion that our application is a memory bound problem. Every cache miss is delay in the execution program, so that a better strategy must be deployed to reduced the execution time, although the theoretical maximum speedup for our application is 4.11 for these test sequences.\\
+\begin{figure}
+  \centering
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm11.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm12.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm14.pdf}}
+  \qquad
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm21.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm22.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm24.pdf}}
+  \qquad
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm31.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm32.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm34.pdf}}
+  \caption{Direct cache misses for OpenMP scheduling and different chunk scheduling.}
+  \label{fig:dcm}
+\end{figure}
+\begin{figure}
+  \centering
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d11.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d12.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d14.pdf}}
+  \qquad
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d21.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d22.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d24.pdf}}
+  \qquad
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d31.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d32.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d34.pdf}}
+  \caption{Number of lines that come into the cache for OpenMP scheduling and different chunk scheduling.}
+  \label{fig:l1d}
+\end{figure}
+In order to reduce the cache misses and indeed improve the performance of our approach the following proposals may be used:
+\begin{itemize}
+  \item Prefetching: this may work because we know in advance what information from suffix tree and query sequence we need in every traversal of suffix tree. If we can allow the use of some part of suffix tree be stored and read in cache by several threads which request that substree. 
+  \item Explicit cache management: this is a obvious consequence of previous bullet because we may need to store part of the suffix tree in some cache-level of processor.
+  \item Figure out how much total data will be accessed/required to find next MUM.
+\end{itemize}
 %% \appendix
 
 %% \section{}
