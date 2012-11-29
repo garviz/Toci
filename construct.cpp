@@ -724,7 +724,7 @@ void freestree(Suffixtree *stree)
 
 Sint constructprogressstree(Suffixtree *stree,Uchar *text,Uint textlen,void (*progress)(Uint,void *),void (*finalprogress)(void *),void *info)
 {
-  DECLAREEXTRA;
+  //DECLAREEXTRA;
 
   CHECKTEXTLEN;
 
@@ -733,7 +733,7 @@ Sint constructprogressstree(Suffixtree *stree,Uchar *text,Uint textlen,void (*pr
   while(stree->tailptr < stree->sentinel || 
         stree->headnodedepth != 0 || stree->headend != NULL)
   {
-    CHECKSTEP;
+    //CHECKSTEP;
     // case (1): headloc is root
     if(stree->headnodedepth == 0 && stree->headend == NULL) 
     {
@@ -797,11 +797,11 @@ Sint constructprogressstree(Suffixtree *stree,Uchar *text,Uint textlen,void (*pr
     {
       insertbranchnode(stree);  // case (b)
     }
-  }
+  } 
   stree->chainstart = NULL;
   linkrootchildren(stree);
 
-  FINALPROGRESS;
+  //FINALPROGRESS;
   return 0;
 }
 #undef DECLAREEXTRA

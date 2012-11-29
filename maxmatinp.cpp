@@ -90,7 +90,7 @@ Sint scanmultiplefastafile (Multiseq *multiseq,
   bool indesc = false,          // inside description part of sequence
        copydescription = false; // currently copying the description 
 
-  fprintf(stderr,"# reading input file \"%s\" ",filename);
+//fprintf(stderr,"# reading input file \"%s\" ",filename);
   initmultiseq (multiseq);
   multiseq->originalsequence = NULL;
 
@@ -206,7 +206,7 @@ Sint scanmultiplefastafile (Multiseq *multiseq,
     cerr << "empty sequence in multiple fasta file" << endl;
     return -3;
   }
-  fprintf(stderr,"of length %lu\n",(long unsigned int) multiseq->totallength);
+  //fprintf(stderr,"of length %lu\n",(long unsigned int) multiseq->totallength);
   return 0;
 }
 
@@ -230,8 +230,7 @@ Sint getmaxmatinput (Multiseq *subjectmultiseq, bool matchnucleotidesonly, char 
   filecontent = (Uchar *)CREATEMEMORYMAP (subjectfile, true, &filelen);
   if (filecontent == NULL || filelen == 0)
   {
-    fprintf(stderr, "cannot open file \"%s\" or file \"%s\" is empty",subjectfile,
-                                                             subjectfile);
+    fprintf(stderr, "cannot open file \"%s\" or file \"%s\" is empty",subjectfile, subjectfile);
     return -1;
   }
   if (scanmultiplefastafile (subjectmultiseq, subjectfile,

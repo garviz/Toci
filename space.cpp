@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <cstring>
 #include <string>
-#include <mpi.h>
+//#include <mpi.h>
 #include "types.h"
 #include "errordef.h"
 #include "protodef.h"
@@ -53,7 +53,7 @@ using namespace std;
                        " allocandusespaceviaptr(%lu,%lu) failed:%s\n",\
                        (Sint) line,(Sint) size,\
                        (Sint) number,M);\
-        MPI_Finalize();\
+        //MPI_Finalize();\
         exit(EXIT_FAILURE)
 
 struct Blockdescription
@@ -95,7 +95,7 @@ static void setmaxspace(void)
   /*@end@*/
   {
     fprintf(stderr,"cannot find rlimit[RLIMIT_DATA]\n");
-    MPI_Finalize();
+    //MPI_Finalize();
     exit(EXIT_FAILURE);
   }
 
@@ -107,7 +107,7 @@ static void setmaxspace(void)
     /*@end@*/
     {
       fprintf(stderr,"cannot set rlimit[RLIMIT_DATA]\n");
-      MPI_Finalize();
+      //MPI_Finalize();
       exit(EXIT_FAILURE);
     }
   }
@@ -241,7 +241,7 @@ void freespaceviaptr(char *file,Uint line,void *ptr)
   {
     fprintf(stderr,"freespaceviaptr(file=%s,line=%lu): Cannot free NULL-ptr\n",
                     file,(Uint) line);
-    MPI_Finalize();
+    //MPI_Finalize();
     exit(EXIT_SUCCESS);
   }
   NOTSUPPOSEDTOBENULL(blocks);
@@ -254,11 +254,9 @@ void freespaceviaptr(char *file,Uint line,void *ptr)
   }
   if(blocknum == nextfreeblock)
   {
-    fprintf(stderr,"freespaceviaptr(file=%s,line=%lu): "
-                   " cannot find space block\n",
-            file,(Uint) line);
-    MPI_Finalize();
-    exit(EXIT_FAILURE);
+    fprintf(stderr,"freespaceviaptr(file=%s,line=%lu): cannot find space block\n", file,(Uint) line);
+    //MPI_Finalize();
+    //exit(EXIT_FAILURE);
   }
   free(blocks[blocknum].spaceptr);
   subtractspace(blocks[blocknum].numberofcells * blocks[blocknum].sizeofcells);
@@ -360,14 +358,14 @@ void checkspaceleak(void)
                blocks[blocknum].fileallocated,
                (Sint) blocks[blocknum].lineallocated);
       }
-      MPI_Finalize();
+      //MPI_Finalize();
       exit(EXIT_FAILURE);
     }
   }
   if(numberofblocks > 0)
   {
     fprintf(stderr,"space leak: number of blocks = %u\n",(unsigned int) numberofblocks);
-    MPI_Finalize();
+    //MPI_Finalize();
     exit(EXIT_FAILURE);
   } 
   free(blocks);

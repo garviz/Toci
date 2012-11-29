@@ -71,7 +71,6 @@
             printf("%s,%lu:",__FILE__,(Uint) __LINE__);\
             printf("leafaddr = %lu invalid\n",\
                     (Uint) LEAFADDR2NUM(ST,(A).address));\
-            MPI::Finalize;\
             exit(EXIT_FAILURE);\
           }\
         } else\
@@ -81,7 +80,6 @@
             printf("%s,%lu:",__FILE__,(Uint) __LINE__);\
             printf("branchaddr = %lu invalid\n",\
                     (Uint) BRADDR2NUM(ST,(A).address));\
-            MPI::Finalize;\
             exit(EXIT_FAILURE);\
           }\
         } 

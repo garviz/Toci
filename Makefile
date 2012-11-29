@@ -1,5 +1,5 @@
 #CC=kinst-ompp mpic++
-CC=mpic++
+CC=g++
 
 OMPP=./ompp-0.7.1/lib/libompp.a
 

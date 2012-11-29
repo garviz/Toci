@@ -30,6 +30,8 @@
   a linear time suffix tree traversal. 
 */
 
+  Match_t  *A = NULL;
+
 /*
   The following function checks if a location \texttt{loc} (of length 
   larger than \texttt{minmatchlength}) in the suffix tree represents 
@@ -154,19 +156,19 @@ Sint findmumcandidates(Suffixtree *stree,
   Uchar *lptr, *left, *right = query + querylen - 1, 
         *querysuffix;
   Location loc;
-  bool flag;
-  char buf[40];
   int i, nthreads, *chunk_schedule;
   omp_sched_t *schedule;
   Uint N = 0, Size = 32768;
   double start, end;
-  Match_t  *A = NULL;
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
   
-  likwid_markerStartRegion("Find MUMs");
+  
   start = omp_get_wtime();
-  #pragma omp parallel for default (none) private(i,left,right,lptr,querysuffix,loc) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,A,Size)  reduction(+:N) schedule(runtime)
+  #pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
+  {
+  likwid_markerStartRegion("Find MUMs");
+#pragma omp for schedule(runtime) nowait
   for (i=0; i<chunks; i++)
   {
       omp_get_schedule(schedule,chunk_schedule);
@@ -229,8 +231,10 @@ Sint findmumcandidates(Suffixtree *stree,
           querysuffix++;
       }
   }  
-  end = omp_get_wtime(); 
   likwid_markerStopRegion("Find MUMs");
-  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,Matches=%lu,Size=%lu,MUM=%d\n",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,N,Size,minmatchlength);
+  }
+  end = omp_get_wtime(); 
+  fprintf(stdout,"Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,Matches=%lu,Size=%lu,MUM=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,N,Size,minmatchlength);
+  //fprintf(stderr,"# MUM-Candidate %d\n",A[10].R);
   return 0;
 }

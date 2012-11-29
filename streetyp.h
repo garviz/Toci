@@ -9,7 +9,7 @@
 #ifndef STREETYP_H
 #define STREETYP_H
 
-#include <mpi.h>
+//#include <mpi.h>
 #include "types.h"
 #include "arraydef.h"
 

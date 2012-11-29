@@ -273,7 +273,7 @@ void *  Safe_realloc  (void * Q, size_t Len)
    if  (P == NULL)
    { 
       fprintf (stderr, "# ERROR:  realloc failed, there is not enough memory\n");
-      MPI_Finalize();
+      //MPI_Finalize();
    } 
 
    return  P;
@@ -289,7 +289,7 @@ void *  Safe_malloc  (size_t Len)
    if  (P == NULL)
    {
       fprintf (stderr,"# ERROR:  malloc failed, there is not enough memory\n");
-      MPI_Finalize();
+      //MPI_Finalize();
    }
 
    return  P;

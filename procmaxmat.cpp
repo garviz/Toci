@@ -578,11 +578,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   matchprocessinfo->currentquerylen = querylen;
   if(matchprocessinfo->forward)
   {
-    showsequenceheader(&matchprocessinfo->querymultiseq,
-                       matchprocessinfo->showsequencelengths,
-                       false,
-                       seqnum,
-                       querylen);
+    //showsequenceheader(&matchprocessinfo->querymultiseq, matchprocessinfo->showsequencelengths, false, seqnum, querylen);
     matchprocessinfo->currentisrcmatch = false;
     if(findmatchfunction(&matchprocessinfo->stree,
                          matchprocessinfo->minmatchlength,
@@ -665,14 +661,13 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   Location ploc;
   double start, finish;
 
-  fprintf(stderr,"# construct suffix tree for sequence of length %lu\n", (long unsigned int) subjectmultiseq->totallength);
-  /*fprintf(stderr,"# (maximum reference length is %lu)\n", (long unsigned int) getmaxtextlenstree());
+  //fprintf(stderr,"# construct suffix tree for sequence of length %lu\n", (long unsigned int) subjectmultiseq->totallength);
+  /* fprintf(stderr,"# (maximum reference length is %lu)\n", (long unsigned int) getmaxtextlenstree());
   fprintf(stderr,"# (maximum query length is %lu)\n", (long unsigned int) ~((Uint)0));*/
-  start = MPI::Wtime();
+  start = omp_get_wtime();
   if(constructprogressstree (&matchprocessinfo.stree,subjectmultiseq->sequence,subjectmultiseq->totallength,NULL,NULL,NULL) != 0)
     return -1;
-  finish = MPI::Wtime();
-  cerr << "# createST Time: " << finish-start << endl;
+  finish = omp_get_wtime();
   matchprocessinfo.subjectmultiseq = subjectmultiseq;
   matchprocessinfo.minmatchlength = mmcallinfo->minmatchlength;
   matchprocessinfo.showstring = mmcallinfo->showstring;
@@ -709,19 +704,20 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     {
       return -4;
     }
-    fprintf(stderr, "# matching query-file \"%s\"\n# against subject-file \"%s\"\n", mmcallinfo->queryfilelist[filenum], mmcallinfo->subjectfile);
+    //fprintf(stderr, "# matching query-file \"%s\"\n# against subject-file \"%s\"\n", mmcallinfo->queryfilelist[filenum], mmcallinfo->subjectfile);
     if (overallsequences (false,&matchprocessinfo.querymultiseq,(void *) &matchprocessinfo,findmaxmatchesonbothstrands) != 0)
     { 
       return -5;
     }
     freemultiseq(&matchprocessinfo.querymultiseq);
     }
+  cout << "createST Time=" << finish-start << ",";
   //Process_Matches (A, N);
   if(mmcallinfo->cmum)
   {
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
   //fprintf(stderr,"# Matches=%lu\n",(Sint)N);
-  freestree (&matchprocessinfo.stree);
+  //freestree (&matchprocessinfo.stree);
   return 0;
 }

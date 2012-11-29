@@ -17,7 +17,7 @@
  */
 
 #include <iostream>
-#include <mpi.h>
+//#include <mpi.h>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -69,42 +69,41 @@ int main(int argc, char *argv[])
     double start, finish;
 
     likwid_markerInit();
-    MPI::Init(argc, argv);
+    /*MPI::Init(argc, argv);
     numprocs = MPI::COMM_WORLD.Get_size();
-    rank = MPI::COMM_WORLD.Get_rank();
+    rank = MPI::COMM_WORLD.Get_rank();*/
     retcode = parsemaxmatoptions (&mmcallinfo, argc, argv);
     if (retcode < 0) {
         fprintf(stderr,"%s: %s\n",argv[0],messagespace());
-        MPI::Finalize();
+        //MPI::Finalize();
         return EXIT_FAILURE;
     }
     if (retcode == 1) {
         checkspaceleak();
         mmcheckspaceleak();
-        MPI::Finalize();
+        //MPI::Finalize();
         return EXIT_SUCCESS;
     }
-    if (rank == 0) {
-        start = MPI::Wtime();
-        if (getmaxmatinput(&subjectmultiseq, mmcallinfo.matchnucleotidesonly,
-                        &mmcallinfo.subjectfile[0]) != 0) {
+    /*if (rank == 0) {*/
+        start = omp_get_wtime();
+        if (getmaxmatinput(&subjectmultiseq, mmcallinfo.matchnucleotidesonly, &mmcallinfo.subjectfile[0]) != 0) {
             fprintf(stderr,"%s: %s\n",argv[0],messagespace());
-            MPI::Finalize();
+            //MPI::Finalize();
             return EXIT_FAILURE;
         }
         if(procmaxmatches(&mmcallinfo,&subjectmultiseq) != 0) {
             fprintf(stderr,"%s: %s\n",argv[0],messagespace());
-            MPI::Finalize();
+            //MPI::Finalize();
             return EXIT_FAILURE;
         }
         freemultiseq(&subjectmultiseq);
-        cerr << "# Toci application for genome alignment for HPC environments" << endl;
-        finish = MPI::Wtime();
-    } else {
+        //cerr << "# Toci application for genome alignment for HPC environments" << endl;
+        finish = omp_get_wtime();
+    /*else {
         cout << "Process: " << rank << endl;
     }
-    MPI_Finalize();
-    cerr << "# Final Time: " << finish-start << endl;
+    MPI_Finalize();*/
+    cout << "Final Time=" << finish-start << endl;
     likwid_markerClose();
     return EXIT_SUCCESS;
 }
