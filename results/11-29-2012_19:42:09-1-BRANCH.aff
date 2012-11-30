@@ -1,0 +1,39 @@
+Generated pathname is /tmp/likwid-36191
+Successfully opened socket to daemon.
+Threads=1,Chunks=1,Chunk_Size=95283144,OMP_time=67.941199,Schedule=1,Chunk_Schd=1,Matches=588564,Size=32768,MUM=20,createST Time=20.6383,Final Time=89.5922
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group BRANCH
+-------------------------------------------------------------
+./toci -C 1 -mum -l 20 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+
+|    Region Info    | core 0  |
++-------------------+---------+
+| RDTSC Runtime [s] | 67.9665 |
+|    call count     |    1    |
++-------------------+---------+
++------------------------------+-------------+
+|            Event             |   core 0    |
++------------------------------+-------------+
+|      INSTR_RETIRED_ANY       | 2.90042e+10 |
+|    CPU_CLK_UNHALTED_CORE     | 1.88897e+11 |
+| BR_INST_RETIRED_ALL_BRANCHES | 6.66058e+09 |
+| BR_MISP_RETIRED_ALL_BRANCHES | 5.22622e+08 |
++------------------------------+-------------+
++----------------------------+-----------+
+|           Metric           |  core 0   |
++----------------------------+-----------+
+|        Runtime [s]         |  78.906   |
+|            CPI             |  6.51274  |
+|        Branch rate         | 0.229642  |
+| Branch misprediction rate  | 0.0180189 |
+| Branch misprediction ratio | 0.0784649 |
+|  Instructions per branch   |  4.3546   |
++----------------------------+-----------+

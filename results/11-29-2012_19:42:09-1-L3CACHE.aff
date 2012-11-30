@@ -1,0 +1,40 @@
+Generated pathname is /tmp/likwid-38558
+Successfully opened socket to daemon.
+Threads=1,Chunks=1,Chunk_Size=95283144,OMP_time=67.861317,Schedule=1,Chunk_Schd=1,Matches=588564,Size=32768,MUM=20,createST Time=20.7589,Final Time=89.6337
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group L3CACHE
+-------------------------------------------------------------
+./toci -C 1 -mum -l 20 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+
+|    Region Info    | core 0  |
++-------------------+---------+
+| RDTSC Runtime [s] | 67.8615 |
+|    call count     |    1    |
++-------------------+---------+
++-----------------------+-------------+
+|         Event         |   core 0    |
++-----------------------+-------------+
+|   INSTR_RETIRED_ANY   | 2.90042e+10 |
+| CPU_CLK_UNHALTED_CORE | 1.88735e+11 |
+|    UNC_L3_HITS_ANY    | 6.50047e+08 |
+|    UNC_L3_MISS_ANY    | 1.0821e+09  |
+|  UNC_L3_LINES_IN_ANY  | 1.08211e+09 |
+| UNC_L3_LINES_OUT_ANY  | 1.08211e+09 |
++-----------------------+-------------+
++-----------------+-----------+
+|     Metric      |  core 0   |
++-----------------+-----------+
+|   Runtime [s]   |  78.8398  |
+|       CPI       |  6.50718  |
+| L3 request rate | 0.0224122 |
+|  L3 miss rate   | 0.0373085 |
+|  L3 miss ratio  |  1.66465  |
++-----------------+-----------+

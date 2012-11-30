@@ -1,0 +1,42 @@
+Generated pathname is /tmp/likwid-38965
+Successfully opened socket to daemon.
+Threads=1,Chunks=1,Chunk_Size=95283144,OMP_time=67.979913,Schedule=1,Chunk_Schd=1,Matches=588564,Size=32768,MUM=20,createST Time=20.6605,Final Time=89.6543
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group MEM
+-------------------------------------------------------------
+./toci -C 1 -mum -l 20 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+
+|    Region Info    | core 0  |
++-------------------+---------+
+| RDTSC Runtime [s] | 67.9866 |
+|    call count     |    1    |
++-------------------+---------+
++--------------------------------+-------------+
+|             Event              |   core 0    |
++--------------------------------+-------------+
+|       INSTR_RETIRED_ANY        | 2.90042e+10 |
+|     CPU_CLK_UNHALTED_CORE      | 1.89008e+11 |
+|    UNC_QMC_NORMAL_READS_ANY    | 5.49478e+08 |
+|    UNC_QMC_WRITES_FULL_ANY     |   736202    |
+| UNC_QHL_REQUESTS_REMOTE_READS  |   422113    |
+|  UNC_QHL_REQUESTS_LOCAL_READS  | 5.49281e+08 |
+| UNC_QHL_REQUESTS_REMOTE_WRITES |   168370    |
++--------------------------------+-------------+
++-----------------------------+----------+
+|           Metric            |  core 0  |
++-----------------------------+----------+
+|         Runtime [s]         | 78.9624  |
+|             CPI             | 6.51658  |
+| Memory bandwidth [MBytes/s] |  517.95  |
+|  Remote Read BW [MBytes/s]  | 0.397361 |
+| Remote Write BW [MBytes/s]  | 0.158497 |
+|    Remote BW [MBytes/s]     | 0.555858 |
++-----------------------------+----------+

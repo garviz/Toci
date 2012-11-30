@@ -1,0 +1,60 @@
+Generated pathname is /tmp/likwid-38983
+Successfully opened socket to daemon.
+[1;34m[pthread wrapper] [pthread wrapper] PIN_MASK: 0->1  1->2  2->3  
+[pthread wrapper] SKIP MASK: 0x0
+	threadid 140025731827456 -> core 1 - OK
+[0m[1;34m	threadid 140025721337600 -> core 2 - OK
+[0m[1;34m	threadid 140025710847744 -> core 3 - OK
+[0mThreads=4,Chunks=4,Chunk_Size=23820786,OMP_time=17.602160,Schedule=1,Chunk_Schd=1,Matches=588564,Size=32768,MUM=20,createST Time=20.7224,Final Time=39.338
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group MEM
+-------------------------------------------------------------
+./toci -C 4 -mum -l 20 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+Status: 0x0 
+Status: 0x0 
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+--------+---------+---------+
+|    Region Info    | core 0  | core 1 | core 2  | core 3  |
++-------------------+---------+--------+---------+---------+
+| RDTSC Runtime [s] | 17.5702 | 17.453 | 17.5148 | 17.6016 |
+|    call count     |    1    |   1    |    1    |    1    |
++-------------------+---------+--------+---------+---------+
++--------------------------------+-------------+-------------+-------------+-------------+
+|             Event              |   core 0    |   core 1    |   core 2    |   core 3    |
++--------------------------------+-------------+-------------+-------------+-------------+
+|       INSTR_RETIRED_ANY        | 7.24233e+09 | 7.26718e+09 | 7.25074e+09 | 7.24406e+09 |
+|     CPU_CLK_UNHALTED_CORE      | 4.6312e+10  | 4.55465e+10 | 4.63736e+10 | 4.63321e+10 |
+|    UNC_QMC_NORMAL_READS_ANY    |      0      |      0      |      0      | 5.52927e+08 |
+|    UNC_QMC_WRITES_FULL_ANY     |      0      |      0      |      0      |   543586    |
+| UNC_QHL_REQUESTS_REMOTE_READS  |      0      |      0      |      0      |   129045    |
+|  UNC_QHL_REQUESTS_LOCAL_READS  |      0      |      0      |      0      | 5.52937e+08 |
+| UNC_QHL_REQUESTS_REMOTE_WRITES |      0      |      0      |      0      |      0      |
++--------------------------------+-------------+-------------+-------------+-------------+
++-----------------------------+---------+---------+---------+---------+
+|           Metric            | core 0  | core 1  | core 2  | core 3  |
++-----------------------------+---------+---------+---------+---------+
+|         Runtime [s]         | 19.3481 | 19.0283 | 19.3738 | 19.3564 |
+|             CPI             | 6.39463 | 6.26743 | 6.39571 | 6.39586 |
+| Memory bandwidth [MBytes/s] |    0    |    0    |    0    | 2016.03 |
+|  Remote Read BW [MBytes/s]  |    0    |    0    |    0    | 0.47005 |
+| Remote Write BW [MBytes/s]  |    0    |    0    |    0    |    0    |
+|    Remote BW [MBytes/s]     |    0    |    0    |    0    | 0.47005 |
++-----------------------------+---------+---------+---------+---------+
++----------------------------------+---------+---------+---------+----------+
+|              Metric              |   Sum   |   Max   |   Min   |   Avg    |
++----------------------------------+---------+---------+---------+----------+
+|         Runtime [s] STAT         | 77.1066 | 19.3738 | 19.0283 | 19.2766  |
+|             CPI STAT             | 25.4536 | 6.39586 | 6.26743 | 6.36341  |
+| Memory bandwidth [MBytes/s] STAT | 2016.03 | 2016.03 |    0    | 504.008  |
+|  Remote Read BW [MBytes/s] STAT  | 0.47005 | 0.47005 |    0    | 0.117512 |
+| Remote Write BW [MBytes/s] STAT  |    0    |    0    |    0    |    0     |
+|    Remote BW [MBytes/s] STAT     | 0.47005 | 0.47005 |    0    | 0.117512 |
++----------------------------------+---------+---------+---------+----------+

@@ -1,0 +1,38 @@
+Generated pathname is /tmp/likwid-38162
+Successfully opened socket to daemon.
+Threads=1,Chunks=1,Chunk_Size=95283144,OMP_time=67.006497,Schedule=1,Chunk_Schd=1,Matches=588564,Size=32768,MUM=20,createST Time=20.6873,Final Time=88.7069
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group L3
+-------------------------------------------------------------
+./toci -C 1 -mum -l 20 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+
+|    Region Info    | core 0  |
++-------------------+---------+
+| RDTSC Runtime [s] | 67.0056 |
+|    call count     |    1    |
++-------------------+---------+
++---------------------------+-------------+
+|           Event           |   core 0    |
++---------------------------+-------------+
+|     INSTR_RETIRED_ANY     | 2.90042e+10 |
+|   CPU_CLK_UNHALTED_CORE   | 1.86244e+11 |
+|      L2_LINES_IN_ANY      | 1.44307e+09 |
+| L2_LINES_OUT_DEMAND_DIRTY | 4.64198e+06 |
++---------------------------+-------------+
++-------------------------+---------+
+|         Metric          | core 0  |
++-------------------------+---------+
+|       Runtime [s]       | 77.7979 |
+|           CPI           | 6.4213  |
+|   L3 Load [MBytes/s]    | 1378.34 |
+|   L3 Evict [MBytes/s]   | 4.43376 |
+| L3 bandwidth [MBytes/s] | 1382.78 |
++-------------------------+---------+

@@ -1,0 +1,53 @@
+Generated pathname is /tmp/likwid-38563
+Successfully opened socket to daemon.
+[1;34m[pthread wrapper] [pthread wrapper] PIN_MASK: 0->1  
+[pthread wrapper] SKIP MASK: 0x0
+	threadid 140692679194368 -> core 1 - OK
+[0mThreads=2,Chunks=2,Chunk_Size=47641572,OMP_time=35.164121,Schedule=1,Chunk_Schd=1,Matches=588564,Size=32768,MUM=20,createST Time=20.6662,Final Time=56.8437
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group L3CACHE
+-------------------------------------------------------------
+./toci -C 2 -mum -l 20 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+--------+
+|    Region Info    | core 0  | core 1 |
++-------------------+---------+--------+
+| RDTSC Runtime [s] | 34.2986 | 35.164 |
+|    call count     |    1    |   1    |
++-------------------+---------+--------+
++-----------------------+-------------+-------------+
+|         Event         |   core 0    |   core 1    |
++-----------------------+-------------+-------------+
+|   INSTR_RETIRED_ANY   | 1.45094e+10 | 1.44948e+10 |
+| CPU_CLK_UNHALTED_CORE | 9.51078e+10 | 9.57385e+10 |
+|    UNC_L3_HITS_ANY    |      0      | 6.55557e+08 |
+|    UNC_L3_MISS_ANY    |      0      | 1.08646e+09 |
+|  UNC_L3_LINES_IN_ANY  |      0      | 1.08671e+09 |
+| UNC_L3_LINES_OUT_ANY  |      0      | 1.08671e+09 |
++-----------------------+-------------+-------------+
++-----------------+---------+-----------+
+|     Metric      | core 0  |  core 1   |
++-----------------+---------+-----------+
+|   Runtime [s]   | 39.7277 |  39.9912  |
+|       CPI       | 6.55489 |  6.60505  |
+| L3 request rate |    0    | 0.0452272 |
+|  L3 miss rate   |    0    | 0.0749557 |
+|  L3 miss ratio  |    0    |  1.65732  |
++-----------------+---------+-----------+
++----------------------+-----------+-----------+---------+-----------+
+|        Metric        |    Sum    |    Max    |   Min   |    Avg    |
++----------------------+-----------+-----------+---------+-----------+
+|   Runtime [s] STAT   |  79.7189  |  39.9912  | 39.7277 |  39.8595  |
+|       CPI STAT       |  13.1599  |  6.60505  | 6.55489 |  6.57997  |
+| L3 request rate STAT | 0.0452272 | 0.0452272 |    0    | 0.0226136 |
+|  L3 miss rate STAT   | 0.0749557 | 0.0749557 |    0    | 0.0374778 |
+|  L3 miss ratio STAT  |     0     |  1.65732  | 1.65732 |     0     |
++----------------------+-----------+-----------+---------+-----------+
