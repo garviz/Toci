@@ -32,6 +32,7 @@
 
   Match_t  *A = NULL;
 
+  double tSPFNS=0.0, tLLS=0.0, tSPS=0.0;
 /*
   The following function checks if a location \texttt{loc} (of length 
   larger than \texttt{minmatchlength}) in the suffix tree represents 
@@ -163,9 +164,8 @@ Sint findmumcandidates(Suffixtree *stree,
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
   
-  
   start = omp_get_wtime();
-  #pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc) shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
+  #pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
   {
   likwid_markerStartRegion("Find MUMs");
 #pragma omp for schedule(runtime) nowait
@@ -234,7 +234,7 @@ Sint findmumcandidates(Suffixtree *stree,
   likwid_markerStopRegion("Find MUMs");
   }
   end = omp_get_wtime(); 
-  fprintf(stdout,"Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,Matches=%lu,Size=%lu,MUM=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,N,Size,minmatchlength);
+  fprintf(stdout,"Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,Matches=%lu,Size=%lu,MUM=%d,tLLS=%f,tSPFNS=%f,tSPS=%f,",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,N,Size,minmatchlength,tLLS,tSPFNS,tSPS);
   //fprintf(stderr,"# MUM-Candidate %d\n",A[10].R);
   return 0;
 }

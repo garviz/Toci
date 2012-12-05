@@ -11,6 +11,8 @@
 #include "streeacc.h"
 #include "protodef.h"
 
+extern double tSPFNS,tSPS;
+
 static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
   //cerr << __func__ ;
@@ -28,9 +30,10 @@ static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 
 Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar *left,Uchar *right,Uint rescanlength)
 {
-  //cerr << __func__ ;
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, node, distance = 0, prefixlen, headposition, tmpnodedepth, edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
+  double sF, eF;
+  sF = omp_get_wtime();
   lptr = left;
   nodeptr = btptr;
   if(nodeptr == stree->branchtab)
@@ -58,6 +61,8 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
     if(lptr > right)   // check for empty word 
     { 
       //cerr << "# NULL " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
       return NULL; 
     } 
     firstchar = *lptr;
@@ -88,10 +93,13 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
         loc->locstring.length = prefixlen;
         if(prefixlen == (Uint) (right - lptr + 1))
         { 
-          cerr << "# NULL " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
           return NULL;
         }
         //cerr << "# lptr+prefixlen " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
         return lptr + prefixlen;
       } 
       nodeptr = stree->branchtab + GETBRANCHINDEX(node);
@@ -105,6 +113,8 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
         if(NILPTR(node))
          {
           //cerr <<"# nilptr(node) " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
           return lptr;
         }
         if(ISLEAF(node))
@@ -113,13 +123,16 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
           leftborder = stree->text + (nodedepth + leafindex);
           if(leftborder == stree->sentinel)
           {
-            //cerr << "# sentinel" << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
             return lptr;
           }
           edgechar = *leftborder;
           if(edgechar > firstchar)
           {
             //cerr << "# edgechar > firstchar" << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
             return lptr;
           }
           if(edgechar == firstchar)
@@ -142,9 +155,13 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
             if(prefixlen == (Uint) (right - lptr + 1))
             { 
               //cerr << "# NULL " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
               return NULL;
             }
             //cerr << "# lptr + prefixlen " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
             return lptr + prefixlen;
           }  
           node = LEAFBROTHERVAL(stree->leaftab[leafindex]);
@@ -157,6 +174,8 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
           if (edgechar > firstchar)
           {
             //cerr << "# lptr " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
             return lptr;
            }
           if(edgechar == firstchar)
@@ -205,9 +224,13 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
       if(prefixlen == (Uint) (right - lptr + 1))
       {
         //cerr << "# NULL " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
         return NULL;
       }
       //cerr << "# lptr + prefixlen " << __LINE__ << endl;
+      eF = omp_get_wtime();
+      tSPFNS+=(eF-sF);
       return lptr + prefixlen;
     } 
   } 
@@ -217,11 +240,14 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                    Location *inloc,Uchar *left,
                                    Uchar *right,Uint rescanlength)
 {
-  //cerr << __func__ ;
+  double sF, eF;
+  sF = omp_get_wtime();
   Uint prefixlen, remainingtoskip;
 
   if(inloc->remain == 0)
   {
+    eF = omp_get_wtime();
+    tSPS+=(eF-sF);
     return scanprefixfromnodestree(stree,outloc,inloc->nextnode.address,left,right,rescanlength);
   } 
   if(rescanlength <= inloc->locstring.length)
@@ -249,6 +275,8 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     outloc->nextnode.address = inloc->nextnode.address;
     outloc->locstring.start = LEAFADDR2NUM(stree,inloc->nextnode.address);
     outloc->locstring.length = inloc->locstring.length + prefixlen;
+    eF = omp_get_wtime();
+    tSPS+=(eF-sF);
     return left + prefixlen;
   }
   if(remainingtoskip > 0)
@@ -274,8 +302,12 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     outloc->nextnode.address = inloc->nextnode.address;
     outloc->locstring.start = inloc->locstring.start;
     outloc->locstring.length = inloc->locstring.length + prefixlen;
+    eF = omp_get_wtime();
+    tSPS+=(eF-sF);
     return left + prefixlen;
   }
+    eF = omp_get_wtime();
+    tSPS+=(eF-sF);
   return scanprefixfromnodestree(stree,outloc,inloc->nextnode.address,left+prefixlen,right,rescanlength);
 }
 
