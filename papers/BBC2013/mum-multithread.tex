@@ -106,6 +106,19 @@
 \usepackage{epsfig}
 \usepackage{subfig}
 \usepackage{tabularx}
+\usepackage{graphics,graphicx}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage{pdftricks}
+\usepackage{pst-pdf}
+\begin{psinputs}
+  \usepackage{pstricks}
+\end{psinputs}
+\else
+\usepackage{pstricks}
+\usepackage{pst-tree}
+\newenvironment{pdfpic}{}{}
+\fi
 % declarations for front matter
 
 \begin{document}
@@ -136,7 +149,7 @@
 \dochead{International Conference on Computational Science, ICCS 2012}
 %% Use \dochead if there is an article header, e.g. \dochead{Short communication}
 
-\title{Towards speed up search of maximal unique matches in multicore architectures}
+\title{Search of maximal unique matches in multicore architectures}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -148,7 +161,7 @@
 \address{}
 
 \begin{abstract}
-  Maximal Unique Matches are common substrings that are found between a reference and a query sequence. They are exact, unique and maximal; that is, they cannot be extended in left or right direction without incurring a mismatch. The computation of MUMs in large sequences is a heavy and repetitive task because the genomes are closely related, so there is a fair chance of parallelize and execute this search in multicore architectures. This research resembles a first novel approach to find MUMs in genomic sequences in parallel way. The reference genome is indexed by using a suffix tree in main memory and then the parallelized algorithm finds the MUMs against a query genome which is readed by several threads. This approach is based on MUMmer, a genome alignment tool, which is able to find Maximal Unique Matches (MUMs). 
+  Maximal Unique Matches are common substrings that match a reference and a query sequence. They are exact, unique and maximal; that is, they cannot be extended in left or right direction without incurring a mismatch. The computation of MUMs in large sequences is a heavy and repetitive task, so there is a fair chance of parallelize and execute this search in multicore architectures. This research resembles an approach to find MUMs in genomic sequences in parallel way. The reference genome is indexed by using a suffix tree in main memory and then parallelized algorithm finds the MUMs of query genome which is readed by several threads. This approach is based on MUMmer, a genome alignment tool, which is able to find Maximal Unique Matches (MUMs). 
 \end{abstract}
 
 \begin{keyword}
@@ -169,13 +182,13 @@
 % \linenumbers
 
 %% main text
-\section{Problem}
+\section{Introduction} 
 \label{}
 The problem of searching maximal unique matching for a minimum lengthbetween a reference
 string and a query string has been
 identified in several applications, one of them is MUMmer. Altough
 MUMmer's algorithm can perform searches of maximal unique matches (MUMs)
-the use of resources are not well used:
+the use of resources:
 \begin{itemize}
   \item High use of main memory to store the reference string.
   \item A null use of multicore architectures.
@@ -186,7 +199,7 @@ in the search of MUMs increases, see table \ref{tbl:operations}.
   \begin{small}
     \begin{center}
       \begin{tabular}{lllll}
-        Data structure & L [bp\footnote{Base pair, basic measure unit of nucleotides for a DNA sequence.}] & Search  & Search [s] & Memory\\
+        Data structure & L [bp] & Search  & Search [s] & Memory\\
         & & operations & & usage [MB]\\
         \hline
         Suffix tree & 20 & 9,87\e{18}  & 169189,4 & 48665,12\\
@@ -203,51 +216,51 @@ This problem has a time complexity of $O(m+k)$ where $m$ is the length of the qu
 maximal unique matches of some minimum length. This problem is a very high intensive computing task, for every substring
 in the query sequence the search for a maximum unique match has to be performed.\\ 
 \section{The MUM: an heuristic approach}
-\subsection{Definition MUM}
+\subsection{Definition of MUM}
 Although a pair of conserved genes rarely contain the same entire sequence, they share a lot of short common substrings and some of them are indeed unique to this pair of genes. For example the following two sequences, R and Q:\\
 \begin{center}
     R=\underline{ac} ga \underline{ctc} a \underline{gctac} t \underline{ggtcagctatt} \underline{acttaccgc}\$\\
-      Q=\underline{ac} tt \underline{ctc} t \underline{gctac} \underline{ggtcagctatt} c \underline{acttaccgc}\$\\
-    \end{center}
-    It is clear that sequences R and Q have many common substrings, they are:
-    \begin{itemize}
-      \item ac
-      \item ctc
-      \item gctac
-      \item ggtcagctatt
-      \item acttaccgc
-    \end{itemize}
+    Q=\underline{ac} tt \underline{ctc} t \underline{gctac} \underline{ggtcagctatt} c \underline{acttaccgc}\$\\
+\end{center}
+    It is clear that sequences R and Q have many common substrings, they are: ac, ctc, gctac, ggtcagctatt, acttaccgc.\\
 Among those five common substrings, ac is the only substring that is not unique. It occurs more than once in both sequences. You can also observe that actually a, c, t, and g are common substrings of R and Q. However, they are not maximal, i.e. they are contained in at least one longer common substrings. We are only interested in those that are of maximal length.\\
 Our aim is to search for all these short common substrings. Given genomes R and Q, we need to find all common substrings which are unique and of maximal length. Each of such common substrings is known as Maximum Unique Match (MUM). For almost every conserved gene pairs, there exist at least one MUM which is unique to them.\\
 For example, assuming d = 3, sequences R and Q in the previous example has four MUMs: ctc, gctac, ggtcagctatt, acttaccgc. Substring ac is not an MUM because its length is smaller than the value of d and it is not unique to both sequences.
 \begin{center}
     R=\xout{ac} ga \sout{ctc} a \uwave{gctac} t \uuline{ggtcagctatt} \uline{acttaccgc}\$\\
       Q=\xout{ac} tt \sout{ctc} t \uwave{gctac} \uuline{ggtcagctatt} c \uline{acttaccgc}\$\\
-    \end{center}
+\end{center}
 The concept of MUM is important in whole genome alignment because a significantly long MUM is very likely to be part of the global alignment.
 \subsubsection{Finding MUMs in a suffix tree} 
-The key idea in this method is to build a suffix tree for genome R, a data structure which allows finding, extremely efficiently, all distinct subsequences in a given sequence.\\
+The key idea in this method is to build a suffix tree for genome R, a data structure which allows finding, all distinct subsequences in a given sequence.\\
+A suffix tree is a data structure which indexes a whole string in every suffix. It allows finding all matches between a reference sequence (suffix tree) and a query sequence. It can also check for unique matches in the reference very easily just to check if the match ends in a leaf node and by checking the character immediately preceding the start of this match it is possible to determine whether it is a maximal match. To understand the efficient search of matches in a suffix tree, time complexity is $O(m)$ where $m$ is the length of query sequence, it is used a suffix link. A link points from a source node $s$ in suffix tree to another destination node $d$ in suffix tree if the string label from the root node to node $d$ is equal to the label from root node to $s$ with the first character removed. In Figure \ref{fig:st} is shown the suffix tree, green lines are suffix links. For instance, the string label of node $i$ in Figure \ref{fig:st} is tgt and next suffix $i+1$ is gt. So that is exactly the tree position corresponding to the next position in the query sequence.\\
+\begin{figure}
+  \centering
+  \includegraphics[width=8.5cm,height=5cm]{st-mum.pdf}
+\caption{Suffix tree and its use to find matches between a reference and query genome.}
+\label{fig:st}
+\end{figure}
+In Figure \ref{fig:st} the match gtc which starts at $i+1$ in the query sequence and node 7 in the suffix tree is not maximal on the left because the preceeding character in both strings is a t.\\
   By construction, the location of a match in the suffix tree represents a substring of the subject sequence which maximaly matches a prefix of
-  \texttt{query suffix}. Thus it is only necessary to verify that, the substring of the subject sequence is long enough, that it is unique in the subject sequence and that 
+  \texttt{query suffix}. Thus it is only necessary to verify that, the match is long enough, that it is unique in the subject sequence and that 
   the match is also left maximal. This is done as follows:
-  
-  \begin{enumerate}
+    \begin{enumerate}
   \item
-  Does \texttt{location} represent a substring of length at least \texttt{minimum match length}?
-  \item 
+  Does \t exttt{location} represent a substring of length at least \texttt{minimum match length}?
+   \item 
   Does \texttt{location} correspond to a leaf edge? Then then the string represented by the location is unique in the subject sequence.
-  \item 
+  \item  
   Is the substring left maximal? This is true if one of the following conditions hold:
   \begin{itemize}
-  \item 
+  \item  
   The suffix of the query currently considered is the first suffix, or 
   \item
-  The string represented by \texttt{loc} is a prefix of the subject string,  or
+  The string represented by \texttt{location} is a prefix of the subject string,  or
   \item 
   The characters immediately to the left of the matching strings in the subject sequence and the query sequence are different
   \end{itemize}
   \end{enumerate}
-  If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates, see Figure \ref{candidates}. 
+  If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates. In Figure \ref{candidates} is shown that a MUM-candidate is only found when the match reaches a leaf node. 
  \begin{figure}[htb]  
  \begin{center} 
   \includegraphics[width=6.5cm,height=4cm]{MUM-candidates.png}
