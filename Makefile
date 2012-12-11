@@ -9,7 +9,7 @@ CFLAGS  = -std=gnu++0x -m64 -fopenmp -lstdc++ -Wno-write-strings -Wno-format -ms
 
 INCLUDE = -I$(SPARSETABLE)
 
-LIBS    = $(TAU_MPI_LIBS) $(TAU_LIBS) -llikwid
+LIBS    = $(TAU_MPI_LIBS) $(TAU_LIBS) -llikwid -lpapi
 
 LDFLAGS	= $(CFLAGS)  $(TAU_LDFLAGS)
 

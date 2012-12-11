@@ -1,8 +1,23 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Delcher2003}
+A.~L. Delcher, S.~L. Salzberg, A.~M. Phillippy,
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/18428693}{{Using MUMmer to identify
+  similar regions in large sequence sets.}}, Current protocols in
+  bioinformatics editoral board Andreas D Baxevanis et al Chapter 10~(1934-340X
+  (Electronic) LA - eng PT - Journal Article SB - IM) (2003) Unit 10.3.
+\newline\urlprefix\url{http://www.ncbi.nlm.nih.gov/pubmed/18428693}
+
+\bibitem{Delcher2002}
+A.~L. Delcher, A.~Phillippy, J.~Carlton, S.~L. Salzberg,
+  \href{http://www.tigr.org/software/mummer/applications.html}{{MUMmer:
+  comparative applications Fast algorithms for large-scale genome alignment and
+  comparison}}, Nucleic Acids Research 30 (2002) 2478--2483.
+\newline\urlprefix\url{http://www.tigr.org/software/mummer/applications.html}
 
 \end{thebibliography}
