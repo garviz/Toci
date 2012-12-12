@@ -1,23 +1,31 @@
 \relax 
+\emailauthor{juliocesar.garcia@caos.uab.es}{Julio C\'esar Garc\'ia Vizca\'ino\corref {julio}\fnref {julio}}
+\emailauthor{antonio.espinosa@caos.uab.es}{Antonio Espinosa\fnref {toni}}
+\emailauthor{juancarlos.moure@uab.es}{Juan Carlos Moure\fnref {juan}}
+\emailauthor{porfidio.hernandez@uab.es}{Porfidio Hern\'andez\fnref {porfi}}
 \citation{Delcher2003}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \newlabel{}{{1}{1}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Search of Maximal Unique Matches between a reference genome (2960,21Mbp) and query genome (2716,96Mbp)\relax }}{1}}
+\citation{Delcher2002}
+\citation{Delcher2002}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Search of Maximal Unique Matches between a reference genome (2960,21Mbp) and query genome (2716,96Mbp)\relax }}{2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tbl:operations}{{1}{1}}
-\citation{Delcher2002}
-\citation{Delcher2002}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Data-level parallelism in multicore architectures for whole genome alignment.\relax }}{2}}
+\newlabel{tbl:operations}{{1}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Data-level parallelism in multi-core architectures for whole genome alignment.\relax }}{2}}
 \newlabel{algorithm}{{1}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}The MUM: an heuristic approach}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Definition of MUM}{2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Finding MUMs in a suffix tree}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The MUM: an heuristic approach}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1}Finding MUMs in a suffix tree}{2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Suffix tree and its use to find matches between a reference and query genome \cite  {Delcher2002}.\relax }}{3}}
 \newlabel{fig:st}{{2}{3}}
+\citation{Delcher1999}
+\citation{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}
+\citation{Meng2005}
+\citation{Encarnac2011}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Finding MUMs in a suffix tree. Blue box represents a leaf node and it saves the start position of its suffix.\relax }}{4}}
 \newlabel{candidates}{{3}{4}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces MUM search of a query and reference genome.\relax }}{4}}
 \newlabel{alg:find}{{1}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{4}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Parallel algorithm}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces MUM in reference genome but not in query genome.\relax }}{5}}
 \newlabel{Whole-MUM}{{4}{5}}
@@ -25,14 +33,23 @@
 \newlabel{implementation}{{4}{5}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Get MUMs from MUM-candidates of a query genome and reference genome.\relax }}{6}}
 \newlabel{alg:real}{{2}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Getting Real MUMs.\relax }}{7}}
-\newlabel{real-mums}{{5}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Experiments and results}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Speedup of our approach to search MUMs in multi-core architectures with OpenMP.\relax }}{8}}
+\newlabel{fig:speedup}{{5}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Use of memory bandwidth of our approach to search MUMs in multi-core architectures with OpenMP.\relax }}{9}}
+\newlabel{fig:mem-bw}{{6}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces CPI of our approach to search MUMs in multi-core architectures with OpenMP.\relax }}{9}}
+\newlabel{fig:cpi}{{7}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{9}}
 \bibstyle{elsarticle-num}
 \bibdata{mum-multithread}
 \bibcite{Delcher2003}{{1}{}{{}}{{}}}
 \bibcite{Delcher2002}{{2}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Speedup of our approach to search MUMs in multicore architectures with OpenMP.\relax }}{8}}
-\newlabel{fig:speedup}{{6}{8}}
+\bibcite{Delcher1999}{{3}{}{{}}{{}}}
+\bibcite{OguzhanKulekci2011}{{4}{}{{}}{{}}}
+\bibcite{Mongelli}{{5}{}{{}}{{}}}
+\bibcite{Kouzinopoulos2005}{{6}{}{{}}{{}}}
+\bibcite{Meng2005}{{7}{}{{}}{{}}}
+\bibcite{Encarnac2011}{{8}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\newlabel{lastpage}{{5}{9}}
+\newlabel{lastpage}{{6}{10}}

@@ -20,4 +20,40 @@ A.~L. Delcher, A.~Phillippy, J.~Carlton, S.~L. Salzberg,
   comparison}}, Nucleic Acids Research 30 (2002) 2478--2483.
 \newline\urlprefix\url{http://www.tigr.org/software/mummer/applications.html}
 
+\bibitem{Delcher1999}
+A.~L. Delcher, S.~Kasif, R.~D. Fleischmann, J.~Peterson, O.~White, S.~L.
+  Salzberg, {Alignment of whole genomes MUMMER}, Nucl Acids Res 27~(11) (1999)
+  2369.
+
+\bibitem{OguzhanKulekci2011}
+M.~{Oğuzhan K\"{u}lekci}, W.-K. Hon, R.~Shah, J.~{Scott Vitter}, B.~Xu,
+  \href{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3194238\&too%
+l=pmcentrez\&rendertype=abstract}{{$\Psi$-RA: a parallel sparse index for
+  genomic read alignment.}}, BMC genomics 12 Suppl 2 (2011) S7.
+\newblock \href {http://dx.doi.org/10.1186/1471-2164-12-S2-S7}
+  {\path{doi:10.1186/1471-2164-12-S2-S7}}.
+\newline\urlprefix\url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?art%
+id=3194238\&tool=pmcentrez\&rendertype=abstract}
+
+\bibitem{Mongelli}
+H.~Mongelli, {Efficient Two-Dimensional Parallel Pattern Matching with
+  Scaling}, North.
+
+\bibitem{Kouzinopoulos2005}
+C.~S. Kouzinopoulos, P.~D. Michailidis, K.~G. Margaritis, {Parallel Processing
+  of Multiple Pattern Matching Algorithms for Biological Sequences : Methods
+  and Performance Results}.
+
+\bibitem{Meng2005}
+X.~Meng, V.~Chaudhary,
+  \href{http://www.computer.org/portal/web/csdl/doi/10.1109/ICPADS.2005.152}{{%
+Exploiting multi-level parallelism for homology search using general purpose
+  processors}}, October.
+\newline\urlprefix\url{http://www.computer.org/portal/web/csdl/doi/10.1109/ICP%
+ADS.2005.152}
+
+\bibitem{Encarnac2011}
+G.~Encarnac, N.~Roma, {Advantages and GPU Implementation of High-Performance
+  Indexed DNA Search based on Suffix Arrays}, Architecture (2011) 49--55.
+
 \end{thebibliography}

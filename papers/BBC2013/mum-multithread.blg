@@ -2,44 +2,46 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: mum-multithread.aux
 The style file: elsarticle-num.bst
 Database file #1: mum-multithread.bib
-You've used 2 entries,
+Warning--empty journal in Kouzinopoulos2005
+You've used 8 entries,
             2937 wiz_defined-function locations,
-            687 strings with 5851 characters,
-and the built_in function-call counts, 749 in all, are:
-= -- 70
-> -- 23
+            730 strings with 7150 characters,
+and the built_in function-call counts, 2183 in all, are:
+= -- 193
+> -- 86
 < -- 0
-+ -- 9
-- -- 7
-* -- 66
-:= -- 125
-add.period$ -- 2
-call.type$ -- 2
-change.case$ -- 2
++ -- 34
+- -- 26
+* -- 164
+:= -- 335
+add.period$ -- 9
+call.type$ -- 8
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 20
-empty$ -- 76
-format.name$ -- 9
-if$ -- 176
+cite$ -- 9
+duplicate$ -- 65
+empty$ -- 228
+format.name$ -- 33
+if$ -- 541
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 16
-num.names$ -- 2
-pop$ -- 12
+int.to.str$ -- 8
+missing$ -- 8
+newline$ -- 37
+num.names$ -- 8
+pop$ -- 51
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 30
+skip$ -- 128
 stack$ -- 0
-substring$ -- 58
-swap$ -- 4
+substring$ -- 95
+swap$ -- 11
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 5
-width$ -- 3
-write$ -- 25
+warning$ -- 1
+while$ -- 15
+width$ -- 9
+write$ -- 72
+(There was 1 warning)
