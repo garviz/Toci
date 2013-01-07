@@ -1,0 +1,40 @@
+Threads=1,Chunks=1,Chunk_Size=95283144,OMP_time=106.902969,Schedule=1,Chunk_Schd=1,Matches=269676,Size=32768,MUM=100,createST Time=34.8656,Final Time=144.285
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group BRANCH
+-------------------------------------------------------------
+./toci -C 1 -mum -l 100 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+
+|    Region Info    | core 0  |
++-------------------+---------+
+| RDTSC Runtime [s] | 106.904 |
+|    call count     |    1    |
++-------------------+---------+
++------------------------------+-------------+
+|            Event             |   core 0    |
++------------------------------+-------------+
+|      INSTR_RETIRED_ANY       | 6.52028e+10 |
+|    CPU_CLK_UNHALTED_CORE     | 2.68657e+11 |
+|     CPU_CLK_UNHALTED_REF     | 2.54518e+11 |
+| BR_INST_RETIRED_ALL_BRANCHES | 9.8644e+09  |
+| BR_MISP_RETIRED_ALL_BRANCHES | 5.72461e+08 |
++------------------------------+-------------+
++----------------------------+------------+
+|           Metric           |   core 0   |
++----------------------------+------------+
+|    Runtime (RDTSC) [s]     |  106.904   |
+|    Runtime unhalted [s]    |  112.223   |
+|        Clock [MHz]         |  2526.95   |
+|            CPI             |  4.12034   |
+|        Branch rate         |  0.151288  |
+| Branch misprediction rate  | 0.00877971 |
+| Branch misprediction ratio | 0.0580331  |
+|  Instructions per branch   |  6.60991   |
++----------------------------+------------+

@@ -180,12 +180,13 @@ Sint findmumcandidates(Suffixtree *stree,
       A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
-  likwid_markerStartRegion("scanprefixfromnodestree");
+  //likwid_markerStartRegion("scanprefixfromnodestree");
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
-  likwid_markerStopRegion("scanprefixfromnodestree");
- /*     for (querysuffix = left; querysuffix<right && lptr != NULL;  querysuffix++)
+  //likwid_markerStopRegion("scanprefixfromnodestree");
+      for (querysuffix = left; /*querysuffix<right &&*/ lptr != NULL;  querysuffix++)
       {
-  likwid_markerStartRegion("MUM");
+          fprintf(stderr,"%p\n", querysuffix);
+  //likwid_markerStartRegion("MUM");
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
           {
                if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
@@ -204,26 +205,26 @@ Sint findmumcandidates(Suffixtree *stree,
                     }
                }
           }
-  likwid_markerStopRegion("MUM");
+  //likwid_markerStopRegion("MUM");
           if (ROOTLOCATION (&loc))
           {
-  likwid_markerStartRegion("scanprefixfromnodestree");
+  //likwid_markerStartRegion("scanprefixfromnodestree");
               lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
-  likwid_markerStopRegion("scanprefixfromnodestree");
+  //likwid_markerStopRegion("scanprefixfromnodestree");
           }
           else
           {
-  likwid_markerStartRegion("linklocstree");
+  //likwid_markerStartRegion("linklocstree");
               linklocstree (stree, &loc, &loc);
-  likwid_markerStopRegion("linklocstree");
-  likwid_markerStartRegion("scanprefixstree");
+  //likwid_markerStopRegion("linklocstree");
+  //likwid_markerStartRegion("scanprefixstree");
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
-  likwid_markerStopRegion("scanprefixstree");
+  //likwid_markerStopRegion("scanprefixstree");
           }  
       }
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
       { 
-  likwid_markerStartRegion("MUM");
+  //likwid_markerStartRegion("MUM");
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
            {
                if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
@@ -242,12 +243,12 @@ Sint findmumcandidates(Suffixtree *stree,
                     }
                }
           }
-  likwid_markerStopRegion("MUM");
-  likwid_markerStartRegion("linklocstree");
+  //likwid_markerStopRegion("MUM");
+  //likwid_markerStartRegion("linklocstree");
           linklocstree (stree, &loc, &loc);
-  likwid_markerStopRegion("linklocstree");
+  //likwid_markerStopRegion("linklocstree");
           querysuffix++;
-      }*/
+      }
   }   
   likwid_markerStopRegion("Find MUMs");
   }

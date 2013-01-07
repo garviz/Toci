@@ -1,0 +1,40 @@
+Threads=1,Chunks=1,Chunk_Size=95283144,OMP_time=95.018751,Schedule=1,Chunk_Schd=1,Matches=289107,Size=32768,MUM=50,createST Time=34.1066,Final Time=131.689
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group L2
+-------------------------------------------------------------
+./toci -C 1 -mum -l 50 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+
+|    Region Info    | core 0  |
++-------------------+---------+
+| RDTSC Runtime [s] | 95.0196 |
+|    call count     |    1    |
++-------------------+---------+
++-----------------------+-------------+
+|         Event         |   core 0    |
++-----------------------+-------------+
+|   INSTR_RETIRED_ANY   | 5.88883e+10 |
+| CPU_CLK_UNHALTED_CORE | 2.40299e+11 |
+| CPU_CLK_UNHALTED_REF  | 2.26129e+11 |
+|       L1D_REPL        | 1.51792e+09 |
+|      L1D_M_EVICT      | 6.97648e+06 |
++-----------------------+-------------+
++-------------------------+---------+
+|         Metric          | core 0  |
++-------------------------+---------+
+|   Runtime (RDTSC) [s]   | 95.0196 |
+|  Runtime unhalted [s]   | 100.377 |
+|       Clock [MHz]       | 2543.98 |
+|           CPI           | 4.08059 |
+|   L2 Load [MBytes/s]    | 1022.38 |
+|   L2 Evict [MBytes/s]   | 4.69898 |
+| L2 bandwidth [MBytes/s] | 1027.08 |
+| L2 data volume [GBytes] | 97.5931 |
++-------------------------+---------+
