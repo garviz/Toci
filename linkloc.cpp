@@ -11,7 +11,7 @@
 #include "protodef.h"
 #include "streeacc.h"
 
-extern double tLLS;
+//extern double tLLS;
 void rescanstree(Suffixtree *stree,Location *loc,
                  Bref btptr,Uchar *left,Uchar *right)
 {
@@ -119,13 +119,13 @@ void rescanstree(Suffixtree *stree,Location *loc,
 }
 
 void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
-{ 
-  double sF, eF;
-  sF = omp_get_wtime();
+ { 
+  //double sF, eF;
+  //sF = omp_get_wtime();
   Branchinfo branchinfo;
 
   if(inloc->remain == 0)
-  {
+  { 
     outloc->remain = 0;
     outloc->nextnode.toleaf = false;
     getbranchinfostree(stree,ACCESSSUFFIXLINK,&branchinfo,
@@ -134,20 +134,20 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
     outloc->locstring.start = inloc->locstring.start + 1;
     outloc->locstring.length = inloc->locstring.length - 1;
   } else
-  {
+  { 
     if(inloc->previousnode == stree->branchtab)
     {
       rescanstree(stree,outloc,stree->branchtab,inloc->firstptr+1,
                   inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
-    } else
+     } else
     {
       getbranchinfostree(stree,ACCESSSUFFIXLINK,&branchinfo,
                          inloc->previousnode);
       rescanstree(stree,outloc,branchinfo.suffixlink,inloc->firstptr,
              inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
       
-    }
+    } 
   } 
-  eF = omp_get_wtime();
-  tLLS+=(eF-sF);
+  //eF = omp_get_wtime();
+  //tLLS+=(eF-sF);
 }

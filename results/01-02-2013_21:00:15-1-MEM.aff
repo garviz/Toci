@@ -1,0 +1,44 @@
+Threads=1,Chunks=1,Chunk_Size=95283144,OMP_time=97.117807,Schedule=1,Chunk_Schd=1,Matches=289107,Size=32768,MUM=50,createST Time=32.3032,Final Time=131.967
+-------------------------------------------------------------
+-------------------------------------------------------------
+CPU type:	Intel Core Westmere processor 
+CPU clock:	2.39 GHz 
+Measuring group MEM
+-------------------------------------------------------------
+./toci -C 1 -mum -l 50 ../fasta_test_genomes/human21.fa ../fasta_test_genomes/mouse16.fa
+Status: 0x0 
+
+=====================
+Region: Find MUMs 
+=====================
++-------------------+---------+
+|    Region Info    | core 0  |
++-------------------+---------+
+| RDTSC Runtime [s] | 97.1188 |
+|    call count     |    1    |
++-------------------+---------+
++--------------------------------+-------------+
+|             Event              |   core 0    |
++--------------------------------+-------------+
+|       INSTR_RETIRED_ANY        | 5.88883e+10 |
+|     CPU_CLK_UNHALTED_CORE      | 2.4516e+11  |
+|      CPU_CLK_UNHALTED_REF      | 2.31104e+11 |
+|    UNC_QMC_NORMAL_READS_ANY    | 4.42416e+09 |
+|    UNC_QMC_WRITES_FULL_ANY     | 1.03318e+07 |
+| UNC_QHL_REQUESTS_REMOTE_READS  | 2.12692e+09 |
+|  UNC_QHL_REQUESTS_LOCAL_READS  | 2.2996e+09  |
+| UNC_QHL_REQUESTS_REMOTE_WRITES | 1.96442e+06 |
++--------------------------------+-------------+
++-----------------------------+---------+
+|           Metric            | core 0  |
++-----------------------------+---------+
+|     Runtime (RDTSC) [s]     | 97.1188 |
+|    Runtime unhalted [s]     | 102.408 |
+|         Clock [MHz]         | 2539.57 |
+|             CPI             | 4.16314 |
+| Memory bandwidth [MBytes/s] | 2922.27 |
+| Memory data volume [GBytes] | 283.807 |
+|  Remote Read BW [MBytes/s]  | 1401.61 |
+| Remote Write BW [MBytes/s]  | 1.29453 |
+|    Remote BW [MBytes/s]     | 1402.9  |
++-----------------------------+---------+
