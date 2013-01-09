@@ -689,8 +689,6 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     return -2;
   }
   matchprocessinfo.maxdesclength = (Uint) retcode;
-  /*Size = 500;
-  A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));*/
   for(filenum=0; filenum < mmcallinfo->numofqueryfiles; filenum++)
   {
     filecontent = (Uchar *) CREATEMEMORYMAP (mmcallinfo->queryfilelist[filenum],true,&filelen);
@@ -710,13 +708,12 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
       return -5;
     }
     freemultiseq(&matchprocessinfo.querymultiseq);
-    }
-  cout << "createST Time=" << finish-start << ",";
-  //Process_Matches (A, N);
+  }
   if(mmcallinfo->cmum)
   {
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
+  cout << "createST=" << finish-start << ",";
   //fprintf(stderr,"# Matches=%lu\n",(Sint)N);
   //freestree (&matchprocessinfo.stree);
   return 0;

@@ -1,47 +1,47 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: mum-multithread.aux
 The style file: elsarticle-num.bst
-I found no \citation commands---while reading file mum-multithread.aux
 Database file #1: mum-multithread.bib
-You've used 0 entries,
+Warning--empty journal in Kouzinopoulos2005
+You've used 8 entries,
             2937 wiz_defined-function locations,
-            667 strings with 5085 characters,
-and the built_in function-call counts, 44 in all, are:
-= -- 0
-> -- 0
+            730 strings with 7150 characters,
+and the built_in function-call counts, 2183 in all, are:
+= -- 193
+> -- 86
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 23
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 34
+- -- 26
+* -- 164
+:= -- 335
+add.period$ -- 9
+call.type$ -- 8
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 9
+duplicate$ -- 65
+empty$ -- 228
+format.name$ -- 33
+if$ -- 541
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 8
+missing$ -- 8
+newline$ -- 37
+num.names$ -- 8
+pop$ -- 51
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1
+skip$ -- 128
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 95
+swap$ -- 11
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 7
-(There was 1 error message)
+warning$ -- 1
+while$ -- 15
+width$ -- 9
+write$ -- 72
+(There was 1 warning)

@@ -49,6 +49,10 @@
   \item
   \texttt{seqnum} is the number of the query sequence currently considered
   \item
+  \texttt{processmumcandidate} is the function to further process a 
+  MUM-candidate.
+  \item
+  \texttt{processinfo} points to some values additionally required by
   the function \texttt{processmumcandidate}.
   \end{enumerate}
   By construction, the location in the suffix tree represents a 
@@ -154,9 +158,14 @@ Sint findmumcandidates(Suffixtree *stree,
                        Uchar *query,
                        Uint querylen,
                        Uint seqnum)
+<<<<<<< HEAD
 {  
   Uchar *lptr, *left, *right = query + querylen - 1, 
         *querysuffix;
+=======
+{ 
+  Uchar *lptr, *left, *right = query + querylen - 1, *querysuffix;
+>>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
   Location loc;
   int i, nthreads, *chunk_schedule, EventSet = PAPI_NULL;
   long_long values[2];
@@ -166,8 +175,10 @@ Sint findmumcandidates(Suffixtree *stree,
   Uint N = 0, Size = 32768, retval;
   unsigned long int tid;
   double start, end;
+
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
+<<<<<<< HEAD
   
   /*if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) fprintf(stderr,"PAPI library init error!\n");
   if (PAPI_thread_init((unsigned long (*)(void))(omp_get_thread_num())) != PAPI_OK) fprintf(stderr,"Doesn't work!\n");;
@@ -175,9 +186,11 @@ Sint findmumcandidates(Suffixtree *stree,
   if (PAPI_add_events(EventSet, Events, 2) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
   if (PAPI_start(EventSet) != PAPI_OK) fprintf(stderr,"ERROR start EventSet\n");*/
 
+=======
+>>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
   start = omp_get_wtime();
-  #pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
-  {
+#pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
+  { 
   likwid_markerStartRegion("Find MUMs");
 #pragma omp for schedule(runtime) nowait
   for (i=0; i<chunks; i++)
@@ -187,61 +200,76 @@ Sint findmumcandidates(Suffixtree *stree,
       A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
+  //likwid_markerStartRegion("scanprefixfromnodestree");
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
-      for (querysuffix = left; querysuffix<right && lptr != NULL;  querysuffix++)
-      { 
+  //likwid_markerStopRegion("scanprefixfromnodestree");
+      for (querysuffix = left; /*querysuffix<right &&*/ lptr != NULL;  querysuffix++)
+      {
+          fprintf(stderr,"%p\n", querysuffix);
+  //likwid_markerStartRegion("MUM");
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
           {
                if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
                {
 #pragma omp critical
-                   {
-                       if (N >= Size -1)
-                       {
-                           Size *= 2;
-                           A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                       }
-                       N++;
-                       A[N].R = loc.locstring.start;
-                       A[N].Q = (Uint) (querysuffix-query);
-                       A[N].Len = loc.locstring.length;
-                   }
+                    {
+                        if (N >= Size -1)
+                        {
+                            Size *= 2;
+                            A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                        }
+                        N++;
+                        A[N].R = loc.locstring.start;
+                        A[N].Q = (Uint) (querysuffix-query);
+                        A[N].Len = loc.locstring.length;
+                    }
                }
           }
+  //likwid_markerStopRegion("MUM");
           if (ROOTLOCATION (&loc))
           {
+  //likwid_markerStartRegion("scanprefixfromnodestree");
               lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
+  //likwid_markerStopRegion("scanprefixfromnodestree");
           }
           else
           {
+  //likwid_markerStartRegion("linklocstree");
               linklocstree (stree, &loc, &loc);
+  //likwid_markerStopRegion("linklocstree");
+  //likwid_markerStartRegion("scanprefixstree");
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
+  //likwid_markerStopRegion("scanprefixstree");
           }  
       }
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
-      {
+      { 
+  //likwid_markerStartRegion("MUM");
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
-          {
+           {
                if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
-               {
-#pragma omp critical
-                   {
-                       if (N >= Size -1)
-                       {
-                           Size *= 2;
-                           A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                       }
-                       N++;
-                       A[N].R = loc.locstring.start;
-                       A[N].Q = (Uint) (querysuffix-query);
-                       A[N].Len = loc.locstring.length;
-                   }
+                {
+ #pragma omp critical
+                     {
+                        if (N >= Size -1)
+                         {
+                            Size *= 2;
+                            A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                        }
+                        N++;
+                        A[N].R = loc.locstring.start;
+                        A[N].Q = (Uint) (querysuffix-query);
+                        A[N].Len = loc.locstring.length;
+                    }
                }
           }
+  //likwid_markerStopRegion("MUM");
+  //likwid_markerStartRegion("linklocstree");
           linklocstree (stree, &loc, &loc);
+  //likwid_markerStopRegion("linklocstree");
           querysuffix++;
       }
-  }  
+  }   
   likwid_markerStopRegion("Find MUMs");
   }
   end = omp_get_wtime(); 

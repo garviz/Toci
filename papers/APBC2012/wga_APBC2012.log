@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.5.4)  28 JUL 2012 01:21
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  12 DEC 2012 11:41
 entering extended mode
  %&-line parsing enabled.
 **wga_APBC2012.tex
@@ -326,10 +326,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count97
 ))
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
@@ -340,11 +341,8 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 (/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvips.def on input line 130.
-
-(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 130.
+)
 (/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \epsfxsize=\dimen113
@@ -355,7 +353,7 @@ Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \UL@hyphenbox=\box53
 \UL@skip=\skip45
 \UL@hook=\toks17
-\UL@pe=\count97
+\UL@pe=\count98
 \UL@pixel=\dimen115
 \ULC@box=\box54
 Package: ulem 2000/05/26
@@ -363,10 +361,10 @@ Package: ulem 2000/05/26
 )
 (/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count98
-\c@ALC@line=\count99
-\c@ALC@rem=\count100
-\c@ALC@depth=\count101
+\c@ALC@unique=\count99
+\c@ALC@line=\count100
+\c@ALC@rem=\count101
+\c@ALC@depth=\count102
 \ALC@tlm=\skip46
 \algorithmicindent=\skip47
 )
@@ -413,9 +411,16 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )
 
-Package epstopdf Warning: Other drivers than `pdftex.def' are not supported.
+Package epstopdf Warning: Shell escape feature is not enabled.
 
-)) (/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 433.
+(/usr/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2009/10/26 v1.1 Configuration of epstopdf for TeX Live
+)))
+(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texmf-texlive/tex/latex/caption/caption.sty
@@ -430,23 +435,23 @@ Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
 \caption@parindent=\dimen121
 \caption@hangindent=\dimen122
 )
-\c@ContinuedFloat=\count102
+\c@ContinuedFloat=\count103
 )
-\c@KVtest=\count103
+\c@KVtest=\count104
 \sf@farskip=\skip48
 \sf@captopadj=\dimen123
 \sf@capskip=\skip49
 \sf@nearskip=\skip50
-\c@subfigure=\count104
-\c@subfigure@save=\count105
-\c@lofdepth=\count106
-\c@subtable=\count107
-\c@subtable@save=\count108
-\c@lotdepth=\count109
+\c@subfigure=\count105
+\c@subfigure@save=\count106
+\c@lofdepth=\count107
+\c@subtable=\count108
+\c@subtable@save=\count109
+\c@lotdepth=\count110
 \sf@top=\skip51
 \sf@bottom=\skip52
 )
-\c@mydef=\count110
+\c@mydef=\count111
  (./wga_APBC2012.aux)
 \openout1 = `wga_APBC2012.aux'.
 
@@ -462,6 +467,19 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
+ (/usr/share/texmf/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count112
+\scratchdimen=\dimen124
+\scratchbox=\box55
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen125
+\MPnumerator=\count116
+\everyMPtoPDFconversion=\toks19
+)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
 LaTeX Info: Redefining \subref on input line 118.
@@ -483,155 +501,45 @@ Overfull \hbox (9.99998pt too wide) in paragraph at lines 166--166
 
 [1
 
-] [2]
-File: schema.eps Graphic file (type eps)
- <schema.eps> [3]
-File: algorithm.eps Graphic file (type eps)
- <algorithm.eps>
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 274.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Package epstopdf Info: Source file: <algorithm.eps>
+(epstopdf)                    date: 2012-11-26 11:18:38
+(epstopdf)                    size: 28837 bytes
+(epstopdf)             Output file: <algorithm-eps-converted-to.pdf>
+(epstopdf)             Command: <epstopdf --outfile=algorithm-eps-converted-to.
+pdf algorithm.eps>
+(epstopdf)             \includegraphics on input line 260.
+runsystem(epstopdf --outfile=algorithm-eps-converted-to.pdf algorithm.eps)...di
+sabled.
+
+Package epstopdf Info: Result file: <algorithm-eps-converted-to.pdf>.
 
 
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 274.
- [4]
-File: split_qry.eps Graphic file (type eps)
- <split_qry.eps>
-File: split_ref.eps Graphic file (type eps)
+! Package pdftex.def Error: File `algorithm-eps-converted-to.pdf' not found.
 
-<split_ref.eps> [5]
-File: hspan_st_r.eps Graphic file (type eps)
- <hspan_st_r.eps>
-Underfull \hbox (badness 4193) in paragraph at lines 340--340
-[]\OT1/cmr/m/n/8 (a) |Con-struc-tion of ST
- []
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.260 ...ile=algorithm.eps,width=4.5cm,height=4cm}
+                                                  
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.260 ...ile=algorithm.eps,width=4.5cm,height=4cm}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-File: hspan_st_q.eps Graphic file (type eps)
-<hspan_st_q.eps>
-Underfull \hbox (badness 3803) in paragraph at lines 343--343
-[]\OT1/cmr/m/n/8 (b) |Con-struc-tion of ST
- []
-
-
-Underfull \hbox (badness 4792) in paragraph at lines 343--343
-\OT1/cmr/m/n/8 split Chim-panzee Chr13
- []
-
-[6]
-File: hspan_find_r_5000.eps Graphic file (type eps)
- <hspan_find_r_5000.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 351--351
-[]\OT1/cmr/m/n/8 (a) |Find-ing MEMs
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 351--351
-\OT1/cmr/m/n/8 split Hu-man Chr13,
- []
-
-File: hspan_find_q_5000.eps Graphic file (type eps)
-<hspan_find_q_5000.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 354--354
-\OT1/cmr/m/n/8 Chim-panzee Chr13,
- []
-
-File: hspan_ram.eps Graphic file (type eps)
-<hspan_ram.eps>
-File: hspan_mums.eps Graphic file (type eps)
- <hspan_mums.eps>
-Underfull \hbox (badness 3907) in paragraph at lines 369--369
-\OT1/cmr/m/n/8 align-ing Hu-man Chr13
- []
-
-File: hspan_drop.eps Graphic file (type eps)
-<hspan_drop.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 372--372
-[]\OT1/cmr/m/n/8 (b) |Per-cent-age of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 372--372
-\OT1/cmr/m/n/8 ver-sion of MUM-mer,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 372--372
-\OT1/cmr/m/n/8 when align-ing Hu-man
- []
-
-File: hspan_mums_20.eps Graphic file (type eps)
-<hspan_mums_20.eps>
-Underfull \hbox (badness 3168) in paragraph at lines 377--377
-\OT1/cmr/m/n/8 length of 20bp, found
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 377--377
-\OT1/cmr/m/n/8 when align-ing Hu-man
- []
-
-File: hspan_mums_50.eps Graphic file (type eps)
-<hspan_mums_50.eps>
-Underfull \hbox (badness 3168) in paragraph at lines 380--380
-\OT1/cmr/m/n/8 length of 50bp, found
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 380--380
-\OT1/cmr/m/n/8 when align-ing Hu-man
- []
-
-File: hspan_mums_100.eps Graphic file (type eps)
-<hspan_mums_100.eps>
-Underfull \hbox (badness 1127) in paragraph at lines 385--385
-\OT1/cmr/m/n/8 length of 100bp, found
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 385--385
-\OT1/cmr/m/n/8 when align-ing Hu-man
- []
-
-File: hspan_mums_500.eps Graphic file (type eps)
-<hspan_mums_500.eps>
-Underfull \hbox (badness 1127) in paragraph at lines 389--389
-\OT1/cmr/m/n/8 length of 500bp, found
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 389--389
-\OT1/cmr/m/n/8 when align-ing Hu-man
- []
-
-File: hspan_mums_1000.eps Graphic file (type eps)
-<hspan_mums_1000.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 394--394
-\OT1/cmr/m/n/8 when align-ing Hu-man
- []
-
-[7] [8] [9] [10]
-File: xipe-totec1.eps Graphic file (type eps)
- <xipe-totec1.eps> [11]
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 459.
-
-
-[12]
-File: xt.eps Graphic file (type eps)
- <xt.eps> [13] (./wga_APBC2012.bbl
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 16.
-) [14] [15] (./wga_APBC2012.aux) ) 
+ 
 Here is how much of TeX's memory you used:
- 2984 strings out of 493849
- 43755 string characters out of 1152847
- 113363 words of memory out of 3000000
- 6187 multiletter control sequences out of 15000+50000
- 11581 words of font info for 41 fonts, out of 3000000 for 9000
+ 3176 strings out of 493848
+ 46311 string characters out of 1152823
+ 116446 words of memory out of 3000000
+ 6401 multiletter control sequences out of 15000+50000
+ 10098 words of font info for 36 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,11n,45p,880b,533s stack positions out of 5000i,500n,10000p,200000b,50000s
-
-Output written on wga_APBC2012.dvi (15 pages, 39312 bytes).
+ 44i,6n,42p,880b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
