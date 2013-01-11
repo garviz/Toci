@@ -9,11 +9,7 @@ CFLAGS  = -std=gnu++0x -m64 -fopenmp -fno-permissive -Wno-write-strings -Wno-for
 
 INCLUDE = -I$(SPARSETABLE) -I/soft/likwid-3.0/include/ -I/soft/papi-5.0.1/include/
 
-<<<<<<< HEAD
 LIBS    = -llikwid -lstdc++ -lpapi
-=======
-LIBS    = $(TAU_MPI_LIBS) $(TAU_LIBS) -llikwid -lpapi
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
 
 LDFLAGS	= -L/soft/likwid-3.0/lib/ -L/soft/papi-5.0.1/lib
 

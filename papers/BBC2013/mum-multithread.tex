@@ -367,16 +367,16 @@ The key factors in this phase are:
   \item Number of threads.
 \end{itemize}
 \subsection*{Get real MUMs}
-This phase is applied with Algorithm \ref{alg:real} for the set of MUM-candidates. These are ordered with quicksort according to position in query sequence. Every thread has found a set of MUM-candidates from previous phase but all threads don't produce the MUM-candidates in order. That's why a quicksort is required.\\
+This phase is applied with an algorithm for the set of MUM-candidates. These are ordered with quicksort according to position in query sequence. Every thread has found a set of MUM-candidates from previous phase but all threads don't produce the MUM-candidates in order. That's why a quicksort is required.\\
 After quicksort we need to get the real MUMs. A real MUM is unique in the whole reference and query genome. Those MUM-candidates which are overlapped by bigger MUMs are discarded too, see Figure \ref{real-mums} where MUM-candidate in orange colour is discarded because another MUM-candidate has a larger length and they have same match in the reference genome.
-%\begin{figure}[htb]  
-%\begin{center} 
-%  \includegraphics[width=4.5cm,height=4cm]{MUMs.png}
-%  \includegraphics[width=4.5cm,height=4cm]{Remove-MUMs.png}
-%\end{center} 
-%\caption{Getting Real MUMs.} 
-%\label{real-mums} 
-%\end{figure}
+\begin{figure}[htb]  
+\begin{center} 
+  \includegraphics[width=4.5cm,height=4cm]{MUMs.png}
+  \includegraphics[width=4.5cm,height=4cm]{Remove-MUMs.png}
+\end{center} 
+\caption{Getting Real MUMs.} 
+\label{real-mums} 
+\end{figure}
 %The final output has the following format:
 %\begin{verbatim} 
 %>Information about the query sequence
@@ -434,7 +434,7 @@ Figure \ref{fig:speedup} shows the speedup for the parallelization of searching 
   \centering
   \includegraphics[width=8.5cm,height=5cm]{stalls.png}
   \caption{Resources stalls for search of MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.}
-  \label{fig:speedup}
+  \label{fig:stalls}
  \end{figure}  
  To improve the performance of our approach the following proposals may be used:
 \begin{itemize}

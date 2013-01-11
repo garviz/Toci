@@ -12,11 +12,8 @@
 #include "streeacc.h"
 #include "protodef.h"
 
-<<<<<<< HEAD
 //extern double tSPFNS,tSPS;
 
-=======
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
 static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
 {
   register Uchar *ptr1 = start1, 
@@ -35,31 +32,27 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
 {
   Uint *nodeptr = NULL, *largeptr = NULL, leafindex, nodedepth, node, distance = 0, prefixlen, headposition, tmpnodedepth, edgelen, remainingtoskip;
   Uchar *lptr, *leftborder = (Uchar *) NULL, firstchar, edgechar = 0;
-<<<<<<< HEAD
   //double sF, eF;
   //sF = omp_get_wtime();
   lptr = left;
-=======
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
   nodeptr = btptr;
   if(nodeptr == stree->branchtab)
-   {
+  {
     nodedepth = 0;
     headposition = 0;
   } else
   {
     GETBOTH(nodedepth,headposition,nodeptr);
-  } 
+  }
   loc->nextnode.toleaf = false;
   loc->nextnode.address = nodeptr;
   loc->locstring.start = headposition;
   loc->locstring.length = nodedepth;
   loc->remain = 0;
   if(rescanlength <= nodedepth)
-  { 
+  {
     remainingtoskip = 0;
   } else
-<<<<<<< HEAD
   {  
     remainingtoskip = rescanlength - nodedepth; 
   } 
@@ -67,23 +60,17 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
   { 
     if(lptr > right)   // check for empty word 
     { 
-      //cerr << "# NULL " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
       return NULL; 
     }  
-=======
   {
     remainingtoskip = rescanlength - nodedepth;
   }
-  return NULL;//borrar
-/*  while(true)
+  while(true)
   {
     if(lptr > right)   // check for empty word
     {
       return NULL;
     }
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
     firstchar = *lptr;
     if(nodeptr == stree->branchtab)  // at the root
     {
@@ -110,20 +97,9 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
         loc->locstring.start = leafindex;
         loc->locstring.length = prefixlen;
         if(prefixlen == (Uint) (right - lptr + 1))
-<<<<<<< HEAD
-        { 
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-          return NULL;
-        }
-        //cerr << "# lptr+prefixlen " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-=======
         {
           return NULL;
         }
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
         return lptr + prefixlen;
       } 
       nodeptr = stree->branchtab + GETBRANCHINDEX(node);
@@ -135,14 +111,7 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
       while(true)
       {
         if(NILPTR(node))
-<<<<<<< HEAD
-         {
-          //cerr <<"# nilptr(node) " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-=======
         {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
           return lptr;
         }
         if(ISLEAF(node))
@@ -151,22 +120,11 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
           leftborder = stree->text + (nodedepth + leafindex);
           if(leftborder == stree->sentinel)
           {
-<<<<<<< HEAD
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-=======
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
             return lptr;
           }
           edgechar = *leftborder;
           if(edgechar > firstchar)
           {
-<<<<<<< HEAD
-            //cerr << "# edgechar > firstchar" << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-=======
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
             return lptr;
           }
           if(edgechar == firstchar)
@@ -187,51 +145,24 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
             loc->locstring.start = leafindex;
             loc->locstring.length = nodedepth + prefixlen;
             if(prefixlen == (Uint) (right - lptr + 1))
-<<<<<<< HEAD
-            { 
-              //cerr << "# NULL " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-              return NULL;
-            }
-            //cerr << "# lptr + prefixlen " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-=======
             {
               return NULL;
             }
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
             return lptr + prefixlen;
           }
           node = LEAFBROTHERVAL(stree->leaftab[leafindex]);
         } else
-<<<<<<< HEAD
-         { 
-=======
         {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
           nodeptr = stree->branchtab + GETBRANCHINDEX(node);
           GETONLYHEADPOS(headposition,nodeptr);
           leftborder = stree->text + (nodedepth + headposition);
           edgechar = *leftborder;
           if (edgechar > firstchar)
-<<<<<<< HEAD
-           {
-            //cerr << "# lptr " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-=======
           {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
             return lptr;
           }
           if(edgechar == firstchar)
-<<<<<<< HEAD
-           { 
-=======
           {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
             break;
           }
           node = GETBROTHER(nodeptr);
@@ -241,25 +172,19 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
     GETONLYDEPTH(tmpnodedepth,nodeptr);
     edgelen = tmpnodedepth - nodedepth;
     if(remainingtoskip > 0)
-    { 
+    {
       if(remainingtoskip >= edgelen)
       {
         prefixlen = edgelen;
         remainingtoskip -= prefixlen;
-       } else
+      } else
       {
         NOTSUPPOSEDTOBENULL(leftborder);
         prefixlen = remainingtoskip + lcp(lptr+remainingtoskip,right,leftborder+remainingtoskip,leftborder+edgelen-1);
         remainingtoskip = 0;
-<<<<<<< HEAD
-      }  
-    } else 
-    {  
-=======
       }
     } else
     {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
       NOTSUPPOSEDTOBENULL(leftborder);
       prefixlen = 1 + lcp(lptr+1,right,leftborder+1,leftborder+edgelen-1);
     }
@@ -267,78 +192,45 @@ Uchar *scanprefixfromnodestree(Suffixtree *stree,Location *loc,Bref btptr,Uchar 
     loc->locstring.start = headposition;
     loc->locstring.length = nodedepth + prefixlen;
     if(prefixlen == edgelen)
-<<<<<<< HEAD
-    {  
-=======
     {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
       lptr += edgelen;
       nodedepth += edgelen;
       loc->nextnode.address = nodeptr;
       loc->remain = 0;
     } else
-<<<<<<< HEAD
-    {  
-=======
     {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
       loc->firstptr = leftborder;
       loc->previousnode = loc->nextnode.address;
       loc->nextnode.address = nodeptr;
       loc->edgelen = edgelen;
       loc->remain = loc->edgelen - prefixlen;
       if(prefixlen == (Uint) (right - lptr + 1))
-<<<<<<< HEAD
-      { 
-        //cerr << "# NULL " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-        return NULL;
-      }
-      //cerr << "# lptr + prefixlen " << __LINE__ << endl;
-      //eF = omp_get_wtime();
-      //tSPFNS+=(eF-sF);
-      return lptr + prefixlen;
-    } 
-  }  
-=======
       {
         return NULL;
       }
       return lptr + prefixlen;
     }
-  }*/
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
+  }
+}
 }
 
 Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
                                    Location *inloc,Uchar *left,
                                    Uchar *right,Uint rescanlength)
-<<<<<<< HEAD
-{ 
-  //double sF, eF;
-  //sF = omp_get_wtime();
-=======
 {
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
   Uint prefixlen, remainingtoskip;
 
   if(inloc->remain == 0)
   {
-<<<<<<< HEAD
-    //eF = omp_get_wtime();
-    //tSPS+=(eF-sF);
-=======
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
     return scanprefixfromnodestree(stree,outloc,inloc->nextnode.address,left,right,rescanlength);
-  }  
+  }
   if(rescanlength <= inloc->locstring.length)
   {
     remainingtoskip = 0;
   } else
   {
     remainingtoskip = rescanlength - inloc->locstring.length;
-  } 
+  }
   if(inloc->nextnode.toleaf)
   {
     
@@ -357,24 +249,19 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     outloc->nextnode.address = inloc->nextnode.address;
     outloc->locstring.start = LEAFADDR2NUM(stree,inloc->nextnode.address);
     outloc->locstring.length = inloc->locstring.length + prefixlen;
-<<<<<<< HEAD
-    //eF = omp_get_wtime();
-    //tSPS+=(eF-sF);
-=======
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
     return left + prefixlen;
-  } 
+  }
   if(remainingtoskip > 0)
-  { 
+  {
     if(remainingtoskip >= inloc->remain)
-     {
+    {
       prefixlen = inloc->remain;
     } else
-    { 
+    {
       prefixlen = remainingtoskip + lcp(left+remainingtoskip,right,inloc->firstptr+(inloc->edgelen-inloc->remain)+remainingtoskip,inloc->firstptr+inloc->edgelen-1);
     }
   } else
-  { 
+  {
     prefixlen = lcp(left,right,inloc->firstptr+(inloc->edgelen-inloc->remain),inloc->firstptr+inloc->edgelen-1);
   }
   if(prefixlen < inloc->remain)
@@ -387,17 +274,8 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     outloc->nextnode.address = inloc->nextnode.address;
     outloc->locstring.start = inloc->locstring.start;
     outloc->locstring.length = inloc->locstring.length + prefixlen;
-<<<<<<< HEAD
-    //eF = omp_get_wtime();
-    //tSPS+=(eF-sF);
     return left + prefixlen;
   }
-    //eF = omp_get_wtime();
-    //tSPS+=(eF-sF);
-=======
-    return left + prefixlen;
-  }
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
   return scanprefixfromnodestree(stree,outloc,inloc->nextnode.address,left+prefixlen,right,rescanlength);
 }
 
@@ -622,7 +500,7 @@ Uchar *scanprefixstree(Suffixtree *stree,Location *outloc,
     {
       prefixlen = remainingtoskip+lcp(left+remainingtoskip,right,inloc->firstptr+(inloc->edgelen-inloc->remain)+remainingtoskip,stree->sentinel-1);
     } else
-    { 
+    {
       prefixlen = lcp(left,right,inloc->firstptr+(inloc->edgelen-inloc->remain),stree->sentinel-1);
     }
     outloc->firstptr = inloc->firstptr;

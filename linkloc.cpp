@@ -119,16 +119,10 @@ void rescanstree(Suffixtree *stree,Location *loc,
 }
 
 void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
-<<<<<<< HEAD
  { 
-  //double sF, eF;
-  //sF = omp_get_wtime();
-=======
-{  
 /*   double sF, eF;
  *   sF = omp_get_wtime();
  */
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
   Branchinfo branchinfo;
 
   if(inloc->remain == 0)
@@ -146,13 +140,8 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
      {
       rescanstree(stree,outloc,stree->branchtab,inloc->firstptr+1,
                   inloc->firstptr + (inloc->edgelen - inloc->remain) - 1);
-<<<<<<< HEAD
-     } else
-    {
-=======
     } else
     { 
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
       getbranchinfostree(stree,ACCESSSUFFIXLINK,&branchinfo,
                          inloc->previousnode);
       rescanstree(stree,outloc,branchinfo.suffixlink,inloc->firstptr,
@@ -160,12 +149,7 @@ void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)
       
     } 
   } 
-<<<<<<< HEAD
-  //eF = omp_get_wtime();
-  //tLLS+=(eF-sF);
-=======
 /*    eF = omp_get_wtime();
  *   tLLS+=(eF-sF);
  */
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
 }
