@@ -283,6 +283,17 @@ In Figure \ref{fig:st} the match gtc which starts at $i+1$ in the query genome a
  \end{figure}  
  The current serial search method is summarized in Algorithm \ref{alg:find}, the first suffix is \textbf{always} searched from the root node in Suffix Tree and rest of suffixes are searched with suffix links from the node in Suffix Tree from previous search.\\
  \begin{algorithm}
+   \caption{Traversal of suffix tree}
+   \begin{algorithmic}[1]
+     \While{There is more characters in suffix string in query genome AND node is not leaf node AND }
+     \State From root node starts string matching from first character in suffix of query genome.
+     \State Scan through every edge from root node to find the current match character between suffix of query genome and suffix tree.
+     \If{There is an node that match the current match character}
+     \State Compute Longest common preffix between string from edge and rest of suffix string in query genome.
+     \EndIf
+   \end{algorithmic}
+ \end{algorithm}
+ \begin{algorithm}
    \caption{MUM search of a query and reference genome.} \label{alg:find}
  \begin{algorithmic}[1]
    \ForAll{Suffix in query genome}

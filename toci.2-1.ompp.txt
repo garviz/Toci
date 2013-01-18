@@ -1,0 +1,139 @@
+----------------------------------------------------------------------
+----     ompP General Information     --------------------------------
+----------------------------------------------------------------------
+Start Date      : Sun Jan 13 20:41:34 2013
+End Date        : Sun Jan 13 20:41:48 2013
+Duration        : 14.14 sec
+Application Name: toci
+Type of Report  : final
+User Time       : 6.97 sec
+System Time     : 7.86 sec
+Max Threads     : 2
+ompP Version    : 0.7.0
+ompP Build Date : Jan 13 2013 13:26:29
+PAPI Support    : available
+Max Counters    : 4
+PAPI Active     : yes
+Used Counters   : 2
+OMPP_CTR1       : PAPI_TOT_INST
+OMPP_CTR2       : PAPI_TOT_CYC
+OMPP_CTR3       : not set
+OMPP_CTR4       : not set
+Max Evaluators  : 4
+Used Evaluators : 0
+OMPP_EVAL1      : not set
+OMPP_EVAL2      : not set
+OMPP_EVAL3      : not set
+OMPP_EVAL4      : not set
+
+----------------------------------------------------------------------
+----     ompP Region Overview     ------------------------------------
+----------------------------------------------------------------------
+PARALLEL: 1 region:
+ * R00002 findmumcand.cpp (181-262)
+
+LOOP: 1 region:
+ * R00003 findmumcand.cpp (184-260)
+
+CRITICAL: 2 regions:
+ * R00004 findmumcand.cpp (202-213) (unnamed)
+ * R00005 findmumcand.cpp (240-251) (unnamed)
+
+----------------------------------------------------------------------
+----     ompP Callgraph     ------------------------------------------
+----------------------------------------------------------------------
+
+  Inclusive  (%)   Exclusive  (%)
+  14.14 (100.0%)    0.01 ( 0.05%)           [toci: 2 threads]
+  14.13 (99.95%)    6.75 (47.74%) PARALLEL  +-R00002 findmumcand.cpp (181-262)
+   7.38 (52.20%)    1.21 ( 8.53%)     LOOP     +-R00003 findmumcand.cpp (184-260)
+   6.18 (43.67%)    6.18 (43.67%) CRITICAL        |-R00004 findmumcand.cpp (202-213) (unnamed)
+   0.00 (0.000%)    0.00 (0.000%) CRITICAL        +-R00005 findmumcand.cpp (240-251) (unnamed)
+
+----------------------------------------------------------------------
+----     ompP Flat Region Profile (inclusive data)     ---------------
+----------------------------------------------------------------------
+R00002 findmumcand.cpp (181-262) PARALLEL
+ TID      execT      execC      bodyT   exitBarT   startupT   shutdwnT      taskT      PAPI_TOT_INST       PAPI_TOT_CYC
+   0      14.13          1       0.63      13.50       0.00       0.00       0.00      1.874.605.256      1.874.605.256
+   1      14.13          1      14.13       0.00       0.00       0.00       0.00     16.884.962.334     16.884.962.334
+ SUM      28.27          2      14.76      13.50       0.00       0.00       0.00     18.759.567.590     18.759.567.590
+
+R00003 findmumcand.cpp (184-260) LOOP
+ TID      execT      execC      bodyT   exitBarT      taskT      PAPI_TOT_INST       PAPI_TOT_CYC
+   0       0.63          1       0.63       0.00       0.00      1.874.490.721      1.874.490.721
+   1      14.13          1      14.13       0.00       0.00     16.884.867.427     16.884.867.427
+ SUM      14.76          2      14.76       0.00       0.00     18.759.358.148     18.759.358.148
+
+R00004 findmumcand.cpp (202-213) (unnamed) CRITICAL
+ TID      execT      execC      bodyT     enterT      exitT      PAPI_TOT_INST       PAPI_TOT_CYC
+   0       0.00        230       0.00       0.00       0.00            945.204            945.204
+   1      12.36    1065409       5.61       3.38       3.37      4.118.119.292      4.118.119.292
+ SUM      12.37    1065639       5.61       3.39       3.37      4.119.064.496      4.119.064.496
+
+R00005 findmumcand.cpp (240-251) (unnamed) CRITICAL
+ TID      execT      execC      bodyT     enterT      exitT      PAPI_TOT_INST       PAPI_TOT_CYC
+   0       0.00          0       0.00       0.00       0.00                  0                  0
+   1       0.00          2       0.00       0.00       0.00              8.123              8.123
+ SUM       0.00          2       0.00       0.00       0.00              8.123              8.123
+
+----------------------------------------------------------------------
+----     ompP Callgraph Region Profiles (incl./excl. data)     -------
+----------------------------------------------------------------------
+
+[*00] toci
+[+01] R00002 findmumcand.cpp (181-262) PARALLEL
+ TID      execT      execC    bodyT/I    bodyT/E   exitBarT   startupT   shutdwnT      taskT      PAPI_TOT_INST/I      PAPI_TOT_INST/E       PAPI_TOT_CYC/I       PAPI_TOT_CYC/E
+   0      14.13          1       0.63       0.00      13.50       0.00       0.00       0.00        1.874.603.366              116.464        1.874.603.366              116.464
+   1      14.13          1      14.13       0.00       0.00       0.00       0.00       0.00       16.884.960.742               95.040       16.884.960.742               95.040
+ SUM      28.27          2      14.76       0.00      13.50       0.00       0.00       0.00       18.759.564.108              211.504       18.759.564.108              211.504
+
+[*00] toci
+[+01] R00002 findmumcand.cpp (181-262) PARALLEL
+[+02] R00003 findmumcand.cpp (184-260) LOOP
+ TID      execT      execC    bodyT/I    bodyT/E   exitBarT      taskT      PAPI_TOT_INST/I      PAPI_TOT_INST/E       PAPI_TOT_CYC/I       PAPI_TOT_CYC/E
+   0       0.63          1       0.63       0.63       0.00       0.00        1.874.486.902        1.873.472.383        1.874.486.902        1.873.472.383
+   1      14.13          1      14.13       1.79       0.00       0.00       16.884.865.702       12.743.378.544       16.884.865.702       12.743.378.544
+ SUM      14.76          2      14.76       2.41       0.00       0.00       18.759.352.604       14.616.850.927       18.759.352.604       14.616.850.927
+
+[*00] toci
+[+01] R00002 findmumcand.cpp (181-262) PARALLEL
+[+02] R00003 findmumcand.cpp (184-260) LOOP
+[=03] R00004 findmumcand.cpp (202-213) (unnamed) CRITICAL
+ TID      execT      execC    bodyT/I    bodyT/E     enterT      exitT      PAPI_TOT_INST/I      PAPI_TOT_INST/E       PAPI_TOT_CYC/I       PAPI_TOT_CYC/E
+   0       0.00        230       0.00       0.00       0.00       0.00            1.014.519            1.014.519            1.014.519            1.014.519
+   1      12.35    1065409       5.68       5.68       1.05       5.61        4.141.479.113        4.141.479.113        4.141.479.113        4.141.479.113
+ SUM      12.35    1065639       5.69       5.69       1.05       5.61        4.142.493.632        4.142.493.632        4.142.493.632        4.142.493.632
+
+[*00] toci
+[+01] R00002 findmumcand.cpp (181-262) PARALLEL
+[+02] R00003 findmumcand.cpp (184-260) LOOP
+[=03] R00005 findmumcand.cpp (240-251) (unnamed) CRITICAL
+ TID      execT      execC    bodyT/I    bodyT/E     enterT      exitT      PAPI_TOT_INST/I      PAPI_TOT_INST/E       PAPI_TOT_CYC/I       PAPI_TOT_CYC/E
+   0       0.00          0       0.00       0.00       0.00       0.00                    0                    0                    0                    0
+   1       0.00          2       0.00       0.00       0.00       0.00                8.045                8.045                8.045                8.045
+ SUM       0.00          2       0.00       0.00       0.00       0.00                8.045                8.045                8.045                8.045
+
+
+----------------------------------------------------------------------
+----     ompP Overhead Analysis Report     ---------------------------
+----------------------------------------------------------------------
+Total runtime (wallclock)   : 14.14 sec [2 threads]
+Number of parallel regions  : 1
+Parallel coverage           : 14.13 sec (99.95%)
+
+Parallel regions sorted by wallclock time:
+            Type                            Location      Wallclock (%)       PAPI_TOT_INST       PAPI_TOT_CYC
+R00002  PARALLEL           findmumcand.cpp (181-262)      14.13 (99.95)                   0                  0
+                                                 SUM      14.13 (99.95)                   0                  0
+
+Overheads wrt. each individual parallel region:
+          Total        Ovhds (%)  =   Synch  (%)  +  Imbal   (%)  +   Limpar (%)   +    Mgmt (%)
+R00002    28.27    20.17 (71.35)    1.05 ( 3.73)   13.50 (47.77)    0.00 ( 0.00)    5.61 (19.85)
+
+Overheads wrt. whole program:
+          Total        Ovhds (%)  =   Synch  (%)  +  Imbal   (%)  +   Limpar (%)   +    Mgmt (%)
+R00002    28.27    20.17 (71.31)    1.05 ( 3.72)   13.50 (47.74)    0.00 ( 0.00)    5.61 (19.84)
+   SUM    28.27    20.17 (71.31)    1.05 ( 3.72)   13.50 (47.74)    0.00 ( 0.00)    5.61 (19.84)
+
+

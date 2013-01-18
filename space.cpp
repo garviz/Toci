@@ -53,7 +53,6 @@ using namespace std;
                        " allocandusespaceviaptr(%lu,%lu) failed:%s\n",\
                        (Sint) line,(Sint) size,\
                        (Sint) number,M);\
-        //MPI_Finalize();\
         exit(EXIT_FAILURE)
 
 struct Blockdescription
@@ -267,7 +266,7 @@ void freespaceviaptr(char *file,Uint line,void *ptr)
   blocks[blocknum].spaceptr = NULL;
   if(numberofblocks == 0)
   {
-      NOTSUPPOSED;
+    NOTSUPPOSED;
   }
   numberofblocks--;
 }

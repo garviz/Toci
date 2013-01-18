@@ -163,7 +163,7 @@ Sint findmumcandidates(Suffixtree *stree,
   int i, nthreads, *chunk_schedule, EventSet = PAPI_NULL;
   long_long values[2];
   //int Events[8] = { PAPI_TOT_INS, PAPI_TLB_DM, PAPI_L1_TCM, PAPI_L2_TCM, PAPI_L3_TCM, PAPI_TLB_TL, PAPI_RES_STL, PAPI_TOT_CYC };
-  int Events[2] = { PAPI_TOT_INS, PAPI_TOT_CYC };
+  //int Events[2] = { PAPI_TOT_INS, PAPI_TOT_CYC };
   omp_sched_t *schedule;
   Uint N = 0, Size = 32768, retval;
   unsigned long int tid;
@@ -172,13 +172,13 @@ Sint findmumcandidates(Suffixtree *stree,
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
   
-  if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) fprintf(stderr,"PAPI library init error!\n");
+  /*if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) fprintf(stderr,"PAPI library init error!\n");
   if (PAPI_thread_init((unsigned long (*)(void))(omp_get_thread_num())) != PAPI_OK) fprintf(stderr,"Doesn't work!\n");;
   if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
   if (PAPI_add_events(EventSet, Events, 2) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
-  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR start EventSet\n");
+  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR start EventSet\n");*/
   start = omp_get_wtime();
-#pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc,EventSet,Events,values)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
+#pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
   { 
   likwid_markerStartRegion("Find MUMs");
 #pragma omp for schedule(runtime) nowait
@@ -261,10 +261,10 @@ Sint findmumcandidates(Suffixtree *stree,
   likwid_markerStopRegion("Find MUMs");
   }
   end = omp_get_wtime(); 
-  if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
+  //if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
   //printf("PAPI_TOT_INS:%lld, PAPI_TLB_DM:%lld, PAPI_L1_TCM:%lld, PAPI_L2_TCM:%lld, PAPI_L3_TCM:%lld, PAPI_TLB_TL:%lld, PAPI_RES_STL:%lld, PAPI_TOT_CYC:%lld\n",values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7]);
-  printf("PAPI_TOT_INS:%lld, PAPI_TOT_CYC:%lld\n",values[0],values[1]);
-  fprintf(stdout,"Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,Matches=%lu,Size=%lu,MUM=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,N,Size,minmatchlength);
+  //printf("PAPI_TOT_INS:%lld, PAPI_TOT_CYC:%lld\n",values[0],values[1]);
+  fprintf(stdout,"Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,MUM=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,minmatchlength);
   //fprintf(stderr,"# MUM-Candidate %d\n",A[10].R);
   return 0;
 }

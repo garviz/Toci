@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  10 JAN 2013 12:07
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  11 JAN 2013 11:20
 entering extended mode
  %&-line parsing enabled.
 **mum-multithread.tex
@@ -588,7 +588,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-runsystem(touch /tmp/w18-test-2013110727)...disabled.
+runsystem(touch /tmp/w18-test-2013111680)...disabled.
 
 
 
@@ -879,13 +879,13 @@ File: Phases.png Graphic file (type png)
 File: Whole-MUM.png Graphic file (type png)
 
 <use Whole-MUM.png>
-Overfull \hbox (4.92015pt too wide) in paragraph at lines 323--348
+Overfull \hbox (4.92015pt too wide) in paragraph at lines 333--358
 \OT1/txr/m/n/10 >>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521 The main idea 
 be-hind us-ing a Max-i-mal Unique Match (MUM):
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--348
+Underfull \hbox (badness 10000) in paragraph at lines 333--358
 
  []
 
@@ -901,10 +901,10 @@ File: speedup.png Graphic file (type png)
 <use speedup.png> [7 <./MUMs.png> <./Remove-MUMs.png>]
 <stalls.png, id=61, 501.072pt x 218.2554pt>
 File: stalls.png Graphic file (type png)
- <use stalls.png> [8 <./speedup.png> <./stalls.png>] (./mum-multithread.bbl
+ <use stalls.png> [8 <./speedup.png>] (./mum-multithread.bbl
 Missing character: There is no Ä in font txr!
 Missing character: There is no Ÿ in font txr!
-) [9] (./mum-multithread.aux)
+ [9 <./stalls.png>]) [10] (./mum-multithread.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -916,7 +916,7 @@ Here is how much of TeX's memory you used:
  9792 multiletter control sequences out of 15000+50000
  39749 words of font info for 103 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,12n,42p,1155b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,42p,1155b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
@@ -926,9 +926,9 @@ share/texmf-texlive/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texmf-texli
 ve/fonts/type1/public/txfonts/txsy.pfb></usr/share/texmf-texlive/fonts/type1/ur
 w/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb><
 /usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mum-multithread.pdf (9 pages, 491109 bytes).
+Output written on mum-multithread.pdf (10 pages, 492230 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
