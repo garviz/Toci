@@ -1,6 +1,6 @@
 \beamer@endinputifotherversion {3.07pt}
 \select@language {spanish}
 \beamer@sectionintoc {1}{Problem definition}{3}{0}{1}
-\beamer@sectionintoc {2}{Objectives}{6}{0}{2}
-\beamer@sectionintoc {3}{Parallel search of maximal unique matches}{8}{0}{3}
-\beamer@sectionintoc {4}{Conclusions}{9}{0}{4}
+\beamer@sectionintoc {2}{Objectives}{7}{0}{2}
+\beamer@sectionintoc {3}{Parallel search of maximal unique matches}{9}{0}{3}
+\beamer@sectionintoc {4}{Conclusions}{11}{0}{4}

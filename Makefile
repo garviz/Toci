@@ -1,10 +1,10 @@
-include $(HOME)/tau-2.22-p1/x86_64/lib/Makefile.tau-papi-pdt-openmp-opari
+#include $(HOME)/tau-2.22-p1/x86_64/lib/Makefile.tau-papi-pdt-openmp-opari
 
-TAU_OPTIONS = -optKeepFiles -optVerbose
+#TAU_OPTIONS = -optKeepFiles -optVerbose
 
-CC = $(TAU_COMPILER) $(TAU_OPTIONS) g++
+#CC = $(TAU_COMPILER) $(TAU_OPTIONS) g++
 #CC = kinst-ompp-papi g++
-#CC = g++
+CC = g++
 
 OMPP=$(HOME)/ompp
 

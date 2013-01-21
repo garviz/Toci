@@ -1,0 +1,5 @@
+\frametitle {Traversal of suffix tree}
+  \begin{block}{Search of MUMs}
+  \begin{figure}\includegraphics[scale=0.4]{algoritmo.png}\end{figure}
+  \end{block}
+  \begin{figure}\includegraphics[scale=0.4]{st-mum.pdf}\end{figure}

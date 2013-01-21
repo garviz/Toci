@@ -5,9 +5,6 @@
 \usepackage{verbatim,scalefnt,colortbl}
 \usepackage[spanish]{babel}
 \usepackage{graphics}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\usepackage{program}
 \mode<presentation>
 {
    \usetheme{CambridgeUS}
@@ -46,15 +43,19 @@
 \end{frame}
 \begin{frame}
 \frametitle{Search of Maximal Unique Matches}
-\begin{figure}\includegraphics[scale=0.38]{mem-mum.png}\end{figure}
+\begin{figure}\includegraphics[scale=0.25]{mem-mum.png}\end{figure}
+\begin{figure}\includegraphics[scale=0.555555]{mums.png}\end{figure}
 \end{frame}
-%\begin{frame}
-%\frametitle{Genome alignment: search of Maximal Unique/Exact Matches}
-%\begin{figure}\includegraphics[scale=0.4]{problem.png}\end{figure}
-%\end{frame}
 \begin{frame}
+\frametitle{Genome alignment: search of Maximal Unique/Exact Matches}
+\begin{figure}\includegraphics[scale=0.35]{problem.png}\end{figure}
+\end{frame}
+\begin{frame}[fragile]
   \frametitle{Traversal of suffix tree}
-  \begin{figure}\includegraphics[scale=0.8]{st-mum.pdf}\end{figure}
+  \begin{block}{Search of MUMs}
+  \begin{figure}\includegraphics[scale=0.4]{algoritmo.png}\end{figure}
+  \end{block}
+  \begin{figure}\includegraphics[scale=0.4]{st-mum.pdf}\end{figure}
 \end{frame}
 %\begin{frame}
 %  \frametitle{Find MUM in suffix tree}
@@ -82,10 +83,32 @@ Speed up the search of exact matches (distributed) considering the use of comput
 %\end{frame}
 \begin{frame}
   \frametitle{Parallel search of maximal unique matches}
-  \begin{figure}
-    \includegraphics[scale=0.8]{speedup.png}
-   \end{figure}
+  \begin{block}{}
+\begin{itemize}
+\item Hardware:  
+\begin{itemize}
+\item 2 Processor Intel(R) Xeon(R) E5645 @ 2.4GHz of 6 cores each one, 32KB L1 cache, 256KB L2 and 12MB L3 shared cache per socket.
+\item RAM: 96 GB
+\end{itemize} 
+\item  Software: 
+\begin{itemize}
+\item Linux Kernel 2.6.32-220.el6.x86\_64 \#1 SMP
+\item gcc 4.7.0 with OpenMP support
+\item PAPI 5.0.1
+\end{itemize}  
+\item Genomes:
+  \begin{itemize}
+    \item Reference: Human chromosome 21 single fasta file
+    \item Query: Mouse chromosome 16 single fasta file
+  \end{itemize}
+\end{itemize}
+  \end{block}
 \end{frame}
+\begin{frame}
+  \frametitle{Parallel search of maximal unique matches}
+  \begin{figure}\includegraphics[scale=0.8]{speedup.png} \end{figure}
+\end{frame}
+  
 \section{Conclusions}
     \begin{frame}
     \frametitle{Conclusions}

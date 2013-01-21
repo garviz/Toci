@@ -1,0 +1,22 @@
+\documentclass{beamer}
+%\usetheme{Singapore}
+\usepackage{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{float}
+\renewcommand{\algorithmicforall}{\textbf{for each}}
+\begin{document}
+\section{Test}
+\begin{frame}[fragile]
+\begin{algorithm}[H]
+  \begin{algorithmic}[1]
+    \FORALL{ Suffix in Q }
+     \STATE Compare suffix by traversing the suffix tree of R.
+     \IF{$R[i-1] \ne Q[j-1]$ \&\& node is a leaf}
+     \STATE The path of this traversal is a MUM-candidate.
+     \ENDIF
+     \ENDFOR
+\end{algorithmic}
+\label{alg:seq}
+\end{algorithm}
+\end{frame}
+\end{document}
