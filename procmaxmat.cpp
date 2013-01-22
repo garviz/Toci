@@ -12,11 +12,9 @@
 #include <cstdlib>
 #include <string.h>
 #include <ctype.h>
-//#include <google/sparsetable>
 #include <math.h>
 #include <omp.h>
 #include <iterator>
-#include <likwid.h>
 #include "types.h"
 #include "errordef.h"
 #include "protodef.h"

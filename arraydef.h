@@ -154,7 +154,8 @@ struct ArrayStrings
 
 struct  Match_t
   {
-   long int  R, Q, Len;
+   long int  R, Q; 
+   long int Len = -1;
    unsigned int  Good : 1;
    unsigned int  Tentative : 1;
   };

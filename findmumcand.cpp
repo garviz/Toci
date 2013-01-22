@@ -16,7 +16,6 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <likwid.h>
 #include <papi.h>
 #include "streedef.h"
 #include "spacedef.h"
@@ -30,7 +29,6 @@
   a linear time suffix tree traversal. 
 */
 
-  Match_t  *A = NULL;
 
   //double tSPFNS=0.0, tLLS=0.0, tSPS=0.0;
 /*
@@ -160,111 +158,91 @@ Sint findmumcandidates(Suffixtree *stree,
 {
   Uchar *lptr, *left, *right = query + querylen - 1, *querysuffix;
   Location loc;
-  int i, nthreads, *chunk_schedule, EventSet = PAPI_NULL;
-  long_long values[2];
-  //int Events[8] = { PAPI_TOT_INS, PAPI_TLB_DM, PAPI_L1_TCM, PAPI_L2_TCM, PAPI_L3_TCM, PAPI_TLB_TL, PAPI_RES_STL, PAPI_TOT_CYC };
-  //int Events[2] = { PAPI_TOT_INS, PAPI_TOT_CYC };
+  int i, nthreads, *chunk_schedule;
   omp_sched_t *schedule;
-  Uint N = 0, Size = 32768, retval;
+  Uint N, Size;
+  Match_t  *A = NULL;
   unsigned long int tid;
   double start, end;
 
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
   
-  /*if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) fprintf(stderr,"PAPI library init error!\n");
-  if (PAPI_thread_init((unsigned long (*)(void))(omp_get_thread_num())) != PAPI_OK) fprintf(stderr,"Doesn't work!\n");;
-  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
-  if (PAPI_add_events(EventSet, Events, 2) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
-  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR start EventSet\n");*/
   start = omp_get_wtime();
-#pragma omp parallel default (none) firstprivate(A,Size) private(i,left,right,lptr,querysuffix,loc)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule)  reduction(+:N) 
+#pragma omp parallel default (none) private(i,left,right,lptr,querysuffix,loc,A,N,Size)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule) 
   { 
-  likwid_markerStartRegion("Find MUMs");
+  N = 0;
+  Size = 32768;
+  A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
 #pragma omp for schedule(runtime) nowait
   for (i=0; i<chunks; i++)
   {
       omp_get_schedule(schedule,chunk_schedule);
       nthreads = omp_get_num_threads();
-      A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
-  //likwid_markerStartRegion("scanprefixfromnodestree");
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
-  //likwid_markerStopRegion("scanprefixfromnodestree");
-      for (querysuffix = left; querysuffix<right && lptr != NULL;  querysuffix++)
+      for (querysuffix = left; querysuffix < right && lptr != NULL;  querysuffix++)
       {
-  //likwid_markerStartRegion("MUM");
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
           {
-               if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
+               if (querysuffix == left || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
                 {
-#pragma omp critical
-                     {
                         if (N >= Size -1)
                         {
                             Size *= 2;
                             A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
                         }
-                        N++;
                         A[N].R = loc.locstring.start;
                         A[N].Q = (Uint) (querysuffix-query);
                         A[N].Len = loc.locstring.length;
-                    }
+                        N++;
                }
           }
-  //likwid_markerStopRegion("MUM");
           if (ROOTLOCATION (&loc))
           {
-  //likwid_markerStartRegion("scanprefixfromnodestree");
               lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
-  //likwid_markerStopRegion("scanprefixfromnodestree");
           }
           else
           {
-  //likwid_markerStartRegion("linklocstree");
               linklocstree (stree, &loc, &loc);
-  //likwid_markerStopRegion("linklocstree");
-  //likwid_markerStartRegion("scanprefixstree");
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
-  //likwid_markerStopRegion("scanprefixstree");
           }  
+          /*if ((querysuffix-query)==364)
+              fprintf(stderr,"Algo va mal! %d\n",omp_get_thread_num());
+          if ((lptr-query)==364)
+              fprintf(stderr,"Culpable? %d\n",omp_get_thread_num());
+          fprintf(stderr,"%lu\n",lptr-query);*/
       }
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
       { 
-  //likwid_markerStartRegion("MUM");
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
            {
-               if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
+               if (querysuffix == left || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
                 {
- #pragma omp critical
-                     {
                         if (N >= Size -1)
                          {
                             Size *= 2;
                             A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
                         }
-                        N++;
                         A[N].R = loc.locstring.start;
                         A[N].Q = (Uint) (querysuffix-query);
                         A[N].Len = loc.locstring.length;
-                    }
+                        N++;
                }
           }
-  //likwid_markerStopRegion("MUM");
-  //likwid_markerStartRegion("linklocstree");
           linklocstree (stree, &loc, &loc);
-  //likwid_markerStopRegion("linklocstree");
           querysuffix++;
       }
+  for(int i=0;i<N;i++)
+  {
+      if (A[i].Len != 0)
+          fprintf(stderr,"# MUM-Candidate: %d,%d,%d\n",A[i].R,A[i].Q,A[i].Len);
+  }
+      //fprintf(stderr,"%d N:%lu\n",omp_get_thread_num(),N);
   }   
-  likwid_markerStopRegion("Find MUMs");
   }
   end = omp_get_wtime(); 
-  //if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
-  //printf("PAPI_TOT_INS:%lld, PAPI_TLB_DM:%lld, PAPI_L1_TCM:%lld, PAPI_L2_TCM:%lld, PAPI_L3_TCM:%lld, PAPI_TLB_TL:%lld, PAPI_RES_STL:%lld, PAPI_TOT_CYC:%lld\n",values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7]);
-  //printf("PAPI_TOT_INS:%lld, PAPI_TOT_CYC:%lld\n",values[0],values[1]);
   fprintf(stdout,"Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,MUM=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,minmatchlength);
-  //fprintf(stderr,"# MUM-Candidate %d\n",A[10].R);
   return 0;
 }

@@ -7,7 +7,6 @@
 */
 
 #include <omp.h>
-#include <likwid.h>
 #include "streedef.h"
 #include "streeacc.h"
 #include "protodef.h"

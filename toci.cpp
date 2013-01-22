@@ -17,12 +17,10 @@
  */
 
 #include <iostream>
-//#include <mpi.h>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <omp.h>
-#include <likwid.h>
 #include "types.h"
 #include "protodef.h"
 #include "errordef.h"
@@ -68,7 +66,6 @@ int main(int argc, char *argv[])
     int numprocs, rank, namelen;
     double start, finish;
 
-    likwid_markerInit();
     /*MPI::Init(argc, argv);
     numprocs = MPI::COMM_WORLD.Get_size();
     rank = MPI::COMM_WORLD.Get_rank();*/
@@ -104,6 +101,5 @@ int main(int argc, char *argv[])
     }
     MPI_Finalize();*/
     cout << "Final Time=" << finish-start << endl;
-    likwid_markerClose();
     return EXIT_SUCCESS;
 }
