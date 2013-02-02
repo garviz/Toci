@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 
     /*MPI::Init(argc, argv);
     numprocs = MPI::COMM_WORLD.Get_size();
-    rank = MPI::COMM_WORLD.Get_rank();*/
+    rank  = MPI::COMM_WORLD.Get_rank();*/
     retcode = parsemaxmatoptions (&mmcallinfo, argc, argv);
     if (retcode < 0) {
         fprintf(stderr,"%s: %s\n",argv[0],messagespace());
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
     /*else {
         cout << "Process: " << rank << endl;
     }
-    MPI_Finalize();*/
-    cout << "Final Time=" << finish-start << endl;
+    MPI_ Finalize();*/
+    cerr << "Final Time=" << finish-start << endl;
     return EXIT_SUCCESS;
 }

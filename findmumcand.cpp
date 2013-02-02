@@ -17,6 +17,7 @@
 #include <sstream>
 #include <string>
 #include <papi.h>
+#include <assert.h>
 #include "streedef.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
@@ -29,90 +30,246 @@
   a linear time suffix tree traversal. 
 */
 
+static void  Filter_Matches (Match_t * A, int & N)
 
-  //double tSPFNS=0.0, tLLS=0.0, tSPS=0.0;
-/*
-  The following function checks if a location \texttt{loc} (of length 
-  larger than \texttt{minmatchlength}) in the suffix tree represents 
-  a MUM-candiate. The parameters are as follows:
+//  Remove from  A [0 .. (N - 1)]  any matches that are internal to a repeat,
+//  e.g., if seq1 has 27 As and seq2 has 20 then the first and
+//  last matches will be kept, but the 6 matches in the middle will
+//  be eliminated.  Also combine overlapping matches on the same
+//  diagonal.  Pack all remaining matches into the front of  A  and
+//  reduce the value of  N  if any matches are removed.
+//  Matches in  A  *MUST* be sorted by  Start2  value.
 
-  \begin{enumerate}
-  \item
-  \texttt{subjectseq} points to the subject sequence
-  \item
-  \texttt{querysuffix} points to the current suffix of the query sequence
-  \item
-  \texttt{query} points to the query sequence
-  \item
-  \texttt{seqnum} is the number of the query sequence currently considered
-  \item
-  \texttt{processmumcandidate} is the function to further process a 
-  MUM-candidate.
-  \item
-  \texttt{processinfo} points to some values additionally required by
-  the function \texttt{processmumcandidate}.
-  \end{enumerate}
-  By construction, the location in the suffix tree represents a 
-  substring of the subject sequence which maximaly matches a prefix of
-  \texttt{querysuffix}. Thus it is only necessary to verify that,
-  the substring of the subject sequence is long enough, that it
-  is unique in the subject sequence and that the match
-  is also left maximal. This is done as follows:
-  
-  \begin{enumerate}
-  \item
-  does \texttt{loc} represent a substring of length at least 
-  \texttt{minmatchlength}?
-  \item
-  does \texttt{loc} correspond to a leaf edge? Then then the string 
-  represented by the location is unique in the subject sequence.
-  \item
-  is the substring left maximal? This is true if one of the following
-  conditions hold:
-  \begin{itemize}
-  \item
-  the suffix of the query currently considered is the first suffix, or 
-  \item
-  the string represented by \texttt{loc} is a prefix of the subject string,
-  or
-  \item
-  the characters immediately to the left of the matching strings
-  in the subject sequence and the query sequence are different
-  \end{itemize}
-  \end{enumerate}
-  If all conditions 1-3 are true, then a function 
-  \texttt{processmumcandidate} is called. It takes the necessary 
-  information about the MUM-candidate as its arguments.
-  In case an error occurs, a negative number is returned. Otherwise,
-  0 is returned.
-*/
-
-static Sint checkiflocationisMUMcand (Location *loc, Uchar *subjectseq, Uchar *querysuffix, Uchar *query, Uint seqnum, Match_t *A, Uint N, Uint Size)
-{
-  if (loc->remain > 0 && loc->nextnode.toleaf)
   {
-      /*if (*(querysuffix - 1) != subjectseq[loc->locstring.start - 1])
-          cerr << loc->locstring.start << "," << (Uint) (querysuffix-query) << "," << loc->locstring.length << endl;*/
-      if (querysuffix == query || loc->locstring.start == 0 || *(querysuffix - 1) != subjectseq[loc->locstring.start - 1])
-      {
-/*#pragma omp critical
-          {*/
-          if (N >= Size-1)
-          {
-              Size *= 2;
-              A = (Match_t *) Safe_realloc(A, Size*sizeof(Match_t));
-              cerr << "Safe_realloc " << Size << endl;
-          }
-          N++;
-          cerr << N << " ";
-          A[N].R = loc->locstring.start;
-          A[N].Q = (Uint) (querysuffix-query);
-          A[N].Len = loc->locstring.length;
-          //}
-      }
+   int  i, j;
+
+   for  (i = 0;  i < N - 1;  i ++)
+     {
+      int  i_diag, i_end;
+
+      if  (A [i] . Good)
+          continue;
+
+      i_diag = A [i] . Q - A [i] . R;
+      i_end = A [i] . Q + A [i] . Len;
+
+      for  (j = i + 1;  j < N && A [j].Q <= i_end;  j ++)
+        {
+         int  olap;
+         int  j_diag;
+
+         if (A[i].Q <= A[j].Q)
+         assert (A[i].Q <= A[j].Q);
+
+         if  (! A[j].Good)
+             continue;
+
+         j_diag = A[j].Q - A[j].R;
+         if  (i_diag == j_diag)
+             {
+              int  j_extent;
+
+              j_extent = A [j] . Len + A[j].Q - A[i].Q;
+              if  (j_extent > A[i].Len)
+                  {
+                   A[i].Len = j_extent;
+                   i_end = A[i].Q + j_extent;
+                  }
+              A[j].Good = false;
+             }
+         else if  (A[i].R == A[j].R)
+             {
+              olap = A[i].Q + A[i].Len - A[j].Q;
+              if  (A[i].Len < A[j].Len)
+                  {
+                   if  (olap >=  A[i].Len/2)
+                       {
+                        A[i].Good = false;
+                        break;
+                       }
+                  }
+              else if  (A[j].Len < A[i].Len)
+                  {
+                   if  (olap >= A[j].Len/2)
+                       {
+                        A[j].Good = false;
+                       }
+                  }
+                else
+                  {
+                   if  (olap >= A[i].Len/2)
+                       {
+                        A[j].Tentative = true;
+                        if  (A[i].Tentative)
+                            {
+                             A[i].Good = false;
+                             break;
+                            }
+                       }
+                  }
+             }
+         else if  (A[i].Q == A[j].Q)
+             {
+              olap = A[i].R + A[i].Len - A[j].R;
+              if  (A[i].Len < A[j].Len)
+                  {
+                   if  (olap >=  A[i].Len/2)
+                       {
+                        A[i].Good = false;
+                        break;
+                       }
+                  }
+              else if  (A[j].Len < A[i].Len)
+                  {
+                   if  (olap >= A[j].Len/2)
+                       {
+                        A[j].Good = false;
+                       }
+                  }
+                else
+                  {
+                   if  (olap >= A[i].Len/2)
+                       {
+                        A[j].Tentative = true;
+                        if  (A[i].Tentative)
+                            {
+                             A[i].Good = false;
+                             break;
+                            }
+                       }
+                  }
+             }
+        }
+     }
+
+   for  (i = j = 0;  i < N;  i ++)
+     if  (A[i].Good)
+         {
+          if  (i != j)
+              A[j] = A[i];
+          j ++;
+         }
+   N = j;
+
+   return;
   }
-  return 0;
+
+static int  By_Q (const void * A, const void * B)
+
+//  Return how  A  and  B  compare if converted to  Match_t
+//  based on Query pos.  If  Query pos  values are equal use
+//  Reference pos  values for comparison.
+
+  {
+   Match_t  * x, * y;
+
+   x = (Match_t *) A;
+   y = (Match_t *) B;
+
+   return (x->Q < y->Q) ? -1 : 1;
+   return (x->R < y->R) ? -1 : 1;
+   return  0;
+  }
+
+static int  By_R (const void * A, const void * B)
+
+//  Return how  A  and  B  compare if converted to  Match_t
+//  based on Reference pos.  If  Reference pos  values are equal use
+//  length  values for comparison.
+
+  {
+   Match_t  * x, * y;
+
+   x = (Match_t *) A;
+   y = (Match_t *) B;
+
+  if(x->R == y->R)
+  {
+    return (x->Len < y->Len) ? 1 : -1;
+  }
+  return (x->R > y->R) ? 1 : -1;
+  }
+
+static void UniqueMumR (Match_t * A, int N)
+{
+  if(N > 0)
+  {
+    qsort (A, N, sizeof (Match_t), By_R);
+    Uint currentright, dbright = 0;
+    bool ignorecurrent, ignoreprevious = false;
+
+    for(int i=1; i<N; i++)
+    {
+      currentright = A[i].R + A[i].Len - 1;
+      if(dbright > currentright)
+      {
+        A[i].Good = true;
+      } else
+      {
+        if(dbright == currentright)
+        {
+          if(A[i].R >= A[i-1].R)
+          {
+            A[i].Good = false;
+          }
+        } else
+        {
+          dbright = currentright;
+        }
+      }
+    }
+  }
+  return;
 }
+static void UniqueMumQ (Match_t * A, int N)
+{
+  if(N > 0)
+  {
+    qsort (A, N, sizeof (Match_t), By_Q);
+    Uint currentright, dbright = 0;
+    bool ignorecurrent, ignoreprevious = false;
+
+    for(int i=1; i<N; i++)
+    {
+      currentright = A[i].Q + A[i].Len - 1;
+      if(dbright > currentright)
+      {
+        A[i].Good = true;
+      } else
+      {
+        if(dbright == currentright)
+        {
+          if(A[i].Q >= A[i-1].Q)
+          {
+            A[i].Good = false;
+          }
+        } else
+        {
+          dbright = currentright;
+        }
+      }
+    }
+  }
+  return;
+}
+static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N].
+  {
+   int  i;
+
+   if  (N <= 0)
+       return;
+   UniqueMumR(A, N);
+   UniqueMumQ(A, N);
+
+   //Filter_Matches (A, N);
+
+   for  (i = 0;  i <= N;  i ++)
+   { 
+       if  (A[i].Good && A[i].Len > 0)
+           printf ("%8ld  %8ld  %8ld\n", A[i].R, A[i].Q, A[i].Len);
+   }
+   return;
+  }
 
 /*EE
   The following function traverses the suffix tree guided by
@@ -160,21 +317,26 @@ Sint findmumcandidates(Suffixtree *stree,
   Location loc;
   int i, nthreads, *chunk_schedule;
   omp_sched_t *schedule;
-  Uint N, Size;
+  Uint N, Size, N2, Size2;
   Match_t  *A = NULL;
+  Match_t *MUMs = NULL;
   unsigned long int tid;
   double start, end;
+  double start1, end1;
 
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
   
   start = omp_get_wtime();
-#pragma omp parallel default (none) private(i,left,right,lptr,querysuffix,loc,A,N,Size)  shared(std::cerr,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule) 
+#pragma omp parallel default (none) private(i,left,right,lptr,querysuffix,loc,A,N,Size) shared(stdout,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,MUMs,N2,Size2)
   { 
   N = 0;
+  N2 = 0;
   Size = 32768;
+  Size2 = 32768;
   A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
-#pragma omp for schedule(runtime) nowait
+  MUMs = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
+  #pragma omp for schedule(runtime) nowait
   for (i=0; i<chunks; i++)
   {
       omp_get_schedule(schedule,chunk_schedule);
@@ -182,19 +344,19 @@ Sint findmumcandidates(Suffixtree *stree,
       left = query + (Uint)(querylen/chunks*i);
       right = query + (Uint)(querylen/chunks*(i+1))-1;
       lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
-      for (querysuffix = left; querysuffix < right && lptr != NULL;  querysuffix++)
+      for (querysuffix = left; /*querysuffix < right &&*/ lptr != NULL;  querysuffix++)
       {
           if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
           {
                if (querysuffix == left || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
                 {
-                        if (N >= Size -1)
+                        if (N > Size)
                         {
                             Size *= 2;
                             A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
                         }
-                        A[N].R = loc.locstring.start;
-                        A[N].Q = (Uint) (querysuffix-query);
+                        A[N].R = loc.locstring.start+1;
+                        A[N].Q = (Uint) (querysuffix-query)+1;
                         A[N].Len = loc.locstring.length;
                         N++;
                }
@@ -207,12 +369,7 @@ Sint findmumcandidates(Suffixtree *stree,
           {
               linklocstree (stree, &loc, &loc);
               lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
-          }  
-          /*if ((querysuffix-query)==364)
-              fprintf(stderr,"Algo va mal! %d\n",omp_get_thread_num());
-          if ((lptr-query)==364)
-              fprintf(stderr,"Culpable? %d\n",omp_get_thread_num());
-          fprintf(stderr,"%lu\n",lptr-query);*/
+          } 
       }
       while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
       { 
@@ -225,8 +382,8 @@ Sint findmumcandidates(Suffixtree *stree,
                             Size *= 2;
                             A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
                         }
-                        A[N].R = loc.locstring.start;
-                        A[N].Q = (Uint) (querysuffix-query);
+                        A[N].R = loc.locstring.start+1;
+                        A[N].Q = (Uint) (querysuffix-query)+1;
                         A[N].Len = loc.locstring.length;
                         N++;
                }
@@ -234,15 +391,29 @@ Sint findmumcandidates(Suffixtree *stree,
           linklocstree (stree, &loc, &loc);
           querysuffix++;
       }
-  for(int i=0;i<N;i++)
-  {
-      if (A[i].Len != 0)
-          fprintf(stderr,"# MUM-Candidate: %d,%d,%d\n",A[i].R,A[i].Q,A[i].Len);
-  }
-      //fprintf(stderr,"%d N:%lu\n",omp_get_thread_num(),N);
+/*#pragma omp critical
+      {*/
+          for(int i=0;i<N;i++)
+          {
+              //fprintf(stderr,"%8lu  %8lu  %8lu\n",A[i].R,A[i].Q,A[i].Len);
+                  if (N2 > Size2)
+                  {
+                      Size2 *= 2;
+                      MUMs = (Match_t *) Safe_realloc (A, Size2 * sizeof (Match_t));
+                  }
+                  MUMs[N2].R = A[i].R;
+                  MUMs[N2].Q = A[i].Q;
+                  MUMs[N2].Len = A[i].Len;
+                  MUMs[N2].Good = true;
+                  N2++;
+          }
+      //}
   }   
   }
   end = omp_get_wtime(); 
-  fprintf(stdout,"Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,Schedule=%d,Chunk_Schd=%d,MUM=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),*schedule,*chunk_schedule,minmatchlength);
+  start1 = omp_get_wtime();
+  Process_Matches(MUMs,N2);
+  end1 = omp_get_wtime();
+  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,RealMUM=%f,Schedule=%d,Chunk_Schd=%d,MUM=%d,MUMs=%d,Size=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),(double) (end1-start1),*schedule,*chunk_schedule,minmatchlength,N2,Size2);
   return 0;
 }
