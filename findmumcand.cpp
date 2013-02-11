@@ -304,14 +304,7 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
   0 is returned.
 */
 
-Sint findmumcandidates(Suffixtree *stree,
-                       Uint minmatchlength,
-                       Uint chunks,
-                       Processmatchfunction processmumcandidate,
-                       void *processinfo,
-                       Uchar *query,
-                       Uint querylen,
-                       Uint seqnum)
+Sint findmumcandidates(Suffixtree *stree, Table &table, Uint minmatchlength, Uint chunks, Uint prefix, Processmatchfunction processmumcandidate, void *processinfo, Uchar *query, Uint querylen, Uint seqnum)
 {
   Uchar *lptr, *left, *right = query + querylen - 1, *querysuffix;
   Location loc;
@@ -326,9 +319,27 @@ Sint findmumcandidates(Suffixtree *stree,
 
   chunk_schedule = (int *) malloc(sizeof(int));
   schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
+  Suffixes subset;
+  for (Table::iterator it= table.begin(); it!=table.end(); ++it)
+  {
+      if ((Uint) it->first >= minmatchlength) 
+      {
+          subset = table[it->first];
+          pair<Suffixes::iterator, Suffixes::iterator> ret;
+          for (querysuffix = left; querysuffix<query+querylen; querysuffix++)
+          {
+              int enc = encoding(querysuffix,prefix);
+          }
+          ret = subset.equal_range(1019);
+          cout << it->first << " ===> 1019 ===>" ;
+          for (Suffixes::iterator mit=ret.first; mit != ret.second; ++mit)
+              cout << ' ' << mit->first;
+          cout << endl;
+      }
+  }
   
   start = omp_get_wtime();
-#pragma omp parallel default (none) private(i,left,right,lptr,querysuffix,loc,A,N,Size) shared(stdout,stderr,chunks,query,querylen,stree,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,MUMs,N2,Size2)
+#pragma omp parallel default (none) private(i,left,right,lptr,querysuffix,loc,A,N,Size) shared(stdout,stderr,chunks,query,querylen,stree,table,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,MUMs,N2,Size2)
   { 
   N = 0;
   N2 = 0;

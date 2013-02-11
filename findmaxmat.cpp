@@ -11,16 +11,13 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <omp.h>
-//#include <google/sparsetable>
 #include <math.h>
 #include "distribute.h"
 #include "streedef.h"
 #include "streeacc.h"
 #include "spacedef.h"
 #include "maxmatdef.h"
-#include "distribute.h"
 
-//using google::sparsetable;
 //}
 
 #define LEASTSHOWPROGRESS 100000
@@ -378,7 +375,9 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
 */
 
 Sint findmaxmatches(Suffixtree *stree,
+                    Table &table,
                     Uint minmatchlength,
+                    Uint chunks,
                     Uint wordsize,
                     Processmatchfunction processmatch,
                     void *processinfo,

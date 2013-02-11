@@ -58,6 +58,7 @@ typedef enum
   OPTFOURCOLUMN,
   OPTSHOWSEQUENCELENGTHS,
   OPTCHUNKS,
+  OPTPREFIXLENGTH,
   OPTH,
   OPTHELP,
   NUMOFOPTIONS
@@ -101,7 +102,7 @@ static void showusage(char *program,OptionDescription *options,
 */
 
 Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])
-{
+{ 
   OptionDescription options[NUMOFOPTIONS];   // store the options
   Sint optval;         // neg. return val. if error, otherwise option number
   Uint argnum;         // pointer to argv
@@ -138,6 +139,7 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])
   ADDOPTION(OPTSHOWSEQUENCELENGTHS,"-L",
             "show the length of the query sequences on the header line");
   ADDOPTION(OPTCHUNKS,"-C","number of chunks to split query sequence");
+  ADDOPTION(OPTPREFIXLENGTH,"-P","length of prefix for Direct Access Table");
   ADDOPTION(OPTH,"-h",
 	    "show possible options");
   ADDOPTION(OPTHELP,"-help",
@@ -234,6 +236,22 @@ Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,int argc, char *argv[])
           return -3;
         }
         mmcallinfo->chunks = (Uint) readint;
+        break;
+      case OPTPREFIXLENGTH:
+        argnum++;
+        if(argnum > (Uint) (argc-2))
+        {
+          ERROR1("missing argument for option %s",
+                  options[OPTPREFIXLENGTH].optname);
+          return -2;
+        }
+        if(sscanf(argv[argnum],"%ld",&readint) != 1 || readint <= 0)
+        {
+          ERROR2("argument %s for option %s is not a positive integer",
+                  argv[argnum],options[OPTPREFIXLENGTH].optname);
+          return -3;
+        }
+        mmcallinfo->prefix = (Uint) readint;
         break;
       case OPTH:
       case OPTHELP:

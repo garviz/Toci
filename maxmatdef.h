@@ -11,6 +11,7 @@
 #ifndef MAXMATDEF_H
 #define MAXMATDEF_H
 #include <climits>
+#include <map>
 #include "chardef.h"
 #include "multidef.h"
 #include "streetyp.h"
@@ -18,6 +19,8 @@
 #include "mumcand.h"
 #include "protodef.h"
 
+typedef multimap<Uint, Uint> Suffixes;
+typedef map<Uint, Suffixes > Table;
 //}
 
 /*
@@ -60,6 +63,7 @@ struct MMcallinfo
        cmum;                    // compute real matches unique in both sequences
   Uint minmatchlength,          // minimal length of a match to be reported
        chunks,                  // number of chunks to split query sequence
+       prefix,                  // length of prefix for Direct Access Table
        numofqueryfiles;         // number of query files
   char program[PATH_MAX+1],     // the path of the program
        subjectfile[PATH_MAX+1], // filename of the subject-sequence
@@ -82,7 +86,9 @@ struct Matchprocessinfo
   Uint minmatchlength,         // minimum length of a match
        maxdesclength,          // maximum length of a description
        chunks,                 //  number of chunks to split query sequence
+       prefix,                  // length of prefix for Direct Access Table
        currentquerylen;        // length of the current query sequence
+  Table table;                 // Table to quickly discard suffixes
   bool showstring,             // is option \texttt{-s} on?
        showsequencelengths,    // is option \texttt{-L} on?
        showreversepositions,   // is option \texttt{-c} on?
@@ -92,7 +98,7 @@ struct Matchprocessinfo
        cmumcand,               // compute MUM candidates
        cmum,                   // compute MUMs
        currentisrcmatch;       // true iff currently rc-matches are computed
-};
+};  
 
 /*
   Functions processing a maximal match are of the following type.

@@ -330,9 +330,9 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
   {
     fprintf(stderr,"%*.*s",(int) indent,(int) indent,"");
     fprintf(stderr,"\n# D-%lu ", indent+1);
-    SHOWINDEX((Uint) succ);
     if(ISLEAF(succ))
     { 
+      SHOWINDEX((Uint) succ);
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
       showthesymbolstring(stderr,stree->sentinel,leftpointer,stree->sentinel);
@@ -345,7 +345,7 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
       GETBOTH(succdepth,headposition,succptr);
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
-      showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
+      //showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
       //cerr << endl;
       /*fprintf(stdout,"%lu\n",getEdgelength(leftpointer,leftpointer+edgelen-1));*/
       showsubtree(stree,indent+1,succptr);
@@ -367,9 +367,9 @@ void showstree(Suffixtree *stree)
     if(*rcptr != UNDEFINEDREFERENCE)
     {
       cerr << "# D-1 ";
-      SHOWINDEX((Uint) BRADDR2NUM(stree,rcptr));
       if(ISLEAF(*rcptr))
       {
+        SHOWINDEX((Uint) BRADDR2NUM(stree,rcptr));
         leftpointer = stree->text + GETLEAFINDEX(*rcptr);
         showthesymbolstring(stderr,stree->sentinel,leftpointer,stree->sentinel);
         //fprintf(stdout,"%lu\n",getEdgelength(leftpointer,stree->sentinel));
@@ -379,7 +379,7 @@ void showstree(Suffixtree *stree)
         btptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
         GETBOTH(succdepth,headposition,btptr);
         leftpointer = stree->text + headposition;
-        showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
+        //showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
         //fprintf(stdout,"%lu\n",getEdgelength(leftpointer,leftpointer+succdepth-1));
         showsubtree(stree,UintConst(1),btptr);
       }

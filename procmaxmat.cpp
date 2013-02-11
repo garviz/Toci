@@ -14,7 +14,7 @@
 #include <ctype.h>
 #include <math.h>
 #include <omp.h>
-#include <iterator>
+#include <map>
 #include "types.h"
 #include "errordef.h"
 #include "protodef.h"
@@ -24,7 +24,6 @@
 #include "maxmatdef.h"
 #include "distribute.h"
 
-//using google::sparsetable;
 //}
 
 /*EE
@@ -42,7 +41,8 @@
 */
 
 typedef Sint (*Findmatchfunction)(Suffixtree *,
-                                 // sparsetable<Uint*>,
+                                  Table &,
+                                  Uint,
                                   Uint,
                                   Uint,
                                   Processmatchfunction,
@@ -55,13 +55,11 @@ typedef Sint (*Findmatchfunction)(Suffixtree *,
   The following function is imported from \texttt{findmumcand.c}.
 */
 
-
-
-
-
 Sint findmumcandidates(Suffixtree *stree,
+                       Table &table,
                        Uint minmatchlength,
-                       Uint wordsize,
+                       Uint chunks,
+                       Uint prefix,
                        Processmatchfunction processmatch,
                        void *processinfo,
                        Uchar *query,
@@ -73,8 +71,10 @@ Sint findmumcandidates(Suffixtree *stree,
 */
 
 Sint findmaxmatches(Suffixtree *stree,
+                    Table &table,
                     Uint minmatchlength,
-                    Uint wordsize,
+                    Uint chunks,
+                    Uint prefix,
                     Processmatchfunction processmatch,
                     void *processinfo,
                     Uchar *query,
@@ -386,8 +386,8 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   {
     processmatch = storeMUMcandidate;
     findmatchfunction = findmumcandidates;
-  } else
-  {
+   } else
+  { 
     if(matchprocessinfo->showstring)
     {
       processmatch = showseqandmaximalmatch;
@@ -408,19 +408,13 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   {
     showsequenceheader(&matchprocessinfo->querymultiseq, matchprocessinfo->showsequencelengths, false, seqnum, querylen);
     matchprocessinfo->currentisrcmatch = false;
-    if(findmatchfunction(&matchprocessinfo->stree,
-                         matchprocessinfo->minmatchlength,
-                         matchprocessinfo->chunks,
-                         processmatch,
-                         info,
-                         query,
-                         querylen,
+    if(findmatchfunction(&matchprocessinfo->stree, matchprocessinfo->table, matchprocessinfo->minmatchlength, matchprocessinfo->chunks, matchprocessinfo->prefix, processmatch, info, query, querylen,
                          seqnum) != 0)
     {
       return -1;
     }
     PROCESSREALMUMS;
-  }
+  } 
   if(matchprocessinfo->reversecomplement)
   {
     if(matchprocessinfo->cmum)
@@ -434,13 +428,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
                        querylen);
     wccSequence(query,querylen);
     matchprocessinfo->currentisrcmatch = true;
-    if(findmatchfunction(&matchprocessinfo->stree, 
-                         matchprocessinfo->minmatchlength,
-                         matchprocessinfo->chunks,
-                         processmatch,
-                         info,
-                         query,
-                         querylen,
+    if(findmatchfunction(&matchprocessinfo->stree, matchprocessinfo->table, matchprocessinfo->minmatchlength, matchprocessinfo->chunks, matchprocessinfo->prefix, processmatch, info, query, querylen,
                          seqnum) != 0)
     {
       return -2;
@@ -448,7 +436,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     PROCESSREALMUMS;
   }
   return 0;
-}
+} 
 
 static Sint getmaxdesclen(Multiseq *multiseq)
 {
@@ -488,7 +476,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   Uchar *filecontent;
   Location ploc;
   double start, finish;
-
+  Table table;
   //fprintf(stderr,"# construct suffix tree for sequence of length %lu\n", (long unsigned int) subjectmultiseq->totallength);
   /* fprintf(stderr,"# (maximum reference length is %lu)\n", (long unsigned int) getmaxtextlenstree());
   fprintf(stderr,"# (maximum query length is %lu)\n", (long unsigned int) ~((Uint)0));*/
@@ -507,6 +495,9 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   matchprocessinfo.cmumcand = mmcallinfo->cmumcand;
   matchprocessinfo.reversecomplement = mmcallinfo->reversecomplement;
   matchprocessinfo.chunks = mmcallinfo->chunks;
+  matchprocessinfo.prefix = mmcallinfo->prefix;
+  matchprocessinfo.table = table;
+  createTable(&matchprocessinfo);
   if(mmcallinfo->cmum)
   {
     INITARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
