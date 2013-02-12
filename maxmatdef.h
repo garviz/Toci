@@ -11,7 +11,9 @@
 #ifndef MAXMATDEF_H
 #define MAXMATDEF_H
 #include <climits>
+#include <unordered_map>
 #include <map>
+#include <vector>
 #include "chardef.h"
 #include "multidef.h"
 #include "streetyp.h"
@@ -19,8 +21,8 @@
 #include "mumcand.h"
 #include "protodef.h"
 
-typedef multimap<Uint, Uint> Suffixes;
-typedef map<Uint, Suffixes > Table;
+typedef unordered_map<Uint, vector<Uint> > Suffixes;
+typedef multimap<Uint, Suffixes > Table;
 //}
 
 /*

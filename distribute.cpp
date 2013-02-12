@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <map>
+#include <vector>
 #include <iostream>
 #include <assert.h>
 #include "types.h"
@@ -78,7 +79,8 @@ void fillTable(Suffixtree *stree, Table &table, Uchar *buffer,Uint *btptr, short
   
   size_t size = std::strlen((const char*)buffer);
   int i;
-  Suffixes t;
+  vector<Uint> v;
+  Suffixes s;
   GETBOTH(depth,headposition,btptr);
   succ = GETCHILD(btptr);
   do 
@@ -94,9 +96,7 @@ void fillTable(Suffixtree *stree, Table &table, Uchar *buffer,Uint *btptr, short
               buffer[size+i]=*ptr;
           buffer[size+i]='\0';
       } 
-      t.insert(pair<Uint,Uint>(encoding(buffer,wordsize),leafindex));
-      table.insert(pair<Uint,Suffixes >(depth,t));
-      cout << depth << "," << encoding(buffer,wordsize) << "," << leafindex << endl;
+      v.push_back(leafindex);
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
     } else
     {
@@ -116,8 +116,11 @@ void fillTable(Suffixtree *stree, Table &table, Uchar *buffer,Uint *btptr, short
       succ = GETBROTHER(succptr);
     }  
    } while(!NILPTR(succ));
-  //for (Suffixes::iterator it =  t.begin(); it != t.end(); ++it)
-  //    cout << depth << ' ' << it->first << " " << it->second << endl;
+   if (v.size() > 0)
+   {
+       s.insert(pair<Uint, vector<Uint> >(encoding(buffer,wordsize),v));
+       table.insert(pair<Uint,Suffixes>(depth,s));
+   }
 } 
 
 void createTable(Matchprocessinfo *matchprocessinfo) 

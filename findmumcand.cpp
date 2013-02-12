@@ -16,6 +16,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <vector>
 #include <papi.h>
 #include <assert.h>
 #include "streedef.h"
@@ -322,22 +323,25 @@ Sint findmumcandidates(Suffixtree *stree, Table &table, Uint minmatchlength, Uin
   Suffixes subset;
   for (Table::iterator it= table.begin(); it!=table.end(); ++it)
   {
-      if ((Uint) it->first >= minmatchlength) 
+      if (it->first >= minmatchlength) 
       {
-          subset = table[it->first];
-          pair<Suffixes::iterator, Suffixes::iterator> ret;
-          for (querysuffix = left; querysuffix<query+querylen; querysuffix++)
+          subset = it->second;
+          for (querysuffix = query; querysuffix<query+querylen; querysuffix++)
           {
-              int enc = encoding(querysuffix,prefix);
+              Suffixes::iterator index = subset.find(encoding(querysuffix,prefix));
+              if ( index != subset.end() )
+                  cout << index->first << " has " << (*index).second.size() << endl;
           }
-          ret = subset.equal_range(1019);
-          cout << it->first << " ===> 1019 ===>" ;
-          for (Suffixes::iterator mit=ret.first; mit != ret.second; ++mit)
-              cout << ' ' << mit->first;
-          cout << endl;
+          /*for (Suffixes::iterator mit = subset.begin(); mit != subset.end(); ++mit)
+          {
+              cout << it->first << ' ' << mit->first;
+              vector<Uint> v = (*mit).second;
+              for (unsigned i = 0; i < v.size(); i++)
+                  cout << " " << v[i] ;
+              cout << endl;
+          }*/
       }
   }
-  
   start = omp_get_wtime();
 #pragma omp parallel default (none) private(i,left,right,lptr,querysuffix,loc,A,N,Size) shared(stdout,stderr,chunks,query,querylen,stree,table,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,MUMs,N2,Size2)
   { 
@@ -423,7 +427,7 @@ Sint findmumcandidates(Suffixtree *stree, Table &table, Uint minmatchlength, Uin
   }
   end = omp_get_wtime(); 
   start1 = omp_get_wtime();
-  Process_Matches(MUMs,N2);
+  //Process_Matches(MUMs,N2);
   end1 = omp_get_wtime();
   fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,RealMUM=%f,Schedule=%d,Chunk_Schd=%d,MUM=%d,MUMs=%d,Size=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),(double) (end1-start1),*schedule,*chunk_schedule,minmatchlength,N2,Size2);
   return 0;
