@@ -31,6 +31,20 @@
   a linear time suffix tree traversal. 
 */
 
+static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)
+{
+  register Uchar *ptr1 = start1, 
+                  *ptr2 = start2;
+  while(ptr1 <= end1 && 
+        ptr2 <= end2 &&
+        *ptr1 == *ptr2)
+  {
+    ptr1++;
+    ptr2++;
+  }
+  return (Uint) (ptr1-start1);
+}
+
 static void  Filter_Matches (Match_t * A, int & N)
 
 //  Remove from  A [0 .. (N - 1)]  any matches that are internal to a repeat,
@@ -260,7 +274,7 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
    if  (N <= 0)
        return;
    UniqueMumR(A, N);
-   UniqueMumQ(A, N);
+   //UniqueMumQ(A, N);
 
    //Filter_Matches (A, N);
 
@@ -305,130 +319,71 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
   0 is returned.
 */
 
-Sint findmumcandidates(Suffixtree *stree, Table &table, Uint minmatchlength, Uint chunks, Uint prefix, Processmatchfunction processmumcandidate, void *processinfo, Uchar *query, Uint querylen, Uint seqnum)
+Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint minmatchlength, Uint chunks, Uint prefix, Processmatchfunction processmumcandidate, void *processinfo, Uchar *query, Uint querylen, Uint seqnum)
 {
-  Uchar *lptr, *left, *right = query + querylen - 1, *querysuffix;
-  Location loc;
-  int i, nthreads, *chunk_schedule;
-  omp_sched_t *schedule;
-  Uint N, Size, N2, Size2;
-  Match_t  *A = NULL;
-  Match_t *MUMs = NULL;
-  unsigned long int tid;
+  Uchar *leftq, *rightq = query + querylen - 1, *querysuffix, *leftr, *rightr = reference + referencelen - 1;
   double start, end;
-  double start1, end1;
+  Uint N = 0, Size=32768;
+  Match_t  *A = NULL;
 
-  chunk_schedule = (int *) malloc(sizeof(int));
-  schedule = (omp_sched_t *) malloc(sizeof(omp_sched_t));
-  Suffixes subset;
-  for (Table::iterator it= table.begin(); it!=table.end(); ++it)
-  {
-      if (it->first >= minmatchlength) 
-      {
-          subset = it->second;
-          for (querysuffix = query; querysuffix<query+querylen; querysuffix++)
-          {
-              Suffixes::iterator index = subset.find(encoding(querysuffix,prefix));
-              if ( index != subset.end() )
-                  cout << index->first << " has " << (*index).second.size() << endl;
-          }
-          /*for (Suffixes::iterator mit = subset.begin(); mit != subset.end(); ++mit)
-          {
-              cout << it->first << ' ' << mit->first;
-              vector<Uint> v = (*mit).second;
-              for (unsigned i = 0; i < v.size(); i++)
-                  cout << " " << v[i] ;
-              cout << endl;
-          }*/
-      }
-  }
-  start = omp_get_wtime();
-#pragma omp parallel default (none) private(i,left,right,lptr,querysuffix,loc,A,N,Size) shared(stdout,stderr,chunks,query,querylen,stree,table,minmatchlength,seqnum,nthreads,chunk_schedule,schedule,MUMs,N2,Size2)
-  { 
-  N = 0;
-  N2 = 0;
-  Size = 32768;
-  Size2 = 32768;
+  pair<Table::iterator, Table::iterator> subset;
   A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
-  MUMs = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
-  #pragma omp for schedule(runtime) nowait
-  for (i=0; i<chunks; i++)
+  start = omp_get_wtime();
+  for (querysuffix = query; querysuffix<rightq-prefix; querysuffix++) //Iterate query sequence
   {
-      omp_get_schedule(schedule,chunk_schedule);
-      nthreads = omp_get_num_threads();
-      left = query + (Uint)(querylen/chunks*i);
-      right = query + (Uint)(querylen/chunks*(i+1))-1;
-      lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), left, right, 0);
-      for (querysuffix = left; /*querysuffix < right &&*/ lptr != NULL;  querysuffix++)
+      subset = table.equal_range(encoding(querysuffix,prefix));    
+      if (subset.first == subset.second)
       {
-          if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
-          {
-               if (querysuffix == left || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
-                {
-                        if (N > Size)
-                        {
-                            Size *= 2;
-                            A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                        }
-                        A[N].R = loc.locstring.start+1;
-                        A[N].Q = (Uint) (querysuffix-query)+1;
-                        A[N].Len = loc.locstring.length;
-                        N++;
-               }
-          }
-          if (ROOTLOCATION (&loc))
-          {
-              lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
-          }
-          else
-          {
-              linklocstree (stree, &loc, &loc);
-              lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
-          } 
-      }
-      while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
-      { 
-          if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
-           {
-               if (querysuffix == left || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
-                {
-                        if (N >= Size -1)
-                         {
-                            Size *= 2;
-                            A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                        }
-                        A[N].R = loc.locstring.start+1;
-                        A[N].Q = (Uint) (querysuffix-query)+1;
-                        A[N].Len = loc.locstring.length;
-                        N++;
-               }
-          }
-          linklocstree (stree, &loc, &loc);
           querysuffix++;
+          continue;
       }
-/*#pragma omp critical
-      {*/
-          for(int i=0;i<N;i++)
+      for (Table::iterator it=subset.first; it!=subset.second; ++it) //Iterate subset of encoding(querysuffix,prefix)
+      {
+          for (Suffixes::iterator mit=(*it).second.begin(); mit!=(*it).second.end(); ++mit) //Get list of suffixes for each element in subset
           {
-              //fprintf(stderr,"%8lu  %8lu  %8lu\n",A[i].R,A[i].Q,A[i].Len);
-                  if (N2 > Size2)
+              for (vector<Uint>::iterator lit=(*mit).second.begin(); lit!=(*mit).second.end(); ++lit) //Iterate over the suffixes in reference
+              {
+                  leftq = querysuffix;
+                  leftr = reference+*lit;
+                  Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
+                  if (length >= minmatchlength)
                   {
-                      Size2 *= 2;
-                      MUMs = (Match_t *) Safe_realloc (A, Size2 * sizeof (Match_t));
-                  }
-                  MUMs[N2].R = A[i].R;
-                  MUMs[N2].Q = A[i].Q;
-                  MUMs[N2].Len = A[i].Len;
-                  MUMs[N2].Good = true;
-                  N2++;
+                      if (N > Size)
+                      {
+                          Size *= 2;
+                          A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                       }  
+                       A[N].R = *lit+1;
+                       A[N].Q = (Uint) (querysuffix-query)+1;
+                       A[N].Len = length;
+                       A[N].Good = true;
+                       N++;
+                   }
+
+                  /*if ((querysuffix == query || leftr == reference || *(leftq-1) != *(leftr-1)) && *(querysuffix+(*mit).first) == *(leftr+*lit+(*mit).first)) //Check left and right maximal
+                  {
+                  fprintf(stdout,"%lu,%lu\n",(Uint)(querysuffix-query+1),(Uint)(*lit+1));
+                      Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
+                      if (length >= minmatchlength)
+                      {
+                          if (N > Size)
+                          {
+                              Size *= 2;
+                              A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                          }  
+                          A[N].R = *lit+1;
+                          A[N].Q = (Uint) (querysuffix-query)+1;
+                          A[N].Len = length;
+                          A[N].Good = true;
+                          N++;
+                      }
+                  }*/
+              }
           }
-      //}
-  }   
+      }
   }
   end = omp_get_wtime(); 
-  start1 = omp_get_wtime();
-  //Process_Matches(MUMs,N2);
-  end1 = omp_get_wtime();
-  fprintf(stderr,"# Threads=%d,Chunks=%d,Chunk_Size=%lu,OMP_time=%f,RealMUM=%f,Schedule=%d,Chunk_Schd=%d,MUM=%d,MUMs=%d,Size=%d,",nthreads,chunks,querylen/chunks,(double) (end-start),(double) (end1-start1),*schedule,*chunk_schedule,minmatchlength,N2,Size2);
+  Process_Matches(A,N);
+  fprintf(stderr,"# Time=%f,",(double) (end-start));
   return 0;
 }

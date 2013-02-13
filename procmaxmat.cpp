@@ -40,7 +40,8 @@
   MUM candidates.
 */
 
-typedef Sint (*Findmatchfunction)(Suffixtree *,
+typedef Sint (*Findmatchfunction)(Uchar *,
+                                  Uint,
                                   Table &,
                                   Uint,
                                   Uint,
@@ -55,7 +56,8 @@ typedef Sint (*Findmatchfunction)(Suffixtree *,
   The following function is imported from \texttt{findmumcand.c}.
 */
 
-Sint findmumcandidates(Suffixtree *stree,
+Sint findmumcandidates(Uchar *reference,
+                       Uint referencelen,
                        Table &table,
                        Uint minmatchlength,
                        Uint chunks,
@@ -70,7 +72,8 @@ Sint findmumcandidates(Suffixtree *stree,
   The following function is imported from \texttt{findmaxmat.c}
 */
 
-Sint findmaxmatches(Suffixtree *stree,
+Sint findmaxmatches(Uchar *reference,
+                    Uint referencelen,
                     Table &table,
                     Uint minmatchlength,
                     Uint chunks,
@@ -383,11 +386,11 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   Processmatchfunction processmatch;
   Findmatchfunction findmatchfunction;
   if(matchprocessinfo->cmum)
-  {
+  { 
     processmatch = storeMUMcandidate;
     findmatchfunction = findmumcandidates;
    } else
-  { 
+  {  
     if(matchprocessinfo->showstring)
     {
       processmatch = showseqandmaximalmatch;
@@ -398,8 +401,8 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     if(matchprocessinfo->cmumcand)
     {
       findmatchfunction = findmumcandidates;
-    } else
-    {
+    }  else
+    { 
       findmatchfunction = findmaxmatches;
     }
   }
@@ -408,7 +411,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
   {
     showsequenceheader(&matchprocessinfo->querymultiseq, matchprocessinfo->showsequencelengths, false, seqnum, querylen);
     matchprocessinfo->currentisrcmatch = false;
-    if(findmatchfunction(&matchprocessinfo->stree, matchprocessinfo->table, matchprocessinfo->minmatchlength, matchprocessinfo->chunks, matchprocessinfo->prefix, processmatch, info, query, querylen,
+    if(findmatchfunction(matchprocessinfo->stree.text, matchprocessinfo->stree.textlen, matchprocessinfo->table, matchprocessinfo->minmatchlength, matchprocessinfo->chunks, matchprocessinfo->prefix, processmatch, info, query, querylen,
                          seqnum) != 0)
     {
       return -1;
@@ -428,7 +431,7 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
                        querylen);
     wccSequence(query,querylen);
     matchprocessinfo->currentisrcmatch = true;
-    if(findmatchfunction(&matchprocessinfo->stree, matchprocessinfo->table, matchprocessinfo->minmatchlength, matchprocessinfo->chunks, matchprocessinfo->prefix, processmatch, info, query, querylen,
+    if(findmatchfunction(matchprocessinfo->stree.text, matchprocessinfo->stree.textlen, matchprocessinfo->table, matchprocessinfo->minmatchlength, matchprocessinfo->chunks, matchprocessinfo->prefix, processmatch, info, query, querylen,
                          seqnum) != 0)
     {
       return -2;

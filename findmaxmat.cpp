@@ -374,18 +374,19 @@ static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,
   depth is longer than the minimum match length.
 */
 
-Sint findmaxmatches(Suffixtree *stree,
+Sint findmaxmatches(Uchar *reference,
+                    Uint referencelen,
                     Table &table,
                     Uint minmatchlength,
                     Uint chunks,
-                    Uint wordsize,
+                    Uint prefix,
                     Processmatchfunction processmatch,
                     void *processinfo,
                     Uchar *query,
                     Uint querylen,
                     Uint queryseqnum)
-{
-  Uchar *querysubstringend;  // ref to end of querysubs. of len. minmatchl.
+{ 
+  /*Uchar *querysubstringend;  // ref to end of querysubs. of len. minmatchl.
   Location ploc;
   Maxmatchinfo maxmatchinfo;
   if(querylen < minmatchlength)
@@ -431,6 +432,6 @@ Sint findmaxmatches(Suffixtree *stree,
   }
   FREEARRAY(&maxmatchinfo.commondepthstack,Nodeinfo);
   FREEARRAY(&maxmatchinfo.matchpath,Pathinfo);
-  cerr << endl;
+  cerr << endl;*/
   return 0;
 }

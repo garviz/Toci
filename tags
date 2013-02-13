@@ -48,7 +48,7 @@ AM_CXXFLAGS	sparsehash-2.0.2/Makefile	/^AM_CXXFLAGS = -Wall -W -Wwrite-strings -
 ARGS_H	args.h	12;"	d
 ARRAYDEF_H	arraydef.h	12;"	d
 ASSIGNDEFAULTSHOWDESC	multidef.h	74;"	d
-ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	124;"	d	file:
+ASSIGNMAXMATCOMPLEMENT	procmaxmat.cpp	127;"	d	file:
 AUTOCONF	sparsehash-2.0.2/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcgarcia\/Toci\/sparsehash-2.0.2\/missing --run autoconf$/;"	m
 AUTOHEADER	sparsehash-2.0.2/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcgarcia\/Toci\/sparsehash-2.0.2\/missing --run autoheader$/;"	m
 AUTOMAKE	sparsehash-2.0.2/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcgarcia\/Toci\/sparsehash-2.0.2\/missing --run automake-1.11$/;"	m
@@ -99,10 +99,10 @@ CHECKADDR	streemac.h	66;"	d
 CHECKARGNUM	args.h	28;"	d
 CHECKARRAYSPACE	arraydef.h	63;"	d
 CHECKARRAYSPACEMULTI	arraydef.h	81;"	d
-CHECKIFLOCATIONISVALID	findmaxmat.cpp	134;"	d	file:
+CHECKIFLOCATIONISVALID	findmaxmat.cpp	131;"	d	file:
 CHECKSTEP	construct.cpp	696;"	d	file:
 CHECKSTEP	construct.cpp	811;"	d	file:
-CHECKSTEP	findmaxmat.cpp	41;"	d	file:
+CHECKSTEP	findmaxmat.cpp	38;"	d	file:
 CHECKTEXTLEN	construct.cpp	26;"	d	file:
 CHECK_IFF	sparsehash-2.0.2/src/simple_compat_test.cc	47;"	d	file:
 CHECK_IFF	sparsehash-2.0.2/src/simple_test.cc	47;"	d	file:
@@ -152,7 +152,7 @@ DEB_HOST_GNU_TYPE	sparsehash-2.0.2/packages/deb/rules	/^DEB_HOST_GNU_TYPE   ?= $
 DECLAREARRAYSTRUCT	arraydef.h	41;"	d
 DECLAREEXTRA	construct.cpp	680;"	d	file:
 DECLAREEXTRA	construct.cpp	807;"	d	file:
-DECLAREEXTRA	findmaxmat.cpp	29;"	d	file:
+DECLAREEXTRA	findmaxmat.cpp	26;"	d	file:
 DECLARE_NESTED_POD	sparsehash-2.0.2/src/sparsehash/type_traits.h	337;"	d
 DECLARE_POD	sparsehash-2.0.2/src/sparsehash/type_traits.h	336;"	d
 DEFAULTCHUNK	maxmatopt.cpp	39;"	d	file:
@@ -171,6 +171,7 @@ DESCRIPTIONPTR	multidef.h	63;"	d
 DESCRIPTIONSTARTDESC	multidef.h	60;"	d
 DFSstate	streetyp.h	/^struct DFSstate$/;"	s
 DISTFILES	sparsehash-2.0.2/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
+DISTRIBUTE_H	distribute.h	19;"	d
 DIST_ARCHIVES	sparsehash-2.0.2/Makefile	/^DIST_ARCHIVES = $(distdir).tar.gz $(distdir).zip$/;"	m
 DIST_COMMON	sparsehash-2.0.2/Makefile	/^DIST_COMMON = README $(am__configure_deps) $(dist_doc_DATA) \\$/;"	m
 DIST_SOURCES	sparsehash-2.0.2/Makefile	/^DIST_SOURCES = $(hashtable_test_SOURCES) \\$/;"	m
@@ -268,7 +269,7 @@ FREE_KEY	sparsehash-2.0.2/experimental/libchash.c	165;"	d	file:
 Filter_Matches	findmumcand.cpp	/^static void  Filter_Matches (Match_t * A, int & N)$/;"	f	file:
 Find	sparsehash-2.0.2/experimental/libchash.c	/^static HTItem *Find(HashTable *ht, ulong key, ulong *piEmpty)$/;"	f	file:
 Finding MUMs in a suffix tree	papers/BBC2013/mum-multithread.tex	/^\\subsubsection{Finding MUMs in a suffix tree} $/;"	b
-Findmatchfunction	procmaxmat.cpp	/^typedef Sint (*Findmatchfunction)(Suffixtree *,$/;"	t	file:
+Findmatchfunction	procmaxmat.cpp	/^typedef Sint (*Findmatchfunction)(Uchar *,$/;"	t	file:
 FreeHashTable	sparsehash-2.0.2/experimental/libchash.c	/^void FreeHashTable(HashTable *ht)$/;"	f
 G	sparsehash-2.0.2/src/type_traits_unittest.cc	/^enum G {};$/;"	g	file:
 GENERROR	errordef.h	45;"	d
@@ -516,7 +517,7 @@ LEAFADDR2NUM	streemac.h	61;"	d
 LEAFBIT	streehuge.h	35;"	d
 LEAFBROTHERVAL	streehuge.h	82;"	d
 LEASTSHOWPROGRESS	construct.cpp	677;"	d	file:
-LEASTSHOWPROGRESS	findmaxmat.cpp	26;"	d	file:
+LEASTSHOWPROGRESS	findmaxmat.cpp	23;"	d	file:
 LEFT	sparsehash-2.0.2/src/sparsetable_unittest.cc	63;"	d	file:
 LIBOBJS	sparsehash-2.0.2/Makefile	/^LIBOBJS = $/;"	m
 LIBS	Makefile	/^LIBS    = -lstdc++ -lpapi$/;"	m
@@ -550,15 +551,15 @@ MAXERRORMSG	seterror.cpp	27;"	d	file:
 MAXINDEX	streehuge.h	38;"	d
 MAXMAPPEDFILES	mapfile.cpp	25;"	d	file:
 MAXMATDEF_H	maxmatdef.h	12;"	d
-MAXNUMOFQUERYFILES	maxmatdef.h	42;"	d
+MAXNUMOFQUERYFILES	maxmatdef.h	47;"	d
 MAXTEXTLEN	streehuge.h	60;"	d
 MIN	minmax.h	26;"	d
 MINEXTRA	construct.cpp	72;"	d	file:
 MINMAX_H	minmax.h	12;"	d
 MIN_HASH_SIZE	sparsehash-2.0.2/experimental/libchash.h	155;"	d
 MKDIR_P	sparsehash-2.0.2/Makefile	/^MKDIR_P = \/bin\/mkdir -p$/;"	m
-MMREPLACEMENTCHARQUERY	maxmatdef.h	36;"	d
-MMREPLACEMENTCHARSUBJECT	maxmatdef.h	35;"	d
+MMREPLACEMENTCHARQUERY	maxmatdef.h	41;"	d
+MMREPLACEMENTCHARSUBJECT	maxmatdef.h	40;"	d
 MMcallinfo	maxmatdef.h	/^struct MMcallinfo$/;"	s
 MOD2	sparsehash-2.0.2/experimental/libchash.c	181;"	d	file:
 MODBIT	sparsehash-2.0.2/experimental/libchash.c	184;"	d	file:
@@ -595,7 +596,7 @@ NOTSUPPOSED	errordef.h	110;"	d
 NOTSUPPOSEDTOBENULL	errordef.h	120;"	d
 NULL_TERMINATED	sparsehash-2.0.2/experimental/libchash.c	139;"	d	file:
 NUMOFCALLS	construct.cpp	678;"	d	file:
-NUMOFCALLS	findmaxmat.cpp	27;"	d	file:
+NUMOFCALLS	findmaxmat.cpp	24;"	d	file:
 NUMOFOPTIONS	maxmatopt.cpp	/^  NUMOFOPTIONS$/;"	e	enum:__anon1	file:
 Negation	sparsehash-2.0.2/src/hashtable_test.cc	/^struct Negation {$/;"	s	namespace:__anon4	file:
 NextPow2	sparsehash-2.0.2/experimental/libchash.c	/^static ulong NextPow2(ulong x)    \/* returns next power of 2 > x, or 2^31 *\/$/;"	f	file:
@@ -638,6 +639,7 @@ OPTMUM	maxmatopt.cpp	/^  OPTMUM = 0,$/;"	e	enum:__anon1	file:
 OPTMUMCAND	maxmatopt.cpp	/^  OPTMUMCAND,$/;"	e	enum:__anon1	file:
 OPTMUMREF	maxmatopt.cpp	/^  OPTMUMREF,$/;"	e	enum:__anon1	file:
 OPTONLYREVERSECOMPLEMENT	maxmatopt.cpp	/^  OPTONLYREVERSECOMPLEMENT,$/;"	e	enum:__anon1	file:
+OPTPREFIXLENGTH	maxmatopt.cpp	/^  OPTPREFIXLENGTH,$/;"	e	enum:__anon1	file:
 OPTSHOWREVERSEPOSITIONS	maxmatopt.cpp	/^  OPTSHOWREVERSEPOSITIONS,$/;"	e	enum:__anon1	file:
 OPTSHOWSEQUENCELENGTHS	maxmatopt.cpp	/^  OPTSHOWSEQUENCELENGTHS,$/;"	e	enum:__anon1	file:
 OPTSHOWSTRING	maxmatopt.cpp	/^  OPTSHOWSTRING,$/;"	e	enum:__anon1	file:
@@ -669,13 +671,6 @@ PACKAGE_VERSION	sparsehash-2.0.2/src/windows/config.h	112;"	d
 PARSEFLOATARG	args.h	53;"	d
 PARSEINTARG	args.h	40;"	d
 PATH_SEPARATOR	sparsehash-2.0.2/Makefile	/^PATH_SEPARATOR = :$/;"	m
-POMP2_Get_num_regions	pompregions.c	/^size_t POMP2_Get_num_regions()$/;"	f
-POMP2_Get_opari2_version	pompregions.c	/^const char* POMP2_Get_opari2_version()$/;"	f
-POMP2_Get_required_pomp2_library_version_age	pompregions.c	/^int POMP2_Get_required_pomp2_library_version_age()$/;"	f
-POMP2_Get_required_pomp2_library_version_current	pompregions.c	/^int POMP2_Get_required_pomp2_library_version_current()$/;"	f
-POMP2_Get_required_pomp2_library_version_revision	pompregions.c	/^int POMP2_Get_required_pomp2_library_version_revision()$/;"	f
-POMP2_Init_regions	pompregions.c	/^void POMP2_Init_regions()$/;"	f
-POMP_MAX_ID	opari.tab.c	/^int POMP_MAX_ID = 41;$/;"	v
 POST_INSTALL	sparsehash-2.0.2/Makefile	/^POST_INSTALL = :$/;"	m
 POST_UNINSTALL	sparsehash-2.0.2/Makefile	/^POST_UNINSTALL = :$/;"	m
 PRE_INSTALL	sparsehash-2.0.2/Makefile	/^PRE_INSTALL = :$/;"	m
@@ -689,7 +684,7 @@ PROCESSBRANCH2	dfs.cpp	138;"	d	file:
 PROCESSBRANCH2	dfs.cpp	60;"	d	file:
 PROCESSHEAD	construct.cpp	694;"	d	file:
 PROCESSHEAD	construct.cpp	810;"	d	file:
-PROCESSREALMUMS	procmaxmat.cpp	104;"	d	file:
+PROCESSREALMUMS	procmaxmat.cpp	107;"	d	file:
 PROGRAMS	sparsehash-2.0.2/Makefile	/^PROGRAMS = $(noinst_PROGRAMS)$/;"	m
 PROPAGATE_POD_FROM_TEMPLATE_ARGUMENT	sparsehash-2.0.2/src/sparsehash/type_traits.h	338;"	d
 PROTODEF_H	protodef.h	10;"	d
@@ -837,6 +832,7 @@ StringIO	sparsehash-2.0.2/src/hashtable_test.cc	/^  explicit StringIO(string* s)
 StringIO	sparsehash-2.0.2/src/hashtable_test.cc	/^class StringIO {$/;"	c	namespace:__anon5	file:
 Stringtype	types.h	/^typedef ListType Stringtype;$/;"	t
 Structure	papers/BBC2013/procs-sample.tex	/^\\subsection{Structure}$/;"	b
+Suffixes	maxmatdef.h	/^typedef multimap<Uint, vector<Uint> > Suffixes;$/;"	t
 Suffixtree	streetyp.h	/^struct Suffixtree$/;"	s
 TEST	sparsehash-2.0.2/src/hashtable_test.cc	/^TEST(HashtableCommonTest, HashMunging) {$/;"	f	namespace:__anon5
 TEST	sparsehash-2.0.2/src/hashtable_test.cc	/^TEST(HashtableDeathTest, InsertMaxSizeOverflow) {$/;"	f	namespace:__anon6
@@ -923,6 +919,7 @@ TYPED_TEST	sparsehash-2.0.2/src/testutil.h	165;"	d
 TYPED_TEST_CASE_18	sparsehash-2.0.2/src/testutil.h	144;"	d
 TYPED_TEST_CASE_6	sparsehash-2.0.2/src/testutil.h	99;"	d
 TYPES_H	types.h	20;"	d
+Table	maxmatdef.h	/^typedef unordered_map<Uint, Suffixes > Table;$/;"	t
 Table	sparsehash-2.0.2/experimental/libchash.h	/^typedef struct Table(Bin)       Table;        \/* Expands to SparseBin, etc *\/$/;"	t	typeref:struct:
 Table	sparsehash-2.0.2/experimental/libchash.h	143;"	d
 Table	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  typedef sparsetable<value_type, DEFAULT_GROUP_SIZE, value_alloc_type> Table;$/;"	t	class:sparse_hashtable
@@ -958,7 +955,8 @@ Uint	arraydef.h	/^DECLAREARRAYSTRUCT(Uint);$/;"	v
 Uint	types.h	/^typedef unsigned long Uint;$/;"	t
 UintConst	types.h	/^typedef const unsigned long UintConst;$/;"	t
 UniqueKey	sparsehash-2.0.2/src/hashtable_test.cc	/^  typename HashtableType::key_type UniqueKey(int index) {$/;"	f	class:__anon4::HashtableTest
-UniqueMum	findmumcand.cpp	/^static void UniqueMum (Match_t * A, int N)$/;"	f	file:
+UniqueMumQ	findmumcand.cpp	/^static void UniqueMumQ (Match_t * A, int N)$/;"	f	file:
+UniqueMumR	findmumcand.cpp	/^static void UniqueMumR (Match_t * A, int N)$/;"	f	file:
 UniqueObject	sparsehash-2.0.2/src/hashtable_test.cc	/^  typename HashtableType::value_type UniqueObject(int index) {$/;"	f	class:__anon4::HashtableTest
 UniqueObjectHelper	sparsehash-2.0.2/src/hashtable_test.cc	/^template<> ValueType UniqueObjectHelper(int index) {$/;"	f	namespace:__anon4
 UniqueObjectHelper	sparsehash-2.0.2/src/hashtable_test.cc	/^template<> char* UniqueObjectHelper(int index) {$/;"	f	namespace:__anon4
@@ -1256,7 +1254,7 @@ count	sparsehash-2.0.2/src/hash_test_interface.h	/^  size_type count(const key_t
 count	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  size_type count(const key_type &key) const {$/;"	f	class:dense_hashtable
 count	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  size_type count(const key_type &key) const {$/;"	f	class:sparse_hashtable
 count_	sparsehash-2.0.2/src/hashtable_test.cc	/^  int* count_;$/;"	m	struct:__anon4::Alloc	file:
-createTable	distribute.cpp	/^void createTable(Matchprocessinfo *matchprocessinfo, short int wordsize) $/;"	f
+createTable	distribute.cpp	/^void createTable(Matchprocessinfo *matchprocessinfo) $/;"	f
 creatememorymap	mapfile.cpp	/^\/*@null@*\/ void *creatememorymap(char *file,Uint line,char *filename,bool writemap,Uint *numofbytes)$/;"	f
 creatememorymapforfiledesc	mapfile.cpp	/^\/*@null@*\/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,bool writemap,Uint $/;"	f
 cstring	sparsehash-2.0.2/src/libc_allocator_with_realloc_test.cc	/^                     libc_allocator_with_realloc<char> > cstring;$/;"	t	namespace:__anon3	file:
@@ -1404,6 +1402,7 @@ false_	sparsehash-2.0.2/src/sparsehash/template_util.h	/^typedef false_type fals
 false_type	sparsehash-2.0.2/src/sparsehash/template_util.h	/^typedef integral_constant<bool, false> false_type;$/;"	t
 fileallocated	space.cpp	/^  char *fileallocated; \/\/ the filenames where the block was allocated$/;"	m	struct:Blockdescription	file:
 filemapped	mapfile.cpp	/^static char *filemapped[MAXMAPPEDFILES] = {NULL};  $/;"	v	file:
+fillTable	distribute.cpp	/^void fillTable(Suffixtree *stree, Table &table, Uchar *buffer,Uint *btptr, short int wordsize)$/;"	f
 fill_range_with_empty	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  void fill_range_with_empty(pointer table_start, pointer table_end) {$/;"	f	class:dense_hashtable
 find	sparsehash-2.0.2/src/hash_test_interface.h	/^  const_iterator find(const key_type& key) const {$/;"	f	class:BaseHashtableInterface
 find	sparsehash-2.0.2/src/hash_test_interface.h	/^  iterator find(const key_type& key) {$/;"	f	class:BaseHashtableInterface
@@ -1415,9 +1414,9 @@ find_or_insert	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  val
 find_or_insert	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  value_type& find_or_insert(const key_type& key) {$/;"	f	class:sparse_hashtable
 find_position	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  std::pair<size_type, size_type> find_position(const key_type &key) const {$/;"	f	class:dense_hashtable
 find_position	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  std::pair<size_type, size_type> find_position(const key_type &key) const {$/;"	f	class:sparse_hashtable
-findmaxmatches	findmaxmat.cpp	/^Sint findmaxmatches(Suffixtree *stree,$/;"	f
+findmaxmatches	findmaxmat.cpp	/^Sint findmaxmatches(Uchar *reference,$/;"	f
 findmaxmatchesonbothstrands	procmaxmat.cpp	/^static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,$/;"	f	file:
-findmumcandidates	findmumcand.cpp	/^Sint findmumcandidates(Suffixtree *stree,$/;"	f
+findmumcandidates	findmumcand.cpp	/^Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint minmatchlength, Uint chunks, Uint prefix, Processmatchfunction processmumcandidate, void *processinfo, Uchar *query, Uint querylen, Uint seqnum)$/;"	f
 findprefixpathfromnodestree	scanpref.cpp	/^\/*@null@*\/Uchar *findprefixpathfromnodestree(Suffixtree *stree,$/;"	f
 findprefixpathstree	scanpref.cpp	/^\/*@null@*\/ Uchar *findprefixpathstree(Suffixtree *stree,$/;"	f
 firstchild	streetyp.h	/^  Reference firstchild,     \/\/ the reference to the first child$/;"	m	struct:Branchinfo
@@ -1435,7 +1434,6 @@ g_expected	sparsehash-2.0.2/src/sparsetable_unittest.cc	/^static const char g_ex
 g_num_copies	sparsehash-2.0.2/src/time_hash_map.cc	/^static int g_num_copies;$/;"	v	file:
 g_num_hashes	sparsehash-2.0.2/src/time_hash_map.cc	/^static int g_num_hashes;$/;"	v	file:
 generalcounter	streetyp.h	/^  void *generalcounter;$/;"	m	struct:Suffixtree
-getEdgelength	distribute.cpp	/^Uint getEdgelength(Uchar *left,Uchar *right)$/;"	f
 getMaxNodesNumber	streedbg.cpp	/^Uint getMaxNodesNumber(Suffixtree *stree)$/;"	f
 get_allocator	sparsehash-2.0.2/src/hash_test_interface.h	/^  allocator_type get_allocator() const { return ht_.get_allocator(); }$/;"	f	class:BaseHashtableInterface
 get_allocator	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  allocator_type get_allocator() const {$/;"	f	class:dense_hashtable
@@ -1727,6 +1725,7 @@ largelinks	streetyp.h	/^       largelinks,$/;"	m	struct:Suffixtree
 largelinkwork	streetyp.h	/^       largelinkwork,$/;"	m	struct:Suffixtree
 largenode	streetyp.h	/^       largenode,             \/\/ number of large nodes$/;"	m	struct:Suffixtree
 lastcharindex	streetyp.h	/^  Sint lastcharindex;$/;"	m	struct:Suffixtree
+lcp	findmumcand.cpp	/^static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)$/;"	f	file:
 lcp	scanpref.cpp	/^static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)$/;"	f	file:
 leafcounts	streetyp.h	/^       *leafcounts;           \/\/ holds counts of the number of leafs in subtree$/;"	m	struct:Suffixtree
 leaftab	streetyp.h	/^       *leaftab,              \/\/ stores the brother-references of the leafs$/;"	m	struct:Suffixtree
@@ -2018,7 +2017,6 @@ pointer	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  typedef t
 pointer	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  typedef typename value_alloc_type::pointer pointer;$/;"	t	struct:sparse_hashtable_destructive_iterator
 pointer	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  typedef typename value_alloc_type::pointer pointer;$/;"	t	struct:sparse_hashtable_iterator
 pointer	sparsehash-2.0.2/src/sparsetable_unittest.cc	/^  typedef T* pointer;$/;"	t	class:instrumented_allocator	file:
-pomp_rd_table	opari.tab.c	/^struct ompregdescr* pomp_rd_table[41] = {$/;"	v	typeref:struct:ompregdescr
 pos	sparsehash-2.0.2/experimental/libchash.c	/^   long pos;               \/* the actual iterator *\/$/;"	m	struct:DenseIterator	file:
 pos	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  pointer pos, end;$/;"	m	struct:dense_hashtable_const_iterator
 pos	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  pointer pos, end;$/;"	m	struct:dense_hashtable_iterator
@@ -2029,6 +2027,8 @@ pos2pospair	multiseq.cpp	/^Sint pos2pospair(Multiseq *multiseq,PairUint *pos,Uin
 posGroup	sparsehash-2.0.2/experimental/libchash.c	/^   long posGroup;$/;"	m	struct:SparseIterator	file:
 posLastFind	sparsehash-2.0.2/experimental/libchash.h	/^   HTItem *posLastFind; \/* position of last Find() command *\/$/;"	m	struct:HashTable
 posOffset	sparsehash-2.0.2/experimental/libchash.c	/^   long posOffset;$/;"	m	struct:SparseIterator	file:
+prefix	maxmatdef.h	/^       prefix,                  \/\/ length of prefix for Direct Access Table$/;"	m	struct:MMcallinfo
+prefix	maxmatdef.h	/^       prefix,                  \/\/ length of prefix for Direct Access Table$/;"	m	struct:Matchprocessinfo
 prefix	sparsehash-2.0.2/Makefile	/^	echo 'prefix=$(prefix)' > "$@".tmp$/;"	m
 prefix	sparsehash-2.0.2/Makefile	/^prefix = \/usr\/local$/;"	m
 previousnode	streetyp.h	/^  Bref previousnode;    \/\/ reference to previous node (which is branching)$/;"	m	struct:Location
@@ -2280,8 +2280,6 @@ sparsehashincludedir	sparsehash-2.0.2/Makefile	/^sparsehashincludedir = $(includ
 sparsetable_unittest_LDADD	sparsehash-2.0.2/Makefile	/^sparsetable_unittest_LDADD = $(LDADD)$/;"	m
 sparsetable_unittest_OBJECTS	sparsehash-2.0.2/Makefile	/^sparsetable_unittest_OBJECTS = $(am_sparsetable_unittest_OBJECTS) \\$/;"	m
 sparsetable_unittest_SOURCES	sparsehash-2.0.2/Makefile	/^sparsetable_unittest_SOURCES = \\$/;"	m
-splitstreeH	distribute.cpp	/^void splitstreeH(Suffixtree *stree, Uint *consumption, Uint size)$/;"	f
-splitsubstreeH	distribute.cpp	/^void splitsubstreeH(Suffixtree *stree, \/*sparsetable<Uint> &table,*\/ Uchar *buffer,Uint *btptr, short int wordsize)$/;"	f
 squash_deleted	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  void squash_deleted() {           \/\/ gets rid of any deleted entries we have$/;"	f	class:dense_hashtable
 squash_deleted	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  void squash_deleted() {           \/\/ gets rid of any deleted entries we have$/;"	f	class:sparse_hashtable
 srcdir	sparsehash-2.0.2/Makefile	/^srcdir = .$/;"	m
@@ -2366,6 +2364,7 @@ swap	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  void swap(sp
 swap	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^inline void swap(sparse_hashtable<V,K,HF,ExK,SetK,EqK,A> &x,$/;"	f
 sys	genDNA.py	/^import sys$/;"	i
 sysconfdir	sparsehash-2.0.2/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
+table	maxmatdef.h	/^  Table table;                 \/\/ Table to quickly discard suffixes$/;"	m	struct:Matchprocessinfo
 table	sparsehash-2.0.2/experimental/libchash.h	/^   Table *table;        \/* The actual contents of the hashtable *\/$/;"	m	struct:HashTable
 table	sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h	/^  pointer table;$/;"	m	class:dense_hashtable
 table	sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h	/^  Table table;     \/\/ holds num_buckets and num_elements too$/;"	m	class:sparse_hashtable

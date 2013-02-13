@@ -21,7 +21,7 @@
 #include "mumcand.h"
 #include "protodef.h"
 
-typedef unordered_map<Uint, vector<Uint> > Suffixes;
+typedef multimap<Uint, vector<Uint> > Suffixes;
 typedef multimap<Uint, Suffixes > Table;
 //}
 

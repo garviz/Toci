@@ -8,7 +8,7 @@ CC = g++
 
 OMPP=$(HOME)/ompp
 
-CFLAGS  = -std=gnu++0x -m64 -fopenmp -fno-permissive -Wno-write-strings -Wno-format -msse4.2 -g
+CFLAGS  = -std=gnu++0x -m64 -fopenmp -fno-permissive -Wno-write-strings -Wno-format -msse4.2 -g -O3
 
 INCLUDE = -I/soft/papi-5.0.1/include/ -I$(OMPP)/include/
 
