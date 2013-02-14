@@ -21,8 +21,8 @@
 #include "mumcand.h"
 #include "protodef.h"
 
-typedef multimap<Uint, vector<Uint> > Suffixes;
-typedef multimap<Uint, Suffixes > Table;
+typedef map<Uint, vector<Uint> > Suffixes;
+typedef map<Uint, Suffixes > Table;
 //}
 
 /*

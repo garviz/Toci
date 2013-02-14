@@ -116,14 +116,26 @@ void fillTable(Suffixtree *stree, Table &table, Uchar *buffer,Uint *btptr, short
       succ = GETBROTHER(succptr);
     }  
    } while(!NILPTR(succ));
-   /*for (vector<Uint>::iterator t=v.begin(); t!=v.end(); ++t)
-       cout << ' ' << *t ;
-   cout << endl;
-   if (v.size() > 0)
-   {*/
-       s.insert(pair<Uint, vector<Uint> >(depth,v)) == s.end();
-       table.insert(pair<Uint,Suffixes>(encoding(buffer,wordsize),s));
-   //}
+   Uint enc = encoding(buffer,wordsize);
+   if (table.count(enc))
+   {
+       s = table[enc];
+       if (s.count(depth))
+       {
+           s[depth].insert(s[depth].end(),v.begin(),v.end());
+           table[enc] = s;
+       }
+       else
+       {
+           s[depth] = v;
+           table[enc] = s;
+       }
+   }
+   else
+   {
+       s[depth] = v;
+       table[enc] = s;
+   }
 } 
 
 void createTable(Matchprocessinfo *matchprocessinfo) 

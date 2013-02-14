@@ -323,44 +323,45 @@ Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint m
 {
   Uchar *leftq, *rightq = query + querylen - 1, *querysuffix, *leftr, *rightr = reference + referencelen - 1;
   double start, end;
-  Uint N = 0, Size=32768;
+  Uint enc=0, N = 0, Size=32768;
   Match_t  *A = NULL;
 
   pair<Table::iterator, Table::iterator> subset;
   A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
+  /*for (Table::iterator it=table.begin(); it!=table.end(); ++it)
+  {
+      for (Suffixes::iterator mit=(*it).second.begin(); mit!=(*it).second.end(); ++mit)
+      {
+          for (vector<Uint>::iterator lit=(*mit).second.begin(); lit!=(*mit).second.end(); ++lit)
+              cout << *lit << endl;
+      }
+  }*/
   start = omp_get_wtime();
   for (querysuffix = query; querysuffix<rightq-prefix; querysuffix++) //Iterate query sequence
   {
-      subset = table.equal_range(encoding(querysuffix,prefix));    
-      if (subset.first == subset.second)
+      enc = encoding(querysuffix,prefix);
+      for (Suffixes::iterator it=table[enc].begin(); it!=table[enc].end(); ++it) //Iterate subset of encoding(querysuffix,prefix)
       {
-          querysuffix++;
-          continue;
-      }
-      for (Table::iterator it=subset.first; it!=subset.second; ++it) //Iterate subset of encoding(querysuffix,prefix)
-      {
-          for (Suffixes::iterator mit=(*it).second.begin(); mit!=(*it).second.end(); ++mit) //Get list of suffixes for each element in subset
+          for (vector<Uint>::iterator lit=(*it).second.begin(); lit!=(*it).second.end(); ++lit) //Iterate over the suffixes in reference
           {
-              for (vector<Uint>::iterator lit=(*mit).second.begin(); lit!=(*mit).second.end(); ++lit) //Iterate over the suffixes in reference
+              leftq = querysuffix;
+              leftr = reference+*lit;
+              Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
+              if (length >= minmatchlength)
               {
-                  leftq = querysuffix;
-                  leftr = reference+*lit;
-                  Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
-                  if (length >= minmatchlength)
+                  if (N > Size)
                   {
-                      if (N > Size)
-                      {
-                          Size *= 2;
-                          A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                       }  
-                       A[N].R = *lit+1;
-                       A[N].Q = (Uint) (querysuffix-query)+1;
-                       A[N].Len = length;
-                       A[N].Good = true;
-                       N++;
-                   }
-
-                  /*if ((querysuffix == query || leftr == reference || *(leftq-1) != *(leftr-1)) && *(querysuffix+(*mit).first) == *(leftr+*lit+(*mit).first)) //Check left and right maximal
+                      Size *= 2;
+                      A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                   }  
+                   A[N].R = *lit+1;
+                   A[N].Q = (Uint) (querysuffix-query)+1;
+                   A[N].Len = length;
+                   A[N].Good = true;
+                   N++;
+               }
+/*
+                  if ((querysuffix == query || leftr == reference || *(leftq-1) != *(leftr-1)) && *(querysuffix+(*mit).first) == *(leftr+*lit+(*mit).first)) //Check left and right maximal
                   {
                   fprintf(stdout,"%lu,%lu\n",(Uint)(querysuffix-query+1),(Uint)(*lit+1));
                       Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
@@ -378,7 +379,6 @@ Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint m
                           N++;
                       }
                   }*/
-              }
           }
       }
   }
