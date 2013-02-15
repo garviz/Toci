@@ -241,28 +241,32 @@ static void UniqueMumQ (Match_t * A, int N)
   if(N > 0)
   {
     qsort (A, N, sizeof (Match_t), By_Q);
-    Uint currentright, dbright = 0;
-    bool ignorecurrent, ignoreprevious = false;
+    Uint currentright, dbright = A[0].Q + A[0].Len -1;
 
     for(int i=1; i<N; i++)
     {
+      A[i].Good = true;
       currentright = A[i].Q + A[i].Len - 1;
+        fprintf(stdout,"#%d dbright=%lu currentright=%lu\n",i,dbright,currentright);
       if(dbright > currentright)
       {
-        A[i].Good = true;
+        A[i].Good = false;
       } else
       {
         if(dbright == currentright)
         {
-          if(A[i].Q >= A[i-1].Q)
-          {
             A[i].Good = false;
-          }
-        } else
+            if (!A[i-1].Good && A[i-1].Q == A[i].Q)
+            {
+                A[i-1].Good = false;
+            } 
+        }
+        else
         {
-          dbright = currentright;
+            dbright = currentright;
         }
       }
+      A[i-1].Good = A[i].Good;
     }
   }
   return;
@@ -273,8 +277,7 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
 
    if  (N <= 0)
        return;
-   UniqueMumR(A, N);
-   //UniqueMumQ(A, N);
+   UniqueMumQ(A, N);
 
    //Filter_Matches (A, N);
 
@@ -326,59 +329,35 @@ Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint m
   Uint enc=0, N = 0, Size=32768;
   Match_t  *A = NULL;
 
-  pair<Table::iterator, Table::iterator> subset;
   A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
-  /*for (Table::iterator it=table.begin(); it!=table.end(); ++it)
-  {
-      for (Suffixes::iterator mit=(*it).second.begin(); mit!=(*it).second.end(); ++mit)
-      {
-          for (vector<Uint>::iterator lit=(*mit).second.begin(); lit!=(*mit).second.end(); ++lit)
-              cout << *lit << endl;
-      }
-  }*/
   start = omp_get_wtime();
-  for (querysuffix = query; querysuffix<rightq-prefix; querysuffix++) //Iterate query sequence
+  for (leftq = query; leftq<rightq-prefix; leftq++) //Iterate query sequence
   {
-      enc = encoding(querysuffix,prefix);
+      enc = encoding(leftq,prefix);
       for (Suffixes::iterator it=table[enc].begin(); it!=table[enc].end(); ++it) //Iterate subset of encoding(querysuffix,prefix)
       {
           for (vector<Uint>::iterator lit=(*it).second.begin(); lit!=(*it).second.end(); ++lit) //Iterate over the suffixes in reference
           {
-              leftq = querysuffix;
               leftr = reference+*lit;
-              Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
-              if (length >= minmatchlength)
+              if ((leftq == query || leftr == reference || *(leftq-1) != *(leftr-1)) && *(leftq+(*it).first) == *(leftr+(*it).first)) //Check left and right maximal
               {
-                  if (N > Size)
+                  //Uint length = lcp(leftq+(*it).first+1,rightq,leftr+(*it).first+1,rightr)+(*it).first+1;
+                  Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
+                  if (length >= minmatchlength)
                   {
-                      Size *= 2;
-                      A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                   }  
-                   A[N].R = *lit+1;
-                   A[N].Q = (Uint) (querysuffix-query)+1;
-                   A[N].Len = length;
-                   A[N].Good = true;
-                   N++;
-               }
-/*
-                  if ((querysuffix == query || leftr == reference || *(leftq-1) != *(leftr-1)) && *(querysuffix+(*mit).first) == *(leftr+*lit+(*mit).first)) //Check left and right maximal
-                  {
-                  fprintf(stdout,"%lu,%lu\n",(Uint)(querysuffix-query+1),(Uint)(*lit+1));
-                      Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
-                      if (length >= minmatchlength)
+                      if (N > Size)
                       {
-                          if (N > Size)
-                          {
-                              Size *= 2;
-                              A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                          }  
-                          A[N].R = *lit+1;
-                          A[N].Q = (Uint) (querysuffix-query)+1;
-                          A[N].Len = length;
-                          A[N].Good = true;
-                          N++;
-                      }
-                  }*/
+                          Size *= 2;
+                          A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                      }  
+                      A[N].R = *lit+1;
+                      A[N].Q = (Uint) (leftq-query)+1;
+                      A[N].Len = length;
+                      A[N].Good = true;
+                      N++;
+                  }
+                  break;
+              }
           }
       }
   }
