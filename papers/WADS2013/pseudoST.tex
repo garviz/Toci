@@ -145,11 +145,59 @@ A full-text index data structure is used to solve string-matching problems but w
   \item FM-index: It performs a backward search until a unique match is found.
 \end{itemize}
 Since we are searching for maximal and unique matches the suffix tree is the ideal data structure to do this kind of job. However, the space requirements are prohibitive when handling large genomes. Again the trade-off between time and space performance is a feature desired to find a suitable data structure. As we pointed out a unique match is easily found in a suffix tree because we only require to check if the match is in a leaf node.\\
-Therefore, we propose a new full-text index data structure a Pseudo Suffix Tree. This data structure has three components:
-\begin{itemize}
-  \item Direct access table: a set of prefixes of a fixed length $P$ from the top of the suffix tree. This table has entries in the form of an 2-bit encoding string of DNA (a:00,c:01,g:10,t:11) so that we can access in $O(1)$ to any element of this table with an encoded . 
-\end{itemize}
-
+Therefore, we propose a new full-text index data structure a Pseudo Suffix Tree. The Pseudo Suffix Tree is build based on the information of a Suffix Tree. This data structure has three components: Direct access table, set of suffixes with common prefix order by length and set of suffixes with a common prefix and a fixed length, see Figure \ref{fig:pseudo}.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{pseudoST.png}
+\label{fig:pseudo}
+\caption{Pseudo Suffix Tree for a reference genome to search Maximal Unique Matches.}
+\end{figure}
+\subsection{Direct access table}
+A Direct access table contains a set of prefixes of a fixed length $P$ from the top of the suffix tree, see Figure \ref{fig:dat}. This table has entries in the form of an 2-bit encoding string of DNA (a:00,c:01,g:10,t:11) so that we can access in $O(1)$ to any element of this table with an encoded string to an integer. For instance, if we defined a fixed length of $P=2$ we have entries in the table from 0 to $4^2$. where aa would be saved as 0 and tt would be saved as 15.\\
+We require this Direct access table because for every suffix in the query genome we need to check the match from the root of suffix tree. With this table we saved for comparisons and because $P$ has to be small in order to be fast so that it can be cached in the processor.\\
+The 2-bit encoding string saved in the Direct access table is the key to access to the value of this table. The value of every entry is a pointer to a set of suffixes with the common prefix in the key of the Direct access table. Therefore the key ac, which is encoded as 1, will have all the suffixes with the common prefix ac.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{DAT.png}
+\label{fig:dat}
+\caption{Direct Access Table with 2-bit encoding DNA for a reference genome to search Maximal Unique Matches.}
+\end{figure}
+\subsection{Set of suffixes with a length to leaf nodes}
+The value of the Direct access table is a set of suffixes with a common prefix, see Figure \ref{fig:depth}. We need to store this suffixes because we are interested in the search of unique matches. To check if we have a unique match we need to reach a leaf node. The leaf node in a Suffix tree stores the position in the reference genome where the suffix starts and to save space the depth of the leaf node indicates the number of characters from the root until the leaf node which is the path inside the Suffix tree for this suffix. This depth in the leaf node allows us to continue reading the suffix until a mismatch occurs. The key in this table is the length to leaf nodes and the value is the list of suffixes.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{depth.png}
+\label{fig:depth}
+\caption{Set of suffixes with a length to leaf nodes for a reference genome to search Maximal Unique Matches.}
+\end{figure}
+\subsection{Set of suffixes with a fixed length}
+Every suffix has a depth until the leaf node, so that we have a set of suffixes which have a common prefix in the Direct access table and with a fixed length from the root of suffix tree. We group the suffixes in this way because we are interested only in the search of MUMs, see Figure \ref{fig:suffixes}.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Leaf.png}
+\label{fig:suffixes}
+\caption{List of leaf nodes with suffix start position for a reference genome to search Maximal Unique Matches.}
+\end{figure}
+\section{Search of Maximal Unique Matches in Pseudo Suffix Tree}
+The search of MUMs in a Suffix Tree requires the traversal of Suffix Tree from the root until the leaf node for every suffix in the query genome. We may improve the search of MUMs by using suffix links, therefore we do not need to go back to root with every new suffix in the query genome.  However, with huge Suffix Tree this improvement involves a high random access to the data structure in main memory. \\
+With our proposal of a Pseudo Suffix Tree we apply an heuristic to search MUMs: only to check those suffixes with a match in the leaf nodes of a Suffix Tree. Because our Pseudo Suffix Tree stores the length of the suffixes where the leaf node starts, we may check if the match is long enough to reach the leaf node and quickly discard those suffixes in the query which are not long enough to reach a leaf node.\\
+In the Figure \ref{fig:algo} is shown the search for some suffix starting in position of Query genome, $Q_{i}$. We encoded the prefix of size $P$ and search the entry in the Direct Access Table in order to get the list of suffixes to search for MUMs. For every length in this set we require to check if this match is maximal with the current suffix in reference $j$, to test this feature we evaluate if $R_{j-1}!=Q_{i-1}$ and $R_{j+length+1}==Q_{i+length+1}$ is true. Then we only have to evaluate the longest common prefix between the subset of suffixes in Reference and the current suffix in Query. \\
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{pseudost-mum.png}
+\label{fig:algo}
+\caption{Set of suffixes with a length to leaf nodes for a reference genome to search Maximal Unique Matches.}
+\end{figure}
+After we have read the Query, we have a list of MUM candidates. A MUM candidate is a match which is unique in the Reference genome but it may not be in the Query genome. This feature is shown in Figure \ref{fig:mumcand}, where a MUM candidate is found while reading the Query and after some suffixes a new MUM candidate is found with the same match in the Reference genome.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Whole-MUM.png}
+\label{fig:mumcand}
+\caption{MUM candidates that are not a real MUM.}
+\end{figure}
+We drop these MUM candidates and we finally have a list of real MUMs with the following information: start position in Reference genome, start position in Query genome and length of MUM.
+\section{Implementation \& Results}
+Our main objective is to find Maximal Unique Matches and we evaluated how useful is our Pseudo Suffix Tree to search MUMs. We measure the access time for every 
 \begin{thebibliography}{8}
   \bibitem{Blast} Altschul, S. F. and Gish, W. and Miller, W. and Myers, E. W. and Lipman, D. J.: Basic local alignment search tool. J. Mol. Biol. 215, 403--410 (1990)
   \bibitem{Fasta} D. J. Lipman, W. R. Pearson: Rapid and sensitive protein similarity searches. Science (New York, N.Y.), Vol. 227, No. 4693. (22 March 1985), pp. 1435-1441.
