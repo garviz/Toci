@@ -247,7 +247,6 @@ static void UniqueMumQ (Match_t * A, int N)
     {
       A[i].Good = true;
       currentright = A[i].Q + A[i].Len - 1;
-        fprintf(stdout,"#%d dbright=%lu currentright=%lu\n",i,dbright,currentright);
       if(dbright > currentright)
       {
         A[i].Good = false;
@@ -278,6 +277,7 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
    if  (N <= 0)
        return;
    UniqueMumQ(A, N);
+   UniqueMumR(A, N);
 
    //Filter_Matches (A, N);
 

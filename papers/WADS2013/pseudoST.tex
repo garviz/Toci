@@ -1,0 +1,164 @@
+
+%%%%%%%%%%%%%%%%%%%%%%% file typeinst.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is the LaTeX source for the instructions to authors using
+% the LaTeX document class 'llncs.cls' for contributions to
+% the Lecture Notes in Computer Sciences series.
+% http://www.springer.com/lncs       Springer Heidelberg 2006/05/04
+%
+% It may be used as a template for your own input - copy it
+% to a new file with a new name and use it as the basis
+% for your article.
+%
+% NB: the document class 'llncs' has its own and detailed documentation, see
+% ftp://ftp.springer.de/data/pubftp/pub/tex/latex/llncs/latex2e/llncsdoc.pdf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[runningheads,a4paper]{llncs}
+
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{algorithmic}
+\usepackage{url}
+%\usepackage{amsthm}
+\urldef{\mailsa}\path|juliocesar.garcia@caos.uab.es|
+%\urldef{\mailsb}\path|anna.kramer, leonie.kunz, christine.reiss, nicole.sator,|
+%\urldef{\mailsc}\path|erika.siebert-cole, peter.strasser, lncs}@springer.com|    
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+%\newtheorem{mydef}{Definition}
+
+\begin{document}
+
+\mainmatter  % start of an individual contribution
+
+% first the title is needed
+\title{Pseudo Suffix tree to search Maximal Unique Matches between DNA sequences.}
+
+% a short form should be given in case it is too long for the running head
+\titlerunning{Pseudo Suffix tree to search Maximal Unique Matches between DNA sequences.}
+
+% the name(s) of the author(s) follow(s) next
+%
+% NB: Chinese authors should write their first names(s) in front of
+% their surnames. This ensures that the names appear correctly in
+% the running heads and the author index.
+%
+\author{Julio C\'esar Garc\'ia Vizca\'ino%
+\thanks{}
+\and Antonio Espinosa\and Juan Carlos Moure\and Porfidio Hern\'andez}
+%
+\authorrunning{Julio C\'esar Garc\'ia Vizca\'ino}
+% (feature abused for this document to repeat the title also on left hand pages)
+
+% the affiliations are given next; don't give your e-mail address
+% unless you accept that it will be published
+\institute{Computer Architecture \& Operating Systems Department (CAOS), Universitat Aut\'onoma de Barcelona,%
+    Bellaterra (Barcelona), Spain.
+\mailsa\\
+%\mailsb\\
+%\mailsc\\
+\url{http://caos.uab.es}}
+
+%
+% NB: a more complex sample for affiliations and the mapping to the
+% corresponding authors can be found in the file "llncs.dem"
+% (search for the string "\mainmatter" where a contribution starts).
+% "llncs.dem" accompanies the document class "llncs.cls".
+%
+
+\toctitle{Pseudo Suffix tree to search Maximal Unique Matches between DNA sequences.}
+\tocauthor{Julio C\'esar Garc\'ia Vizca\'ino}
+\maketitle
+
+
+\begin{abstract}
+  \keywords{}
+\end{abstract}
+
+
+\section{Introduction}
+Today, we know that species are described by DNA, a complex molecule comprised of many smaller molecules called nucleotides. The data describing a single specie,commonly called a genome, can be millions or billions of nucleotides long.\\
+One of the most basic computational tasks that we perform on genomic data is identifying the evolutionary relationships between DNA from two or more species. On a smaller scale, we wish to identify which individual nucleotides are unique to species, and which nucleotides share ancestry. On a larger scale, we look to \textbf{find entire subsequences that are a common between them}.\\
+Currently the availability of a huge amount of  Bioinformatics data (often in the public domain), and on the other hand the  need for new and efficient methods and algorithms capable of  compute the information contained in the data requires to index the Bioinformatics data in order to search on it. As a matter of fact, the  emphasis of research in Bioinformatics and data structures is shifting from the development of data storing and handling methods, to the one of methods able to  extract useful information from data.\\
+Consequently, the computational demands needed to explore and analyze the data contained in the genome sequences is quickly becoming a great concern. To meet these demands, we must use data structures to index the genomic data with an important tradeoff between efficient use of memory and CPU resources.\\
+This paper focuses in the search of Maximal Unique Matches to make a whole genome alignment. A whole genome alignment is the process of identifying a mapping from each position in query genome to its corresponding position in the reference genome.\\ 
+We now describe some notation, give a more detailed introduction to whole genome alignment, and describe the mathematical framework on which we base most of techniques used to perform whole genome alignment. First we define some basic notation. We use R (Reference) and Q (Query) to denote sequences. For sequence R, we refer to position $i$ as $R_{i}$ and let the first position be $R_{0}$.\\
+Whole genome alignment is the primary tool for finding evolutionary relationships between DNA sequences. A DNA sequence is a string over four symbols: A, T , C, and G. DNA sequences from individuals of a specie contain many differences. When aligning DNA sequences from different species, large scale changes, such as long insertions and deletions, duplications, reversals and translocations, are common. The goal of whole genome alignment is to infer which changes occurred with a mathematical model that abstracts the physical mutation processes. Finding all these changes is a time-intensive operation in whole genome alignment. Moreover, the size of the genome can be an issue when there is not enough memory to store the reference and query genome.\\
+Dynamic programming is too slow for aligning two large genomes. Heuristics such as BLAST \cite{Blast} or FASTA \cite{Fasta} are not designed to perform pairwise alignments of two very long sequences. One very successful approach is based on identifying ``Maximal Unique Matches'', which is based on the assumption that one expects to substrings occurring in two similar genomes. Maximal Unique Matches (MUMs) are almost surely part of a good alignment of the two sequences and so the whole genome alignment problem can be reduced to aligning the genome in the gaps between the MUMs.\\
+\begin{quote}
+  Given two sequences R, Q $\in \Sigma^*$, and a number $L > 0$. The Maximal Unique Match problem is to find all matches $k \in \Sigma^*$ with
+  \begin{itemize}
+    \item $|k|\geq L$,
+    \item k occurs exactly once in R and once in Q, and
+    \item for any character $a \in \Sigma$ neither ka nor ak occurs both in R and Q.
+  \end{itemize}
+\end{quote}
+\section{Related work}
+Given the growth of Bioinformatic data nowadays, we require basic string operations over these data such as search operations. Therefore, efficient search algorithms are important components of whole genome alignment. For this reason, specialized data structures like index structures are required in order to speed up string searching. There are many types of index structures. However, we focus in full-text indexes which allow fast access to substrings of any length. Full-text indexes come at a greater memory and construction cost. However, they contain much more information and allow for faster and more flexible search of maximal unique matches. The memory and time performance of many bioinformatic applications are affected by the type and implementation of the index structure used.\\
+The three most commonly used full-text index structures in bioinformatics today are suffix trees, suffix arrays and FM-indexes.\\
+The suffix tree of a string $S$ contains information about all suffixes of that string and gives access to all prefixes of those suffixes, thus effectively allows fast access to all substrings of the string $S$. The time complexity for matching $k$ patterns of length $m$ to a string of length $n$ is $O(n+km)$, this is the true power of suffix trees. With enough fast memory, suffix trees are likely the best data structure to support string-algorithms. For large-scale applications like whole genome alignment, however, memory consumption really becomes a bottleneck. The size of a suffix tree is quite high i.e. up to 10 \cite{lazy} to 20 times \cite{kurtz} higher than the amount of memory required to store the reference genome.\\
+Suffix arrays \cite{sa} are a variant of suffix trees, which are made up of an array containing a permutation of the indexes of string $S$. In terms of performance, Suffix arrays have a lower memory footprint and imporved locality. Suffix arrays can exactly match all occurrences of pattern $P$ in string $S$ in $O(m\log n+|occ(P,S)|)$ time using a binary search.\\
+Suffix arrays are not that information-rich compared with suffix trees, but require far less memory. They lack of LCP information, constant time access to children and suffix links, which makes them less fit to tacle more complex string matching problems like search of MUMs. In \cite{abouelhoda} was demonstrated how suffix arrays can be embellished with additional arrays to recover the full expressivity of suffix trees. Enhanced suffix arrays support all operations and traversals on suffix tree using the same time complexity. Array representations generally shows better locality than most standard suffix tree representations. Enhanced suffix arrays occupy about the same amount of memory as regular suffix trees  and are thus equally inapplicable for large strings.\\
+FM-indexes \cite{fm} is based in the Burrows-Wheeler transform \cite{bwt} as backward searching method. The space requirement is proportional to and sometimes even smaller than that of the indexed string. All occurrences of pattern $P$ can be located in $O(m+|occ(P,S)|\log n)$ time. FM-indexes combine fast string matching with low memory requirements.\\
+Choosing appropiate data structures for implementing the different components of suffix trees forms a basic step in lowering their memory requirements. These components include nodes, edges, edge labels, leaf numbers and suffix links.
+\section{The MUM: an heuristic approach}
+Although a pair of conserved genes rarely contain the same entire sequence, they share a lot of short common substrings and some of them are indeed unique to this pair of genes. For example the following two sequences, R and Q:\\
+\begin{center}
+    R=\underline{ac} ga \underline{ctc} a \underline{gctac} t \underline{ggtcagctatt} \underline{acttaccgc}\$\\
+      Q=\underline{ac} tt \underline{ctc} t \underline{gctac} \underline{ggtcagctatt} c \underline{acttaccgc}\$\\
+\end{center}
+It is clear that sequences R and Q have many common substrings, they are: ac, ctc, gctac, ggtcagctatt and acttaccgc. Among those five common substrings, ac is the only substring that is not unique. It occurs more than once in both sequences. You can also observe that actually a, c, t, and g are common substrings of R and Q. However, they are not maximal, i.e. they are contained in at least one longer common substrings. We are only interested in those that are unique and of maximal length. For example, assuming d = 3, sequences R and Q in the previous example has four MUMs: ctc, gctac, ggtcagctatt, acttaccgc. Substring ac is not an MUM because its length is smaller than the value of d and it is not unique to both sequences.\\
+Our aim is to search for all these short common substrings. Given genomes R and Q, we need to find all common substrings which are unique and of maximal length. Each of such common substrings is known as Maximum Unique Match (MUM). For almost every conserved gene pairs, there exist at least one MUM which is unique to them. {\textbf The concept of MUM is important in whole genome alignment because a significantly long MUM is very likely to be part of the global alignment.}
+\subsubsection{Search MUMs in a suffix tree} 
+The key idea in this method is to build a suffix tree for genome R, a data structure which allows finding all distinct subsequences in a given sequence. The MUM search algorithm consists of three steps, they are as follows:
+\begin{algorithmic}
+  \STATE{Build a suffix tree for R}
+  \FOR{Every suffix of Q}
+  \STATE{Compare it by traversing the suffix tree of R}
+  \STATE{Mark every edge found in common between R and Q}
+  \STATE{For each marked path, suppose it represents the i-th suffix of R and the j-th suffix of Q.}
+  \IF{$R[i-1]\neq Q[j-1]$ and Match is in a leaf node}
+  \STATE{The path label of this marked node is a MUM}
+  \ENDIF
+  \ENDFOR
+\end{algorithmic}
+\subsubsection{Complexity analysis} 
+\begin{itemize}
+  \item \textbf{Step 1:} Building a suffix tree can be done in $O(n)$ time \cite{kurtz}.
+  \item \textbf{Step 2:} Marking internal nodes takes $O(n)$ time. 
+  \item \textbf{Step 3:} Comparing R[i-1] and Q[i-1] for each marked nodes takes $O(n+m)$ time as the number of marked nodes is at most $n+m-2$. By the same reasoning, traversing all internal nodes to extracting MUMs also takes $(n+m)$ time.
+  \item In total,this algorithm takes $O(n+m)$ time to find all MUMs of the input sequences.
+  \item The space complexity of this method is $O\left(n\log n\right)$ bits as we need to store the suffix tree of the input sequence.
+\end{itemize}
+Based on some experiments, it is found that MUMs can cover 100\% of the known conserved gene pairs. Moreover, finding all MUMs can be done in linear time.
+\section{Pseudo Suffix Tree}
+A full-text index data structure is used to solve string-matching problems but when we focus in the search of Maximal Unique Matches then we require to make some observations of the properties of these full-text index data structures. A Maximal Unique Match is unique between a reference and query genome, so that we need to quickly get the uniqueness property in the reference and query genome. Since a reference genome is usually indexed by the data structure we may check which classic full-text index data structure is suitable for this task:
+\begin{itemize}
+  \item Suffix array: It performs a binary search until a unique match is found.
+  \item Suffix tree: It performs a traversal in suffix tree until it reaches a leaf node, this means a unique match in the whole string.
+  \item FM-index: It performs a backward search until a unique match is found.
+\end{itemize}
+Since we are searching for maximal and unique matches the suffix tree is the ideal data structure to do this kind of job. However, the space requirements are prohibitive when handling large genomes. Again the trade-off between time and space performance is a feature desired to find a suitable data structure. As we pointed out a unique match is easily found in a suffix tree because we only require to check if the match is in a leaf node.\\
+Therefore, we propose a new full-text index data structure a Pseudo Suffix Tree. This data structure has three components:
+\begin{itemize}
+  \item Direct access table: a set of prefixes of a fixed length $P$ from the top of the suffix tree. This table has entries in the form of an 2-bit encoding string of DNA (a:00,c:01,g:10,t:11) so that we can access in $O(1)$ to any element of this table with an encoded . 
+\end{itemize}
+
+\begin{thebibliography}{8}
+  \bibitem{Blast} Altschul, S. F. and Gish, W. and Miller, W. and Myers, E. W. and Lipman, D. J.: Basic local alignment search tool. J. Mol. Biol. 215, 403--410 (1990)
+  \bibitem{Fasta} D. J. Lipman, W. R. Pearson: Rapid and sensitive protein similarity searches. Science (New York, N.Y.), Vol. 227, No. 4693. (22 March 1985), pp. 1435-1441.
+  \bibitem{lazy} Giegerich, R., S. Kurtz, and J. Stoye.: Efficient implementation of lazy suffix trees. Softw. Pract. Exper 33 (2003): 1035-1049.
+  \bibitem{kurtz} S. Kurtz: Reducing the space requirement of suffix trees. Software: Practice and Experience, Vol. 29, No. 13. (November 1999), pp. 1149-1171.
+  \bibitem{abouelhoda} Abouelhoda, M. I., Kurtz, S., \& Ohlebusch, E.: Replacing suffix trees with enhanced suffix arrays. (2004) Journal of Discrete Algorithms, 2(1).
+  \bibitem{fm} Ferragina, P., and Manzini, G.: Opportunistic data structures with applications. In Proceedings of the 41st IEEE Symposium on Foundations of Computer Science. Redondo Beach, California, USA. pp. 390-398.
+  \bibitem{bwt} Burrows, M., and Wheeler, D.J.: A block-sorting lossless data compression algorithm. Technical report, Digital SRC, Research Report 124, 10 May 1994.
+  \bibitem{sa} Manber, U, and Myers, E.: Suffix arrays: a new method for on-line string searches. SIAM J. Comput., 22, 935-948.
+\end{thebibliography}
+
+\end{document}
