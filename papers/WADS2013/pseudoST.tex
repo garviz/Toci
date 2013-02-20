@@ -166,7 +166,7 @@ The 2-bit encoding string saved in the Direct access table is the key to access 
 The value of the Direct access table is a set of suffixes with a common prefix, see Figure \ref{fig:depth}. We need to store this suffixes because we are interested in the search of unique matches. To check if we have a unique match we need to reach a leaf node. The leaf node in a Suffix tree stores the position in the reference genome where the suffix starts and to save space the depth of the leaf node indicates the number of characters from the root until the leaf node which is the path inside the Suffix tree for this suffix. This depth in the leaf node allows us to continue reading the suffix until a mismatch occurs. The key in this table is the length to leaf nodes and the value is the list of suffixes.
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{depth.png}
+\includegraphics[scale=0.5]{Depth.png}
 \label{fig:depth}
 \caption{Set of suffixes with a length to leaf nodes for a reference genome to search Maximal Unique Matches.}
 \end{figure}
@@ -198,32 +198,39 @@ After we have read the Query, we have a list of MUM candidates. A MUM candidate 
 We drop these MUM candidates and we finally have a list of real MUMs with the following information: start position in Reference genome, start position in Query genome and length of MUM.
 \section{Implementation \& Results}
 Our main objective is to find Maximal Unique Matches and we evaluated how useful is our Pseudo Suffix Tree to search MUMs. We measure the access to the subset of suffixes which should be searched for MUMs for several lengths of the Direct Access Table. Our set of genomes were: 1kbp\footnote{bp is base pair and is the basic unit measure for genome data.}, 10kbp, 100kbp and a real genome (EcoliK12 and EcoliO157H7) of about 5Mbp.\\
-In Figure \ref{fig:1k} we show that a
+Our implementation is based on associative containers, the type used is map from the C++ language. The Direct Access Table is map because it allows a direct access of the mapped valued. The key is the 2-bit encoded string of the prefix and the value is the set of suffixes with the common prefix. The set of suffixes is also a map which has the key as the length until the leaf node in the Suffix Tree and the value is a vector with the list of suffixes with the same length. In this way we can access to any suffix with a common prefix and a required length. Although the map container allows a direct access to the elements of the Pseudo Suffix Tree, these map containers are implemented as a red black tree. The main consequence is logarithmic complexity for insertion and search.\\
+In Figures \ref{fig:1k,fig:10k,fig:100k} we show that a short length for the Direct Access Table requires to check more suffixes. When we increase the length of the common prefix we reduce the set of suffixes to search. In Figure \ref{fig:ecoli} we show that with a real genome the reduced subset of suffixes to search for is small enough compared with a naive solution. With a larger length in the Direct Access Table we reduced the set of suffixes to search from 31\% with a length of 11bp to 0.1\% with a length of 16bp.\\
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{1k.png}
 \label{fig:1k}
-\caption{MUM candidates that are not a real MUM.}
-\end{figure}
+\caption{Different lengths for Direct Access Table.}
+\end{figure} 
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{10k.png}
 \label{fig:10k}
-\caption{MUM candidates that are not a real MUM.}
+\caption{Different lengths for Direct Access Table.}
 \end{figure}
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{100k.png}
 \label{fig:100k}
-\caption{MUM candidates that are not a real MUM.}
+\caption{Different lengths for Direct Access Table.}
 \end{figure}
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{Ecoli.png}
 \label{fig:ecoli}
-\caption{MUM candidates that are not a real MUM.}
+\caption{Different lengths for Direct Access Table.}
 \end{figure}
-
+We also measured the access to the Pseudo Suffix Tree to search for MUMs, in Figure \ref{fig:pst} we show that Pseudo Suffix Tree is extremely slow. This is because we have to check for the whole set of suffixes for every suffix in the query genome.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{time.png}
+\label{fig:pst}
+\caption{Access time to get Suffixes in Pseudo Suffix Tree for Ecoli genome.}
+\end{figure}
 \begin{thebibliography}{8}
   \bibitem{Blast} Altschul, S. F. and Gish, W. and Miller, W. and Myers, E. W. and Lipman, D. J.: Basic local alignment search tool. J. Mol. Biol. 215, 403--410 (1990)
   \bibitem{Fasta} D. J. Lipman, W. R. Pearson: Rapid and sensitive protein similarity searches. Science (New York, N.Y.), Vol. 227, No. 4693. (22 March 1985), pp. 1435-1441.

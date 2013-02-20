@@ -334,7 +334,7 @@ Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint m
   for (leftq = query; leftq<rightq-prefix; leftq++) //Iterate query sequence
   {
       enc = encoding(leftq,prefix);
-      for (Suffixes::iterator it=table[enc].begin(); it!=table[enc].end(); ++it) //Iterate subset of encoding(querysuffix,prefix)
+      /*for (Suffixes::iterator it=table[enc].begin(); it!=table[enc].end(); ++it) //Iterate subset of encoding(querysuffix,prefix)
       {
           for (vector<Uint>::iterator lit=(*it).second.begin(); lit!=(*it).second.end(); ++lit) //Iterate over the suffixes in reference
           {
@@ -356,10 +356,9 @@ Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint m
                       A[N].Good = true;
                       N++;
                   }
-                  break;
               }
           }
-      }
+      }*/
   }
   end = omp_get_wtime(); 
   Process_Matches(A,N);

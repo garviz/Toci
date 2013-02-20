@@ -21,6 +21,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <omp.h>
+#include <papi.h>
 #include "types.h"
 #include "protodef.h"
 #include "errordef.h"
@@ -59,7 +60,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,
 using namespace std;
 
 int main(int argc, char *argv[])
-{
+{ 
     Sint retcode;
     MMcallinfo mmcallinfo;
     Multiseq subjectmultiseq;

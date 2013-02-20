@@ -479,6 +479,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   Uchar *filecontent;
   Location ploc;
   double start, finish;
+  double start1, finish1;
   Table table;
   //fprintf(stderr,"# construct suffix tree for sequence of length %lu\n", (long unsigned int) subjectmultiseq->totallength);
   /* fprintf(stderr,"# (maximum reference length is %lu)\n", (long unsigned int) getmaxtextlenstree());
@@ -500,7 +501,9 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   matchprocessinfo.chunks = mmcallinfo->chunks;
   matchprocessinfo.prefix = mmcallinfo->prefix;
   matchprocessinfo.table = table;
+  start1 = omp_get_wtime();
   createTable(&matchprocessinfo);
+  finish1 = omp_get_wtime();
   if(mmcallinfo->cmum)
   {
     INITARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
@@ -536,6 +539,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
   cerr << "createST=" << finish-start << ",";
+  cerr << "createTable=" << finish1-start1 << ",";
   //fprintf(stderr,"# Matches=%lu\n",(Sint)N);
   //freestree (&matchprocessinfo.stree);
   return 0;

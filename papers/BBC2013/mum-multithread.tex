@@ -103,7 +103,7 @@
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \usepackage[normalem]{ulem}
 \usepackage[noend]{algpseudocode}
-%\usepackage{algorithm}
+\usepackage{algorithm}
 \usepackage{epsfig}
 \usepackage{subfig}
 \usepackage{tabularx}
@@ -193,11 +193,7 @@ The problem of searching maximal unique matching for a minimum length between a 
 string and a query string has been
 identified in several applications, one of them is MUMmer \cite{Delcher2003}. Altough
 MUMmer's algorithm can perform searches of maximal unique matches (MUMs)
-with the following use of resources:
-\begin{itemize}
-  \item High use of main memory to store the reference string.
-  \item A null use of multi-core architectures.
-\end{itemize}
+with the following use of resources: High use of main memory to store the reference string and a null use of multi-core architectures.
 If the length of reference and query are very huge, the amount of operations to perform
 in the search of MUMs increases, see Table \ref{tbl:operations}.
 \begin{table}[ h!]
@@ -216,7 +212,7 @@ in the search of MUMs increases, see Table \ref{tbl:operations}.
   \label{tbl:operations}
 \end{table}
 The use of parallelism could help reduce the execution time for the search of maximal unique matches. One approach of
-parallelism is to take advantage of multi-core architectures nowadays, Figure \ref{algorithm} shows the process of our data-level parallelism technique.\\
+parallelism is to take advantage of multi-core architectures nowadays, Figure \ref{algorithm} shows the process of our data-level parallelism technique. In the first phase we construct the suffix tree for reference genome. The second phase splits the query genome in chunks of a fixed size (1 chunk per thread) and it performs the search for MUMs in the chunk, the list of MUMs found are MUM candidates. Phase 3 gets the real MUMs which are unique in the reference and query genome from the list of MUM candidates.
 \begin{figure}[htb]   
 \begin{center} 
   \includegraphics[width=7.5cm,height=5cm]{Phases.png}
@@ -269,11 +265,7 @@ In Figure \ref{fig:st} the match gtc which starts at $i+1$ in the query genome a
   \end{itemize}
   \end{enumerate}
   If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates as it is shown in Figure \ref{candidates}. If a match is found but it doesn't reach a leaf node then this match is dropped as it is shown in Figure \ref{candidates}. A MUM-candidate is saved in an array of type MUM-candidate which has the following information:
-  \begin{itemize}
-    \item Position in reference sequence.
-    \item Position in query genome.
-    \item Length of match.
-  \end{itemize}
+Position in reference sequence, Position in query genome and Length of match.
  \begin{figure}[htb]  
  \begin{center} 
   \includegraphics[width=6.5cm,height=4cm]{MUM-candidates.png}
@@ -314,41 +306,20 @@ In Figure \ref{fig:st} the match gtc which starts at $i+1$ in the query genome a
  MUMs can cover 100\% of the known  conserved gene pairs. Moreover, finding all MUMs  can be done in almost linear time because of the use of suffix links without this artifact we should start every traversal in Suffix Tree from root node adding more execution time because we scan a longer string. Since a Suffix Tree can be queried several times, it is very likely to have more than one query  at the same time. So far, Algorithm \ref{alg:find} is a serial execution because it cannot check for more than one suffix at the same time.
 This problem of searching MUM has a time complexity of $O(m+k)$ where $m$ is the length of the query genome and $k$ is the number of maximal unique matches of some minimum length. This problem is a very high intensive computing task, for every substring in the query genome the search for a maximum unique match has to be performed.
 \section{Related work}
-Search of Maximal Unique Matches to do Whole Genome Alignment was proposed in \cite{Delcher1999}. There have been some previous work in the parallelization of search of matches in genomic data, like \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}, however these works are focused in fixed patterns and read alignment. On the other hand, there have been achievements in parallelization of Whole genome alignment like \cite{Meng2005}. The parallelization of searching MUMs with a suffix tree is research field not covered very deep, there is only one approach in \cite{Encarnac2011} but without access to source code to check theirs implementation and it is more focused with GPU and CPU hybrid architectures and suffix array.
+Search of Maximal Unique Matches to do Whole Genome Alignment was proposed in \cite{Delcher1999}. There have been some previous work in the parallelization of search of matches in genomic data, like \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}, however these works are focused in fixed patterns and read alignment. On the other hand, there have been achievements in parallelization of Whole genome alignment like \cite{Meng2005}. The parallelization of searching MUMs with a suffix tree is research field not covered very deep, there is only one approach in \cite{Encarnac2011} but without access to source code to check their implementation and it is more focused with GPU and CPU hybrid architectures and suffix array.
 \section{Parallel algorithm}  
-%General-purpose, commodity CPUs currently have SIMD (Single Instruction Multiple Data) functional units and corresponding SIMD instructions. This kind of CPUs allow to be used in several ways of parallel techniques, such as data-level parallelism. \\
-%The availability of multi-core architecture makes possible to execute the same task (MUM search) with a different kind of data (chunks of query genome).\\
 The sequential version of the MUM search between a reference and query genome trades high computation time when executed in a single machine. \\
 Previously the algorithm for sequence alignment was described in detail. Now our own proposal of a parallelization of MUM search within multi-core architecture is explained.\\
-There are two resources to improve in this algorithm:
-\begin{itemize}
-\item Memory usage.
-\item CPU.
-\end{itemize}
-The former was generally improved because it allows being executed in architectures where there is no memory restriction. To improve the performance of the algorithm a data-level parallelism technique is deployed in advance to genome alignment.\\
+There are two resources to improve in this algorithm: Memory usage and CPU. The former was generally improved because it allows being executed in architectures where there is no memory restriction. To improve the performance of the algorithm a data-level parallelism technique is deployed in advance to genome alignment.\\
 Our technique is divided in three phases following:
 \begin{enumerate}
 \item Splitting query genome data (chunks) according to the number of available cores using 1 thread per core.
 \item Parallel execution of the task of Algorithm \ref{alg:find} for every chunk then every thread has its own list of MUM-candidates.
 \item Get the final list of MUMs from every MUM-candidate list of all threads.
 \end{enumerate}
-<<<<<<< HEAD
-The following Figure \ref{algorithm} shows the process of our data-level parallelism technique.
-\begin{figure}[htb]  
-\begin{center} 
-  \includegraphics[width=4.5cm,height=4cm]{Phases.png}
-\end{center} 
-\caption{Find MUMs in multicore architectures for whole genome alignment.} 
-\label{algorithm} 
-\end{figure} 
-The division of genome data was used using the paradigm of data-level parallelism which consists of a generation of chunks of a query sequence with a fixed size. 
-=======
 The division of genome data was used using the paradigm of data-level parallelism which consists of a generation of chunks of a query sequence with a fixed size. The chunk size was computed with query genome length divided by number of available threads.\\
->>>>>>> e0176a900032e6a5ff5334778a22bd8f9f71d521
 The main idea behind using a Maximal Unique Match (MUM): it is possible to cover a huge region of a genome when reference and query genomes are very closely related. However 
-to get a MUM, it requires an important feature its uniqueness. 
-%We had to face with concept while we evaluated different ways to implement the data-level parallelism. 
-Uniqueness can only be found when a whole genome is checked, see Figure \ref{Whole-MUM}. If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read. In Figure \ref{Whole-MUM} is shown the consequences of using chunks for query genome. Meanwhile we may speedup the MUM search we need to deal with the discard of MUM-candidates which are not a real MUM. So that, after finding all MUM-candidates for every thread we need to verify which of MUM-candidates are MUM.\\
+to get a MUM, it requires an important feature its uniqueness. Uniqueness can only be found when a whole genome is checked, see Figure \ref{Whole-MUM}. If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read. In Figure \ref{Whole-MUM} is shown the consequences of using chunks for query genome. Meanwhile we may speed up the MUM search we need to deal with the discard of MUM-candidates which are not a real MUM. So that, after finding all MUM-candidates for every thread we need to verify which of MUM-candidates are MUM.\\
 \begin{figure}[htb]  
 \begin{center} 
   \includegraphics[width=6cm,height=3cm]{Whole-MUM.png}
@@ -362,22 +333,9 @@ In Figure \ref{algorithm} we can see phase 3 which involves to extract the list 
 \subsection*{Split query genome}  
 As it was previously explained, the approach is to use a fixed size division of query genome. To split query genome the algorithm needs to know in advance how many chunks will be used. Then every chunk is computed with two pointers (left and right end) which points out query genome in main memory.
 \subsection*{Finding MUMs}
-The parallelization is carried out with OpenMP, the Algorithm \ref{alg:find} is applied for every chunk. The algorithm to search MUMs is a process which can be executed without any data dependency. However, when we split a query sequence the following problems arise:
-\begin{itemize}
-  \item Chunk size is a performance factor.
-  \item Different MUM-candidate in query sequence:
-    \begin{itemize}
-      \item Additional MUMs: this is because we cannot know if the MUM-candidate is unique or not.
-      \item Lost MUMs: we may skip MUMs because of the lack of control in pointers to query genome, that is every thread should point to the real value in the query genome.
-    \end{itemize}
-\end{itemize}
+The parallelization is carried out with OpenMP, the Algorithm \ref{alg:find} is applied for every chunk. The algorithm to search MUMs is a process which can be executed without any data dependency. However, when we split a query sequence the following problems arise: Chunk size is a performance factor because we need to have an ideal size to have balanced workload among threads; Different MUM-candidate in query sequence: additional MUMS because we cannot know if the MUM-candidate is unique or not and Lost MUMs: we may skip MUMs because of the lack of control in pointers to query genome, that is every thread should point to the real value in the query genome.\\
 The total number of iterations is the number of chunks created. Every iteration means the whole search of MUMs within a chunk, following the Algorithm \ref{alg:find}, if the right end of chunk is not the end of the query sequence and there are still nucleotides to match then traversal of suffix tree until it occurs a mismatch or a MUM-candidate is found.\\
-The key factors in this phase are:
-\begin{itemize}
-  \item Number of chunks: every chunk is private for each thread.
-  \item Size of chunks: delimiters for chunks are private for each thread.
-  \item Number of threads.
-\end{itemize}
+The key factors in this phase are: number of chunks (every chunk is private for each thread), size of chunks (delimiters for chunks are private for each thread) and number of threads.
 \subsection*{Get real MUMs}
 This phase is applied with an algorithm for the set of MUM-candidates. These are ordered with quicksort according to position in query sequence. Every thread has found a set of MUM-candidates from previous phase but all threads don't produce the MUM-candidates in order. That's why a quicksort is required.\\
 After quicksort we need to get the real MUMs. A real MUM is unique in the whole reference and query genome. Those MUM-candidates which are overlapped by bigger MUMs are discarded too, see Figure \ref{real-mums} where MUM-candidate in orange colour is discarded because another MUM-candidate has a larger length and they have same match in the reference genome.
@@ -414,12 +372,7 @@ To verify that our approach, can have a better performance to search MUMs of a q
     \item Query: Mouse chromosome 16 single fasta file
   \end{itemize}
 \end{itemize}
-The main objective of the test was to check the performance to search MUMs in multi-core architectures by using OpenMP (threads). The variables to control were:
-\begin{enumerate}
-  \item Number of chunks for query genome.
-  \item Number of threads: from 1 to 24 threads with affinity.
-  \item OpenMP scheduling: static with chunk size of 1.
-\end{enumerate}
+The main objective of the test was to check the performance to search MUMs in multi-core architectures by using OpenMP (threads). The variables to control were: number of chunks for query genome, number of threads: from 1 to 24 threads with affinity and OpenMP scheduling: static with chunk size of 1.\\
 Moreover, the use of Memory Bandwidth was measured with the tool likwid\footnote{Measure hardware performance counters on Intel and AMD processors.}, the use of Memory Bandwidth was checked only in the search of MUMs. The times were collected for the total execution time and the time spent in the parallel region of OpenMP. This parallel region is the algorithm to search MUMs.\\
 One key aspect of the several tests deployed was to assure the execution of every thread in a single core, that is no other thread is competing for the same cache. Affinity is a requirement because we need to ensure the scalability of our proposal, without affinity even a number of threads below the number of cores might be in the same core. Affinity ensures us a proper use of performance in a multi-core architecture.\\
 The construction of the suffix tree for the reference genome of length 35.45[Mbp] takes 20.66[s] to construct and it uses 608[MB] of memory. The minimum length for a MUM was:20 , 50 and 100 [bp]. The query sequence of length 95.28[Mbp] was divided in chunks equal to the available threads, the total number of MUMs found were 102844 MUMs of minimum length 20[bp], 1410 MUMs of minimum length 50[bp] and 50 MUMs of minimum length 100[bp].\\
@@ -431,23 +384,26 @@ Figure \ref{fig:speedup} shows the speedup for the parallelization of searching 
   \caption{Speedup of our approach to search MUMs in multi-core architectures with OpenMP.}
   \label{fig:speedup}
  \end{figure}  
- Now we focus in the first experiment to search MUMs of minimum length 20[bp] because it gives more information about the process of searching MUMs. Our goal is to get the best performance of a multicore architecture while searching MUMs and from the Figure \ref{fig:speedup} we can watch a poor performance with more than one thread per core. The reason of this behavior is because the traversal of suffix tree makes the search of MUMs a high intensive memory bound problem. So that the processor is waiting for the next portion of data to traverse the suffix tree. To confirm this idea we measured with PAPI the following counters:
- \begin{itemize}
-   \item Total cycles.
-   \item Resources stalls.
- \end{itemize}
- From these hardware counters we get the index of stalls for resources in the multi-core architecture with the Formula \ref{eq:stalls}.
- \begin{equation}
-   Stalls=\frac{Resources stalls}{Total cycles}
-   \label{eq:stalls}
- \end{equation}
- In Figure \ref{fig:stalls} we can confirm that even though the index of stalls is almost the same for different set of threads the index of stalls with 24 threads is almost the same as with only one thread. As a consequence we get a multi-core architecture with a poor performance with more than one thread per core.
+ Now we focus in the first experiment to search MUMs of minimum length 20[bp] because it gives more information about the process of searching MUMs. Our goal is to get the best performance of a multicore architecture while searching MUMs and from the Figure \ref{fig:speedup} we can watch a poor performance with more than one thread per core. The reason of this behavior is because the traversal of suffix tree makes the search of MUMs a high intensive memory bound problem. So that the processor is waiting for the next portion of data to traverse the suffix tree. To confirm this idea we measured with PAPI the following counters: Total cycles, Total instructions, L3 total cache misses and TLB misses.\\
+ From these hardware counters we get the CPI in Figure \ref{fig:CPI} which shows that our code has still to be improved to reduce the CPI value. We are interested in have a good performance when using a multi-core architecture so that in Figure \ref{fig:speedup} we need to identify the reason of the reduced performance when using more than one thread per core. The reason is because when we are using 24 threads the cache misses rises as it is shown in Figure \ref{fig:misses}. Moreover we show in Figure \ref{fig:tlb} that TLB misses does not have an impact in the performance with this data size.
  \begin{figure}[htb]
   \centering
-  \includegraphics[width=8.5cm,height=5cm]{stalls.png}
-  \caption{Resources stalls for search of MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.}
-  \label{fig:stalls}
- \end{figure}  
+  \includegraphics[width=8.5cm,height=5cm]{cpi.png}
+  \caption{CPI of search for MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.}
+  \label{fig:CPI}
+ \end{figure}
+ \begin{figure}[htb]
+  \centering
+  \includegraphics[width=8.5cm,height=5cm]{l3missrate.png}
+  \caption{L3 cache miss rate of search for MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.}
+  \label{fig:misses}
+ \end{figure}
+ \begin{figure}[htb]
+  \centering
+  \includegraphics[width=8.5cm,height=5cm]{tlbmisses.png}
+  \caption{TLB misses of search for MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.}
+  \label{fig:tlb}
+ \end{figure}
  To improve the performance of our approach the following proposals may be used:
 \begin{itemize}
   \item Prefetching: this may work because we know in advance what information from suffix tree and query sequence we need in every traversal of suffix tree. If we can allow the use of some part of suffix tree be stored and read in cache by several threads which request that substree. However, because we use suffix links to jump to another part of suffix tree so that a new part of suffix tree would have to be read.

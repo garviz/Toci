@@ -10,11 +10,11 @@ OMPP=$(HOME)/ompp
 
 CFLAGS  = -std=gnu++0x -m64 -fopenmp -fno-permissive -Wno-write-strings -Wno-format -msse4.2 -g -O3
 
-INCLUDE = -I/soft/papi-5.0.1/include/ -I$(OMPP)/include/
+INCLUDE = -I/soft/papi-5.0.1/include/ 
 
 LIBS    = -lstdc++ -lpapi
 
-LDFLAGS	= -L/soft/papi-5.0.1/lib -L$(OMPP)/lib/
+LDFLAGS	= -L/soft/papi-5.0.1/lib 
 
 all:
 	$(CC) $(INCLUDE) $(CFLAGS) $(LDFLAGS) toci.cpp access.cpp construct.cpp mapfile.cpp space.cpp  seterror.cpp maxmatopt.cpp procopt.cpp safescpy.cpp maxmatinp.cpp procmaxmat.cpp multiseq.cpp findmaxmat.cpp findmumcand.cpp cleanMUMcand.cpp streedbg.cpp scanpref.cpp linkloc.cpp dfs.cpp depthtab.cpp distribute.cpp -o toci $(LIBS)

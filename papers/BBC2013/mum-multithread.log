@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  21 JAN 2013 12:51
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.27)  20 FEB 2013 13:22
 entering extended mode
  %&-line parsing enabled.
 **mum-multithread.tex
@@ -489,7 +489,22 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip52
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
+) (/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/share/texmf-texlive/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count107
+\float@exts=\toks21
+\float@box=\box34
+\@float@everytoks=\toks22
+\@floatcapt=\box35
+)
+\@float@every@algorithm=\toks23
+\c@algorithm=\count108
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \epsfxsize=\dimen116
 \epsfysize=\dimen117
@@ -520,20 +535,21 @@ Package caption Info: \@makecaption = \long macro:#1#2->\vskip \abovecaptionski
 p \footnotesize \sbox \@tempboxa {#1: #2}\ifdim \wd \@tempboxa >\hsize #1: #2\p
 ar \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }\
 fi \vskip \belowcaptionskip .
-\c@ContinuedFloat=\count107
+\c@ContinuedFloat=\count109
+Package caption Info: float package is loaded.
 Package caption Info: rotating package is loaded.
 )
-\c@KVtest=\count108
+\c@KVtest=\count110
 \sf@farskip=\skip53
 \sf@captopadj=\dimen124
 \sf@capskip=\skip54
 \sf@nearskip=\skip55
-\c@subfigure=\count109
-\c@subfigure@save=\count110
-\c@lofdepth=\count111
-\c@subtable=\count112
-\c@subtable@save=\count113
-\c@lotdepth=\count114
+\c@subfigure=\count111
+\c@subfigure@save=\count112
+\c@lofdepth=\count113
+\c@subtable=\count114
+\c@subtable@save=\count115
+\c@lotdepth=\count116
 \sf@top=\skip56
 \sf@bottom=\skip57
 ) (/usr/share/texmf-texlive/tex/latex/tools/tabularx.sty
@@ -543,7 +559,7 @@ Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen125
 \extrarowheight=\dimen126
-\NC@list=\toks21
+\NC@list=\toks24
 \extratabsurround=\skip58
 \backup@length=\skip59
 )
@@ -552,8 +568,8 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \TX@old@col=\dimen129
 \TX@target=\dimen130
 \TX@delta=\dimen131
-\TX@cols=\count115
-\TX@ftn=\toks22
+\TX@cols=\count117
+\TX@ftn=\toks25
 )
 (/usr/share/texmf-texlive/tex/latex/pdftricks/pdftricks.sty
 Package: pdftricks 2003/08/10 1.16 psTricks support in PDF (CVR/ACL)
@@ -572,7 +588,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-runsystem(touch /tmp/w18-test-2013121771)...disabled.
+runsystem(touch /tmp/w18-test-2013220802)...disabled.
 
 
 
@@ -586,27 +602,27 @@ Package: moreverb 2008/06/03 v2.3 `more' verbatim facilities
 
 (/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks23
-\verbatim@line=\toks24
+\every@verbatim=\toks26
+\verbatim@line=\toks27
 \verbatim@in@stream=\read1
 )
 \verbatim@out=\write4
-\tab@position=\count116
-\tab@size=\count117
-\listing@line=\count118
+\tab@position=\count118
+\tab@size=\count119
+\listing@line=\count120
 )
-\c@psfig=\count119
-\c@arraylength=\count120
-\c@ArrayIndex=\count121
-\c@zeroCtr=\count122
-\c@recordCtr=\count123
-\c@Ctr=\count124
-\c@f@irstCtr=\count125
-\c@s@econdCtr=\count126
+\c@psfig=\count121
+\c@arraylength=\count122
+\c@ArrayIndex=\count123
+\c@zeroCtr=\count124
+\c@recordCtr=\count125
+\c@Ctr=\count126
+\c@f@irstCtr=\count127
+\c@s@econdCtr=\count128
 )
 (/usr/share/texmf-texlive/tex/latex/pst-pdf/pst-pdf.sty
 Package: pst-pdf 2008/10/09 v1.1v PS graphics for pdfLaTeX (RN,HjG)
-\c@pspicture=\count127
+\c@pspicture=\count129
 Package pst-pdf Info: MODE: 1 (pdfTeX mode) on input line 214.
 
 (/usr/share/texmf-texlive/tex/latex/pstricks/pstricks.sty
@@ -620,27 +636,27 @@ Package: pstricks 2008/11/26 v0.40 LaTeX wrapper for `PSTricks' (RN,HV)
 \pst@dimd=\dimen135
 \pst@dimg=\dimen136
 \pst@dimh=\dimen137
-\pst@hbox=\box34
-\pst@boxg=\box35
-\pst@cnta=\count128
-\pst@cntb=\count129
-\pst@cntc=\count130
-\pst@cntd=\count131
-\pst@cntg=\count132
-\pst@cnth=\count133
-\pst@toks=\toks25
+\pst@hbox=\box36
+\pst@boxg=\box37
+\pst@cnta=\count130
+\pst@cntb=\count131
+\pst@cntc=\count132
+\pst@cntd=\count133
+\pst@cntg=\count134
+\pst@cnth=\count135
+\pst@toks=\toks28
 (/usr/share/texmf-texlive/tex/generic/pstricks/pstricks.con)
 \psunit=\dimen138
 \psxunit=\dimen139
 \psyunit=\dimen140
 \pslinewidth=\dimen141
-\pst@customdefs=\toks26
+\pst@customdefs=\toks29
 \pslinearc=\dimen142
-\everypsbox=\toks27
+\everypsbox=\toks30
 \psframesep=\dimen143
 \pslabelsep=\dimen144
 \pst@shift=\dimen145
-\theoverlaybox=\box36
+\theoverlaybox=\box38
 )
 File: pstricks.tex 2009/05/19 v1.29 `PSTricks' (tvz,hv)
 
@@ -662,30 +678,26 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 ))
-\ppf@output=\toks28
+\ppf@output=\toks31
 
 (/usr/share/texmf/tex/latex/preview/preview.sty
 Package: preview 2008/02/03 11.85 (AUCTeX/preview-latex)
-\pr@snippet=\count134
-\pr@box=\box37
-\pr@output=\toks29
+\pr@snippet=\count136
+\pr@box=\box39
+\pr@output=\toks32
 )
 (/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
 File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 )
 (/usr/share/texmf-texlive/tex/latex/environ/environ.sty
 Package: environ 2008/06/18 v0.2 A new way to define environments
-\@emptytoks=\toks30
-\@envbody=\toks31
+\@emptytoks=\toks33
+\@envbody=\toks34
 ))
 \openout4 = `tmp.inputs'.
 
 
-(./mum-multithread.aux
-
-LaTeX Warning: Label `algorithm' multiply defined.
-
-)
+(./mum-multithread.aux)
 \openout1 = `mum-multithread.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 126.
@@ -702,7 +714,6 @@ LaTeX Font Info:    ... okay on input line 126.
 LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 126.
 LaTeX Font Info:    Try loading font information for OMS+txsy on input line 126
 .
-
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
@@ -731,16 +742,16 @@ File: ot1txr.fd 2000/12/15 v3.1
 )
 (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count135
+\scratchcounter=\count137
 \scratchdimen=\dimen146
-\scratchbox=\box38
-\nofMPsegments=\count136
-\nofMParguments=\count137
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count138
+\scratchbox=\box40
+\nofMPsegments=\count138
+\nofMParguments=\count139
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count140
 \MPscratchDim=\dimen147
-\MPnumerator=\count139
-\everyMPtoPDFconversion=\toks33
+\MPnumerator=\count141
+\everyMPtoPDFconversion=\toks36
 )
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -810,26 +821,9 @@ LaTeX Font Info:    Try loading font information for U+txsyc on input line 182.
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for OMS+txr on input line 198.
-
-
-(/usr/share/texmf-texlive/tex/latex/txfonts/omstxr.fd
-File: omstxr.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 198.
-
 <Phases.png, id=1, 667.49374pt x 438.63875pt>
 File: Phases.png Graphic file (type png)
  <use Phases.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
-
- []
-
 <elsevier-logo-3p.pdf, id=3, 46.37325pt x 51.19125pt>
 File: elsevier-logo-3p.pdf Graphic file (type pdf)
 
@@ -847,42 +841,80 @@ Overfull \vbox (41.19112pt too high) has occurred while \output is active []
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
  <./elsevier-logo-3p.pdf> <./SDlogo-3p.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
+
+ []
+
+
 
 pdfTeX warning: pdflatex (file ./st-mum.pdf): PDF inclusion: found PDF version 
 <1.5>, but at most version <1.4> allowed
 <st-mum.pdf, id=23, 407.121pt x 250.53601pt>
 File: st-mum.pdf Graphic file (type pdf)
- <use st-mum.pdf> [2 <./Phases.png>] <MUM-candidates.png, id=31, 475.7775pt x 2
-99.1175pt>
+ <use st-mum.pdf> [2 <./Phases.png>]
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 260.
+
+ (/usr/share/texmf-texlive/tex/latex/txfonts/omstxr.fd
+File: omstxr.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 260.
+
+<MUM-candidates.png, id=31, 475.7775pt x 299.1175pt>
 File: MUM-candidates.png Graphic file (type png)
+ <use MUM-candidates.png>
+[3 <./st-mum.pdf>] [4 <./MUM-candidates.png>]
+<Whole-MUM.png, id=44, 600.2425pt x 155.58125pt>
+File: Whole-MUM.png Graphic file (type png)
+ <use Whole-MUM.png>
+Underfull \hbox (badness 10000) in paragraph at lines 320--331
 
-<use MUM-candidates.png>
+ []
 
-! LaTeX Error: Environment algorithm undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.285  \begin{algorithm}
-                        
-? 
-! Emergency stop.
- ...                                              
-                                                  
-l.285  \begin{algorithm}
-                        
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
- 
+[5 <./Whole-MUM.png>] <MUMs.png, id=49, 632.3625pt x 409.53pt>
+File: MUMs.png Graphic file (type png)
+ <use MUMs.png>
+<Remove-MUMs.png, id=50, 632.3625pt x 410.53375pt>
+File: Remove-MUMs.png Graphic file (type png)
+ <use Remove-MUMs.png>
+[6 <./MUMs.png> <./Remove-MUMs.png>]
+<speedup.png, id=56, 362.3136pt x 217.7736pt>
+File: speedup.png Graphic file (type png)
+ <use speedup.png>
+<cpi.png, id=57, 362.3136pt x 218.2554pt>
+File: cpi.png Graphic file (type png)
+ <use cpi.png>
+<l3missrate.png, id=58, 362.7954pt x 217.7736pt>
+File: l3missrate.png Graphic file (type png)
+ <use l3missrate.png>
+<tlbmisses.png, id=59, 362.7954pt x 217.7736pt>
+File: tlbmisses.png Graphic file (type png)
+ <use tlbmisses.png> [7 <./speedup.png>] [8 <./cpi.png> <./l3missrate.png>] (./
+mum-multithread.bbl
+Missing character: There is no Ä in font txr!
+Missing character: There is no Ÿ in font txr!
+) [9 <./tlbmisses.png>] (./mum-multithread.aux) ) 
 Here is how much of TeX's memory you used:
- 6523 strings out of 493848
- 86346 string characters out of 1152823
- 174212 words of memory out of 3000000
- 9646 multiletter control sequences out of 15000+50000
- 39509 words of font info for 102 fonts, out of 3000000 for 9000
+ 6701 strings out of 493848
+ 88922 string characters out of 1152823
+ 176715 words of memory out of 3000000
+ 9804 multiletter control sequences out of 15000+50000
+ 39749 words of font info for 103 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,12n,42p,1155b,339s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 44i,12n,42p,1155b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/font
+s/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr
+/share/texmf-texlive/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texmf-texlive/fonts/type1/
+public/txfonts/rtxr.pfb></usr/share/texmf-texlive/fonts/type1/public/txfonts/tx
+sy.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
+exmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on mum-multithread.pdf (9 pages, 542243 bytes).
+PDF statistics:
+ 107 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+
