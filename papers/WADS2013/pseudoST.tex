@@ -197,7 +197,33 @@ After we have read the Query, we have a list of MUM candidates. A MUM candidate 
 \end{figure}
 We drop these MUM candidates and we finally have a list of real MUMs with the following information: start position in Reference genome, start position in Query genome and length of MUM.
 \section{Implementation \& Results}
-Our main objective is to find Maximal Unique Matches and we evaluated how useful is our Pseudo Suffix Tree to search MUMs. We measure the access time for every 
+Our main objective is to find Maximal Unique Matches and we evaluated how useful is our Pseudo Suffix Tree to search MUMs. We measure the access to the subset of suffixes which should be searched for MUMs for several lengths of the Direct Access Table. Our set of genomes were: 1kbp\footnote{bp is base pair and is the basic unit measure for genome data.}, 10kbp, 100kbp and a real genome (EcoliK12 and EcoliO157H7) of about 5Mbp.\\
+In Figure \ref{fig:1k} we show that a
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{1k.png}
+\label{fig:1k}
+\caption{MUM candidates that are not a real MUM.}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{10k.png}
+\label{fig:10k}
+\caption{MUM candidates that are not a real MUM.}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{100k.png}
+\label{fig:100k}
+\caption{MUM candidates that are not a real MUM.}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Ecoli.png}
+\label{fig:ecoli}
+\caption{MUM candidates that are not a real MUM.}
+\end{figure}
+
 \begin{thebibliography}{8}
   \bibitem{Blast} Altschul, S. F. and Gish, W. and Miller, W. and Myers, E. W. and Lipman, D. J.: Basic local alignment search tool. J. Mol. Biol. 215, 403--410 (1990)
   \bibitem{Fasta} D. J. Lipman, W. R. Pearson: Rapid and sensitive protein similarity searches. Science (New York, N.Y.), Vol. 227, No. 4693. (22 March 1985), pp. 1435-1441.

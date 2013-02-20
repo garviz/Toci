@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  19 FEB 2013 14:26
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  20 FEB 2013 12:11
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -277,31 +277,44 @@ File: pseudost-mum.png Graphic file (type png)
 File: Whole-MUM.png Graphic file (type png)
  <use Whole-MUM.png> [6 <./DAT.png>] [7 <./depth.png> <./Leaf.png>] [8 <./pseud
 ost-mum.png (PNG copy)>]
-[9 <./Whole-MUM.png>] (./pseudoST.aux) ) 
+<1k.png, id=50, 362.3136pt x 218.2554pt>
+File: 1k.png Graphic file (type png)
+ <use 1k.png>
+<10k.png, id=51, 362.3136pt x 217.7736pt>
+File: 10k.png Graphic file (type png)
+ <use 10k.png>
+<100k.png, id=52, 362.3136pt x 217.7736pt>
+File: 100k.png Graphic file (type png)
+ <use 100k.png>
+<Ecoli.png, id=53, 362.7954pt x 218.2554pt>
+File: Ecoli.png Graphic file (type png)
+ <use Ecoli.png> [9 <./Whole-MUM.png> <./1k.png>] [10 <./10k.png> <./100k.png> 
+<./Ecoli.png>] [11] (./pseudoST.aux) ) 
 Here is how much of TeX's memory you used:
- 2015 strings out of 493848
- 24128 string characters out of 3149207
- 86544 words of memory out of 3000000
- 5283 multiletter control sequences out of 15000+200000
+ 2039 strings out of 493848
+ 24392 string characters out of 3149207
+ 86579 words of memory out of 3000000
+ 5303 multiletter control sequences out of 15000+200000
  10540 words of font info for 42 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 29i,8n,24p,810b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2009/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2009/texmf-dist/font
-s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2009/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2009/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2009/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr9.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt9.pfb>
-Output written on pseudoST.pdf (9 pages, 356187 bytes).
+ 29i,9n,24p,810b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2009/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2009/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2009/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2009/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmtt9.pfb>
+Output written on pseudoST.pdf (11 pages, 520012 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
+ 110 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
