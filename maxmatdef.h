@@ -21,7 +21,12 @@
 #include "mumcand.h"
 #include "protodef.h"
 
-typedef map<Uint, vector<Uint> > Suffixes;
+struct suffix
+{
+    Uint depth, position;
+};
+
+typedef vector<suffix> Suffixes;
 typedef map<Uint, Suffixes > Table;
 //}
 

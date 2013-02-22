@@ -416,7 +416,6 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     {
       return -1;
     }
-    PROCESSREALMUMS;
   } 
   if(matchprocessinfo->reversecomplement)
   {
@@ -436,7 +435,6 @@ static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,
     {
       return -2;
     }
-    PROCESSREALMUMS;
   }
   return 0;
 } 

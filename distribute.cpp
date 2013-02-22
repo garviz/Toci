@@ -71,32 +71,44 @@ Uint encoding(Uchar *example, int wordsize)
  *  reaches the max characters to save in table.
  * =====================================================================================
  */
-void fillTable(Suffixtree *stree, Table &table, Uchar *buffer,Uint *btptr, short int wordsize)
+void fillTable(Suffixtree *stree, Table& table, Uchar *buffer,Uint *btptr, short int wordsize)
 {
-  Uint *largeptr, *succptr, leafindex, succdepth, edgelen, succ, distance, 
-       depth, headposition;
-  Uchar *leftpointer;
+  Uint *largeptr, *succptr, leafindex, succdepth, succ, depth, headposition, distance, enc;
+  Uchar *ptr, *end;
   
-  size_t size = std::strlen((const char*)buffer);
+  size_t size;
   int i;
-  vector<Uint> v;
+  suffix tmp;
   Suffixes s;
   GETBOTH(depth,headposition,btptr);
   succ = GETCHILD(btptr);
   do 
-  {
+  { 
+    size = strlen((const char *)buffer);
     if(ISLEAF(succ))
     {
       leafindex = GETLEAFINDEX(succ);
-      leftpointer = stree->text + depth + leafindex;
-      Uchar *ptr;
       if (size < wordsize)
       {
-          for (i=size, ptr=leftpointer; ptr<=stree->sentinel && ptr < leftpointer + wordsize; ptr++, i++)
-              buffer[size+i]=*ptr;
-          buffer[size+i]='\0';
-      } 
-      v.push_back(leafindex);
+          for (i=size, ptr=stree->text+depth+leafindex; i < wordsize && ptr<=stree->sentinel; ptr++, i++)
+              buffer[i]=*ptr;
+          buffer[i]='\0';
+          tmp.depth=depth;
+          tmp.position=leafindex;
+          s.push_back(tmp);
+          enc = encoding(buffer,wordsize);
+          if (table.count(enc))
+              table[enc].insert(table[enc].end(),s.begin(),s.end());
+          else
+              table[enc] = s;
+      }
+      else
+      {
+          tmp.depth=depth;
+          tmp.position=leafindex;
+          s.push_back(tmp);
+      }
+      buffer[size]='\0';
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
     } else
     {
@@ -104,56 +116,40 @@ void fillTable(Suffixtree *stree, Table &table, Uchar *buffer,Uint *btptr, short
       if (size < wordsize)
       {
           GETBOTH(succdepth,headposition,succptr);
-          leftpointer = stree->text + depth + headposition;
-          edgelen = succdepth - depth;
-          Uchar *ptr, *end;
-          end=leftpointer + edgelen - 1;
-          for (i=size, ptr=leftpointer; ptr<=end && ptr < leftpointer + wordsize; ptr++, i++)
+          end=stree->text + depth + headposition + succdepth - depth - 1;
+          for (i=size, ptr=stree->text+depth+headposition; i < wordsize &&  ptr<=end; ptr++, i++)
               buffer[i]=*ptr;
           buffer[i]='\0';
       }
       fillTable(stree,table,buffer,succptr,wordsize);
+      buffer[size]='\0';
       succ = GETBROTHER(succptr);
     }  
    } while(!NILPTR(succ));
-   Uint enc = encoding(buffer,wordsize);
+   enc = encoding(buffer,wordsize);
    if (table.count(enc))
-   {
-       s = table[enc];
-       if (s.count(depth))
-       {
-           s[depth].insert(s[depth].end(),v.begin(),v.end());
-           table[enc] = s;
-       }
-       else
-       {
-           s[depth] = v;
-           table[enc] = s;
-       }
-   }
+       table[enc].insert(table[enc].end(),s.begin(),s.end());
    else
-   {
-       s[depth] = v;
        table[enc] = s;
-   }
 } 
 
 void createTable(Matchprocessinfo *matchprocessinfo) 
-{
+ {
     Uint *largeptr, *btptr, *succptr, *rcptr, i, succdepth, distance, nodeaddress, succ, depth, child, brother, headposition, suffixlink;
     Uint leafindex, edgelen;
     Uchar *leftpointer, *buffer;
-    buffer = (Uchar *)malloc(sizeof(Uchar *)*matchprocessinfo->prefix);
+    
+    buffer = (Uchar *) malloc(matchprocessinfo->prefix*sizeof(Uchar *));
     for(rcptr = matchprocessinfo->stree.rootchildren; 
         rcptr <= matchprocessinfo->stree.rootchildren + LARGESTCHARINDEX;rcptr++)
-    { 
+     { 
         if(*rcptr != UNDEFINEDREFERENCE)
-         {
-            buffer[0]=(Uchar) (rcptr - matchprocessinfo->stree.rootchildren);
-            buffer[1]='\0';
+        {
+            buffer[0] = (Uchar) (rcptr - matchprocessinfo->stree.rootchildren);
+            buffer[1] = '\0';
             btptr = matchprocessinfo->stree.branchtab + GETBRANCHINDEX(*rcptr);
             fillTable(&matchprocessinfo->stree,matchprocessinfo->table,buffer,btptr,matchprocessinfo->prefix);
-          }
+        }
     } 
 }
 

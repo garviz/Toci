@@ -6,7 +6,6 @@
   code base.
 */
 #include <string.h>
-#include <google/sparsetable>
 #include "types.h"
 #include "intbits.h"
 #include "visible.h"
@@ -31,8 +30,6 @@
           processloc(stree,&loc);\
         }
 
-using google::sparsetable;
-
 void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,
                                 Uchar *right)
 {
@@ -44,13 +41,13 @@ void showthesymbolstring(FILE *fp,Uchar *tlast,Uchar *left,
       (void) putc('~',fp);
       return;
     } 
-    if(ptr > left + 10)
+    if(ptr > left + 20)
     {
       fprintf(fp,"...");
       return;
-    }
+     }
     SHOWCHARFP(fp,*ptr);
-  }
+  } 
 }
 
 char *showsymbol(Uchar c)
@@ -274,29 +271,6 @@ void checkstree(Suffixtree *stree)
               (Sint) identitycount);
 }
 
-void extractsubtree(Suffixtree *stree,Uint *btptr,sparsetable<Uint> &tNodes)
-{
-    Uint nodeaddress, suffixlink, depth, headposition, *largeptr, distance; 
-  for(Uint i=UintConst(1); i < stree->nodecount; i++)
-  {
-    nodeaddress = BRADDR2NUM(stree,btptr);
-    GETBOTH(depth,headposition,btptr);
-    if(ISLARGE(*btptr))
-    {
-        suffixlink = getlargelinkstree(stree,btptr,depth);
-        btptr += LARGEINTS;
-    } else
-    { 
-        suffixlink = nodeaddress + SMALLINTS;
-        btptr += SMALLINTS;
-    }
-    if (nodeaddress < tNodes.size())
-        tNodes[nodeaddress] = suffixlink;
-    else
-        cerr << "# nodeaddress " << nodeaddress << endl;
-  }
-}
-
 Uint getMaxNodesNumber(Suffixtree *stree)
 {
   Uint nodeaddress, suffixlink, depth, headposition, *btptr, *largeptr, distance; 
@@ -328,16 +302,14 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
   succ = GETCHILD(btptr);
   do 
   {
-    fprintf(stderr,"%*.*s",(int) indent,(int) indent,"");
-    fprintf(stderr,"\n# D-%lu ", indent+1);
+    printf("%*s", indent,"");
     if(ISLEAF(succ))
-    { 
+    {  
       SHOWINDEX((Uint) succ);
       leafindex = GETLEAFINDEX(succ);
       leftpointer = stree->text + depth + leafindex;
-      showthesymbolstring(stderr,stree->sentinel,leftpointer,stree->sentinel);
-      //cerr << endl;
-      /*fprintf(stdout,"%lu\n",getEdgelength(leftpointer,stree->sentinel));*/
+      showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+      fprintf(stdout,"\n");
       succ = LEAFBROTHERVAL(stree->leaftab[leafindex]);
     } else
     {
@@ -345,14 +317,13 @@ static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)
       GETBOTH(succdepth,headposition,succptr);
       leftpointer = stree->text + depth + headposition;
       edgelen = succdepth - depth;
-      //showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
-      //cerr << endl;
-      /*fprintf(stdout,"%lu\n",getEdgelength(leftpointer,leftpointer+edgelen-1));*/
+      showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + edgelen - 1);
+      fprintf(stdout,"\n");
       showsubtree(stree,indent+1,succptr);
       succ = GETBROTHER(succptr);
     } 
-  } while(!NILPTR(succ));
-}
+   } while(!NILPTR(succ));
+} 
 
 void showstree(Suffixtree *stree)
 {
@@ -366,27 +337,25 @@ void showstree(Suffixtree *stree)
     succcount = 0;
     if(*rcptr != UNDEFINEDREFERENCE)
     {
-      cerr << "# D-1 ";
       if(ISLEAF(*rcptr))
-      {
+      { 
         SHOWINDEX((Uint) BRADDR2NUM(stree,rcptr));
         leftpointer = stree->text + GETLEAFINDEX(*rcptr);
-        showthesymbolstring(stderr,stree->sentinel,leftpointer,stree->sentinel);
-        //fprintf(stdout,"%lu\n",getEdgelength(leftpointer,stree->sentinel));
-        //cerr << endl;
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,stree->sentinel);
+        fprintf(stdout,"\n");
       } else
-      {
+      { 
         btptr = stree->branchtab + GETBRANCHINDEX(*rcptr);
         GETBOTH(succdepth,headposition,btptr);
         leftpointer = stree->text + headposition;
-        //showthesymbolstring(stderr,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
-        //fprintf(stdout,"%lu\n",getEdgelength(leftpointer,leftpointer+succdepth-1));
+        showthesymbolstring(stdout,stree->sentinel,leftpointer,leftpointer + succdepth - 1);
+        fprintf(stdout,"\n");
         showsubtree(stree,UintConst(1),btptr);
-      }
-      cerr << endl;
+      } 
+      cout << endl;
     }
   }
-  fprintf(stderr,"# ~\n");
+  fprintf(stdout,"# ~\n");
 }
 
 void showstate(Suffixtree *stree)

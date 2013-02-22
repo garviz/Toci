@@ -20,7 +20,7 @@
 #include "streetyp.h"
 #include "maxmatdef.h"
 
-void fillTable(Suffixtree *stree,Table &table,Uchar *buffer,Uint *btptr, short int wordsize);
+void fillTable(Suffixtree *stree,Table& table,Uchar *buffer,Uint *btptr, short int wordsize);
 Uint encoding(Uchar *example, int wordsize);
 void createTable(Matchprocessinfo *matchprocessinfo);
 void *Safe_realloc  (void * Q, size_t Len);

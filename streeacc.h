@@ -9,10 +9,7 @@
 #ifndef STREEACC_H
 #define STREEACC_H
 
-#include <google/sparsetable>
 #include "streehuge.h"
-
-using google::sparsetable;
 
 #define SHOWVAL(S)    fprintf(stderr,"#%s %lu\n",#S,(Sint) S)
 #define SETVAL(E,VAL) *(E) = VAL;\
@@ -204,25 +201,25 @@ using google::sparsetable;
 #define SHOWINDEX(NODE)\
         if((NODE) == UNDEFINEDREFERENCE)\
         {\
-          fprintf(stderr,"U");\
+          fprintf(stdout,"U");\
         } else\
         {\
           if(NILPTR(NODE))\
           {\
-            fprintf(stderr,"N");\
+            fprintf(stdout,"N");\
           } else\
           {\
             if(ISLEAF(NODE))\
             {\
-              fprintf(stderr,"Lf-%lu",(long unsigned int) GETLEAFINDEX(NODE));\
+              fprintf(stdout,"Lf-%lu ",(long unsigned int) GETLEAFINDEX(NODE));\
             } else\
             {\
               if(ISLARGE(stree->branchtab[GETBRANCHINDEX(NODE)]))\
               {\
-                fprintf(stderr,"L-%lu",(long unsigned int) GETBRANCHINDEX(NODE));\
+                fprintf(stdout,"L-%lu ",(long unsigned int) GETBRANCHINDEX(NODE));\
               } else\
               {\
-                fprintf(stderr,"S-%lu",(long unsigned int) NODE);\
+                fprintf(stdout,"S-%lu ",(long unsigned int) NODE);\
               }\
             }\
           }\
@@ -239,7 +236,6 @@ void showstree(Suffixtree *stree);
 void enumlocations(Suffixtree *stree,void(*processloc)(Suffixtree *stree,Location *));
 void checklocation(Suffixtree *stree,Location *loc);
 void showlocation(FILE *fp,Suffixtree *stree,Location *loc);
-void extractsubtree(Suffixtree *stree,Uint *btptr,sparsetable<Uint> &tNodes);
 Uint getMaxNodesNumber(Suffixtree *stree);
 #endif
 
