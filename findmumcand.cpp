@@ -281,11 +281,11 @@ static void  Process_Matches (Match_t * A, int N) //  Process matches  A [1 .. N
 
    //Filter_Matches (A, N);
 
-   for  (i = 0;  i <= N;  i ++)
+   /*for  (i = 0;  i <= N;  i ++)
    { 
        if  (A[i].Good && A[i].Len > 0)
            printf ("%8ld  %8ld  %8ld\n", A[i].R, A[i].Q, A[i].Len);
-   }
+   }*/
    return;
   }
 
@@ -336,35 +336,54 @@ Sint findmumcandidates(Uchar *reference, Uint referencelen, Table &table, Uint m
       cout << endl;
   }*/
   A = (Match_t *) Safe_malloc (Size * sizeof (Match_t));
+  /*vector<Uint> v, tmp;
+  map<Uint,vector<Uint>> check;*/
   start = omp_get_wtime();
   for (leftq = query; leftq<rightq-prefix; leftq++) //Iterate query sequence
   {
       enc = encoding(leftq,prefix);
-      //cout << (Uint) (leftq-query)+1 << "->" << enc << endl;
-      for (Suffixes::iterator i=table[enc].begin(); i!=table[enc].end(); ++i) //Iterate over the suffixes in reference
+      /*v.push_back((Uint) (leftq-query));
+      if (check.count(enc))
+          check[enc].insert(check[enc].end(),v.begin(),v.end());
+      else
+          check[enc]=v;*/
+      if (table.count(enc))
       {
-          leftr = reference+(*i).position;
-          if ((leftq == query || leftr == reference || *(leftq-1) != *(leftr-1)) && *(leftq+(*i).depth) == *(leftr+(*i).depth)) //Check left and right maximal
+          for (Suffixes::iterator i=table[enc].begin(); i!=table[enc].end(); ++i) //Iterate over the suffixes in reference
           {
+              leftr = reference+(*i).position;
+              if ((leftq == query || leftr == reference || *(leftq-1) != *(leftr-1)) && *(leftq+(*i).depth) == *(leftr+(*i).depth)) //Check left and right maximal
+              {
           //cout << (Uint) (leftq-query)+1 << '*' << (*i).position+1 << endl;
               //Uint length = lcp(leftq+(*i).depth+1,rightq,leftr+(*i).depth+1,rightr)+(*i).depth+1;
-              Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
-              if (length >= minmatchlength)
-              {
-                  if (N > Size)
+                  Uint length = lcp(leftq+prefix,rightq,leftr+prefix,rightr)+prefix;
+                  if (length >= minmatchlength)
                   {
-                      Size *= 2;
-                      A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
-                  }  
-                  A[N].R = (*i).position+1;
-                  A[N].Q = (Uint) (leftq-query)+1;
-                  A[N].Len = length;
-                  A[N].Good = true;
-                  N++;
+                      if (N > Size)
+                      {
+                          Size *= 2;
+                          A = (Match_t *) Safe_realloc (A, Size * sizeof (Match_t));
+                      }  
+                      A[N].R = (*i).position+1;
+                      A[N].Q = (Uint) (leftq-query)+1;
+                      A[N].Len = length;
+                      A[N].Good = true;
+                      N++;
+                  }
               }
           }
       }
   }
+  /*Uint comp=0;
+  for (map<Uint,vector<Uint>>::iterator i=check.begin();i!=check.end();++i)
+  {
+      comp+=(table[(*i).first].size()*(*i).second.size());
+      for (Suffixes::iterator j=table[(*i).first].begin(); j!=table[(*i).first].end(); ++j)
+      {
+          for (vector<Uint>::iterator k=(*i).second.begin(); k!=(*i).second.end(); ++k)
+              cout << (*j).position << ',' << *k << endl;
+      }
+  }*/
   end = omp_get_wtime(); 
   Process_Matches(A,N);
   fprintf(stderr,"# Time=%f,",(double) (end-start));
