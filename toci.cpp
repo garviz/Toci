@@ -3,104 +3,106 @@
  *
  *       Filename:  toci.cpp
  *
- *    Description:  Main program of Toci application
+ *    Description:  Main program to search for MUMs.
  *
  *        Version:  1.0
- *        Created:  27/09/11 19:53:29
+ *        Created:  26/02/13 13:52:28
  *       Revision:  none
- *       Compiler:  mpic++
+ *       Compiler:  gcc
  *
  *         Author:  Julio Cesar Garcia Vizcaino (garviz), garviz@garviz.mx
- *        Company:  CAOS
+ *        Company:  
  *
  * =====================================================================================
  */
 
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <cstring>
-#include <omp.h>
-#include <papi.h>
-#include "types.h"
-#include "protodef.h"
-#include "errordef.h"
-#include "maxmatdef.h"
-#include "distribute.h"
-
-/*EE
-  This module contains the main function of maxmatch3. It calls
-  the following three functions in an appropriate order and with
-  proper arguments.
-*/
-
-/*EE
-  The following function is imported form \texttt{maxmatopt.c}.
-*/
-
-Sint parsemaxmatoptions (MMcallinfo *maxmatcallinfo,
-                         int argc,
-                         char **argv);
-
-/*EE
-  The following function is imported form \texttt{maxmatinp.c}.
-*/
-
-Sint getmaxmatinput (Multiseq *subjectmultiseq,
-                     bool matchnucleotidesonly,
-                     char *subjectfile);
-
-/*EE
-  The following function is imported form \texttt{procmaxmat.c}.
-*/
-
-Sint procmaxmatches(MMcallinfo *mmcallinfo,
-                    Multiseq *subjectmultiseq);
+#include <divsufsort64.h>
+#include <divsufsort.h>
 
 using namespace std;
 
-int main(int argc, char *argv[])
+static long lcp(sauchar_t *start1,sauchar_t *start2,sauchar_t *end)
 { 
-    Sint retcode;
-    MMcallinfo mmcallinfo;
-    Multiseq subjectmultiseq;
-    int numprocs, rank, namelen;
-    double start, finish;
+  register sauchar_t *ptr1 = start1, *ptr2 = start2;
+  while(ptr1 <= end && ptr2 <= end && *ptr1 == *ptr2)
+  {
+    ptr1++;
+    ptr2++;
+  }
+  return (long) (ptr1-start1);
+}
 
-    /*MPI::Init(argc, argv);
-    numprocs = MPI::COMM_WORLD.Get_size();
-    rank  = MPI::COMM_WORLD.Get_rank();*/
-    retcode = parsemaxmatoptions (&mmcallinfo, argc, argv);
-    if (retcode < 0) {
-        fprintf(stderr,"%s: %s\n",argv[0],messagespace());
-        //MPI::Finalize();
-        return EXIT_FAILURE;
+int main(int argc, char *argv[])
+{
+    string line;
+    stringstream ss;
+    saint_t ret;
+
+    if (argc != 4)
+    {
+        std::cerr << "Usage: " << argv[0] << "Reference_genome Query_genome length" << std::endl;
+        return 1;
     }
-    if (retcode == 1) {
-        checkspaceleak();
-        mmcheckspaceleak();
-        //MPI::Finalize();
-        return EXIT_SUCCESS;
+    ifstream ref(argv[1]);
+    ifstream qry(argv[2]);
+    long L = atoi(argv[3]);
+
+    while (getline(ref,line))
+    {
+        if (line.find(">",0,1)!=std::string::npos)
+            continue;
+        ss << line;
     }
-    /*if (rank == 0) {*/
-        start = omp_get_wtime();
-        if (getmaxmatinput(&subjectmultiseq, mmcallinfo.matchnucleotidesonly, &mmcallinfo.subjectfile[0]) != 0) {
-            fprintf(stderr,"%s: %s\n",argv[0],messagespace());
-            //MPI::Finalize();
-            return EXIT_FAILURE;
-        }
-        if(procmaxmatches(&mmcallinfo,&subjectmultiseq) != 0) {
-            fprintf(stderr,"%s: %s\n",argv[0],messagespace());
-            //MPI::Finalize();
-            return EXIT_FAILURE;
-        }
-        freemultiseq(&subjectmultiseq);
-        //cerr << "# Toci application for genome alignment for HPC environments" << endl;
-        finish = omp_get_wtime();
-    /*else {
-        cout << "Process: " << rank << endl;
+    ref.close();
+    ss << '#';
+    while (getline(qry,line))
+    {
+        if (line.find(">",0,1)!=std::string::npos)
+            continue;
+        ss << line;
     }
-    MPI_ Finalize();*/
-    cerr << "Final Time=" << finish-start << endl;
-    return EXIT_SUCCESS;
+    qry.close();
+    const std::string& tmp = ss.str();
+    sauchar_t *T = (sauchar_t*) tmp.c_str();
+    sauchar_t *bwttab;
+    saidx_t *suftab;
+    saidx_t *lcptab;
+    saidx_t *idx;
+    saidx_t size = ss.str().length();
+    suftab = (saidx_t *)malloc(size * sizeof(saidx_t));
+    lcptab = (saidx_t *)malloc(size * sizeof(saidx_t));
+    bwttab = (sauchar_t *)malloc(size * sizeof(sauchar_t));
+    idx = (saidx_t *)malloc(sizeof(saidx_t));
+    if (suftab == NULL || bwttab == NULL || T == NULL) 
+    {
+        fprintf(stderr, "%s: Cannot allocate memory.\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    ret = divsufsort(T, suftab, size);
+    if (ret != 0)
+    {
+        fprintf(stderr,"%s: Failed to create Suffix Array\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    ret =bw_transform(T, bwttab, NULL, size, idx);
+    if (ret != 0)
+    {
+        fprintf(stderr,"%s: Failed to create BWT\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    lcptab[0] = 0;
+    for (long i=1; i<size; i++)
+        lcptab[i]=lcp(&T[suftab[i-1]], &T[suftab[i]],&T[size-1]);
+    for (long i=0, j=i+1; i<size-1; i++)
+    {
+        if (lcptab[i] < L && lcptab[j+1] < L && lcptab[i] >= L)
+            cout << lcptab[i] << endl;
+    }
+
+    exit(EXIT_SUCCESS);
 }
