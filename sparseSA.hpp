@@ -41,7 +41,7 @@ struct vec_uchar {
   }
   // Once all the values are set, call init. This will assure the
   // values >= 255 are sorted by index for fast retrieval.
-  void init() { sort(M.begin(), M.end()); cerr << "M.size()=" << M.size() << endl; }
+  void init() { sort(M.begin(), M.end()); /*cerr << "M.size()=" << M.size() << endl;*/ }
 };
 
 // Match find by findMEM. 

@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <omp.h>
 
 #include "sparseSA.hpp"
 #include "fasta.hpp"
@@ -52,7 +53,7 @@ void *query_thread(void *arg_) {
 
   vector<match_t> matches;
 
-  bool print = arg->skip == 1;
+  bool print = false;
 
   long seq_cnt = 0;
 
@@ -69,7 +70,7 @@ void *query_thread(void *arg_) {
 	if( line[i] == ' ') break; // Behave like MUMmer 3 cut off meta after first space.
 	meta += line[i];
       }
-      cerr << "# " << meta << endl;
+      //cerr << "# " << meta << endl;
       break;
     }
   }
@@ -84,16 +85,16 @@ void *query_thread(void *arg_) {
       if(meta != "") {
 	if(seq_cnt % arg->skip == arg->skip0) {
 	  // Process P.
-	  cerr << "# P.length()=" << P->length() << endl;
+	  cerr << "# Q.length()=" << P->length() << endl;
       if(forward){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
             else printf("> %s\n", meta.c_str());
         }
         if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
-        else if(type == MUM) sa->MUM(*P, matches, min_len, memCounter, print);
+        else if(type == MUM) sa->MUMParallel(*P, chunks, matches, min_len, memCounter, print);
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
-        if(!print) sa->print_match(meta, matches, false); 
+        if(!print) sa->print_match(meta, matches, false);
       }
 	  if(rev_comp) {
 	    reverse_complement(*P, nucleotides_only);
@@ -102,9 +103,9 @@ void *query_thread(void *arg_) {
             else printf("> %s Reverse\n", meta.c_str());
         }
 	    if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
-	    else if(type == MUM) sa->MUM(*P, matches, min_len, memCounter, print);
+	    else if(type == MUM) sa->MUMParallel(*P, chunks, matches, min_len, memCounter, print);
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
-	    if(!print) sa->print_match(meta, matches, true); 
+	    if(!print) sa->print_match(meta, matches, true);
 	  }
 	}
 	seq_cnt++;
@@ -136,7 +137,7 @@ void *query_thread(void *arg_) {
   // Handle very last sequence.
   if(meta != "") {
     if(seq_cnt % arg->skip == arg->skip0) {
-      cerr << "# P.length()=" << P->length() << endl;
+      cerr << "# Q.length()=" << P->length() << endl;
       if(forward){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
@@ -146,7 +147,7 @@ void *query_thread(void *arg_) {
         if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
         else if(type == MUM) sa->MUMParallel(*P, chunks, matches, min_len, memCounter, print);
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
-        if(!print) sa->print_match(meta, matches, false); 
+        if(print) sa->print_match(meta, matches, false);
       }
       if(rev_comp) {
         reverse_complement(*P, nucleotides_only);
@@ -155,26 +156,18 @@ void *query_thread(void *arg_) {
             else printf("> %s Reverse\n", meta.c_str());
         }
         if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
-        else if(type == MUM) sa->MUM(*P, matches, min_len, memCounter, print);
+        else if(type == MUM) sa->MUMParallel(*P, chunks, matches, min_len, memCounter, print);
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
-        if(!print) sa->print_match(meta, matches, true); 
+        if(print) sa->print_match(meta, matches, true);
       }
     }
   }
   delete P;
-  cerr << "number of M(E/A/U)Ms: " << memCounter << endl;
+  cerr << "#number of M(E/A/U)Ms: " << memCounter << endl;
   pthread_exit(NULL);
 }
 
-// Added by Simon Gog for testing
-void write_lock(int i){
-	ofstream lockfile("lock.txt", ios_base::trunc);
-	lockfile<<i<<endl;
-	lockfile.close();
-}
-
 int main(int argc, char* argv[]) {
-	write_lock(0);
   // Collect parameters from the command line.
   while (1) {
     static struct option long_options[] = { 
@@ -279,10 +272,6 @@ int main(int argc, char* argv[]) {
   
   sa = new sparseSA(ref, refdescr, startpos, _4column, K, suflink, child, sparseMult, printSubstring);
 
-  write_lock(1);
-  clock_t start = clock();
-  rusage m_ruse1, m_ruse2;
-  getrusage(RUSAGE_SELF, &m_ruse1);
   pthread_attr_t attr;  pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
@@ -303,21 +292,6 @@ int main(int argc, char* argv[]) {
   for(int i = 0; i < query_threads; i++) 
     pthread_join(thread_ids[i], NULL);    
 
-  clock_t end = clock();
-  getrusage(RUSAGE_SELF, &m_ruse2);
-  double wall_time = (double)( end - start ) /CLOCKS_PER_SEC;
-  cerr << "mapping: done" << endl;
-  cerr << "time for mapping (wall time): " << wall_time << endl;
-  timeval t1, t2;
-  t1 = m_ruse1.ru_utime;
-  t2 = m_ruse2.ru_utime;
-  double cpu_time = ((double)(t2.tv_sec*1000000 + t2.tv_usec - (t1.tv_sec*1000000 + t1.tv_usec )))/1000.0;
-  cerr << "time for mapping (cpu time): " << cpu_time << endl;
-  t1 = m_ruse1.ru_stime;
-  t2 = m_ruse2.ru_stime;
-  double sys_time = ((double)(t2.tv_sec*1000000 + t2.tv_usec - (t1.tv_sec*1000000 + t1.tv_usec )))/1000.0;
-  cerr << "time for mapping (sys time): " << sys_time << endl;
-  write_lock(0);
   delete sa;
 }
 
@@ -339,27 +313,8 @@ void usage(string prog) {
   cerr << "-L             print length of query sequence in header of matches" << endl;
   cerr << "-r             compute only reverse complement matches" << endl;
   cerr << "-s             print first 53 characters of the matching substring" << endl;
-  cerr << endl;
-  cerr << "Additional options:" << endl;
-  cerr << "-k             sampled suffix positions (one by default)" << endl;
-  cerr << "-threads       number of threads to use for -maxmatch, only valid k > 1 " << endl;
-  cerr << "-qthreads      number of threads to use for queries " << endl;
-  cerr << "-suflink       use suffix links (1=yes or 0=no) in the index and during search [auto]" << endl;
   cerr << "-chunks        number of chunks to split query" << endl;
-  cerr << "-skip          sparsify the MEM-finding algorithm even more, performing jumps of skip*k [auto (l-10)/k]" << endl;
-  cerr << "               this is a performance parameter that trade-offs SA traversal with checking of right-maximal MEMs" << endl;
   cerr << endl;
-  cerr << "Example usage:" << endl;
-  cerr << endl;
-  cerr << "./mummer -maxmatch -l 20 -b -n -k 3 -threads 3 query.fa ref.fa" << endl;
-  cerr << "Find all maximal matches on forward and reverse strands" << endl;
-  cerr << "of length 20 or greater, matching only a, c, t, or g." << endl;
-  cerr << "Index every 3rd position in the ref.fa and use 3 threads to find MEMs." << endl;
-  cerr << "Fastest method for one long query sequence." << endl;
-  cerr << endl;
-  cerr << "./mummer -maxmatch -l 20 -b -n -k 3 -qthreads 3 query.fa ref.fa" << endl;
-  cerr << "Same as above, but now use a single thread for every query sequence in" << endl;
-  cerr << "query.fa. Fastest for many small query sequences." << endl;
   
   exit(1);
 }
