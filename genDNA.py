@@ -3,7 +3,7 @@
 import sys
 from random import randint
 
-length = sys.argv[1]
+length = sys.argv[1] * 1000000
 
 dna = {1 : "a", 2 : "c", 3 : "g", 4 : "t"}
 
@@ -13,5 +13,5 @@ for i in range(int(length)):
     base = randint(1,4)
     seq.append(dna[base])
 
-print ('>sequence')
+print ('>sequence ', length)
 print (''.join(seq))

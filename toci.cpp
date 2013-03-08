@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
     string line;
     stringstream ss;
     saint_t ret;
+    long i, j, k, p;
 
     if (argc != 4)
     {
@@ -51,6 +52,7 @@ int main(int argc, char *argv[])
     ifstream ref(argv[1]);
     ifstream qry(argv[2]);
     long L = atoi(argv[3]);
+    long l = 0;
 
     while (getline(ref,line))
     {
@@ -60,26 +62,25 @@ int main(int argc, char *argv[])
     }
     ref.close();
     ss << '#';
+    p = ss.str().length()-1;
     while (getline(qry,line))
     {
         if (line.find(">",0,1)!=std::string::npos)
             continue;
         ss << line;
-    }
+     }
     qry.close();
+    //ss << '$';
     const std::string& tmp = ss.str();
     sauchar_t *T = (sauchar_t*) tmp.c_str();
     sauchar_t *bwttab;
-    saidx_t *suftab;
-    saidx_t *lcptab;
-    saidx_t *idx;
+    saidx_t *suftab, *lcptab;
     saidx_t size = ss.str().length();
     suftab = (saidx_t *)malloc(size * sizeof(saidx_t));
     lcptab = (saidx_t *)malloc(size * sizeof(saidx_t));
     bwttab = (sauchar_t *)malloc(size * sizeof(sauchar_t));
-    idx = (saidx_t *)malloc(sizeof(saidx_t));
-    if (suftab == NULL || bwttab == NULL || T == NULL) 
-    {
+    if (suftab == NULL || bwttab == NULL || T == NULL || lcptab == NULL) 
+    { 
         fprintf(stderr, "%s: Cannot allocate memory.\n", argv[0]);
         exit(EXIT_FAILURE);
     }
@@ -89,19 +90,36 @@ int main(int argc, char *argv[])
         fprintf(stderr,"%s: Failed to create Suffix Array\n", argv[0]);
         exit(EXIT_FAILURE);
     }
-    ret =bw_transform(T, bwttab, NULL, size, idx);
-    if (ret != 0)
+    ret =divbwt(T, bwttab, NULL, size);
+    if (ret < 0)
     {
-        fprintf(stderr,"%s: Failed to create BWT\n", argv[0]);
+        fprintf(stderr,"%s: Failed to create BWT %d\n", argv[0], ret);
         exit(EXIT_FAILURE);
     }
     lcptab[0] = 0;
-    for (long i=1; i<size; i++)
+    for (i=1; i<size; i++)
         lcptab[i]=lcp(&T[suftab[i-1]], &T[suftab[i]],&T[size-1]);
-    for (long i=0, j=i+1; i<size-1; i++)
+    for (i=1; i<size; i++)
     {
-        if (lcptab[i] < L && lcptab[j+1] < L && lcptab[i] >= L)
-            cout << lcptab[i] << endl;
+        //fprintf(stdout,"%d,%d,%d,%c,%s\n",i,suftab[i],lcptab[i],bwttab[i],&T[suftab[i]]);
+        k = i+1;
+        l = lcptab[k];
+        //if (l>=L)
+        //{
+            while (lcptab[k] == l)
+                j=k++;
+            fprintf(stdout,"%ld-[%ld..%ld]: ",l,i,j);
+            for (int m=i;m<=j;++m)
+                fprintf(stdout,"%d-%d,%c ",lcptab[m],suftab[m],bwttab[m]);
+            cout << endl;
+            if (i+1==j && bwttab[i]!=bwttab[j] && suftab[i] < p && p < suftab[j])
+            {
+                cout << suftab[i] << ' ' << lcptab[i] << ':';
+
+                    cout << ss.str().substr(suftab[i], suftab[i]+lcptab[i]-1) << endl;
+            }
+            i++;
+        //}
     }
 
     exit(EXIT_SUCCESS);

@@ -1,15 +1,28 @@
-CC = g++
+FLAGS = -O3 -g -m64 -fopenmp
+SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp
 
-CFLAGS  = -std=gnu++0x -m64 -fopenmp -msse4.2 -O3
+all: essaMEM 
 
-INCLUDE = -I/soft/papi-5.0.1/include/ 
+essaMEM: mummer.o qsufsort.o sparseSA.o fasta.o
+	g++ $(FLAGS) $^ -o $@ -lpthread
 
-LIBS    = -lstdc++ -lpapi -ldivsufsort -ldivsufsort64
+.cpp.o:
+	g++ $(FLAGS) -Wall -c $<
 
-LDFLAGS	= -L/soft/papi-5.0.1/lib 
+.c.o:
+	gcc $(FLAGS) -Wall -c $<
 
-all:
-	$(CC) $(INCLUDE) $(CFLAGS) $(LDFLAGS) toci.cpp -o toci $(LIBS)
+# .PHONY assures clean is exected even if there is a file "./clean" in
+# the directory. The same for doc.
+.PHONY: clean doc
+doc: 
+	doxygen
+clean: 
+	rm -f *.o *~ .depend essaMEM
 
-clean:
-	rm toci 
+# Create all the dependencies between the source files. 
+.depend:
+	g++ -MM $(SRC) > .depend
+
+# The - prevents make from complaining about a missing .depend
+-include .depend
