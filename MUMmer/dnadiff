@@ -9,13 +9,13 @@
 #
 #-------------------------------------------------------------------------------
 
-use lib "/media/garviz/MUMmer3.23/scripts";
+use lib "/media/garviz/Toci/MUMmer/scripts";
 use Foundation;
 use File::Spec::Functions;
 use strict;
 
-my $BIN_DIR = "/media/garviz/MUMmer3.23";
-my $SCRIPT_DIR = "/media/garviz/MUMmer3.23/scripts";
+my $BIN_DIR = "/media/garviz/Toci/MUMmer";
+my $SCRIPT_DIR = "/media/garviz/Toci/MUMmer/scripts";
 
 my $VERSION_INFO = q~
 DNAdiff version 1.3

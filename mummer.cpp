@@ -27,7 +27,7 @@ int chunks = 1;
 int sparseMult=1;
 mum_t type = MAM;
 bool rev_comp = false, _4column = false, nucleotides_only = false;
-bool forward = true;
+bool forwards = true;
 bool setRevComp = false;
 bool setBoth = false;
 bool automatic = true;
@@ -85,8 +85,8 @@ void *query_thread(void *arg_) {
       if(meta != "") {
 	if(seq_cnt % arg->skip == arg->skip0) {
 	  // Process P.
-	  cerr << "# Q.length()=" << P->length() << endl;
-      if(forward){
+	  cerr << ",Q.length=" << P->length();
+      if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
             else printf("> %s\n", meta.c_str());
@@ -137,8 +137,8 @@ void *query_thread(void *arg_) {
   // Handle very last sequence.
   if(meta != "") {
     if(seq_cnt % arg->skip == arg->skip0) {
-      cerr << "# Q.length()=" << P->length() << endl;
-      if(forward){
+      cerr << ",Q.length=" << P->length();
+      if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
             else printf("> %s\n", meta.c_str());
@@ -163,12 +163,13 @@ void *query_thread(void *arg_) {
     }
   }
   delete P;
-  cerr << "#number of M(E/A/U)Ms: " << memCounter << endl;
+  cerr << "M(E/A/U)Ms=" << memCounter;
   pthread_exit(NULL);
 }
 
 int main(int argc, char* argv[]) {
   // Collect parameters from the command line.
+    rusage memory;
   while (1) {
     static struct option long_options[] = { 
       {"l", 1, 0, 0}, // 0
@@ -268,7 +269,7 @@ int main(int argc, char* argv[]) {
   if(setBoth || setRevComp)
       rev_comp = true;
   if(setRevComp)
-      forward = false;
+      forwards = false;
   
   sa = new sparseSA(ref, refdescr, startpos, _4column, K, suflink, child, sparseMult, printSubstring);
 
@@ -292,6 +293,8 @@ int main(int argc, char* argv[]) {
   for(int i = 0; i < query_threads; i++) 
     pthread_join(thread_ids[i], NULL);    
 
+  getrusage(RUSAGE_SELF, &memory);
+  cerr << ",RSS=" << memory.ru_maxrss << endl;
   delete sa;
 }
 

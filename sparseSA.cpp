@@ -6,8 +6,16 @@
 #include <stack>
 #include <assert.h>
 #include <string.h>
+#include <parallel/algorithm>
 
+#include "vector/vectorclass.h"
 #include "sparseSA.hpp"
+
+#define LCPCHILD(cLCP,cS,cE) \
+    if (cS < CHILD[cE] && CHILD[cE] <= cE)\
+        cLCP = LCP[CHILD[cE]];\
+    else\
+        cLCP = LCP[CHILD[cS]];
 
 // LS suffix sorter (integer alphabet). 
 extern "C" { void suffixsort(int *x, int *p, int n, int k, int l); };
@@ -139,6 +147,7 @@ void sparseSA::computeLCP() {
 
 // Child array construction algorithm
 void sparseSA::computeChild() {
+#pragma omp parallel for 
     for(int i = 0; i < N/K; i++){
         CHILD[i] = -1;
     }
@@ -315,10 +324,7 @@ void sparseSA::traverse_faster(const string &P,const long prefix, interval_t &cu
         unsigned int c = prefix + cur.depth;
         bool intervalFound = c < P.length();
         int curLCP;//check if this is correct for root interval (unlikely case)
-        if(cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
-            curLCP = LCP[CHILD[cur.end]];
-        else
-            curLCP = LCP[CHILD[cur.start]];
+        LCPCHILD(curLCP,cur.start,cur.end);
         if(intervalFound && cur.size() > 1 && curLCP == cur.depth)
             intervalFound = top_down_child(P[c], cur);
         else if(intervalFound)
@@ -327,33 +333,27 @@ void sparseSA::traverse_faster(const string &P,const long prefix, interval_t &cu
         while(intervalFound && !mismatchFound && c < P.length() && cur.depth < min_len){
             c++;
             cur.depth++;
-            //fprintf(stdout,"%d| tf s:%ld,e:%ld,d:%ld\n",__LINE__,cur.start,cur.end,cur.depth);
+            register unsigned long sa_cS = SA[cur.start];
+            register unsigned long leng = P.length();
             if(cur.start != cur.end){
                 int childLCP;
                 //calculate LCP of child node, which is now cur. the LCP value
                 //of the parent is currently c - prefix
-                if(cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
-                    childLCP = LCP[CHILD[cur.end]];
-                else
-                    childLCP = LCP[CHILD[cur.start]];
+                LCPCHILD(childLCP,cur.start,cur.end);
                 int minimum = min(childLCP,min_len);
                 //match along branch
-                while(!mismatchFound && c < P.length() && cur.depth < minimum){
-                    mismatchFound = S[SA[cur.start]+cur.depth] != P[c];
-                    c++;
+                while(!mismatchFound && c < leng && cur.depth < minimum){
+                    mismatchFound = S[sa_cS+cur.depth] != P[c++];
                     cur.depth += !mismatchFound;
-                    //fprintf(stdout,"%d| tf s:%ld,e:%ld,d:%ld\n",__LINE__,cur.start,cur.end,cur.depth);
                 }
-                intervalFound = c < P.length() && !mismatchFound &&
+                intervalFound = c < leng && !mismatchFound &&
                         cur.depth < min_len && top_down_child(P[c], cur);
             }
             else{
-                while(!mismatchFound && c < P.length() && cur.depth < min_len){
-                    mismatchFound = (unsigned long) (SA[cur.start]+cur.depth) >= S.length() ||
-                            S[SA[cur.start]+cur.depth] != P[c];
-                    c++;
+                while(!mismatchFound && c < leng && cur.depth < min_len){
+                    mismatchFound = (unsigned long) (sa_cS+cur.depth) >= S.length() ||
+                            S[sa_cS+cur.depth] != P[c++];
                     cur.depth += !mismatchFound;
-      //fprintf(stdout,"%d| %ld s:%ld,e:%ld,d:%ld\n",__LINE__,prefix,cur.start,cur.end,cur.depth);
                 }
             }
         }
@@ -365,13 +365,10 @@ void sparseSA::traverse_faster(const string &P,const long prefix, interval_t &cu
 bool sparseSA::top_down_child(char c, interval_t &cur){
     long left = cur.start;
     long right = CHILD[cur.end];
-    //fprintf(stdout,"%d| tdc s:%ld,e:%ld,d:%ld\n",__LINE__,cur.start,cur.end,cur.depth);
     if(cur.start >= right || right > cur.end)
         right = CHILD[cur.start];
-    //now left and right point to first child
     if(S[SA[cur.start]+cur.depth] == c){
         cur.end = right-1;
-        //fprintf(stdout,"%d| tdc s:%ld,e:%ld,d:%ld\n",__LINE__,cur.start,cur.end,cur.depth);
         return true;
     }
     left = right;
@@ -380,7 +377,6 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
         right = CHILD[right];
         if(S[SA[left]+cur.depth] == c){
             cur.start = left; cur.end = right - 1;
-            //fprintf(stdout,"%d| tdc s:%ld,e:%ld,d:%ld\n",__LINE__,cur.start,cur.end,cur.depth);
             return true;
         }
         left = right;
@@ -388,7 +384,6 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
     //last interval
     if(S[SA[left]+cur.depth] == c){
             cur.start = left;
-            //fprintf(stdout,"%d| tdc s:%ld,e:%ld,d:%ld\n",__LINE__,cur.start,cur.end,cur.depth);
             return true;
     }
     return false;
@@ -648,27 +643,19 @@ void sparseSA::print_match(string meta, vector<match_t> &buf, bool rc) {
 // given query pattern P, but occur uniquely in the indexed reference S.
 void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& currentCount, bool print) {
   memCount = 0;
-  /*fprintf(stdout,"i,SA,ISA,LCP,CHILD\n");
-  for (int i=0; i<N; i++)
-      fprintf(stdout,"%d,%d,%d,%d,%d\n",i,SA[i],ISA[i],LCP[i],CHILD[i]);*/
   interval_t cur(0, N-1, 0);
   long prefix = P.length()/chunks*chunk;
+  //__builtin_prefetch(LCP.vec.data()); 
   while(prefix < (long)(P.length()/chunks*(chunk+1))) {
-  //fprintf(stdout,"%d| %ld s:%ld,e:%ld,d:%ld\n",__LINE__,prefix,cur.start,cur.end,cur.depth);
     // Traverse SA top down until mismatch or full string is matched.
-    if(hasChild)
-        traverse_faster(P, prefix, cur, P.length());
-    else
-        traverse(P, prefix, cur, P.length());
-  //fprintf(stdout,"%d| %ld s:%ld,e:%ld,d:%ld\n",__LINE__,prefix,cur.start,cur.end,cur.depth);
+    traverse_faster(P, prefix, cur, P.length());
     if(cur.depth <= 1) { cur.depth = 0; cur.start = 0; cur.end = N-1; prefix++; continue; }
     if(cur.size() == 1 && cur.depth >= min_len) {//unique match 
-  //fprintf(stdout,"%d| %ld s:%ld,e:%ld,d:%ld\n",__LINE__,prefix,cur.start,cur.end,cur.depth);
       if(is_leftmaximal(P, prefix, SA[cur.start])) {
-	// Yes, it's a MAM.
-	match_t m; m.ref = SA[cur.start]; m.query = prefix; m.len = cur.depth;
-	if(print) print_match(m);
-	else  matches.push_back(m); 
+	    // Yes, it's a MAM.
+	    match_t m; m.ref = SA[cur.start]; m.query = prefix; m.len = cur.depth;
+	    if(print) print_match(m);
+	    else  matches.push_back(m); 
       }
     }
     do {
@@ -676,7 +663,6 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
       cur.start = ISA[SA[cur.start] + 1];  
       cur.end = ISA[SA[cur.end] + 1]; 
       prefix++;
-  //fprintf(stdout,"%d| %ld s:%ld,e:%ld,d:%ld\n",__LINE__,prefix,cur.start,cur.end,cur.depth);
       if( cur.depth == 0 || expand_link(cur) == false ) { cur.depth = 0; cur.start = 0; cur.end = N-1; break; }
     } while(cur.depth > 0 && cur.size() == 1);
   }
@@ -704,7 +690,7 @@ void sparseSA::MUM(string &P, vector<match_t> &unique, int min_len, long& curren
   // Adapted from Stephan Kurtz's code in cleanMUMcand.c in MUMMer v3.20. 
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
-  sort(matches.begin(), matches.end(), by_ref());
+  __gnu_parallel::sort(matches.begin(), matches.end(), by_ref());
   for(long i = 0; i < (long)matches.size(); i++) {
     ignorecurrent = false;
     currentright = matches[i].ref + matches[i].len - 1;
@@ -744,6 +730,7 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   vector<match_t> matches_p;
   vector<match_t> matches;
   double start, start1, finish, finish1;
+  _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
   start = omp_get_wtime();
 #pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p)
   {
@@ -760,7 +747,7 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
   start1 = omp_get_wtime();
-  sort(matches.begin(), matches.end(), by_ref());
+  __gnu_parallel::sort(matches.begin(), matches.end(), by_ref());
   for(long i = 0; i < (long)matches.size(); i++) { 
     ignorecurrent = false;
     currentright = matches[i].ref + matches[i].len - 1;
@@ -788,7 +775,7 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   }
   finish1 = omp_get_wtime();
   currentCount = unique.size();
-  fprintf(stderr,"#OMP=%lf,Merge=%lf\n",(double) (finish-start), (double) (finish1-start1));
+  fprintf(stderr,",OMP=%lf,Merge=%lf,LCPAcc=%ld,",(double) (finish-start), (double) (finish1-start1), LCP.access);
 }
 
 void *MEMthread(void *arg) {

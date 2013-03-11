@@ -6,8 +6,8 @@
 set filename = $1
 set matchlen = $2
 
-set bindir = /media/garviz/MUMmer3.23
-set scriptdir = /media/garviz/MUMmer3.23/scripts
+set bindir = /media/garviz/Toci/MUMmer
+set scriptdir = /media/garviz/Toci/MUMmer/scripts
 
 if  ($filename == '' || $matchlen == '')  then
     echo "USAGE:  $0 <file> <min-match-len>"

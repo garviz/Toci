@@ -15,14 +15,14 @@
 #
 #-------------------------------------------------------------------------------
 
-use lib "/media/garviz/MUMmer3.23/scripts";
+use lib "/media/garviz/Toci/MUMmer/scripts";
 use Foundation;
 use File::Spec::Functions;
 use strict;
 
-my $AUX_BIN_DIR = "/media/garviz/MUMmer3.23/aux_bin";
-my $BIN_DIR = "/media/garviz/MUMmer3.23";
-my $SCRIPT_DIR = "/media/garviz/MUMmer3.23/scripts";
+my $AUX_BIN_DIR = "/media/garviz/Toci/MUMmer/aux_bin";
+my $BIN_DIR = "/media/garviz/Toci/MUMmer";
+my $SCRIPT_DIR = "/media/garviz/Toci/MUMmer/scripts";
 
 
 

@@ -4,9 +4,11 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <algorithm>
+#include <parallel/algorithm>
 #include <limits>
 #include <omp.h>
+
+#include "vector/vectorclass.h"
 
 
 using namespace std;
@@ -22,26 +24,34 @@ struct vec_uchar {
   };
   vector<unsigned char> vec;  // LCP values from 0-65534
   vector<item_t> M;
+  long access=0;
   void resize(size_t N) { vec.resize(N); }
   // Vector X[i] notation to get LCP values.
  int operator[] (size_t idx) {
     if(vec[idx] == numeric_limits<unsigned char>::max()) 
       return lower_bound(M.begin(), M.end(), item_t(idx,0))->val;
-    else 
+    else
+    {
+        ++access;
       return vec[idx]; 
+    }
   }
   // Actually set LCP values, distinguishes large and small LCP
   // values.
   void set(size_t idx, int v) {
-    if(v >= numeric_limits<unsigned char>::max()) {
+    if (v >= numeric_limits<unsigned char>::max()) {
       vec.at(idx) = numeric_limits<unsigned char>::max();
       M.push_back(item_t(idx, v));
     }
-    else { vec.at(idx) = (unsigned char)v; }
+    else { 
+        vec.at(idx) = (unsigned char)v; 
+    }
   }
   // Once all the values are set, call init. This will assure the
   // values >= 255 are sorted by index for fast retrieval.
-  void init() { sort(M.begin(), M.end()); /*cerr << "M.size()=" << M.size() << endl;*/ }
+  void init() {
+      __gnu_parallel::sort(M.begin(), M.end()); 
+  }
 };
 
 // Match find by findMEM. 
