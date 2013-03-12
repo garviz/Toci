@@ -498,7 +498,6 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   Uint filenum, filelen;
   Sint retcode;
   Uchar *filecontent;
-  double start, finish;
 
   fprintf(stderr,"# construct suffix tree for sequence of length %lu\n",
            (Showuint) subjectmultiseq->totallength);
@@ -559,11 +558,6 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     {
       return -4;
     }
-    fprintf(stderr,
-	    "# matching query-file \"%s\"\n# against subject-file \"%s\"\n",
-            mmcallinfo->queryfilelist[filenum],
-            mmcallinfo->subjectfile);
-    start = omp_get_wtime();
     if (overallsequences (False,
                           &matchprocessinfo.querymultiseq,
                           (void *) &matchprocessinfo,
@@ -571,7 +565,6 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     {
       return -5;
     }
-    finish = omp_get_wtime();
     freemultiseq(&matchprocessinfo.querymultiseq);
   }
   if(mmcallinfo->cmum)
@@ -579,7 +572,5 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
     FREEARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
   }
   freestree (&matchprocessinfo.stree);
-  fprintf(stderr,"# Matches: %lu\n",matches);
-  fprintf(stderr,"# Time Search Matches: %f\n",(double) (finish-start));
   return 0;
 }

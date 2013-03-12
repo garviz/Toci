@@ -37,6 +37,8 @@
 
 #define MAXNUMOFQUERYFILES       32
 
+#define PATH_MAX 255
+
 /*
   The following type contains all information
   derived from parsing the arguments of the program

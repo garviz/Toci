@@ -90,7 +90,6 @@ Sint scanmultiplefastafile (Multiseq *multiseq,
   BOOL indesc = False,          // inside description part of sequence
        copydescription = False; // currently copying the description 
 
-  fprintf(stderr,"# reading input file \"%s\" ",filename);
   initmultiseq (multiseq);
   multiseq->originalsequence = NULL;
 
@@ -208,7 +207,6 @@ Sint scanmultiplefastafile (Multiseq *multiseq,
     ERROR0 ("empty sequence in multiple fasta file");
     return -3;
   }
-  fprintf(stderr,"of length %lu\n",(Showuint) multiseq->totallength);
   return 0;
 }
 

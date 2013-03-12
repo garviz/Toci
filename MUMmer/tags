@@ -1,0 +1,2049 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+1vs1mummer1	docs/web/manual/index.html	/^<h4><a name="1vs1mummer1" id="1vs1mummer1"><\/a>4.1.1. Highly similar sequences $/;"	a
+1vs1mummer3	docs/web/manual/index.html	/^<h4><a name="1vs1mummer3"><\/a>4.1.2. Highly similar sequences with rearrangements<\/h4>$/;"	a
+1vs1nucmer	docs/web/manual/index.html	/^<h4><a name="1vs1nucmer"><\/a>4.1.3. Fairly similar sequences<\/h4>$/;"	a
+1vs1promer	docs/web/manual/index.html	/^<h4><a name="1vs1promer"><\/a>4.1.4. Fairly dissimilar sequences<\/h4>$/;"	a
+AA_LEN	src/tigr/translate.hh	40;"	d
+AA_LINE_LEN	src/tigr/translate.hh	42;"	d
+ACCESSBRANCHBROTHER	src/kurtz/streesrc/streemac.h	26;"	d
+ACCESSDEPTH	src/kurtz/streesrc/streemac.h	22;"	d
+ACCESSFIRSTCHILD	src/kurtz/streesrc/streemac.h	25;"	d
+ACCESSHEADPOS	src/kurtz/streesrc/streemac.h	23;"	d
+ACCESSSUFFIXLINK	src/kurtz/streesrc/streemac.h	24;"	d
+ADDAMOUNT	src/kurtz/streesrc/depthtab.c	18;"	d	file:
+ADDFACTOR	src/kurtz/streesrc/construct.c	91;"	d	file:
+ADDOPTION	src/kurtz/libbasedir/optdesc.h	42;"	d
+ALL	scripts/Makefile	/^ALL := exact-tandems mapview mummerplot nucmer promer \\$/;"	m
+ALL	src/kurtz/mm3src/Makefile	/^ALL := maxmat3.x maxmat3.dbg.x$/;"	m
+ALL	src/tigr/Makefile	/^ALL := annotate combineMUMs delta-filter gaps mgaps \\$/;"	m
+ALLOCSPACE	src/kurtz/libbasedir/spacedef.h	69;"	d
+ALLOCVIAFATAL	src/kurtz/libbasedir/space.c	49;"	d	file:
+ALLOW_WRAPAROUND	src/tigr/gaps.cc	/^const int  ALLOW_WRAPAROUND = FALSE;$/;"	v
+AR	Makefile	/^AR   := $(filter \/%,$(shell \/bin\/sh -c 'type ar'))$/;"	m
+ARGS_H	src/kurtz/libbasedir/args.h	12;"	d
+ARRAYDEF_H	src/kurtz/libbasedir/arraydef.h	12;"	d
+ASSIGNDEFAULTSHOWDESC	src/kurtz/libbasedir/multidef.h	74;"	d
+ASSIGNMAXMATCOMPLEMENT	src/kurtz/mm3src/procmaxmat.c	139;"	d	file:
+AUX_BIN_DIR	Makefile	/^AUX_BIN_DIR := $(TOP_DIR)\/aux_bin$/;"	m
+AUX_BIN_DIR	scripts/Makefile	/^AUX_BIN_DIR := $(CURDIR)$/;"	m
+AUX_BIN_DIR	src/tigr/Makefile	/^AUX_BIN_DIR := $(CURDIR)$/;"	m
+AUX_BIN_RULE	src/tigr/Makefile	/^AUX_BIN_RULE = $(CXX) $(CXXFLAGS) $^ -o $(AUX_BIN_DIR)\/$@; \\$/;"	m
+Add_Coverage	src/tigr/combineMUMs.cc	/^void  Add_Coverage$/;"	f
+Add_Duplicates	src/tigr/repeat-match.cc	/^int  Add_Duplicates  (int Start, int End, int Leaf, int Leaf_Depth)$/;"	f
+Add_String	src/tigr/repeat-match.cc	/^int  Add_String  (int Start, int Root)$/;"	f
+AfP	src/tigr/postnuc.cc	/^  FastaRecord * AfP;         \/\/ a pointer to the reference sequence record$/;"	m	struct:Synteny	file:
+AfP	src/tigr/postpro.cc	/^  FastaRecord * AfP;         \/\/ a pointer to the reference sequence record$/;"	m	struct:Synteny	file:
+AlignStats	src/tigr/show-aligns.cc	/^struct AlignStats$/;"	s	file:
+AlignStats	src/tigr/show-coords.cc	/^struct AlignStats$/;"	s	file:
+AlignStats	src/tigr/show-tiling.cc	/^struct AlignStats$/;"	s	file:
+Alignment	src/tigr/postnuc.cc	/^struct Alignment$/;"	s	file:
+Alignment	src/tigr/postpro.cc	/^struct Alignment$/;"	s	file:
+AlignmentType_t	src/tigr/delta.hh	/^typedef char AlignmentType_t;               \/\/!< type of alignment data$/;"	t
+Aligns	src/tigr/show-tiling.cc	/^  vector<AlignStats> Aligns;               \/\/ alignments for this contig$/;"	m	struct:QueryContig	file:
+Argctype	src/kurtz/libbasedir/types.h	/^typedef int Argctype;               \/\/ \\Typedef{Argctype}$/;"	t
+ArrayCharacters	src/kurtz/libbasedir/arraydef.h	/^typedef ArrayUchar ArrayCharacters;     \/\/ \\Typedef{ArrayCharacters}$/;"	t
+ArrayPosition	src/kurtz/libbasedir/arraydef.h	/^typedef ArrayUint  ArrayPosition;       \/\/ \\Typedef{ArrayPosition}$/;"	t
+ArrayStrings	src/kurtz/libbasedir/arraydef.h	/^} ArrayStrings;   \/\/ \\Typedef{ArrayStrings}$/;"	t	typeref:struct:__anon20
+AscendingClusterSort	src/tigr/postnuc.cc	/^struct AscendingClusterSort$/;"	s	file:
+AscendingClusterSort	src/tigr/postpro.cc	/^struct AscendingClusterSort$/;"	s	file:
+AvailableCompare	docs/web/manual/index.html	/^<h4><a name="AvailableCompare"><\/a>1.2.1. Available sequence<\/h4>$/;"	a
+BACKWARD_SEARCH	src/tigr/sw_align.hh	/^static const unsigned int BACKWARD_SEARCH = 0x2;$/;"	v
+BAD_PEP_CHAR	src/tigr/translate.hh	20;"	d
+BIN_DIR	Makefile	/^BIN_DIR     := $(TOP_DIR)$/;"	m
+BIN_DIR	scripts/Makefile	/^BIN_DIR := $(CURDIR)$/;"	m
+BIN_DIR	src/kurtz/mm3src/Makefile	/^BIN_DIR := $(CURDIR)$/;"	m
+BIN_DIR	src/tigr/Makefile	/^BIN_DIR := $(CURDIR)$/;"	m
+BIN_RULE	src/tigr/Makefile	/^BIN_RULE = $(CXX) $(CXXFLAGS) $^ -o $(BIN_DIR)\/$@; \\$/;"	m
+BLOSUM45	src/tigr/sw_alignscore.hh	/^const int BLOSUM45 = 1;$/;"	v
+BLOSUM62	src/tigr/sw_alignscore.hh	/^const int BLOSUM62 = 2;$/;"	v
+BLOSUM80	src/tigr/sw_alignscore.hh	/^const int BLOSUM80 = 3;$/;"	v
+BOOL	src/kurtz/libbasedir/types.h	215;"	d
+BRADDR2NUM	src/kurtz/streesrc/streemac.h	60;"	d
+BRANCH_PT_ERROR_VALUE	src/tigr/combineMUMs.cc	22;"	d	file:
+BRANCH_PT_MATCH_VALUE	src/tigr/combineMUMs.cc	18;"	d	file:
+Basic Notions	docs/maxmat3man.tex	/^\\section{Basic Notions}\\label{SecBasicNotions}$/;"	s
+Bf	src/tigr/postnuc.cc	/^  FastaRecord Bf;            \/\/ the query sequence record (w\/o the sequence)$/;"	m	struct:Synteny	file:
+Bf	src/tigr/postpro.cc	/^  FastaRecord Bf;            \/\/ the query sequence record (w\/o the sequence)$/;"	m	struct:Synteny	file:
+Binomial_Bound	src/tigr/combineMUMs.cc	/^int  Binomial_Bound$/;"	f
+Blockdescription	src/kurtz/libbasedir/space.c	/^} Blockdescription;$/;"	t	typeref:struct:__anon24	file:
+Branch_Pt_Error_Value	src/tigr/combineMUMs.cc	/^float  Branch_Pt_Error_Value = BRANCH_PT_ERROR_VALUE;$/;"	v
+Branch_Pt_Match_Value	src/tigr/combineMUMs.cc	/^float Branch_Pt_Match_Value = BRANCH_PT_MATCH_VALUE;$/;"	v
+Branchinfo	src/kurtz/streesrc/streetyp.h	/^} Branchinfo;               \/\/ \\Typedef{Branchinfo}$/;"	t	typeref:struct:__anon8
+Bref	src/kurtz/streesrc/streetyp.h	/^DECLAREARRAYSTRUCT(Bref);$/;"	v
+Bref	src/kurtz/streesrc/streetyp.h	/^typedef Uint * Bref;    \/\/ \\Typedef{Bref}$/;"	t
+Build_Suffix_Tree	src/tigr/repeat-match.cc	/^int  Build_Suffix_Tree  (int Start)$/;"	f
+By_Cluster	src/tigr/mgaps.cc	/^static int  By_Cluster$/;"	f	file:
+By_Start2	src/tigr/mgaps.cc	/^static int  By_Start2$/;"	f	file:
+CASE	src/kurtz/libbasedir/debugdef.h	168;"	d
+CASE	src/kurtz/libbasedir/debugdef.h	217;"	d
+CASELINE	src/kurtz/libbasedir/debugdef.h	169;"	d
+CASELINE	src/kurtz/libbasedir/debugdef.h	218;"	d
+CC	Makefile	/^CC   := $(filter \/%,$(shell \/bin\/sh -c 'type gcc'))$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -O3 -fopenmp -std=c99$/;"	m
+CHARDEF_H	src/kurtz/libbasedir/chardef.h	12;"	d
+CHARS_PER_LINE	src/tigr/prenuc.cc	24;"	d	file:
+CHARS_PER_LINE	src/tigr/prepro.cc	38;"	d	file:
+CHARS_PER_LINE	src/tigr/show-tiling.cc	/^const int CHARS_PER_LINE = 60;$/;"	v
+CHECKADDR	src/kurtz/streesrc/streemac.h	66;"	d
+CHECKADDR	src/kurtz/streesrc/streemac.h	87;"	d
+CHECKALLTYPESIZES	src/kurtz/libbasedir/types.h	186;"	d
+CHECKARGNUM	src/kurtz/libbasedir/args.h	28;"	d
+CHECKARRAYSPACE	src/kurtz/libbasedir/arraydef.h	62;"	d
+CHECKARRAYSPACEMULTI	src/kurtz/libbasedir/arraydef.h	80;"	d
+CHECKIFLOCATIONISVALID	src/kurtz/mm3src/findmaxmat.c	171;"	d	file:
+CHECKIFLOCATIONISVALID	src/kurtz/mm3src/findmaxmat.c	190;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	1003;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	1013;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	1026;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	1036;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	1060;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	1096;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	962;"	d	file:
+CHECKSTEP	src/kurtz/streesrc/construct.c	972;"	d	file:
+CHECKTEXTLEN	src/kurtz/streesrc/construct.c	30;"	d	file:
+CHECKTYPESIZE	src/kurtz/libbasedir/types.h	163;"	d
+CHILDREFERSTOLEAF	src/kurtz/streesrc/streehuge.h	92;"	d
+CHILDREFERSTOLEAF	src/kurtz/streesrc/streelarge.h	114;"	d
+CHILDREFERSTOLEAF	src/kurtz/streesrc/streesmall.h	100;"	d
+CLEARBITTAB	src/kurtz/libbasedir/intbits.h	73;"	d
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	1010;"	d	file:
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	1021;"	d	file:
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	1033;"	d	file:
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	1056;"	d	file:
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	1093;"	d	file:
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	959;"	d	file:
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	969;"	d	file:
+COMPLETELARGEFIRST	src/kurtz/streesrc/construct.c	989;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	1011;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	1022;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	1034;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	1057;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	1094;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	960;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	970;"	d	file:
+COMPLETELARGESECOND	src/kurtz/streesrc/construct.c	996;"	d	file:
+CONDSTAMPC	src/kurtz/libbasedir/debugdef.h	34;"	d
+CONSTRUCT	src/kurtz/streesrc/construct.c	1008;"	d	file:
+CONSTRUCT	src/kurtz/streesrc/construct.c	1018;"	d	file:
+CONSTRUCT	src/kurtz/streesrc/construct.c	1031;"	d	file:
+CONSTRUCT	src/kurtz/streesrc/construct.c	1044;"	d	file:
+CONSTRUCT	src/kurtz/streesrc/construct.c	1091;"	d	file:
+CONSTRUCT	src/kurtz/streesrc/construct.c	957;"	d	file:
+CONSTRUCT	src/kurtz/streesrc/construct.c	967;"	d	file:
+CONSTRUCT	src/kurtz/streesrc/construct.c	977;"	d	file:
+CONSTRUCTSTREE	src/kurtz/streesrc/streemac.h	33;"	d
+CONT_GAP_SCORE	src/tigr/sw_alignscore.hh	/^const int CONT_GAP_SCORE [4] = {-7, -1, -1, -1};$/;"	v
+COPYMULTISEQ	src/kurtz/libbasedir/multiseq.c	48;"	d	file:
+CREATEMEMORYMAP	src/kurtz/libbasedir/spacedef.h	95;"	d
+CREATEMEMORYMAPFORFILEDESC	src/kurtz/libbasedir/spacedef.h	98;"	d
+CSH	Makefile	/^CSH  := $(filter \/%,$(shell \/bin\/sh -c 'type csh'))$/;"	m
+CSH	scripts/Makefile	/^CSH := $(filter \/%,$(shell \/bin\/sh -c 'type csh'))$/;"	m
+CXX	Makefile	/^CXX  := $(filter \/%,$(shell \/bin\/sh -c 'type g++'))$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS = -O3 -fopenmp$/;"	m
+CheckSNPs	src/tigr/show-snps.cc	/^void CheckSNPs (DeltaGraph_t & graph)$/;"	f
+Check_Labels	src/tigr/mgaps.cc	/^static int  Check_Labels = FALSE;$/;"	v	file:
+Child	src/tigr/repeat-match.cc	/^   unsigned  Child : 31;$/;"	m	struct:node	file:
+Child_Is_Leaf	src/tigr/repeat-match.cc	/^   unsigned  Child_Is_Leaf : 1;$/;"	m	struct:node	file:
+Cluster	src/tigr/postnuc.cc	/^struct Cluster$/;"	s	file:
+Cluster	src/tigr/postpro.cc	/^struct Cluster$/;"	s	file:
+Cmp	src/tigr/gaps.cc	/^int  Cmp  (const void * A, const void * B)$/;"	f
+CompareIUPAC	src/tigr/tigrinc.cc	/^bool CompareIUPAC (char x, char y)$/;"	f
+Complement	src/tigr/tigrinc.cc	/^char  Complement  (char Ch)$/;"	f
+Consec_Non_ACGT	src/tigr/combineMUMs.cc	/^int  Consec_Non_ACGT = 0;$/;"	v
+Countstate	src/kurtz/streesrc/addleafcount.c	/^} Countstate;$/;"	t	typeref:struct:__anon6	file:
+Cover_t	src/tigr/combineMUMs.cc	/^  }  Cover_t;$/;"	t	typeref:struct:s_Cover_t	file:
+Ctypeargumenttype	src/kurtz/libbasedir/types.h	/^typedef int Ctypeargumenttype;      \/\/ \\Typedef{Ctypeargumenttype}$/;"	t
+Curr_ID	src/tigr/repeat-match.cc	/^int  Curr_ID;$/;"	v
+Curr_String_ID	src/tigr/repeat-match.cc	/^int  Curr_String_ID;$/;"	v
+DATA_TYPE	src/tigr/show-aligns.cc	/^int DATA_TYPE = NUCMER_DATA;$/;"	v
+DATA_TYPE	src/tigr/show-tiling.cc	/^int   DATA_TYPE = NUCMER_DATA;         \/\/ set by .delta header$/;"	v
+DBGOBJECTS	src/kurtz/streesrc/Makefile	/^DBGOBJECTS=construct.dbg.o access.dbg.o streedbg.dbg.o depthtab.dbg.o\\$/;"	m
+DBGOBJECTS4	src/kurtz/streesrc/Makefile	/^DBGOBJECTS4=construct.dbg.4.o access.dbg.4.o streedbg.dbg.4.o\\$/;"	m
+DEBUG	src/tigr/repeat-match.cc	16;"	d	file:
+DEBUG0	src/kurtz/libbasedir/debugdef.h	129;"	d
+DEBUG0	src/kurtz/libbasedir/debugdef.h	206;"	d
+DEBUG1	src/kurtz/libbasedir/debugdef.h	131;"	d
+DEBUG1	src/kurtz/libbasedir/debugdef.h	207;"	d
+DEBUG2	src/kurtz/libbasedir/debugdef.h	133;"	d
+DEBUG2	src/kurtz/libbasedir/debugdef.h	208;"	d
+DEBUG3	src/kurtz/libbasedir/debugdef.h	135;"	d
+DEBUG3	src/kurtz/libbasedir/debugdef.h	209;"	d
+DEBUG4	src/kurtz/libbasedir/debugdef.h	137;"	d
+DEBUG4	src/kurtz/libbasedir/debugdef.h	210;"	d
+DEBUG5	src/kurtz/libbasedir/debugdef.h	139;"	d
+DEBUG5	src/kurtz/libbasedir/debugdef.h	211;"	d
+DEBUGCLOSEFILE	src/kurtz/libbasedir/debugdef.h	151;"	d
+DEBUGCLOSEFILE	src/kurtz/libbasedir/debugdef.h	216;"	d
+DEBUGCODE	src/kurtz/libbasedir/debugdef.h	159;"	d
+DEBUGCODE	src/kurtz/libbasedir/debugdef.h	213;"	d
+DEBUGDECL	src/kurtz/libbasedir/debugdef.h	158;"	d
+DEBUGDECL	src/kurtz/libbasedir/debugdef.h	212;"	d
+DEBUGDEFAULT	src/kurtz/streesrc/construct.c	25;"	d	file:
+DEBUGDEF_H	src/kurtz/libbasedir/debugdef.h	12;"	d
+DEBUGLEVELSET	src/kurtz/libbasedir/debugdef.h	149;"	d
+DEBUGLEVELSET	src/kurtz/libbasedir/debugdef.h	214;"	d
+DEBUGLEVELSETFILENAME	src/kurtz/libbasedir/debugdef.h	150;"	d
+DEBUGLEVELSETFILENAME	src/kurtz/libbasedir/debugdef.h	215;"	d
+DECLAREARRAYSTRUCT	src/kurtz/libbasedir/arraydef.h	40;"	d
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	1009;"	d	file:
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	1020;"	d	file:
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	1032;"	d	file:
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	1045;"	d	file:
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	1092;"	d	file:
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	958;"	d	file:
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	968;"	d	file:
+DECLAREEXTRA	src/kurtz/streesrc/construct.c	979;"	d	file:
+DEFAULTMINUNIQUEMATCHLEN	src/kurtz/mm3src/maxmatopt.c	34;"	d	file:
+DEFAULT_BANDING	src/tigr/sw_align.cc	/^static const int DEFAULT_BANDING = 0; \/\/ no banding by default$/;"	v	file:
+DEFAULT_BREAK_LEN	src/tigr/sw_align.cc	/^static const int DEFAULT_BREAK_LEN = 200;$/;"	v	file:
+DEFAULT_ERROR_FILE_NAME	src/tigr/combineMUMs.cc	26;"	d	file:
+DEFAULT_FIXED_SEPARATION	src/tigr/mgaps.cc	/^const int  DEFAULT_FIXED_SEPARATION = 5;$/;"	v
+DEFAULT_MASK_LEN	src/tigr/prepro.cc	/^const long int DEFAULT_MASK_LEN = 10;$/;"	v
+DEFAULT_MAX_SEPARATION	src/tigr/mgaps.cc	/^const long int  DEFAULT_MAX_SEPARATION = 1000;$/;"	v
+DEFAULT_MIN_CONTIG_LENGTH	src/tigr/show-tiling.cc	/^const long int DEFAULT_MIN_CONTIG_LENGTH        =     1;$/;"	v
+DEFAULT_MIN_MATCH_LEN	src/tigr/repeat-match.cc	/^const int  DEFAULT_MIN_MATCH_LEN = 20;$/;"	v
+DEFAULT_MIN_OUTPUT_SCORE	src/tigr/mgaps.cc	/^const long int  DEFAULT_MIN_OUTPUT_SCORE = 200;$/;"	v
+DEFAULT_NUCMER_MAX_GAP_SIZE	src/tigr/show-tiling.cc	/^const long int DEFAULT_NUCMER_MAX_GAP_SIZE      =  1000;$/;"	v
+DEFAULT_NUCMER_MIN_COVERAGE	src/tigr/show-tiling.cc	/^const float DEFAULT_NUCMER_MIN_COVERAGE         =  95.0;$/;"	v
+DEFAULT_NUCMER_MIN_COVERAGE_DIFF	src/tigr/show-tiling.cc	/^const float DEFAULT_NUCMER_MIN_COVERAGE_DIFF    =  10.0;$/;"	v
+DEFAULT_NUCMER_MIN_PIDY	src/tigr/show-tiling.cc	/^const float DEFAULT_NUCMER_MIN_PIDY             =  90.0;$/;"	v
+DEFAULT_PAD	src/tigr/combineMUMs.cc	30;"	d	file:
+DEFAULT_PROMER_MAX_GAP_SIZE	src/tigr/show-tiling.cc	/^const long int DEFAULT_PROMER_MAX_GAP_SIZE      =    -1;$/;"	v
+DEFAULT_PROMER_MIN_COVERAGE	src/tigr/show-tiling.cc	/^const float DEFAULT_PROMER_MIN_COVERAGE         =  50.0;$/;"	v
+DEFAULT_PROMER_MIN_COVERAGE_DIFF	src/tigr/show-tiling.cc	/^const float DEFAULT_PROMER_MIN_COVERAGE_DIFF    =  30.0;$/;"	v
+DEFAULT_PROMER_MIN_PIDY	src/tigr/show-tiling.cc	/^const float DEFAULT_PROMER_MIN_PIDY             =  55.0;$/;"	v
+DEFAULT_SCREEN_WIDTH	src/tigr/show-aligns.cc	37;"	d	file:
+DEFAULT_SEPARATION_FACTOR	src/tigr/mgaps.cc	/^const double  DEFAULT_SEPARATION_FACTOR = 0.05;$/;"	v
+DELETE	src/tigr/sw_align.cc	/^static const int DELETE = 0;$/;"	v	file:
+DELETEMEMORYMAP	src/kurtz/libbasedir/spacedef.h	101;"	d
+DESCRIPTION	scripts/dnadiff.pl	/^  DESCRIPTION:$/;"	l
+DESCRIPTION	scripts/mapview.pl	/^  DESCRIPTION:$/;"	l
+DESCRIPTION	scripts/mummerplot.pl	/^  DESCRIPTION:$/;"	l
+DESCRIPTION	scripts/nucmer.pl	/^  DESCRIPTION:$/;"	l
+DESCRIPTION	scripts/promer.pl	/^  DESCRIPTION:$/;"	l
+DESCRIPTIONLENGTH	src/kurtz/libbasedir/multidef.h	66;"	d
+DESCRIPTIONPTR	src/kurtz/libbasedir/multidef.h	63;"	d
+DESCRIPTIONSTARTDESC	src/kurtz/libbasedir/multidef.h	60;"	d
+DFSstate	src/kurtz/streesrc/streetyp.h	/^} DFSstate;      \/\/ \\Typedef{DFSstate}$/;"	t	typeref:struct:__anon12
+DIRECTION_BIT	src/tigr/sw_align.hh	/^static const unsigned int DIRECTION_BIT = 0x1;$/;"	v
+DISPLAY_WIDTH	src/tigr/combineMUMs.cc	719;"	d	file:
+DISTBITS	src/kurtz/streesrc/streelarge.h	37;"	d
+DISTBITS	src/kurtz/streesrc/streesmall.h	39;"	d
+DISTDIR	Makefile	/^dist: DISTDIR = MUMmer$(VERSION)$/;"	m
+DISTSHIFT	src/kurtz/streesrc/streelarge.h	38;"	d
+DIV2	src/kurtz/libbasedir/types.h	151;"	d
+DIV4	src/kurtz/libbasedir/types.h	152;"	d
+DIV8	src/kurtz/libbasedir/types.h	153;"	d
+DIVBYSMALLINTS	src/kurtz/streesrc/streehuge.h	33;"	d
+DIVBYSMALLINTS	src/kurtz/streesrc/streelarge.h	35;"	d
+DIVBYSMALLINTS	src/kurtz/streesrc/streesmall.h	37;"	d
+DIVWORDSIZE	src/kurtz/libbasedir/intbits.h	46;"	d
+DNA_A	src/tigr/translate.hh	23;"	d
+DNA_B	src/tigr/translate.hh	36;"	d
+DNA_C	src/tigr/translate.hh	24;"	d
+DNA_D	src/tigr/translate.hh	35;"	d
+DNA_G	src/tigr/translate.hh	25;"	d
+DNA_H	src/tigr/translate.hh	34;"	d
+DNA_K	src/tigr/translate.hh	32;"	d
+DNA_LEN	src/tigr/translate.hh	41;"	d
+DNA_M	src/tigr/translate.hh	27;"	d
+DNA_R	src/tigr/translate.hh	28;"	d
+DNA_S	src/tigr/translate.hh	30;"	d
+DNA_TU	src/tigr/translate.hh	26;"	d
+DNA_V	src/tigr/translate.hh	33;"	d
+DNA_W	src/tigr/translate.hh	29;"	d
+DNA_XN	src/tigr/translate.hh	37;"	d
+DNA_Y	src/tigr/translate.hh	31;"	d
+DNA_dot	src/tigr/translate.hh	38;"	d
+DOC_DIR	Makefile	/^DOC_DIR       := $(TOP_DIR)\/docs$/;"	m
+DOLLAR_CHAR	src/tigr/repeat-match.cc	/^const char  DOLLAR_CHAR = '$';$/;"	v
+DONT_KNOW_CHAR	src/tigr/repeat-match.cc	/^const char  DONT_KNOW_CHAR = 'N';$/;"	v
+DO_DELTA	src/tigr/postnuc.cc	/^bool DO_DELTA = true;$/;"	v
+DO_EXTEND	src/tigr/postnuc.cc	/^bool DO_EXTEND = true;$/;"	v
+DO_EXTEND	src/tigr/postpro.cc	/^bool DO_EXTEND = true;$/;"	v
+DO_SHADOWS	src/tigr/postnuc.cc	/^bool DO_SHADOWS = false;$/;"	v
+DPBYTESINWORD	src/kurtz/libbasedir/types.h	284;"	d
+DPbitvector	src/kurtz/libbasedir/types.h	/^typedef unsigned char DPbitvector;          \/\/ \\Typedef{DPbitvector}$/;"	t
+DPbitvector	src/kurtz/libbasedir/types.h	/^typedef unsigned int DPbitvector;$/;"	t
+DPbitvector	src/kurtz/libbasedir/types.h	/^typedef unsigned long long DPbitvector;$/;"	t
+DPbitvector	src/kurtz/libbasedir/types.h	/^typedef unsigned short DPbitvector;$/;"	t
+DPbitvector4	src/kurtz/libbasedir/types.h	/^typedef unsigned int DPbitvector4;          \/\/ \\Typedef{DPbitvector4}$/;"	t
+DPbitvector8	src/kurtz/libbasedir/types.h	/^typedef unsigned long DPbitvector8;         \/\/ \\Typedef{DPbitvector8}$/;"	t
+DYNAMICSTRDUP	src/kurtz/libbasedir/spacedef.h	92;"	d
+Data	src/tigr/repeat-match.cc	/^char  * Data;$/;"	v
+Data_Len	src/tigr/repeat-match.cc	/^int  Data_Len = 2;$/;"	v
+Delta	src/tigr/show-aligns.cc	/^  vector<long int> Delta;               \/\/ delta information$/;"	m	struct:AlignStats	file:
+DeltaAlignment_t	src/tigr/delta.hh	/^  DeltaAlignment_t ( )$/;"	f	struct:DeltaAlignment_t
+DeltaAlignment_t	src/tigr/delta.hh	/^struct DeltaAlignment_t$/;"	s
+DeltaEdge_t	src/tigr/delta.hh	/^  DeltaEdge_t ( )$/;"	f	struct:DeltaEdge_t
+DeltaEdge_t	src/tigr/delta.hh	/^struct DeltaEdge_t$/;"	s
+DeltaEdgelet_t	src/tigr/delta.hh	/^  DeltaEdgelet_t ( )$/;"	f	struct:DeltaEdgelet_t
+DeltaEdgelet_t	src/tigr/delta.hh	/^struct DeltaEdgelet_t$/;"	s
+DeltaGraph_t	src/tigr/delta.hh	/^  DeltaGraph_t()$/;"	f	class:DeltaGraph_t
+DeltaGraph_t	src/tigr/delta.hh	/^class DeltaGraph_t$/;"	c
+DeltaNode_t	src/tigr/delta.hh	/^  DeltaNode_t ( )$/;"	f	struct:DeltaNode_t
+DeltaNode_t	src/tigr/delta.hh	/^struct DeltaNode_t$/;"	s
+DeltaReader_t	src/tigr/delta.hh	/^  DeltaReader_t ( )$/;"	f	class:DeltaReader_t
+DeltaReader_t	src/tigr/delta.hh	/^class DeltaReader_t {$/;"	c
+DeltaRecord_t	src/tigr/delta.hh	/^  DeltaRecord_t ( )$/;"	f	struct:DeltaRecord_t
+DeltaRecord_t	src/tigr/delta.hh	/^struct DeltaRecord_t$/;"	s
+Depth	src/tigr/repeat-match.cc	/^   int  Depth, ID;$/;"	m	struct:leaf	file:
+Depth	src/tigr/repeat-match.cc	/^   int  Depth, ID;$/;"	m	struct:node	file:
+Diagonal	src/tigr/sw_align.hh	/^struct Diagonal$/;"	s
+DiffAligns	src/tigr/delta.cc	/^inline long DiffAligns$/;"	f
+DirQ	src/tigr/show-tiling.cc	/^  char DirQ;                               \/\/ orientation of the contig$/;"	m	struct:QueryContig	file:
+DirQ	src/tigr/show-tiling.cc	/^  char DirQ;                            \/\/ contig orientation (relative to ref)$/;"	m	struct:AlignStats	file:
+Dir_t	src/tigr/delta.hh	/^typedef unsigned char Dir_t;                \/\/!< directional type$/;"	t
+Display_Alignment	src/tigr/combineMUMs.cc	/^void  Display_Alignment$/;"	f
+Display_Alignment_With_Pad	src/tigr/combineMUMs.cc	/^void  Display_Alignment_With_Pad$/;"	f
+Display_Difference_Positions	src/tigr/combineMUMs.cc	/^void  Display_Difference_Positions$/;"	f
+EDIT_DIST_PROB_BOUND	src/tigr/combineMUMs.cc	33;"	d	file:
+ERROR0	src/kurtz/libbasedir/errordef.h	69;"	d
+ERROR1	src/kurtz/libbasedir/errordef.h	72;"	d
+ERROR2	src/kurtz/libbasedir/errordef.h	75;"	d
+ERROR3	src/kurtz/libbasedir/errordef.h	78;"	d
+ERROR4	src/kurtz/libbasedir/errordef.h	81;"	d
+ERROR5	src/kurtz/libbasedir/errordef.h	84;"	d
+ERRORDEF_H	src/kurtz/libbasedir/errordef.h	12;"	d
+ERRORS_FOR_FREE	src/tigr/combineMUMs.cc	36;"	d	file:
+EXCEPTFIRSTBIT	src/kurtz/libbasedir/intbits.h	40;"	d
+EXCEPTFIRSTTHREEBITS	src/kurtz/libbasedir/intbits.h	44;"	d
+EXCEPTFIRSTTWOBITS	src/kurtz/libbasedir/intbits.h	42;"	d
+EXIT_FAILURE	src/tigr/annotate.cc	24;"	d	file:
+EXIT_FAILURE	src/tigr/tigrinc.hh	21;"	d
+EXIT_SUCCESS	src/tigr/annotate.cc	27;"	d	file:
+EXIT_SUCCESS	src/tigr/tigrinc.hh	24;"	d
+EXPANSION_FACTOR	src/tigr/combineMUMs.cc	40;"	d	file:
+EXTRAPATT	src/kurtz/streesrc/streelarge.h	46;"	d
+EdgeletIdQLoQCmp_t	src/tigr/show-diff.cc	/^struct EdgeletIdQLoQCmp_t$/;"	s	file:
+EdgeletIdRLoRCmp_t	src/tigr/show-diff.cc	/^struct EdgeletIdRLoRCmp_t$/;"	s	file:
+EdgeletLoQCmp_t	src/tigr/show-diff.cc	/^struct EdgeletLoQCmp_t$/;"	s	file:
+EdgeletLoRCmp_t	src/tigr/show-diff.cc	/^struct EdgeletLoRCmp_t$/;"	s	file:
+EdgeletQCmp_t	src/tigr/delta.cc	/^struct EdgeletQCmp_t$/;"	s	file:
+EdgeletRCmp_t	src/tigr/delta.cc	/^struct EdgeletRCmp_t$/;"	s	file:
+Edit_Array	src/tigr/combineMUMs.cc	/^int  * Edit_Array [MAX_ERRORS];$/;"	v
+Edit_Match_Limit	src/tigr/combineMUMs.cc	/^int  Edit_Match_Limit [MAX_ERRORS] = {0};$/;"	v
+Edit_Space	src/tigr/combineMUMs.cc	/^int  Edit_Space [(MAX_ERRORS + 4) * MAX_ERRORS];$/;"	v
+EndR	src/tigr/show-tiling.cc	/^  long int StartR, EndR;                   \/\/ contig -> reference mapping coords$/;"	m	struct:QueryContig	file:
+Error_Bound	src/tigr/combineMUMs.cc	/^int  Error_Bound [MAX_FRAG_LEN + 1];$/;"	v
+Error_File_Name	src/tigr/combineMUMs.cc	/^char  * Error_File_Name = DEFAULT_ERROR_FILE_NAME;$/;"	v
+Errors	src/tigr/postnuc.cc	/^  long int Errors, SimErrors, NonAlphas; \/\/ errors, similarity errors, nonalphas$/;"	m	struct:Alignment	file:
+Errors	src/tigr/postpro.cc	/^  long int Errors, SimErrors, NonAlphas; \/\/ errors, similarity errors, nonalphas$/;"	m	struct:Alignment	file:
+Exhaustive_Matches	src/tigr/repeat-match.cc	/^static bool  Exhaustive_Matches = false;$/;"	v	file:
+Extend_Backward	src/tigr/combineMUMs.cc	/^int  Extend_Backward$/;"	f
+Extend_Forward	src/tigr/combineMUMs.cc	/^int  Extend_Forward$/;"	f
+FALSE	src/tigr/tigrinc.hh	19;"	d
+FASTASEPARATOR	src/kurtz/libbasedir/multidef.h	52;"	d
+FIELD_LEN	src/tigr/annotate.cc	16;"	d	file:
+FILEOPEN	src/kurtz/libbasedir/fopen.h	23;"	d
+FINALPROGRESS	src/kurtz/streesrc/construct.c	1004;"	d	file:
+FINALPROGRESS	src/kurtz/streesrc/construct.c	1014;"	d	file:
+FINALPROGRESS	src/kurtz/streesrc/construct.c	1027;"	d	file:
+FINALPROGRESS	src/kurtz/streesrc/construct.c	1037;"	d	file:
+FINALPROGRESS	src/kurtz/streesrc/construct.c	1078;"	d	file:
+FINALPROGRESS	src/kurtz/streesrc/construct.c	1097;"	d	file:
+FINALPROGRESS	src/kurtz/streesrc/construct.c	963;"	d	file:
+FINALPROGRESS	src/kurtz/streesrc/construct.c	973;"	d	file:
+FIRSTBIT	src/kurtz/libbasedir/intbits.h	28;"	d
+FIRSTTWOBITS	src/kurtz/libbasedir/intbits.h	38;"	d
+FLATS	Makefile	/^FLATS = ACKNOWLEDGEMENTS COPYRIGHT INSTALL LICENSE Makefile README ChangeLog$/;"	m
+FOLLOWSUFFIXLINK	src/kurtz/streesrc/streeacc.h	175;"	d
+FOPEN_H	src/kurtz/libbasedir/fopen.h	12;"	d
+FORCED_BACKWARD_SEARCH	src/tigr/sw_align.hh	/^static const unsigned int FORCED_BACKWARD_SEARCH = 0x6;$/;"	v
+FORCED_BIT	src/tigr/sw_align.hh	/^static const unsigned int FORCED_BIT = 0x4;$/;"	v
+FORCED_FORWARD_ALIGN	src/tigr/sw_align.hh	/^static const unsigned int FORCED_FORWARD_ALIGN = 0x5;$/;"	v
+FORCED_FORWARD_SEARCH	src/tigr/sw_align.hh	/^static const unsigned int FORCED_FORWARD_SEARCH = 0x7;$/;"	v
+FORWARD_ALIGN	src/tigr/sw_align.hh	/^static const unsigned int FORWARD_ALIGN = 0x1;$/;"	v
+FORWARD_CHAR	src/tigr/postnuc.cc	/^const signed char FORWARD_CHAR = 1;$/;"	v
+FORWARD_CHAR	src/tigr/show-tiling.cc	/^const char FORWARD_CHAR  =  '+';$/;"	v
+FORWARD_DIR	src/tigr/delta.hh	/^const Dir_t FORWARD_DIR = 0;                \/\/!< forward direction$/;"	v
+FORWARD_SEARCH	src/tigr/sw_align.hh	/^static const unsigned int FORWARD_SEARCH = 0x3;$/;"	v
+FPBINWRITE	src/kurtz/libbasedir/fopen.h	31;"	d
+FREEARRAY	src/kurtz/libbasedir/arraydef.h	115;"	d
+FREESPACE	src/kurtz/libbasedir/spacedef.h	79;"	d
+FUNCLEVEL	src/kurtz/streesrc/construct.c	23;"	d	file:
+False	src/kurtz/libbasedir/types.h	219;"	d
+FastaRecord	src/tigr/postnuc.cc	/^struct FastaRecord$/;"	s	file:
+FastaRecord	src/tigr/postpro.cc	/^struct FastaRecord$/;"	s	file:
+FastaSizes	scripts/dnadiff.pl	/^sub FastaSizes($$)$/;"	s
+Fgetcreturntype	src/kurtz/libbasedir/types.h	/^typedef int Fgetcreturntype;        \/\/ \\Typedef{Fgetcreturntype}$/;"	t
+Fieldwidthtype	src/kurtz/libbasedir/types.h	/^typedef int Fieldwidthtype;         \/\/ \\Typedef{Fieldwidthtype}$/;"	t
+FileClose	scripts/dnadiff.pl	/^sub FileClose($$)$/;"	s
+FileOpen	scripts/dnadiff.pl	/^sub FileOpen($$)$/;"	s
+File_Open	src/tigr/tigrinc.cc	/^FILE *  File_Open  (const char * Filename, const char * Mode)$/;"	f
+Filedesctype	src/kurtz/libbasedir/types.h	/^typedef int Filedesctype;           \/\/ \\Typedef{Filedesctype}$/;"	t
+Fileinfo	src/kurtz/libbasedir/types.h	/^} Fileinfo;             \/\/ \\Typedef{Fileinfo}$/;"	t	typeref:struct:__anon17
+Fill_Ct	src/tigr/combineMUMs.cc	/^int  Fill_Ct = 0;$/;"	v
+Filter_Matches	src/tigr/mgaps.cc	/^static void  Filter_Matches$/;"	f	file:
+Find	src/tigr/mgaps.cc	/^static int  Find$/;"	f	file:
+FindSNPs	src/tigr/show-snps.cc	/^void FindSNPs (DeltaGraph_t & graph)$/;"	f
+Findmatchfunction	src/kurtz/mm3src/procmaxmat.c	/^typedef Sint (*Findmatchfunction)(Suffixtree *,$/;"	t	file:
+Fixed_Separation	src/tigr/mgaps.cc	/^static int  Fixed_Separation = DEFAULT_FIXED_SEPARATION;$/;"	v	file:
+Forward_Only	src/tigr/repeat-match.cc	/^static bool  Forward_Only = false;$/;"	v	file:
+FourUint	src/kurtz/libbasedir/types.h	/^} FourUint;                \/\/ \\Typedef{FourUint}$/;"	t	typeref:struct:__anon15
+Fputcfirstargtype	src/kurtz/libbasedir/types.h	/^typedef int Fputcfirstargtype;      \/\/ \\Typedef{Fputsfirstargtype}  $/;"	t
+FrameA	src/tigr/show-coords.cc	/^  int FrameA, FrameB;                     \/\/ reading frame$/;"	m	struct:AlignStats	file:
+FrameB	src/tigr/show-coords.cc	/^  int FrameA, FrameB;                     \/\/ reading frame$/;"	m	struct:AlignStats	file:
+GENDEBUG	src/kurtz/libbasedir/debugdef.h	108;"	d
+GENERROR	src/kurtz/libbasedir/errordef.h	53;"	d
+GETBOTH	src/kurtz/streesrc/streeacc.h	61;"	d
+GETBRANCHINDEX	src/kurtz/streesrc/streehuge.h	56;"	d
+GETBRANCHINDEX	src/kurtz/streesrc/streelarge.h	76;"	d
+GETBRANCHINDEX	src/kurtz/streesrc/streesmall.h	54;"	d
+GETBROTHER	src/kurtz/streesrc/streehuge.h	63;"	d
+GETBROTHER	src/kurtz/streesrc/streelarge.h	84;"	d
+GETBROTHER	src/kurtz/streesrc/streesmall.h	74;"	d
+GETCHAINEND	src/kurtz/streesrc/streehuge.h	85;"	d
+GETCHAINEND	src/kurtz/streesrc/streelarge.h	107;"	d
+GETCHAINEND	src/kurtz/streesrc/streesmall.h	94;"	d
+GETCHILD	src/kurtz/streesrc/streehuge.h	62;"	d
+GETCHILD	src/kurtz/streesrc/streelarge.h	82;"	d
+GETCHILD	src/kurtz/streesrc/streesmall.h	65;"	d
+GETDEPTH	src/kurtz/streesrc/streehuge.h	65;"	d
+GETDEPTH	src/kurtz/streesrc/streelarge.h	85;"	d
+GETDEPTH	src/kurtz/streesrc/streesmall.h	77;"	d
+GETDEPTHAFTERHEADPOS	src/kurtz/streesrc/streeacc.h	127;"	d
+GETDISTANCE	src/kurtz/streesrc/streehuge.h	64;"	d
+GETDISTANCE	src/kurtz/streesrc/streelarge.h	83;"	d
+GETDISTANCE	src/kurtz/streesrc/streesmall.h	68;"	d
+GETHEADPOS	src/kurtz/streesrc/streehuge.h	66;"	d
+GETHEADPOS	src/kurtz/streesrc/streelarge.h	86;"	d
+GETHEADPOS	src/kurtz/streesrc/streesmall.h	78;"	d
+GETHEADPOSAFTERDEPTH	src/kurtz/streesrc/streeacc.h	142;"	d
+GETLEAFINDEX	src/kurtz/streesrc/streehuge.h	55;"	d
+GETLEAFINDEX	src/kurtz/streesrc/streelarge.h	75;"	d
+GETLEAFINDEX	src/kurtz/streesrc/streesmall.h	53;"	d
+GETNEXTFREEINARRAY	src/kurtz/libbasedir/arraydef.h	97;"	d
+GETONLYDEPTH	src/kurtz/streesrc/streeacc.h	109;"	d
+GETONLYHEADPOS	src/kurtz/streesrc/streeacc.h	91;"	d
+GETSUFFIXLINK	src/kurtz/streesrc/streehuge.h	67;"	d
+GETSUFFIXLINK	src/kurtz/streesrc/streelarge.h	87;"	d
+GETSUFFIXLINK	src/kurtz/streesrc/streesmall.h	82;"	d
+GIVE_UP_LEN	src/tigr/combineMUMs.cc	42;"	d	file:
+GOOD_SCORE	src/tigr/sw_alignscore.hh	/^const int GOOD_SCORE [4] = {3, 10, 8, 8};$/;"	v
+Gaps_File_Path	src/tigr/combineMUMs.cc	/^char  * Gaps_File_Path = NULL;$/;"	v
+Gaps_With_Errors_File	src/tigr/annotate.cc	/^FILE  * Gaps_With_Errors_File;$/;"	v
+Genome_Len	src/tigr/repeat-match.cc	/^long int  Genome_Len;$/;"	v
+GetOpt	scripts/dnadiff.pl	/^sub GetOpt()$/;"	s
+GetParseFunc	scripts/mummerplot.pl	/^sub GetParseFunc ( )$/;"	s
+Getrlimitreturntype	src/kurtz/libbasedir/types.h	/^typedef int Getrlimitreturntype;    \/\/ \\Typedef{Getrlimitreturntype}$/;"	t
+Global_Debug_Flag	src/tigr/combineMUMs.cc	/^bool  Global_Debug_Flag = false;$/;"	v
+Global_Non_Skip_Ct	src/tigr/repeat-match.cc	/^int  Global_Non_Skip_Ct = 0;$/;"	v
+Global_Skip_Ct	src/tigr/repeat-match.cc	/^int  Global_Skip_Ct = 0;$/;"	v
+Global_Trace	src/tigr/repeat-match.cc	/^int  Global_Trace = 0;$/;"	v
+Good	src/tigr/gaps.cc	/^   int  Good : 1;$/;"	m	struct:Match	file:
+Good	src/tigr/mgaps.cc	/^   unsigned int  Good : 1;$/;"	m	struct:Match_t	file:
+HEADER_LINE	src/tigr/postnuc.cc	/^  NO_LINE, HEADER_LINE, MATCH_LINE$/;"	e	enum:LineType	file:
+HEADER_LINE	src/tigr/postpro.cc	/^  NO_LINE, HEADER_LINE, MATCH_LINE$/;"	e	enum:LineType	file:
+HIGHERSIZE	src/kurtz/streesrc/streelarge.h	55;"	d
+HIGHESTVISIBLE	src/kurtz/libbasedir/visible.h	34;"	d
+HiTrim	src/tigr/show-tiling.cc	/^  long int LoTrim, HiTrim;                 \/\/ lo and hi trim lengths$/;"	m	struct:QueryContig	file:
+HumanCompare	docs/web/manual/index.html	/^<h4><a name="HumanCompare">1.2.2. Human vs. Human<\/a><\/h4>$/;"	a
+I	src/tigr/sw_align.hh	/^  Node * I;          \/\/ the matrix nodes$/;"	m	struct:Diagonal
+ID	src/tigr/repeat-match.cc	/^   int  Depth, ID;$/;"	m	struct:leaf	file:
+ID	src/tigr/repeat-match.cc	/^   int  Depth, ID;$/;"	m	struct:node	file:
+IGNORE_TILE_LEVEL	src/tigr/show-tiling.cc	/^const int IGNORE_TILE_LEVEL    =  -1;$/;"	v
+INCLUDEDIR	src/kurtz/mm3src/Makefile	/^INCLUDEDIR=-I${LIBBASEDIR} -I${LIBSTREEDIR}$/;"	m
+INCLUDEDIR	src/kurtz/streesrc/Makefile	/^INCLUDEDIR=..\/libbasedir$/;"	m
+INCR_SIZE	src/tigr/tigrinc.hh	27;"	d
+INDEL_CHAR	src/tigr/show-snps.cc	/^const char  INDEL_CHAR = '.';$/;"	v
+INDEXBITS	src/kurtz/streesrc/streelarge.h	42;"	d
+INDEXBITS	src/kurtz/streesrc/streesmall.h	42;"	d
+INITARRAY	src/kurtz/libbasedir/arraydef.h	51;"	d
+INITBITTAB	src/kurtz/libbasedir/intbits.h	58;"	d
+INITIAL_BUFFER_SIZE	src/tigr/combineMUMs.cc	44;"	d	file:
+INIT_SIZE	src/tigr/tigrinc.hh	29;"	d
+INSERT	src/tigr/sw_align.cc	/^static const int INSERT = 1;$/;"	v	file:
+INTBITS_H	src/kurtz/libbasedir/intbits.h	12;"	d
+INTWORDSIZE	src/kurtz/libbasedir/intbits.h	26;"	d
+INVISIBLE	src/kurtz/libbasedir/visible.h	40;"	d
+INVISIBLECHAR	src/kurtz/libbasedir/visible.h	54;"	d
+ISBITSET	src/kurtz/libbasedir/intbits.h	30;"	d
+ISBRANCHUSED	src/kurtz/streesrc/streedbg.c	23;"	d	file:
+ISIBITSET	src/kurtz/libbasedir/intbits.h	102;"	d
+ISLARGE	src/kurtz/streesrc/streehuge.h	50;"	d
+ISLARGE	src/kurtz/streesrc/streelarge.h	71;"	d
+ISLARGE	src/kurtz/streesrc/streesmall.h	48;"	d
+ISLEAF	src/kurtz/streesrc/streehuge.h	49;"	d
+ISLEAF	src/kurtz/streesrc/streelarge.h	70;"	d
+ISLEAF	src/kurtz/streesrc/streesmall.h	47;"	d
+ISLEAFUSED	src/kurtz/streesrc/streedbg.c	20;"	d	file:
+ISNOTSPECIAL	src/kurtz/libbasedir/chardef.h	26;"	d
+ISSET	src/kurtz/libbasedir/optdesc.h	52;"	d
+ISSMALLDEPTH	src/kurtz/streesrc/streelarge.h	52;"	d
+ISSMALLDEPTH	src/kurtz/streesrc/streesmall.h	59;"	d
+ISSPECIAL	src/kurtz/libbasedir/chardef.h	25;"	d
+ITHBIT	src/kurtz/libbasedir/intbits.h	32;"	d
+Id	src/tigr/postnuc.cc	/^  char * Id;                 \/\/ the fasta ID header tag$/;"	m	struct:FastaRecord	file:
+Id	src/tigr/postpro.cc	/^  char * Id;                 \/\/ the fasta ID header tag$/;"	m	struct:FastaRecord	file:
+IdA	src/tigr/show-coords.cc	/^  char * IdA, * IdB;                      \/\/ Id of seq A, Id of seq B$/;"	m	struct:AlignStats	file:
+IdA_sA_IdB_sB_Sort	src/tigr/show-coords.cc	/^struct IdA_sA_IdB_sB_Sort$/;"	s	file:
+IdB	src/tigr/show-coords.cc	/^  char * IdA, * IdB;                      \/\/ Id of seq A, Id of seq B$/;"	m	struct:AlignStats	file:
+IdB_sB_IdA_sA_Sort	src/tigr/show-coords.cc	/^struct IdB_sB_IdA_sA_Sort$/;"	s	file:
+IdQ	src/tigr/show-tiling.cc	/^  char * IdQ;                              \/\/ FASTA Id of the query$/;"	m	struct:QueryContig	file:
+IdQ_Sort	src/tigr/show-tiling.cc	/^struct IdQ_Sort$/;"	s	file:
+IdR	src/tigr/show-tiling.cc	/^  char * IdR;                              \/\/ Id of the mapping reference$/;"	m	struct:QueryContig	file:
+IdR	src/tigr/show-tiling.cc	/^  char * IdR;                           \/\/ FASTA Id of the mapping reference$/;"	m	struct:AlignStats	file:
+IdR_StartRTrimmed_Sort	src/tigr/show-tiling.cc	/^struct IdR_StartRTrimmed_Sort$/;"	s	file:
+IdR_StartR_Sort	src/tigr/show-tiling.cc	/^struct IdR_StartR_Sort$/;"	s	file:
+IdR_sQ_Sort	src/tigr/show-tiling.cc	/^struct IdR_sQ_Sort$/;"	s	file:
+Idy	src/tigr/show-coords.cc	/^  float Idy;                              \/\/ percent identity (0.0 - 100.0)$/;"	m	struct:AlignStats	file:
+Idy	src/tigr/show-tiling.cc	/^  float Idy;                            \/\/ percent identity   [0.0, 100.0]$/;"	m	struct:AlignStats	file:
+Initialize_Globals	src/tigr/combineMUMs.cc	/^void  Initialize_Globals$/;"	f
+InputFileName	src/tigr/show-aligns.cc	/^char InputFileName [MAX_LINE];$/;"	v
+InputFileName	src/tigr/show-coords.cc	/^char InputFileName [MAX_LINE];          \/\/  I\/O filenames$/;"	v
+InputFileName	src/tigr/show-tiling.cc	/^char InputFileName [MAX_LINE];$/;"	v
+Input_File_Name	src/tigr/repeat-match.cc	/^static char  * Input_File_Name = NULL;$/;"	v	file:
+Is_Duplicate	src/tigr/repeat-match.cc	/^   unsigned  Is_Duplicate : 1;$/;"	m	struct:leaf	file:
+KURTZ_SRC_DIR	Makefile	/^KURTZ_SRC_DIR := $(TOP_DIR)\/src\/kurtz$/;"	m
+LARGEBIT	src/kurtz/streesrc/streesmall.h	44;"	d
+LARGEINTS	src/kurtz/streesrc/streehuge.h	31;"	d
+LARGEINTS	src/kurtz/streesrc/streelarge.h	33;"	d
+LARGEINTS	src/kurtz/streesrc/streesmall.h	35;"	d
+LARGESTCHARINDEX	src/kurtz/streesrc/streehuge.h	100;"	d
+LARGESTCHARINDEX	src/kurtz/streesrc/streehuge.h	102;"	d
+LARGESTCHARINDEX	src/kurtz/streesrc/streelarge.h	138;"	d
+LARGESTCHARINDEX	src/kurtz/streesrc/streelarge.h	140;"	d
+LARGESTCHARINDEX	src/kurtz/streesrc/streesmall.h	124;"	d
+LARGESTCHARINDEX	src/kurtz/streesrc/streesmall.h	126;"	d
+LAS_Sort	src/tigr/show-coords.cc	/^struct LAS_Sort$/;"	s	file:
+LASstats	src/tigr/show-coords.cc	/^struct LASstats$/;"	s	file:
+LATEX	docs/Makefile	/^LATEX=pdflatex$/;"	m
+LD	src/kurtz/libbasedir/Makefile	/^LD=$(CC)$/;"	m
+LD	src/kurtz/mm3src/Makefile	/^LD=$(CC)$/;"	m
+LD	src/kurtz/streesrc/Makefile	/^LD=${CC}$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS  = -lpapi$/;"	m
+LEADLEVEL	src/kurtz/streesrc/streeacc.h	241;"	d
+LEAFADDR2NUM	src/kurtz/streesrc/streemac.h	61;"	d
+LEAFBIT	src/kurtz/streesrc/streehuge.h	35;"	d
+LEAFBIT	src/kurtz/streesrc/streelarge.h	43;"	d
+LEAFBROTHERVAL	src/kurtz/streesrc/streehuge.h	82;"	d
+LEAFBROTHERVAL	src/kurtz/streesrc/streelarge.h	104;"	d
+LEAFBROTHERVAL	src/kurtz/streesrc/streesmall.h	91;"	d
+LEASTSHOWPROGRESS	src/kurtz/streesrc/construct.c	1041;"	d	file:
+LENGTHTYPE	src/kurtz/libbasedir/types.h	275;"	d
+LIBBASE	src/kurtz/libbasedir/Makefile	/^LIBBASE=libbase.a$/;"	m
+LIBBASE	src/kurtz/mm3src/Makefile	/^LIBBASE=$(LIBBASEDIR)\/libbase.a$/;"	m
+LIBBASE	src/kurtz/streesrc/Makefile	/^LIBBASE=${LIBBASEDIR}\/libbase.a$/;"	m
+LIBBASEDBG	src/kurtz/libbasedir/Makefile	/^LIBBASEDBG=libbase.dbg.a$/;"	m
+LIBBASEDBG	src/kurtz/mm3src/Makefile	/^LIBBASEDBG=$(LIBBASEDIR)\/libbase.dbg.a$/;"	m
+LIBBASEDBG	src/kurtz/streesrc/Makefile	/^LIBBASEDBG=${LIBBASEDIR}\/libbase.dbg.a$/;"	m
+LIBBASEDIR	src/kurtz/mm3src/Makefile	/^LIBBASEDIR=..\/libbasedir$/;"	m
+LIBBASEDIR	src/kurtz/streesrc/Makefile	/^LIBBASEDIR=..\/libbasedir$/;"	m
+LIBSTREE	src/kurtz/mm3src/Makefile	/^LIBSTREE=$(LIBSTREEDIR)\/libstree.a$/;"	m
+LIBSTREEDBG	src/kurtz/mm3src/Makefile	/^LIBSTREEDBG=$(LIBSTREEDIR)\/libstree.dbg.a$/;"	m
+LIBSTREEDIR	src/kurtz/mm3src/Makefile	/^LIBSTREEDIR=..\/streesrc$/;"	m
+LINE_PREFIX_LEN	src/tigr/show-aligns.cc	34;"	d	file:
+LIS_t	src/tigr/delta.cc	/^struct LIS_t$/;"	s	file:
+LOGWORDSIZE	src/kurtz/libbasedir/types.h	52;"	d
+LOGWORDSIZE	src/kurtz/libbasedir/types.h	59;"	d
+LOWERLINKBITS	src/kurtz/streesrc/streelarge.h	57;"	d
+LOWERLINKPATT	src/kurtz/streesrc/streelarge.h	59;"	d
+LOWERLINKSIZE	src/kurtz/streesrc/streelarge.h	58;"	d
+LOWESTVISIBLE	src/kurtz/libbasedir/visible.h	28;"	d
+LayoutIDs	scripts/mummerplot.pl	/^sub LayoutIDs ($$)$/;"	s
+Leaf_Array	src/tigr/repeat-match.cc	/^Leaf_Ptr  Leaf_Array;$/;"	v
+Leaf_Ptr	src/tigr/repeat-match.cc	/^  }  Leaf_Type, * Leaf_Ptr;$/;"	t	typeref:struct:leaf	file:
+Leaf_Type	src/tigr/repeat-match.cc	/^  }  Leaf_Type, * Leaf_Ptr;$/;"	t	typeref:struct:leaf	file:
+Leafinfo	src/kurtz/streesrc/streetyp.h	/^typedef Reference Leafinfo;  \/\/ \\Typedef{Leafinfo}$/;"	t
+Len	src/tigr/gaps.cc	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match	file:
+Len	src/tigr/mgaps.cc	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match_t	file:
+Len	src/tigr/repeat-match.cc	/^   int  Len : 31;$/;"	m	struct:leaf	file:
+Len	src/tigr/repeat-match.cc	/^   int  Len : 31;$/;"	m	struct:node	file:
+Line	src/tigr/annotate.cc	/^char  Line [MAX_LINE_LEN];$/;"	v
+LineType	src/tigr/postnuc.cc	/^enum LineType$/;"	g	file:
+LineType	src/tigr/postpro.cc	/^enum LineType$/;"	g	file:
+Link	src/tigr/repeat-match.cc	/^   unsigned  Link;$/;"	m	struct:node	file:
+List_Matches	src/tigr/repeat-match.cc	/^void  List_Matches$/;"	f
+List_Maximal_Matches	src/tigr/repeat-match.cc	/^void  List_Maximal_Matches  (int Root, int Is_Leaf, int Parent, int Parent_Depth)$/;"	f
+List_Tree	src/tigr/repeat-match.cc	/^int  List_Tree  (int Root, int Is_Leaf, int Parent, int Parent_Depth)$/;"	f
+ListenGP	scripts/mummerplot.pl	/^sub ListenGP($$)$/;"	s
+Listtype	src/kurtz/libbasedir/types.h	/^} Listtype;                \/\/ \\Typedef{Listtype}$/;"	t	typeref:struct:__anon16
+Lo	src/tigr/repeat-match.cc	/^   int  Lo;$/;"	m	struct:leaf	file:
+Lo	src/tigr/repeat-match.cc	/^   int  Lo;$/;"	m	struct:node	file:
+LoTrim	src/tigr/show-tiling.cc	/^  long int LoTrim, HiTrim;                 \/\/ lo and hi trim lengths$/;"	m	struct:QueryContig	file:
+Local_File_Open	src/tigr/combineMUMs.cc	/^FILE *  Local_File_Open$/;"	f
+Location	src/kurtz/streesrc/streetyp.h	/^} Location;             \/\/ \\Typedef{Location}$/;"	t	typeref:struct:__anon9
+Longest_Prefix_Match	src/tigr/repeat-match.cc	/^int  Longest_Prefix_Match$/;"	f
+Longest_String	src/tigr/repeat-match.cc	/^int  Longest_String = 0;$/;"	v
+Lref	src/kurtz/streesrc/streetyp.h	/^typedef Uint * Lref;    \/\/ \\Typedef{Lref}$/;"	t
+MAIN	scripts/mummerplot.pl	/^MAIN:$/;"	l
+MAINFUNCTION	src/kurtz/libbasedir/types.h	199;"	d
+MAKEBRANCHADDR	src/kurtz/streesrc/streehuge.h	86;"	d
+MAKEBRANCHADDR	src/kurtz/streesrc/streelarge.h	108;"	d
+MAKEBRANCHADDR	src/kurtz/streesrc/streesmall.h	52;"	d
+MAKELARGE	src/kurtz/streesrc/streehuge.h	52;"	d
+MAKELARGE	src/kurtz/streesrc/streelarge.h	73;"	d
+MAKELARGE	src/kurtz/streesrc/streesmall.h	50;"	d
+MAKELARGELEAF	src/kurtz/streesrc/streehuge.h	53;"	d
+MAKELARGELEAF	src/kurtz/streesrc/streelarge.h	74;"	d
+MAKELARGELEAF	src/kurtz/streesrc/streesmall.h	51;"	d
+MAKELEAF	src/kurtz/streesrc/streehuge.h	51;"	d
+MAKELEAF	src/kurtz/streesrc/streelarge.h	72;"	d
+MAKELEAF	src/kurtz/streesrc/streesmall.h	49;"	d
+MANDATORY	scripts/dnadiff.pl	/^  MANDATORY:$/;"	l
+MANDATORY	scripts/mapview.pl	/^  MANDATORY:$/;"	l
+MANDATORY	scripts/mummerplot.pl	/^  MANDATORY:$/;"	l
+MANDATORY	scripts/nucmer.pl	/^  MANDATORY:$/;"	l
+MANDATORY	scripts/promer.pl	/^  MANDATORY:$/;"	l
+MASKDISTANCE	src/kurtz/streesrc/streelarge.h	40;"	d
+MATCH	src/tigr/sw_align.cc	/^static const int MATCH  = 2;$/;"	v	file:
+MATCH_LINE	src/tigr/postnuc.cc	/^  NO_LINE, HEADER_LINE, MATCH_LINE$/;"	e	enum:LineType	file:
+MATCH_LINE	src/tigr/postpro.cc	/^  NO_LINE, HEADER_LINE, MATCH_LINE$/;"	e	enum:LineType	file:
+MATCH_SCORE	src/tigr/combineMUMs.cc	46;"	d	file:
+MATCH_SCORE	src/tigr/sw_alignscore.hh	/^const int MATCH_SCORE [4][26][26] =$/;"	v
+MATRIX_TYPE	src/tigr/show-aligns.cc	/^int MATRIX_TYPE = BLOSUM62;$/;"	v
+MAX	src/kurtz/libbasedir/minmax.h	22;"	d
+MAXDEBUGLEVEL	src/kurtz/libbasedir/debugdef.h	52;"	d
+MAXDISTANCE	src/kurtz/streesrc/streehuge.h	39;"	d
+MAXDISTANCE	src/kurtz/streesrc/streelarge.h	39;"	d
+MAXDISTANCE	src/kurtz/streesrc/streesmall.h	40;"	d
+MAXERRORMSG	src/kurtz/libbasedir/seterror.c	26;"	d	file:
+MAXINDEX	src/kurtz/streesrc/streehuge.h	38;"	d
+MAXINDEX	src/kurtz/streesrc/streelarge.h	45;"	d
+MAXINDEX	src/kurtz/streesrc/streesmall.h	45;"	d
+MAXMAPPEDFILES	src/kurtz/libbasedir/mapfile.c	24;"	d	file:
+MAXMATDEF_H	src/kurtz/mm3src/maxmatdef.h	12;"	d
+MAXNUMOFQUERYFILES	src/kurtz/mm3src/maxmatdef.h	38;"	d
+MAXTEXTLEN	src/kurtz/streesrc/streehuge.h	60;"	d
+MAXTEXTLEN	src/kurtz/streesrc/streelarge.h	80;"	d
+MAXTEXTLEN	src/kurtz/streesrc/streesmall.h	63;"	d
+MAXTLEN	src/kurtz/streesrc/streelarge.h	53;"	d
+MAX_ALIGN	src/tigr/annotate.cc	17;"	d	file:
+MAX_ALIGNMENT_LENGTH	src/tigr/sw_align.hh	/^static const long int MAX_ALIGNMENT_LENGTH = 10000;$/;"	v
+MAX_ERRORS	src/tigr/combineMUMs.cc	52;"	d	file:
+MAX_ERROR_RATE	src/tigr/combineMUMs.cc	48;"	d	file:
+MAX_EXTENSION	src/tigr/combineMUMs.cc	54;"	d	file:
+MAX_FRAG_LEN	src/tigr/combineMUMs.cc	50;"	d	file:
+MAX_GAP_SIZE	src/tigr/show-tiling.cc	/^long int MAX_GAP_SIZE    = 0;$/;"	v
+MAX_HDR_LEN	src/tigr/combineMUMs.cc	56;"	d	file:
+MAX_LINE	src/tigr/tigrinc.hh	30;"	d
+MAX_LINE_LEN	src/tigr/annotate.cc	18;"	d	file:
+MAX_MEMORY_STORE	src/tigr/combineMUMs.cc	58;"	d	file:
+MAX_NAME_LEN	src/tigr/annotate.cc	19;"	d	file:
+MAX_NAME_LEN	src/tigr/repeat-match.cc	/^const int  MAX_NAME_LEN = 500;$/;"	v
+MAX_OHANG_P	src/tigr/show-coords.cc	/^const float MAX_OHANG_P = 0.05; \/\/ max overlap hang as a percentage of overlap$/;"	v
+MAX_PIDYDIFF	src/tigr/show-coords.cc	/^const float MAX_PIDYDIFF = 0.01;$/;"	v
+MAX_SEARCH_LENGTH	src/tigr/sw_align.hh	/^static const long int MAX_SEARCH_LENGTH = 10000;$/;"	v
+MEGABYTES	src/kurtz/libbasedir/megabytes.h	21;"	d
+MEGABYTES_H	src/kurtz/libbasedir/megabytes.h	12;"	d
+MIDDLELINKPATT	src/kurtz/streesrc/streelarge.h	60;"	d
+MIN	src/kurtz/libbasedir/minmax.h	26;"	d
+MINEXTRA	src/kurtz/streesrc/construct.c	92;"	d	file:
+MINMAX_H	src/kurtz/libbasedir/minmax.h	12;"	d
+MIN_BRANCH_END_DIST	src/tigr/combineMUMs.cc	60;"	d	file:
+MIN_BRANCH_TAIL_SLOPE	src/tigr/combineMUMs.cc	63;"	d	file:
+MIN_CONTIG_LENGTH	src/tigr/show-tiling.cc	/^long int MIN_CONTIG_LENGTH = DEFAULT_MIN_CONTIG_LENGTH;$/;"	v
+MIN_COVERAGE	src/tigr/show-tiling.cc	/^float MIN_COVERAGE       = 0;$/;"	v
+MIN_COVERAGE_DIFF	src/tigr/show-tiling.cc	/^float MIN_COVERAGE_DIFF  = 0;$/;"	v
+MIN_LENGTH_P	src/tigr/show-coords.cc	/^const float MIN_LENGTH_P = 0.75; \/\/ winner must be atleast this big as loser$/;"	v
+MIN_MATCH_LEN	src/tigr/combineMUMs.cc	66;"	d	file:
+MIN_OVERLAP_P	src/tigr/show-coords.cc	/^const float MIN_OVERLAP_P = 0.5; \/\/ min percent overlap to spawn knockout$/;"	v
+MIN_PIDY	src/tigr/show-tiling.cc	/^float MIN_PIDY           = 0;$/;"	v
+MISMATCH_SCORE	src/tigr/combineMUMs.cc	68;"	d	file:
+MMREPLACEMENTCHARQUERY	src/kurtz/mm3src/maxmatdef.h	32;"	d
+MMREPLACEMENTCHARSUBJECT	src/kurtz/mm3src/maxmatdef.h	31;"	d
+MMcallinfo	src/kurtz/mm3src/maxmatdef.h	/^} MMcallinfo;                   \/\/ \\Typedef{MMcallinfo}$/;"	t	typeref:struct:__anon4
+MOD2	src/kurtz/libbasedir/types.h	157;"	d
+MOD4	src/kurtz/libbasedir/types.h	158;"	d
+MOD8	src/kurtz/libbasedir/types.h	159;"	d
+MODWORDSIZE	src/kurtz/libbasedir/intbits.h	48;"	d
+MULT2	src/kurtz/libbasedir/types.h	154;"	d
+MULT4	src/kurtz/libbasedir/types.h	155;"	d
+MULT8	src/kurtz/libbasedir/types.h	156;"	d
+MULTBYSMALLINTS	src/kurtz/streesrc/streehuge.h	32;"	d
+MULTBYSMALLINTS	src/kurtz/streesrc/streelarge.h	34;"	d
+MULTBYSMALLINTS	src/kurtz/streesrc/streesmall.h	36;"	d
+MULTIDEF_H	src/kurtz/libbasedir/multidef.h	12;"	d
+MULWORDSIZE	src/kurtz/libbasedir/intbits.h	50;"	d
+MUM3DBGOBJECTS	src/kurtz/mm3src/Makefile	/^MUM3DBGOBJECTS=maxmat3.dbg.o maxmatopt.dbg.o maxmatinp.dbg.o\\$/;"	m
+MUM3OBJECTS	src/kurtz/mm3src/Makefile	/^MUM3OBJECTS=maxmat3.o maxmatopt.o maxmatinp.o\\$/;"	m
+MUMCAND_H	src/kurtz/libbasedir/mumcand.h	12;"	d
+MUMcandidate	src/kurtz/libbasedir/mumcand.h	/^DECLAREARRAYSTRUCT(MUMcandidate);$/;"	v
+MUMcandidate	src/kurtz/libbasedir/mumcand.h	/^} MUMcandidate;     \/\/ \\Typedef{MUMcandidate}$/;"	t	typeref:struct:__anon19
+MakeReport	scripts/dnadiff.pl	/^sub MakeReport()$/;"	s
+Mark_Skipable_Nodes	src/tigr/repeat-match.cc	/^void  Mark_Skipable_Nodes$/;"	f
+Match	src/tigr/gaps.cc	/^struct  Match$/;"	s	file:
+Match	src/tigr/postnuc.cc	/^struct Match$/;"	s	file:
+Match	src/tigr/postpro.cc	/^struct Match$/;"	s	file:
+Match_File_Path	src/tigr/combineMUMs.cc	/^char  * Match_File_Path = NULL;$/;"	v
+Match_t	src/tigr/mgaps.cc	/^struct  Match_t$/;"	s	file:
+Matchprocessinfo	src/kurtz/mm3src/procmaxmat.c	/^} Matchprocessinfo;            \/\/ \\Typedef{Matchprocessinfo}$/;"	t	typeref:struct:__anon3	file:
+Matrix_t	src/tigr/annotate.cc	/^  Matrix_t()$/;"	f	class:Matrix_t
+Matrix_t	src/tigr/annotate.cc	/^class Matrix_t$/;"	c	file:
+Max	src/tigr/gaps.cc	/^long int  Max  (long int A, long int B)$/;"	f
+Max	src/tigr/mgaps.cc	/^long int  Max  (long int A, long int B)$/;"	f
+Max	src/tigr/show-coords.cc	/^inline long int  Max$/;"	f
+Max_Depth	src/tigr/repeat-match.cc	/^int  Max_Depth = 0;$/;"	v
+Max_Separation	src/tigr/mgaps.cc	/^static long int  Max_Separation = DEFAULT_MAX_SEPARATION;$/;"	v	file:
+Max_int	src/tigr/combineMUMs.cc	/^int  Max_int$/;"	f
+Maxmatchinfo	src/kurtz/mm3src/findmaxmat.c	/^} Maxmatchinfo;$/;"	t	typeref:struct:__anon2	file:
+Min	src/tigr/show-coords.cc	/^inline long int  Min$/;"	f
+Min_Match_Len	src/tigr/repeat-match.cc	/^int  Min_Match_Len = DEFAULT_MIN_MATCH_LEN;$/;"	v
+Min_Output_Score	src/tigr/mgaps.cc	/^static long int  Min_Output_Score = DEFAULT_MIN_OUTPUT_SCORE;$/;"	v	file:
+Min_int	src/tigr/combineMUMs.cc	/^int  Min_int$/;"	f
+Multiseq	src/kurtz/libbasedir/multidef.h	/^} Multiseq;                  \/\/ \\Typedef{Multiseq}$/;"	t	typeref:struct:__anon21
+NEWLINE	src/kurtz/libbasedir/multiseq.c	36;"	d	file:
+NEXTNODE	src/kurtz/streesrc/streeacc.h	157;"	d
+NIL	src/tigr/repeat-match.cc	24;"	d	file:
+NILBIT	src/kurtz/streesrc/streehuge.h	37;"	d
+NILBIT	src/kurtz/streesrc/streelarge.h	44;"	d
+NILBIT	src/kurtz/streesrc/streesmall.h	43;"	d
+NILPTR	src/kurtz/streesrc/streehuge.h	58;"	d
+NILPTR	src/kurtz/streesrc/streelarge.h	78;"	d
+NILPTR	src/kurtz/streesrc/streesmall.h	61;"	d
+NONE	src/tigr/sw_align.cc	/^static const int NONE   = 4;$/;"	v	file:
+NORMAL_DISTRIB_THOLD	src/tigr/combineMUMs.cc	70;"	d	file:
+NOTSUPPOSED	src/kurtz/libbasedir/errordef.h	119;"	d
+NOTSUPPOSEDTOBENULL	src/kurtz/libbasedir/errordef.h	130;"	d
+NOTSUPPOSEDTOBENULL	src/kurtz/libbasedir/errordef.h	136;"	d
+NO_LINE	src/tigr/postnuc.cc	/^  NO_LINE, HEADER_LINE, MATCH_LINE$/;"	e	enum:LineType	file:
+NO_LINE	src/tigr/postpro.cc	/^  NO_LINE, HEADER_LINE, MATCH_LINE$/;"	e	enum:LineType	file:
+NUCLEOTIDE	src/tigr/sw_alignscore.hh	/^const int NUCLEOTIDE = 0;$/;"	v
+NUCMER_DATA	src/tigr/delta.hh	/^const AlignmentType_t NUCMER_DATA = 'N';    \/\/!< nucmer alignment data$/;"	v
+NUCMER_MATCH_CHAR	src/tigr/show-aligns.cc	/^const char NUCMER_MATCH_CHAR = ' ';$/;"	v
+NUCMER_MISMATCH_CHAR	src/tigr/show-aligns.cc	/^const char NUCMER_MISMATCH_CHAR = '^';$/;"	v
+NUCMER_STRING	src/tigr/delta.hh	/^const std::string NUCMER_STRING = "NUCMER"; \/\/!< nucmer id string$/;"	v
+NULLPred_t	src/tigr/delta.cc	/^struct NULLPred_t$/;"	s	file:
+NULL_DATA	src/tigr/delta.hh	/^const AlignmentType_t NULL_DATA = 0;        \/\/!< unknown alignment data type$/;"	v
+NULL_STRING	src/tigr/show-tiling.cc	/^char NULL_STRING[1] = "";$/;"	v
+NUMOFCALLS	src/kurtz/streesrc/construct.c	1042;"	d	file:
+NUMOFOPTIONS	src/kurtz/mm3src/maxmatopt.c	/^  NUMOFOPTIONS$/;"	e	enum:__anon5	file:
+NUM_DNA_SYMBOLS	src/tigr/translate.hh	22;"	d
+New_Find_Child	src/tigr/repeat-match.cc	/^static int  New_Find_Child$/;"	f	file:
+New_Jump_Down	src/tigr/repeat-match.cc	/^static int  New_Jump_Down$/;"	f	file:
+New_Node	src/tigr/repeat-match.cc	/^int  New_Node  (void)$/;"	f
+New_Step_Down	src/tigr/repeat-match.cc	/^static int  New_Step_Down$/;"	f	file:
+Next_Avail_Node	src/tigr/repeat-match.cc	/^int  Next_Avail_Node = 1;$/;"	v
+Next_Leaf	src/tigr/repeat-match.cc	/^int  * Next_Leaf;$/;"	v
+Node	src/tigr/sw_align.hh	/^struct Node$/;"	s
+Node_Array	src/tigr/repeat-match.cc	/^Node_Ptr  Node_Array;$/;"	v
+Node_Ptr	src/tigr/repeat-match.cc	/^  }  Node_Type, * Node_Ptr;$/;"	t	typeref:struct:node	file:
+Node_Type	src/tigr/repeat-match.cc	/^  }  Node_Type, * Node_Ptr;$/;"	t	typeref:struct:node	file:
+Nodeinfo	src/kurtz/mm3src/findmaxmat.c	/^DECLAREARRAYSTRUCT(Nodeinfo);$/;"	v
+Nodeinfo	src/kurtz/mm3src/findmaxmat.c	/^} Nodeinfo;$/;"	t	typeref:struct:__anon1	file:
+NonAlphas	src/tigr/postnuc.cc	/^  long int Errors, SimErrors, NonAlphas; \/\/ errors, similarity errors, nonalphas$/;"	m	struct:Alignment	file:
+NonAlphas	src/tigr/postpro.cc	/^  long int Errors, SimErrors, NonAlphas; \/\/ errors, similarity errors, nonalphas$/;"	m	struct:Alignment	file:
+Norm	src/tigr/show-snps.cc	/^inline long Norm (long c, long l, int f, AlignmentType_t d)$/;"	f
+Nucleotides_Only	src/tigr/combineMUMs.cc	/^int  Nucleotides_Only = FALSE;$/;"	v
+Num_Strings	src/tigr/repeat-match.cc	/^int  Num_Strings = 2;$/;"	v
+OBJECTS	src/kurtz/streesrc/Makefile	/^OBJECTS=construct.o access.o scanpref.o linkloc.o depthtab.o\\$/;"	m
+OBJECTS4	src/kurtz/streesrc/Makefile	/^OBJECTS4=construct.4.o access.4.o scanpref.4.o linkloc.4.o depthtab.4.o\\$/;"	m
+OBJ_RULE	src/tigr/Makefile	/^OBJ_RULE = $(CXX) $(CXXFLAGS) $< -c -o $@$/;"	m
+OPEN_GAP_SCORE	src/tigr/sw_alignscore.hh	/^const int OPEN_GAP_SCORE [4] = {-10, -10, -10, -10};$/;"	v
+OPTCOMPUTEBOTHDIRECTIONS	src/kurtz/mm3src/maxmatopt.c	/^  OPTCOMPUTEBOTHDIRECTIONS,$/;"	e	enum:__anon5	file:
+OPTDESC_H	src/kurtz/libbasedir/optdesc.h	12;"	d
+OPTFOURCOLUMN	src/kurtz/mm3src/maxmatopt.c	/^  OPTFOURCOLUMN,$/;"	e	enum:__anon5	file:
+OPTH	src/kurtz/mm3src/maxmatopt.c	/^  OPTH,$/;"	e	enum:__anon5	file:
+OPTHELP	src/kurtz/mm3src/maxmatopt.c	/^  OPTHELP,$/;"	e	enum:__anon5	file:
+OPTIMAL_BACKWARD_SEARCH	src/tigr/sw_align.hh	/^static const unsigned int OPTIMAL_BACKWARD_SEARCH = 0xA;$/;"	v
+OPTIMAL_BIT	src/tigr/sw_align.hh	/^static const unsigned int OPTIMAL_BIT = 0x8;$/;"	v
+OPTIMAL_FORWARD_ALIGN	src/tigr/sw_align.hh	/^static const unsigned int OPTIMAL_FORWARD_ALIGN = 0x9;$/;"	v
+OPTIMAL_FORWARD_SEARCH	src/tigr/sw_align.hh	/^static const unsigned int OPTIMAL_FORWARD_SEARCH = 0xB;$/;"	v
+OPTION	src/kurtz/libbasedir/optdesc.h	29;"	d
+OPTIONEXCLUDE	src/kurtz/libbasedir/optdesc.h	126;"	d
+OPTIONIMPLY	src/kurtz/libbasedir/optdesc.h	72;"	d
+OPTIONIMPLYEITHER2	src/kurtz/libbasedir/optdesc.h	80;"	d
+OPTIONIMPLYEITHER3	src/kurtz/libbasedir/optdesc.h	92;"	d
+OPTIONIMPLYEITHER4	src/kurtz/libbasedir/optdesc.h	106;"	d
+OPTIONMANDATORY	src/kurtz/libbasedir/optdesc.h	59;"	d
+OPTIONS	scripts/dnadiff.pl	/^  OPTIONS:$/;"	l
+OPTIONS	scripts/mapview.pl	/^  OPTIONS:$/;"	l
+OPTIONS	scripts/mummerplot.pl	/^  OPTIONS:$/;"	l
+OPTIONS	scripts/nucmer.pl	/^  OPTIONS:$/;"	l
+OPTIONS	scripts/promer.pl	/^  OPTIONS:$/;"	l
+OPTLEASTLENGTH	src/kurtz/mm3src/maxmatopt.c	/^  OPTLEASTLENGTH,$/;"	e	enum:__anon5	file:
+OPTMATCHNUCLEOTIDESONLY	src/kurtz/mm3src/maxmatopt.c	/^  OPTMATCHNUCLEOTIDESONLY,$/;"	e	enum:__anon5	file:
+OPTMAXMATCH	src/kurtz/mm3src/maxmatopt.c	/^  OPTMAXMATCH,$/;"	e	enum:__anon5	file:
+OPTMUM	src/kurtz/mm3src/maxmatopt.c	/^  OPTMUM = 0,$/;"	e	enum:__anon5	file:
+OPTMUMCAND	src/kurtz/mm3src/maxmatopt.c	/^  OPTMUMCAND,$/;"	e	enum:__anon5	file:
+OPTMUMREF	src/kurtz/mm3src/maxmatopt.c	/^  OPTMUMREF,$/;"	e	enum:__anon5	file:
+OPTONLYREVERSECOMPLEMENT	src/kurtz/mm3src/maxmatopt.c	/^  OPTONLYREVERSECOMPLEMENT,$/;"	e	enum:__anon5	file:
+OPTSHOWREVERSEPOSITIONS	src/kurtz/mm3src/maxmatopt.c	/^  OPTSHOWREVERSEPOSITIONS,$/;"	e	enum:__anon5	file:
+OPTSHOWSEQUENCELENGTHS	src/kurtz/mm3src/maxmatopt.c	/^  OPTSHOWSEQUENCELENGTHS,$/;"	e	enum:__anon5	file:
+OPTSHOWSTRING	src/kurtz/mm3src/maxmatopt.c	/^  OPTSHOWSTRING,$/;"	e	enum:__anon5	file:
+OPT_1to1	src/tigr/delta-filter.cc	/^bool           OPT_1to1         = false;     \/\/ do 1-to-1 alignment$/;"	v
+OPT_AMOS	src/tigr/show-diff.cc	/^bool    OPT_AMOS    = false;      \/\/ AMOS output$/;"	v
+OPT_Aligns	src/tigr/show-snps.cc	/^set<string> OPT_Aligns;                 \/\/ -S option$/;"	v
+OPT_Context	src/tigr/show-snps.cc	/^int     OPT_Context       = 0;          \/\/ -x option$/;"	v
+OPT_Epsilon	src/tigr/delta-filter.cc	/^float          OPT_Epsilon      = -1.0;      \/\/ negligible alignment score$/;"	v
+OPT_GLIS	src/tigr/delta-filter.cc	/^bool           OPT_GLIS         = false;     \/\/ do global LIS$/;"	v
+OPT_MaxOverlap	src/tigr/delta-filter.cc	/^float          OPT_MaxOverlap   = 100.0;     \/\/ maximum olap as % of align len$/;"	v
+OPT_MinIdentity	src/tigr/delta-filter.cc	/^float          OPT_MinIdentity  = 0.0;       \/\/ minimum %identity$/;"	v
+OPT_MinLength	src/tigr/delta-filter.cc	/^long int       OPT_MinLength    = 0;         \/\/ minimum alignment length$/;"	v
+OPT_MinUnique	src/tigr/delta-filter.cc	/^float          OPT_MinUnique    = 0.0;       \/\/ minimum %unique$/;"	v
+OPT_MtoM	src/tigr/delta-filter.cc	/^bool           OPT_MtoM         = false;     \/\/ do M-to-M alignment$/;"	v
+OPT_PrintHeader	src/tigr/show-diff.cc	/^bool    OPT_PrintHeader = true;   \/\/ -H option$/;"	v
+OPT_PrintHeader	src/tigr/show-snps.cc	/^bool    OPT_PrintHeader   = true;       \/\/ -H option$/;"	v
+OPT_PrintTabular	src/tigr/show-snps.cc	/^bool    OPT_PrintTabular  = false;      \/\/ -T option$/;"	v
+OPT_QLIS	src/tigr/delta-filter.cc	/^bool           OPT_QLIS         = false;     \/\/ do query based LIS$/;"	v
+OPT_QryDiff	src/tigr/show-diff.cc	/^bool    OPT_QryDiff = false;      \/\/ output query diff$/;"	v
+OPT_QueryName	src/tigr/show-snps.cc	/^string  OPT_QueryName;                  \/\/ query sequence file name$/;"	v
+OPT_RLIS	src/tigr/delta-filter.cc	/^bool           OPT_RLIS         = false;     \/\/ do reference based LIS$/;"	v
+OPT_RefDiff	src/tigr/show-diff.cc	/^bool    OPT_RefDiff = false;      \/\/ output reference diff$/;"	v
+OPT_ReferenceName	src/tigr/show-snps.cc	/^string  OPT_ReferenceName;              \/\/ reference sequence file name$/;"	v
+OPT_SelectAligns	src/tigr/show-snps.cc	/^bool    OPT_SelectAligns  = false;      \/\/ -S option$/;"	v
+OPT_ShowConflict	src/tigr/show-snps.cc	/^bool    OPT_ShowConflict  = true;       \/\/ -C option$/;"	v
+OPT_ShowIndels	src/tigr/show-snps.cc	/^bool    OPT_ShowIndels    = true;       \/\/ -I option$/;"	v
+OPT_ShowLength	src/tigr/show-snps.cc	/^bool    OPT_ShowLength    = false;      \/\/ -l option$/;"	v
+OPT_SortQuery	src/tigr/show-snps.cc	/^bool    OPT_SortQuery     = false;      \/\/ -q option$/;"	v
+OPT_SortReference	src/tigr/show-snps.cc	/^bool    OPT_SortReference = false;      \/\/ -r option$/;"	v
+Only_Difference_Positions	src/tigr/combineMUMs.cc	/^bool  Only_Difference_Positions = false;$/;"	v
+OptionDescription	src/kurtz/libbasedir/optdesc.h	/^} OptionDescription;         \/\/ \\Typedef{OptionDescription}$/;"	t	typeref:struct:__anon18
+Optionnumber	src/kurtz/mm3src/maxmatopt.c	/^} Optionnumber;$/;"	t	typeref:enum:__anon5	file:
+Output format	docs/maxmat3man.tex	/^\\section{Output format}$/;"	s
+Output_Cover_Files	src/tigr/combineMUMs.cc	/^int  Output_Cover_Files = TRUE;$/;"	v
+P3	src/kurtz/streesrc/oversucc.c	12;"	d	file:
+PARSEFLOATARG	src/kurtz/libbasedir/args.h	52;"	d
+PARSEINTARG	src/kurtz/libbasedir/args.h	39;"	d
+PATH_MAX	src/kurtz/mm3src/maxmatdef.h	40;"	d
+PERL	Makefile	/^PERL := $(filter \/%,$(shell \/bin\/sh -c 'type perl'))$/;"	m
+PERL	scripts/Makefile	/^PERL := $(filter \/%,$(shell \/bin\/sh -c 'type perl'))$/;"	m
+PNO	src/kurtz/streesrc/oversucc.c	13;"	d	file:
+PREFIX_FORMAT	src/tigr/show-aligns.cc	35;"	d	file:
+PREFIX_LEN	src/tigr/annotate.cc	20;"	d	file:
+PROCESS	src/kurtz/streesrc/oversucc.c	15;"	d	file:
+PROCESSALL	src/kurtz/streesrc/streedbg.c	25;"	d	file:
+PROCESSBRANCH1	src/kurtz/streesrc/dfs.c	60;"	d	file:
+PROCESSBRANCH1	src/kurtz/streesrc/dfs.c	65;"	d	file:
+PROCESSBRANCH1	src/kurtz/streesrc/dfs.c	67;"	d	file:
+PROCESSBRANCH2	src/kurtz/streesrc/dfs.c	61;"	d	file:
+PROCESSBRANCH2	src/kurtz/streesrc/dfs.c	66;"	d	file:
+PROCESSBRANCH2	src/kurtz/streesrc/dfs.c	68;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	1002;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	1012;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	1023;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	1035;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	1058;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	1095;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	961;"	d	file:
+PROCESSHEAD	src/kurtz/streesrc/construct.c	971;"	d	file:
+PROCESSREALMUMS	src/kurtz/mm3src/procmaxmat.c	119;"	d	file:
+PROMER_DATA	src/tigr/delta.hh	/^const AlignmentType_t PROMER_DATA = 'P';    \/\/!< promer alignment data$/;"	v
+PROMER_MISMATCH_CHAR	src/tigr/show-aligns.cc	/^const char PROMER_MISMATCH_CHAR = ' ';$/;"	v
+PROMER_SIM_CHAR	src/tigr/show-aligns.cc	/^const char PROMER_SIM_CHAR = '+';$/;"	v
+PROMER_STRING	src/tigr/delta.hh	/^const std::string PROMER_STRING = "PROMER"; \/\/!< promer id string$/;"	v
+PROTODEF_H	src/kurtz/libbasedir/protodef.h	10;"	d
+PROTOFILES	src/kurtz/streesrc/Makefile	/^PROTOFILES=access.c scanpref.c linkloc.c depthtab.c\\$/;"	m
+PairUint	src/kurtz/libbasedir/arraydef.h	/^DECLAREARRAYSTRUCT(PairUint);$/;"	v
+PairUint	src/kurtz/libbasedir/types.h	/^} PairUint;                \/\/ \\Typedef{PairUint}$/;"	t	typeref:struct:__anon13
+Parent	src/tigr/repeat-match.cc	/^   unsigned  Parent;$/;"	m	struct:leaf	file:
+Parent	src/tigr/repeat-match.cc	/^   unsigned  Parent;$/;"	m	struct:node	file:
+ParseArgs	src/tigr/delta-filter.cc	/^void ParseArgs(int argc, char ** argv)$/;"	f
+ParseArgs	src/tigr/show-diff.cc	/^void ParseArgs (int argc, char ** argv)$/;"	f
+ParseArgs	src/tigr/show-snps.cc	/^void ParseArgs (int argc, char ** argv)$/;"	f
+ParseCluster	scripts/mummerplot.pl	/^sub ParseCluster ($)$/;"	s
+ParseDelta	scripts/mummerplot.pl	/^sub ParseDelta ($)$/;"	s
+ParseIDs	scripts/mummerplot.pl	/^sub ParseIDs ($$)$/;"	s
+ParseMummer	scripts/mummerplot.pl	/^sub ParseMummer ($)$/;"	s
+ParseOptions	scripts/mummerplot.pl	/^sub ParseOptions ( )$/;"	s
+ParseTiling	scripts/mummerplot.pl	/^sub ParseTiling ($)$/;"	s
+Parse_Command_Line	src/tigr/combineMUMs.cc	/^void  Parse_Command_Line$/;"	f
+Parse_Command_Line	src/tigr/mgaps.cc	/^static void  Parse_Command_Line$/;"	f	file:
+Parse_Command_Line	src/tigr/repeat-match.cc	/^static void  Parse_Command_Line$/;"	f	file:
+Pathinfo	src/kurtz/streesrc/streetyp.h	/^DECLAREARRAYSTRUCT(Pathinfo);$/;"	v
+Pathinfo	src/kurtz/streesrc/streetyp.h	/^} Pathinfo;      \/\/ \\Typedef{Pathinfo}$/;"	t	typeref:struct:__anon11
+Percent_ID	src/tigr/combineMUMs.cc	/^double  Percent_ID;$/;"	v
+PickBest	src/tigr/delta.cc	/^long PickBest$/;"	f
+PlotData	scripts/mummerplot.pl	/^sub PlotData ($$$)$/;"	s
+Prefix_Edit_Dist	src/tigr/combineMUMs.cc	/^int  Prefix_Edit_Dist$/;"	f
+PrintBrk	src/tigr/show-diff.cc	/^void PrintBrk(const char* seq, long s, long e)$/;"	f
+PrintDiff	src/tigr/show-diff.cc	/^void PrintDiff(DeltaGraph_t & graph)$/;"	f
+PrintDup	src/tigr/show-diff.cc	/^void PrintDup(const char* seq, long s, long e)$/;"	f
+PrintGap	src/tigr/show-diff.cc	/^void PrintGap(const char* seq, long s, long e, long gap1, long gap2)$/;"	f
+PrintHelp	src/tigr/delta-filter.cc	/^void PrintHelp(const char * s)$/;"	f
+PrintHelp	src/tigr/show-diff.cc	/^void PrintHelp (const char * s)$/;"	f
+PrintHelp	src/tigr/show-snps.cc	/^void PrintHelp (const char * s)$/;"	f
+PrintHuman	src/tigr/show-snps.cc	/^void PrintHuman (const vector<const SNP_t *> & snps,$/;"	f
+PrintInv	src/tigr/show-diff.cc	/^void PrintInv(const char* seq, long s, long e)$/;"	f
+PrintLisJmp	src/tigr/show-diff.cc	/^void PrintLisJmp(const char* seq, long s, long e)$/;"	f
+PrintSeqJmp	src/tigr/show-diff.cc	/^void PrintSeqJmp(const char* seq,$/;"	f
+PrintTabular	src/tigr/show-snps.cc	/^void PrintTabular (const vector<const SNP_t *> & snps,$/;"	f
+PrintUsage	src/tigr/delta-filter.cc	/^void PrintUsage(const char * s)$/;"	f
+PrintUsage	src/tigr/show-diff.cc	/^void PrintUsage (const char * s)$/;"	f
+PrintUsage	src/tigr/show-snps.cc	/^void PrintUsage (const char * s)$/;"	f
+Process_Cluster	src/tigr/mgaps.cc	/^static int  Process_Cluster$/;"	f	file:
+Process_Matches	src/tigr/mgaps.cc	/^static void  Process_Matches$/;"	f	file:
+Processmatchfunction	src/kurtz/mm3src/maxmatdef.h	/^typedef Sint (*Processmatchfunction)$/;"	t
+QUERY_MASK	src/tigr/prepro.cc	/^const char QUERY_MASK = 'O';         \/\/ masking character to use for query$/;"	v
+QryFileName	src/tigr/show-aligns.cc	/^char RefFileName [MAX_LINE], QryFileName [MAX_LINE];$/;"	v
+QryFileName	src/tigr/show-coords.cc	/^char RefFileName [MAX_LINE], QryFileName [MAX_LINE];$/;"	v
+QryFileName	src/tigr/show-tiling.cc	/^char RefFileName [MAX_LINE], QryFileName [MAX_LINE];$/;"	v
+Qsortcomparefunction	src/kurtz/libbasedir/types.h	/^typedef int (*Qsortcomparefunction)(const void *,const void *);$/;"	t
+Qsortcomparereturntype	src/kurtz/libbasedir/types.h	/^typedef int Qsortcomparereturntype; \/\/ \\Typedef{Qsortcomparefunction}$/;"	t
+Query	src/tigr/combineMUMs.cc	/^char  * Query = NULL;$/;"	v
+QueryContig	src/tigr/show-tiling.cc	/^struct QueryContig$/;"	s	file:
+Query_Len	src/tigr/combineMUMs.cc	/^long int  Query_Len;$/;"	v
+Query_Suffix	src/tigr/combineMUMs.cc	/^char  * Query_Suffix = "Query";$/;"	v
+REALLY_VERBOSE	src/tigr/combineMUMs.cc	72;"	d	file:
+RECALLBRANCHADDRESS	src/kurtz/streesrc/streeacc.h	211;"	d
+RECALLLEAFADDRESS	src/kurtz/streesrc/streeacc.h	209;"	d
+RECALLNEWLEAFADDRESS	src/kurtz/streesrc/streeacc.h	207;"	d
+RECALLSUCC	src/kurtz/streesrc/streeacc.h	196;"	d
+RECALLSUCC	src/kurtz/streesrc/streeacc.h	198;"	d
+REFERENCE_MASK	src/tigr/prepro.cc	/^const char REFERENCE_MASK = 'X';     \/\/ masking character to use for reference$/;"	v
+REPEAT_PIDY_DIFF	src/tigr/show-tiling.cc	/^const float REPEAT_PIDY_DIFF = 0.25;$/;"	v
+REVERSE_CHAR	src/tigr/postnuc.cc	/^const signed char REVERSE_CHAR = -1;$/;"	v
+REVERSE_CHAR	src/tigr/show-tiling.cc	/^const char REVERSE_CHAR  =  '-';$/;"	v
+REVERSE_DIR	src/tigr/delta.hh	/^const Dir_t REVERSE_DIR = 1;                \/\/!< reverse direction$/;"	v
+ROOT	src/kurtz/streesrc/streemac.h	45;"	d
+ROOTLOCATION	src/kurtz/streesrc/streemac.h	52;"	d
+Read_String	src/tigr/combineMUMs.cc	/^int  Read_String$/;"	f
+Read_String	src/tigr/tigrinc.cc	/^int Read_String  (FILE * fp, char * & T, long int & Size, char Name [],$/;"	f
+Ref	src/tigr/combineMUMs.cc	/^char  * Ref = NULL;$/;"	v
+RefFileName	src/tigr/show-aligns.cc	/^char RefFileName [MAX_LINE], QryFileName [MAX_LINE];$/;"	v
+RefFileName	src/tigr/show-coords.cc	/^char RefFileName [MAX_LINE], QryFileName [MAX_LINE];$/;"	v
+RefFileName	src/tigr/show-tiling.cc	/^char RefFileName [MAX_LINE], QryFileName [MAX_LINE];$/;"	v
+Ref_File_Path	src/tigr/combineMUMs.cc	/^char  * Ref_File_Path = NULL;$/;"	v
+Ref_Len	src/tigr/combineMUMs.cc	/^long int  Ref_Len;$/;"	v
+Ref_Size	src/tigr/combineMUMs.cc	/^long int  Ref_Size;$/;"	v
+Ref_Suffix	src/tigr/combineMUMs.cc	/^char  * Ref_Suffix = "Ref";$/;"	v
+Reference	src/kurtz/streesrc/streetyp.h	/^} Reference;            \/\/ \\Typedef{Reference}$/;"	t	typeref:struct:__anon7
+RevC	src/tigr/delta.cc	/^inline long RevC (const long & coord,$/;"	f
+RevC	src/tigr/show-snps.cc	/^inline long RevC (long coord, long len)$/;"	f
+Rev_Complement	src/tigr/combineMUMs.cc	/^void  Rev_Complement$/;"	f
+Rev_Display_Alignment	src/tigr/combineMUMs.cc	/^void  Rev_Display_Alignment$/;"	f
+Rev_Prefix_Edit_Dist	src/tigr/combineMUMs.cc	/^int  Rev_Prefix_Edit_Dist$/;"	f
+Rev_Show_Diffs	src/tigr/combineMUMs.cc	/^void  Rev_Show_Diffs$/;"	f
+Reverse_Complement	src/tigr/tigrinc.cc	/^void  Reverse_Complement$/;"	f
+RunAlignment	scripts/dnadiff.pl	/^sub RunAlignment()$/;"	s
+RunCoords	scripts/dnadiff.pl	/^sub RunCoords()$/;"	s
+RunDiff	scripts/dnadiff.pl	/^sub RunDiff()$/;"	s
+RunFilter	scripts/dnadiff.pl	/^sub RunFilter()$/;"	s
+RunGP	scripts/mummerplot.pl	/^sub RunGP ( )$/;"	s
+RunSNPs	scripts/dnadiff.pl	/^sub RunSNPs()$/;"	s
+S	src/tigr/sw_align.hh	/^  Score S[3];$/;"	m	struct:Node
+SCRIPT_DIR	Makefile	/^SCRIPT_DIR    := $(TOP_DIR)\/scripts$/;"	m
+SCRIPT_DIR	scripts/Makefile	/^SCRIPT_DIR := $(CURDIR)$/;"	m
+SEARCH_BIT	src/tigr/sw_align.hh	/^static const unsigned int SEARCH_BIT = 0x2;$/;"	v
+SECONDBIT	src/kurtz/libbasedir/intbits.h	34;"	d
+SED	Makefile	/^SED  := $(filter \/%,$(shell \/bin\/sh -c 'type sed'))$/;"	m
+SED	scripts/Makefile	/^SED := $(filter \/%,$(shell \/bin\/sh -c 'type sed'))$/;"	m
+SEPARATOR	src/kurtz/libbasedir/chardef.h	22;"	d
+SEQEND_BIT	src/tigr/sw_align.hh	/^static const unsigned int SEQEND_BIT = 0x10;$/;"	v
+SEQEND_CHAR	src/tigr/show-snps.cc	/^const char SEQEND_CHAR = '-';$/;"	v
+SETBRANCHNODEOFFSET	src/kurtz/streesrc/streehuge.h	87;"	d
+SETBRANCHNODEOFFSET	src/kurtz/streesrc/streelarge.h	109;"	d
+SETBRANCHNODEOFFSET	src/kurtz/streesrc/streesmall.h	95;"	d
+SETBRANCHUSED	src/kurtz/streesrc/streedbg.c	22;"	d	file:
+SETBROTHER	src/kurtz/streesrc/streehuge.h	69;"	d
+SETBROTHER	src/kurtz/streesrc/streelarge.h	92;"	d
+SETBROTHER	src/kurtz/streesrc/streesmall.h	75;"	d
+SETCHILD	src/kurtz/streesrc/streehuge.h	68;"	d
+SETCHILD	src/kurtz/streesrc/streelarge.h	88;"	d
+SETCHILD	src/kurtz/streesrc/streesmall.h	66;"	d
+SETCURRENT	src/kurtz/streesrc/dfs.c	16;"	d	file:
+SETCURRENT	src/kurtz/streesrc/iterator.c	16;"	d	file:
+SETDEPTHHEADPOS	src/kurtz/streesrc/streehuge.h	73;"	d
+SETDEPTHHEADPOS	src/kurtz/streesrc/streelarge.h	95;"	d
+SETDEPTHHEADPOS	src/kurtz/streesrc/streesmall.h	80;"	d
+SETDISTANCE	src/kurtz/streesrc/streehuge.h	71;"	d
+SETDISTANCE	src/kurtz/streesrc/streelarge.h	93;"	d
+SETDISTANCE	src/kurtz/streesrc/streesmall.h	70;"	d
+SETIBIT	src/kurtz/libbasedir/intbits.h	88;"	d
+SETLEAFBROTHER	src/kurtz/streesrc/streehuge.h	83;"	d
+SETLEAFBROTHER	src/kurtz/streesrc/streelarge.h	105;"	d
+SETLEAFBROTHER	src/kurtz/streesrc/streesmall.h	92;"	d
+SETLEAFUSED	src/kurtz/streesrc/streedbg.c	19;"	d	file:
+SETMAXBRANCHDEPTH	src/kurtz/streesrc/streeacc.h	226;"	d
+SETNEWCHILD	src/kurtz/streesrc/streehuge.h	76;"	d
+SETNEWCHILD	src/kurtz/streesrc/streelarge.h	97;"	d
+SETNEWCHILD	src/kurtz/streesrc/streesmall.h	84;"	d
+SETNEWCHILDBROTHER	src/kurtz/streesrc/streehuge.h	77;"	d
+SETNEWCHILDBROTHER	src/kurtz/streesrc/streelarge.h	98;"	d
+SETNEWCHILDBROTHER	src/kurtz/streesrc/streesmall.h	85;"	d
+SETNILBIT	src/kurtz/streesrc/streeacc.h	215;"	d
+SETNILBIT	src/kurtz/streesrc/streeacc.h	217;"	d
+SETSUFFIXLINK	src/kurtz/streesrc/streehuge.h	80;"	d
+SETSUFFIXLINK	src/kurtz/streesrc/streelarge.h	102;"	d
+SETSUFFIXLINK	src/kurtz/streesrc/streesmall.h	89;"	d
+SETVAL	src/kurtz/streesrc/streeacc.h	26;"	d
+SETVAL	src/kurtz/streesrc/streeacc.h	40;"	d
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHIFTHIGHER	src/kurtz/streesrc/streelarge.h	56;"	d
+SHIFTMIDDLE	src/kurtz/streesrc/streelarge.h	50;"	d
+SHOWBIT	src/kurtz/libbasedir/types.h	231;"	d
+SHOWBOOL	src/kurtz/libbasedir/types.h	230;"	d
+SHOWBOOLEANVALUE	src/kurtz/mm3src/maxmat3.c	26;"	d	file:
+SHOWCHAR	src/kurtz/libbasedir/visible.h	76;"	d
+SHOWCHARFP	src/kurtz/libbasedir/visible.h	62;"	d
+SHOWINDEX	src/kurtz/streesrc/streeacc.h	244;"	d
+SHOWINDEX	src/kurtz/streesrc/streeacc.h	271;"	d
+SHOWREF	src/kurtz/streesrc/streedbg.c	571;"	d	file:
+SHOWVAL	src/kurtz/streesrc/streeacc.h	25;"	d
+SHOW_TREE	src/tigr/repeat-match.cc	14;"	d	file:
+SIMPLESTANDARDMESSAGE	src/kurtz/libbasedir/errordef.h	110;"	d
+SIZEFLAG	src/kurtz/streesrc/Makefile	/^SIZEFLAG=-DSTREEHUGE$/;"	m
+SKIP_PEP_CHAR	src/tigr/translate.hh	21;"	d
+SMALLBIT	src/kurtz/streesrc/streehuge.h	36;"	d
+SMALLDEPTH	src/kurtz/streesrc/streelarge.h	51;"	d
+SMALLDEPTH	src/kurtz/streesrc/streesmall.h	58;"	d
+SMALLDEPTHBITS	src/kurtz/streesrc/streelarge.h	49;"	d
+SMALLDEPTHBITS	src/kurtz/streesrc/streesmall.h	56;"	d
+SMALLDEPTHMARK	src/kurtz/streesrc/streelarge.h	48;"	d
+SMALLDEPTHMARK	src/kurtz/streesrc/streesmall.h	57;"	d
+SMALLINTS	src/kurtz/streesrc/streehuge.h	30;"	d
+SMALLINTS	src/kurtz/streesrc/streelarge.h	32;"	d
+SMALLINTS	src/kurtz/streesrc/streesmall.h	34;"	d
+SMALL_INIT_SIZE	src/tigr/tigrinc.hh	28;"	d
+SNP_Q_Sort	src/tigr/show-snps.cc	/^struct SNP_Q_Sort$/;"	s	file:
+SNP_R_Sort	src/tigr/show-snps.cc	/^struct SNP_R_Sort$/;"	s	file:
+SNP_t	src/tigr/delta.hh	/^  SNP_t ( )$/;"	f	struct:SNP_t
+SNP_t	src/tigr/delta.hh	/^struct SNP_t$/;"	s
+SPACEDEF_H	src/kurtz/libbasedir/spacedef.h	12;"	d
+SPLINTALL	src/kurtz/mm3src/Makefile	/^SPLINTALL=maxmat3.splint maxmatopt.splint maxmatinp.splint\\$/;"	m
+SPLINTALL	src/kurtz/streesrc/Makefile	/^SPLINTALL=access.splint scanpref.splint linkloc.splint depthtab.splint\\$/;"	m
+SPLINTFLAGS	src/kurtz/libbasedir/Makefile	/^SPLINTFLAGS=-f ..\/Splintoptions -DDEBUG$/;"	m
+SPLINTFLAGS	src/kurtz/mm3src/Makefile	/^SPLINTFLAGS=${INCLUDEDIR} -f ..\/Splintoptions -DDEBUG$/;"	m
+SPLINTFLAGS	src/kurtz/streesrc/Makefile	/^SPLINTFLAGS=${SIZEFLAG} -I${INCLUDEDIR} -f ..\/Splintoptions -DDEBUG$/;"	m
+STAMP	src/kurtz/libbasedir/debugdef.h	30;"	d
+STANDARDMESSAGE	src/kurtz/libbasedir/errordef.h	106;"	d
+START	src/tigr/sw_align.cc	/^static const int START  = 3;$/;"	v	file:
+STARTFACTOR	src/kurtz/streesrc/construct.c	88;"	d	file:
+START_CHAR	src/tigr/repeat-match.cc	/^const char  START_CHAR = '%';$/;"	v
+STOP_CHAR	src/tigr/prepro.cc	/^const char STOP_CHAR = '*';          \/\/ stop codon character$/;"	v
+STOP_CHAR	src/tigr/sw_alignscore.hh	/^const char STOP_CHAR = 'O';$/;"	v
+STOP_MASK	src/tigr/prepro.cc	/^const char STOP_MASK = 'J';          \/\/ alpha character for stop codons$/;"	v
+STOREINARRAY	src/kurtz/libbasedir/arraydef.h	107;"	d
+STORESTARTDESC	src/kurtz/libbasedir/multiseq.c	54;"	d	file:
+STORESTARTDESC	src/kurtz/mm3src/maxmatinp.c	37;"	d	file:
+STREEACC_H	src/kurtz/streesrc/streeacc.h	10;"	d
+STREEDEF_H	src/kurtz/streesrc/streedef.h	10;"	d
+STREEHUGE_H	src/kurtz/streesrc/streehuge.h	16;"	d
+STREELARGE_H	src/kurtz/streesrc/streelarge.h	16;"	d
+STREEMAC_H	src/kurtz/streesrc/streemac.h	10;"	d
+STREEPROTO_H	src/kurtz/streesrc/streeproto.h	14;"	d
+STREESTDEF_H	src/kurtz/streesrc/streesmall.h	16;"	d
+STREETYP_H	src/kurtz/streesrc/streetyp.h	10;"	d
+SWITCH	scripts/mummerplot.pl	/^  SWITCH: {$/;"	l
+SYMBOL	src/kurtz/streesrc/symboldef.h	/^typedef Uchar SYMBOL;$/;"	t
+SYMBOL	src/kurtz/streesrc/symboldef.h	/^typedef Uint SYMBOL;$/;"	t
+SYMBOL	src/kurtz/streesrc/symboldef.h	/^typedef Ushort SYMBOL;$/;"	t
+SYMBOLBYTES	src/kurtz/streesrc/symboldef.h	13;"	d
+SYMBOLDEF_H	src/kurtz/streesrc/symboldef.h	10;"	d
+Safe_calloc	src/tigr/tigrinc.cc	/^void *  Safe_calloc  (size_t N, size_t Len)$/;"	f
+Safe_malloc	src/tigr/tigrinc.cc	/^void *  Safe_malloc  (size_t Len)$/;"	f
+Safe_realloc	src/tigr/tigrinc.cc	/^void *  Safe_realloc  (void * Q, size_t Len)$/;"	f
+Scaninteger	src/kurtz/libbasedir/types.h	/^typedef signed long Scaninteger;    \/\/ \\Typedef{Scaninteger}$/;"	t
+Score	src/tigr/sw_align.hh	/^struct Score$/;"	s
+ScoreGlobal	src/tigr/delta.cc	/^inline long ScoreGlobal$/;"	f
+ScoreLocal	src/tigr/delta.cc	/^inline long ScoreLocal$/;"	f
+Screen_Width	src/tigr/show-aligns.cc	/^int Screen_Width = DEFAULT_SCREEN_WIDTH;$/;"	v
+SelectAligns	src/tigr/show-snps.cc	/^void SelectAligns ( )$/;"	f
+Separation_Factor	src/tigr/mgaps.cc	/^static double  Separation_Factor = DEFAULT_SEPARATION_FACTOR;$/;"	v	file:
+SeqLenA	src/tigr/show-coords.cc	/^  long int SeqLenA, SeqLenB;              \/\/ length of seq A, seq B$/;"	m	struct:AlignStats	file:
+SeqLenB	src/tigr/show-coords.cc	/^  long int SeqLenA, SeqLenB;              \/\/ length of seq A, seq B$/;"	m	struct:AlignStats	file:
+SeqLenQ	src/tigr/show-tiling.cc	/^  long int SeqLenQ;                        \/\/ length of the query$/;"	m	struct:QueryContig	file:
+SeqLenR	src/tigr/show-tiling.cc	/^  long int SeqLenR;                        \/\/ sequence length of the reference$/;"	m	struct:QueryContig	file:
+SeqLenR	src/tigr/show-tiling.cc	/^  long int SeqLenR;                     \/\/ length of the reference$/;"	m	struct:AlignStats	file:
+SeqQ	src/tigr/show-tiling.cc	/^  char * SeqQ;                             \/\/ query sequence$/;"	m	struct:QueryContig	file:
+Seqinfo	src/kurtz/libbasedir/multidef.h	/^} Seqinfo;           \/\/ \\Typedef{Seqinfo}$/;"	t	typeref:struct:__anon23
+SetTheRangeForEachFile	scripts/mapview.pl	/^sub SetTheRangeForEachFile{      $/;"	s
+Set_Deltas	src/tigr/combineMUMs.cc	/^void  Set_Deltas$/;"	f
+Set_Left_Pad	src/tigr/combineMUMs.cc	/^static void  Set_Left_Pad$/;"	f	file:
+Set_Right_Pad	src/tigr/combineMUMs.cc	/^static void  Set_Right_Pad$/;"	f	file:
+Set_Subtree_Size	src/tigr/repeat-match.cc	/^void  Set_Subtree_Size$/;"	f
+Should_Skip	src/tigr/repeat-match.cc	/^   unsigned  Should_Skip : 1;$/;"	m	struct:node	file:
+Show_Alignment	src/tigr/annotate.cc	/^void  Show_Alignment (char A [], long int M, char B [], long int N)$/;"	f
+Show_Coverage	src/tigr/combineMUMs.cc	/^void  Show_Coverage$/;"	f
+Show_Differences	src/tigr/combineMUMs.cc	/^int  Show_Differences = FALSE;$/;"	v
+Show_Diffs	src/tigr/combineMUMs.cc	/^void  Show_Diffs$/;"	f
+Showdescinfo	src/kurtz/libbasedir/multidef.h	/^} Showdescinfo;$/;"	t	typeref:struct:__anon22
+Showsint	src/kurtz/libbasedir/types.h	/^typedef signed long Showsint;       \/\/ \\Typedef{Showsint}$/;"	t
+Showuint	src/kurtz/libbasedir/types.h	/^typedef unsigned long Showuint;     \/\/ \\Typedef{Showuint}$/;"	t
+Sibling	src/tigr/repeat-match.cc	/^   int  Sibling : 31;$/;"	m	struct:leaf	file:
+Sibling	src/tigr/repeat-match.cc	/^   int  Sibling : 31;$/;"	m	struct:node	file:
+Sibling_Is_Leaf	src/tigr/repeat-match.cc	/^   unsigned  Sibling_Is_Leaf : 1;$/;"	m	struct:leaf	file:
+Sibling_Is_Leaf	src/tigr/repeat-match.cc	/^   unsigned  Sibling_Is_Leaf : 1;$/;"	m	struct:node	file:
+Sign	src/tigr/combineMUMs.cc	/^int  Sign$/;"	f
+Sim	src/tigr/show-coords.cc	/^  float Sim;                              \/\/ percent similarity (0.0 - 100.0)$/;"	m	struct:AlignStats	file:
+Sim	src/tigr/show-tiling.cc	/^  float Sim;                            \/\/ percent similarity [0.0, 100.0]$/;"	m	struct:AlignStats	file:
+SimErrors	src/tigr/postnuc.cc	/^  long int Errors, SimErrors, NonAlphas; \/\/ errors, similarity errors, nonalphas$/;"	m	struct:Alignment	file:
+SimErrors	src/tigr/postpro.cc	/^  long int Errors, SimErrors, NonAlphas; \/\/ errors, similarity errors, nonalphas$/;"	m	struct:Alignment	file:
+Simple_Adj	src/tigr/gaps.cc	/^   long int  Simple_Adj, Wrap_Adj;$/;"	m	struct:Match	file:
+Simple_Adj	src/tigr/mgaps.cc	/^   long int  Simple_Adj;$/;"	m	struct:Match_t	file:
+Simple_From	src/tigr/gaps.cc	/^   long int  Simple_From, Wrap_From;$/;"	m	struct:Match	file:
+Simple_From	src/tigr/mgaps.cc	/^   long int  Simple_From;$/;"	m	struct:Match_t	file:
+Simple_Score	src/tigr/gaps.cc	/^   long int  Simple_Score, Wrap_Score;$/;"	m	struct:Match	file:
+Simple_Score	src/tigr/mgaps.cc	/^   long int  Simple_Score;$/;"	m	struct:Match_t	file:
+Simpleloc	src/kurtz/streesrc/streetyp.h	/^DECLAREARRAYSTRUCT(Simpleloc);$/;"	v
+Simpleloc	src/kurtz/streesrc/streetyp.h	/^} Simpleloc;     \/\/ \\Typedef{Simpleloc}$/;"	t	typeref:struct:__anon10
+Sint	src/kurtz/libbasedir/arraydef.h	/^DECLAREARRAYSTRUCT(Sint);$/;"	v
+Sint	src/kurtz/libbasedir/types.h	/^typedef signed   int  Sint;          \/\/ \\Typedef{Sint}$/;"	t
+Sint	src/kurtz/libbasedir/types.h	/^typedef signed   long  Sint;          \/\/ \\Typedef{Sint}$/;"	t
+SpanXwY	scripts/mummerplot.pl	/^sub SpanXwY ($$$$$) {$/;"	s
+Sprintfreturntype	src/kurtz/libbasedir/types.h	/^typedef int Sprintfreturntype;     \/\/ \\Typedef{Sprintfreturntype} $/;"	t
+Start1	src/tigr/gaps.cc	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match	file:
+Start1	src/tigr/mgaps.cc	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match_t	file:
+Start2	src/tigr/gaps.cc	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match	file:
+Start2	src/tigr/mgaps.cc	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match_t	file:
+StartR	src/tigr/show-tiling.cc	/^  long int StartR, EndR;                   \/\/ contig -> reference mapping coords$/;"	m	struct:QueryContig	file:
+Stp	src/tigr/show-coords.cc	/^  float Stp;                              \/\/ precent stop codon (0.0 - 100.0)$/;"	m	struct:AlignStats	file:
+Stp	src/tigr/show-tiling.cc	/^  float Stp;                            \/\/ precent stop codon [0.0, 100.0]$/;"	m	struct:AlignStats	file:
+Strcmpreturntype	src/kurtz/libbasedir/types.h	/^typedef int Strcmpreturntype;       \/\/ \\Typedef{Strcmpreturntype}$/;"	t
+String_Separator	src/tigr/repeat-match.cc	/^int  String_Separator;$/;"	v
+Stringtype	src/kurtz/libbasedir/types.h	/^typedef Listtype Stringtype;    \/\/ \\Typedef{Stringtype}$/;"	t
+Subtree_Size	src/tigr/repeat-match.cc	/^   int  Subtree_Size;$/;"	m	struct:node	file:
+Suffixtree	src/kurtz/streesrc/streetyp.h	/^typedef struct Suffixtreetype Suffixtree;$/;"	t	typeref:struct:Suffixtreetype
+Suffixtreetype	src/kurtz/streesrc/streetyp.h	/^struct Suffixtreetype$/;"	s
+Swap	src/tigr/delta.cc	/^inline void Swap (long & a, long & b)$/;"	f
+Swap	src/tigr/show-snps.cc	/^inline void Swap (long & a, long & b)$/;"	f
+Synteny	src/tigr/postnuc.cc	/^struct Synteny$/;"	s	file:
+Synteny	src/tigr/postpro.cc	/^struct Synteny$/;"	s	file:
+Sysconfargtype	src/kurtz/libbasedir/types.h	/^typedef int Sysconfargtype;         \/\/ \\Typedef{Sysconfargtype}$/;"	t
+THIRDBIT	src/kurtz/libbasedir/intbits.h	36;"	d
+THROWERRORLINE	src/kurtz/libbasedir/errordef.h	46;"	d
+THROWERRORLINE	src/kurtz/libbasedir/errordef.h	50;"	d
+TIGR::Foundation	scripts/Foundation.pm	/^package TIGR::Foundation;$/;"	p
+TIGR_GetOptions	scripts/Foundation.pm	/^   sub TIGR_GetOptions(@) {$/;"	s
+TIGR_SRC_DIR	Makefile	/^TIGR_SRC_DIR  := $(TOP_DIR)\/src\/tigr$/;"	m
+TOP_DIR	Makefile	/^TOP_DIR     := $(CURDIR)$/;"	m
+TO_SEQEND	src/tigr/postnuc.cc	/^bool TO_SEQEND = false;$/;"	v
+TO_SEQEND	src/tigr/postpro.cc	/^bool TO_SEQEND = false;$/;"	v
+TRANSLATE_MASK	src/tigr/prepro.cc	/^const char TRANSLATE_MASK = 'X';     \/\/ translator masking character$/;"	v
+TRUE	src/tigr/tigrinc.hh	18;"	d
+TYPES_H	src/kurtz/libbasedir/types.h	12;"	d
+Tag_From_Fasta_Line	src/tigr/combineMUMs.cc	/^int  Tag_From_Fasta_Line = FALSE;$/;"	v
+Tandem_Only	src/tigr/repeat-match.cc	/^static bool  Tandem_Only = false;$/;"	v	file:
+Tentative	src/tigr/mgaps.cc	/^   unsigned int  Tentative : 1;$/;"	m	struct:Match_t	file:
+The Program and its Options	docs/maxmat3man.tex	/^\\section{The Program and its Options}$/;"	s
+ThreeUint	src/kurtz/libbasedir/arraydef.h	/^DECLAREARRAYSTRUCT(ThreeUint);$/;"	v
+ThreeUint	src/kurtz/libbasedir/types.h	/^} ThreeUint;               \/\/ \\Typedef{ThreeUint}$/;"	t	typeref:struct:__anon14
+TileLevel	src/tigr/show-tiling.cc	/^  int TileLevel;                      \/\/ describes tiling status of query contig$/;"	m	struct:QueryContig	file:
+Translate_DNA	src/tigr/translate.cc	/^long int Translate_DNA$/;"	f
+True	src/kurtz/libbasedir/types.h	223;"	d
+UF	src/tigr/mgaps.cc	/^static int  * UF = NULL;$/;"	v	file:
+UNDEFCHAR	src/kurtz/libbasedir/chardef.h	24;"	d
+UNDEFFILESEP	src/kurtz/libbasedir/multidef.h	85;"	d
+UNDEFINEDREFERENCE	src/kurtz/streesrc/streehuge.h	59;"	d
+UNDEFINEDREFERENCE	src/kurtz/streesrc/streelarge.h	79;"	d
+UNDEFINEDREFERENCE	src/kurtz/streesrc/streesmall.h	62;"	d
+UNDEFNUMOFDBSEQ	src/kurtz/libbasedir/multiseq.c	42;"	d	file:
+UNSETIBIT	src/kurtz/libbasedir/intbits.h	95;"	d
+UNUSABLE_TILE_LEVEL	src/tigr/show-tiling.cc	/^const int UNUSABLE_TILE_LEVEL  =  -2;$/;"	v
+UNUSEDINLEAF	src/kurtz/streesrc/streelarge.h	54;"	d
+UNUSED_TILE_LEVEL	src/tigr/show-tiling.cc	/^const int UNUSED_TILE_LEVEL    =   0;$/;"	v
+USAGE	scripts/dnadiff.pl	/^  USAGE: dnadiff  [options]  <reference>  <query>$/;"	l
+USAGE	scripts/mapview.pl	/^  USAGE:  mapview  [options]  <coords file>  [UTR coords]  [CDS coords]$/;"	l
+USAGE	scripts/mapview.pl	/^  USAGE: mapview  [options]  <coords file>  [UTR coords]  [CDS coords]$/;"	l
+USAGE	scripts/mummerplot.pl	/^  USAGE: mummerplot  [options]  <match file>$/;"	l
+USAGE	scripts/nucmer.pl	/^  USAGE: nucmer  [options]  <Reference>  <Query>$/;"	l
+USAGE	scripts/promer.pl	/^  USAGE: promer  [options]  <Reference>  <Query>$/;"	l
+USAGEOUT	src/kurtz/libbasedir/errordef.h	95;"	d
+USED_TILE_LEVEL	src/tigr/show-tiling.cc	/^const int USED_TILE_LEVEL      =   1;$/;"	v
+USE_EXTRA_FIELDS	src/tigr/repeat-match.cc	15;"	d	file:
+Uchar	src/kurtz/libbasedir/arraydef.h	/^DECLAREARRAYSTRUCT(Uchar);$/;"	v
+Uchar	src/kurtz/libbasedir/types.h	/^typedef unsigned char  Uchar;         \/\/ \\Typedef{Uchar}$/;"	t
+Uint	src/kurtz/libbasedir/arraydef.h	/^DECLAREARRAYSTRUCT(Uint);$/;"	v
+Uint	src/kurtz/libbasedir/types.h	/^typedef unsigned int  Uint;          \/\/ \\Typedef{Uint}$/;"	t
+Uint	src/kurtz/libbasedir/types.h	/^typedef unsigned long  Uint;          \/\/ \\Typedef{Uint}$/;"	t
+UintConst	src/kurtz/libbasedir/types.h	53;"	d
+UintConst	src/kurtz/libbasedir/types.h	60;"	d
+Union	src/tigr/mgaps.cc	/^static void  Union$/;"	f	file:
+UpdateBest	src/tigr/delta.cc	/^bool UpdateBest$/;"	f
+Usage	src/tigr/combineMUMs.cc	/^void  Usage$/;"	f
+Usage	src/tigr/mgaps.cc	/^static void  Usage$/;"	f	file:
+Usage	src/tigr/repeat-match.cc	/^static void  Usage$/;"	f	file:
+Use_Extents	src/tigr/mgaps.cc	/^static int  Use_Extents = FALSE;$/;"	v	file:
+UserScoring	src/tigr/combineMUMs.cc	/^int UserScoring = FALSE;$/;"	v
+Ushort	src/kurtz/libbasedir/arraydef.h	/^DECLAREARRAYSTRUCT(Ushort);$/;"	v
+Ushort	src/kurtz/libbasedir/types.h	/^typedef unsigned short Ushort;        \/\/ \\Typedef{Ushort}$/;"	t
+VALIDINIT	src/kurtz/streesrc/construct.c	28;"	d	file:
+VERBOSE	src/tigr/combineMUMs.cc	74;"	d	file:
+VERSION	Makefile	/^VERSION := 3.23$/;"	m
+VISIBLECHAR	src/kurtz/libbasedir/visible.h	48;"	d
+VISIBLE_H	src/kurtz/libbasedir/visible.h	13;"	d
+VPATH	scripts/Makefile	/^VPATH := $(BIN_DIR)$/;"	m
+VPATH	src/kurtz/mm3src/Makefile	/^VPATH := $(BIN_DIR)$/;"	m
+VPATH	src/tigr/Makefile	/^VPATH := $(AUX_BIN_DIR):$(BIN_DIR)$/;"	m
+Verbose	src/tigr/combineMUMs.cc	/^int  Verbose = 0;$/;"	v
+Verbose	src/tigr/repeat-match.cc	/^int  Verbose = 0;$/;"	v
+Verify_Match	src/tigr/repeat-match.cc	/^void  Verify_Match$/;"	f
+WIDTH	src/tigr/annotate.cc	21;"	d	file:
+WILDCARD	src/kurtz/libbasedir/chardef.h	23;"	d
+Wrap_Adj	src/tigr/gaps.cc	/^   long int  Simple_Adj, Wrap_Adj;$/;"	m	struct:Match	file:
+Wrap_From	src/tigr/gaps.cc	/^   long int  Simple_From, Wrap_From;$/;"	m	struct:Match	file:
+Wrap_Here	src/tigr/gaps.cc	/^   int  Wrap_Here : 1;$/;"	m	struct:Match	file:
+Wrap_Score	src/tigr/gaps.cc	/^   long int  Simple_Score, Wrap_Score;$/;"	m	struct:Match	file:
+WriteGP	scripts/mummerplot.pl	/^sub WriteGP ($$)$/;"	s
+__DELTA_HH	src/tigr/delta.hh	12;"	d
+__SW_ALIGNSCORE_HH	src/tigr/sw_alignscore.hh	12;"	d
+__SW_ALIGN_HH	src/tigr/sw_align.hh	14;"	d
+__TIGRINC_HH	src/tigr/tigrinc.hh	2;"	d
+__TRANSLATE_HH	src/tigr/translate.hh	4;"	d
+_alignEngine	src/tigr/sw_align.cc	/^bool _alignEngine$/;"	f
+_banding	src/tigr/sw_align.cc	/^int _banding = DEFAULT_BANDING;$/;"	v
+_break_len	src/tigr/sw_align.cc	/^int _break_len = DEFAULT_BREAK_LEN;$/;"	v
+_matrix_type	src/tigr/sw_align.cc	/^int _matrix_type = NUCLEOTIDE;$/;"	v
+a	src/tigr/delta.cc	/^  DeltaEdgelet_t * a;$/;"	m	struct:LIS_t	file:
+acknowledgements	docs/web/manual/index.html	/^<h2><a name="acknowledgements"><\/a>6. Acknowledgements<\/h2>$/;"	a
+activeblocks	src/kurtz/libbasedir/space.c	/^void activeblocks(void)$/;"	f
+addDependInfo	scripts/Foundation.pm	/^   sub addDependInfo(@) {$/;"	s
+addNewAlignment	src/tigr/postnuc.cc	/^void addNewAlignment$/;"	f
+addNewAlignment	src/tigr/postpro.cc	/^void addNewAlignment$/;"	f
+addleafcountsstree	src/kurtz/streesrc/addleafcount.c	/^Sint addleafcountsstree(Suffixtree *stree)$/;"	f
+addleafcountsstree	src/kurtz/streesrc/streefiledoc.c	/^void addleafcountsstree(Suffixtree *stree)$/;"	f
+addoption	src/kurtz/libbasedir/procopt.c	/^Sint addoption(OptionDescription *options,Uint numofoptions,$/;"	f
+address	src/kurtz/streesrc/streetyp.h	/^  Uint *address;$/;"	m	struct:__anon7
+addspace	src/kurtz/libbasedir/space.c	/^static void addspace(Uint space)$/;"	f	file:
+alignSearch	src/tigr/sw_align.hh	/^inline bool alignSearch$/;"	f
+alignTarget	src/tigr/sw_align.hh	/^inline bool alignTarget$/;"	f
+aligningdraft	docs/web/manual/index.html	/^<h3><a name="aligningdraft"><\/a>4.2. Aligning two draft sequences<\/h3>$/;"	a
+aligningfinished	docs/web/manual/index.html	/^<h3><a name="aligningfinished"><\/a>4.1. Aligning two finished sequences<\/h3>$/;"	a
+alignment	docs/web/manual/index.html	/^<h3><a name="alignment"><\/a>5.3. Alignment generators<\/h3>$/;"	a
+aligns	docs/web/manual/index.html	/^<h4><a name="aligns"><\/a>5.4.4. show-aligns<\/h4>$/;"	a
+aligns	src/tigr/delta.hh	/^  std::vector<DeltaAlignment_t> aligns; \/\/!< alignments between the two seqs$/;"	m	struct:DeltaRecord_t
+allocandusespaceviaptr	src/kurtz/libbasedir/space.c	/^\/*@notnull@*\/ void *allocandusespaceviaptr(char *file,Uint line, $/;"	f
+allocatedStrings	src/kurtz/libbasedir/arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:__anon20
+alphabet	src/kurtz/streesrc/streetyp.h	/^  Uchar *alphabet;$/;"	m	struct:Suffixtreetype
+alphasize	src/kurtz/streesrc/streetyp.h	/^       alphasize,             \/\/ the number of different characters in t$/;"	m	struct:Suffixtreetype
+annot	src/tigr/show-coords.cc	/^  char annot [12];                        \/\/ annotation string$/;"	m	struct:AlignStats	file:
+annotateOverlaps	src/tigr/show-coords.cc	/^void annotateOverlaps$/;"	f
+artificial	src/kurtz/streesrc/streetyp.h	/^       artificial,$/;"	m	struct:Suffixtreetype
+asi	src/tigr/show-coords.cc	/^  vector<AlignStats>::iterator asi;$/;"	m	struct:LASstats	file:
+bail	scripts/Foundation.pm	/^   sub bail($;$) {$/;"	s
+blocks	src/kurtz/libbasedir/space.c	/^\/*@null@*\/ static Blockdescription *blocks = NULL;$/;"	v	file:
+branchbrother	src/kurtz/streesrc/streetyp.h	/^            branchbrother;  \/\/ the reference to the right brother; $/;"	m	struct:__anon8
+branchnodeoffset	src/kurtz/streesrc/streetyp.h	/^       branchnodeoffset,      \/\/ number of leafs in tree$/;"	m	struct:Suffixtreetype
+branchtab	src/kurtz/streesrc/streetyp.h	/^       *branchtab,            \/\/ table TBranch$/;"	m	struct:Suffixtreetype
+buff	src/tigr/delta.hh	/^  long buff;$/;"	m	struct:SNP_t
+build	src/tigr/delta.cc	/^void DeltaEdge_t::build (const DeltaRecord_t & rec)$/;"	f	class:DeltaEdge_t
+build	src/tigr/delta.cc	/^void DeltaGraph_t::build (const string & deltapath, bool getdeltas)$/;"	f	class:DeltaGraph_t
+cQ	src/tigr/delta.hh	/^  char cQ, cR;$/;"	m	struct:SNP_t
+cR	src/tigr/delta.hh	/^  char cQ, cR;$/;"	m	struct:SNP_t
+caddr_t	src/kurtz/libbasedir/types.h	/^typedef void * caddr_t;$/;"	t
+chainstart	src/kurtz/streesrc/streetyp.h	/^       *chainstart,           \/\/ address of the node, current chains starts at$/;"	m	struct:Suffixtreetype
+change_file_format	scripts/mapview.pl	/^sub change_file_format{   $/;"	s
+checkStream	src/tigr/delta.hh	/^  void checkStream ( )$/;"	f	class:DeltaReader_t
+checkdoubleexclude	src/kurtz/libbasedir/procopt.c	/^Sint checkdoubleexclude(Uint numofopts,OptionDescription *opt,$/;"	f
+checkexclude	src/kurtz/libbasedir/procopt.c	/^Sint checkexclude(OptionDescription *opt,Sint *excludetab,Uint len)$/;"	f
+checkiflocationisMUMcand	src/kurtz/mm3src/findmumcand.c	/^static Sint checkiflocationisMUMcand (Location *loc,$/;"	f	file:
+checkleafcount	src/kurtz/streesrc/addleafcount.c	/^static void checkleafcount(Suffixtree *stree,$/;"	f	file:
+checkleafcountall	src/kurtz/streesrc/addleafcount.c	/^static void checkleafcountall(Suffixtree *stree)$/;"	f	file:
+checklocation	src/kurtz/streesrc/streedbg.c	/^void checklocation(Suffixtree *stree,Location *loc)$/;"	f
+checkquerycommonprefix	src/kurtz/mm3src/findmaxmat.c	/^static void checkquerycommonprefix(Maxmatchinfo *maxmatchinfo,$/;"	f	file:
+checkspaceleak	src/kurtz/libbasedir/space.c	/^void checkspaceleak(void)$/;"	f
+checkstree	src/kurtz/streesrc/streedbg.c	/^void checkstree(Suffixtree *stree)$/;"	f
+clean	src/tigr/delta.cc	/^void DeltaGraph_t::clean()$/;"	f	class:DeltaGraph_t
+cleanLogFILES	scripts/Foundation.pm	/^   sub cleanLogFILES() {$/;"	s
+clear	src/tigr/annotate.cc	/^  void clear()$/;"	f	class:Matrix_t
+clear	src/tigr/delta.cc	/^void DeltaGraph_t::clear ( )$/;"	f	class:DeltaGraph_t
+clear	src/tigr/delta.hh	/^  void clear ( )$/;"	f	struct:DeltaAlignment_t
+clear	src/tigr/delta.hh	/^  void clear ( )$/;"	f	struct:DeltaRecord_t
+close	src/tigr/delta.hh	/^  void close ( )$/;"	f	class:DeltaReader_t
+closeLogERROR	scripts/Foundation.pm	/^   sub closeLogERROR() {$/;"	s
+closeLogMSG	scripts/Foundation.pm	/^   sub closeLogMSG() {$/;"	s
+cluster_id	src/tigr/mgaps.cc	/^   int  cluster_id : 30;$/;"	m	struct:Match_t	file:
+clustering	docs/web/manual/index.html	/^<h3><a name="clustering"><\/a>5.2. Clustering<\/h3>$/;"	a
+clusters	src/tigr/postnuc.cc	/^  vector<Cluster> clusters;  \/\/ the ordered set of clusters between A and B$/;"	m	struct:Synteny	file:
+clusters	src/tigr/postpro.cc	/^  vector<Cluster> clusters;  \/\/ the ordered set of clusters between A and B$/;"	m	struct:Synteny	file:
+cmaxmatch	src/kurtz/mm3src/maxmatdef.h	/^       cmaxmatch,               \/\/ compute all maximal matches$/;"	m	struct:__anon4
+cmum	src/kurtz/mm3src/maxmatdef.h	/^       cmum;                    \/\/ compute real matches unique in both sequences$/;"	m	struct:__anon4
+cmum	src/kurtz/mm3src/procmaxmat.c	/^       cmum,                   \/\/ compute MUMs$/;"	m	struct:__anon3	file:
+cmumcand	src/kurtz/mm3src/maxmatdef.h	/^       cmumcand,                \/\/ compute reference-unique maximal matches$/;"	m	struct:__anon4
+cmumcand	src/kurtz/mm3src/procmaxmat.c	/^       cmumcand,               \/\/ compute MUM candidates$/;"	m	struct:__anon3	file:
+commondepthstack	src/kurtz/mm3src/findmaxmat.c	/^  ArrayNodeinfo commondepthstack; \/\/ stack to store depth values$/;"	m	struct:__anon2	file:
+compare	docs/web/manual/index.html	/^<h3><a name="compare"><\/a>1.2. Comparative genomics<\/h3>$/;"	a
+compareMUMcandidates	src/kurtz/libbasedir/cleanMUMcand.c	/^static Sint compareMUMcandidates(MUMcandidate *p,MUMcandidate *q)$/;"	f	file:
+comparelocs	src/kurtz/streesrc/streedbg.c	/^static Sint comparelocs(Suffixtree *stree,Location *loc1,Location *loc2)$/;"	f	file:
+compdna	src/tigr/translate.hh	/^const int	compdna[NUM_DNA_SYMBOLS] = {$/;"	v
+compilation	docs/web/manual/index.html	/^<h3><a name="compilation"><\/a>2.3. Compilation and installation<\/h3>$/;"	a
+completelarge	src/kurtz/streesrc/construct.c	/^static void completelarge(Suffixtree *stree)$/;"	f	file:
+conQ	src/tigr/delta.hh	/^  int conQ, conR;$/;"	m	struct:SNP_t
+conR	src/tigr/delta.hh	/^  int conQ, conR;$/;"	m	struct:SNP_t
+constructheadstree	src/kurtz/streesrc/streefiledoc.c	/^Sint constructheadstree(Suffixtree *stree,SYMBOL *text,$/;"	f
+constructmarkmaxstree	src/kurtz/streesrc/streefiledoc.c	/^Sint constructmarkmaxstree(Suffixtree *stree,SYMBOL *text,$/;"	f
+constructprogressstree	src/kurtz/streesrc/streefiledoc.c	/^Sint constructprogressstree(Suffixtree *stree,SYMBOL *text,$/;"	f
+constructstree	src/kurtz/streesrc/streefiledoc.c	/^Sint constructstree(Suffixtree *stree,SYMBOL *text,Uint textlen)$/;"	f
+contact	docs/web/examples/index.html	/^<h2><a name="contact"><\/a>3. Contact information<\/h2>$/;"	a
+contact	docs/web/manual/index.html	/^<h2><a name="contact"><\/a>7. Contact information<\/h2>$/;"	a
+coords	docs/web/manual/index.html	/^<h4><a name="coords"><\/a>5.4.5. show-coords<\/h4>$/;"	a
+countleafs	src/kurtz/streesrc/addleafcount.c	/^static Sint countleafs(\/*@unused@*\/ Uint leafindex,$/;"	f	file:
+countstack	src/kurtz/streesrc/addleafcount.c	/^  ArrayUint countstack;$/;"	m	struct:__anon6	file:
+creatememorymap	src/kurtz/libbasedir/mapfile.c	/^\/*@null@*\/ void *creatememorymap(char *file,Uint line,char *filename,$/;"	f
+creatememorymapforfiledesc	src/kurtz/libbasedir/mapfile.c	/^\/*@null@*\/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,$/;"	f
+ctxQ	src/tigr/delta.hh	/^  std::string ctxQ, ctxR;$/;"	m	struct:SNP_t
+ctxR	src/tigr/delta.hh	/^  std::string ctxQ, ctxR;$/;"	m	struct:SNP_t
+currentbranchtabsize	src/kurtz/streesrc/streetyp.h	/^       currentbranchtabsize,  \/\/ current number of cells in branchtab$/;"	m	struct:Suffixtreetype
+currentdepth	src/kurtz/streesrc/streetyp.h	/^       currentdepth,          \/\/ depth of the new branch node$/;"	m	struct:Suffixtreetype
+currentisrcmatch	src/kurtz/mm3src/procmaxmat.c	/^       currentisrcmatch;       \/\/ true iff currently rc-matches are computed$/;"	m	struct:__anon3	file:
+currentquerylen	src/kurtz/mm3src/procmaxmat.c	/^       currentquerylen;        \/\/ length of the current query sequence$/;"	m	struct:__anon3	file:
+currentspace	src/kurtz/libbasedir/mapfile.c	/^static Uint currentspace = 0,              \/\/ currently mapped num of bytes$/;"	v	file:
+currentspace	src/kurtz/libbasedir/space.c	/^            currentspace = 0,   \/\/ currently allocated num of bytes$/;"	v	file:
+d_m	src/tigr/annotate.cc	/^  vector<T> d_m;$/;"	m	class:Matrix_t	file:
+data_type_m	src/tigr/delta.hh	/^  std::string data_type_m;       \/\/!< the type of alignment data$/;"	m	class:DeltaReader_t
+datatype	src/tigr/delta.hh	/^  AlignmentType_t datatype;    \/\/!< alignment data type$/;"	m	class:DeltaGraph_t
+dbstart	src/kurtz/libbasedir/mumcand.h	/^       dbstart,      \/\/ start position in the subject-sequence$/;"	m	struct:__anon19
+debugPop	scripts/Foundation.pm	/^   sub debugPop() {$/;"	s
+debugPush	scripts/Foundation.pm	/^   sub debugPush() {$/;"	s
+debugclosefile	src/kurtz/libbasedir/debug.c	/^void debugclosefile(void)$/;"	f
+debugfileptr	src/kurtz/libbasedir/debug.c	/^           *debugfileptr = NULL;  \/\/ the file pointer to show the debug info$/;"	v	file:
+debuglevel	src/kurtz/libbasedir/debug.c	/^static Sint debuglevel = 0;        \/\/ the value of \\texttt{DEBUGLEVEL}$/;"	v	file:
+debugwhere	src/kurtz/libbasedir/debug.c	/^static BOOL debugwhere = False;    \/\/ the value of \\texttt{DEBUGWHERE}$/;"	v	file:
+declared	src/kurtz/libbasedir/optdesc.h	/^       declared;             \/\/ is the option declared by$/;"	m	struct:__anon18
+defined	src/kurtz/libbasedir/multidef.h	/^  BOOL defined,          \/\/ show a description$/;"	m	struct:__anon22
+deletememorymap	src/kurtz/libbasedir/mapfile.c	/^Sint deletememorymap(char *file,Uint line,void *mappedfile)$/;"	f
+delta	src/tigr/delta.hh	/^  std::string delta;          \/\/!< delta information$/;"	m	struct:DeltaEdgelet_t
+delta	src/tigr/postnuc.cc	/^  vector<long int> delta;         \/\/ the delta values, with NO zero at the end$/;"	m	struct:Alignment	file:
+delta	src/tigr/postpro.cc	/^  vector<long int> delta;         \/\/ the delta values, with NO zero at the end$/;"	m	struct:Alignment	file:
+deltaApos	src/tigr/postnuc.cc	/^  long int deltaApos;        \/\/ sum of abs(deltas) - #of negative deltas$/;"	m	struct:Alignment	file:
+deltaApos	src/tigr/postpro.cc	/^  long int deltaApos;        \/\/ sum of abs(deltas) - #of negative deltas$/;"	m	struct:Alignment	file:
+delta_path_m	src/tigr/delta.hh	/^  std::string delta_path_m;      \/\/!< the name of the delta input file$/;"	m	class:DeltaReader_t
+delta_stream_m	src/tigr/delta.hh	/^  std::ifstream delta_stream_m;  \/\/!< the delta file input stream$/;"	m	class:DeltaReader_t
+deltas	src/tigr/delta.hh	/^  std::vector<long> deltas;  \/\/!< delta encoded alignment informaiton$/;"	m	struct:DeltaAlignment_t
+depth	src/kurtz/streesrc/streetyp.h	/^       depth;               \/\/ the depth of the branching node$/;"	m	struct:__anon8
+depth	src/kurtz/streesrc/streetyp.h	/^  Uint depth, headposition;$/;"	m	struct:__anon11
+depthfirststree	src/kurtz/streesrc/dfs.c	/^Sint depthfirststree(Suffixtree *stree,Reference *startnode,$/;"	f
+depthfirststree	src/kurtz/streesrc/streefiledoc.c	/^Sint depthfirststree(Suffixtree *stree,Reference *startnode,$/;"	f
+depthofpreviousmaxloc	src/kurtz/mm3src/findmaxmat.c	/^       depthofpreviousmaxloc;     \/\/ the depth of the previous maxloc$/;"	m	struct:__anon2	file:
+description	docs/web/manual/index.html	/^<h3><a name="description"><\/a>1.1. Description<\/h3>$/;"	a
+description	src/kurtz/libbasedir/optdesc.h	/^       *description;         \/\/ help text describing purpose of option$/;"	m	struct:__anon18
+descspace	src/kurtz/libbasedir/multidef.h	/^  ArrayCharacters descspace;           \/\/ the space for the descriptions$/;"	m	struct:__anon21
+diff	src/tigr/delta.cc	/^  long diff;$/;"	m	struct:LIS_t	file:
+dirB	src/tigr/postnuc.cc	/^  signed char dirB;          \/\/ the query sequence direction$/;"	m	struct:Alignment	file:
+dirB	src/tigr/postnuc.cc	/^  signed char dirB;          \/\/ the query sequence direction$/;"	m	struct:Cluster	file:
+dirQ	src/tigr/delta.hh	/^  unsigned char dirQ   : 1;   \/\/!< query match direction$/;"	m	struct:DeltaEdgelet_t
+dirR	src/tigr/delta.hh	/^  unsigned char dirR   : 1;   \/\/!< reference match direction$/;"	m	struct:DeltaEdgelet_t
+dynamicstrdup	src/kurtz/libbasedir/space.c	/^\/*@notnull@*\/ char *dynamicstrdup(char *file,Uint line,char *source)$/;"	f
+eA	src/tigr/postnuc.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+eA	src/tigr/postpro.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+eA	src/tigr/show-coords.cc	/^  long int sA, eA, sB, eB;                \/\/ start, end in A, start, end in B$/;"	m	struct:AlignStats	file:
+eB	src/tigr/postnuc.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+eB	src/tigr/postpro.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+eB	src/tigr/show-coords.cc	/^  long int sA, eA, sB, eB;                \/\/ start, end in A, start, end in B$/;"	m	struct:AlignStats	file:
+eQ	src/tigr/delta.hh	/^  long eQ;    \/\/!< end coordinate in the reference$/;"	m	struct:DeltaAlignment_t
+eQ	src/tigr/show-aligns.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+eQ	src/tigr/show-tiling.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+eR	src/tigr/delta.hh	/^  long eR;    \/\/!< end coordinate in the reference$/;"	m	struct:DeltaAlignment_t
+eR	src/tigr/show-aligns.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+eR	src/tigr/show-tiling.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+edge	src/tigr/delta.hh	/^  DeltaEdge_t * edge;$/;"	m	struct:DeltaEdgelet_t
+edgelen	src/kurtz/streesrc/streetyp.h	/^  Uint edgelen,         \/\/ length of edge$/;"	m	struct:__anon9
+edgelets	src/tigr/delta.hh	/^  std::vector<DeltaEdgelet_t *> edgelets;  \/\/!< the set of individual alignments$/;"	m	struct:DeltaEdge_t
+edges	src/tigr/delta.hh	/^  std::vector<DeltaEdge_t *> edges;   \/\/!< the set of related edges$/;"	m	struct:DeltaNode_t
+enumeratemaxmatches	src/kurtz/mm3src/findmaxmat.c	/^static Sint enumeratemaxmatches (Maxmatchinfo *maxmatchinfo,$/;"	f	file:
+enumlocations	src/kurtz/streesrc/streedbg.c	/^void enumlocations(Suffixtree *stree,$/;"	f
+enumlocationssubtree	src/kurtz/streesrc/streedbg.c	/^static void enumlocationssubtree(Suffixtree *stree,Uint *btptr,$/;"	f	file:
+ep	src/tigr/delta.hh	/^  DeltaEdge_t * ep;$/;"	m	struct:SNP_t
+errorcode	src/kurtz/libbasedir/seterror.c	/^static Sint errorcode = 0;$/;"	v	file:
+errormessage	src/kurtz/libbasedir/seterror.c	/^static char errormessage[MAXERRORMSG+1];$/;"	v	file:
+exact	docs/web/manual/index.html	/^<h4><a name="exact"><\/a>5.1.3. exact-tandems<\/h4>$/;"	a
+exactlytwoleavesstree	src/kurtz/streesrc/ex2leav.c	/^BOOL exactlytwoleavesstree(Suffixtree *stree,PairUint *twoleaves,Bref start)$/;"	f
+exactlytwoleavesstree	src/kurtz/streesrc/streefiledoc.c	/^BOOL exactlytwoleavesstree(Suffixtree *stree,$/;"	f
+examples	docs/web/examples/index.html	/^<h2><a name="examples"><\/a>2. Examples<\/h2>$/;"	a
+extendBackward	src/tigr/postnuc.cc	/^bool extendBackward$/;"	f
+extendBackward	src/tigr/postpro.cc	/^bool extendBackward$/;"	f
+extendClusters	src/tigr/postnuc.cc	/^void extendClusters$/;"	f
+extendClusters	src/tigr/postpro.cc	/^void extendClusters$/;"	f
+extendForward	src/tigr/postnuc.cc	/^bool extendForward$/;"	f
+extendForward	src/tigr/postpro.cc	/^bool extendForward$/;"	f
+fileallocated	src/kurtz/libbasedir/space.c	/^  char *fileallocated; \/\/ the filenames where the block was allocated$/;"	m	struct:__anon24	file:
+filelength	src/kurtz/libbasedir/types.h	/^  Uint filelength;      \/\/ the length of the corresponding file$/;"	m	struct:__anon17
+filemapped	src/kurtz/libbasedir/mapfile.c	/^static char *filemapped[MAXMAPPEDFILES] = {NULL};  $/;"	v	file:
+filenamebuf	src/kurtz/libbasedir/types.h	/^  char *filenamebuf;    \/\/ pointer to a copy of a filename$/;"	m	struct:__anon17
+filter	docs/web/manual/index.html	/^<h4><a name="filter" id="filter"><\/a>5.4.1. delta-filter<\/h4>$/;"	a
+finalprogress	src/kurtz/streesrc/stree.c	/^\/*@unused@*\/ static void finalprogress(\/*@unused@*\/ void *info)$/;"	f	file:
+finalprogress	src/kurtz/streesrc/streefiledoc.c	/^void finalprogress(void *info)$/;"	f
+findmaxmatches	src/kurtz/mm3src/findmaxmat.c	/^Sint findmaxmatches(Suffixtree *stree,$/;"	f
+findmaxmatchesonbothstrands	src/kurtz/mm3src/procmaxmat.c	/^static Sint findmaxmatchesonbothstrands(void *info,Uint seqnum,$/;"	f	file:
+findmumcandidates	src/kurtz/mm3src/findmumcand.c	/^Sint findmumcandidates(Suffixtree *stree,$/;"	f
+findprefixpathfromnodestree	src/kurtz/streesrc/scanpref.c	/^\/*@null@*\/SYMBOL *findprefixpathfromnodestree(Suffixtree *stree,$/;"	f
+findprefixpathfromnodestree	src/kurtz/streesrc/streefiledoc.c	/^SYMBOL *findprefixpathfromnodestree(Suffixtree *stree,$/;"	f
+findprefixpathstree	src/kurtz/streesrc/scanpref.c	/^\/*@null@*\/ SYMBOL *findprefixpathstree(Suffixtree *stree,$/;"	f
+firstbranchingnode	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Bref firstbranchingnode(Suffixtree *stree)$/;"	f
+firstchild	src/kurtz/streesrc/streetyp.h	/^  Reference firstchild,     \/\/ the reference to the first child$/;"	m	struct:__anon8
+firstleaf	src/kurtz/streesrc/iterator.c	/^Lref firstleaf(Suffixtree *stree)$/;"	f
+firstnode	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Reference *firstnode(Suffixtree *stree,Reference *refspace)$/;"	f
+firstnodedfs	src/kurtz/streesrc/iterator.c	/^Reference *firstnodedfs(Suffixtree *stree,DFSstate *dfsstate,$/;"	f
+firstnotallocated	src/kurtz/streesrc/streetyp.h	/^       *firstnotallocated,    \/\/ refers to the last address, such that at$/;"	m	struct:Suffixtreetype
+firstptr	src/kurtz/streesrc/streetyp.h	/^  SYMBOL *firstptr;     \/\/ pointer to first character of edge label$/;"	m	struct:__anon9
+firstsucc	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Reference *firstsucc(Suffixtree *stree,Bref bptr,$/;"	f
+flag1to1	src/tigr/delta.cc	/^void DeltaGraph_t::flag1to1(float epsilon, float maxolap)$/;"	f	class:DeltaGraph_t
+flagGLIS	src/tigr/delta.cc	/^void DeltaGraph_t::flagGLIS (float epsilon)$/;"	f	class:DeltaGraph_t
+flagGOOD	src/tigr/delta.cc	/^void DeltaGraph_t::flagGOOD()$/;"	f	class:DeltaGraph_t
+flagLAS	src/tigr/show-coords.cc	/^void flagLAS$/;"	f
+flagMtoM	src/tigr/delta.cc	/^void DeltaGraph_t::flagMtoM(float epsilon, float maxolap)$/;"	f	class:DeltaGraph_t
+flagQLIS	src/tigr/delta.cc	/^void DeltaGraph_t::flagQLIS (float epsilon, float maxolap, bool flagbad)$/;"	f	class:DeltaGraph_t
+flagRLIS	src/tigr/delta.cc	/^void DeltaGraph_t::flagRLIS (float epsilon, float maxolap, bool flagbad)$/;"	f	class:DeltaGraph_t
+flagScore	src/tigr/delta.cc	/^void DeltaGraph_t::flagScore (long minlen, float minidy)$/;"	f	class:DeltaGraph_t
+flagUNIQ	src/tigr/delta.cc	/^void DeltaGraph_t::flagUNIQ (float minuniq)$/;"	f	class:DeltaGraph_t
+flushAlignments	src/tigr/postnuc.cc	/^void flushAlignments$/;"	f
+flushAlignments	src/tigr/postpro.cc	/^void flushAlignments$/;"	f
+flushSyntenys	src/tigr/postnuc.cc	/^void flushSyntenys$/;"	f
+flushSyntenys	src/tigr/postpro.cc	/^void flushSyntenys$/;"	f
+format_mgaps	scripts/mapview.pl	/^sub format_mgaps{$/;"	s
+forward	src/kurtz/mm3src/maxmatdef.h	/^       forward,                 \/\/ compute matches on forward strand$/;"	m	struct:__anon4
+forward	src/kurtz/mm3src/procmaxmat.c	/^       forward,                \/\/ compute forward matches$/;"	m	struct:__anon3	file:
+fourcolumn	src/kurtz/mm3src/maxmatdef.h	/^       fourcolumn,              \/\/ always use 4 column format$/;"	m	struct:__anon4
+fourcolumn	src/kurtz/mm3src/procmaxmat.c	/^       fourcolumn,             \/\/ is option \\texttt{-F} on?$/;"	m	struct:__anon3	file:
+frameA	src/tigr/postpro.cc	/^  int frameA;                \/\/ the reference sequence frame (1-6)$/;"	m	struct:Alignment	file:
+frameA	src/tigr/postpro.cc	/^  int frameA;                \/\/ the reference sequence frame (1-6)$/;"	m	struct:Cluster	file:
+frameB	src/tigr/postpro.cc	/^  int frameB;                \/\/ the query sequence frame$/;"	m	struct:Alignment	file:
+frameB	src/tigr/postpro.cc	/^  int frameB;                \/\/ the query sequence frame$/;"	m	struct:Cluster	file:
+freemultiseq	src/kurtz/libbasedir/multiseq.c	/^void freemultiseq(Multiseq *multiseq)$/;"	f
+freespaceviaptr	src/kurtz/libbasedir/space.c	/^void freespaceviaptr(char *file,Uint line,void *ptr)$/;"	f
+freestree	src/kurtz/streesrc/construct.c	/^void freestree(Suffixtree *stree)$/;"	f
+freestree	src/kurtz/streesrc/streefiledoc.c	/^void freestree(Suffixtree *stree)$/;"	f
+frmQ	src/tigr/delta.hh	/^  int frmQ, frmR;             \/\/!< reading frame$/;"	m	struct:DeltaEdgelet_t
+frmR	src/tigr/delta.hh	/^  int frmQ, frmR;             \/\/!< reading frame$/;"	m	struct:DeltaEdgelet_t
+from	src/tigr/delta.cc	/^  long from;$/;"	m	struct:LIS_t	file:
+from	src/tigr/show-coords.cc	/^  long int from, wfrom;$/;"	m	struct:LASstats	file:
+gaps	docs/web/manual/index.html	/^<h4><a name="gaps"><\/a>5.2.1. gaps<\/h4>$/;"	a
+gapsoutput	docs/web/manual/index.html	/^<h5><a name="gapsoutput"><\/a>Output format<\/h5>$/;"	a
+generalcounter	src/kurtz/streesrc/streetyp.h	/^  void *generalcounter;$/;"	m	struct:Suffixtreetype
+generateDelta	src/tigr/sw_align.cc	/^static void generateDelta$/;"	f	file:
+generateWarnings	src/tigr/show-coords.cc	/^void generateWarnings$/;"	f
+getAlignmentQryCoverage	src/tigr/show-tiling.cc	/^float getAlignmentQryCoverage$/;"	f
+getBanding	src/tigr/sw_align.hh	/^inline int getBanding()$/;"	f
+getBreakLen	src/tigr/sw_align.hh	/^inline int getBreakLen$/;"	f
+getDataType	src/tigr/delta.hh	/^  const std::string & getDataType ( ) const$/;"	f	class:DeltaReader_t
+getDebugLevel	scripts/Foundation.pm	/^   sub getDebugLevel() {$/;"	s
+getDeltaPath	src/tigr/delta.hh	/^  const std::string & getDeltaPath ( ) const$/;"	f	class:DeltaReader_t
+getEdgeCount	src/tigr/delta.cc	/^long DeltaGraph_t::getEdgeCount()$/;"	f	class:DeltaGraph_t
+getEdgeletCount	src/tigr/delta.cc	/^long DeltaGraph_t::getEdgeletCount()$/;"	f	class:DeltaGraph_t
+getErrorFile	scripts/Foundation.pm	/^   sub getErrorFile() {$/;"	s
+getFilelabelDate	scripts/Foundation.pm	/^   sub getFilelabelDate(;@) {$/;"	s
+getForwardTargetCluster	src/tigr/postnuc.cc	/^vector<Cluster>::iterator getForwardTargetCluster$/;"	f
+getForwardTargetCluster	src/tigr/postpro.cc	/^vector<Cluster>::iterator getForwardTargetCluster$/;"	f
+getISODate	scripts/Foundation.pm	/^   sub getISODate(;@) {$/;"	s
+getLogFile	scripts/Foundation.pm	/^   sub getLogFile() {$/;"	s
+getLogfileDate	scripts/Foundation.pm	/^   sub getLogfileDate(;@) {$/;"	s
+getMatrixType	src/tigr/sw_align.hh	/^inline int getMatrixType$/;"	f
+getMySQLDate	scripts/Foundation.pm	/^   sub getMySQLDate(;@) {$/;"	s
+getNodeCount	src/tigr/delta.cc	/^long DeltaGraph_t::getNodeCount()$/;"	f	class:DeltaGraph_t
+getProgramInfo	scripts/Foundation.pm	/^   sub getProgramInfo($) {$/;"	s
+getQueryPath	src/tigr/delta.hh	/^  const std::string & getQueryPath ( ) const$/;"	f	class:DeltaReader_t
+getRecord	src/tigr/delta.hh	/^  const DeltaRecord_t & getRecord ( ) const$/;"	f	class:DeltaReader_t
+getReferencePath	src/tigr/delta.hh	/^  const std::string & getReferencePath ( ) const$/;"	f	class:DeltaReader_t
+getReverseTargetAlignment	src/tigr/postnuc.cc	/^vector<Alignment>::iterator getReverseTargetAlignment$/;"	f
+getReverseTargetAlignment	src/tigr/postpro.cc	/^vector<Alignment>::iterator getReverseTargetAlignment$/;"	f
+getSubsetIdentity	src/tigr/show-tiling.cc	/^float getSubsetIdentity$/;"	f
+getSubsetQryCoverage	src/tigr/show-tiling.cc	/^float getSubsetQryCoverage$/;"	f
+getSubsetQrySyntenyCoverage	src/tigr/show-tiling.cc	/^float getSubsetQrySyntenyCoverage$/;"	f
+getSybaseDate	scripts/Foundation.pm	/^   sub getSybaseDate(;@) {$/;"	s
+getVersionInfo	scripts/Foundation.pm	/^   sub getVersionInfo() {$/;"	s
+get_cds_ends	scripts/mapview.pl	/^sub get_cds_ends{$/;"	s
+get_ref_len	scripts/mapview.pl	/^sub get_ref_len{ $/;"	s
+get_utrcds_ends	scripts/mapview.pl	/^sub get_utrcds_ends{$/;"	s
+get_utrcds_info	scripts/mapview.pl	/^sub get_utrcds_info{$/;"	s
+getbranchinfostree	src/kurtz/streesrc/access.c	/^void getbranchinfostree(Suffixtree *stree,Uint whichinfo,$/;"	f
+getbranchinfostree	src/kurtz/streesrc/streefiledoc.c	/^void getbranchinfostree(Suffixtree *stree,Uint whichinfo,$/;"	f
+getclockticks	src/kurtz/libbasedir/clock.c	/^Uint getclockticks(void)$/;"	f
+getdbgfp	src/kurtz/libbasedir/debug.c	/^FILE *getdbgfp(void)$/;"	f
+getdebuglevel	src/kurtz/libbasedir/debug.c	/^Sint getdebuglevel(void)$/;"	f
+getdebugwhere	src/kurtz/libbasedir/debug.c	/^BOOL getdebugwhere(void)$/;"	f
+getdepth	src/kurtz/streesrc/streelarge.h	/^static Uint getdepth(Uint *btptr)$/;"	f
+getdepth	src/kurtz/streesrc/streesmall.h	/^static Uint getdepth(Uint *btptr)$/;"	f
+geterror	src/kurtz/libbasedir/seterror.c	/^Sint geterror(void)$/;"	f
+getheadstringstree	src/kurtz/streesrc/access.c	/^void getheadstringstree(Suffixtree *stree,Stringtype *str)$/;"	f
+getheadstringstree	src/kurtz/streesrc/streefiledoc.c	/^void getheadstringstree(Suffixtree *stree,Stringtype *str)$/;"	f
+getlargelinkconstruction	src/kurtz/streesrc/construct.c	/^static Uint getlargelinkconstruction(Suffixtree *stree)$/;"	f	file:
+getlargelinkstree	src/kurtz/streesrc/access.c	/^Uint getlargelinkstree(Suffixtree *stree,Bref btptr,Uint depth)$/;"	f
+getlargelinkstree	src/kurtz/streesrc/access.c	/^Uint getlargelinkstree(\/*@unused@*\/ Suffixtree *stree,Bref btptr,Uint depth)$/;"	f
+getleafcountstree	src/kurtz/streesrc/addleafcount.c	/^Uint getleafcountstree(Suffixtree *stree,Bref nodeptr)$/;"	f
+getleafcountstree	src/kurtz/streesrc/streefiledoc.c	/^Uint getleafcountstree(Suffixtree *stree,Bref nodeptr)$/;"	f
+getleafinfostree	src/kurtz/streesrc/access.c	/^void getleafinfostree(Suffixtree *stree,Leafinfo *leafinfo,Lref lptr)$/;"	f
+getleafinfostree	src/kurtz/streesrc/streefiledoc.c	/^void getleafinfostree(Suffixtree *stree,Leafinfo *leafinfo,$/;"	f
+getmaxdesclen	src/kurtz/mm3src/procmaxmat.c	/^static Sint getmaxdesclen(Multiseq *multiseq)$/;"	f	file:
+getmaxmatinput	src/kurtz/mm3src/maxmatinp.c	/^Sint getmaxmatinput (Multiseq *subjectmultiseq,$/;"	f
+getmaxtextlenstree	src/kurtz/streesrc/access.c	/^Uint getmaxtextlenstree(void)$/;"	f
+getmaxtextlenstree	src/kurtz/streesrc/streefiledoc.c	/^Uint getmaxtextlenstree(void)$/;"	f
+getoptindent	src/kurtz/libbasedir/procopt.c	/^static Uint getoptindent(Sint *excludetab,OptionDescription *opt,Uint numofopt)$/;"	f	file:
+getrecordnum	src/kurtz/libbasedir/multiseq.c	/^Sint getrecordnum(Uint *recordseps,Uint numofrecords,Uint totalwidth,$/;"	f
+getruntime	src/kurtz/libbasedir/clock.c	/^double getruntime(void)$/;"	f
+getseqnum	src/kurtz/libbasedir/multiseq.c	/^Sint getseqnum(Multiseq *multiseq,Uint position)$/;"	f
+getspacepeak	src/kurtz/libbasedir/space.c	/^Uint getspacepeak(void)$/;"	f
+headend	src/kurtz/streesrc/streetyp.h	/^         *headend,            \/\/ of the head location \\((\\overline{u},v)\\). $/;"	m	struct:Suffixtreetype
+headnode	src/kurtz/streesrc/streetyp.h	/^       *headnode,             \/\/ left component of head location$/;"	m	struct:Suffixtreetype
+headnodedepth	src/kurtz/streesrc/streetyp.h	/^       headnodedepth,         \/\/ the depth of the headnode$/;"	m	struct:Suffixtreetype
+headposition	src/kurtz/streesrc/streetyp.h	/^  Uint depth, headposition;$/;"	m	struct:__anon11
+headposition	src/kurtz/streesrc/streetyp.h	/^  Uint headposition,        \/\/ the head position of the branching node$/;"	m	struct:__anon8
+headstart	src/kurtz/streesrc/streetyp.h	/^  SYMBOL *headstart,          \/\/ these references represent the right component$/;"	m	struct:Suffixtreetype
+hi	src/tigr/combineMUMs.cc	/^   long int  lo, hi;$/;"	m	struct:s_Cover_t	file:
+hiQ	src/tigr/delta.hh	/^  long loQ, hiQ, loR, hiR;    \/\/!< alignment bounds$/;"	m	struct:DeltaEdgelet_t
+hiQ2R	src/tigr/delta.hh	/^  long hiQ2R() const$/;"	f	struct:DeltaEdgelet_t
+hiR	src/tigr/delta.hh	/^  long loQ, hiQ, loR, hiR;    \/\/!< alignment bounds$/;"	m	struct:DeltaEdgelet_t
+hiR2Q	src/tigr/delta.hh	/^  long hiR2Q() const$/;"	f	struct:DeltaEdgelet_t
+id	src/tigr/delta.hh	/^  const std::string * id;             \/\/!< the id of the sequence$/;"	m	struct:DeltaNode_t
+idQ	src/tigr/delta.hh	/^  std::string idQ;         \/\/!< query contig ID$/;"	m	struct:DeltaRecord_t
+idR	src/tigr/delta.hh	/^  std::string idR;         \/\/!< reference contig ID$/;"	m	struct:DeltaRecord_t
+identifyingrepeats	docs/web/manual/index.html	/^<h3><a name="identifyingrepeats" id="identifyingrepeats"><\/a>4.5. Identifying $/;"	a
+idy	src/tigr/delta.hh	/^  float idy, sim, stp;        \/\/!< percent identity [0 - 1]$/;"	m	struct:DeltaEdgelet_t
+idy	src/tigr/delta.hh	/^  float idy;               \/\/!< percent identity [0 - 100]$/;"	m	struct:DeltaAlignment_t
+idyCutoff	src/tigr/show-coords.cc	/^float idyCutoff = 0;                    \/\/ -I option$/;"	v
+idyc	src/tigr/delta.hh	/^  long idyc, simc, stpc;      \/\/!< idy, sim, stp counts$/;"	m	struct:DeltaEdgelet_t
+idyc	src/tigr/delta.hh	/^  long idyc;  \/\/!< number of mismatches in the alignment$/;"	m	struct:DeltaAlignment_t
+inheritfrompath	src/kurtz/mm3src/findmaxmat.c	/^static void inheritfrompath(ArrayPathinfo *matchpath,Location *maxloc,$/;"	f	file:
+initSuffixtree	src/kurtz/streesrc/construct.c	/^static void initSuffixtree(Suffixtree *stree,SYMBOL *text,Uint textlen)$/;"	f	file:
+initclock	src/kurtz/libbasedir/clock.c	/^void initclock(void)$/;"	f
+initmultiseq	src/kurtz/libbasedir/multiseq.c	/^void initmultiseq(Multiseq *multiseq)$/;"	f
+initoptions	src/kurtz/libbasedir/procopt.c	/^void initoptions(OptionDescription *options,Uint numofoptions)$/;"	f
+insertbranchnode	src/kurtz/streesrc/construct.c	/^static void insertbranchnode(Suffixtree *stree)$/;"	f	file:
+insertinleaflist	src/kurtz/streesrc/dfs.c	/^static Sint insertinleaflist(Uint leafindex,\/*@unused@*\/ Bref lcpnode,$/;"	f	file:
+insertleaf	src/kurtz/streesrc/construct.c	/^static void insertleaf(Suffixtree *stree)$/;"	f	file:
+insertleafcalls	src/kurtz/streesrc/streetyp.h	/^       insertleafcalls,$/;"	m	struct:Suffixtreetype
+insertnode	src/kurtz/streesrc/streetyp.h	/^       insertnode,            \/\/ the node the split edge leads to $/;"	m	struct:Suffixtreetype
+insertprev	src/kurtz/streesrc/streetyp.h	/^       insertprev,            \/\/ the edge preceeding the split edge$/;"	m	struct:Suffixtreetype
+installation	docs/web/manual/index.html	/^<h2><a name="installation"><\/a>2. Installation<\/h2>$/;"	a
+int2ref	src/kurtz/streesrc/access.c	/^static void int2ref(Suffixtree *stree,Reference *ref,Uint i)$/;"	f	file:
+int2ref	src/kurtz/streesrc/iterator.c	/^static void int2ref(Suffixtree *stree,Reference *ref,Uint i)$/;"	f	file:
+introduction	docs/web/examples/index.html	/^<h2><a name="introduction"><\/a>1. Introduction<\/h2>$/;"	a
+introduction	docs/web/manual/index.html	/^<h2><a name="introduction"><\/a>1. Introduction<\/h2>$/;"	a
+invalidateLogFILES	scripts/Foundation.pm	/^   sub invalidateLogFILES() {$/;"	s
+isAnnotateOverlaps	src/tigr/show-coords.cc	/^bool isAnnotateOverlaps = false;        \/\/ -o option$/;"	v
+isAnnotation	src/tigr/show-coords.cc	/^bool isAnnotation = false;              \/\/ true if either -w or -o$/;"	v
+isBrief	src/tigr/show-coords.cc	/^bool isBrief = false;                   \/\/ -b option$/;"	v
+isBtab	src/tigr/show-coords.cc	/^bool isBtab = false;                    \/\/ -B option$/;"	v
+isCircularReference	src/tigr/show-tiling.cc	/^bool isCircularReference = false;        \/\/ set by -c option$/;"	v
+isCreatableDir	scripts/Foundation.pm	/^   sub isCreatableDir($) {$/;"	s
+isCreatableFile	scripts/Foundation.pm	/^   sub isCreatableFile($) {$/;"	s
+isCreatablePath	scripts/Foundation.pm	/^   sub isCreatablePath($) {$/;"	s
+isExecutableFile	scripts/Foundation.pm	/^   sub isExecutableFile($) {$/;"	s
+isGLIS	src/tigr/delta.hh	/^  unsigned char isGLIS : 1;   \/\/!< is part of the reference\/query LIS$/;"	m	struct:DeltaEdgelet_t
+isGOOD	src/tigr/delta.hh	/^  unsigned char isGOOD : 1;   \/\/!< meets the requirements$/;"	m	struct:DeltaEdgelet_t
+isKnockout	src/tigr/show-coords.cc	/^bool isKnockout = false;                \/\/ -k option$/;"	v
+isLAS	src/tigr/show-coords.cc	/^  bool isLAS;               \/\/ involved in a longest ascending subset$/;"	m	struct:AlignStats	file:
+isLAS	src/tigr/show-coords.cc	/^bool isLAS = false;                     \/\/ -g option$/;"	v
+isLinkHead	src/tigr/show-tiling.cc	/^  bool isLinkHead;                         \/\/ is the head of the linked list?$/;"	m	struct:QueryContig	file:
+isNegative	src/tigr/delta.hh	/^  bool isNegative() const$/;"	f	struct:DeltaEdgelet_t
+isOutputContigs	src/tigr/show-tiling.cc	/^bool isOutputContigs = false;            \/\/ set by -t option$/;"	v
+isOutputPseudoMolecule	src/tigr/show-tiling.cc	/^bool isOutputPseudoMolecule = false;     \/\/ set by -p option$/;"	v
+isOutputUnusable	src/tigr/show-tiling.cc	/^bool isOutputUnusable = false;           \/\/ set by -u option$/;"	v
+isPositive	src/tigr/delta.hh	/^  bool isPositive() const$/;"	f	struct:DeltaEdgelet_t
+isPrintAlignments	src/tigr/show-tiling.cc	/^bool isPrintAlignments = false;          \/\/ set by -a option$/;"	v
+isPrintHeader	src/tigr/show-coords.cc	/^bool isPrintHeader = true;              \/\/ -H option$/;"	v
+isPrintTabular	src/tigr/show-coords.cc	/^bool isPrintTabular = false;            \/\/ -T option$/;"	v
+isPrintXML	src/tigr/show-tiling.cc	/^bool isPrintXML = false;                 \/\/ set by -x option$/;"	v
+isQLIS	src/tigr/delta.hh	/^  unsigned char isQLIS : 1;   \/\/!< is part of the query's LIS$/;"	m	struct:DeltaEdgelet_t
+isRLIS	src/tigr/delta.hh	/^  unsigned char isRLIS : 1;   \/\/!< is part of the reference's LIS$/;"	m	struct:DeltaEdgelet_t
+isRandomRepeats	src/tigr/show-tiling.cc	/^bool isRandomRepeats = false;            \/\/ set by -R option$/;"	v
+isReadableDir	scripts/Foundation.pm	/^   sub isReadableDir($) {$/;"	s
+isReadableFile	scripts/Foundation.pm	/^   sub isReadableFile($) {$/;"	s
+isShadowedCluster	src/tigr/postnuc.cc	/^bool isShadowedCluster$/;"	f
+isShadowedCluster	src/tigr/postpro.cc	/^bool isShadowedCluster$/;"	f
+isShowCoverage	src/tigr/show-coords.cc	/^bool isShowCoverage = false;            \/\/ -c option$/;"	v
+isShowDir	src/tigr/show-coords.cc	/^bool isShowDir = false;                 \/\/ -d option$/;"	v
+isShowSeqLens	src/tigr/show-coords.cc	/^bool isShowSeqLens = false;             \/\/ -l option$/;"	v
+isShowWarnings	src/tigr/show-coords.cc	/^bool isShowWarnings = false;            \/\/ -w option$/;"	v
+isSortByQuery	src/tigr/show-aligns.cc	/^bool isSortByQuery = false;              \/\/ -q option$/;"	v
+isSortByQuery	src/tigr/show-coords.cc	/^bool isSortByQuery = false;             \/\/ -q option$/;"	v
+isSortByReference	src/tigr/show-aligns.cc	/^bool isSortByReference = false;          \/\/ -r option$/;"	v
+isSortByReference	src/tigr/show-coords.cc	/^bool isSortByReference = false;         \/\/ -r option$/;"	v
+isTiled	src/tigr/show-tiling.cc	/^  bool isTiled;                          \/\/ is the alignment be tiled?$/;"	m	struct:AlignStats	file:
+isWLAS	src/tigr/show-coords.cc	/^bool isWLAS = false;                    \/\/ -G option$/;"	v
+isWritableDir	scripts/Foundation.pm	/^   sub isWritableDir($) {$/;"	s
+isWritableFile	scripts/Foundation.pm	/^   sub isWritableFile($) {$/;"	s
+is_open_m	src/tigr/delta.hh	/^  bool is_open_m;                \/\/!< delta stream is open$/;"	m	class:DeltaReader_t
+is_record_m	src/tigr/delta.hh	/^  bool is_record_m;              \/\/!< there is a valid record in record_m$/;"	m	class:DeltaReader_t
+isalreadyset	src/kurtz/libbasedir/optdesc.h	/^  BOOL isalreadyset,         \/\/ has the option already been set?$/;"	m	struct:__anon18
+isdef_MAX_GAP_SIZE	src/tigr/show-tiling.cc	/^bool isdef_MAX_GAP_SIZE       = false;$/;"	v
+isdef_MIN_COVERAGE	src/tigr/show-tiling.cc	/^bool isdef_MIN_COVERAGE       = false;$/;"	v
+isdef_MIN_COVERAGE_DIFF	src/tigr/show-tiling.cc	/^bool isdef_MIN_COVERAGE_DIFF  = false;$/;"	v
+isdef_MIN_PIDY	src/tigr/show-tiling.cc	/^bool isdef_MIN_PIDY           = false;$/;"	v
+largelinklinkwork	src/kurtz/streesrc/streetyp.h	/^       largelinklinkwork,$/;"	m	struct:Suffixtreetype
+largelinks	src/kurtz/streesrc/streetyp.h	/^       largelinks,$/;"	m	struct:Suffixtreetype
+largelinkwork	src/kurtz/streesrc/streetyp.h	/^       largelinkwork,$/;"	m	struct:Suffixtreetype
+largenode	src/kurtz/streesrc/streetyp.h	/^       largenode,             \/\/ number of large nodes$/;"	m	struct:Suffixtreetype
+lastcharindex	src/kurtz/streesrc/streetyp.h	/^  Sint lastcharindex;$/;"	m	struct:Suffixtreetype
+lbound	src/tigr/sw_align.hh	/^  long int lbound, rbound;   \/\/ left(lower) and right(upper) bounds$/;"	m	struct:Diagonal
+lcp	src/kurtz/mm3src/findmaxmat.c	/^static Uint lcp(Uchar *start1,Uchar *end1,Uchar *start2,Uchar *end2)$/;"	f	file:
+lcp	src/kurtz/streesrc/scanpref.c	/^static Uint lcp(SYMBOL *start1,SYMBOL *end1,SYMBOL *start2,SYMBOL *end2)$/;"	f	file:
+leaf	src/tigr/repeat-match.cc	/^typedef  struct leaf$/;"	s	file:
+leafcounts	src/kurtz/streesrc/streetyp.h	/^       *leafcounts;           \/\/ holds counts of the number of leafs in subtree$/;"	m	struct:Suffixtreetype
+leaftab	src/kurtz/streesrc/streetyp.h	/^       *leaftab,              \/\/ stores the brother-references of the leafs$/;"	m	struct:Suffixtreetype
+len	src/tigr/delta.hh	/^  long len;              \/\/!< the length of the sequence$/;"	m	struct:DeltaNode_t
+len	src/tigr/postnuc.cc	/^  long int len;              \/\/ the length of the sequence$/;"	m	struct:FastaRecord	file:
+len	src/tigr/postnuc.cc	/^  long int sA, sB, len;      \/\/ start coordinate in A, in B and the length$/;"	m	struct:Match	file:
+len	src/tigr/postpro.cc	/^  long int len;              \/\/ the length of the sequence$/;"	m	struct:FastaRecord	file:
+len	src/tigr/postpro.cc	/^  long int sA, sB, len;      \/\/ start coordinate in A, in B and the length$/;"	m	struct:Match	file:
+lenCutoff	src/tigr/show-coords.cc	/^long int lenCutoff = 0;                 \/\/ -L option$/;"	v
+lenQ	src/tigr/delta.hh	/^  long lenQ;  \/\/!< length of the query contig$/;"	m	struct:DeltaRecord_t
+lenR	src/tigr/delta.hh	/^  long lenR;  \/\/!< length of the reference contig$/;"	m	struct:DeltaRecord_t
+length	src/kurtz/libbasedir/types.h	/^  Uint start, length;$/;"	m	struct:__anon16
+lineallocated	src/kurtz/libbasedir/space.c	/^  Uint lineallocated;  \/\/ the linenumber where the$/;"	m	struct:__anon24	file:
+linemapped	src/kurtz/libbasedir/mapfile.c	/^static Uint linemapped[MAXMAPPEDFILES] = {0};       $/;"	v	file:
+linkContigs	src/tigr/show-tiling.cc	/^void linkContigs$/;"	f
+linklocstree	src/kurtz/streesrc/linkloc.c	/^void linklocstree(Suffixtree *stree,Location *outloc,Location *inloc)$/;"	f
+linklocstree	src/kurtz/streesrc/streefiledoc.c	/^void linklocstree(Suffixtree *stree,Location *outloc,$/;"	f
+linkrootchildren	src/kurtz/streesrc/construct.c	/^static void linkrootchildren(Suffixtree *stree)$/;"	f	file:
+linksTo	src/tigr/show-tiling.cc	/^  vector<QueryContig>::iterator linksTo;   \/\/ who does this contig link to?$/;"	m	struct:QueryContig	file:
+lo	src/tigr/combineMUMs.cc	/^   long int  lo, hi;$/;"	m	struct:s_Cover_t	file:
+loQ	src/tigr/delta.hh	/^  long loQ, hiQ, loR, hiR;    \/\/!< alignment bounds$/;"	m	struct:DeltaEdgelet_t
+loQ2R	src/tigr/delta.hh	/^  long loQ2R() const$/;"	f	struct:DeltaEdgelet_t
+loR	src/tigr/delta.hh	/^  long loQ, hiQ, loR, hiR;    \/\/!< alignment bounds$/;"	m	struct:DeltaEdgelet_t
+loR2Q	src/tigr/delta.hh	/^  long loR2Q() const$/;"	f	struct:DeltaEdgelet_t
+loadSequences	src/tigr/delta.cc	/^void DeltaGraph_t::loadSequences ()$/;"	f	class:DeltaGraph_t
+loc2stringstree	src/kurtz/streesrc/streedbg.c	/^static void loc2stringstree(Suffixtree *stree,Stringtype *s,Location *loc)$/;"	f	file:
+locstring	src/kurtz/streesrc/streetyp.h	/^  Stringtype locstring; \/\/ string represented by location$/;"	m	struct:__anon9
+logAppend	scripts/Foundation.pm	/^   sub logAppend($;$) {$/;"	s
+logError	scripts/Foundation.pm	/^   sub logError($;$) {$/;"	s
+logLocal	scripts/Foundation.pm	/^   sub logLocal($$) {$/;"	s
+longestConsistentSubset	src/tigr/show-tiling.cc	/^long int longestConsistentSubset$/;"	f
+lp	src/tigr/delta.hh	/^  DeltaEdgelet_t * lp;$/;"	m	struct:SNP_t
+main	scripts/dnadiff.pl	/^ main:$/;"	l
+main	scripts/nucmer.pl	/^sub main ( )$/;"	s
+main	scripts/promer.pl	/^sub main ( )$/;"	s
+main	src/tigr/annotate.cc	/^int main  (int argc, char * argv [])$/;"	f
+main	src/tigr/combineMUMs.cc	/^int  main$/;"	f
+main	src/tigr/delta-filter.cc	/^int main(int argc, char ** argv)$/;"	f
+main	src/tigr/gaps.cc	/^int main  (int argc, char * argv [])$/;"	f
+main	src/tigr/mgaps.cc	/^int  main$/;"	f
+main	src/tigr/postnuc.cc	/^int main$/;"	f
+main	src/tigr/postpro.cc	/^int main$/;"	f
+main	src/tigr/prenuc.cc	/^int main$/;"	f
+main	src/tigr/prepro.cc	/^int main$/;"	f
+main	src/tigr/repeat-match.cc	/^int main  (int argc, char * argv [])$/;"	f
+main	src/tigr/show-aligns.cc	/^int main$/;"	f
+main	src/tigr/show-coords.cc	/^int main$/;"	f
+main	src/tigr/show-diff.cc	/^int main(int argc, char **argv)$/;"	f
+main	src/tigr/show-snps.cc	/^int main (int argc, char ** argv)$/;"	f
+main	src/tigr/show-tiling.cc	/^int main$/;"	f
+makedepthtabstree	src/kurtz/streesrc/depthtab.c	/^void makedepthtabstree(ArrayUint *depthtab,Suffixtree *stree)$/;"	f
+makedepthtabstree	src/kurtz/streesrc/streefiledoc.c	/^void makedepthtabstree(ArrayUint *depthtab,Suffixtree *stree)$/;"	f
+makeleaflist	src/kurtz/streesrc/dfs.c	/^Sint makeleaflist(Suffixtree *stree,ArrayUint *leaflist,Reference *start)$/;"	f
+makeleastlengthtext	src/kurtz/mm3src/maxmatopt.c	/^static void makeleastlengthtext(char *spacefortext)$/;"	f	file:
+mappedbytes	src/kurtz/libbasedir/mapfile.c	/^            mappedbytes[MAXMAPPEDFILES] = {0};  \/\/ size of the memory map$/;"	v	file:
+mappingdraft	docs/web/manual/index.html	/^<h3><a name="mappingdraft"><\/a>4.3. Mapping a draft sequence to a finished sequence<\/h3>$/;"	a
+mapview	docs/web/examples/index.html	/^<h3><a name="mapview"><\/a>2.1. mapview<\/h3>$/;"	a
+mapview	docs/web/manual/index.html	/^<h4><a name="mapview" id="mapview"><\/a>5.4.2. mapview<\/h4>$/;"	a
+mapviewmapview	docs/web/examples/index.html	/^<h4><a name="mapviewmapview" id="mapviewmapview"><\/a>2.1.2. Running mapview<\/h4>$/;"	a
+markpos	src/kurtz/libbasedir/multidef.h	/^  ArrayPosition markpos;$/;"	m	struct:__anon21
+mask	src/tigr/prepro.cc	/^inline void mask$/;"	f
+matches	src/kurtz/mm3src/procmaxmat.c	/^Uint matches = 0;$/;"	v
+matches	src/tigr/postnuc.cc	/^  vector<Match> matches;     \/\/ the ordered set of matches in the cluster$/;"	m	struct:Cluster	file:
+matches	src/tigr/postpro.cc	/^  vector<Match> matches;     \/\/ the ordered set of matches in the cluster$/;"	m	struct:Cluster	file:
+matchnucleotidesonly	src/kurtz/mm3src/maxmatdef.h	/^       matchnucleotidesonly,    \/\/ match ONLY acgt's$/;"	m	struct:__anon4
+matchpath	src/kurtz/mm3src/findmaxmat.c	/^  ArrayPathinfo matchpath;        \/\/ path of br. nodes from ploc to maxloc$/;"	m	struct:__anon2	file:
+max	src/tigr/sw_align.hh	/^  Score * max;$/;"	m	struct:Node
+maxScore	src/tigr/sw_align.cc	/^static inline Score * maxScore$/;"	f	file:
+maxbranchdepth	src/kurtz/streesrc/streetyp.h	/^       maxbranchdepth,        \/\/ maximal depth of branching node$/;"	m	struct:Suffixtreetype
+maxdesclength	src/kurtz/mm3src/procmaxmat.c	/^       maxdesclength,          \/\/ maximum length of a description$/;"	m	struct:__anon3	file:
+maxerrormsg	src/kurtz/libbasedir/seterror.c	/^Sint maxerrormsg(void)$/;"	f
+maximal	docs/web/manual/index.html	/^<h3><a name="maximal"><\/a>5.1. Maximal exact matching<\/h3>$/;"	a
+maxlength	src/kurtz/libbasedir/multidef.h	/^       maxlength;        \/\/ maximal number of chars of description to be shown$/;"	m	struct:__anon22
+maxloc	src/kurtz/mm3src/findmaxmat.c	/^  Location maxloc;                \/\/ location of \\texttt{pmax}$/;"	m	struct:__anon2	file:
+maxset	src/kurtz/streesrc/streetyp.h	/^       *maxset;$/;"	m	struct:Suffixtreetype
+memoryptr	src/kurtz/libbasedir/mapfile.c	/^static void *memoryptr[MAXMAPPEDFILES] = {NULL};$/;"	v	file:
+messagespace	src/kurtz/libbasedir/seterror.c	/^char *messagespace(void)$/;"	f
+mgaps	docs/web/manual/index.html	/^<h4><a name="mgaps"><\/a>5.2.2. mgaps<\/h4>$/;"	a
+mgapsoutput	docs/web/manual/index.html	/^<h5><a name="mgapsoutput"><\/a>Output format<\/h5>$/;"	a
+minmatchlength	src/kurtz/mm3src/findmaxmat.c	/^       minmatchlength,            \/\/ min length of a match to be reported$/;"	m	struct:__anon2	file:
+minmatchlength	src/kurtz/mm3src/maxmatdef.h	/^  Uint minmatchlength,          \/\/ minimal length of a match to be reported$/;"	m	struct:__anon4
+minmatchlength	src/kurtz/mm3src/procmaxmat.c	/^  Uint minmatchlength,         \/\/ minimum length of a match$/;"	m	struct:__anon3	file:
+mmaddspace	src/kurtz/libbasedir/mapfile.c	/^static void mmaddspace(Uint space)$/;"	f	file:
+mmcheckspaceleak	src/kurtz/libbasedir/mapfile.c	/^void mmcheckspaceleak(void)$/;"	f
+mmgetspacepeak	src/kurtz/libbasedir/mapfile.c	/^Uint mmgetspacepeak(void)$/;"	f
+mmshowspace	src/kurtz/libbasedir/mapfile.c	/^void mmshowspace(void)$/;"	f
+mmsubtractspace	src/kurtz/libbasedir/mapfile.c	/^static void mmsubtractspace(Uint space)$/;"	f	file:
+mmwrapspace	src/kurtz/libbasedir/mapfile.c	/^Sint mmwrapspace(void)$/;"	f
+multiplications	src/kurtz/streesrc/streetyp.h	/^       multiplications,$/;"	m	struct:Suffixtreetype
+mumcandtab	src/kurtz/mm3src/procmaxmat.c	/^  ArrayMUMcandidate mumcandtab;\/\/ a table containing MUM-candidates$/;"	m	struct:__anon3	file:
+mumlength	src/kurtz/libbasedir/mumcand.h	/^  Uint mumlength,    \/\/ length of the mum$/;"	m	struct:__anon19
+mummer	docs/web/examples/index.html	/^<h3><a name="mummer"><\/a>2.2. mummer<\/h3>$/;"	a
+mummer	docs/web/manual/index.html	/^<h4><a name="mummer"><\/a>5.1.1. mummer<\/h4>$/;"	a
+mummer1	docs/web/examples/index.html	/^<h3><a name="mummer1"><\/a>2.5. run-mummer1<\/h3>$/;"	a
+mummer1	docs/web/manual/index.html	/^<h4><a name="mummer1"><\/a>5.3.3. run-mummer1<\/h4>$/;"	a
+mummer3	docs/web/examples/index.html	/^<h3><a name="mummer3"><\/a>2.6. run-mummer3<\/h3>$/;"	a
+mummer3	docs/web/manual/index.html	/^<h4><a name="mummer3"><\/a>5.3.4. run-mummer3<\/h4>$/;"	a
+mummermummer	docs/web/examples/index.html	/^<h4><a name="mummermummer" id="mummermummer"><\/a>2.2.1. Running mummer<\/h4>$/;"	a
+mummeroutput	docs/web/manual/index.html	/^<h5><a name="mummeroutput"><\/a>Output format<\/h5>$/;"	a
+mummerplot	docs/web/manual/index.html	/^<h4><a name="mummerplot"><\/a>5.4.3. mummerplot<\/h4>$/;"	a
+mummerplotmummer	docs/web/examples/index.html	/^<h4><a name="mummerplotmummer" id="mummerplotmummer"><\/a>2.2.2. Running mummerplot<\/h4>$/;"	a
+mumuniqueinquery	src/kurtz/libbasedir/cleanMUMcand.c	/^Sint mumuniqueinquery(void *processinfo,$/;"	f
+nCols_m	src/tigr/annotate.cc	/^  long nRows_m, nCols_m;$/;"	m	class:Matrix_t	file:
+nRows_m	src/tigr/annotate.cc	/^  long nRows_m, nCols_m;$/;"	m	class:Matrix_t	file:
+new	scripts/Foundation.pm	/^   sub new() {$/;"	s
+next	src/tigr/combineMUMs.cc	/^   struct s_Cover_t  * next;$/;"	m	struct:s_Cover_t	typeref:struct:s_Cover_t::s_Cover_t	file:
+nextbranchingnode	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Bref nextbranchingnode(Suffixtree *stree,Bref bptr)$/;"	f
+nextfreeStrings	src/kurtz/libbasedir/arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:__anon20
+nextfreeblock	src/kurtz/libbasedir/space.c	/^            nextfreeblock = 0,  \/\/ index of next free block$/;"	v	file:
+nextfreebranch	src/kurtz/streesrc/streetyp.h	/^       *nextfreebranch,       \/\/ reference to next free base addr. in branchtab$/;"	m	struct:Suffixtreetype
+nextfreebranchnum	src/kurtz/streesrc/streetyp.h	/^       nextfreebranchnum,     \/\/ the number of the next free branch node$/;"	m	struct:Suffixtreetype
+nextfreeleafnum	src/kurtz/streesrc/streetyp.h	/^  Uint nextfreeleafnum,       \/\/ the number of the next leaf$/;"	m	struct:Suffixtreetype
+nextfreeleafptr	src/kurtz/streesrc/streetyp.h	/^       *nextfreeleafptr,      \/\/ points to next free entry in leaftab$/;"	m	struct:Suffixtreetype
+nextleaf	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Lref nextleaf(Suffixtree *stree,Lref lptr)$/;"	f
+nextnode	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Reference *nextnode(Suffixtree *stree,Reference *nref,$/;"	f
+nextnode	src/kurtz/streesrc/streetyp.h	/^  Reference nextnode;   \/\/ reference to node the edge points to$/;"	m	struct:__anon9
+nextnode	src/kurtz/streesrc/streetyp.h	/^  Reference nextnode;$/;"	m	struct:__anon10
+nextnodedfs	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Reference *nextnodedfs(Suffixtree *stree,Reference *current,$/;"	f
+node	src/tigr/repeat-match.cc	/^typedef  struct node$/;"	s	file:
+nodecount	src/kurtz/streesrc/streetyp.h	/^       nodecount,$/;"	m	struct:Suffixtreetype
+nonmaximal	src/kurtz/streesrc/streetyp.h	/^       *nonmaximal,           \/\/ bit table: if node with headposition \\(i\\) is $/;"	m	struct:Suffixtreetype
+nucmer	docs/web/examples/index.html	/^<h3><a name="nucmer"><\/a>2.3. nucmer<\/h3>$/;"	a
+nucmer	docs/web/manual/index.html	/^<h4><a name="nucmer"><\/a>5.3.1. NUCmer<\/h4>$/;"	a
+nucmernucmer	docs/web/examples/index.html	/^<h4><a name="nucmernucmer"><\/a>2.3.1. Running nucmer<\/h4>$/;"	a
+nucmeroptions	docs/web/manual/index.html	/^<h5><a name="nucmeroptions"><\/a>Program options<\/h5>$/;"	a
+nucmeroutput	docs/web/manual/index.html	/^<h5><a name="nucmeroutput" id="nucmeroutput"><\/a>Output format<\/h5>$/;"	a
+numberofblocks	src/kurtz/libbasedir/space.c	/^static Uint numberofblocks = 0, \/\/ numberofblocks$/;"	v	file:
+numberofcells	src/kurtz/libbasedir/space.c	/^       numberofcells;  \/\/ number of cells in the block$/;"	m	struct:__anon24	file:
+numofqueryfiles	src/kurtz/mm3src/maxmatdef.h	/^       numofqueryfiles;         \/\/ number of query files$/;"	m	struct:__anon4
+numofsequences	src/kurtz/libbasedir/multidef.h	/^       numofsequences,                 \/\/ the number of sequences$/;"	m	struct:__anon21
+obtaining	docs/web/manual/index.html	/^<h3><a name="obtaining"><\/a>2.2. Obtaining MUMmer<\/h3>$/;"	a
+occursinlist	src/kurtz/libbasedir/procopt.c	/^static BOOL occursinlist(Uint i,Sint *list)$/;"	f	file:
+onmaxpath	src/kurtz/mm3src/findmaxmat.c	/^  BOOL onmaxpath;$/;"	m	struct:__anon1	file:
+onsuccpath	src/kurtz/streesrc/streetyp.h	/^       onsuccpath,            \/\/ refers to node on success path of headnode$/;"	m	struct:Suffixtreetype
+open	src/tigr/delta.cc	/^void DeltaReader_t::open$/;"	f	class:DeltaReader_t
+openLogERROR	scripts/Foundation.pm	/^   sub openLogERROR() {$/;"	s
+openLogMSG	scripts/Foundation.pm	/^   sub openLogMSG() {$/;"	s
+operator	src/tigr/show-aligns.cc	/^  bool operator( ) (const AlignStats & pA, const AlignStats & pB)$/;"	f	struct:sQ_Sort
+operator	src/tigr/show-aligns.cc	/^  bool operator( ) (const AlignStats & pA, const AlignStats & pB)$/;"	f	struct:sR_Sort
+operator	src/tigr/show-tiling.cc	/^  bool operator( ) (const AlignStats & pA, const AlignStats & pB)$/;"	f	struct:IdR_sQ_Sort
+operator	src/tigr/show-tiling.cc	/^  bool operator( ) (const QueryContig & pA, const QueryContig & pB)$/;"	f	struct:IdQ_Sort
+operator	src/tigr/show-tiling.cc	/^  bool operator( ) (const QueryContig & pA, const QueryContig & pB)$/;"	f	struct:IdR_StartRTrimmed_Sort
+operator	src/tigr/show-tiling.cc	/^  bool operator( ) (const QueryContig & pA, const QueryContig & pB)$/;"	f	struct:IdR_StartR_Sort
+operator ()	src/tigr/annotate.cc	/^  inline T & operator()(long row, long col)$/;"	f	class:Matrix_t
+operator ()	src/tigr/delta.cc	/^  bool operator() (const DeltaEdgelet_t * i, const DeltaEdgelet_t * j) const$/;"	f	struct:EdgeletQCmp_t
+operator ()	src/tigr/delta.cc	/^  bool operator() (const DeltaEdgelet_t * i, const DeltaEdgelet_t * j) const$/;"	f	struct:EdgeletRCmp_t
+operator ()	src/tigr/delta.cc	/^  bool operator() (const void * i) const$/;"	f	struct:NULLPred_t
+operator ()	src/tigr/postnuc.cc	/^  bool operator() (const Cluster & pA, const Cluster & pB)$/;"	f	struct:AscendingClusterSort
+operator ()	src/tigr/postpro.cc	/^  bool operator() (const Cluster & pA, const Cluster & pB)$/;"	f	struct:AscendingClusterSort
+operator ()	src/tigr/show-coords.cc	/^  bool operator() (const AlignStats & pA, const AlignStats & pB)$/;"	f	struct:IdA_sA_IdB_sB_Sort
+operator ()	src/tigr/show-coords.cc	/^  bool operator() (const AlignStats & pA, const AlignStats & pB)$/;"	f	struct:IdB_sB_IdA_sA_Sort
+operator ()	src/tigr/show-coords.cc	/^  bool operator() (const AlignStats & pA, const AlignStats & pB)$/;"	f	struct:sA_Sort
+operator ()	src/tigr/show-coords.cc	/^  bool operator() (const LASstats & pA, const LASstats & pB)$/;"	f	struct:LAS_Sort
+operator ()	src/tigr/show-diff.cc	/^  bool operator()(const DeltaEdgelet_t * i, const DeltaEdgelet_t * j) const$/;"	f	struct:EdgeletIdQLoQCmp_t
+operator ()	src/tigr/show-diff.cc	/^  bool operator()(const DeltaEdgelet_t * i, const DeltaEdgelet_t * j) const$/;"	f	struct:EdgeletIdRLoRCmp_t
+operator ()	src/tigr/show-diff.cc	/^  bool operator()(const DeltaEdgelet_t * i, const DeltaEdgelet_t * j) const$/;"	f	struct:EdgeletLoQCmp_t
+operator ()	src/tigr/show-diff.cc	/^  bool operator()(const DeltaEdgelet_t * i, const DeltaEdgelet_t * j) const$/;"	f	struct:EdgeletLoRCmp_t
+operator ()	src/tigr/show-snps.cc	/^  bool operator() (const SNP_t * a, const SNP_t * b)$/;"	f	struct:SNP_Q_Sort
+operator ()	src/tigr/show-snps.cc	/^  bool operator() (const SNP_t * a, const SNP_t * b)$/;"	f	struct:SNP_R_Sort
+optname	src/kurtz/libbasedir/optdesc.h	/^  char *optname,             \/\/ the option string, begins with -$/;"	m	struct:__anon18
+optval	src/kurtz/libbasedir/optdesc.h	/^  Uint optval;               \/\/ the unique number of an option$/;"	m	struct:__anon18
+ori	src/tigr/show-coords.cc	/^  bool ori;$/;"	m	struct:LASstats	file:
+originalsequence	src/kurtz/libbasedir/multidef.h	/^        *originalsequence;             \/\/ NULL or points to orig. sequence$/;"	m	struct:__anon21
+osi	docs/web/manual/index.html	/^<h3><a name="osi"><\/a>1.3. OSI open source<\/h3>$/;"	a
+outputContigs	src/tigr/show-tiling.cc	/^void outputContigs$/;"	f
+outputDelta	src/tigr/delta.cc	/^ostream & DeltaGraph_t::outputDelta (ostream & out)$/;"	f	class:DeltaGraph_t
+outputPseudoMolecule	src/tigr/show-tiling.cc	/^void outputPseudoMolecule$/;"	f
+outputUnusable	src/tigr/show-tiling.cc	/^void outputUnusable$/;"	f
+outputmapview	docs/web/examples/index.html	/^<h4><a name="outputmapview" id="outputmapview"><\/a>2.1.3. Viewing the output<\/h4>$/;"	a
+outputmummer	docs/web/examples/index.html	/^<h4><a name="outputmummer" id="outputmummer"><\/a>2.2.3. Viewing the output<\/h4>$/;"	a
+outputnucmer	docs/web/examples/index.html	/^<h4><a name="outputnucmer"><\/a>2.3.6. Viewing the output<\/h4>$/;"	a
+outputpromer	docs/web/examples/index.html	/^<h4><a name="outputpromer" id="outputpromer"><\/a>2.4.4. Viewing the output<\/h4>$/;"	a
+outputrunmummer1	docs/web/examples/index.html	/^<h4><a name="outputrunmummer1"><\/a>2.5.2. Viewing the output<\/h4>$/;"	a
+outputrunmummer3	docs/web/examples/index.html	/^<h4><a name="outputrunmummer3"><\/a>2.6.2. Viewing the output<\/h4>$/;"	a
+overallsequences	src/kurtz/libbasedir/multiseq.c	/^Sint overallsequences(BOOL rcmode,Multiseq *multiseq,void *applyinfo,$/;"	f
+overallstree	src/kurtz/streesrc/overmax.c	/^void overallstree(Suffixtree *stree,BOOL skiproot,$/;"	f
+overallstree	src/kurtz/streesrc/streefiledoc.c	/^void overallstree(Suffixtree *stree,BOOL skiproot,$/;"	f
+overmaximalstree	src/kurtz/streesrc/overmax.c	/^void overmaximalstree(Suffixtree *stree,$/;"	f
+overmaximalstree	src/kurtz/streesrc/streefiledoc.c	/^void overmaximalstree(Suffixtree *stree,$/;"	f
+oversuccsstree	src/kurtz/streesrc/oversucc.c	/^void oversuccsstree(Suffixtree *stree,Bref bnode,$/;"	f
+oversuccsstree	src/kurtz/streesrc/streefiledoc.c	/^void oversuccsstree(Suffixtree *stree,Bref bnode,$/;"	f
+pQ	src/tigr/delta.hh	/^  long pQ, pR;$/;"	m	struct:SNP_t
+pR	src/tigr/delta.hh	/^  long pQ, pR;$/;"	m	struct:SNP_t
+parseAbort	src/tigr/postnuc.cc	/^void parseAbort$/;"	f
+parseAbort	src/tigr/postpro.cc	/^void parseAbort$/;"	f
+parseDelta	src/tigr/postnuc.cc	/^void parseDelta$/;"	f
+parseDelta	src/tigr/postpro.cc	/^void parseDelta$/;"	f
+parseDelta	src/tigr/show-aligns.cc	/^void parseDelta$/;"	f
+parseDelta	src/tigr/show-coords.cc	/^void parseDelta$/;"	f
+parseDelta	src/tigr/show-tiling.cc	/^void parseDelta$/;"	f
+parsemaxmatoptions	src/kurtz/mm3src/maxmatopt.c	/^Sint parsemaxmatoptions(MMcallinfo *mmcallinfo,Argctype argc, char **argv)$/;"	f
+placeContig	src/tigr/show-tiling.cc	/^void placeContig$/;"	f
+pos2pospair	src/kurtz/libbasedir/multiseq.c	/^Sint pos2pospair(Multiseq *multiseq,PairUint *pos,Uint position)$/;"	f
+previousnode	src/kurtz/streesrc/streetyp.h	/^  Bref previousnode;    \/\/ reference to previous node (which is branching)$/;"	m	struct:__anon9
+printAlignment	src/tigr/show-tiling.cc	/^void printAlignment$/;"	f
+printAlignments	src/tigr/show-aligns.cc	/^void printAlignments$/;"	f
+printBtab	src/tigr/show-coords.cc	/^void printBtab$/;"	f
+printDependInfo	scripts/Foundation.pm	/^   sub printDependInfo() {$/;"	s
+printDependInfoAndExit	scripts/Foundation.pm	/^   sub printDependInfoAndExit() {$/;"	s
+printHelp	src/tigr/postnuc.cc	/^void printHelp$/;"	f
+printHelp	src/tigr/postpro.cc	/^void printHelp$/;"	f
+printHelp	src/tigr/prenuc.cc	/^void printHelp$/;"	f
+printHelp	src/tigr/prepro.cc	/^void printHelp$/;"	f
+printHelp	src/tigr/show-aligns.cc	/^void printHelp$/;"	f
+printHelp	src/tigr/show-coords.cc	/^void printHelp$/;"	f
+printHelp	src/tigr/show-tiling.cc	/^void printHelp$/;"	f
+printHelpInfo	scripts/Foundation.pm	/^   sub printHelpInfo() {$/;"	s
+printHelpInfoAndExit	scripts/Foundation.pm	/^   sub printHelpInfoAndExit() {$/;"	s
+printHuman	src/tigr/show-coords.cc	/^void printHuman$/;"	f
+printTabular	src/tigr/show-coords.cc	/^void printTabular$/;"	f
+printTilingAlignments	src/tigr/show-tiling.cc	/^void printTilingAlignments$/;"	f
+printTilingPath	src/tigr/show-tiling.cc	/^void printTilingPath$/;"	f
+printTilingXML	src/tigr/show-tiling.cc	/^void printTilingXML$/;"	f
+printUsage	src/tigr/postnuc.cc	/^void printUsage$/;"	f
+printUsage	src/tigr/postpro.cc	/^void printUsage$/;"	f
+printUsage	src/tigr/prenuc.cc	/^void printUsage$/;"	f
+printUsage	src/tigr/prepro.cc	/^void printUsage$/;"	f
+printUsage	src/tigr/show-aligns.cc	/^void printUsage$/;"	f
+printUsage	src/tigr/show-coords.cc	/^void printUsage$/;"	f
+printUsage	src/tigr/show-tiling.cc	/^void printUsage$/;"	f
+printUsageInfo	scripts/Foundation.pm	/^   sub printUsageInfo() {$/;"	s
+printUsageInfoAndExit	scripts/Foundation.pm	/^   sub printUsageInfoAndExit() {$/;"	s
+printVersionInfo	scripts/Foundation.pm	/^   sub printVersionInfo() {$/;"	s
+printVersionInfoAndExit	scripts/Foundation.pm	/^   sub printVersionInfoAndExit() {$/;"	s
+print_Id_genes	scripts/mapview.pl	/^sub print_Id_genes{$/;"	s
+print_align	scripts/mapview.pl	/^sub print_align{$/;"	s
+print_connections	scripts/mapview.pl	/^sub print_connections{$/;"	s
+print_genes	scripts/mapview.pl	/^sub print_genes{$/;"	s
+print_genes_mr	scripts/mapview.pl	/^sub print_genes_mr{ $/;"	s
+print_grid	scripts/mapview.pl	/^sub print_grid{  $/;"	s
+print_header	scripts/mapview.pl	/^sub print_header{$/;"	s
+print_label	scripts/nucmer2xfig.pl	/^sub print_label {$/;"	s
+print_legend	scripts/mapview.pl	/^sub print_legend{ $/;"	s
+print_xfig_line	scripts/nucmer2xfig.pl	/^sub print_xfig_line {$/;"	s
+problems	docs/web/manual/index.html	/^<h2><a name="problems"><\/a>5. Known problems<\/h2>$/;"	a
+processSyntenys	src/tigr/postnuc.cc	/^void processSyntenys$/;"	f
+processSyntenys	src/tigr/postpro.cc	/^void processSyntenys$/;"	f
+processbranch1	src/kurtz/mm3src/findmaxmat.c	/^static BOOL processbranch1(Bref nodeptr,void *info)$/;"	f	file:
+processbranch1	src/kurtz/streesrc/addleafcount.c	/^static BOOL processbranch1(\/*@unused@*\/ Bref nodeptr,void *info)$/;"	f	file:
+processbranch2	src/kurtz/mm3src/findmaxmat.c	/^static Sint processbranch2(\/*@unused@*\/ Bref nodeptr,void *info)$/;"	f	file:
+processbranch2	src/kurtz/streesrc/addleafcount.c	/^static Sint processbranch2(Bref nodeptr,void *info)$/;"	f	file:
+processinfo	src/kurtz/mm3src/findmaxmat.c	/^  void *processinfo;            \/\/ first arg. when calling previous function$/;"	m	struct:__anon2	file:
+processleaf	src/kurtz/mm3src/findmaxmat.c	/^static Sint processleaf(Uint leafindex,\/*@unused@*\/ Bref lcpnode,void *info)$/;"	f	file:
+processleaf	src/kurtz/streesrc/addleafcount.c	/^static Sint processleaf(\/*@unused@*\/ Uint leafnumber,$/;"	f	file:
+processmatch	src/kurtz/mm3src/findmaxmat.c	/^  Processmatchfunction processmatch; \/\/ this function processes found match$/;"	m	struct:__anon2	file:
+procmaxmatches	src/kurtz/mm3src/procmaxmat.c	/^Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)$/;"	f
+procoption	src/kurtz/libbasedir/procopt.c	/^Sint procoption(OptionDescription *opt,Uint numofopt,char *optstring)$/;"	f
+program	docs/web/manual/index.html	/^<h2><a name="program"><\/a>5. Program descriptions<\/h2>$/;"	a
+program	src/kurtz/mm3src/maxmatdef.h	/^  char program[PATH_MAX+1],     \/\/ the path of the program$/;"	m	struct:__anon4
+progresswithdot	src/kurtz/streesrc/stree.c	/^\/*@unused@*\/ static void progresswithdot(\/*@unused@*\/ Uint nextstep,$/;"	f	file:
+progresswithdot	src/kurtz/streesrc/streefiledoc.c	/^void progresswithdot(Uint nextstep,void *info)$/;"	f
+promer	docs/web/examples/index.html	/^<h3><a name="promer"><\/a>2.4. promer<\/h3>$/;"	a
+promer	docs/web/manual/index.html	/^<h4><a name="promer"><\/a>5.3.2. PROmer<\/h4>$/;"	a
+promermapview	docs/web/examples/index.html	/^<h4><a name="promermapview" id="promermapview"><\/a>2.1.1. Running promer<\/h4>$/;"	a
+promerpromer	docs/web/examples/index.html	/^<h4><a name="promerpromer" id="promerpromer"><\/a>2.4.1. Running promer<\/h4>$/;"	a
+qrynode	src/tigr/delta.hh	/^  DeltaNode_t * qrynode;      \/\/!< the adjacent query node$/;"	m	struct:DeltaEdge_t
+qrynodes	src/tigr/delta.hh	/^  std::map<std::string, DeltaNode_t> qrynodes;$/;"	m	class:DeltaGraph_t
+qrypath	src/tigr/delta.hh	/^  std::string qrypath;         \/\/!< path of the query FastA file$/;"	m	class:DeltaGraph_t
+query	src/kurtz/mm3src/findmaxmat.c	/^  Uchar *query,                   \/\/ the query string$/;"	m	struct:__anon2	file:
+query_path_m	src/tigr/delta.hh	/^  std::string query_path_m;      \/\/!< the name of the query file$/;"	m	class:DeltaReader_t
+querycommondepth	src/kurtz/mm3src/findmaxmat.c	/^  Uint querycommondepth;$/;"	m	struct:__anon1	file:
+queryfilelist	src/kurtz/mm3src/maxmatdef.h	/^       queryfilelist[MAXNUMOFQUERYFILES][PATH_MAX+1]; $/;"	m	struct:__anon4
+querylen	src/kurtz/mm3src/findmaxmat.c	/^  Uint querylen,                  \/\/ length of the current query$/;"	m	struct:__anon2	file:
+querymultiseq	src/kurtz/mm3src/procmaxmat.c	/^           querymultiseq;      \/\/ the Multiseq record of the queries$/;"	m	struct:__anon3	file:
+queryseq	src/kurtz/libbasedir/mumcand.h	/^       queryseq,     \/\/ number of the query sequence$/;"	m	struct:__anon19
+queryseqnum	src/kurtz/mm3src/findmaxmat.c	/^       queryseqnum,               \/\/ number of query sequence$/;"	m	struct:__anon2	file:
+querystart	src/kurtz/libbasedir/mumcand.h	/^       querystart;   \/\/ start position in the query sequence      $/;"	m	struct:__anon19
+querysuffix	src/kurtz/mm3src/findmaxmat.c	/^        *querysuffix;             \/\/ current suffix of query$/;"	m	struct:__anon2	file:
+rbound	src/tigr/sw_align.hh	/^  long int lbound, rbound;   \/\/ left(lower) and right(upper) bounds$/;"	m	struct:Diagonal
+rcsequence	src/kurtz/libbasedir/multidef.h	/^        *rcsequence,                   \/\/ NULL or points to $/;"	m	struct:__anon21
+readNext	src/tigr/delta.hh	/^  inline bool readNext (bool getdeltas = true)$/;"	f	class:DeltaReader_t
+readNextAlignment	src/tigr/delta.cc	/^void DeltaReader_t::readNextAlignment$/;"	f	class:DeltaReader_t
+readNextHeadersOnly	src/tigr/delta.hh	/^  inline bool readNextHeadersOnly ( )$/;"	f	class:DeltaReader_t
+readNextRecord	src/tigr/delta.cc	/^bool DeltaReader_t::readNextRecord (const bool read_deltas)$/;"	f	class:DeltaReader_t
+record_m	src/tigr/delta.hh	/^  DeltaRecord_t record_m;        \/\/!< the current delta information record$/;"	m	class:DeltaReader_t
+ref	src/kurtz/streesrc/streetyp.h	/^  Bref ref;$/;"	m	struct:__anon11
+refLen	src/tigr/postpro.cc	/^inline long int refLen$/;"	f
+reference_path_m	src/tigr/delta.hh	/^  std::string reference_path_m;  \/\/!< the name of the reference file$/;"	m	class:DeltaReader_t
+refnode	src/tigr/delta.hh	/^  DeltaNode_t * refnode;      \/\/!< the adjacent reference node$/;"	m	struct:DeltaEdge_t
+refnodes	src/tigr/delta.hh	/^  std::map<std::string, DeltaNode_t> refnodes;$/;"	m	class:DeltaGraph_t
+refpath	src/tigr/delta.hh	/^  std::string refpath;         \/\/!< path of the reference FastA file$/;"	m	class:DeltaGraph_t
+relposition	src/kurtz/libbasedir/multidef.h	/^       relposition;  \/\/ the relative position of the sequence$/;"	m	struct:__anon23
+remain	src/kurtz/streesrc/streetyp.h	/^       remain;          \/\/ number of remaining characters on edge$/;"	m	struct:__anon9
+remain	src/kurtz/streesrc/streetyp.h	/^  Uint remain,$/;"	m	struct:__anon10
+removeLogERROR	scripts/Foundation.pm	/^   sub removeLogERROR() {$/;"	s
+removeLogMSG	scripts/Foundation.pm	/^   sub removeLogMSG() {$/;"	s
+repeat	docs/web/manual/index.html	/^<h4><a name="repeat"><\/a>5.1.2. repeat-match<\/h4>$/;"	a
+replaceblanks	src/kurtz/libbasedir/multidef.h	/^       replaceblanks,    \/\/ replaceblanks by underscore$/;"	m	struct:__anon22
+repnum	src/kurtz/streesrc/addleafcount.c	/^static Uint tmpleafcount, repnum = 0;$/;"	v	file:
+requirements	docs/web/manual/index.html	/^<h3><a name="requirements"><\/a>2.1. System Requirements<\/h3>$/;"	a
+rescan	src/kurtz/streesrc/construct.c	/^static void rescan (Suffixtree *stree)$/;"	f	file:
+rescanstree	src/kurtz/streesrc/linkloc.c	/^void rescanstree(Suffixtree *stree,Location *loc,$/;"	f
+rescanstree	src/kurtz/streesrc/streefiledoc.c	/^void rescanstree(Suffixtree *stree,Location *loc,$/;"	f
+reseterror	src/kurtz/libbasedir/seterror.c	/^void reseterror(void)$/;"	f
+resize	src/tigr/annotate.cc	/^  void resize(long nRows, long nCols)$/;"	f	class:Matrix_t
+revC	src/tigr/postnuc.cc	/^inline long int revC$/;"	f
+revC	src/tigr/postpro.cc	/^inline long int revC$/;"	f
+revC	src/tigr/show-aligns.cc	/^long int revC$/;"	f
+revC	src/tigr/show-coords.cc	/^inline long int revC$/;"	f
+revC	src/tigr/show-tiling.cc	/^inline long int revC$/;"	f
+reversecomplement	src/kurtz/mm3src/maxmatdef.h	/^       reversecomplement,       \/\/ compute matches on reverse strand$/;"	m	struct:__anon4
+reversecomplement	src/kurtz/mm3src/procmaxmat.c	/^       reversecomplement,      \/\/ compute reverse complement matches$/;"	m	struct:__anon3	file:
+rightbrother	src/kurtz/streesrc/iterator.c	/^\/*@null@*\/ Reference *rightbrother(Suffixtree *stree,Reference *node)$/;"	f
+rootchildren	src/kurtz/streesrc/streetyp.h	/^       *rootchildren;         \/\/ references to successors of root$/;"	m	struct:Suffixtreetype
+rootsucclocationsstree	src/kurtz/streesrc/access.c	/^void rootsucclocationsstree(Suffixtree *stree,ArraySimpleloc *ll)$/;"	f
+runCommand	scripts/Foundation.pm	/^   sub runCommand($) {$/;"	s
+runmummer1runmummer1	docs/web/examples/index.html	/^<h4><a name="runmummer1runmummer1"><\/a>2.5.1. Running run-mummer1<\/h4>$/;"	a
+runmummer3runmummer3	docs/web/examples/index.html	/^<h4><a name="runmummer3runmummer3"><\/a>2.6.1. Running run-mummer3<\/h4>$/;"	a
+running	docs/web/manual/index.html	/^<h2><a name="running"><\/a>3. Running MUMmer<\/h2>$/;"	a
+sA	src/tigr/postnuc.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+sA	src/tigr/postnuc.cc	/^  long int sA, sB, len;      \/\/ start coordinate in A, in B and the length$/;"	m	struct:Match	file:
+sA	src/tigr/postpro.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+sA	src/tigr/postpro.cc	/^  long int sA, sB, len;      \/\/ start coordinate in A, in B and the length$/;"	m	struct:Match	file:
+sA	src/tigr/show-coords.cc	/^  long int sA, eA, sB, eB;                \/\/ start, end in A, start, end in B$/;"	m	struct:AlignStats	file:
+sA_Sort	src/tigr/show-coords.cc	/^struct sA_Sort$/;"	s	file:
+sB	src/tigr/postnuc.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+sB	src/tigr/postnuc.cc	/^  long int sA, sB, len;      \/\/ start coordinate in A, in B and the length$/;"	m	struct:Match	file:
+sB	src/tigr/postpro.cc	/^  long int sA, sB, eA, eB;   \/\/ the start in A, B and the end in A, B$/;"	m	struct:Alignment	file:
+sB	src/tigr/postpro.cc	/^  long int sA, sB, len;      \/\/ start coordinate in A, in B and the length$/;"	m	struct:Match	file:
+sB	src/tigr/show-coords.cc	/^  long int sA, eA, sB, eB;                \/\/ start, end in A, start, end in B$/;"	m	struct:AlignStats	file:
+sQ	src/tigr/delta.hh	/^  long sQ;    \/\/!< start coordinate in the reference$/;"	m	struct:DeltaAlignment_t
+sQ	src/tigr/show-aligns.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+sQ	src/tigr/show-tiling.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+sQ_Sort	src/tigr/show-aligns.cc	/^struct sQ_Sort$/;"	s	file:
+sR	src/tigr/delta.hh	/^  long sR;    \/\/!< start coordinate in the reference$/;"	m	struct:DeltaAlignment_t
+sR	src/tigr/show-aligns.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+sR	src/tigr/show-tiling.cc	/^  long int sQ, eQ, sR, eR;              \/\/ start and end in Query and Reference$/;"	m	struct:AlignStats	file:
+sR_Sort	src/tigr/show-aligns.cc	/^struct sR_Sort$/;"	s	file:
+s_Cover_t	src/tigr/combineMUMs.cc	/^typedef  struct s_Cover_t$/;"	s	file:
+safestringcopy	src/kurtz/libbasedir/safescpy.c	/^Sint safestringcopy(char *dest,char *source,Sint maxlen)$/;"	f
+scanmultiplefastafile	src/kurtz/mm3src/maxmatinp.c	/^Sint scanmultiplefastafile (Multiseq *multiseq,$/;"	f
+scanprefix	src/kurtz/streesrc/construct.c	/^static void scanprefix(Suffixtree *stree)$/;"	f	file:
+scanprefixfromnodestree	src/kurtz/streesrc/scanpref.c	/^\/*@null@*\/ SYMBOL *scanprefixfromnodestree(Suffixtree *stree,Location *loc,$/;"	f
+scanprefixfromnodestree	src/kurtz/streesrc/streefiledoc.c	/^SYMBOL *scanprefixfromnodestree(Suffixtree *stree,Location *loc,$/;"	f
+scanprefixstree	src/kurtz/streesrc/scanpref.c	/^\/*@null@*\/ SYMBOL *scanprefixstree(Suffixtree *stree,Location *outloc,$/;"	f
+scanprefixstree	src/kurtz/streesrc/streefiledoc.c	/^SYMBOL *scanprefixstree(Suffixtree *stree,Location *outloc,$/;"	f
+score	src/tigr/delta.cc	/^  long score;$/;"	m	struct:LIS_t	file:
+score	src/tigr/show-coords.cc	/^  long int score, wscore;$/;"	m	struct:LASstats	file:
+scoreEdit	src/tigr/sw_align.cc	/^static inline void scoreEdit$/;"	f	file:
+scoreMatch	src/tigr/sw_align.cc	/^static inline long int scoreMatch$/;"	f	file:
+secondtime	src/kurtz/streesrc/streetyp.h	/^  BOOL secondtime;$/;"	m	struct:__anon12
+sentinel	src/kurtz/streesrc/streetyp.h	/^         *sentinel;           \/\/ points to the position of the \\(\\$\\)-symbol$/;"	m	struct:Suffixtreetype
+seq	src/tigr/delta.hh	/^  char * seq;                         \/\/!< the DNA sequence$/;"	m	struct:DeltaNode_t
+seq	src/tigr/postnuc.cc	/^  char * seq;                \/\/ the sequence data$/;"	m	struct:FastaRecord	file:
+seq	src/tigr/postpro.cc	/^  char * seq;                \/\/ the sequence data$/;"	m	struct:FastaRecord	file:
+seqlength	src/kurtz/libbasedir/multidef.h	/^       seqlength,    \/\/ the length of the sequence$/;"	m	struct:__anon23
+seqnum	src/kurtz/libbasedir/multidef.h	/^  Uint seqnum,       \/\/ the sequence number in multiseq$/;"	m	struct:__anon23
+seqstartpos	src/kurtz/libbasedir/multidef.h	/^       seqstartpos,  \/\/ the position of the first character in multiseq.sequence$/;"	m	struct:__anon23
+sequence	src/kurtz/libbasedir/multidef.h	/^  Uchar *sequence,                     \/\/ the concatenated sequences$/;"	m	struct:__anon21
+setBanding	src/tigr/sw_align.hh	/^inline void setBanding(const int Banding)$/;"	f
+setBreakLen	src/tigr/sw_align.hh	/^inline void setBreakLen$/;"	f
+setDebugLevel	scripts/Foundation.pm	/^   sub setDebugLevel($;$) {$/;"	s
+setHelpInfo	scripts/Foundation.pm	/^   sub setHelpInfo($) {$/;"	s
+setLogFile	scripts/Foundation.pm	/^   sub setLogFile($;$) {$/;"	s
+setMatrixType	src/tigr/sw_align.hh	/^inline void setMatrixType$/;"	f
+setUsageInfo	scripts/Foundation.pm	/^   sub setUsageInfo($) {$/;"	s
+setVersionInfo	scripts/Foundation.pm	/^   sub setVersionInfo($) {$/;"	s
+set_output_fname	scripts/mapview.pl	/^sub set_output_fname{$/;"	s
+setatnewleaf	src/kurtz/streesrc/streetyp.h	/^  BOOL setatnewleaf;          \/\/ nil-reference is stored in new leaf$/;"	m	struct:Suffixtreetype
+setdebuglevel	src/kurtz/libbasedir/debug.c	/^void setdebuglevel(void)$/;"	f
+setdebuglevelfilename	src/kurtz/libbasedir/debug.c	/^void setdebuglevelfilename(char *filename)$/;"	f
+setdepthheadposition	src/kurtz/streesrc/construct.c	/^static void setdepthheadposition(Suffixtree *stree,Uint depth,$/;"	f	file:
+setdepthtab	src/kurtz/streesrc/depthtab.c	/^static void setdepthtab(ArrayUint *depthtab,Uint depth)$/;"	f	file:
+seterror	src/kurtz/libbasedir/seterror.c	/^void seterror(Sint code)$/;"	f
+setlink	src/kurtz/streesrc/streetyp.h	/^       *setlink,              \/\/ address of a nil-reference$/;"	m	struct:Suffixtreetype
+setmaxspace	src/kurtz/libbasedir/space.c	/^static void setmaxspace(void)$/;"	f	file:
+setsuffixlink	src/kurtz/streesrc/construct.c	/^static void setsuffixlink(Suffixtree *stree,Uint slink)$/;"	f	file:
+showalignspromer	docs/web/examples/index.html	/^<h4><a name="showalignspromer" id="showalignspromer"><\/a>2.4.3. Running show-aligns<\/h4>$/;"	a
+showcoordsnucmer	docs/web/examples/index.html	/^<h4><a name="showcoordsnucmer"><\/a>2.3.2. Running show-coords<\/h4>$/;"	a
+showcoordspromer	docs/web/examples/index.html	/^<h4><a name="showcoordspromer" id="showcoordspromer"><\/a>2.4.2. Running show-coords<\/h4>$/;"	a
+showdepthtab	src/kurtz/streesrc/depthtab.c	/^void showdepthtab(ArrayUint *dt)$/;"	f
+showexclude	src/kurtz/libbasedir/procopt.c	/^void showexclude(OptionDescription *opt,Sint *excludetab,Uint len)$/;"	f
+showgreedymatchresult	src/kurtz/mm3src/findmaxmat.c	/^static void showgreedymatchresult(Maxmatchinfo *maxmatchinfo,$/;"	f	file:
+showlocation	src/kurtz/streesrc/streedbg.c	/^void showlocation(FILE *fp,Suffixtree *stree,Location *loc)$/;"	f
+showmaximalmatch	src/kurtz/mm3src/procmaxmat.c	/^static Sint showmaximalmatch (void *info,$/;"	f	file:
+showmaxmatflags	src/kurtz/mm3src/maxmat3.c	/^static void showmaxmatflags (char *program,$/;"	f	file:
+showmemsize	src/kurtz/libbasedir/space.c	/^void showmemsize(void)$/;"	f
+showoptdesc	src/kurtz/libbasedir/procopt.c	/^static void showoptdesc(FILE *fp,Uint indentlevel,char *desc)$/;"	f	file:
+showoptions	src/kurtz/libbasedir/procopt.c	/^void showoptions(FILE *outfp,char *program,OptionDescription *opt,$/;"	f
+showoptionswithoutexclude	src/kurtz/libbasedir/procopt.c	/^void showoptionswithoutexclude(FILE *outfp,char *program,$/;"	f
+showpathstree	src/kurtz/streesrc/access.c	/^void showpathstree(Suffixtree *stree,Bref bnode,$/;"	f
+showpathstree	src/kurtz/streesrc/streefiledoc.c	/^void showpathstree(Suffixtree *stree,Bref bnode,$/;"	f
+showreversepositions	src/kurtz/mm3src/maxmatdef.h	/^       showreversepositions,    \/\/ give reverse pos. rel. to orig. string$/;"	m	struct:__anon4
+showreversepositions	src/kurtz/mm3src/procmaxmat.c	/^       showreversepositions,   \/\/ is option \\texttt{-c} on?$/;"	m	struct:__anon3	file:
+showseqandmaximalmatch	src/kurtz/mm3src/procmaxmat.c	/^static Sint showseqandmaximalmatch (void *info,$/;"	f	file:
+showsequencedescription	src/kurtz/mm3src/procmaxmat.c	/^static void showsequencedescription(Multiseq *multiseq, Uint maxdesclength,$/;"	f	file:
+showsequenceheader	src/kurtz/mm3src/procmaxmat.c	/^static void showsequenceheader(Multiseq *multiseq,$/;"	f	file:
+showsequencelengths	src/kurtz/mm3src/maxmatdef.h	/^       showsequencelengths,     \/\/ show length of sequences on header line$/;"	m	struct:__anon4
+showsequencelengths	src/kurtz/mm3src/procmaxmat.c	/^       showsequencelengths,    \/\/ is option \\texttt{-L} on?$/;"	m	struct:__anon3	file:
+showsimplelocliststree	src/kurtz/streesrc/access.c	/^void showsimplelocliststree(Suffixtree *stree,ArraySimpleloc *ll)$/;"	f
+showsimplelocstree	src/kurtz/streesrc/access.c	/^void showsimplelocstree(Suffixtree *stree,Simpleloc *loc)$/;"	f
+showsnpsnucmer	docs/web/examples/index.html	/^<h4><a name="showsnpsnucmer" id="showsnpsnucmer"><\/a>2.3.4. Running show-snps<\/h4>$/;"	a
+showspace	src/kurtz/libbasedir/space.c	/^void showspace(void)$/;"	f
+showstate	src/kurtz/streesrc/streedbg.c	/^void showstate(Suffixtree *stree)$/;"	f
+showstree	src/kurtz/streesrc/streedbg.c	/^void showstree(Suffixtree *stree)$/;"	f
+showstring	src/kurtz/mm3src/maxmatdef.h	/^  BOOL showstring,              \/\/ show the matching string$/;"	m	struct:__anon4
+showstring	src/kurtz/mm3src/procmaxmat.c	/^  BOOL showstring,             \/\/ is option \\texttt{-s} on?$/;"	m	struct:__anon3	file:
+showsubtree	src/kurtz/streesrc/streedbg.c	/^static void showsubtree(Suffixtree *stree,Uint indent,Uint *btptr)$/;"	f	file:
+showsymbol	src/kurtz/streesrc/streedbg.c	/^static char *showsymbol(SYMBOL c)$/;"	f	file:
+showsymbolstree	src/kurtz/streesrc/streetyp.h	/^  char * (*showsymbolstree)(SYMBOL,Uchar *);$/;"	m	struct:Suffixtreetype
+showtable	src/kurtz/streesrc/streedbg.c	/^void showtable(Suffixtree *stree,BOOL final)$/;"	f
+showthesymbolstring	src/kurtz/streesrc/streedbg.c	/^static void showthesymbolstring(FILE *fp,SYMBOL *tlast,SYMBOL *left,$/;"	f	file:
+showtilingnucmer	docs/web/examples/index.html	/^<h4><a name="showtilingnucmer"><\/a>2.3.5. Running show-tiling<\/h4>$/;"	a
+showusage	src/kurtz/mm3src/maxmatopt.c	/^static void showusage(char *program,OptionDescription *options,$/;"	f	file:
+showvalues	src/kurtz/streesrc/construct.c	/^static void showvalues(void)$/;"	f	file:
+sim	src/tigr/delta.hh	/^  float idy, sim, stp;        \/\/!< percent identity [0 - 1]$/;"	m	struct:DeltaEdgelet_t
+sim	src/tigr/delta.hh	/^  float sim;               \/\/!< percent similarity [0 - 100]$/;"	m	struct:DeltaAlignment_t
+simc	src/tigr/delta.hh	/^  long idyc, simc, stpc;      \/\/!< idy, sim, stp counts$/;"	m	struct:DeltaEdgelet_t
+simc	src/tigr/delta.hh	/^  long simc;  \/\/!< number of similarity scores < 1 in the alignment$/;"	m	struct:DeltaAlignment_t
+simplefileOpen	src/kurtz/libbasedir/mapfile.c	/^Sint simplefileOpen(char *filename,Uint *numofbytes)$/;"	f
+simplifyAlignments	src/tigr/show-coords.cc	/^void simplifyAlignments$/;"	f
+sizeofcells	src/kurtz/libbasedir/space.c	/^  Uint sizeofcells,    \/\/ size of cells of the block$/;"	m	struct:__anon24	file:
+skipprefix	src/kurtz/libbasedir/multidef.h	/^  Uint skipprefix,       \/\/ always skip this number of prefixes$/;"	m	struct:__anon22
+slope	src/tigr/delta.hh	/^  int slope() const$/;"	f	struct:DeltaEdgelet_t
+smallnode	src/kurtz/streesrc/streetyp.h	/^       smallnode,             \/\/ number of small nodes$/;"	m	struct:Suffixtreetype
+smallnotcompleted	src/kurtz/streesrc/streetyp.h	/^       smallnotcompleted,     \/\/ the number of small nodes in the current chain$/;"	m	struct:Suffixtreetype
+snpdetection	docs/web/manual/index.html	/^<h3><a name="snpdetection" id="snpdetection"><\/a>4.4. SNP detection<\/h3>$/;"	a
+snps	docs/web/manual/index.html	/^<h4><a name="snps" id="snps"><\/a>5.4.6. show-snps<\/h4>$/;"	a
+snps	src/tigr/delta.hh	/^  std::vector<SNP_t *> snps;  \/\/!< snps for this edgelet$/;"	m	struct:DeltaEdgelet_t
+sortMUMcandidates	src/kurtz/libbasedir/cleanMUMcand.c	/^static void sortMUMcandidates(ArrayMUMcandidate *mumcand)$/;"	f	file:
+spaceStrings	src/kurtz/libbasedir/arraydef.h	/^  Stringtype *spaceStrings;$/;"	m	struct:__anon20
+spaceforbranchtab	src/kurtz/streesrc/construct.c	/^static void spaceforbranchtab(Suffixtree *stree)$/;"	f	file:
+spacepeak	src/kurtz/libbasedir/mapfile.c	/^            spacepeak = 0,                 \/\/ maximally mapped num of bytes$/;"	v	file:
+spacepeak	src/kurtz/libbasedir/space.c	/^            spacepeak = 0;      \/\/ maximally allocated num of bytes$/;"	v	file:
+spaceptr	src/kurtz/libbasedir/space.c	/^  void *spaceptr;      \/\/ ptr to the spaceblock$/;"	m	struct:__anon24	file:
+splitinternaledge	src/kurtz/streesrc/streetyp.h	/^       splitinternaledge,$/;"	m	struct:Suffixtreetype
+splitleafedge	src/kurtz/streesrc/streetyp.h	/^  Uint splitleafedge,$/;"	m	struct:Suffixtreetype
+stack	src/kurtz/streesrc/streetyp.h	/^  ArrayBref stack;$/;"	m	struct:__anon12
+start	src/kurtz/libbasedir/types.h	/^  Uint start, length;$/;"	m	struct:__anon16
+startclock	src/kurtz/libbasedir/clock.c	/^static clock_t startclock, $/;"	v	file:
+startdesc	src/kurtz/libbasedir/multidef.h	/^  Uint *startdesc,                     \/\/ of length numofsequences + 1$/;"	m	struct:__anon21
+stopclock	src/kurtz/libbasedir/clock.c	/^               stopclock;$/;"	v	file:
+storeMUMcandidate	src/kurtz/mm3src/procmaxmat.c	/^static Sint storeMUMcandidate (void *info,$/;"	f	file:
+stp	src/tigr/delta.hh	/^  float idy, sim, stp;        \/\/!< percent identity [0 - 1]$/;"	m	struct:DeltaEdgelet_t
+stp	src/tigr/delta.hh	/^  float stp;               \/\/!< percent stop codon [0 - 100]$/;"	m	struct:DeltaAlignment_t
+stpc	src/tigr/delta.hh	/^  long idyc, simc, stpc;      \/\/!< idy, sim, stp counts$/;"	m	struct:DeltaEdgelet_t
+stpc	src/tigr/delta.hh	/^  long stpc;  \/\/!< number of stop codons in the alignment$/;"	m	struct:DeltaAlignment_t
+stree	src/kurtz/mm3src/findmaxmat.c	/^  Suffixtree *stree;              \/\/ reference to suffix tree of subject-seq$/;"	m	struct:__anon2	file:
+stree	src/kurtz/mm3src/procmaxmat.c	/^  Suffixtree stree;            \/\/ the suffix tree of the subject-sequence$/;"	m	struct:__anon3	file:
+stree	src/kurtz/streesrc/addleafcount.c	/^  Suffixtree *stree;                      \/\/ suffix tree info$/;"	m	struct:__anon6	file:
+stringbuffer	src/kurtz/libbasedir/arraydef.h	/^  Uchar *stringbuffer;$/;"	m	struct:__anon20
+stringbufferlength	src/kurtz/libbasedir/arraydef.h	/^  Uint stringbufferlength, nextfreeStrings, allocatedStrings;$/;"	m	struct:__anon20
+subjectfile	src/kurtz/mm3src/maxmatdef.h	/^       subjectfile[PATH_MAX+1], \/\/ filename of the subject-sequence$/;"	m	struct:__anon4
+subjectmultiseq	src/kurtz/mm3src/procmaxmat.c	/^  Multiseq *subjectmultiseq,   \/\/ reference to multiseq of subject$/;"	m	struct:__anon3	file:
+subtractspace	src/kurtz/libbasedir/space.c	/^static void subtractspace(Uint space)$/;"	f	file:
+succlocationsstree	src/kurtz/streesrc/access.c	/^void succlocationsstree(Suffixtree *stree,BOOL nosentinel,Simpleloc *loc,$/;"	f
+suffixlink	src/kurtz/streesrc/streetyp.h	/^  Bref suffixlink;          \/\/ the suffix link is always to a branching node$/;"	m	struct:__anon8
+swap	src/tigr/show-coords.cc	/^inline void swap$/;"	f
+taillcp	src/kurtz/streesrc/construct.c	/^static Uint taillcp(Suffixtree *stree,SYMBOL *start1, SYMBOL *end1)$/;"	f	file:
+tailptr	src/kurtz/streesrc/streetyp.h	/^         *tailptr;            \/\/ points to the tail$/;"	m	struct:Suffixtreetype
+test_formatGFF	scripts/mapview.pl	/^sub test_formatGFF{$/;"	s
+test_overlap	scripts/mapview.pl	/^sub test_overlap{$/;"	s
+text	src/kurtz/streesrc/streetyp.h	/^  SYMBOL *text,               \/\/ points to the input string$/;"	m	struct:Suffixtreetype
+textlen	src/kurtz/streesrc/streetyp.h	/^  Uint textlen,               \/\/ the length of the input string$/;"	m	struct:Suffixtreetype
+textpos	src/kurtz/streesrc/streetyp.h	/^       textpos;  \/\/ these last two items are redundant and can be computed$/;"	m	struct:__anon10
+tileContigs	src/tigr/show-tiling.cc	/^void tileContigs$/;"	f
+tiling	docs/web/manual/index.html	/^<h4><a name="tiling"><\/a>5.4.7. show-tiling<\/h4>$/;"	a
+tmpleafcount	src/kurtz/streesrc/addleafcount.c	/^static Uint tmpleafcount, repnum = 0;$/;"	v	file:
+toFwd	src/tigr/show-aligns.cc	/^long int toFwd$/;"	f
+toleaf	src/kurtz/streesrc/streetyp.h	/^  BOOL toleaf;$/;"	m	struct:__anon7
+totallength	src/kurtz/libbasedir/multidef.h	/^       totallength;                    \/\/ the total length of all sequences$/;"	m	struct:__anon21
+transC	src/tigr/postpro.cc	/^inline long int transC$/;"	f
+transdna	src/tigr/translate.hh	/^const int	transdna[256] = {$/;"	v
+uint0	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2, uint3;$/;"	m	struct:__anon15
+uint0	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2;$/;"	m	struct:__anon14
+uint0	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1;$/;"	m	struct:__anon13
+uint1	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2, uint3;$/;"	m	struct:__anon15
+uint1	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2;$/;"	m	struct:__anon14
+uint1	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1;$/;"	m	struct:__anon13
+uint2	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2, uint3;$/;"	m	struct:__anon15
+uint2	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2;$/;"	m	struct:__anon14
+uint3	src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2, uint3;$/;"	m	struct:__anon15
+universal	src/tigr/translate.hh	/^const char	universal[NUM_DNA_SYMBOLS * NUM_DNA_SYMBOLS * NUM_DNA_SYMBOLS] = {$/;"	v
+untilfirstblank	src/kurtz/libbasedir/multidef.h	/^       untilfirstblank;  \/\/ only show sequence until first blank$/;"	m	struct:__anon22
+usecases	docs/web/manual/index.html	/^<h2><a name="usecases" id="usecases"><\/a>4. Use cases and walk-throughs<\/h2>$/;"	a
+used	src/tigr/delta.cc	/^  bool used;$/;"	m	struct:LIS_t	file:
+used	src/tigr/sw_align.hh	/^  char used;$/;"	m	struct:Score
+utilities	docs/web/manual/index.html	/^<h3><a name="utilities"><\/a>5.4. Utilities<\/h3>$/;"	a
+validateData	src/tigr/postnuc.cc	/^void validateData$/;"	f
+validateData	src/tigr/postpro.cc	/^void validateData$/;"	f
+value	src/tigr/sw_align.hh	/^  long int value;$/;"	m	struct:Score
+wasFused	src/tigr/postnuc.cc	/^  bool wasFused;             \/\/ have the cluster matches been fused yet?$/;"	m	struct:Cluster	file:
+wasFused	src/tigr/postpro.cc	/^  bool wasFused;          \/\/ have the cluster matches been extended yet?$/;"	m	struct:Cluster	file:
+wccSequence	src/kurtz/mm3src/procmaxmat.c	/^static void wccSequence (Uchar *seq,$/;"	f	file:
+wfrom	src/tigr/show-coords.cc	/^  long int from, wfrom;$/;"	m	struct:LASstats	file:
+whichDataType	src/tigr/show-coords.cc	/^int  whichDataType = NUCMER_DATA;       \/\/ set by .delta header$/;"	v
+wpoint	src/tigr/show-coords.cc	/^  bool wpoint;$/;"	m	struct:LASstats	file:
+wrapspace	src/kurtz/libbasedir/space.c	/^void wrapspace(void)$/;"	f
+wscore	src/tigr/show-coords.cc	/^  long int score, wscore;$/;"	m	struct:LASstats	file:
+~DeltaEdge_t	src/tigr/delta.hh	/^  ~DeltaEdge_t ( )$/;"	f	struct:DeltaEdge_t
+~DeltaEdgelet_t	src/tigr/delta.hh	/^  ~DeltaEdgelet_t ( )$/;"	f	struct:DeltaEdgelet_t
+~DeltaGraph_t	src/tigr/delta.hh	/^  ~DeltaGraph_t ( )$/;"	f	class:DeltaGraph_t
+~DeltaNode_t	src/tigr/delta.hh	/^  ~DeltaNode_t ( )$/;"	f	struct:DeltaNode_t
+~DeltaReader_t	src/tigr/delta.hh	/^  ~DeltaReader_t ( )$/;"	f	class:DeltaReader_t
