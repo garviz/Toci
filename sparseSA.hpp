@@ -32,7 +32,7 @@ struct vec_uchar {
       return lower_bound(M.begin(), M.end(), item_t(idx,0))->val;
     else
     {
-        ++access;
+      //++access;
       return vec[idx]; 
     }
   }
@@ -81,7 +81,7 @@ struct sparseSA {
   long N; //!< Length of the sequence.
   long logN; // ceil(log(N)) 
   long NKm1; // N/K - 1
-  string &S; //!< Reference to sequence data.
+  string &R; //!< Reference to sequence data.
   vector<unsigned int> SA;  // Suffix array.
   vector<int> ISA;  // Inverse suffix array.
   vec_uchar LCP; // Simulates a vector<int> LCP.

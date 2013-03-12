@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <papi.h>
 #include "streedef.h"
 #include "debugdef.h"
 #include "spacedef.h"
@@ -151,6 +152,14 @@ Sint findmumcandidates(Suffixtree *stree,
         *right = query + querylen - 1, 
         *querysuffix;
   Location loc;
+  double start, start1, finish, finish1;
+  long_long values[4];
+  int Events[4] = { PAPI_TOT_INS, PAPI_TOT_CYC, PAPI_L2_TCM, PAPI_L2_TCA }, EventSet = PAPI_NULL;
+
+  if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) fprintf(stderr,"PAPI library init error!\n");
+  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
+  if (PAPI_add_events(EventSet, Events, 4) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
+  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR PAPI_start\n");
 
   DEBUG1(2,"query of length %lu=",(Showuint) querylen);
   DEBUGCODE(2,(void) fwrite(query,sizeof(Uchar),(size_t) querylen,stdout));
@@ -198,5 +207,8 @@ Sint findmumcandidates(Suffixtree *stree,
     querysuffix++;
     DEBUGCODE(2,showlocation(stdout,stree,&loc));
   }
+  if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
+  fprintf(stderr,"# CYC=%lld,INS=%lld,L2=%f\n", values[1], values[0],(double) values[2]/(double)values[3]);
+  if (PAPI_stop(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI-stop\n");
   return 0;
 }

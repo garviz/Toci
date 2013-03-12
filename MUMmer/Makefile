@@ -44,7 +44,7 @@ AR   := $(filter /%,$(shell /bin/sh -c 'type ar'))
 
 CXXFLAGS = -O3 -fopenmp
 CFLAGS = -O3 -fopenmp
-LDFLAGS  =
+LDFLAGS  = -lpapi
 
 FLATS = ACKNOWLEDGEMENTS COPYRIGHT INSTALL LICENSE Makefile README ChangeLog
 

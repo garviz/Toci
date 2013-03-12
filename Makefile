@@ -4,7 +4,7 @@ SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp
 all: essaMEM 
 
 essaMEM: mummer.o qsufsort.o sparseSA.o fasta.o
-	g++ $(FLAGS) $^ -o $@ -lpthread
+	g++ $(FLAGS) $^ -o $@ -lpthread -lstdc++ -lpapi
 
 .cpp.o:
 	g++ $(FLAGS) -Wall -c $<

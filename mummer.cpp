@@ -85,14 +85,20 @@ void *query_thread(void *arg_) {
       if(meta != "") {
 	if(seq_cnt % arg->skip == arg->skip0) {
 	  // Process P.
-	  cerr << ",Q.length=" << P->length();
+	  cerr << ",Q.length=" << P->length() << endl;
       if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
             else printf("> %s\n", meta.c_str());
         }
         if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
-        else if(type == MUM) sa->MUMParallel(*P, chunks, matches, min_len, memCounter, print);
+        else if(type == MUM) {
+            sa->MUMParallel(*P, 1, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 2, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 4, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 8, matches, min_len, memCounter, print);
+        }
+
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
         if(!print) sa->print_match(meta, matches, false);
       }
@@ -103,7 +109,12 @@ void *query_thread(void *arg_) {
             else printf("> %s Reverse\n", meta.c_str());
         }
 	    if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
-	    else if(type == MUM) sa->MUMParallel(*P, chunks, matches, min_len, memCounter, print);
+	    else if(type == MUM) {
+            sa->MUMParallel(*P, 1, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 2, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 4, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 8, matches, min_len, memCounter, print);
+        }
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
 	    if(!print) sa->print_match(meta, matches, true);
 	  }
@@ -137,7 +148,7 @@ void *query_thread(void *arg_) {
   // Handle very last sequence.
   if(meta != "") {
     if(seq_cnt % arg->skip == arg->skip0) {
-      cerr << ",Q.length=" << P->length();
+      cerr << ",Q.length=" << P->length() << endl;
       if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
@@ -145,7 +156,11 @@ void *query_thread(void *arg_) {
         }
 
         if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
-        else if(type == MUM) sa->MUMParallel(*P, chunks, matches, min_len, memCounter, print);
+        else if(type == MUM) {
+            sa->MUMParallel(*P, 1, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 2, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 4, matches, min_len, memCounter, print);
+        }
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
         if(print) sa->print_match(meta, matches, false);
       }
