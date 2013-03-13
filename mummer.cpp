@@ -158,8 +158,11 @@ void *query_thread(void *arg_) {
         if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
         else if(type == MUM) {
             sa->MUMParallel(*P, 1, matches, min_len, memCounter, print);
+            matches.resize(0);
             sa->MUMParallel(*P, 6, matches, min_len, memCounter, print);
+            matches.resize(0);
             sa->MUMParallel(*P, 12, matches, min_len, memCounter, print);
+            matches.resize(0);
             sa->MUMParallel(*P, 24, matches, min_len, memCounter, print);
         }
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
@@ -179,7 +182,6 @@ void *query_thread(void *arg_) {
     }
   }
   delete P;
-  cerr << "# M(E/A/U)Ms=" << memCounter;
   pthread_exit(NULL);
 }
 
@@ -312,7 +314,7 @@ int main(int argc, char* argv[]) {
     pthread_join(thread_ids[i], NULL);    
 
   getrusage(RUSAGE_SELF, &memory);
-  cerr << ",RSS=" << memory.ru_maxrss << endl;
+  cerr << "# RSS=" << memory.ru_maxrss << endl;
   delete sa;
 }
 

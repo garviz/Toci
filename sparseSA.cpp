@@ -779,14 +779,14 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
     }
     ignoreprevious = ignorecurrent;
   }
-  /*if(!ignoreprevious) {
+  if(!ignoreprevious) {
     if(print) print_match(matches[matches.size()-1]);
     else unique.push_back(matches[matches.size()-1]);
-  }*/
+  }
   finish1 = omp_get_wtime();
   currentCount = unique.size();
   //fprintf(stderr,",OMP=%lf,Merge=%lf,LCPAcc=%ld,",(double) (finish-start), (double) (finish1-start1), LCP.access);
-  fprintf(stderr,",OMP=%lf,Merge=%lf,Thrd=%d\n",(double) (finish-start), (double) (finish1-start1), chunks);
+  fprintf(stderr,",OMP=%lf,Merge=%lf,Matches=%ld,Thrd=%d\n",(double) (finish-start), (double) (finish1-start1), currentCount, chunks);
 }
 
 void *MEMthread(void *arg) {

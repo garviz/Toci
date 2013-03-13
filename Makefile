@@ -1,12 +1,12 @@
 CXXFLAGS = -O3 -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -mtune=native -msse4.2 -std=gnu++11
 CFLAGS = -O3 -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -mtune=native -msse4.2
-LDFLAGS = -lstdc++ -lpapi -lpthread
+LIBS = -lstdc++ -lpapi -lpthread
 SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp
 
 all: essaMEM 
 
 essaMEM: mummer.o qsufsort.o sparseSA.o fasta.o
-	g++ $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+	g++ $(CXXFLAGS) $^ -o $@ $(LIBS)
 
 .cpp.o:
 	g++ $(CXXFLAGS) -Wall -c $<
