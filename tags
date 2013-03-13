@@ -88,7 +88,7 @@ CASE	MUMmer/src/kurtz/libbasedir/debugdef.h	217;"	d
 CASELINE	MUMmer/src/kurtz/libbasedir/debugdef.h	169;"	d
 CASELINE	MUMmer/src/kurtz/libbasedir/debugdef.h	218;"	d
 CC	MUMmer/Makefile	/^CC   := $(filter \/%,$(shell \/bin\/sh -c 'type gcc'))$/;"	m
-CFLAGS	MUMmer/Makefile	/^CFLAGS = -O3 -fopenmp$/;"	m
+CFLAGS	MUMmer/Makefile	/^CFLAGS = -O3 -fopenmp -std=c99$/;"	m
 CHARDEF_H	MUMmer/src/kurtz/libbasedir/chardef.h	12;"	d
 CHARS_PER_LINE	MUMmer/src/tigr/prenuc.cc	24;"	d	file:
 CHARS_PER_LINE	MUMmer/src/tigr/prepro.cc	38;"	d	file:
@@ -267,11 +267,6 @@ DEFAULT_SCREEN_WIDTH	MUMmer/src/tigr/show-aligns.cc	37;"	d	file:
 DEFAULT_SEPARATION_FACTOR	MUMmer/src/tigr/mgaps.cc	/^const double  DEFAULT_SEPARATION_FACTOR = 0.05;$/;"	v
 DELETE	MUMmer/src/tigr/sw_align.cc	/^static const int DELETE = 0;$/;"	v	file:
 DELETEMEMORYMAP	MUMmer/src/kurtz/libbasedir/spacedef.h	101;"	d
-DESCRIPTION	MUMmer/dnadiff	/^  DESCRIPTION:$/;"	l
-DESCRIPTION	MUMmer/mapview	/^  DESCRIPTION:$/;"	l
-DESCRIPTION	MUMmer/mummerplot	/^  DESCRIPTION:$/;"	l
-DESCRIPTION	MUMmer/nucmer	/^  DESCRIPTION:$/;"	l
-DESCRIPTION	MUMmer/promer	/^  DESCRIPTION:$/;"	l
 DESCRIPTION	MUMmer/scripts/dnadiff.pl	/^  DESCRIPTION:$/;"	l
 DESCRIPTION	MUMmer/scripts/mapview.pl	/^  DESCRIPTION:$/;"	l
 DESCRIPTION	MUMmer/scripts/mummerplot.pl	/^  DESCRIPTION:$/;"	l
@@ -445,13 +440,10 @@ FUNCNAME	vector/dispatch_example.cpp	36;"	d	file:
 False	MUMmer/src/kurtz/libbasedir/types.h	219;"	d
 FastaRecord	MUMmer/src/tigr/postnuc.cc	/^struct FastaRecord$/;"	s	file:
 FastaRecord	MUMmer/src/tigr/postpro.cc	/^struct FastaRecord$/;"	s	file:
-FastaSizes	MUMmer/dnadiff	/^sub FastaSizes($$)$/;"	s
 FastaSizes	MUMmer/scripts/dnadiff.pl	/^sub FastaSizes($$)$/;"	s
 Fgetcreturntype	MUMmer/src/kurtz/libbasedir/types.h	/^typedef int Fgetcreturntype;        \/\/ \\Typedef{Fgetcreturntype}$/;"	t
 Fieldwidthtype	MUMmer/src/kurtz/libbasedir/types.h	/^typedef int Fieldwidthtype;         \/\/ \\Typedef{Fieldwidthtype}$/;"	t
-FileClose	MUMmer/dnadiff	/^sub FileClose($$)$/;"	s
 FileClose	MUMmer/scripts/dnadiff.pl	/^sub FileClose($$)$/;"	s
-FileOpen	MUMmer/dnadiff	/^sub FileOpen($$)$/;"	s
 FileOpen	MUMmer/scripts/dnadiff.pl	/^sub FileOpen($$)$/;"	s
 File_Open	MUMmer/src/tigr/tigrinc.cc	/^FILE *  File_Open  (const char * Filename, const char * Mode)$/;"	f
 Filedesctype	MUMmer/src/kurtz/libbasedir/types.h	/^typedef int Filedesctype;           \/\/ \\Typedef{Filedesctype}$/;"	t
@@ -509,9 +501,7 @@ GOOD_SCORE	MUMmer/src/tigr/sw_alignscore.hh	/^const int GOOD_SCORE [4] = {3, 10,
 Gaps_File_Path	MUMmer/src/tigr/combineMUMs.cc	/^char  * Gaps_File_Path = NULL;$/;"	v
 Gaps_With_Errors_File	MUMmer/src/tigr/annotate.cc	/^FILE  * Gaps_With_Errors_File;$/;"	v
 Genome_Len	MUMmer/src/tigr/repeat-match.cc	/^long int  Genome_Len;$/;"	v
-GetOpt	MUMmer/dnadiff	/^sub GetOpt()$/;"	s
 GetOpt	MUMmer/scripts/dnadiff.pl	/^sub GetOpt()$/;"	s
-GetParseFunc	MUMmer/mummerplot	/^sub GetParseFunc ( )$/;"	s
 GetParseFunc	MUMmer/scripts/mummerplot.pl	/^sub GetParseFunc ( )$/;"	s
 Getrlimitreturntype	MUMmer/src/kurtz/libbasedir/types.h	/^typedef int Getrlimitreturntype;    \/\/ \\Typedef{Getrlimitreturntype}$/;"	t
 Global_Debug_Flag	MUMmer/src/tigr/combineMUMs.cc	/^bool  Global_Debug_Flag = false;$/;"	v
@@ -597,6 +587,7 @@ Input_File_Name	MUMmer/src/tigr/repeat-match.cc	/^static char  * Input_File_Name
 Introduction	papers/BBC2013/procs-sample.tex	/^\\section{Introduction}$/;"	s
 Is_Duplicate	MUMmer/src/tigr/repeat-match.cc	/^   unsigned  Is_Duplicate : 1;$/;"	m	struct:leaf	file:
 K	mummer.cpp	/^int K = 1, num_threads = 1, query_threads = 1;$/;"	v
+K	mummer.s	/^K:$/;"	l
 K	sparseSA.hpp	/^  long K; \/\/ suffix sampling, K = 1 every suffix, K = 2 every other suffix, K = 3, every 3rd sffix$/;"	m	struct:sparseSA
 KEY	qsufsort.c	21;"	d	file:
 KURTZ_SRC_DIR	MUMmer/Makefile	/^KURTZ_SRC_DIR := $(TOP_DIR)\/src\/kurtz$/;"	m
@@ -615,11 +606,11 @@ LAS_Sort	MUMmer/src/tigr/show-coords.cc	/^struct LAS_Sort$/;"	s	file:
 LASstats	MUMmer/src/tigr/show-coords.cc	/^struct LASstats$/;"	s	file:
 LATEX	MUMmer/docs/Makefile	/^LATEX=pdflatex$/;"	m
 LCP	sparseSA.hpp	/^  vec_uchar LCP; \/\/ Simulates a vector<int> LCP.$/;"	m	struct:sparseSA
-LCPCHILD	sparseSA.cpp	14;"	d	file:
+LCPCHILD	sparseSA.cpp	15;"	d	file:
 LD	MUMmer/src/kurtz/libbasedir/Makefile	/^LD=$(CC)$/;"	m
 LD	MUMmer/src/kurtz/mm3src/Makefile	/^LD=$(CC)$/;"	m
 LD	MUMmer/src/kurtz/streesrc/Makefile	/^LD=${CC}$/;"	m
-LDFLAGS	MUMmer/Makefile	/^LDFLAGS  =$/;"	m
+LDFLAGS	MUMmer/Makefile	/^LDFLAGS  = -lpapi$/;"	m
 LEADLEVEL	MUMmer/src/kurtz/streesrc/streeacc.h	241;"	d
 LEAFADDR2NUM	MUMmer/src/kurtz/streesrc/streemac.h	61;"	d
 LEAFBIT	MUMmer/src/kurtz/streesrc/streehuge.h	35;"	d
@@ -648,7 +639,6 @@ LOWERLINKBITS	MUMmer/src/kurtz/streesrc/streelarge.h	57;"	d
 LOWERLINKPATT	MUMmer/src/kurtz/streesrc/streelarge.h	59;"	d
 LOWERLINKSIZE	MUMmer/src/kurtz/streesrc/streelarge.h	58;"	d
 LOWESTVISIBLE	MUMmer/src/kurtz/libbasedir/visible.h	28;"	d
-LayoutIDs	MUMmer/mummerplot	/^sub LayoutIDs ($$)$/;"	s
 LayoutIDs	MUMmer/scripts/mummerplot.pl	/^sub LayoutIDs ($$)$/;"	s
 Leaf_Array	MUMmer/src/tigr/repeat-match.cc	/^Leaf_Ptr  Leaf_Array;$/;"	v
 Leaf_Ptr	MUMmer/src/tigr/repeat-match.cc	/^  }  Leaf_Type, * Leaf_Ptr;$/;"	t	typeref:struct:leaf	file:
@@ -665,7 +655,6 @@ Link	MUMmer/src/tigr/repeat-match.cc	/^   unsigned  Link;$/;"	m	struct:node	file
 List_Matches	MUMmer/src/tigr/repeat-match.cc	/^void  List_Matches$/;"	f
 List_Maximal_Matches	MUMmer/src/tigr/repeat-match.cc	/^void  List_Maximal_Matches  (int Root, int Is_Leaf, int Parent, int Parent_Depth)$/;"	f
 List_Tree	MUMmer/src/tigr/repeat-match.cc	/^int  List_Tree  (int Root, int Is_Leaf, int Parent, int Parent_Depth)$/;"	f
-ListenGP	MUMmer/mummerplot	/^sub ListenGP($$)$/;"	s
 ListenGP	MUMmer/scripts/mummerplot.pl	/^sub ListenGP($$)$/;"	s
 Listtype	MUMmer/src/kurtz/libbasedir/types.h	/^} Listtype;                \/\/ \\Typedef{Listtype}$/;"	t	typeref:struct:__anon16
 Lo	MUMmer/src/tigr/repeat-match.cc	/^   int  Lo;$/;"	m	struct:leaf	file:
@@ -677,7 +666,6 @@ Longest_Prefix_Match	MUMmer/src/tigr/repeat-match.cc	/^int  Longest_Prefix_Match
 Longest_String	MUMmer/src/tigr/repeat-match.cc	/^int  Longest_String = 0;$/;"	v
 Lref	MUMmer/src/kurtz/streesrc/streetyp.h	/^typedef Uint * Lref;    \/\/ \\Typedef{Lref}$/;"	t
 M	sparseSA.hpp	/^  vector<item_t> M;$/;"	m	struct:vec_uchar
-MAIN	MUMmer/mummerplot	/^MAIN:$/;"	l
 MAIN	MUMmer/scripts/mummerplot.pl	/^MAIN:$/;"	l
 MAINFUNCTION	MUMmer/src/kurtz/libbasedir/types.h	199;"	d
 MAKEBRANCHADDR	MUMmer/src/kurtz/streesrc/streehuge.h	86;"	d
@@ -694,11 +682,6 @@ MAKELEAF	MUMmer/src/kurtz/streesrc/streelarge.h	72;"	d
 MAKELEAF	MUMmer/src/kurtz/streesrc/streesmall.h	49;"	d
 MAM	mummer.cpp	/^enum mum_t { MUM, MAM, MEM };$/;"	e	enum:mum_t	file:
 MAM	sparseSA.hpp	/^  void MAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& memCount, bool print) { $/;"	f	struct:sparseSA
-MANDATORY	MUMmer/dnadiff	/^  MANDATORY:$/;"	l
-MANDATORY	MUMmer/mapview	/^  MANDATORY:$/;"	l
-MANDATORY	MUMmer/mummerplot	/^  MANDATORY:$/;"	l
-MANDATORY	MUMmer/nucmer	/^  MANDATORY:$/;"	l
-MANDATORY	MUMmer/promer	/^  MANDATORY:$/;"	l
 MANDATORY	MUMmer/scripts/dnadiff.pl	/^  MANDATORY:$/;"	l
 MANDATORY	MUMmer/scripts/mapview.pl	/^  MANDATORY:$/;"	l
 MANDATORY	MUMmer/scripts/mummerplot.pl	/^  MANDATORY:$/;"	l
@@ -787,7 +770,6 @@ MUMParallel	sparseSA.cpp	/^void sparseSA::MUMParallel(string &P, int chunks, vec
 MUMcandidate	MUMmer/src/kurtz/libbasedir/mumcand.h	/^DECLAREARRAYSTRUCT(MUMcandidate);$/;"	v
 MUMcandidate	MUMmer/src/kurtz/libbasedir/mumcand.h	/^} MUMcandidate;     \/\/ \\Typedef{MUMcandidate}$/;"	t	typeref:struct:__anon19
 MUMmer	papers/APBC2012/wga_APBC2012.tex	/^\\subsection{MUMmer}$/;"	b
-MakeReport	MUMmer/dnadiff	/^sub MakeReport()$/;"	s
 MakeReport	MUMmer/scripts/dnadiff.pl	/^sub MakeReport()$/;"	s
 Mark_Skipable_Nodes	MUMmer/src/tigr/repeat-match.cc	/^void  Mark_Skipable_Nodes$/;"	f
 Match	MUMmer/src/tigr/gaps.cc	/^struct  Match$/;"	s	file:
@@ -878,11 +860,6 @@ OPTIONIMPLYEITHER2	MUMmer/src/kurtz/libbasedir/optdesc.h	80;"	d
 OPTIONIMPLYEITHER3	MUMmer/src/kurtz/libbasedir/optdesc.h	92;"	d
 OPTIONIMPLYEITHER4	MUMmer/src/kurtz/libbasedir/optdesc.h	106;"	d
 OPTIONMANDATORY	MUMmer/src/kurtz/libbasedir/optdesc.h	59;"	d
-OPTIONS	MUMmer/dnadiff	/^  OPTIONS:$/;"	l
-OPTIONS	MUMmer/mapview	/^  OPTIONS:$/;"	l
-OPTIONS	MUMmer/mummerplot	/^  OPTIONS:$/;"	l
-OPTIONS	MUMmer/nucmer	/^  OPTIONS:$/;"	l
-OPTIONS	MUMmer/promer	/^  OPTIONS:$/;"	l
 OPTIONS	MUMmer/scripts/dnadiff.pl	/^  OPTIONS:$/;"	l
 OPTIONS	MUMmer/scripts/mapview.pl	/^  OPTIONS:$/;"	l
 OPTIONS	MUMmer/scripts/mummerplot.pl	/^  OPTIONS:$/;"	l
@@ -935,6 +912,7 @@ P	sparseSA.cpp	/^  string *P; \/\/ Query string.$/;"	m	struct:thread_data	file:
 P3	MUMmer/src/kurtz/streesrc/oversucc.c	12;"	d	file:
 PARSEFLOATARG	MUMmer/src/kurtz/libbasedir/args.h	52;"	d
 PARSEINTARG	MUMmer/src/kurtz/libbasedir/args.h	39;"	d
+PATH_MAX	MUMmer/src/kurtz/mm3src/maxmatdef.h	40;"	d
 PERL	MUMmer/Makefile	/^PERL := $(filter \/%,$(shell \/bin\/sh -c 'type perl'))$/;"	m
 PERL	MUMmer/scripts/Makefile	/^PERL := $(filter \/%,$(shell \/bin\/sh -c 'type perl'))$/;"	m
 PNO	MUMmer/src/kurtz/streesrc/oversucc.c	13;"	d	file:
@@ -972,17 +950,11 @@ Parent	MUMmer/src/tigr/repeat-match.cc	/^   unsigned  Parent;$/;"	m	struct:node	
 ParseArgs	MUMmer/src/tigr/delta-filter.cc	/^void ParseArgs(int argc, char ** argv)$/;"	f
 ParseArgs	MUMmer/src/tigr/show-diff.cc	/^void ParseArgs (int argc, char ** argv)$/;"	f
 ParseArgs	MUMmer/src/tigr/show-snps.cc	/^void ParseArgs (int argc, char ** argv)$/;"	f
-ParseCluster	MUMmer/mummerplot	/^sub ParseCluster ($)$/;"	s
 ParseCluster	MUMmer/scripts/mummerplot.pl	/^sub ParseCluster ($)$/;"	s
-ParseDelta	MUMmer/mummerplot	/^sub ParseDelta ($)$/;"	s
 ParseDelta	MUMmer/scripts/mummerplot.pl	/^sub ParseDelta ($)$/;"	s
-ParseIDs	MUMmer/mummerplot	/^sub ParseIDs ($$)$/;"	s
 ParseIDs	MUMmer/scripts/mummerplot.pl	/^sub ParseIDs ($$)$/;"	s
-ParseMummer	MUMmer/mummerplot	/^sub ParseMummer ($)$/;"	s
 ParseMummer	MUMmer/scripts/mummerplot.pl	/^sub ParseMummer ($)$/;"	s
-ParseOptions	MUMmer/mummerplot	/^sub ParseOptions ( )$/;"	s
 ParseOptions	MUMmer/scripts/mummerplot.pl	/^sub ParseOptions ( )$/;"	s
-ParseTiling	MUMmer/mummerplot	/^sub ParseTiling ($)$/;"	s
 ParseTiling	MUMmer/scripts/mummerplot.pl	/^sub ParseTiling ($)$/;"	s
 Parse_Command_Line	MUMmer/src/tigr/combineMUMs.cc	/^void  Parse_Command_Line$/;"	f
 Parse_Command_Line	MUMmer/src/tigr/mgaps.cc	/^static void  Parse_Command_Line$/;"	f	file:
@@ -991,7 +963,6 @@ Pathinfo	MUMmer/src/kurtz/streesrc/streetyp.h	/^DECLAREARRAYSTRUCT(Pathinfo);$/;
 Pathinfo	MUMmer/src/kurtz/streesrc/streetyp.h	/^} Pathinfo;      \/\/ \\Typedef{Pathinfo}$/;"	t	typeref:struct:__anon11
 Percent_ID	MUMmer/src/tigr/combineMUMs.cc	/^double  Percent_ID;$/;"	v
 PickBest	MUMmer/src/tigr/delta.cc	/^long PickBest$/;"	f
-PlotData	MUMmer/mummerplot	/^sub PlotData ($$$)$/;"	s
 PlotData	MUMmer/scripts/mummerplot.pl	/^sub PlotData ($$$)$/;"	s
 Prefix_Edit_Dist	MUMmer/src/tigr/combineMUMs.cc	/^int  Prefix_Edit_Dist$/;"	f
 PrintBrk	MUMmer/src/tigr/show-diff.cc	/^void PrintBrk(const char* seq, long s, long e)$/;"	f
@@ -1041,6 +1012,7 @@ Query	MUMmer/src/tigr/combineMUMs.cc	/^char  * Query = NULL;$/;"	v
 QueryContig	MUMmer/src/tigr/show-tiling.cc	/^struct QueryContig$/;"	s	file:
 Query_Len	MUMmer/src/tigr/combineMUMs.cc	/^long int  Query_Len;$/;"	v
 Query_Suffix	MUMmer/src/tigr/combineMUMs.cc	/^char  * Query_Suffix = "Query";$/;"	v
+R	sparseSA.hpp	/^  string &R; \/\/!< Reference to sequence data.$/;"	m	struct:sparseSA
 REALLY_VERBOSE	MUMmer/src/tigr/combineMUMs.cc	72;"	d	file:
 RECALLBRANCHADDRESS	MUMmer/src/kurtz/streesrc/streeacc.h	211;"	d
 RECALLLEAFADDRESS	MUMmer/src/kurtz/streesrc/streeacc.h	209;"	d
@@ -1075,20 +1047,13 @@ Rev_Display_Alignment	MUMmer/src/tigr/combineMUMs.cc	/^void  Rev_Display_Alignme
 Rev_Prefix_Edit_Dist	MUMmer/src/tigr/combineMUMs.cc	/^int  Rev_Prefix_Edit_Dist$/;"	f
 Rev_Show_Diffs	MUMmer/src/tigr/combineMUMs.cc	/^void  Rev_Show_Diffs$/;"	f
 Reverse_Complement	MUMmer/src/tigr/tigrinc.cc	/^void  Reverse_Complement$/;"	f
-RunAlignment	MUMmer/dnadiff	/^sub RunAlignment()$/;"	s
 RunAlignment	MUMmer/scripts/dnadiff.pl	/^sub RunAlignment()$/;"	s
-RunCoords	MUMmer/dnadiff	/^sub RunCoords()$/;"	s
 RunCoords	MUMmer/scripts/dnadiff.pl	/^sub RunCoords()$/;"	s
-RunDiff	MUMmer/dnadiff	/^sub RunDiff()$/;"	s
 RunDiff	MUMmer/scripts/dnadiff.pl	/^sub RunDiff()$/;"	s
-RunFilter	MUMmer/dnadiff	/^sub RunFilter()$/;"	s
 RunFilter	MUMmer/scripts/dnadiff.pl	/^sub RunFilter()$/;"	s
-RunGP	MUMmer/mummerplot	/^sub RunGP ( )$/;"	s
 RunGP	MUMmer/scripts/mummerplot.pl	/^sub RunGP ( )$/;"	s
-RunSNPs	MUMmer/dnadiff	/^sub RunSNPs()$/;"	s
 RunSNPs	MUMmer/scripts/dnadiff.pl	/^sub RunSNPs()$/;"	s
 S	MUMmer/src/tigr/sw_align.hh	/^  Score S[3];$/;"	m	struct:Node
-S	sparseSA.hpp	/^  string &S; \/\/!< Reference to sequence data.$/;"	m	struct:sparseSA
 SA	sparseSA.hpp	/^  vector<unsigned int> SA;  \/\/ Suffix array.$/;"	m	struct:sparseSA
 SCRIPT_DIR	MUMmer/Makefile	/^SCRIPT_DIR    := $(TOP_DIR)\/scripts$/;"	m
 SCRIPT_DIR	MUMmer/scripts/Makefile	/^SCRIPT_DIR := $(CURDIR)$/;"	m
@@ -1194,7 +1159,6 @@ STREEPROTO_H	MUMmer/src/kurtz/streesrc/streeproto.h	14;"	d
 STREESTDEF_H	MUMmer/src/kurtz/streesrc/streesmall.h	16;"	d
 STREETYP_H	MUMmer/src/kurtz/streesrc/streetyp.h	10;"	d
 SWAP	qsufsort.c	22;"	d	file:
-SWITCH	MUMmer/mummerplot	/^  SWITCH: {$/;"	l
 SWITCH	MUMmer/scripts/mummerplot.pl	/^  SWITCH: {$/;"	l
 SYMBOL	MUMmer/src/kurtz/streesrc/symboldef.h	/^typedef Uchar SYMBOL;$/;"	t
 SYMBOL	MUMmer/src/kurtz/streesrc/symboldef.h	/^typedef Uint SYMBOL;$/;"	t
@@ -1218,7 +1182,6 @@ SeqLenR	MUMmer/src/tigr/show-tiling.cc	/^  long int SeqLenR;                    
 SeqLenR	MUMmer/src/tigr/show-tiling.cc	/^  long int SeqLenR;                     \/\/ length of the reference$/;"	m	struct:AlignStats	file:
 SeqQ	MUMmer/src/tigr/show-tiling.cc	/^  char * SeqQ;                             \/\/ query sequence$/;"	m	struct:QueryContig	file:
 Seqinfo	MUMmer/src/kurtz/libbasedir/multidef.h	/^} Seqinfo;           \/\/ \\Typedef{Seqinfo}$/;"	t	typeref:struct:__anon23
-SetTheRangeForEachFile	MUMmer/mapview	/^sub SetTheRangeForEachFile{      $/;"	s
 SetTheRangeForEachFile	MUMmer/scripts/mapview.pl	/^sub SetTheRangeForEachFile{      $/;"	s
 Set_Deltas	MUMmer/src/tigr/combineMUMs.cc	/^void  Set_Deltas$/;"	f
 Set_Left_Pad	MUMmer/src/tigr/combineMUMs.cc	/^static void  Set_Left_Pad$/;"	f	file:
@@ -1252,7 +1215,6 @@ Simpleloc	MUMmer/src/kurtz/streesrc/streetyp.h	/^} Simpleloc;     \/\/ \\Typedef
 Sint	MUMmer/src/kurtz/libbasedir/arraydef.h	/^DECLAREARRAYSTRUCT(Sint);$/;"	v
 Sint	MUMmer/src/kurtz/libbasedir/types.h	/^typedef signed   int  Sint;          \/\/ \\Typedef{Sint}$/;"	t
 Sint	MUMmer/src/kurtz/libbasedir/types.h	/^typedef signed   long  Sint;          \/\/ \\Typedef{Sint}$/;"	t
-SpanXwY	MUMmer/mummerplot	/^sub SpanXwY ($$$$$) {$/;"	s
 SpanXwY	MUMmer/scripts/mummerplot.pl	/^sub SpanXwY ($$$$$) {$/;"	s
 Sprintfreturntype	MUMmer/src/kurtz/libbasedir/types.h	/^typedef int Sprintfreturntype;     \/\/ \\Typedef{Sprintfreturntype} $/;"	t
 Start1	MUMmer/src/tigr/gaps.cc	/^   long int  Start1, Start2, Len;$/;"	m	struct:Match	file:
@@ -1313,12 +1275,6 @@ UNSETIBIT	MUMmer/src/kurtz/libbasedir/intbits.h	95;"	d
 UNUSABLE_TILE_LEVEL	MUMmer/src/tigr/show-tiling.cc	/^const int UNUSABLE_TILE_LEVEL  =  -2;$/;"	v
 UNUSEDINLEAF	MUMmer/src/kurtz/streesrc/streelarge.h	54;"	d
 UNUSED_TILE_LEVEL	MUMmer/src/tigr/show-tiling.cc	/^const int UNUSED_TILE_LEVEL    =   0;$/;"	v
-USAGE	MUMmer/dnadiff	/^  USAGE: dnadiff  [options]  <reference>  <query>$/;"	l
-USAGE	MUMmer/mapview	/^  USAGE:  mapview  [options]  <coords file>  [UTR coords]  [CDS coords]$/;"	l
-USAGE	MUMmer/mapview	/^  USAGE: mapview  [options]  <coords file>  [UTR coords]  [CDS coords]$/;"	l
-USAGE	MUMmer/mummerplot	/^  USAGE: mummerplot  [options]  <match file>$/;"	l
-USAGE	MUMmer/nucmer	/^  USAGE: nucmer  [options]  <Reference>  <Query>$/;"	l
-USAGE	MUMmer/promer	/^  USAGE: promer  [options]  <Reference>  <Query>$/;"	l
 USAGE	MUMmer/scripts/dnadiff.pl	/^  USAGE: dnadiff  [options]  <reference>  <query>$/;"	l
 USAGE	MUMmer/scripts/mapview.pl	/^  USAGE:  mapview  [options]  <coords file>  [UTR coords]  [CDS coords]$/;"	l
 USAGE	MUMmer/scripts/mapview.pl	/^  USAGE: mapview  [options]  <coords file>  [UTR coords]  [CDS coords]$/;"	l
@@ -1616,12 +1572,100 @@ Wrap_Adj	MUMmer/src/tigr/gaps.cc	/^   long int  Simple_Adj, Wrap_Adj;$/;"	m	stru
 Wrap_From	MUMmer/src/tigr/gaps.cc	/^   long int  Simple_From, Wrap_From;$/;"	m	struct:Match	file:
 Wrap_Here	MUMmer/src/tigr/gaps.cc	/^   int  Wrap_Here : 1;$/;"	m	struct:Match	file:
 Wrap_Score	MUMmer/src/tigr/gaps.cc	/^   long int  Simple_Score, Wrap_Score;$/;"	m	struct:Match	file:
-WriteGP	MUMmer/mummerplot	/^sub WriteGP ($$)$/;"	s
 WriteGP	MUMmer/scripts/mummerplot.pl	/^sub WriteGP ($$)$/;"	s
 XOP_MUL_BUG	vector/vectori128.h	4859;"	d
 _4column	mummer.cpp	/^bool rev_comp = false, _4column = false, nucleotides_only = false;$/;"	v
+_4column	mummer.s	/^_4column:$/;"	l
 _4column	sparseSA.hpp	/^  bool _4column; \/\/ Use 4 column output format.$/;"	m	struct:sparseSA
+_GLOBAL__sub_I__Z18reverse_complementRSsb	fasta.s	/^_GLOBAL__sub_I__Z18reverse_complementRSsb:$/;"	l
+_GLOBAL__sub_I_cout_mutex	sparseSA.s	/^_GLOBAL__sub_I_cout_mutex:$/;"	l
+_GLOBAL__sub_I_min_len	mummer.s	/^_GLOBAL__sub_I_min_len:$/;"	l
 _INTPTR_T_DEFINED	vector/instrset.h	114;"	d
+_Z10load_fastaSsRSsRSt6vectorISsSaISsEERS0_IlSaIlEE	fasta.s	/^_Z10load_fastaSsRSsRSt6vectorISsSaISsEERS0_IlSaIlEE:$/;"	l
+_Z12query_threadPv	mummer.s	/^_Z12query_threadPv:$/;"	l
+_Z18reverse_complementRSsb	fasta.s	/^_Z18reverse_complementRSsb:$/;"	l
+_Z4trimRSsRlS0_	fasta.s	/^_Z4trimRSsRlS0_:$/;"	l
+_Z5usageSs	mummer.s	/^_Z5usageSs:$/;"	l
+_Z9MEMthreadPv	sparseSA.s	/^_Z9MEMthreadPv:$/;"	l
+_ZN14__gnu_parallel10_LoserTreeILb0E7match_t6by_refE13__init_winnerEj	sparseSA.s	/^_ZN14__gnu_parallel10_LoserTreeILb0E7match_t6by_refE13__init_winnerEj:$/;"	l
+_ZN14__gnu_parallel10_LoserTreeILb0EN9vec_uchar6item_tESt4lessIS2_EE13__init_winnerEj	sparseSA.s	/^_ZN14__gnu_parallel10_LoserTreeILb0EN9vec_uchar6item_tESt4lessIS2_EE13__init_winnerEj:$/;"	l
+_ZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS5_ESt6vectorIS6_SaIS6_EEEElNS2_IPS5_S8_IS5_SaIS5_EEEE6by_refEEvT_SH_T0_T1_T2_	sparseSA.s	/^_ZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS5_ESt6vectorIS6_SaIS6_EEEElNS2_IPS5_S8_IS5_SaIS5_EEEE6by_refEEvT_SH_T0_T1_T2_:$/;"	l
+_ZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES6_ESt6vectorIS7_SaIS7_EEEElNS2_IPS6_S9_IS6_SaIS6_EEEESt4lessIS5_EEEvT_SJ_T0_T1_T2_	sparseSA.s	/^_ZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES6_ESt6vectorIS7_SaIS7_EEEElNS2_IPS6_S9_IS6_SaIS6_EEEESt4lessIS5_EEEvT_SJ_T0_T1_T2_:$/;"	l
+_ZN14__gnu_parallel18parallel_sort_mwmsILb0ELb1EN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS3_SaIS3_EEEE6by_refEEvT1_SA_T2_t	sparseSA.s	/^_ZN14__gnu_parallel18parallel_sort_mwmsILb0ELb1EN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS3_SaIS3_EEEE6by_refEEvT1_SA_T2_t:$/;"	l
+_ZN14__gnu_parallel18parallel_sort_mwmsILb0ELb1EN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS4_SaIS4_EEEESt4lessIS4_EEEvT1_SC_T2_t	sparseSA.s	/^_ZN14__gnu_parallel18parallel_sort_mwmsILb0ELb1EN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS4_SaIS4_EEEESt4lessIS4_EEEvT1_SC_T2_t:$/;"	l
+_ZN14__gnu_parallel21parallel_sort_mwms_puILb0ELb1EN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS3_SaIS3_EEEE6by_refEEvPNS_17_PMWMSSortingDataIT1_EERT2_	sparseSA.s	/^_ZN14__gnu_parallel21parallel_sort_mwms_puILb0ELb1EN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS3_SaIS3_EEEE6by_refEEvPNS_17_PMWMSSortingDataIT1_EERT2_:$/;"	l
+_ZN14__gnu_parallel21parallel_sort_mwms_puILb0ELb1EN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS4_SaIS4_EEEESt4lessIS4_EEEvPNS_17_PMWMSSortingDataIT1_EERT2_	sparseSA.s	/^_ZN14__gnu_parallel21parallel_sort_mwms_puILb0ELb1EN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS4_SaIS4_EEEESt4lessIS4_EEEvPNS_17_PMWMSSortingDataIT1_EERT2_:$/;"	l
+_ZN14__gnu_parallel24multiway_merge_3_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS6_ESt6vectorIS7_SaIS7_EEEENS3_IS6_S9_IS5_SaIS5_EEEEl6by_refEET1_T0_SI_SH_T2_T3_	sparseSA.s	/^_ZN14__gnu_parallel24multiway_merge_3_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS6_ESt6vectorIS7_SaIS7_EEEENS3_IS6_S9_IS5_SaIS5_EEEEl6by_refEET1_T0_SI_SH_T2_T3_:$/;"	l
+_ZN14__gnu_parallel24multiway_merge_3_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES7_ESt6vectorIS8_SaIS8_EEEENS3_IS7_SA_IS6_SaIS6_EEEElSt4lessIS6_EEET1_T0_SK_SJ_T2_T3_	sparseSA.s	/^_ZN14__gnu_parallel24multiway_merge_3_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES7_ESt6vectorIS8_SaIS8_EEEENS3_IS7_SA_IS6_SaIS6_EEEElSt4lessIS6_EEET1_T0_SK_SJ_T2_T3_:$/;"	l
+_ZN14__gnu_parallel24multiway_merge_4_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS6_ESt6vectorIS7_SaIS7_EEEENS3_IS6_S9_IS5_SaIS5_EEEEl6by_refEET1_T0_SI_SH_T2_T3_	sparseSA.s	/^_ZN14__gnu_parallel24multiway_merge_4_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS6_ESt6vectorIS7_SaIS7_EEEENS3_IS6_S9_IS5_SaIS5_EEEEl6by_refEET1_T0_SI_SH_T2_T3_:$/;"	l
+_ZN14__gnu_parallel24multiway_merge_4_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES7_ESt6vectorIS8_SaIS8_EEEENS3_IS7_SA_IS6_SaIS6_EEEElSt4lessIS6_EEET1_T0_SK_SJ_T2_T3_	sparseSA.s	/^_ZN14__gnu_parallel24multiway_merge_4_variantINS_16_GuardedIteratorEN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES7_ESt6vectorIS8_SaIS8_EEEENS3_IS7_SA_IS6_SaIS6_EEEElSt4lessIS6_EEET1_T0_SK_SJ_T2_T3_:$/;"	l
+_ZN14__gnu_parallel25multiway_merge_loser_treeINS_10_LoserTreeILb0E7match_t6by_refEEN9__gnu_cxx17__normal_iteratorIPSt4pairIPS2_S8_ESt6vectorIS9_SaIS9_EEEENS6_IS8_SB_IS2_SaIS2_EEEElS3_EET1_T0_SJ_SI_T2_T3_	sparseSA.s	/^_ZN14__gnu_parallel25multiway_merge_loser_treeINS_10_LoserTreeILb0E7match_t6by_refEEN9__gnu_cxx17__normal_iteratorIPSt4pairIPS2_S8_ESt6vectorIS9_SaIS9_EEEENS6_IS8_SB_IS2_SaIS2_EEEElS3_EET1_T0_SJ_SI_T2_T3_:$/;"	l
+_ZN14__gnu_parallel25multiway_merge_loser_treeINS_10_LoserTreeILb0EN9vec_uchar6item_tESt4lessIS3_EEEN9__gnu_cxx17__normal_iteratorIPSt4pairIPS3_SA_ESt6vectorISB_SaISB_EEEENS8_ISA_SD_IS3_SaIS3_EEEElS5_EET1_T0_SL_SK_T2_T3_	sparseSA.s	/^_ZN14__gnu_parallel25multiway_merge_loser_treeINS_10_LoserTreeILb0EN9vec_uchar6item_tESt4lessIS3_EEEN9__gnu_cxx17__normal_iteratorIPSt4pairIPS3_SA_ESt6vectorISB_SaISB_EEEENS8_ISA_SD_IS3_SaIS3_EEEElS5_EET1_T0_SL_SK_T2_T3_:$/;"	l
+_ZN14__gnu_parallel27__sequential_multiway_mergeILb0ELb0EN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS5_ESt6vectorIS6_SaIS6_EEEENS2_IS5_S8_IS4_SaIS4_EEEEl6by_refEET2_T1_SH_SG_RKNSt15iterator_traitsINSI_ISH_E10value_type10first_typeEE10value_typeET3_T4_	sparseSA.s	/^_ZN14__gnu_parallel27__sequential_multiway_mergeILb0ELb0EN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS5_ESt6vectorIS6_SaIS6_EEEENS2_IS5_S8_IS4_SaIS4_EEEEl6by_refEET2_T1_SH_SG_RKNSt15iterator_traitsINSI_ISH_E10value_type10first_typeEE10value_typeET3_T4_:$/;"	l
+_ZN14__gnu_parallel27__sequential_multiway_mergeILb0ELb0EN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES6_ESt6vectorIS7_SaIS7_EEEENS2_IS6_S9_IS5_SaIS5_EEEElSt4lessIS5_EEET2_T1_SJ_SI_RKNSt15iterator_traitsINSK_ISJ_E10value_type10first_typeEE10value_typeET3_T4_	sparseSA.s	/^_ZN14__gnu_parallel27__sequential_multiway_mergeILb0ELb0EN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES6_ESt6vectorIS7_SaIS7_EEEENS2_IS6_S9_IS5_SaIS5_EEEElSt4lessIS5_EEET2_T1_SJ_SI_RKNSt15iterator_traitsINSK_ISJ_E10value_type10first_typeEE10value_typeET3_T4_:$/;"	l
+_ZN8sparseSA10computeLCPEv	sparseSA.s	/^_ZN8sparseSA10computeLCPEv:$/;"	l
+_ZN8sparseSA11MUMParallelERSsiRSt6vectorI7match_tSaIS2_EEiRlb	sparseSA.s	/^_ZN8sparseSA11MUMParallelERSsiRSt6vectorI7match_tSaIS2_EEiRlb:$/;"	l
+_ZN8sparseSA11collectMEMsERSsl10interval_tS1_RSt6vectorI7match_tSaIS3_EEib	sparseSA.s	/^_ZN8sparseSA11collectMEMsERSsl10interval_tS1_RSt6vectorI7match_tSaIS3_EEib:$/;"	l
+_ZN8sparseSA11print_matchE7match_t	sparseSA.s	/^_ZN8sparseSA11print_matchE7match_t:$/;"	l
+_ZN8sparseSA11print_matchE7match_tRSt6vectorIS0_SaIS0_EE	sparseSA.s	/^_ZN8sparseSA11print_matchE7match_tRSt6vectorIS0_SaIS0_EE:$/;"	l
+_ZN8sparseSA11print_matchESsRSt6vectorI7match_tSaIS1_EEb	sparseSA.s	/^_ZN8sparseSA11print_matchESsRSt6vectorI7match_tSaIS1_EEb:$/;"	l
+_ZN8sparseSA12computeChildEv	sparseSA.s	/^_ZN8sparseSA12computeChildEv:$/;"	l
+_ZN8sparseSA3MEMERSsRSt6vectorI7match_tSaIS2_EEibRli	sparseSA.s	/^_ZN8sparseSA3MEMERSsRSt6vectorI7match_tSaIS2_EEibRli:$/;"	l
+_ZN8sparseSA3MUMERSsRSt6vectorI7match_tSaIS2_EEiRlb	sparseSA.s	/^_ZN8sparseSA3MUMERSsRSt6vectorI7match_tSaIS2_EEiRlb:$/;"	l
+_ZN8sparseSA7findMAMERSsiiRSt6vectorI7match_tSaIS2_EEiRlb	sparseSA.s	/^_ZN8sparseSA7findMAMERSsiiRSt6vectorI7match_tSaIS2_EEiRlb:$/;"	l
+_ZN8sparseSA7findMEMElRSsRSt6vectorI7match_tSaIS2_EEib	sparseSA.s	/^_ZN8sparseSA7findMEMElRSsRSt6vectorI7match_tSaIS2_EEib:$/;"	l
+_ZN8sparseSA9radixStepEPiS0_RlPllll	sparseSA.s	/^_ZN8sparseSA9radixStepEPiS0_RlPllll:$/;"	l
+_ZN8sparseSAC2ERSsRSt6vectorISsSaISsEERS1_IlSaIlEEblbbib	sparseSA.s	/^_ZN8sparseSAC2ERSsRSt6vectorISsSaISsEERS1_IlSaIlEEblbbib:$/;"	l
+_ZN8sparseSAD2Ev	mummer.s	/^_ZN8sparseSAD2Ev:$/;"	l
+_ZNSt5stackIiSt6vectorIiSaIiEEED2Ev	sparseSA.s	/^_ZNSt5stackIiSt6vectorIiSaIiEEED2Ev:$/;"	l
+_ZNSt6vectorI7match_tSaIS0_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPS0_S2_EEEEvS7_T_S8_St20forward_iterator_tag	sparseSA.s	/^_ZNSt6vectorI7match_tSaIS0_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPS0_S2_EEEEvS7_T_S8_St20forward_iterator_tag:$/;"	l
+_ZNSt6vectorI7match_tSaIS0_EE19_M_emplace_back_auxIIRKS0_EEEvDpOT_	sparseSA.s	/^_ZNSt6vectorI7match_tSaIS0_EE19_M_emplace_back_auxIIRKS0_EEEvDpOT_:$/;"	l
+_ZNSt6vectorI7match_tSaIS0_EE19_M_emplace_back_auxIIS0_EEEvDpOT_	sparseSA.s	/^_ZNSt6vectorI7match_tSaIS0_EE19_M_emplace_back_auxIIS0_EEEvDpOT_:$/;"	l
+_ZNSt6vectorI7match_tSaIS0_EED2Ev	sparseSA.s	/^_ZNSt6vectorI7match_tSaIS0_EED2Ev:$/;"	l
+_ZNSt6vectorIN14__gnu_parallel6_PieceIlEESaIS2_EE17_M_default_appendEm	sparseSA.s	/^_ZNSt6vectorIN14__gnu_parallel6_PieceIlEESaIS2_EE17_M_default_appendEm:$/;"	l
+_ZNSt6vectorIN9vec_uchar6item_tESaIS1_EE19_M_emplace_back_auxIIS1_EEEvDpOT_	sparseSA.s	/^_ZNSt6vectorIN9vec_uchar6item_tESaIS1_EE19_M_emplace_back_auxIIS1_EEEvDpOT_:$/;"	l
+_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIIRKSsEEEvDpOT_	fasta.s	/^_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIIRKSsEEEvDpOT_:$/;"	l
+_ZNSt6vectorISsSaISsEED2Ev	mummer.s	/^_ZNSt6vectorISsSaISsEED2Ev:$/;"	l
+_ZNSt6vectorISt4pairI7match_tlESaIS2_EE19_M_emplace_back_auxIIS2_EEEvDpOT_	sparseSA.s	/^_ZNSt6vectorISt4pairI7match_tlESaIS2_EE19_M_emplace_back_auxIIS2_EEEvDpOT_:$/;"	l
+_ZNSt6vectorISt4pairI7match_tlESaIS2_EED2Ev	sparseSA.s	/^_ZNSt6vectorISt4pairI7match_tlESaIS2_EED2Ev:$/;"	l
+_ZNSt6vectorISt4pairIN9vec_uchar6item_tElESaIS3_EE19_M_emplace_back_auxIIS3_EEEvDpOT_	sparseSA.s	/^_ZNSt6vectorISt4pairIN9vec_uchar6item_tElESaIS3_EE19_M_emplace_back_auxIIS3_EEEvDpOT_:$/;"	l
+_ZNSt6vectorISt4pairIN9vec_uchar6item_tElESaIS3_EED2Ev	sparseSA.s	/^_ZNSt6vectorISt4pairIN9vec_uchar6item_tElESaIS3_EED2Ev:$/;"	l
+_ZNSt6vectorIhSaIhEE17_M_default_appendEm	sparseSA.s	/^_ZNSt6vectorIhSaIhEE17_M_default_appendEm:$/;"	l
+_ZNSt6vectorIiSaIiEE17_M_default_appendEm	sparseSA.s	/^_ZNSt6vectorIiSaIiEE17_M_default_appendEm:$/;"	l
+_ZNSt6vectorIiSaIiEE19_M_emplace_back_auxIIRKiEEEvDpOT_	sparseSA.s	/^_ZNSt6vectorIiSaIiEE19_M_emplace_back_auxIIRKiEEEvDpOT_:$/;"	l
+_ZNSt6vectorIiSaIiEE19_M_emplace_back_auxIIiEEEvDpOT_	sparseSA.s	/^_ZNSt6vectorIiSaIiEE19_M_emplace_back_auxIIiEEEvDpOT_:$/;"	l
+_ZNSt6vectorIiSaIiEED2Ev	sparseSA.s	/^_ZNSt6vectorIiSaIiEED2Ev:$/;"	l
+_ZNSt6vectorIjSaIjEE17_M_default_appendEm	sparseSA.s	/^_ZNSt6vectorIjSaIjEE17_M_default_appendEm:$/;"	l
+_ZNSt6vectorIlSaIlEE19_M_emplace_back_auxIIlEEEvDpOT_	fasta.s	/^_ZNSt6vectorIlSaIlEE19_M_emplace_back_auxIIlEEEvDpOT_:$/;"	l
+_ZNSt6vectorIlSaIlEE19_M_emplace_back_auxIIlEEEvDpOT_	sparseSA.s	/^_ZNSt6vectorIlSaIlEE19_M_emplace_back_auxIIlEEEvDpOT_:$/;"	l
+_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEElS2_6by_refEvT_T0_SA_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEElS2_6by_refEvT_T0_SA_T1_T2_:$/;"	l
+_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS3_SaIS3_EEEElS3_St4lessIS3_EEvT_T0_SC_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS3_SaIS3_EEEElS3_St4lessIS3_EEvT_T0_SC_T1_T2_:$/;"	l
+_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEElS4_N14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_T0_SF_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEElS4_N14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_T0_SF_T1_T2_:$/;"	l
+_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEElS4_N14__gnu_parallel21_LexicographicReverseIS3_l6by_refEEEvT_T0_SF_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEElS4_N14__gnu_parallel21_LexicographicReverseIS3_l6by_refEEEvT_T0_SF_T1_T2_:$/;"	l
+_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEElS5_N14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_T0_SH_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEElS5_N14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_T0_SH_T1_T2_:$/;"	l
+_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEElS5_N14__gnu_parallel21_LexicographicReverseIS4_lSt4lessIS4_EEEEvT_T0_SH_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEElS5_N14__gnu_parallel21_LexicographicReverseIS4_lSt4lessIS4_EEEEvT_T0_SH_T1_T2_:$/;"	l
+_ZSt13__adjust_heapIP7match_tlS0_6by_refEvT_T0_S4_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIP7match_tlS0_6by_refEvT_T0_S4_T1_T2_:$/;"	l
+_ZSt13__adjust_heapIPN9vec_uchar6item_tElS1_St4lessIS1_EEvT_T0_S6_T1_T2_	sparseSA.s	/^_ZSt13__adjust_heapIPN9vec_uchar6item_tElS1_St4lessIS1_EEvT_T0_S6_T1_T2_:$/;"	l
+_ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_SE_T0_	sparseSA.s	/^_ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_SE_T0_:$/;"	l
+_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEE6by_refEvT_S9_T0_	sparseSA.s	/^_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEE6by_refEvT_S9_T0_:$/;"	l
+_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_T0_	sparseSA.s	/^_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_T0_:$/;"	l
+_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEEN14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_SG_T0_	sparseSA.s	/^_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEEN14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_SG_T0_:$/;"	l
+_ZSt16__insertion_sortIP7match_t6by_refEvT_S3_T0_	sparseSA.s	/^_ZSt16__insertion_sortIP7match_t6by_refEvT_S3_T0_:$/;"	l
+_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEEl6by_refEvT_S9_T0_T1_	sparseSA.s	/^_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEEl6by_refEvT_S9_T0_T1_:$/;"	l
+_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS3_SaIS3_EEEElSt4lessIS3_EEvT_SB_T0_T1_	sparseSA.s	/^_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPN9vec_uchar6item_tESt6vectorIS3_SaIS3_EEEElSt4lessIS3_EEvT_SB_T0_T1_:$/;"	l
+_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEElN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_T0_T1_	sparseSA.s	/^_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEElN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_T0_T1_:$/;"	l
+_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEElN14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_SG_T0_T1_	sparseSA.s	/^_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEElN14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_SG_T0_T1_:$/;"	l
+_ZSt16__introsort_loopIP7match_tl6by_refEvT_S3_T0_T1_	sparseSA.s	/^_ZSt16__introsort_loopIP7match_tl6by_refEvT_S3_T0_T1_:$/;"	l
+_ZSt16__introsort_loopIPN9vec_uchar6item_tElSt4lessIS1_EEvT_S5_T0_T1_	sparseSA.s	/^_ZSt16__introsort_loopIPN9vec_uchar6item_tElSt4lessIS1_EEvT_S5_T0_T1_:$/;"	l
+_ZSt19__move_median_firstIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEE6by_refEvT_S9_S9_T0_	sparseSA.s	/^_ZSt19__move_median_firstIN9__gnu_cxx17__normal_iteratorIP7match_tSt6vectorIS2_SaIS2_EEEE6by_refEvT_S9_S9_T0_:$/;"	l
+_ZSt19__move_median_firstIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_SE_T0_	sparseSA.s	/^_ZSt19__move_median_firstIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_SE_SE_T0_:$/;"	l
+_ZSt19__move_median_firstIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEEN14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_SG_SG_T0_	sparseSA.s	/^_ZSt19__move_median_firstIN9__gnu_cxx17__normal_iteratorIPSt4pairIN9vec_uchar6item_tElESt6vectorIS5_SaIS5_EEEEN14__gnu_parallel14_LexicographicIS4_lSt4lessIS4_EEEEvT_SG_SG_T0_:$/;"	l
+_ZSt20__replacement_assertPKciS0_S0_	sparseSA.s	/^_ZSt20__replacement_assertPKciS0_S0_:$/;"	l
+_ZSt21__unguarded_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEES4_N14__gnu_parallel14_LexicographicIS3_l6by_refEEET_SE_SE_RKT0_T1_	sparseSA.s	/^_ZSt21__unguarded_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEES4_N14__gnu_parallel14_LexicographicIS3_l6by_refEEET_SE_SE_RKT0_T1_:$/;"	l
+_ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_T0_	sparseSA.s	/^_ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPSt4pairI7match_tlESt6vectorIS4_SaIS4_EEEEN14__gnu_parallel14_LexicographicIS3_l6by_refEEEvT_T0_:$/;"	l
+_ZZ4mainE12long_options	mummer.s	/^_ZZ4mainE12long_options:$/;"	l
+_ZZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS5_ESt6vectorIS6_SaIS6_EEEElNS2_IPS5_S8_IS5_SaIS5_EEEE6by_refEEvT_SH_T0_T1_T2_E19__PRETTY_FUNCTION__	sparseSA.s	/^_ZZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIP7match_tS5_ESt6vectorIS6_SaIS6_EEEElNS2_IPS5_S8_IS5_SaIS5_EEEE6by_refEEvT_SH_T0_T1_T2_E19__PRETTY_FUNCTION__:$/;"	l
+_ZZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES6_ESt6vectorIS7_SaIS7_EEEElNS2_IPS6_S9_IS6_SaIS6_EEEESt4lessIS5_EEEvT_SJ_T0_T1_T2_E19__PRETTY_FUNCTION__	sparseSA.s	/^_ZZN14__gnu_parallel18multiseq_partitionIN9__gnu_cxx17__normal_iteratorIPSt4pairIPN9vec_uchar6item_tES6_ESt6vectorIS7_SaIS7_EEEElNS2_IPS6_S9_IS6_SaIS6_EEEESt4lessIS5_EEEvT_SJ_T0_T1_T2_E19__PRETTY_FUNCTION__:$/;"	l
 __DELTA_HH	MUMmer/src/tigr/delta.hh	12;"	d
 __FASTA_HPP__	fasta.hpp	2;"	d
 __SW_ALIGNSCORE_HH	MUMmer/src/tigr/sw_alignscore.hh	12;"	d
@@ -1767,7 +1811,9 @@ atanh	vector/special/vectormath.h	/^static inline Vec4d atanh (Vec4d const & x) 
 atanh	vector/special/vectormath.h	/^static inline Vec4f atanh (Vec4f const & x) {   \/\/ inverse hyperbolic tangent$/;"	f
 atanh	vector/special/vectormath.h	/^static inline Vec8f atanh (Vec8f const & x) {   \/\/ inverse hyperbolic tangent$/;"	f
 automatic	mummer.cpp	/^bool automatic = true;$/;"	v
+automatic	mummer.s	/^automatic:$/;"	l
 automaticSkip	mummer.cpp	/^bool automaticSkip = true;$/;"	v
+automaticSkip	mummer.s	/^automaticSkip:$/;"	l
 bail	MUMmer/scripts/Foundation.pm	/^   sub bail($;$) {$/;"	s
 base	genDNA.py	/^    base = randint(1,4)$/;"	v
 bin2ascii	vector/special/decimal.h	/^static int bin2ascii (Vec16c const & a, char * string, int fieldlen = 2, int numdat = 16, bool signd = true, char ovfl = '*', char separator = ',', bool term = true) {$/;"	f
@@ -1864,7 +1910,6 @@ cexp	vector/special/vectormath.h	/^static inline Vec4d cexp (Vec4d const & x) { 
 cexp	vector/special/vectormath.h	/^static inline Vec4f cexp (Vec4f const & x) {   \/\/ complex exponential function$/;"	f
 cexp	vector/special/vectormath.h	/^static inline Vec8f cexp (Vec8f const & x) {   \/\/ complex exponential function$/;"	f
 chainstart	MUMmer/src/kurtz/streesrc/streetyp.h	/^       *chainstart,           \/\/ address of the node, current chains starts at$/;"	m	struct:Suffixtreetype
-change_file_format	MUMmer/mapview	/^sub change_file_format{   $/;"	s
 change_file_format	MUMmer/scripts/mapview.pl	/^sub change_file_format{   $/;"	s
 change_sign	vector/vectorf128.h	/^static inline Vec2d change_sign(Vec2d const & a) {$/;"	f
 change_sign	vector/vectorf128.h	/^static inline Vec4f change_sign(Vec4f const & a) {$/;"	f
@@ -1883,8 +1928,10 @@ checkquerycommonprefix	MUMmer/src/kurtz/mm3src/findmaxmat.c	/^static void checkq
 checkspaceleak	MUMmer/src/kurtz/libbasedir/space.c	/^void checkspaceleak(void)$/;"	f
 checkstree	MUMmer/src/kurtz/streesrc/streedbg.c	/^void checkstree(Suffixtree *stree)$/;"	f
 child	mummer.cpp	/^bool child = true;$/;"	v
+child	mummer.s	/^child:$/;"	l
 choose_pivot	qsufsort.c	/^static int choose_pivot(int *p, int n) {$/;"	f	file:
 chunks	mummer.cpp	/^int chunks = 1;$/;"	v
+chunks	mummer.s	/^chunks:$/;"	l
 clean	MUMmer/src/tigr/delta.cc	/^void DeltaGraph_t::clean()$/;"	f	class:DeltaGraph_t
 cleanLogFILES	MUMmer/scripts/Foundation.pm	/^   sub cleanLogFILES() {$/;"	s
 clear	MUMmer/src/tigr/annotate.cc	/^  void clear()$/;"	f	class:Matrix_t
@@ -1907,6 +1954,7 @@ collectMEMs	sparseSA.cpp	/^void sparseSA::collectMEMs(string &P, long prefix, in
 commondepthstack	MUMmer/src/kurtz/mm3src/findmaxmat.c	/^  ArrayNodeinfo commondepthstack; \/\/ stack to store depth values$/;"	m	struct:__anon2	file:
 compare	MUMmer/docs/web/manual/index.html	/^<h3><a name="compare"><\/a>1.2. Comparative genomics<\/h3>$/;"	a
 compareMUMcandidates	MUMmer/src/kurtz/libbasedir/cleanMUMcand.c	/^static Sint compareMUMcandidates(MUMcandidate *p,MUMcandidate *q)$/;"	f	file:
+compareMUMcandidates	MUMmer/src/kurtz/mm3src/findmumcand.c	/^static Sint compareMUMcandidates(const void *p,const void *q)$/;"	f	file:
 comparelocs	MUMmer/src/kurtz/streesrc/streedbg.c	/^static Sint comparelocs(Suffixtree *stree,Location *loc1,Location *loc2)$/;"	f	file:
 compdna	MUMmer/src/tigr/translate.hh	/^const int	compdna[NUM_DNA_SYMBOLS] = {$/;"	v
 compilation	MUMmer/docs/web/manual/index.html	/^<h3><a name="compilation"><\/a>2.3. Compilation and installation<\/h3>$/;"	a
@@ -1983,6 +2031,7 @@ cosh	vector/special/vectormath.h	/^static inline Vec8f cosh (Vec8f const & x) { 
 countleafs	MUMmer/src/kurtz/streesrc/addleafcount.c	/^static Sint countleafs(\/*@unused@*\/ Uint leafindex,$/;"	f	file:
 countstack	MUMmer/src/kurtz/streesrc/addleafcount.c	/^  ArrayUint countstack;$/;"	m	struct:__anon6	file:
 cout_mutex	sparseSA.cpp	/^pthread_mutex_t cout_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v
+cout_mutex	sparseSA.s	/^cout_mutex:$/;"	l
 cpuid	vector/instrset_detect.cpp	/^static inline void cpuid (int output[4], int functionnumber) {	$/;"	f	file:
 creatememorymap	MUMmer/src/kurtz/libbasedir/mapfile.c	/^\/*@null@*\/ void *creatememorymap(char *file,Uint line,char *filename,$/;"	f
 creatememorymapforfiledesc	MUMmer/src/kurtz/libbasedir/mapfile.c	/^\/*@null@*\/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,$/;"	f
@@ -2288,11 +2337,11 @@ flushAlignments	MUMmer/src/tigr/postnuc.cc	/^void flushAlignments$/;"	f
 flushAlignments	MUMmer/src/tigr/postpro.cc	/^void flushAlignments$/;"	f
 flushSyntenys	MUMmer/src/tigr/postnuc.cc	/^void flushSyntenys$/;"	f
 flushSyntenys	MUMmer/src/tigr/postpro.cc	/^void flushSyntenys$/;"	f
-format_mgaps	MUMmer/mapview	/^sub format_mgaps{$/;"	s
 format_mgaps	MUMmer/scripts/mapview.pl	/^sub format_mgaps{$/;"	s
 forward	MUMmer/src/kurtz/mm3src/maxmatdef.h	/^       forward,                 \/\/ compute matches on forward strand$/;"	m	struct:__anon4
 forward	MUMmer/src/kurtz/mm3src/procmaxmat.c	/^       forward,                \/\/ compute forward matches$/;"	m	struct:__anon3	file:
 forwards	mummer.cpp	/^bool forwards = true;$/;"	v
+forwards	mummer.s	/^forwards:$/;"	l
 fourcolumn	MUMmer/src/kurtz/mm3src/maxmatdef.h	/^       fourcolumn,              \/\/ always use 4 column format$/;"	m	struct:__anon4
 fourcolumn	MUMmer/src/kurtz/mm3src/procmaxmat.c	/^       fourcolumn,             \/\/ is option \\texttt{-F} on?$/;"	m	struct:__anon3	file:
 fraction	vector/vectorf128.h	/^static inline Vec2d fraction(Vec2d const & a) {$/;"	f
@@ -2351,7 +2400,6 @@ getVersionInfo	MUMmer/scripts/Foundation.pm	/^   sub getVersionInfo() {$/;"	s
 get_bit	vector/vectori128.h	/^    int get_bit(uint32_t index) const {$/;"	f	class:Vec128b
 get_bit	vector/vectori256.h	/^    int get_bit(uint32_t index) const {$/;"	f	class:Vec256b
 get_bit	vector/vectori256e.h	/^    int get_bit(uint32_t index) const {$/;"	f	class:Vec256b
-get_cds_ends	MUMmer/mapview	/^sub get_cds_ends{$/;"	s
 get_cds_ends	MUMmer/scripts/mapview.pl	/^sub get_cds_ends{$/;"	s
 get_control_word	vector/vectorf128.h	/^static inline uint32_t get_control_word() {$/;"	f
 get_high	vector/special/complexvec.h	/^    Complex2d get_high() const {$/;"	f	class:Complex4d
@@ -2422,11 +2470,8 @@ get_low	vector/vectori256e.h	/^    Vec4ui get_low() const {$/;"	f	class:Vec8ui
 get_low	vector/vectori256e.h	/^    Vec8s get_low() const {$/;"	f	class:Vec16s
 get_low	vector/vectori256e.h	/^    Vec8us get_low() const {$/;"	f	class:Vec16us
 get_low	vector/vectori256e.h	/^    __m128i get_low() const {           \/\/ get low half$/;"	f	class:Vec256ie
-get_ref_len	MUMmer/mapview	/^sub get_ref_len{ $/;"	s
 get_ref_len	MUMmer/scripts/mapview.pl	/^sub get_ref_len{ $/;"	s
-get_utrcds_ends	MUMmer/mapview	/^sub get_utrcds_ends{$/;"	s
 get_utrcds_ends	MUMmer/scripts/mapview.pl	/^sub get_utrcds_ends{$/;"	s
-get_utrcds_info	MUMmer/mapview	/^sub get_utrcds_info{$/;"	s
 get_utrcds_info	MUMmer/scripts/mapview.pl	/^sub get_utrcds_info{$/;"	s
 get_x	vector/special/vector3d.h	/^    double get_x() const {$/;"	f	class:Vec3d
 get_x	vector/special/vector3d.h	/^    float get_x() const {$/;"	f	class:Vec3f
@@ -2936,9 +2981,6 @@ lookup8	vector/vectori128.h	/^static inline Vec8s lookup8(Vec8s const & index, V
 lookup8	vector/vectori256.h	/^static inline Vec8i lookup8(Vec8i const & index, Vec8i const & table) {$/;"	f
 lookup8	vector/vectori256e.h	/^static inline Vec8i lookup8(Vec8i const & index, Vec8i const & table) {$/;"	f
 lp	MUMmer/src/tigr/delta.hh	/^  DeltaEdgelet_t * lp;$/;"	m	struct:SNP_t
-main	MUMmer/dnadiff	/^ main:$/;"	l
-main	MUMmer/nucmer	/^sub main ( )$/;"	s
-main	MUMmer/promer	/^sub main ( )$/;"	s
 main	MUMmer/scripts/dnadiff.pl	/^ main:$/;"	l
 main	MUMmer/scripts/nucmer.pl	/^sub main ( )$/;"	s
 main	MUMmer/scripts/promer.pl	/^sub main ( )$/;"	s
@@ -2958,6 +3000,7 @@ main	MUMmer/src/tigr/show-diff.cc	/^int main(int argc, char **argv)$/;"	f
 main	MUMmer/src/tigr/show-snps.cc	/^int main (int argc, char ** argv)$/;"	f
 main	MUMmer/src/tigr/show-tiling.cc	/^int main$/;"	f
 main	mummer.cpp	/^int main(int argc, char* argv[]) {$/;"	f
+main	mummer.s	/^main:$/;"	l
 main	toci.cpp	/^int main(int argc, char *argv[])$/;"	f
 main	vector/dispatch_example.cpp	/^int main(int argc, char* argv[]) $/;"	f
 makedepthtabstree	MUMmer/src/kurtz/streesrc/depthtab.c	/^void makedepthtabstree(ArrayUint *depthtab,Suffixtree *stree)$/;"	f
@@ -3020,6 +3063,7 @@ maxlength	MUMmer/src/kurtz/libbasedir/multidef.h	/^       maxlength;        \/\/
 maxloc	MUMmer/src/kurtz/mm3src/findmaxmat.c	/^  Location maxloc;                \/\/ location of \\texttt{pmax}$/;"	m	struct:__anon2	file:
 maxset	MUMmer/src/kurtz/streesrc/streetyp.h	/^       *maxset;$/;"	m	struct:Suffixtreetype
 memCount	sparseSA.cpp	/^long memCount = 0;$/;"	v
+memCount	sparseSA.s	/^memCount:$/;"	l
 memoryptr	MUMmer/src/kurtz/libbasedir/mapfile.c	/^static void *memoryptr[MAXMAPPEDFILES] = {NULL};$/;"	v	file:
 messagespace	MUMmer/src/kurtz/libbasedir/seterror.c	/^char *messagespace(void)$/;"	f
 mgaps	MUMmer/docs/web/manual/index.html	/^<h4><a name="mgaps"><\/a>5.2.2. mgaps<\/h4>$/;"	a
@@ -3055,6 +3099,7 @@ min	vector/vectori256e.h	/^static inline Vec4uq min(Vec4uq const & a, Vec4uq con
 min	vector/vectori256e.h	/^static inline Vec8i min(Vec8i const & a, Vec8i const & b) {$/;"	f
 min	vector/vectori256e.h	/^static inline Vec8ui min(Vec8ui const & a, Vec8ui const & b) {$/;"	f
 min_len	mummer.cpp	/^int min_len = 20;$/;"	v
+min_len	mummer.s	/^min_len:$/;"	l
 min_len	sparseSA.cpp	/^  int min_len; \/\/ Minimum length of match.$/;"	m	struct:thread_data	file:
 minmatchlength	MUMmer/src/kurtz/mm3src/findmaxmat.c	/^       minmatchlength,            \/\/ min length of a match to be reported$/;"	m	struct:__anon2	file:
 minmatchlength	MUMmer/src/kurtz/mm3src/maxmatdef.h	/^  Uint minmatchlength,          \/\/ minimal length of a match to be reported$/;"	m	struct:__anon4
@@ -3121,12 +3166,14 @@ nonmaximal	MUMmer/src/kurtz/streesrc/streetyp.h	/^       *nonmaximal,           
 normalize_vector	vector/special/vector3d.h	/^static inline Vec3d normalize_vector (Vec3d const & a) {$/;"	f
 normalize_vector	vector/special/vector3d.h	/^static inline Vec3f normalize_vector (Vec3f const & a) {$/;"	f
 nucleotides_only	mummer.cpp	/^bool rev_comp = false, _4column = false, nucleotides_only = false;$/;"	v
+nucleotides_only	mummer.s	/^nucleotides_only:$/;"	l
 nucmer	MUMmer/docs/web/examples/index.html	/^<h3><a name="nucmer"><\/a>2.3. nucmer<\/h3>$/;"	a
 nucmer	MUMmer/docs/web/manual/index.html	/^<h4><a name="nucmer"><\/a>5.3.1. NUCmer<\/h4>$/;"	a
 nucmernucmer	MUMmer/docs/web/examples/index.html	/^<h4><a name="nucmernucmer"><\/a>2.3.1. Running nucmer<\/h4>$/;"	a
 nucmeroptions	MUMmer/docs/web/manual/index.html	/^<h5><a name="nucmeroptions"><\/a>Program options<\/h5>$/;"	a
 nucmeroutput	MUMmer/docs/web/manual/index.html	/^<h5><a name="nucmeroutput" id="nucmeroutput"><\/a>Output format<\/h5>$/;"	a
 num_threads	mummer.cpp	/^int K = 1, num_threads = 1, query_threads = 1;$/;"	v
+num_threads	mummer.s	/^num_threads:$/;"	l
 numberofblocks	MUMmer/src/kurtz/libbasedir/space.c	/^static Uint numberofblocks = 0, \/\/ numberofblocks$/;"	v	file:
 numberofcells	MUMmer/src/kurtz/libbasedir/space.c	/^       numberofcells;  \/\/ number of cells in the block$/;"	m	struct:__anon24	file:
 numofqueryfiles	MUMmer/src/kurtz/mm3src/maxmatdef.h	/^       numofqueryfiles;         \/\/ number of query files$/;"	m	struct:__anon4
@@ -4545,6 +4592,7 @@ printHelpInfo	MUMmer/scripts/Foundation.pm	/^   sub printHelpInfo() {$/;"	s
 printHelpInfoAndExit	MUMmer/scripts/Foundation.pm	/^   sub printHelpInfoAndExit() {$/;"	s
 printHuman	MUMmer/src/tigr/show-coords.cc	/^void printHuman$/;"	f
 printSubstring	mummer.cpp	/^bool printSubstring = false;$/;"	v
+printSubstring	mummer.s	/^printSubstring:$/;"	l
 printSubstring	sparseSA.hpp	/^  bool printSubstring;$/;"	m	struct:sparseSA
 printTabular	MUMmer/src/tigr/show-coords.cc	/^void printTabular$/;"	f
 printTilingAlignments	MUMmer/src/tigr/show-tiling.cc	/^void printTilingAlignments$/;"	f
@@ -4561,29 +4609,20 @@ printUsageInfo	MUMmer/scripts/Foundation.pm	/^   sub printUsageInfo() {$/;"	s
 printUsageInfoAndExit	MUMmer/scripts/Foundation.pm	/^   sub printUsageInfoAndExit() {$/;"	s
 printVersionInfo	MUMmer/scripts/Foundation.pm	/^   sub printVersionInfo() {$/;"	s
 printVersionInfoAndExit	MUMmer/scripts/Foundation.pm	/^   sub printVersionInfoAndExit() {$/;"	s
-print_Id_genes	MUMmer/mapview	/^sub print_Id_genes{$/;"	s
 print_Id_genes	MUMmer/scripts/mapview.pl	/^sub print_Id_genes{$/;"	s
-print_align	MUMmer/mapview	/^sub print_align{$/;"	s
 print_align	MUMmer/scripts/mapview.pl	/^sub print_align{$/;"	s
-print_connections	MUMmer/mapview	/^sub print_connections{$/;"	s
 print_connections	MUMmer/scripts/mapview.pl	/^sub print_connections{$/;"	s
-print_genes	MUMmer/mapview	/^sub print_genes{$/;"	s
 print_genes	MUMmer/scripts/mapview.pl	/^sub print_genes{$/;"	s
-print_genes_mr	MUMmer/mapview	/^sub print_genes_mr{ $/;"	s
 print_genes_mr	MUMmer/scripts/mapview.pl	/^sub print_genes_mr{ $/;"	s
-print_grid	MUMmer/mapview	/^sub print_grid{  $/;"	s
 print_grid	MUMmer/scripts/mapview.pl	/^sub print_grid{  $/;"	s
-print_header	MUMmer/mapview	/^sub print_header{$/;"	s
 print_header	MUMmer/scripts/mapview.pl	/^sub print_header{$/;"	s
-print_label	MUMmer/nucmer2xfig	/^sub print_label {$/;"	s
 print_label	MUMmer/scripts/nucmer2xfig.pl	/^sub print_label {$/;"	s
-print_legend	MUMmer/mapview	/^sub print_legend{ $/;"	s
 print_legend	MUMmer/scripts/mapview.pl	/^sub print_legend{ $/;"	s
 print_length	mummer.cpp	/^bool print_length = false;$/;"	v
+print_length	mummer.s	/^print_length:$/;"	l
 print_match	sparseSA.cpp	/^void sparseSA::print_match(match_t m) {$/;"	f	class:sparseSA
 print_match	sparseSA.cpp	/^void sparseSA::print_match(match_t m_new, vector<match_t> &buf) {$/;"	f	class:sparseSA
 print_match	sparseSA.cpp	/^void sparseSA::print_match(string meta, vector<match_t> &buf, bool rc) {$/;"	f	class:sparseSA
-print_xfig_line	MUMmer/nucmer2xfig	/^sub print_xfig_line {$/;"	s
 print_xfig_line	MUMmer/scripts/nucmer2xfig.pl	/^sub print_xfig_line {$/;"	s
 problems	MUMmer/docs/web/manual/index.html	/^<h2><a name="problems"><\/a>5. Known problems<\/h2>$/;"	a
 processSyntenys	MUMmer/src/tigr/postnuc.cc	/^void processSyntenys$/;"	f
@@ -4613,9 +4652,11 @@ query	MUMmer/src/kurtz/mm3src/findmaxmat.c	/^  Uchar *query,                   \
 query	sparseSA.hpp	/^  long query; \/\/ position in query$/;"	m	struct:match_t
 query_arg	mummer.cpp	/^struct query_arg {$/;"	s	file:
 query_fasta	mummer.cpp	/^string query_fasta;$/;"	v
+query_fasta	mummer.s	/^query_fasta:$/;"	l
 query_path_m	MUMmer/src/tigr/delta.hh	/^  std::string query_path_m;      \/\/!< the name of the query file$/;"	m	class:DeltaReader_t
 query_thread	mummer.cpp	/^void *query_thread(void *arg_) {$/;"	f
 query_threads	mummer.cpp	/^int K = 1, num_threads = 1, query_threads = 1;$/;"	v
+query_threads	mummer.s	/^query_threads:$/;"	l
 querycommondepth	MUMmer/src/kurtz/mm3src/findmaxmat.c	/^  Uint querycommondepth;$/;"	m	struct:__anon1	file:
 queryfilelist	MUMmer/src/kurtz/mm3src/maxmatdef.h	/^       queryfilelist[MAXNUMOFQUERYFILES][PATH_MAX+1]; $/;"	m	struct:__anon4
 querylen	MUMmer/src/kurtz/mm3src/findmaxmat.c	/^  Uint querylen,                  \/\/ length of the current query$/;"	m	struct:__anon2	file:
@@ -4728,6 +4769,7 @@ revC	MUMmer/src/tigr/show-aligns.cc	/^long int revC$/;"	f
 revC	MUMmer/src/tigr/show-coords.cc	/^inline long int revC$/;"	f
 revC	MUMmer/src/tigr/show-tiling.cc	/^inline long int revC$/;"	f
 rev_comp	mummer.cpp	/^bool rev_comp = false, _4column = false, nucleotides_only = false;$/;"	v
+rev_comp	mummer.s	/^rev_comp:$/;"	l
 reverse_complement	fasta.cpp	/^void reverse_complement(string &seq_rc, bool nucleotides_only) {$/;"	f
 reversecomplement	MUMmer/src/kurtz/mm3src/maxmatdef.h	/^       reversecomplement,       \/\/ compute matches on reverse strand$/;"	m	struct:__anon4
 reversecomplement	MUMmer/src/kurtz/mm3src/procmaxmat.c	/^       reversecomplement,      \/\/ compute reverse complement matches$/;"	m	struct:__anon3	file:
@@ -4787,6 +4829,7 @@ sR	MUMmer/src/tigr/show-tiling.cc	/^  long int sQ, eQ, sR, eR;              \/\/
 sR_Sort	MUMmer/src/tigr/show-aligns.cc	/^struct sR_Sort$/;"	s	file:
 s_Cover_t	MUMmer/src/tigr/combineMUMs.cc	/^typedef  struct s_Cover_t$/;"	s	file:
 sa	mummer.cpp	/^sparseSA *sa;$/;"	v
+sa	mummer.s	/^sa:$/;"	l
 sa	sparseSA.cpp	/^  sparseSA *sa; \/\/ Suffix array + aux informaton$/;"	m	struct:thread_data	file:
 safestringcopy	MUMmer/src/kurtz/libbasedir/safescpy.c	/^Sint safestringcopy(char *dest,char *source,Sint maxlen)$/;"	f
 scanmultiplefastafile	MUMmer/src/kurtz/mm3src/maxmatinp.c	/^Sint scanmultiplefastafile (Multiseq *multiseq,$/;"	f
@@ -4872,12 +4915,14 @@ set	vector/vectori128.h	/^    void set(uint16_t d) {                            
 set	vector/vectori128.h	/^    void set(uint32_t d) {                                 \/\/ Set or change divisor, calculate parameters$/;"	f	class:Divisor_ui
 setBanding	MUMmer/src/tigr/sw_align.hh	/^inline void setBanding(const int Banding)$/;"	f
 setBoth	mummer.cpp	/^bool setBoth = false;$/;"	v
+setBoth	mummer.s	/^setBoth:$/;"	l
 setBreakLen	MUMmer/src/tigr/sw_align.hh	/^inline void setBreakLen$/;"	f
 setDebugLevel	MUMmer/scripts/Foundation.pm	/^   sub setDebugLevel($;$) {$/;"	s
 setHelpInfo	MUMmer/scripts/Foundation.pm	/^   sub setHelpInfo($) {$/;"	s
 setLogFile	MUMmer/scripts/Foundation.pm	/^   sub setLogFile($;$) {$/;"	s
 setMatrixType	MUMmer/src/tigr/sw_align.hh	/^inline void setMatrixType$/;"	f
 setRevComp	mummer.cpp	/^bool setRevComp = false;$/;"	v
+setRevComp	mummer.s	/^setRevComp:$/;"	l
 setUsageInfo	MUMmer/scripts/Foundation.pm	/^   sub setUsageInfo($) {$/;"	s
 setVersionInfo	MUMmer/scripts/Foundation.pm	/^   sub setVersionInfo($) {$/;"	s
 set_bit	vector/vectori128.h	/^    Vec128b const & set_bit(uint32_t index, int value) {$/;"	f	class:Vec128b
@@ -4886,7 +4931,6 @@ set_bit	vector/vectori256e.h	/^    Vec256b const & set_bit(uint32_t index, int v
 set_control_word	vector/vectorf128.h	/^static inline void set_control_word(uint32_t w) {$/;"	f
 set_m128ir	vector/vectori256.h	63;"	d
 set_m128r	vector/vectorf256.h	95;"	d
-set_output_fname	MUMmer/mapview	/^sub set_output_fname{$/;"	s
 set_output_fname	MUMmer/scripts/mapview.pl	/^sub set_output_fname{$/;"	s
 setatnewleaf	MUMmer/src/kurtz/streesrc/streetyp.h	/^  BOOL setatnewleaf;          \/\/ nil-reference is stored in new leaf$/;"	m	struct:Suffixtreetype
 setdebuglevel	MUMmer/src/kurtz/libbasedir/debug.c	/^void setdebuglevel(void)$/;"	f
@@ -4996,14 +5040,16 @@ snps	MUMmer/docs/web/manual/index.html	/^<h4><a name="snps" id="snps"><\/a>5.4.6
 snps	MUMmer/src/tigr/delta.hh	/^  std::vector<SNP_t *> snps;  \/\/!< snps for this edgelet$/;"	m	struct:DeltaEdgelet_t
 sortMUMcandidates	MUMmer/src/kurtz/libbasedir/cleanMUMcand.c	/^static void sortMUMcandidates(ArrayMUMcandidate *mumcand)$/;"	f	file:
 sort_split	qsufsort.c	/^static void sort_split(int *p, int n)$/;"	f	file:
+sort_split	qsufsort.s	/^sort_split:$/;"	l
 spaceStrings	MUMmer/src/kurtz/libbasedir/arraydef.h	/^  Stringtype *spaceStrings;$/;"	m	struct:__anon20
 spaceforbranchtab	MUMmer/src/kurtz/streesrc/construct.c	/^static void spaceforbranchtab(Suffixtree *stree)$/;"	f	file:
 spacepeak	MUMmer/src/kurtz/libbasedir/mapfile.c	/^            spacepeak = 0,                 \/\/ maximally mapped num of bytes$/;"	v	file:
 spacepeak	MUMmer/src/kurtz/libbasedir/space.c	/^            spacepeak = 0;      \/\/ maximally allocated num of bytes$/;"	v	file:
 spaceptr	MUMmer/src/kurtz/libbasedir/space.c	/^  void *spaceptr;      \/\/ ptr to the spaceblock$/;"	m	struct:__anon24	file:
 sparseMult	mummer.cpp	/^int sparseMult=1;$/;"	v
+sparseMult	mummer.s	/^sparseMult:$/;"	l
 sparseMult	sparseSA.hpp	/^  int sparseMult;$/;"	m	struct:sparseSA
-sparseSA	sparseSA.cpp	/^sparseSA::sparseSA(string &S_, vector<string> &descr_, vector<long> &startpos_, bool __4column, long K_, bool suflink_, bool child_, int sparseMult_, bool printSubstring_) : $/;"	f	class:sparseSA
+sparseSA	sparseSA.cpp	/^sparseSA::sparseSA(string &R_, vector<string> &descr_, vector<long> &startpos_, bool __4column, long K_, bool suflink_, bool child_, int sparseMult_, bool printSubstring_) : $/;"	f	class:sparseSA
 sparseSA	sparseSA.hpp	/^struct sparseSA {$/;"	s
 splitinternaledge	MUMmer/src/kurtz/streesrc/streetyp.h	/^       splitinternaledge,$/;"	m	struct:Suffixtreetype
 splitleafedge	MUMmer/src/kurtz/streesrc/streetyp.h	/^  Uint splitleafedge,$/;"	m	struct:Suffixtreetype
@@ -5120,7 +5166,9 @@ succlocationsstree	MUMmer/src/kurtz/streesrc/access.c	/^void succlocationsstree(
 suffixlink	MUMmer/src/kurtz/streesrc/streetyp.h	/^  Bref suffixlink;          \/\/ the suffix link is always to a branching node$/;"	m	struct:__anon8
 suffixlink	sparseSA.cpp	/^bool sparseSA::suffixlink(interval_t &m) {$/;"	f	class:sparseSA
 suffixsort	qsufsort.c	/^void suffixsort(int *x, int *p, int n, int k, int l)$/;"	f
+suffixsort	qsufsort.s	/^suffixsort:$/;"	l
 suflink	mummer.cpp	/^bool suflink = true;$/;"	v
+suflink	mummer.s	/^suflink:$/;"	l
 swap	MUMmer/src/tigr/show-coords.cc	/^inline void swap$/;"	f
 sys	genDNA.py	/^import sys$/;"	i
 taillcp	MUMmer/src/kurtz/streesrc/construct.c	/^static Uint taillcp(Suffixtree *stree,SYMBOL *start1, SYMBOL *end1)$/;"	f	file:
@@ -5137,9 +5185,7 @@ tanh	vector/special/vectormath.h	/^static inline Vec4d tanh (Vec4d const & x) { 
 tanh	vector/special/vectormath.h	/^static inline Vec4f tanh (Vec4f const & x) {   \/\/ hyperbolic tangent$/;"	f
 tanh	vector/special/vectormath.h	/^static inline Vec4f tanh(Vec4f const & x) {   \/\/ hyperbolic tangent$/;"	f
 tanh	vector/special/vectormath.h	/^static inline Vec8f tanh (Vec8f const & x) {   \/\/ hyperbolic tangent$/;"	f
-test_formatGFF	MUMmer/mapview	/^sub test_formatGFF{$/;"	s
 test_formatGFF	MUMmer/scripts/mapview.pl	/^sub test_formatGFF{$/;"	s
-test_overlap	MUMmer/mapview	/^sub test_overlap{$/;"	s
 test_overlap	MUMmer/scripts/mapview.pl	/^sub test_overlap{$/;"	s
 text	MUMmer/src/kurtz/streesrc/streetyp.h	/^  SYMBOL *text,               \/\/ points to the input string$/;"	m	struct:Suffixtreetype
 textlen	MUMmer/src/kurtz/streesrc/streetyp.h	/^  Uint textlen,               \/\/ the length of the input string$/;"	m	struct:Suffixtreetype
@@ -5183,6 +5229,7 @@ totallength	MUMmer/src/kurtz/libbasedir/multidef.h	/^       totallength;        
 transC	MUMmer/src/tigr/postpro.cc	/^inline long int transC$/;"	f
 transdna	MUMmer/src/tigr/translate.hh	/^const int	transdna[256] = {$/;"	v
 transform	qsufsort.c	/^static int transform(int *x, int *p, int n, int k, int l, int q)$/;"	f	file:
+transform	qsufsort.s	/^transform:$/;"	l
 traverse	sparseSA.cpp	/^void sparseSA::traverse(string &P, long prefix, interval_t &cur, int min_len) {$/;"	f	class:sparseSA
 traverse_faster	sparseSA.cpp	/^void sparseSA::traverse_faster(const string &P,const long prefix, interval_t &cur, int min_len){$/;"	f	class:sparseSA
 trim	fasta.cpp	/^void trim(string &line, long &start, long &end) {$/;"	f
@@ -5202,6 +5249,7 @@ truncate_to_int64	vector/vectorf128.h	/^static inline Vec2q truncate_to_int64(Ve
 truncate_to_int64	vector/vectorf256.h	/^static inline Vec4q truncate_to_int64(Vec4d const & a) {$/;"	f
 truncate_to_int64	vector/vectorf256e.h	/^static inline Vec4q truncate_to_int64(Vec4d const & a) {$/;"	f
 type	mummer.cpp	/^mum_t type = MAM;$/;"	v
+type	mummer.s	/^type:$/;"	l
 uint0	MUMmer/src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2, uint3;$/;"	m	struct:__anon15
 uint0	MUMmer/src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1, uint2;$/;"	m	struct:__anon14
 uint0	MUMmer/src/kurtz/libbasedir/types.h	/^  Uint uint0, uint1;$/;"	m	struct:__anon13

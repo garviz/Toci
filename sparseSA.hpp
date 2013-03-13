@@ -24,17 +24,13 @@ struct vec_uchar {
   };
   vector<unsigned char> vec;  // LCP values from 0-65534
   vector<item_t> M;
-  long access=0;
   void resize(size_t N) { vec.resize(N); }
   // Vector X[i] notation to get LCP values.
  int operator[] (size_t idx) {
     if(vec[idx] == numeric_limits<unsigned char>::max()) 
       return lower_bound(M.begin(), M.end(), item_t(idx,0))->val;
     else
-    {
-      //++access;
       return vec[idx]; 
-    }
   }
   // Actually set LCP values, distinguishes large and small LCP
   // values.

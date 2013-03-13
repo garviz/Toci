@@ -10,8 +10,6 @@ CONSTRUCT
 {
   DECLAREEXTRA;
 
-  CHECKTEXTLEN;
-
   DEBUGCODE(3,showvalues());
 
   initSuffixtree(stree,text,textlen);

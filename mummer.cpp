@@ -158,8 +158,9 @@ void *query_thread(void *arg_) {
         if(type == MAM) sa->MAM(*P, 0, 1, matches, min_len, memCounter, print);
         else if(type == MUM) {
             sa->MUMParallel(*P, 1, matches, min_len, memCounter, print);
-            sa->MUMParallel(*P, 2, matches, min_len, memCounter, print);
-            sa->MUMParallel(*P, 4, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 6, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 12, matches, min_len, memCounter, print);
+            sa->MUMParallel(*P, 24, matches, min_len, memCounter, print);
         }
         else if(type == MEM) sa->MEM(*P, matches, min_len, print, memCounter, num_threads);
         if(print) sa->print_match(meta, matches, false);
@@ -178,7 +179,7 @@ void *query_thread(void *arg_) {
     }
   }
   delete P;
-  cerr << "M(E/A/U)Ms=" << memCounter;
+  cerr << "# M(E/A/U)Ms=" << memCounter;
   pthread_exit(NULL);
 }
 
@@ -285,9 +286,11 @@ int main(int argc, char* argv[]) {
       rev_comp = true;
   if(setRevComp)
       forwards = false;
-  
-  sa = new sparseSA(ref, refdescr, startpos, _4column, K, suflink, child, sparseMult, printSubstring);
-
+  double s, e;
+  s = omp_get_wtime();
+  sa = new sparseSA(ref, refdescr, startpos, _4column, K, suflink, true, sparseMult, printSubstring);
+  e = omp_get_wtime();
+  cerr << ",sparseSA=" << e-s;
   pthread_attr_t attr;  pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 

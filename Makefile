@@ -1,16 +1,18 @@
-FLAGS = -O3 -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -mtune=native -msse4.2 -std=gnu++11
+CXXFLAGS = -O3 -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -mtune=native -msse4.2 -std=gnu++11
+CFLAGS = -O3 -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -mtune=native -msse4.2
+LDFLAGS = -lstdc++ -lpapi -lpthread
 SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp
 
 all: essaMEM 
 
 essaMEM: mummer.o qsufsort.o sparseSA.o fasta.o
-	g++ $(FLAGS) $^ -o $@ -lpthread -lstdc++ -lpapi
+	g++ $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 .cpp.o:
-	g++ $(FLAGS) -Wall -c $<
+	g++ $(CXXFLAGS) -Wall -c $<
 
 .c.o:
-	gcc $(FLAGS) -Wall -c $<
+	gcc $(CFLAGS) -Wall -c $<
 
 # .PHONY assures clean is exected even if there is a file "./clean" in
 # the directory. The same for doc.

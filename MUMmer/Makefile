@@ -42,8 +42,8 @@ CSH  := $(filter /%,$(shell /bin/sh -c 'type csh'))
 PERL := $(filter /%,$(shell /bin/sh -c 'type perl'))
 AR   := $(filter /%,$(shell /bin/sh -c 'type ar'))
 
-CXXFLAGS = -O3 -fopenmp
-CFLAGS = -O3 -fopenmp -std=c99
+CXXFLAGS = -O3 -fopenmp -m64
+CFLAGS = -O3 -fopenmp -std=c99 -m64
 LDFLAGS  = -lpapi
 
 FLATS = ACKNOWLEDGEMENTS COPYRIGHT INSTALL LICENSE Makefile README ChangeLog
