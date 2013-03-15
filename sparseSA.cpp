@@ -8,6 +8,7 @@
 #include <string.h>
 #include <parallel/algorithm>
 #include <papi.h>
+#include <omp.h>
 
 #include "vector/vectorclass.h"
 #include "sparseSA.hpp"
@@ -18,6 +19,8 @@
         cLCP = LCP[childcE];\
     else\
         cLCP = LCP[CHILD[cS]];
+
+using namespace std;
 
 // LS suffix sorter (integer alphabet). 
 extern "C" { void suffixsort(int *x, int *p, int n, int k, int l); };
@@ -638,11 +641,19 @@ void sparseSA::print_match(string meta, vector<match_t> &buf, bool rc) {
 // Finds maximal almost-unique matches (MAMs) These can repeat in the
 // given query pattern P, but occur uniquely in the indexed reference S.
 void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& currentCount, bool print) {
+  double start,finish;
+  int EventSet = PAPI_NULL;
+  long long values[4];
+  int Events[4] = { PAPI_TOT_INS, PAPI_TOT_CYC, PAPI_L2_TCM, PAPI_L2_TCA }; 
+  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
+  if (PAPI_add_events(EventSet, Events, 4) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
+  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR PAPI_start\n");
+  start = omp_get_wtime();
   memCount = 0;
   interval_t cur(0, N-1, 0);
   long prefix = P.length()/chunks*chunk;
   const long end = (long) (P.length()/chunks*(chunk+1));
-  //__builtin_prefetch(LCP.vec.data()); 
+    //__builtin_prefetch(LCP.vec.data()); 
   while(prefix < end) {
     // Traverse SA top down until mismatch or full string is matched.
     traverse_faster(P, prefix, cur, P.length());
@@ -664,6 +675,10 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
     } while(cur.depth > 0 && cur.size() == 1);
   }
   currentCount = memCount;
+  finish = omp_get_wtime();
+  if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
+  fprintf(stderr,"# CYC=%lld,INS=%lld,L2=%f,Search=%f\n", values[1], values[0],(double) values[2]/(double)values[3],(double) (finish-start));
+  if (PAPI_stop(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI-stop\n");
 }
 
 // Returns true if the position p1 in the query pattern and p2 in the
@@ -725,24 +740,14 @@ struct thread_data {
 void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int min_len, long& currentCount, bool print) {
   vector<match_t> matches_p;
   vector<match_t> matches;
-  double start, start1, finish, finish1;
-  long_long values[4];
-  int Events[4] = { PAPI_TOT_INS, PAPI_TOT_CYC, PAPI_L2_TCM, PAPI_L2_TCA }, EventSet = PAPI_NULL, i;
-
-  if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) fprintf(stderr,"PAPI library init error!\n");
-  if (PAPI_thread_init((unsigned long (*)(void))(omp_get_thread_num())) != PAPI_OK) fprintf(stderr,"Doesn't work!\n");;
-  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
-  if (PAPI_add_events(EventSet, Events, 4) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
-  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR PAPI_start\n");
-
+  double start1, finish1;
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
 
-  start = omp_get_wtime();
   omp_set_num_threads(chunks);
-#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(i, matches_p)
+#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p)
   {
 #pragma omp for schedule(static,1) nowait 
-  for (i=0; i<chunks; ++i)
+  for (int i=0; i<chunks; ++i)
   {
     long memCount = 0;
     MAM(P, i, chunks, matches_p, min_len, memCount, false);
@@ -750,10 +755,6 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
 #pragma omp critical
   matches.insert(matches.end(),matches_p.begin(),matches_p.end());
   }
-  finish = omp_get_wtime();
-  if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
-  fprintf(stderr,"# CYC=%lld,INS=%lld,L2=%f", values[1], values[0],(double) values[2]/(double)values[3]);
-  if (PAPI_stop(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI-stop\n");
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
   start1 = omp_get_wtime();
@@ -786,7 +787,7 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   finish1 = omp_get_wtime();
   currentCount = unique.size();
   //fprintf(stderr,",OMP=%lf,Merge=%lf,LCPAcc=%ld,",(double) (finish-start), (double) (finish1-start1), LCP.access);
-  fprintf(stderr,",OMP=%lf,Merge=%lf,Matches=%ld,Thrd=%d\n",(double) (finish-start), (double) (finish1-start1), currentCount, chunks);
+  fprintf(stderr,"# erge=%lf,Matches=%ld,Thrd=%d\n", (double) (finish1-start1), currentCount, chunks);
 }
 
 void *MEMthread(void *arg) {

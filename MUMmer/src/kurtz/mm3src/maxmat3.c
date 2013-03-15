@@ -13,6 +13,8 @@
 #include <string.h>
 #include <sys/time.h>
 #include <sys/resource.h>
+#include <papi.h>
+#include <omp.h>
 #include "types.h"
 #include "debugdef.h"
 #include "errordef.h"
@@ -94,6 +96,14 @@ MAINFUNCTION
   Multiseq subjectmultiseq;
   struct rusage memory;
   DEBUGLEVELSET;
+  if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) {
+      fprintf(stderr,"PAPI library init error!\n");
+      return -1;
+  }
+  if (PAPI_thread_init((long unsigned int (*)())omp_get_thread_num) != PAPI_OK) {
+      fprintf(stderr,"Doesn't work with OpenMP!\n");
+      return -1;
+  }
   initclock();
   retcode = parsemaxmatoptions (&mmcallinfo, argc, argv);
   if (retcode < 0)

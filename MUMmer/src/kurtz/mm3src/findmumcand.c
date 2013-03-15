@@ -13,6 +13,9 @@
 #include <papi.h>
 #include <omp.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
 #include "streedef.h"
 #include "debugdef.h"
 #include "spacedef.h"
@@ -126,6 +129,78 @@ static Sint checkiflocationisMUMcand (Location *loc,
   return 0;
 }
 
+static Uint mam(Suffixtree *st, int chunk, int chunks,  Uint minlen, Uchar *q, Uint qlen)
+{
+  Uchar *lptr, *left,
+        *right = q + qlen - 1, 
+        *querysuffix;
+  Location loc;
+  char file[15], buffer[64];
+  snprintf(file,15,"/tmp/%d-%d.mum",chunk,chunks);
+  Uint Size = 32768, N = 0;
+  int fd = open(file, O_CREAT | O_WRONLY);
+  if (fd < 0)
+  {
+      fprintf(stderr,"Can't create %s\n",file);
+      return -1;
+  }
+  double start, start1, finish, finish1;
+  int EventSet = PAPI_NULL;
+  long long values[4];
+  int Events[4] = { PAPI_TOT_INS, PAPI_TOT_CYC, PAPI_L2_TCM, PAPI_L2_TCA }; 
+  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
+  if (PAPI_add_events(EventSet, Events, 4) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
+  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR PAPI_start\n");
+  DEBUG1(2,"query of length %lu=",(Showuint) querylen);
+  DEBUGCODE(2,(void) fwrite(query,sizeof(Uchar),(size_t) querylen,stdout));
+  DEBUG0(2,"\n");
+  start = omp_get_wtime();
+  left = q + (Uint)(qlen/chunks*chunk);
+  right = q + (Uint)(qlen/chunks*(chunk+1))-1;
+  lptr = scanprefixfromnodestree (st, &loc, ROOT (st), q, right, 0);
+  for (querysuffix = left; querysuffix<right && lptr != NULL; querysuffix++)
+  {
+      DEBUGCODE(2,showlocation(stdout,stree,&loc));
+      if (loc.locstring.length >= minlen && loc.remain > 0 && loc.nextnode.toleaf)
+      {
+          if (querysuffix == q || loc.locstring.start == 0 || *(querysuffix - 1) != st->text[loc.locstring.start - 1])
+          {
+              snprintf(buffer,64,"%ld,%ld,%ld\n",loc.locstring.start,(Uint) (querysuffix-q),loc.locstring.length);
+              write(fd,buffer,strlen(buffer));
+          }
+      }
+      if (ROOTLOCATION (&loc))
+          lptr = scanprefixfromnodestree (st, &loc, ROOT (st), lptr + 1, right, 0);
+      else
+      {
+          linklocstree (st, &loc, &loc);
+          lptr = scanprefixstree (st, &loc, &loc, lptr, right, 0);
+      }
+  }
+  DEBUGCODE(2,showlocation(stdout,st,&loc));
+  while (!ROOTLOCATION (&loc) && loc.locstring.length >= minlen)
+  {
+      if (loc.locstring.length >= minlen && loc.remain > 0 && loc.nextnode.toleaf)
+      {
+          if (querysuffix == q || loc.locstring.start == 0 || *(querysuffix - 1) != st->text[loc.locstring.start - 1])
+          {
+              snprintf(buffer,64,"%ld,%ld,%ld\n",loc.locstring.start,(Uint) (querysuffix-q),loc.locstring.length);
+              write(fd,buffer,strlen(buffer));
+          }
+      }
+      linklocstree (st, &loc, &loc);
+      querysuffix++;
+      DEBUGCODE(2,showlocation(stdout,stree,&loc));
+  }
+  finish = omp_get_wtime();
+  if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
+  fprintf(stderr,"# CYC=%lld,INS=%lld,L2=%f,", values[1], values[0],(double) values[2]/(double)values[3]);
+  if (PAPI_stop(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI-stop\n");
+  fprintf(stderr,"Search_Matches=%f\n",(double) (finish-start));
+  close(fd);
+  return N;
+} 
+
 /*EE
   The following function traverses the suffix tree guided by
   some query string. The parameters are as follows:
@@ -167,148 +242,85 @@ Sint findmumcandidates(Suffixtree *stree,
                        Uint querylen,
                        Uint seqnum)
 { 
-  Uchar *lptr, *left,
-        *right = query + querylen - 1, 
-        *querysuffix;
-  Location loc;
+  Uint N = 0, Size = 32768;
   int threads[4] = {1, 6, 12, 24};
-  Uint N, Size, M = 0, Size1 = 32768;
-  MUMcandidate *mumcandptr, *mumcand;
-  double start, start1, finish, finish1;
-  long_long values[4];
-  int Events[4] = { PAPI_TOT_INS, PAPI_TOT_CYC, PAPI_L2_TCM, PAPI_L2_TCA }, EventSet = PAPI_NULL;
-
-  if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) fprintf(stderr,"PAPI library init error!\n");
-  if (PAPI_thread_init((unsigned long (*)(void))(omp_get_thread_num())) != PAPI_OK) fprintf(stderr,"Doesn't work!\n");;
-  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
-  if (PAPI_add_events(EventSet, Events, 4) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
-
-  DEBUG1(2,"query of length %lu=",(Showuint) querylen);
-  DEBUGCODE(2,(void) fwrite(query,sizeof(Uchar),(size_t) querylen,stdout));
-  DEBUG0(2,"\n");
-
-  mumcand = malloc(Size1*sizeof *mumcandptr);
-
+  MUMcandidate *mumcand;
+  mumcand = malloc(Size*sizeof *mumcand);
+  double start, finish, start1, finish1;
   for (int ti=0; ti < 4; ti++)
   {
-      M = 0;
+      N = 0;
+      Size = 32768;
       omp_set_num_threads(threads[ti]);
-      if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR PAPI_start\n");
-      start = omp_get_wtime();
-      #pragma omp parallel default(none) private (left, right, lptr, querysuffix, loc, ti) shared(stderr, threads, query, querylen, stree, minmatchlength, seqnum, M, Size1, mumcandptr, N, Size)
+#pragma omp parallel default(none) shared(stree, minmatchlength, query, querylen, seqnum, threads, ti, stderr) private(N)
       {
 #pragma omp for schedule(static,1) nowait
-          for (int i=0; i < threads[ti]; i++)
+          for (int i=0; i < threads[ti]; ++i)
           {
-              N = 0;
-              Size = 32768;
-              left = query + (Uint)(querylen/threads[ti]*i);
-              right = query + (Uint)(querylen/threads[ti]*(i+1))-1;
-              mumcandptr = malloc(Size*sizeof *mumcandptr);
-              lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), query, right, 0);
-              for (querysuffix = left; querysuffix<right && lptr != NULL; querysuffix++)
-               {
-                  DEBUGCODE(2,showlocation(stdout,stree,&loc));
-                  if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
-                  {
-                      if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
-                      {
-#pragma omp critical
-                          {
-                              if (N >= Size -1)
-                              {
-                                  Size *= 2;
-                                  mumcandptr = realloc (mumcandptr, Size * sizeof *mumcandptr);
-                                  if (mumcandptr == NULL)
-                                      fprintf(stderr,"Can not realloc\n");
-                              }
-                              N++;
-                              mumcandptr[N].mumlength = loc.locstring.length;
-                              mumcandptr[N].dbstart = loc.locstring.start;
-                              mumcandptr[N].queryseq = seqnum;
-                              mumcandptr[N].querystart = (Uint) (querysuffix - query);
-                          }
-                      }
-                  }
-                  if (ROOTLOCATION (&loc))
-                      lptr = scanprefixfromnodestree (stree, &loc, ROOT (stree), lptr + 1, right, 0);
-                  else
-                  {
-                      linklocstree (stree, &loc, &loc);
-                      lptr = scanprefixstree (stree, &loc, &loc, lptr, right, 0);
-                  }
-              }
-              DEBUGCODE(2,showlocation(stdout,stree,&loc));
-              while (!ROOTLOCATION (&loc) && loc.locstring.length >= minmatchlength)
-              {
-                  if (loc.locstring.length >= minmatchlength && loc.remain > 0 && loc.nextnode.toleaf)
-                  {
-                      if (querysuffix == query || loc.locstring.start == 0 || *(querysuffix - 1) != stree->text[loc.locstring.start - 1])
-                      {
-#pragma omp critical
-                          {
-                              if (N >= Size -1)
-                              {
-                                  Size *= 2;
-                                  mumcandptr = realloc (mumcandptr, Size * sizeof *mumcandptr);
-                                  if (mumcandptr == NULL)
-                                      fprintf(stderr,"Can not realloc\n");
-                              } 
-                              N++;
-                              mumcandptr[N].mumlength = loc.locstring.length;
-                              mumcandptr[N].dbstart = loc.locstring.start;
-                              mumcandptr[N].queryseq = seqnum;
-                              mumcandptr[N].querystart = (Uint) (querysuffix - query);
-                          }
-                       }
-                   }
-                  linklocstree (stree, &loc, &loc);
-                  querysuffix++;
-                  DEBUGCODE(2,showlocation(stdout,stree,&loc));
-               }
+              N = mam(stree, i,threads[ti], minmatchlength, query, querylen);
           }
       }
-  finish = omp_get_wtime();
+  fprintf(stderr,"# Threads=%d,",threads[ti]); 
   Uint currentright, dbright = 0;
   BOOL ignorecurrent, ignoreprevious = False;
+  FILE *fp;
+  char *line = NULL, *pch;
+  size_t len = 0;
+  ssize_t read;
 
   start1 = omp_get_wtime();
-  qsort(mumcandptr, (size_t) N, sizeof mumcandptr[0], compareMUMcandidates);
+  char file[15], buffer[64];
+  for (int i=0; i < threads[ti]; ++i)
+  {
+      snprintf(file,15,"/tmp/%d-%d.mum",i,threads[ti]);
+      fp = fopen(file, "r");
+      if (fp == NULL)
+      {
+          fprintf(stderr,"Can't open merge file %s\n",file);
+          return -1;
+      }
+      while ((read = getline(&line, &len, fp)) != -1) {
+          if (N >= Size -1)
+          {
+              Size *= 2;
+              mumcand = realloc (mumcand, Size * sizeof *mumcand);
+              if (mumcand == NULL)
+                  fprintf(stderr,"Can not realloc\n");
+          }
+          N++;
+          mumcand[N].dbstart = strsep(&line, ",");
+          mumcand[N].querystart = strsep(&line, ",");
+          mumcand[N].mumlength = strsep(&line, ",");
+      }
+      fclose(fp);
+  }
+  int matches = 0;
+  qsort(mumcand, (size_t) N, sizeof mumcand[0], compareMUMcandidates);
   for (int i=0; i< N; i++)
   {
       ignorecurrent = False;
-      currentright = mumcandptr[i].dbstart + mumcandptr[i].mumlength - 1;
+      currentright = mumcand[i].dbstart + mumcand[i].mumlength - 1;
       if(dbright > currentright)
-      {
         ignorecurrent = True;
-      } else
+      else
       {
         if(dbright == currentright)
         {
           ignorecurrent = True;
-          if(!ignoreprevious && mumcandptr[i-1].dbstart == mumcandptr[i].dbstart)
-          {
+          if(!ignoreprevious && mumcand[i-1].dbstart == mumcand[i].dbstart)
             ignoreprevious = True;
-          }
         } else
-        {
           dbright = currentright;
-        }
       }
       if(i > 0 && !ignoreprevious)
-          M++;
+          matches++;
       ignoreprevious = ignorecurrent;
     }
     if(!ignoreprevious)
-          M++;
+          matches++;
   finish1 = omp_get_wtime();
-  fprintf(stderr,"# Threads=%d,",threads[ti]); 
-  fprintf(stderr,"Matches=%lu,",M);
-  fprintf(stderr,"Search_Matches=%f,",(double) (finish-start));
-  fprintf(stderr,"Unique_Matches=%f,",(double) (finish1-start1));
-  if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
-      fprintf(stderr,"CYC=%lld,INS=%lld,L2=%f\n", values[1], values[0],(double) values[2]/(double)values[3]);
-  if (PAPI_stop(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_stop\n");
-  }
+  fprintf(stderr,"Matches=%lu,",matches);
+  fprintf(stderr,"Unique_Matches=%f\n",(double) (finish1-start1));
+  } 
   return 0;
 }
