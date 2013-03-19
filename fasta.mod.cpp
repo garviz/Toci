@@ -1,3 +1,10 @@
+#ifdef _POMP
+#  undef _POMP
+#endif
+#define _POMP 200110
+
+#include "fasta.cpp.opari.inc"
+#line 1 "fasta.cpp"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -100,7 +107,7 @@ void load_fasta(string filename, string &S, vector<string> &descr, vector<long> 
   if(length > 0) {
     descr.push_back(meta);
   }  
-  cout << "# R.length=" << S.length();
+  cerr << "# R.length=" << S.length();
   /*for(long i = 0; i < (long)descr.size(); i++) {
     cerr << "# " << descr[i] << " " << startpos[i] << endl;
   }*/

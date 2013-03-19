@@ -1,3 +1,10 @@
+#ifdef _POMP
+#  undef _POMP
+#endif
+#define _POMP 200110
+
+#include "sparseSA.cpp.opari.inc"
+#line 1 "sparseSA.cpp"
 #include <math.h>
 #include <pthread.h>
 #include <limits.h>
@@ -8,7 +15,6 @@
 #include <string.h>
 #include <parallel/algorithm>
 #include <papi.h>
-#include <omp.h>
 
 #include "vector/vectorclass.h"
 #include "sparseSA.hpp"
@@ -152,10 +158,23 @@ void sparseSA::computeLCP() {
 
 // Child array construction algorithm
 void sparseSA::computeChild() {
-#pragma omp parallel for 
+POMP_Parallel_fork(&omp_rd_3);
+#line 155 "sparseSA.cpp"
+#pragma omp parallel     
+{ POMP_Parallel_begin(&omp_rd_3);
+POMP_For_enter(&omp_rd_3);
+#line 155 "sparseSA.cpp"
+#pragma omp          for  nowait
     for(int i = 0; i < N/K; i++){
         CHILD[i] = -1;
     }
+POMP_Barrier_enter(&omp_rd_3);
+#pragma omp barrier
+POMP_Barrier_exit(&omp_rd_3);
+POMP_For_exit(&omp_rd_3);
+POMP_Parallel_end(&omp_rd_3); }
+POMP_Parallel_join(&omp_rd_3);
+#line 159 "sparseSA.cpp"
         //Compute up and down values
         int lastIndex  = -1;
         stack<int,vector<int> > stapelUD;
@@ -642,12 +661,6 @@ void sparseSA::print_match(string meta, vector<match_t> &buf, bool rc) {
 // given query pattern P, but occur uniquely in the indexed reference S.
 void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& currentCount, bool print) {
   double start,finish;
-  /*int EventSet = PAPI_NULL;
-  long long values[4];
-  int Events[4] = { PAPI_TOT_INS, PAPI_TOT_CYC, PAPI_L2_TCM, PAPI_L2_TCA }; 
-  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
-  if (PAPI_add_events(EventSet, Events, 4) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
-  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR PAPI_start\n");*/
   start = omp_get_wtime();
   memCount = 0;
   interval_t cur(0, N-1, 0);
@@ -676,9 +689,7 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
   }
   currentCount = memCount;
   finish = omp_get_wtime();
-  /*if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
-  if (PAPI_stop(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI-stop\n");*/
-  fprintf(stdout,"# Search=%f\n", (double) (finish-start));
+  fprintf(stderr,"# Search=%f\n", (double) (finish-start));
 }
 
 // Returns true if the position p1 in the query pattern and p2 in the
@@ -738,23 +749,46 @@ struct thread_data {
 };
 
 void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int min_len, long& currentCount, bool print) {
+POMP_Begin(&omp_rd_4);
+#line 734 "sparseSA.cpp"
   vector<match_t> matches_p;
   vector<match_t> matches;
   double start1, finish1;
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
-#pragma pomp inst begin(MUM)
-#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p)
+
+  omp_set_num_threads(chunks);
+POMP_Parallel_fork(&omp_rd_5);
+#line 740 "sparseSA.cpp"
+#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p) POMP_DLIST_00005
+{ POMP_Parallel_begin(&omp_rd_5);
+#line 741 "sparseSA.cpp"
   {
+POMP_For_enter(&omp_rd_6);
+#line 742 "sparseSA.cpp"
 #pragma omp for schedule(static,1) nowait 
   for (int i=0; i<chunks; ++i)
   {
     long memCount = 0;
     MAM(P, i, chunks, matches_p, min_len, memCount, false);
   }
+POMP_For_exit(&omp_rd_6);
+#line 748 "sparseSA.cpp"
+POMP_Critical_enter(&omp_rd_7);
+#line 748 "sparseSA.cpp"
 #pragma omp critical
+{ POMP_Critical_begin(&omp_rd_7);
+#line 749 "sparseSA.cpp"
   matches.insert(matches.end(),matches_p.begin(),matches_p.end());
+POMP_Critical_end(&omp_rd_7); }
+POMP_Critical_exit(&omp_rd_7);
+#line 750 "sparseSA.cpp"
   }
-#pragma pomp inst end(MUM)
+POMP_Barrier_enter(&omp_rd_5);
+#pragma omp barrier
+POMP_Barrier_exit(&omp_rd_5);
+POMP_Parallel_end(&omp_rd_5); }
+POMP_Parallel_join(&omp_rd_5);
+#line 751 "sparseSA.cpp"
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
   start1 = omp_get_wtime();
@@ -787,7 +821,9 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   finish1 = omp_get_wtime();
   currentCount = unique.size();
   //fprintf(stderr,",OMP=%lf,Merge=%lf,LCPAcc=%ld,",(double) (finish-start), (double) (finish1-start1), LCP.access);
-  fprintf(stdout,"# Merge=%lf,Matches=%ld,Thrd=%d\n", (double) (finish1-start1), currentCount, chunks);
+POMP_End(&omp_rd_4);
+#line 784 "sparseSA.cpp"
+  fprintf(stderr,"# erge=%lf,Matches=%ld,Thrd=%d\n", (double) (finish1-start1), currentCount, chunks);
 }
 
 void *MEMthread(void *arg) {

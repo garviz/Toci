@@ -1,0 +1,82 @@
+----------------------------------------------------------------------
+----     ompP General Information     --------------------------------
+----------------------------------------------------------------------
+Start Date      : Tue Mar 19 00:19:29 2013
+End Date        : Tue Mar 19 00:19:29 2013
+Duration        : 0.02 sec
+Application Name: essaMEM
+Type of Report  : final
+User Time       : 0.00 sec
+System Time     : 0.00 sec
+Max Threads     : 2
+ompP Version    : 0.7.0
+ompP Build Date : Jan 13 2013 13:26:29
+PAPI Support    : available
+Max Counters    : 4
+PAPI Active     : no
+Used Counters   : 0
+OMPP_CTR1       : not set
+OMPP_CTR2       : not set
+OMPP_CTR3       : not set
+OMPP_CTR4       : not set
+Max Evaluators  : 4
+Used Evaluators : 0
+OMPP_EVAL1      : not set
+OMPP_EVAL2      : not set
+OMPP_EVAL3      : not set
+OMPP_EVAL4      : not set
+
+----------------------------------------------------------------------
+----     ompP Region Overview     ------------------------------------
+----------------------------------------------------------------------
+USER REGION: 1 region:
+ * R00001 mummer.cpp (190-330) ('main')
+
+----------------------------------------------------------------------
+----     ompP Callgraph     ------------------------------------------
+----------------------------------------------------------------------
+
+  Inclusive  (%)   Exclusive  (%)
+   0.02 (100.0%)    0.02 (100.00%)           [essaMEM: 2 threads]
+   0.00 (0.000%)    0.00 (0.000%)  USERREG  +-R00001 mummer.cpp (190-330) ('main')
+
+----------------------------------------------------------------------
+----     ompP Flat Region Profile (inclusive data)     ---------------
+----------------------------------------------------------------------
+R00001 mummer.cpp (190-330) ('main') USER REGION
+ TID      execT      execC
+   0       0.00          0
+   1       0.00          0
+ SUM       0.00          0
+
+----------------------------------------------------------------------
+----     ompP Callgraph Region Profiles (incl./excl. data)     -------
+----------------------------------------------------------------------
+
+[*00] essaMEM
+[=01] R00001 mummer.cpp (190-330) ('main') USER REGION
+ TID    execT/I    execT/E      execC
+   0       0.00       0.00          0
+   1       0.00       0.00          0
+ SUM       0.00       0.00          0
+
+
+----------------------------------------------------------------------
+----     ompP Overhead Analysis Report     ---------------------------
+----------------------------------------------------------------------
+Total runtime (wallclock)   : 0.02 sec [2 threads]
+Number of parallel regions  : 0
+Parallel coverage           : 0.00 sec ( 0.00%)
+
+Parallel regions sorted by wallclock time:
+            Type                            Location      Wallclock (%) 
+                                                 SUM       0.00 ( 0.00) 
+
+Overheads wrt. each individual parallel region:
+          Total        Ovhds (%)  =   Synch  (%)  +  Imbal   (%)  +   Limpar (%)   +    Mgmt (%)
+
+Overheads wrt. whole program:
+          Total        Ovhds (%)  =   Synch  (%)  +  Imbal   (%)  +   Limpar (%)   +    Mgmt (%)
+   SUM     0.00     0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)
+
+

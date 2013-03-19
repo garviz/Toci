@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: wga-mc.aux
+The style file: abbrv.bst
+Database file #1: mum-mc.bib
+Repeated entry---line 293 of file mum-mc.bib
+ : @article{OguzhanKulekci2011
+ :                            ,
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "OhlebuschGK10"
+refers to entry "DBLP:conf/spire/2010", which doesn't exist
+Warning--I didn't find a database entry for "DBLP:conf/spire/2010"
+Warning--can't use both volume and number fields in Gusfield1997
+Warning--empty journal in Kouzinopoulos2005
+Warning--empty year in Mongelli
+You've used 12 entries,
+            2118 wiz_defined-function locations,
+            588 strings with 6291 characters,
+and the built_in function-call counts, 4152 in all, are:
+= -- 394
+> -- 219
+< -- 4
++ -- 86
+- -- 74
+* -- 307
+:= -- 706
+add.period$ -- 36
+call.type$ -- 12
+change.case$ -- 72
+chr.to.int$ -- 0
+cite$ -- 15
+duplicate$ -- 154
+empty$ -- 298
+format.name$ -- 74
+if$ -- 850
+int.to.chr$ -- 0
+int.to.str$ -- 12
+missing$ -- 13
+newline$ -- 63
+num.names$ -- 24
+pop$ -- 72
+preamble$ -- 1
+purify$ -- 61
+quote$ -- 0
+skip$ -- 112
+stack$ -- 0
+substring$ -- 223
+swap$ -- 35
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 46
+warning$ -- 3
+while$ -- 39
+width$ -- 14
+write$ -- 129
+(There were 2 error messages)

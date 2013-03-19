@@ -1,44 +1,8 @@
 <OPARIRC 1.0>
-40
-toci.cpp
-0 0 8
-access.cpp
-0 0 8
-construct.cpp
-0 0 8
-mapfile.cpp
-0 0 8
-space.cpp
-0 0 8
-seterror.cpp
-0 0 8
-maxmatopt.cpp
-0 0 8
-procopt.cpp
-0 0 8
-safescpy.cpp
-0 0 8
-maxmatinp.cpp
-0 0 8
-procmaxmat.cpp
-36 36 8
-multiseq.cpp
-0 0 8
-findmaxmat.cpp
-0 0 8
-findmumcand.cpp
-37 40 8
-cleanMUMcand.cpp
-0 0 8
-streedbg.cpp
-0 0 8
-scanpref.cpp
-0 0 8
-linkloc.cpp
-0 0 8
-dfs.cpp
-0 0 8
-depthtab.cpp
-0 0 8
-distribute.cpp
+7
+mummer.cpp
+2 2 8
+sparseSA.cpp
+3 7 8
+fasta.cpp
 0 0 8

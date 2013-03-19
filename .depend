@@ -4,5 +4,5 @@ mummer.o: mummer.cpp sparseSA.hpp vector/vectorclass.h vector/instrset.h \
 qsufsort.o: qsufsort.c
 sparseSA.o: sparseSA.cpp vector/vectorclass.h vector/instrset.h \
  vector/vectori128.h vector/vectorf128.h vector/vectori256e.h \
- vector/vectorf256e.h sparseSA.hpp PapiCounter.h
+ vector/vectorf256e.h sparseSA.hpp
 fasta.o: fasta.cpp fasta.hpp

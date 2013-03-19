@@ -1,8 +1,14 @@
+#ifdef _POMP
+#  undef _POMP
+#endif
+#define _POMP 200110
+
+#include "mummer.cpp.opari.inc"
+#line 1 "mummer.cpp"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <vector>
-#include <omp.h>
 
 #include "sparseSA.hpp"
 #include "fasta.hpp"
@@ -13,7 +19,7 @@
 #include <sys/resource.h>
 #include <papi.h>
 
-#include <cctype> // std::tolower(), uppercase/lowercase conversion
+#include <cctype>                                                  
 
 // NOTE use of special characters ~, `, and $ !!!!!!!!
 
@@ -175,7 +181,8 @@ void *query_thread(void *arg_) {
 }
 
 int main(int argc, char* argv[]) {
-#pragma pomp inst begin(main)
+POMP_Begin(&omp_rd_2);
+#line 179 "mummer.cpp"
   // Collect parameters from the command line.
     rusage memory;
   while (1) {
@@ -234,6 +241,15 @@ int main(int argc, char* argv[]) {
 
   if(K != 1 && type != MEM) { cerr << "-k option valid only for -maxmatch" << endl; exit(1); }
   if(num_threads <= 0) { cerr << "invalid number of threads specified" << endl; exit(1); }
+
+  if (PAPI_library_init(PAPI_VER_CURRENT) != PAPI_VER_CURRENT) {
+      fprintf(stderr,"PAPI library init error!\n");
+      return -1;
+  }
+  if (PAPI_thread_init((long unsigned int (*)())omp_get_thread_num) != PAPI_OK) {
+      fprintf(stderr,"Doesn't work with OpenMP!\n");
+      return -1;
+  }
 
   string ref_fasta = argv[optind]; 
   query_fasta = argv[optind+1];
@@ -304,9 +320,11 @@ int main(int argc, char* argv[]) {
     pthread_join(thread_ids[i], NULL);    
 
   getrusage(RUSAGE_SELF, &memory);
-  cout << "# RSS=" << memory.ru_maxrss << endl;
+  cerr << "# RSS=" << memory.ru_maxrss << endl;
   delete sa;
-#pragma pomp inst end(main)
+POMP_End(&omp_rd_2);
+#line 319 "mummer.cpp"
+  return 0;
 }
 
 
