@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  20 MAR 2013 03:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  22 MAR 2013 17:23
 entering extended mode
  %&-line parsing enabled.
 **wga-mc.tex
@@ -281,56 +281,11 @@ Overfull \hbox (1.26794pt too wide) in paragraph at lines 75--76
 /n/9 ]: Mis-cel-la-neous;
  []
 
-
-Overfull \hbox (1.75331pt too wide) in paragraph at lines 84--86
-[]\T1/aer/m/n/9 One very suc-cess-ful ap-proach to per-form whole genome align-
-
- []
-
 \c@definition=\count111
 
-LaTeX Warning: Citation `Delcher2003' on page \thepage  undefined on input line
- 93.
-
-
-LaTeX Warning: Citation `Delcher1999' on page \thepage  undefined on input line
- 97.
-
-
-LaTeX Warning: Citation `OguzhanKulekci2011' on page \thepage  undefined on inp
-ut line 97.
-
-
-LaTeX Warning: Citation `Mongelli' on page \thepage  undefined on input line 97
-.
-
-
-LaTeX Warning: Citation `Kouzinopoulos2005' on page \thepage  undefined on inpu
-t line 97.
-
-
-LaTeX Warning: Citation `Meng2005' on page \thepage  undefined on input line 97
-.
-
-
-LaTeX Warning: Citation `Encarnac2011' on page \thepage  undefined on input lin
-e 97.
-
-
-LaTeX Warning: Citation `Vyverman2013' on page \thepage  undefined on input lin
-e 97.
-
-
-LaTeX Warning: Citation `OguzhanKulekci2011' on page \thepage  undefined on inp
-ut line 97.
-
-
-LaTeX Warning: Citation `Khan2009' on page \thepage  undefined on input line 97
-.
-
-
-LaTeX Warning: Citation `OhlebuschGK10' on page \thepage  undefined on input li
-ne 97.
+Overfull \hbox (1.75331pt too wide) in paragraph at lines 82--86
+\T1/aer/m/n/9 One very suc-cess-ful ap-proach to per-form whole genome align-
+ []
 
 [1
 
@@ -343,28 +298,7 @@ Missing character: There is no â in font cmr9!
 Missing character: There is no ˆ in font cmr9!
 Missing character: There is no ’ in font cmr9!
 
-
-LaTeX Warning: Citation `Gusfield1997' on page \thepage  undefined on input lin
-e 103.
-
-
-LaTeX Warning: Citation `Gusfield1997' on page \thepage  undefined on input lin
-e 106.
-
-
-LaTeX Warning: Citation `Abouelhoda2004' on page \thepage  undefined on input l
-ine 108.
-
-
-LaTeX Warning: Citation `Abouelhoda2004' on page \thepage  undefined on input l
-ine 110.
-
-
-LaTeX Warning: Citation `Abouelhoda2004' on page \thepage  undefined on input l
-ine 113.
-
-
-Overfull \hbox (5.30826pt too wide) in paragraph at lines 124--126
+Overfull \hbox (5.30826pt too wide) in paragraph at lines 119--121
 []\T1/aer/m/n/9 CHILD[i].nextlIndex = $\OML/cmm/m/it/9 min\OMS/cmsy/m/n/9 f\OML
 /cmm/m/it/9 q \OMS/cmsy/m/n/9 2 \OT1/cmr/m/n/9 [\OML/cmm/m/it/9 i \OT1/cmr/m/n/
 9 + 1 [] \OML/cmm/m/it/9 n\OT1/cmr/m/n/9 ]\OMS/cmsy/m/n/9 j\OML/cmm/m/it/9 LCP\
@@ -372,58 +306,64 @@ OT1/cmr/m/n/9 [\OML/cmm/m/it/9 q\OT1/cmr/m/n/9 ] = \OML/cmm/m/it/9 LCP\OT1/cmr/
 m/n/9 [\OML/cmm/m/it/9 i\OT1/cmr/m/n/9 ][] 
  []
 
-LaTeX Font Info:    Try loading font information for T1+aess on input line 146.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 139.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
 )
-LaTeX Font Info:    Try loading font information for T1+aett on input line 159.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 152.
 
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
-
-LaTeX Warning: Reference `phases' on page \thepage  undefined on input line 182
-.
-
-[2]
-File: Phases.eps Graphic file (type eps)
- <Phases.eps>
-
-LaTeX Warning: Reference `Whole-MUM' on page \thepage  undefined on input line 
-193.
-
-
-LaTeX Warning: Reference `Whole-MUM' on page \thepage  undefined on input line 
-193.
-
+) [2]
 File: Whole-MUM.eps Graphic file (type eps)
-<Whole-MUM.eps>
+ <Whole-MUM.eps>
+File: Phases.ps Graphic file (type eps)
 
-LaTeX Warning: Reference `phases' on page \thepage  undefined on input line 200
-.
-
-
-Overfull \hbox (2.85168pt too wide) in paragraph at lines 186--201
-[]\T1/aer/m/n/9 There are two re-sources to im-prove with this ap-proach: Mem-
+<Phases.ps>
+Overfull \hbox (2.85168pt too wide) in paragraph at lines 205--225
+\T1/aer/m/n/9 There are two re-sources to im-prove with this ap-proach: Mem-
  []
 
-(./wga-mc.bbl) [3] (./wga-mc.aux)
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 250--253
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+ []
 
- ) 
+File: construction.eps Graphic file (type eps)
+<construction.eps>
+File: speedup-MUM.eps Graphic file (type eps)
+ <speedup-MUM.eps>
+File: ecoli-MUM.eps Graphic file (type eps)
+ <ecoli-MUM.eps>
+File: ecoli-RAM.eps Graphic file (type eps)
+ <ecoli-RAM.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4]
+File: fly-MUM.eps Graphic file (type eps)
+ <fly-MUM.eps>
+File: fly-RAM.eps Graphic file (type eps)
+ <fly-RAM.eps>
+File: chicken-MUM.eps Graphic file (type eps)
+ <chicken-MUM.eps>
+File: chicken-RAM.eps Graphic file (type eps)
+ <chicken-RAM.eps> [5]
+(./wga-mc.bbl) [6
+
+] (./wga-mc.aux) ) 
 Here is how much of TeX's memory you used:
- 2930 strings out of 493849
- 33872 string characters out of 1152846
- 117488 words of memory out of 3000000
- 6171 multiletter control sequences out of 15000+50000
+ 2980 strings out of 493849
+ 34313 string characters out of 1152846
+ 118488 words of memory out of 3000000
+ 6212 multiletter control sequences out of 15000+50000
  53803 words of font info for 61 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,22n,28p,1125b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,23n,28p,78908b,532s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on wga-mc.dvi (3 pages, 21456 bytes).
+Output written on wga-mc.dvi (6 pages, 35708 bytes).

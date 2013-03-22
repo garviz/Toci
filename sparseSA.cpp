@@ -642,12 +642,6 @@ void sparseSA::print_match(string meta, vector<match_t> &buf, bool rc) {
 // given query pattern P, but occur uniquely in the indexed reference S.
 void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& currentCount, bool print) {
   double start,finish;
-  /*int EventSet = PAPI_NULL;
-  long long values[4];
-  int Events[4] = { PAPI_TOT_INS, PAPI_TOT_CYC, PAPI_L2_TCM, PAPI_L2_TCA }; 
-  if (PAPI_create_eventset(&EventSet) != PAPI_OK) fprintf(stderr,"ERROR create EventSet\n");
-  if (PAPI_add_events(EventSet, Events, 4) != PAPI_OK) fprintf(stderr,"ERROR add events\n");
-  if (PAPI_start(EventSet) != PAPI_OK) fprintf (stderr,"ERROR PAPI_start\n");*/
   start = omp_get_wtime();
   memCount = 0;
   interval_t cur(0, N-1, 0);
@@ -676,8 +670,6 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
   }
   currentCount = memCount;
   finish = omp_get_wtime();
-  /*if (PAPI_read(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI_Read\n");
-  if (PAPI_stop(EventSet, values) != PAPI_OK) fprintf(stderr,"ERROR PAPI-stop\n");*/
   fprintf(stdout,"# Search=%f\n", (double) (finish-start));
 }
 

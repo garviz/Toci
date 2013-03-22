@@ -2,57 +2,44 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: wga-mc.aux
 The style file: abbrv.bst
 Database file #1: mum-mc.bib
-I was expecting a `,' or a `}'---line 215 of file mum-mc.bib
- :   
- :   title = {{Parallel Processing of Multiple Pattern Matching Algorithms for Biological Sequences : Methods and Performance Results}},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Repeated entry---line 297 of file mum-mc.bib
- : @article{OguzhanKulekci2011
- :                            ,
-I'm skipping whatever remains of this entry
-Warning--there's a number but no series in Gusfield1997
-Warning--empty title in Kouzinopoulos2005
-Warning--empty year in Kouzinopoulos2005
 You've used 12 entries,
             2118 wiz_defined-function locations,
-            585 strings with 6206 characters,
-and the built_in function-call counts, 4143 in all, are:
-= -- 393
+            586 strings with 6324 characters,
+and the built_in function-call counts, 4125 in all, are:
+= -- 391
 > -- 219
-< -- 4
+< -- 3
 + -- 86
 - -- 74
-* -- 305
+* -- 296
 := -- 699
 add.period$ -- 35
 call.type$ -- 12
-change.case$ -- 71
+change.case$ -- 72
 chr.to.int$ -- 0
-cite$ -- 15
+cite$ -- 12
 duplicate$ -- 151
 empty$ -- 303
 format.name$ -- 74
-if$ -- 854
+if$ -- 851
 int.to.chr$ -- 0
 int.to.str$ -- 12
 missing$ -- 12
-newline$ -- 61
+newline$ -- 62
 num.names$ -- 24
-pop$ -- 76
+pop$ -- 74
 preamble$ -- 1
 purify$ -- 61
 quote$ -- 0
-skip$ -- 112
+skip$ -- 115
 stack$ -- 0
 substring$ -- 223
-swap$ -- 35
-text.length$ -- 4
+swap$ -- 34
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 46
-warning$ -- 3
+warning$ -- 0
 while$ -- 39
 width$ -- 14
-write$ -- 125
-(There were 2 error messages)
+write$ -- 127

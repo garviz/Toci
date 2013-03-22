@@ -28,7 +28,7 @@ G.~Encarnac and N.~Roma.
 D.~Gusfield.
 \newblock {\em {Algorithms on strings, trees, and sequences: computer science
   and computational biology}}.
-\newblock Number~1. Cambridge University Press, 1997.
+\newblock Cambridge University Press, 1997.
 
 \bibitem{Khan2009}
 Z.~Khan, J.~S. Bloom, L.~Kruglyak, and M.~Singh.
@@ -38,8 +38,10 @@ Z.~Khan, J.~S. Bloom, L.~Kruglyak, and M.~Singh.
 
 \bibitem{Kouzinopoulos2005}
 C.~S. Kouzinopoulos, P.~D. Michailidis, and K.~G. Margaritis.
+\newblock Parallel processing of multiple pattern matching algorithms for
+  biological sequences : Methods and performance results.
 \newblock {\em Systems and Computational Biology - Bioinformatics and
-  Computational Modeling}.
+  Computational Modeling}, 2005.
 
 \bibitem{Meng2005}
 X.~Meng and V.~Chaudhary.
