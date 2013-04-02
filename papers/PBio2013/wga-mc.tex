@@ -38,28 +38,25 @@
 %
 \author{
 \alignauthor Julio C\'esar Garc\'ia Vizca\'ino\\
+       \affaddr{Universitat Aut\`onoma de Barcelona\titlenote{Campus UAB, Edifici Q, 08193, Bellaterra (Barcelona), Spain}}\\
        \affaddr{Computer Architecture and Operating System}\\
-       \affaddr{Campus UAB, Edifici Q, 08193}\\
-       \affaddr{Bellaterra (Barcelona), Spain.}\\
        \email{juliocesar.garcia@caos.uab.es}
 \alignauthor Juan Carlos Moure\\
+       \affaddr{Universitat Aut\`onoma de Barcelona\titlenote{Campus UAB, Edifici Q, 08193, Bellaterra (Barcelona), Spain}}\\
        \affaddr{Computer Architecture and Operating System}\\
-       \affaddr{Campus UAB, Edifici Q, 08193}\\
-       \affaddr{Bellaterra (Barcelona), Spain.}\\
        \email{juancarlos.moure@uab.es}
 \alignauthor Antonio Espinosa\\
+       \affaddr{Universitat Aut\`onoma de Barcelona\titlenote{Campus UAB, Edifici Q, 08193, Bellaterra (Barcelona), Spain}}\\
        \affaddr{Computer Architecture and Operating System}\\
-       \affaddr{Campus UAB, Edifici Q, 08193}\\
-       \affaddr{Bellaterra (Barcelona), Spain.}\\
        \email{antonio.espinosa@caos.uab.es}
 \and  % use '\and' if you need 'another row' of author names
-\alignauthor Porfidio Hern\'andez\\
+\alignauthor Porf\'idio Hern\'andez\\
+       \affaddr{Universitat Aut\`oonoma de Barcelona\titlenote{Campus UAB, Edifici Q, 08193, Bellaterra (Barcelona), Spain}}\\
        \affaddr{Computer Architecture and Operating System}\\
-       \affaddr{Campus UAB, Edifici Q, 08193}\\
-       \affaddr{Bellaterra (Barcelona), Spain.}\\
        \email{porfidio.hernandez@uab.es}
 }
-\date{30 July 1999}
+
+\date{22 March 2013}
 % Just remember to make sure that the TOTAL number of authors
 % is the number that will appear on the first page PLUS the
 % number that will appear in the \additionalauthors section.
@@ -74,7 +71,7 @@
 %A category including the fourth, optional field follows...
 \category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
 
-\terms{Theory}
+\terms{Algorithms, Experimentation, Performance, Theory}
 
 \keywords{Indexed Search, Bioinformatics, Maximal Unique Match, Multi-core architectures, Parallelization}
 
@@ -213,7 +210,7 @@ If some part of it is only evaluated we could miss the rest of the genome. In ot
 Meanwhile we may speed up the MUM search we need to deal with the discard of MUM-candidates which are not a real MUM. So that, after finding all MUM-candidates for every thread we need to verify which of MUM-candidates are MUM. Therefore this phase of discarding MUM candidates must be performed always. However, the search for MUM candidates can be performed in any position of the Query genome and then apply the last phase to filter the MUMs. So that a very good choice of parallelization involves a data partition technique, see Figure \ref{phases}.\\
 \begin{figure}[h] 
 \centering 
-  \epsfig{file=Phases.ps, height=2in, width=3in}
+  \psfig{file=Phases.ps, height=2in, width=3in}
 \caption{Our approach is divided in three phases: Creation of Suffix Tree or Enhanced Suffix Array; Splitting query genome data (chunks) according to the number of available cores using 1 thread per core and parallel execution of the search for MUMs for every chunk, then every thread has its own list of MUM-candidates; and Get MUMs from list of MUM-candidates of all threads.}
   \label{phases}
 \end{figure}

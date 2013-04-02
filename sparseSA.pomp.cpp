@@ -1,10 +1,5 @@
-#ifdef _POMP
-#  undef _POMP
-#endif
-#define _POMP 200110
 
 #include "sparseSA.cpp.opari.inc"
-#line 1 "sparseSA.cpp"
 #include <math.h>
 #include <pthread.h>
 #include <limits.h>
@@ -158,23 +153,26 @@ void sparseSA::computeLCP() {
 
 // Child array construction algorithm
 void sparseSA::computeChild() {
-POMP_Parallel_fork(&omp_rd_2);
-#line 155 "sparseSA.cpp"
-#pragma omp parallel     
-{ POMP_Parallel_begin(&omp_rd_2);
-POMP_For_enter(&omp_rd_2);
-#line 155 "sparseSA.cpp"
-#pragma omp          for  nowait
+{
+  int pomp2_num_threads = omp_get_max_threads();
+  int pomp2_if = 1;
+  POMP2_Task_handle pomp2_old_task;
+  POMP2_Parallel_fork(&pomp2_region_1, pomp2_if, pomp2_num_threads, &pomp2_old_task, pomp2_ctc_1 );
+#pragma omp parallel      POMP2_DLIST_00001 firstprivate(pomp2_old_task) if(pomp2_if) num_threads(pomp2_num_threads)
+{   POMP2_Parallel_begin( &pomp2_region_1 );
+{   POMP2_For_enter( &pomp2_region_1, pomp2_ctc_1  );
+#pragma omp          for                    nowait
     for(int i = 0; i < N/K; i++){
         CHILD[i] = -1;
     }
-POMP_Barrier_enter(&omp_rd_2);
+{ POMP2_Task_handle pomp2_old_task;
+  POMP2_Implicit_barrier_enter( &pomp2_region_1, &pomp2_old_task );
 #pragma omp barrier
-POMP_Barrier_exit(&omp_rd_2);
-POMP_For_exit(&omp_rd_2);
-POMP_Parallel_end(&omp_rd_2); }
-POMP_Parallel_join(&omp_rd_2);
-#line 159 "sparseSA.cpp"
+  POMP2_Implicit_barrier_exit( &pomp2_region_1, pomp2_old_task ); }
+  POMP2_For_exit( &pomp2_region_1 );
+ }
+  POMP2_Parallel_end( &pomp2_region_1 ); }
+  POMP2_Parallel_join( &pomp2_region_1, pomp2_old_task ); }
         //Compute up and down values
         int lastIndex  = -1;
         stack<int,vector<int> > stapelUD;
@@ -753,42 +751,39 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   vector<match_t> matches;
   double start1, finish1;
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
-POMP_Begin(&omp_rd_3);
-#line 738 "sparseSA.cpp"
-POMP_Parallel_fork(&omp_rd_4);
-#line 738 "sparseSA.cpp"
-#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p) POMP_DLIST_00004
-{ POMP_Parallel_begin(&omp_rd_4);
-#line 739 "sparseSA.cpp"
+POMP2_Begin(&pomp2_region_2);
+{
+  int pomp2_num_threads = omp_get_max_threads();
+  int pomp2_if = 1;
+  POMP2_Task_handle pomp2_old_task;
+  POMP2_Parallel_fork(&pomp2_region_3, pomp2_if, pomp2_num_threads, &pomp2_old_task, pomp2_ctc_3 );
+#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p) POMP2_DLIST_00003 firstprivate(pomp2_old_task) if(pomp2_if) num_threads(pomp2_num_threads)
+{   POMP2_Parallel_begin( &pomp2_region_3 );
   {
-POMP_For_enter(&omp_rd_5);
-#line 740 "sparseSA.cpp"
+{   POMP2_For_enter( &pomp2_region_4, pomp2_ctc_4  );
 #pragma omp for schedule(static,1) nowait 
   for (int i=0; i<chunks; ++i)
   {
     long memCount = 0;
     MAM(P, i, chunks, matches_p, min_len, memCount, false);
   }
-POMP_For_exit(&omp_rd_5);
-#line 746 "sparseSA.cpp"
-POMP_Critical_enter(&omp_rd_6);
-#line 746 "sparseSA.cpp"
+  POMP2_For_exit( &pomp2_region_4 );
+ }
+{   POMP2_Critical_enter( &pomp2_region_5, pomp2_ctc_5  );
 #pragma omp critical
-{ POMP_Critical_begin(&omp_rd_6);
-#line 747 "sparseSA.cpp"
+{   POMP2_Critical_begin( &pomp2_region_5 );
   matches.insert(matches.end(),matches_p.begin(),matches_p.end());
-POMP_Critical_end(&omp_rd_6); }
-POMP_Critical_exit(&omp_rd_6);
-#line 748 "sparseSA.cpp"
+  POMP2_Critical_end( &pomp2_region_5 ); }
+  POMP2_Critical_exit( &pomp2_region_5 );
+ }
   }
-POMP_Barrier_enter(&omp_rd_4);
+{ POMP2_Task_handle pomp2_old_task;
+  POMP2_Implicit_barrier_enter( &pomp2_region_3, &pomp2_old_task );
 #pragma omp barrier
-POMP_Barrier_exit(&omp_rd_4);
-POMP_Parallel_end(&omp_rd_4); }
-POMP_Parallel_join(&omp_rd_4);
-#line 749 "sparseSA.cpp"
-POMP_End(&omp_rd_3);
-#line 750 "sparseSA.cpp"
+  POMP2_Implicit_barrier_exit( &pomp2_region_3, pomp2_old_task ); }
+  POMP2_Parallel_end( &pomp2_region_3 ); }
+  POMP2_Parallel_join( &pomp2_region_3, pomp2_old_task ); }
+POMP2_End(&pomp2_region_2);
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
   start1 = omp_get_wtime();

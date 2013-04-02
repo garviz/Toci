@@ -193,10 +193,10 @@ The problem of searching maximal unique matching for a minimum length between a 
 string and a query string has been
 identified in several applications, one of them is MUMmer \cite{Delcher2003}. Altough
 MUMmer's algorithm can perform searches of maximal unique matches (MUMs)
-with the following use of resources: High use of main memory to store the reference string and a null use of multi-core architectures.
+it uses a large portion of main memory to store the reference string and a null use of multi-core architectures.
 If the length of reference and query are very huge, the amount of operations to perform
 in the search of MUMs increases, see Table \ref{tbl:operations}.
-\begin{table}[ h!]
+\begin{table}[ h!] 
   \begin{small}
     \begin{center}
       \begin{tabular}{lllll}
@@ -211,8 +211,7 @@ in the search of MUMs increases, see Table \ref{tbl:operations}.
   \caption{Search of Maximal Unique Matches between a reference genome (2960,21Mbp) and query genome (2716,96Mbp)}
   \label{tbl:operations}
 \end{table}
-The use of parallelism could help reduce the execution time for the search of maximal unique matches. One approach of
-parallelism is to take advantage of multi-core architectures nowadays, Figure \ref{algorithm} shows the process of our data-level parallelism technique. In the first phase we construct the suffix tree for reference genome. The second phase splits the query genome in chunks of a fixed size (1 chunk per thread) and it performs the search for MUMs in the chunk, the list of MUMs found are MUM candidates. Phase 3 gets the real MUMs which are unique in the reference and query genome from the list of MUM candidates.
+The use of parallelism could help reduce the execution time to search for maximal unique matches. One approach of parallelism is to take advantage of multi-core architectures nowadays, Figure \ref{algorithm} shows the process of our data-level parallelism technique. In the first phase we construct the suffix tree for reference genome. The second phase splits the query genome in chunks of a fixed size (1 chunk per thread) and it performs the search for MUMs in the chunk, the list of MUMs found are MUM candidates. Phase 3 gets the real MUMs which are unique in the reference and query genome from the list of MUM candidates of each thread.
 \begin{figure}[htb]   
 \begin{center} 
   \includegraphics[width=7.5cm,height=5cm]{Phases.png}

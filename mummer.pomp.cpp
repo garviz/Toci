@@ -1,10 +1,5 @@
-#ifdef _POMP
-#  undef _POMP
-#endif
-#define _POMP 200110
 
 #include "mummer.cpp.opari.inc"
-#line 1 "mummer.cpp"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -19,7 +14,7 @@
 #include <sys/resource.h>
 #include <papi.h>
 
-#include <cctype>                                                  
+#include <cctype> // std::tolower(), uppercase/lowercase conversion
 
 // NOTE use of special characters ~, `, and $ !!!!!!!!
 
@@ -181,8 +176,7 @@ void *query_thread(void *arg_) {
 }
 
 int main(int argc, char* argv[]) {
-POMP_Begin(&omp_rd_1);
-#line 179 "mummer.cpp"
+POMP2_Begin(&pomp2_region_1);
   // Collect parameters from the command line.
     rusage memory;
   while (1) {
@@ -313,8 +307,7 @@ POMP_Begin(&omp_rd_1);
   getrusage(RUSAGE_SELF, &memory);
   cout << "# RSS=" << memory.ru_maxrss << endl;
   delete sa;
-POMP_End(&omp_rd_1);
-#line 310 "mummer.cpp"
+POMP2_End(&pomp2_region_1);
 }
 
 

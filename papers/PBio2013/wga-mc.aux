@@ -11,27 +11,27 @@
 \citation{Khan2009}
 \citation{OhlebuschGK10}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{\thepage }}
+\citation{Gusfield1997}
+\citation{Gusfield1997}
+\citation{Abouelhoda2004}
+\citation{Abouelhoda2004}
+\citation{Abouelhoda2004}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{\thepage }}
-\citation{Gusfield1997}
-\citation{Gusfield1997}
-\citation{Abouelhoda2004}
-\citation{Abouelhoda2004}
-\citation{Abouelhoda2004}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Preliminaries}{\thepage }}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Search for MUMs in a Suffix Tree.}}{\thepage }}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Search for MUMs in an Enhanced Suffix Array.}}{\thepage }}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{\thepage }}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Search for MUMs in an Enhanced Suffix Array.}}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces To get a MUM, it requires an important feature its uniqueness. Uniqueness can only be found when a whole genome is checked.}}{\thepage }}
 \newlabel{Whole-MUM}{{1}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Our approach is divided in three phases: Creation of Suffix Tree or Enhanced Suffix Array; Splitting query genome data (chunks) according to the number of available cores using 1 thread per core and parallel execution of the search for MUMs for every chunk, then every thread has its own list of MUM-candidates; and Get MUMs from list of MUM-candidates of all threads.}}{\thepage }}
 \newlabel{phases}{{2}{\thepage }}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{\thepage }}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces List of Genomes used in experiments.}}{\thepage }}
 \newlabel{genomes}{{1}{\thepage }}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{\thepage }}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Construction of Full-text index data structure}{\thepage }}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Search for MUMs in multi-core architectures}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Construction of Suffix Tree and Enhanced Suffix Array for several genomes sizes. Our approach saves the whole Reference genome indexed by a Suffix Tree (ST) or an Enhanced Suffix Array (ESA) in main memory.}}{\thepage }}
 \newlabel{fig:construction}{{3}{\thepage }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Search for MUMs in multi-core architectures}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Speedup of our approach to search MUMs in multi-core architectures with OpenMP in ST and ESA.}}{\thepage }}
 \newlabel{fig:speedup}{{4}{\thepage }}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}EcoliK12 vs. EcoliO157H7}{\thepage }}
@@ -42,9 +42,9 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}D.melanogaster vs. D.pseudoobscura}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Search for MUMs time for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}}{\thepage }}
 \newlabel{fig:fly-mum}{{7}{\thepage }}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}Chicken vs. Zebrafish}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces RAM consumption to search for MUMs for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}}{\thepage }}
 \newlabel{fig:fly-ram}{{8}{\thepage }}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}Chicken vs. Zebrafish}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Search for MUMs time for Chicken and Zebrafish in multi-core architectures with ST and ESA.}}{\thepage }}
 \newlabel{fig:chicken-mum}{{9}{\thepage }}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces RAM consumption to search for MUMs for Chicken and Zebrafish in multi-core architectures with ST and ESA.}}{\thepage }}

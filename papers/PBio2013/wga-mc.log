@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  22 MAR 2013 17:23
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  22 MAR 2013 19:37
 entering extended mode
  %&-line parsing enabled.
 **wga-mc.tex
@@ -242,48 +242,48 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Try loading font information for U+msa on input line 67.
+LaTeX Font Info:    Try loading font information for U+msa on input line 64.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 67.
+LaTeX Font Info:    Try loading font information for U+msb on input line 64.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 67.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 64.
 
 (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Overfull \hbox (26.31042pt too wide) in paragraph at lines 67--67
+Overfull \hbox (26.31042pt too wide) in paragraph at lines 64--64
  []\eaddfnt juliocesar.garcia@caos.uab.es| 
  []
 
 
-Overfull \hbox (3.75055pt too wide) in paragraph at lines 67--67
+Overfull \hbox (3.75055pt too wide) in paragraph at lines 64--64
  []\eaddfnt juancarlos.moure@uab.es| 
  []
 
 
-Overfull \hbox (30.46236pt too wide) in paragraph at lines 67--67
+Overfull \hbox (30.46236pt too wide) in paragraph at lines 64--64
  []\eaddfnt antonio.espinosa@caos.uab.es| 
  []
 
 
-Overfull \hbox (10.92651pt too wide) in paragraph at lines 67--67
+Overfull \hbox (10.92651pt too wide) in paragraph at lines 64--64
  []\eaddfnt porfidio.hernandez@uab.es| 
  []
 
 
-Overfull \hbox (1.26794pt too wide) in paragraph at lines 75--76
+Overfull \hbox (1.26794pt too wide) in paragraph at lines 72--73
 \T1/aer/m/n/9 H.4 [\T1/aer/bx/n/9 Information Sys-tems Ap-pli-ca-tions\T1/aer/m
 /n/9 ]: Mis-cel-la-neous;
  []
 
 \c@definition=\count111
 
-Overfull \hbox (1.75331pt too wide) in paragraph at lines 82--86
+Overfull \hbox (1.75331pt too wide) in paragraph at lines 79--83
 \T1/aer/m/n/9 One very suc-cess-ful ap-proach to per-form whole genome align-
  []
 
@@ -298,7 +298,7 @@ Missing character: There is no â in font cmr9!
 Missing character: There is no ˆ in font cmr9!
 Missing character: There is no ’ in font cmr9!
 
-Overfull \hbox (5.30826pt too wide) in paragraph at lines 119--121
+Overfull \hbox (5.30826pt too wide) in paragraph at lines 116--118
 []\T1/aer/m/n/9 CHILD[i].nextlIndex = $\OML/cmm/m/it/9 min\OMS/cmsy/m/n/9 f\OML
 /cmm/m/it/9 q \OMS/cmsy/m/n/9 2 \OT1/cmr/m/n/9 [\OML/cmm/m/it/9 i \OT1/cmr/m/n/
 9 + 1 [] \OML/cmm/m/it/9 n\OT1/cmr/m/n/9 ]\OMS/cmsy/m/n/9 j\OML/cmm/m/it/9 LCP\
@@ -306,31 +306,34 @@ OT1/cmr/m/n/9 [\OML/cmm/m/it/9 q\OT1/cmr/m/n/9 ] = \OML/cmm/m/it/9 LCP\OT1/cmr/
 m/n/9 [\OML/cmm/m/it/9 i\OT1/cmr/m/n/9 ][] 
  []
 
-LaTeX Font Info:    Try loading font information for T1+aess on input line 139.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 136.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
 )
-LaTeX Font Info:    Try loading font information for T1+aett on input line 152.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 149.
 
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-) [2]
+)
 File: Whole-MUM.eps Graphic file (type eps)
  <Whole-MUM.eps>
 File: Phases.ps Graphic file (type eps)
-
-<Phases.ps>
-Overfull \hbox (2.85168pt too wide) in paragraph at lines 205--225
+ <Phases.ps>
+Overfull \hbox (2.85168pt too wide) in paragraph at lines 202--222
 \T1/aer/m/n/9 There are two re-sources to im-prove with this ap-proach: Mem-
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[2]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 250--253
+Underfull \hbox (badness 10000) in paragraph at lines 247--250
 
  []
 
@@ -345,25 +348,28 @@ File: ecoli-RAM.eps Graphic file (type eps)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [4]
 File: fly-MUM.eps Graphic file (type eps)
  <fly-MUM.eps>
 File: fly-RAM.eps Graphic file (type eps)
  <fly-RAM.eps>
-File: chicken-MUM.eps Graphic file (type eps)
- <chicken-MUM.eps>
-File: chicken-RAM.eps Graphic file (type eps)
- <chicken-RAM.eps> [5]
-(./wga-mc.bbl) [6
 
-] (./wga-mc.aux) ) 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: chicken-MUM.eps Graphic file (type eps)
+<chicken-MUM.eps>
+File: chicken-RAM.eps Graphic file (type eps)
+ <chicken-RAM.eps> [5] (./wga-mc.bbl) [6] (./wga-mc.aux) ) 
 Here is how much of TeX's memory you used:
  2980 strings out of 493849
  34313 string characters out of 1152846
- 118488 words of memory out of 3000000
+ 126488 words of memory out of 3000000
  6212 multiletter control sequences out of 15000+50000
  53803 words of font info for 61 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  39i,23n,28p,78908b,532s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on wga-mc.dvi (6 pages, 35708 bytes).
+Output written on wga-mc.dvi (6 pages, 36128 bytes).
