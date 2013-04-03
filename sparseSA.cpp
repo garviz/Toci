@@ -158,14 +158,14 @@ void sparseSA::computeChild() {
     }
         //Compute up and down values
         int lastIndex  = -1;
-        stack<int,vector<int> > stapelUD;
-        stapelUD.push(0);
+        vector<int> stapelUD;
+        stapelUD.push_back(0);
         for(int i = 1; i < N/K; i++){
-            while(LCP[i] < LCP[stapelUD.top()]){
-                lastIndex = stapelUD.top();
-                stapelUD.pop();
-                if(LCP[i] <= LCP[stapelUD.top()] && LCP[stapelUD.top()] != LCP[lastIndex]){
-                    CHILD[stapelUD.top()] = lastIndex;
+            while(LCP[i] < LCP[stapelUD.back()]){
+                lastIndex = stapelUD.back();
+                stapelUD.pop_back();
+                if(LCP[i] <= LCP[stapelUD.back()] && LCP[stapelUD.back()] != LCP[lastIndex]){
+                    CHILD[stapelUD.back()] = lastIndex;
                 }
             }
             //now LCP[i] >= LCP[top] holds
@@ -173,27 +173,27 @@ void sparseSA::computeChild() {
                 CHILD[i-1] = lastIndex;
                 lastIndex = -1;
             }
-            stapelUD.push(i);
+            stapelUD.push_back(i);
         }
-        while(0 < LCP[stapelUD.top()]){//last row (fix for last character of sequence not being unique
-            lastIndex = stapelUD.top();
-            stapelUD.pop();
-            if(0 <= LCP[stapelUD.top()] && LCP[stapelUD.top()] != LCP[lastIndex]){
-                CHILD[stapelUD.top()] = lastIndex;
+        while(0 < LCP[stapelUD.back()]){//last row (fix for last character of sequence not being unique
+            lastIndex = stapelUD.back();
+            stapelUD.pop_back();
+            if(0 <= LCP[stapelUD.back()] && LCP[stapelUD.back()] != LCP[lastIndex]){
+                CHILD[stapelUD.back()] = lastIndex;
             }
         }
         //Compute Next L-index values
-        stack<int,vector<int> > stapelNL;
-        stapelNL.push(0);
+        vector<int> stapelNL;
+        stapelNL.push_back(0);
         for(int i = 1; i < N/K; i++){
-            while(LCP[i] < LCP[stapelNL.top()])
-                stapelNL.pop();
-            lastIndex = stapelNL.top();
+            while(LCP[i] < LCP[stapelNL.back()])
+                stapelNL.pop_back();
+            lastIndex = stapelNL.back();
             if(LCP[i] == LCP[lastIndex]){
-                stapelNL.pop();
+                stapelNL.pop_back();
                 CHILD[lastIndex] = i;
             }
-            stapelNL.push(i);
+            stapelNL.push_back(i);
         }
 }
 
@@ -734,7 +734,6 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   vector<match_t> matches;
   double start1, finish1;
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
-#pragma pomp inst begin(MUM)
 #pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p)
   {
 #pragma omp for schedule(static,1) nowait 
@@ -746,7 +745,6 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
 #pragma omp critical
   matches.insert(matches.end(),matches_p.begin(),matches_p.end());
   }
-#pragma pomp inst end(MUM)
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
   start1 = omp_get_wtime();

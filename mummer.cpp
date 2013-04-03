@@ -175,7 +175,6 @@ void *query_thread(void *arg_) {
 }
 
 int main(int argc, char* argv[]) {
-#pragma pomp inst begin(main)
   // Collect parameters from the command line.
     rusage memory;
   while (1) {
@@ -306,7 +305,6 @@ int main(int argc, char* argv[]) {
   getrusage(RUSAGE_SELF, &memory);
   cout << "# RSS=" << memory.ru_maxrss << endl;
   delete sa;
-#pragma pomp inst end(main)
 }
 
 
