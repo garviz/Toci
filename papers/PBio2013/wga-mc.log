@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  22 MAR 2013 19:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  8 APR 2013 11:57
 entering extended mode
  %&-line parsing enabled.
 **wga-mc.tex
@@ -306,12 +306,12 @@ OT1/cmr/m/n/9 [\OML/cmm/m/it/9 q\OT1/cmr/m/n/9 ] = \OML/cmm/m/it/9 LCP\OT1/cmr/
 m/n/9 [\OML/cmm/m/it/9 i\OT1/cmr/m/n/9 ][] 
  []
 
-LaTeX Font Info:    Try loading font information for T1+aess on input line 136.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 139.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
 )
-LaTeX Font Info:    Try loading font information for T1+aett on input line 149.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 154.
 
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
@@ -321,7 +321,7 @@ File: Whole-MUM.eps Graphic file (type eps)
  <Whole-MUM.eps>
 File: Phases.ps Graphic file (type eps)
  <Phases.ps>
-Overfull \hbox (2.85168pt too wide) in paragraph at lines 202--222
+Overfull \hbox (2.85168pt too wide) in paragraph at lines 207--227
 \T1/aer/m/n/9 There are two re-sources to im-prove with this ap-proach: Mem-
  []
 
@@ -332,8 +332,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 247--250
+
+Underfull \vbox (badness 1314) has occurred while \output is active []
+
+ [3]
+Underfull \hbox (badness 10000) in paragraph at lines 252--255
 
  []
 
@@ -364,12 +367,12 @@ File: chicken-MUM.eps Graphic file (type eps)
 File: chicken-RAM.eps Graphic file (type eps)
  <chicken-RAM.eps> [5] (./wga-mc.bbl) [6] (./wga-mc.aux) ) 
 Here is how much of TeX's memory you used:
- 2980 strings out of 493849
- 34313 string characters out of 1152846
- 126488 words of memory out of 3000000
- 6212 multiletter control sequences out of 15000+50000
+ 2986 strings out of 493849
+ 34350 string characters out of 1152846
+ 127488 words of memory out of 3000000
+ 6218 multiletter control sequences out of 15000+50000
  53803 words of font info for 61 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,23n,28p,78908b,532s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,23n,28p,78908b,546s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on wga-mc.dvi (6 pages, 36128 bytes).
+Output written on wga-mc.dvi (6 pages, 36384 bytes).

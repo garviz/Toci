@@ -191,7 +191,7 @@ int main(int argc, char* argv[]) {
       {"n", 0, 0, 0}, // 9
       {"qthreads", 1, 0, 0}, // 10
       {"suflink", 1, 0, 0}, // 11
-      {"chunks", 1, 0, 0}, // 12
+      {"C", 1, 0, 0}, // 12
       {"skip", 1, 0, 0}, // 13
       {"L", 0, 0, 0}, // 14
       {"r", 0, 0, 0}, // 15
@@ -325,7 +325,7 @@ void usage(string prog) {
   cerr << "-L             print length of query sequence in header of matches" << endl;
   cerr << "-r             compute only reverse complement matches" << endl;
   cerr << "-s             print first 53 characters of the matching substring" << endl;
-  cerr << "-chunks        number of chunks to split query" << endl;
+  cerr << "-C        number of chunks to split query" << endl;
   cerr << endl;
   
   exit(1);

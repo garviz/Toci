@@ -14,7 +14,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Find MUMs in multi-core architectures for whole genome alignment.\relax }}{2}}
 \newlabel{algorithm}{{1}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The MUM: an heuristic approach}{2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1}Finding MUMs in a suffix tree}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1}Search for MUMs in a suffix tree}{2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Suffix tree and its use to find matches between a reference and query genome \cite  {Delcher2002}.\relax }}{3}}
 \newlabel{fig:st}{{2}{3}}
 \citation{Delcher1999}
@@ -23,11 +23,10 @@
 \citation{Encarnac2011}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Finding MUMs in a suffix tree. Blue box represents a leaf node and it saves the start position of its suffix.\relax }}{4}}
 \newlabel{candidates}{{3}{4}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Traversal of suffix tree\relax }}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Search for MUMs in a Suffix Tree.\relax }}{4}}
+\newlabel{alg:find}{{1}{4}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{4}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces MUM search of a query and reference genome.\relax }}{4}}
-\newlabel{alg:find}{{2}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Parallel algorithm}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Parallel algorithm}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces MUM in reference genome but not in query genome.\relax }}{5}}
 \newlabel{Whole-MUM}{{4}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{5}}
@@ -41,6 +40,9 @@
 \newlabel{fig:CPI}{{7}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces L3 cache miss rate of search for MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.\relax }}{8}}
 \newlabel{fig:misses}{{8}{8}}
+\newlabel{fig:dcm}{{5}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Number of lines that come into the cache for OpenMP scheduling and different chunk scheduling.\relax }}{9}}
+\newlabel{fig:l1d}{{9}{9}}
 \bibstyle{elsarticle-num}
 \bibdata{mum-multithread}
 \bibcite{Delcher2003}{{1}{}{{}}{{}}}
@@ -52,7 +54,4 @@
 \bibcite{Meng2005}{{7}{}{{}}{{}}}
 \bibcite{Encarnac2011}{{8}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces TLB misses of search for MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.\relax }}{9}}
-\newlabel{fig:tlb}{{9}{9}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{9}}
-\newlabel{lastpage}{{6}{9}}
+\newlabel{lastpage}{{5}{10}}

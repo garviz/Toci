@@ -102,8 +102,7 @@
 
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \usepackage[normalem]{ulem}
-\usepackage[noend]{algpseudocode}
-\usepackage{algorithm}
+\usepackage[ruled,vlined]{algorithm2e}
 \usepackage{epsfig}
 \usepackage{subfig}
 \usepackage{tabularx}
@@ -120,7 +119,6 @@
 \usepackage{pst-tree}
 \newenvironment{pdfpic}{}{}
 \fi
-\renewcommand{\algorithmicforall}{\textbf{for each}}
 % declarations for front matter
 
 \begin{document}
@@ -192,11 +190,11 @@ Indexed Search \sep Bioinformatics \sep Maximal Unique Match \sep Multi-core arc
 The problem of searching maximal unique matching for a minimum length between a reference
 string and a query string has been
 identified in several applications, one of them is MUMmer \cite{Delcher2003}. Altough
-MUMmer's algorithm can perform searches of maximal unique matches (MUMs)
+MUMmer's algorithm can perform searches of maximal unique matches (MUMs),
 it uses a large portion of main memory to store the reference string and a null use of multi-core architectures.
 If the length of reference and query are very huge, the amount of operations to perform
 in the search of MUMs increases, see Table \ref{tbl:operations}.
-\begin{table}[ h!] 
+\begin{table}[ h!]  
   \begin{small}
     \begin{center}
       \begin{tabular}{lllll}
@@ -225,8 +223,7 @@ Although a pair of conserved genes rarely contain the same entire sequence, they
     R=\underline{ac} ga \underline{ctc} a \underline{gctac} t \underline{ggtcagctatt} \underline{acttaccgc}\$\\
     Q=\underline{ac} tt \underline{ctc} t \underline{gctac} \underline{ggtcagctatt} c \underline{acttaccgc}\$\\
 \end{center}
-    It is clear that sequences R and Q have many common substrings, they are: ac, ctc, gctac, ggtcagctatt, acttaccgc.\\
-Among those five common substrings, ac is the only substring that is not unique. It occurs more than once in both sequences. You can also observe that actually a, c, t, and g are common substrings of R and Q. However, they are not maximal, i.e. they are contained in at least one longer common substrings. We are only interested in those that are of maximal length.\\
+It is clear that sequences R and Q have many common substrings, they are: ac, ctc, gctac, ggtcagctatt, acttaccgc. Among those five common substrings, ac is the only substring that is not unique. It occurs more than once in both sequences. You can also observe that actually a, c, t, and g are common substrings of R and Q. However, they are not maximal, i.e. they are contained in at least one longer common substrings. We are only interested in those that are of maximal length.\\
 Our aim is to search for all these short common substrings. Given genomes R and Q, we need to find all common substrings which are unique and of maximal length. Each of such common substrings is known as Maximum Unique Match (MUM). For almost every conserved gene pairs, there exist at least one MUM which is unique to them.\\
 For example, assuming d = 3, sequences R and Q in the previous example has four MUMs: ctc, gctac, ggtcagctatt, acttaccgc. Substring ac is not an MUM because its length is smaller than the value of d and it is not unique to both sequences.
 \begin{center}
@@ -234,36 +231,36 @@ For example, assuming d = 3, sequences R and Q in the previous example has four 
     Q=\xout{ac} tt \sout{ctc} t \uwave{gctac} \uuline{ggtcagctatt} c \uline{acttaccgc}\$\\
 \end{center}
 The concept of MUM is important in whole genome alignment because a significantly long MUM is very likely to be part of the global alignment.
-\subsubsection{Finding MUMs in a suffix tree} 
+\subsubsection{Search for MUMs in a suffix tree} 
 The key idea in this method is to build a suffix tree for genome R, a data structure which allows finding, all distinct subsequences in a given genome.\\
-A suffix tree is a data structure which indexes a whole string in every suffix. It allows finding all matches between a reference genome (suffix tree) and a query genome. It can also check for unique matches in the reference very easily just to check if the match ends in a leaf node and by checking the character immediately preceding the start of this match it is possible to determine whether it is a maximal match. To understand the efficient search of matches in a suffix tree, time complexity is $O(m)$ where $m$ is the length of query genome, it is used a suffix link. A link points from a source node $s$ in suffix tree to another destination node $d$ in suffix tree if the string label from the root node to node $d$ is equal to the label from root node to $s$ with the first character removed. In Figure \ref{fig:st} is shown the suffix tree, green lines are suffix links and boxes are start position of every suffix. For instance, the string label of node $i$ in Figure \ref{fig:st} is tgt and next suffix $i+1$ is gt. So that is exactly the tree position corresponding to the next position in the query genome.\\
-\begin{figure}
+A suffix tree is a data structure which indexes a whole string in every suffix. It allows finding all matches between a reference genome (suffix tree) and a query genome. It can also check for unique matches in the reference very easily, we only check if the match ends in a leaf node and by checking the character immediately preceding the start of this match it is possible to determine whether it is a maximal match. To understand the efficient search of matches in a suffix tree, time complexity is $O(m)$ where $m$ is the length of query genome, it is used a suffix link. A suffix link points from a source node $s$ in suffix tree to another destination node $d$ in suffix tree if the string label from the root node to node $d$ is equal to the label from root node to $s$ with the first character removed. In Figure \ref{fig:st} is shown the suffix tree, green lines are suffix links and boxes are start position of every suffix. For instance, the string label of node $i$ in Figure \ref{fig:st} is tgt and next suffix $i+1$ is gt. So that is exactly the tree position corresponding to the next position in the query genome.\\
+\begin{figure} 
   \centering
   \includegraphics[width=8.5cm,height=5cm]{st-mum.pdf}
   \caption{Suffix tree and its use to find matches between a reference and query genome \cite{Delcher2002}.}
 \label{fig:st}
 \end{figure}
-In Figure \ref{fig:st} the match gtc which starts at $i+1$ in the query genome and node 7 in the suffix tree is not maximal on the left because the preceeding character in both strings is a t.\\
-  By construction, the location of a match in the suffix tree represents a substring of the subject sequence which maximaly matches a prefix of
+In Figure \ref{fig:st} the match gtc which starts at $i+1$ in the query genome and node 7 in the suffix tree is not maximal on the left because the preceding character in both strings is a t.\\
+By construction, the location of a match in the suffix tree represents a substring of the subject sequence which maximally matches a prefix of
   \texttt{query suffix}. Thus it is only necessary to verify that, the match is long enough, that it is unique in the subject sequence and that 
   the match is also left maximal. This is done as follows:
     \begin{enumerate}
-  \item
+  \item 
   Does \texttt{match} represent a substring of lengt h at least \texttt{minimum match length}?
-   \item 
+   \item  
   Does \texttt{match} correspond to a leaf edge? Then  then the string represented by the match is unique in the subject sequence.
-  \item   
+  \item    
   Is the match left maximal? This is true if one of the following conditions hold:
   \begin{itemize}
-  \item   
+  \item    
   The suffix of the query currently considered is the first suffix, or 
-  \item 
-  The string represented by \texttt{match} is a prefix of the subject string,  or
   \item  
+  The string represented by \texttt{match} is a prefix of the subject string,  or
+  \item   
   The characters immediately to the left of the matching strings in the subject sequence and the query sequence are different
   \end{itemize}
   \end{enumerate}
-  If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates as it is shown in Figure \ref{candidates}. If a match is found but it doesn't reach a leaf node then this match is dropped as it is shown in Figure \ref{candidates}. A MUM-candidate is saved in an array of type MUM-candidate which has the following information:
+If all conditions 1-3 are true, then this MUM is stored in a list of MUM-candidates as it is shown in Figure \ref{candidates}. If a match is found but it doesn't reach a leaf node then this match is dropped as it is shown in Figure \ref{candidates}. A MUM-candidate is saved in an array of type MUM-candidate which has the following information:
 Position in reference sequence, Position in query genome and Length of match.
  \begin{figure}[htb]  
  \begin{center} 
@@ -273,53 +270,60 @@ Position in reference sequence, Position in query genome and Length of match.
  \label{candidates} 
  \end{figure}  
  The current serial search method is summarized in Algorithm \ref{alg:find}, the first suffix is \textbf{always} searched from the root node in Suffix Tree and rest of suffixes are searched with suffix links from the node in Suffix Tree from previous search.\\
- \begin{algorithm}
-   \caption{Traversal of suffix tree}
-   \begin{algorithmic}[1]
-    \While{There is more characters in suffix string in query genome AND node is not leaf node AND }
-     \State From root node starts string matching from first character in suffix of query genome.
-     \State Scan through every edge from root node to find the current match character between suffix of query genome and suffix tree.
-     \If{There is an node that match the current match character}
-     \State Compute Longest common preffix between string from edge and rest of suffix string in query genome.
-     \EndIf
-     \EndWhile
-   \end{algorithmic}
- \end{algorithm}
- \begin{algorithm}
-   \caption{MUM search of a query and reference genome.} \label{alg:find}
- \begin{algorithmic}[1]
-   \ForAll{Suffix in query genome}
-   \State Traversal of suffix tree with current suffix until a mismatch occurs.
-   \If{Current match $>$ minimum match length AND Current match is in leaf edge AND Current match is left maximal}
-   \State Save Current match as a MUM-candidate. 
-   \EndIf
-   \If{current node in Suffix Tree is the root node}
-   \State Start traversal from root node and from the beginning of current suffix.
-   \ElsIf{current node in Suffix Tree is an intermediate node}
-   \State Search for suffix link to jump to another node in Suffix Tree.
-   \State Continue search of match with rest of suffix from the node which suffix link points out.
-   \EndIf
-   \EndFor
- \end{algorithmic}
- \end{algorithm}
- MUMs can cover 100\% of the known  conserved gene pairs. Moreover, finding all MUMs  can be done in almost linear time because of the use of suffix links without this artifact we should start every traversal in Suffix Tree from root node adding more execution time because we scan a longer string. Since a Suffix Tree can be queried several times, it is very likely to have more than one query  at the same time. So far, Algorithm \ref{alg:find} is a serial execution because it cannot check for more than one suffix at the same time.
+\linesnumbered
+\begin{algorithm}
+  \dontprintsemicolon
+  \SetKwInOut{Input}{input}
+  \SetKwInOut{Output}{output}
+  \SetKwData{R}{R}
+  \SetKwData{Q}{Q}
+  \SetKwData{ST}{ST}
+  \SetKwData{Len}{L}
+  \SetKwData{Length}{length}
+  \SetKwData{Leaf}{leaf}
+  \SetKwData{MUMs}{MUMs}
+  \SetKwData{MUMcands}{MUMcands}
+  \SetKwFunction{buildST}{buildST}
+  \SetKwFunction{TraverseSuffixTree}{TraverseSuffixTree}
+  \SetKwFunction{isLeafNode}{isLeafNode}
+  \SetKwFunction{saveMUMcand}{saveMUMcand}
+  \SetKwFunction{cleanMUMcand}{cleanMUMcand}
+  \Input{\R, \Q, \Len}
+  \Output{List of \MUMs of \Length$\geq$ \Len, with start position in \R and \Q and \Length}
+  \Begin{
+  \ST$\leftarrow$ \buildST{\R}\;
+  \ForEach{position $i\in Q$}{
+  \Length$\leftarrow$ \TraverseSuffixTree{$\Q[i]$,\ST}\;
+    \If{\isLeafNode{$\Q[i]$}}{
+    \tcc{Leaf saves the position of a suffix in ST.}\;
+        \If{$\R[\Leaf-1]\neq \Q[i-1]$ and $\Length\geq L$}{
+            \MUMcands$\leftarrow$ \saveMUMcand{$\R_{\Leaf}$,$i$,\Length}\;
+        }
+    }
+  }
+  \tcc{Get unique MUMs from list of MUM-candidates.}\;
+  \MUMs$\leftarrow$ \cleanMUMcand{\MUMcands}
+  }
+  \caption{Search for MUMs in a Suffix Tree.}
+  \label{alg:find}
+\end{algorithm}
+MUMs can cover 100\% of the known  conserved gene pairs. Moreover, finding all MUMs  can be done in almost linear time because of the use of suffix links without this artifact we should start every traversal in Suffix Tree from root node adding more execution time because we scan a longer string. Since a Suffix Tree can be queried several times, it is very likely to have more than one query  at the same time. So far, Algorithm \ref{alg:find} is a serial execution because it cannot check for more than one suffix at the same time.
 This problem of searching MUM has a time complexity of $O(m+k)$ where $m$ is the length of the query genome and $k$ is the number of maximal unique matches of some minimum length. This problem is a very high intensive computing task, for every substring in the query genome the search for a maximum unique match has to be performed.
 \section{Related work}
-Search of Maximal Unique Matches to do Whole Genome Alignment was proposed in \cite{Delcher1999}. There have been some previous work in the parallelization of search of matches in genomic data, like \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}, however these works are focused in fixed patterns and read alignment. On the other hand, there have been achievements in parallelization of Whole genome alignment like \cite{Meng2005}. The parallelization of searching MUMs with a suffix tree is research field not covered very deep, there is only one approach in \cite{Encarnac2011} but without access to source code to check their implementation and it is more focused with GPU and CPU hybrid architectures and suffix array.
-\section{Parallel algorithm}  
+Search for Maximal Unique Matches to do Whole Genome Alignment was proposed in \cite{Delcher1999}. There have been some previous work in the parallelization of search of matches in genomic data, like \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}, however these works are focused in fixed patterns and read alignment. On the other hand, there have been achievements in parallelization of Whole genome alignment like \cite{Meng2005}. The parallelization of searching MUMs with a suffix tree is a research field not covered very deep, there is only one approach in \cite{Encarnac2011} but without access to source code to check their implementation and it is more focused with GPU and CPU hybrid architectures and suffix array.
+\section{Parallel algorithm}   
 The sequential version of the MUM search between a reference and query genome trades high computation time when executed in a single machine. \\
-Previously the algorithm for sequence alignment was described in detail. Now our own proposal of a parallelization of MUM search within multi-core architecture is explained.\\
+Previously the algorithm for sequence alignment was described in detail. Now our proposal of a parallelization of MUM search within multi-core architecture is explained.\\
 There are two resources to improve in this algorithm: Memory usage and CPU. The former was generally improved because it allows being executed in architectures where there is no memory restriction. To improve the performance of the algorithm a data-level parallelism technique is deployed in advance to genome alignment.\\
 Our technique is divided in three phases following:
 \begin{enumerate}
-\item Splitting query genome data (chunks) according to the number of available cores using 1 thread per core.
+\item Splitting query genome data (chunks) according to the number of available cores, using 1 thread per core.
 \item Parallel execution of the task of Algorithm \ref{alg:find} for every chunk then every thread has its own list of MUM-candidates.
 \item Get the final list of MUMs from every MUM-candidate list of all threads.
 \end{enumerate}
 The division of genome data was used using the paradigm of data-level parallelism which consists of a generation of chunks of a query sequence with a fixed size. The chunk size was computed with query genome length divided by number of available threads.\\
-The main idea behind using a Maximal Unique Match (MUM): it is possible to cover a huge region of a genome when reference and query genomes are very closely related. However 
-to get a MUM, it requires an important feature its uniqueness. Uniqueness can only be found when a whole genome is checked, see Figure \ref{Whole-MUM}. If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read. In Figure \ref{Whole-MUM} is shown the consequences of using chunks for query genome. Meanwhile we may speed up the MUM search we need to deal with the discard of MUM-candidates which are not a real MUM. So that, after finding all MUM-candidates for every thread we need to verify which of MUM-candidates are MUM.\\
-\begin{figure}[htb]  
+The main idea behind using a Maximal Unique Match (MUM): it is possible to cover a huge region of a genome when reference and query genomes are very closely related. However to get a MUM, it requires an important feature its uniqueness. Uniqueness can only be found when a whole genome is checked, see Figure \ref{Whole-MUM}. If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read. In Figure \ref{Whole-MUM} is shown the consequences of using chunks for query genome. Meanwhile we may speed up the MUM search we need to deal with the discard of MUM-candidates which are not a real MUM. So that, after finding all MUM-candidates for every thread we need to verify which of MUM-candidates are MUM.\\
+\begin{figure}[htb]   
 \begin{center} 
   \includegraphics[width=6cm,height=3cm]{Whole-MUM.png}
 \end{center} 
@@ -397,27 +401,39 @@ Figure \ref{fig:speedup} shows the speedup for the parallelization of searching 
   \caption{L3 cache miss rate of search for MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.}
   \label{fig:misses}
  \end{figure}
- \begin{figure}[htb]
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm31.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm32.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{dcm34.pdf}}
+  \caption{Direct cache misses for OpenMP scheduling and different chunk scheduling.}
+  \label{fig:dcm}
+\end{figure}
+\begin{figure}
   \centering
-  \includegraphics[width=8.5cm,height=5cm]{tlbmisses.png}
-  \caption{TLB misses of search for MUMs of minimum length 20[bp] in multi-core architectures with OpenMP.}
-  \label{fig:tlb}
- \end{figure}
- To improve the performance of our approach the following proposals may be used:
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d11.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d12.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d14.pdf}}
+  \qquad
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d21.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d22.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d24.pdf}}
+  \qquad
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d31.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d32.pdf}}
+  \subfloat[][]{\includegraphics[width=2.1in]{l1d34.pdf}}
+  \caption{Number of lines that come into the cache for OpenMP scheduling and different chunk scheduling.}
+  \label{fig:l1d}
+\end{figure}
+In order to reduce the cache misses and indeed improve the performance of our approach the following proposals may be used:
 \begin{itemize}
-  \item Prefetching: this may work because we know in advance what information from suffix tree and query sequence we need in every traversal of suffix tree. If we can allow the use of some part of suffix tree be stored and read in cache by several threads which request that substree. However, because we use suffix links to jump to another part of suffix tree so that a new part of suffix tree would have to be read.
+  \item Prefetching: this may work because we know in advance what information from suffix tree and query sequence we need in every traversal of suffix tree. If we can allow the use of some part of suffix tree be stored and read in cache by several threads which request that substree. 
   \item Explicit cache management: this is a obvious consequence of previous bullet because we may need to store part of the suffix tree in some cache-level of processor.
-  \item An improved traversal of suffix tree would improve the overall performance of search of MUMs. So far, one thread traverses the suffix tree if we add multithread traversal of suffix tree to find next edge in the match path we would reduce the execution time.
+  \item Figure out how much total data will be accessed/required to find next MUM.
 \end{itemize}
 %% \appendix
 
-\section{Conclusions}
-This paper presents an evaluation of performance to search MUMs of a query and reference genome in multi-core architectures with OpenMP. The search of MUMs is performed in a suffix tree and the list of MUMs can help in the process of whole genome alignment. The results shows that the heaviest section of searching MUMs in a suffix tree is improved with the use of a multi-core architecture. Although we got a near linear speedup with only one thread per core, there is more improvements to do. These improvements involve a better use of resources (memory and CPU) when we have more than thread per core. In spite of suffix tree is a good data structure to string matching, when is used in multi-core architectures it shows a slow performance (high CPI) to search MUMs.\\
-From the results obtained we conclude that bottleneck is in our data structure: suffix tree. We require to handle a strategy to traverse a suffix tree in multi-core architectures, this approach only queries the suffix tree for one string at a time. However, the traversal of suffix tree is still done in a serial way.
+%% \section{}
 %% \label{}
 
-\section*{Acknowledgements}
-This work was supported by grant from Ejecuci\'on eficiente de aplicaciones multidisciplinares: nuevos desaf\'ios en la era multi/many core, with reference TIN2011-28689-C02-01.
 %% References
 %%
 %% Following citation commands can be used in the body text:

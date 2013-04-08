@@ -125,10 +125,13 @@ Once we have defined the resources used to index a Reference genome, we need to 
   \SetKwInOut{Output}{output}
   \SetKwData{R}{R}
   \SetKwData{Q}{Q}
+  \SetKwData{ST}{ST}
   \SetKwData{Len}{L}
   \SetKwData{Length}{length}
   \SetKwData{Leaf}{leaf}
   \SetKwData{MUMs}{MUMs}
+  \SetKwData{MUMcands}{MUMcands}
+  \SetKwFunction{buildST}{buildST}
   \SetKwFunction{TraverseSuffixTree}{TraverseSuffixTree}
   \SetKwFunction{isLeafNode}{isLeafNode}
   \SetKwFunction{saveMUMcand}{saveMUMcand}
@@ -136,16 +139,18 @@ Once we have defined the resources used to index a Reference genome, we need to 
   \Input{\R, \Q, \Len}
   \Output{List of \MUMs of \Length$\geq$ \Len, with start position in \R and \Q and \Length}
   \Begin{
-  Build suffix tree for $R$ genome\;
+  \ST$\leftarrow$ \buildST{\R}\;
   \ForEach{position $i\in Q$}{
-  \Length$\leftarrow$ \TraverseSuffixTree{Q[i]}\;
-    \If{isLeafNode{Q[i]}}{
-        \If{$R[\Leaf-1]\neq Q[i-1]$ and $\Length\geq L$}{
-            \saveMUMcand{$R{\Leaf}$,$i$,\Length}\;
+  \Length$\leftarrow$ \TraverseSuffixTree{$\Q[i]$,\ST}\;
+    \If{\isLeafNode{$\Q[i]$}}{
+    \tcc{Leaf saves the position of a suffix in ST.}\;
+        \If{$\R[\Leaf-1]\neq \Q[i-1]$ and $\Length\geq L$}{
+            \MUMcands$\leftarrow$ \saveMUMcand{$\R_{\Leaf}$,$i$,\Length}\;
         }
     }
   }
-  \MUMs$\leftarrow$ \cleanMUMcand
+  \tcc{Get unique MUMs from list of MUM-candidates.}\;
+  \MUMs$\leftarrow$ \cleanMUMcand{\MUMcands}
   }
   \caption{Search for MUMs in a Suffix Tree.}
 \end{algorithm}

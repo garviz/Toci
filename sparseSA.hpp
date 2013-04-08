@@ -61,11 +61,12 @@ struct match_t {
 
 // depth : [start...end] 
 struct interval_t {
-  interval_t() { start = 1; end = 0; depth = -1; }
-  interval_t(long s, long e, long d) { start = s; end = e; depth = d; }
+  interval_t() { start = 1; end = 0; depth = -1; lb = start; rb = end; }
+  interval_t(long s, long e, long d, long l, long r) { start = s; end = e; depth = d; lb = l; rb = r; }
   void reset(long e) { start = 0; end = e; depth = 0; }
-  long depth, start, end;
+  long depth, start, end, lb, rb;
   long size() { return end - start + 1; }
+  bool inside() { if (lb <= start && start <= rb && lb <= end && end <= rb) return true; else return false; }
 };
 
 struct sparseSA {
@@ -144,7 +145,6 @@ struct sparseSA {
     while(LCP[start] >= link.depth) { 
       exp++; 
       if(exp >= thresh) {
-          //cout << __func__ << ":false\n";
           return false;
       }
       start--; 
@@ -152,7 +152,6 @@ struct sparseSA {
     while(end < NKm1 && LCP[end+1] >= link.depth) { 
       exp++; 
       if(exp >= thresh) {
-          //cout << __func__ << ":false\n";
           return false;
       }
       end++; 

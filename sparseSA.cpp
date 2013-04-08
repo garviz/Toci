@@ -9,6 +9,10 @@
 #include <parallel/algorithm>
 #include <papi.h>
 #include <omp.h>
+#include <vector>
+#include <map>
+#include <string>
+#include <sstream>
 
 #include "vector/vectorclass.h"
 #include "sparseSA.hpp"
@@ -326,10 +330,6 @@ void sparseSA::traverse_faster(const string &P,const long prefix, interval_t &cu
     register unsigned long sa_cS;
     register unsigned long lengthP = P.length();
     LCPCHILD(curLCP,cur.start,cur.end);
-    /*if (cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
-            curLCP = LCP[CHILD[cur.end]];
-    else
-        curLCP = LCP[CHILD[cur.start]];*/
     if(intervalFound && cur.size() > 1 && curLCP == cur.depth)
         intervalFound = top_down_child(P[c], cur);
     else if(intervalFound)
@@ -368,10 +368,13 @@ void sparseSA::traverse_faster(const string &P,const long prefix, interval_t &cu
 bool sparseSA::top_down_child(char c, interval_t &cur){
     long left = cur.start;
     long right = CHILD[cur.end];
+    if (left >= cur.lb && right <= cur.rb)
+    {
     if(cur.start >= right || right > cur.end)
         right = CHILD[cur.start];
-    if(R[SA[cur.start]+cur.depth] == c){
+    if (R[SA[cur.start]+cur.depth] == c){
         cur.end = right-1;
+        cout << __LINE__ << endl;
         return true;
     }
     left = right;
@@ -379,8 +382,9 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
     //while has next L-index
     while(rightCHILD > right && LCP[right] == LCP[rightCHILD]){
         right = rightCHILD;
-        if(R[SA[left]+cur.depth] == c){
+        if(R[SA[left]+cur .depth] == c){
             cur.start = left; cur.end = right - 1;
+        cout << __LINE__ << endl;
             return true;
         }
         left = right;
@@ -389,7 +393,9 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
     //last interval
     if(R[SA[left]+cur.depth] == c){
             cur.start = left;
+        cout << __LINE__ << endl;
             return true;
+    }
     }
     return false;
 }
@@ -466,8 +472,8 @@ void sparseSA::findMEM(long k, string &P, vector<match_t> &matches, int min_len,
   if(k < 0 || k >= K) { cerr << "Invalid k." << endl; return; }
   // Offset all intervals at different start points.
   long prefix = k;
-  interval_t mli(0,N/K-1,0); // min length interval
-  interval_t xmi(0,N/K-1,0); // max match interval
+  interval_t mli(0,N/K-1,0,0,N/K-1); // min length interval
+  interval_t xmi(0,N/K-1,0,0,N/K-1); // max match interval
   
   // Right-most match used to terminate search.
   int min_lenK = min_len - (sparseMult*K-1);
@@ -643,15 +649,24 @@ void sparseSA::print_match(string meta, vector<match_t> &buf, bool rc) {
 void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& currentCount, bool print) {
   double start,finish;
   start = omp_get_wtime();
+  //stringstream key;
   memCount = 0;
-  interval_t cur(0, N-1, 0);
+  /*for (long i=0; i<N; i++) {
+      key << R[SA[i]] << R[SA[i]+1];
+      if (key.str().compare("AA"))
+              cout << i << endl;
+  }*/
+  long lborder = (N-1)/4, rborder = (N-1)/2;
+  interval_t cur(lborder, rborder, 0, lborder, rborder);
   long prefix = P.length()/chunks*chunk;
   const long end = (long) (P.length()/chunks*(chunk+1));
-    //__builtin_prefetch(LCP.vec.data()); 
+  __builtin_prefetch(LCP.vec.data()); 
   while(prefix < end) {
     // Traverse SA top down until mismatch or full string is matched.
-    traverse_faster(P, prefix, cur, P.length());
-    if(cur.depth <= 1) { cur.depth = 0; cur.start = 0; cur.end = N-1; prefix++; continue; }
+      /*if (cur.inside())
+          cout << "sigue\n" ;*/
+    traverse_faster(P, prefix, cur, end);
+    if(cur.depth <= 1) { cur.depth = 0; cur.start = lborder; cur.end = rborder; prefix++; continue; }
     if(cur.size() == 1 && cur.depth >= min_len) {//unique match 
       if(is_leftmaximal(P, prefix, SA[cur.start])) {
 	    // Yes, it's a MAM.
@@ -665,7 +680,7 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
       cur.start = ISA[SA[cur.start] + 1];  
       cur.end = ISA[SA[cur.end] + 1]; 
       prefix++;
-      if( cur.depth == 0 || expand_link(cur) == false ) { cur.depth = 0; cur.start = 0; cur.end = N-1; break; }
+      if( cur.depth == 0 || expand_link(cur) == false ) { cur.depth = 0; cur.start = lborder; cur.end = rborder; break; }
     } while(cur.depth > 0 && cur.size() == 1);
   }
   currentCount = memCount;
