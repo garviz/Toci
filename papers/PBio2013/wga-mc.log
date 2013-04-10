@@ -1,40 +1,40 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  8 APR 2013 11:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=latex 2009.11.7)  10 APR 2013 02:01
 entering extended mode
  %&-line parsing enabled.
 **wga-mc.tex
 (./wga-mc.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+yphenation, german-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, ku
+rmanji, latin, latvian, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, po
+lish, portuguese, romanian, russian, sanskrit, serbian, slovak, slovenian, span
+ish, swedish, turkish, ukenglish, ukrainian, uppersorbian, welsh, loaded.
 (./acm_proc_article-sp.cls
-(/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/dvips.def
 File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen102
@@ -43,10 +43,10 @@ File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 \epsfxsize=\dimen104
 \epsfysize=\dimen105
 )
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks15
 \symAMSa=\mathgroup4
@@ -54,24 +54,24 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip41
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen106
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count79
@@ -139,7 +139,7 @@ Excerpts were taken from (Journal Style) 'esub2acm.cls'.
 \titleboxnoteflag=\count99
 Document Class: acm_proc_article-sp 2009/04/22 - V3.2SP - based on esub2acm.sty
  <23 April 96>
-(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
@@ -171,26 +171,26 @@ LaTeX Info: Redefining \cite on input line 1236.
 \acmcopyr=\toks33
 \boilerplate=\toks34
 \copyrightetc=\toks35
-(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )
 LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
+(/usr/local/texlive/2009/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 )))
-(/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2005/10/04 v3.9 algorithms environments
 \c@AlgoLine=\count108
 
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
 ********************************************************
@@ -230,113 +230,113 @@ l.1617 \fi
 ) (./wga-mc.aux)
 \openout1 = `wga-mc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Try loading font information for U+msa on input line 64.
- (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Try loading font information for U+msa on input line 65.
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 64.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Try loading font information for U+msb on input line 65.
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 64.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 65.
 
-(/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Overfull \hbox (26.31042pt too wide) in paragraph at lines 64--64
- []\eaddfnt juliocesar.garcia@caos.uab.es| 
- []
-
-
-Overfull \hbox (3.75055pt too wide) in paragraph at lines 64--64
+Overfull \hbox (3.75055pt too wide) in paragraph at lines 65--65
  []\eaddfnt juancarlos.moure@uab.es| 
  []
 
 
-Overfull \hbox (30.46236pt too wide) in paragraph at lines 64--64
+Overfull \hbox (30.46236pt too wide) in paragraph at lines 65--65
  []\eaddfnt antonio.espinosa@caos.uab.es| 
  []
 
 
-Overfull \hbox (10.92651pt too wide) in paragraph at lines 64--64
+Overfull \hbox (10.92651pt too wide) in paragraph at lines 65--65
  []\eaddfnt porfidio.hernandez@uab.es| 
  []
 
 
-Overfull \hbox (1.26794pt too wide) in paragraph at lines 72--73
-\T1/aer/m/n/9 H.4 [\T1/aer/bx/n/9 Information Sys-tems Ap-pli-ca-tions\T1/aer/m
-/n/9 ]: Mis-cel-la-neous;
+Overfull \hbox (4.72327pt too wide) in paragraph at lines 70--75
+\T1/aer/m/it/9 ity mea-sures, per-for-mance mea-sures\T1/aer/m/n/9 ; E.1 [\T1/a
+er/bx/n/9 Data Struc-tures\T1/aer/m/n/9 ]:
  []
 
 \c@definition=\count111
 
-Overfull \hbox (1.75331pt too wide) in paragraph at lines 79--83
-\T1/aer/m/n/9 One very suc-cess-ful ap-proach to per-form whole genome align-
+Overfull \hbox (2.76128pt too wide) in paragraph at lines 81--85
+\T1/aer/m/n/9 sub-strings oc-cur-ring in two sim-i-lar genomes. Max-i-mal uniqu
+e
  []
 
 [1
 
 
 ]
-Missing character: There is no â in font cmr9!
-Missing character: There is no ˆ in font cmr9!
-Missing character: There is no ’ in font cmr9!
-Missing character: There is no â in font cmr9!
-Missing character: There is no ˆ in font cmr9!
-Missing character: There is no ’ in font cmr9!
-
-Overfull \hbox (5.30826pt too wide) in paragraph at lines 116--118
-[]\T1/aer/m/n/9 CHILD[i].nextlIndex = $\OML/cmm/m/it/9 min\OMS/cmsy/m/n/9 f\OML
-/cmm/m/it/9 q \OMS/cmsy/m/n/9 2 \OT1/cmr/m/n/9 [\OML/cmm/m/it/9 i \OT1/cmr/m/n/
-9 + 1 [] \OML/cmm/m/it/9 n\OT1/cmr/m/n/9 ]\OMS/cmsy/m/n/9 j\OML/cmm/m/it/9 LCP\
-OT1/cmr/m/n/9 [\OML/cmm/m/it/9 q\OT1/cmr/m/n/9 ] = \OML/cmm/m/it/9 LCP\OT1/cmr/
-m/n/9 [\OML/cmm/m/it/9 i\OT1/cmr/m/n/9 ][] 
+Overfull \hbox (5.30826pt too wide) in paragraph at lines 109--115
+\T1/aer/m/n/9 CHILD[i].nextlIndex = $\OML/cmm/m/it/9 min\OMS/cmsy/m/n/9 f\OML/c
+mm/m/it/9 q \OMS/cmsy/m/n/9 2 \OT1/cmr/m/n/9 [\OML/cmm/m/it/9 i \OT1/cmr/m/n/9 
++ 1 [] \OML/cmm/m/it/9 n\OT1/cmr/m/n/9 ]\OMS/cmsy/m/n/9 j\OML/cmm/m/it/9 LCP\OT
+1/cmr/m/n/9 [\OML/cmm/m/it/9 q\OT1/cmr/m/n/9 ] = \OML/cmm/m/it/9 LCP\OT1/cmr/m/
+n/9 [\OML/cmm/m/it/9 i\OT1/cmr/m/n/9 ][] 
  []
 
-LaTeX Font Info:    Try loading font information for T1+aess on input line 139.
+File: child.eps Graphic file (type eps)
+<child.eps>
+Overfull \hbox (4.86908pt too wide) in paragraph at lines 126--127
+ [][] 
+ []
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aess.fd
+
+Underfull \hbox (badness 3396) in paragraph at lines 127--127
+[]\T1/aer/bx/n/9 Figure 1: En-hanced Suf-fix Ar-ray for string
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+\T1/aer/bx/n/9 R=acaaacatat$. Child in-ter-val 1-[0..5]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+\T1/aer/bx/n/9 where CHILD[6].up=2, CHILD[2].down=1,
+ []
+
+LaTeX Font Info:    Try loading font information for T1+aess on input line 150.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
 )
-LaTeX Font Info:    Try loading font information for T1+aett on input line 154.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 165.
 
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+(/usr/local/texlive/2009/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 File: Whole-MUM.eps Graphic file (type eps)
  <Whole-MUM.eps>
 File: Phases.ps Graphic file (type eps)
- <Phases.ps>
-Overfull \hbox (2.85168pt too wide) in paragraph at lines 207--227
-\T1/aer/m/n/9 There are two re-sources to im-prove with this ap-proach: Mem-
+
+<Phases.ps>
+Overfull \hbox (4.20192pt too wide) in paragraph at lines 218--238
+\T1/aer/m/n/9 The search for MUMs be-tween a Ref-er-ence and Query genome
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 1314) has occurred while \output is active []
-
- [3]
-Underfull \hbox (badness 10000) in paragraph at lines 252--255
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 239--254
 
  []
 
@@ -344,6 +344,10 @@ File: construction.eps Graphic file (type eps)
 <construction.eps>
 File: speedup-MUM.eps Graphic file (type eps)
  <speedup-MUM.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4]
 File: ecoli-MUM.eps Graphic file (type eps)
  <ecoli-MUM.eps>
 File: ecoli-RAM.eps Graphic file (type eps)
@@ -351,28 +355,42 @@ File: ecoli-RAM.eps Graphic file (type eps)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: fly-MUM.eps Graphic file (type eps)
+<fly-MUM.eps>
+Overfull \hbox (1.80583pt too wide) in paragraph at lines 299--300
+ [][] 
+ []
+
+File: fly-RAM.eps Graphic file (type eps)
+<fly-RAM.eps>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4]
-File: fly-MUM.eps Graphic file (type eps)
- <fly-MUM.eps>
-File: fly-RAM.eps Graphic file (type eps)
- <fly-RAM.eps>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: chicken-MUM.eps Graphic file (type eps)
 <chicken-MUM.eps>
+Overfull \hbox (1.80583pt too wide) in paragraph at lines 314--315
+ [][] 
+ []
+
 File: chicken-RAM.eps Graphic file (type eps)
- <chicken-RAM.eps> [5] (./wga-mc.bbl) [6] (./wga-mc.aux) ) 
+<chicken-RAM.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5] (./wga-mc.bbl) [6] (./wga-mc.aux) ) 
 Here is how much of TeX's memory you used:
- 2986 strings out of 493849
- 34350 string characters out of 1152846
- 127488 words of memory out of 3000000
- 6218 multiletter control sequences out of 15000+50000
+ 2988 strings out of 493849
+ 34960 string characters out of 3149230
+ 128492 words of memory out of 3000000
+ 6220 multiletter control sequences out of 15000+200000
  53803 words of font info for 61 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,23n,28p,78908b,546s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,23n,28p,78898b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on wga-mc.dvi (6 pages, 36384 bytes).
+Output written on wga-mc.dvi (6 pages, 37576 bytes).
