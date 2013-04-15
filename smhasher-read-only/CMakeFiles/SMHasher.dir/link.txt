@@ -1,0 +1,1 @@
+/usr/local/bin/c++   -O3 -DNDEBUG   CMakeFiles/SMHasher.dir/main.o  -o SMHasher -rdynamic libSMHasherSupport.a 

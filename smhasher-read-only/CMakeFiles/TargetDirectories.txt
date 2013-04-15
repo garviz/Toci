@@ -1,0 +1,2 @@
+/media/garviz/Toci/smhasher-read-only/CMakeFiles/SMHasher.dir
+/media/garviz/Toci/smhasher-read-only/CMakeFiles/SMHasherSupport.dir

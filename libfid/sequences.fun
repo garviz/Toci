@@ -1,0 +1,16 @@
+TO_UINT
+WSIZECHECK
+fid_UINTSIZE
+Parserfuns
+Appenddesc
+Nextsequence
+fid_Sequenceiterfun
+sequences_realize
+next_sequence
+parse_fasta
+read_uniprot_identifier
+read_uniprot_descriptions
+parse_uniprot
+arrays_to_sequences
+parse_sequences
+parse_from_mem_to_mem

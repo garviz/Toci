@@ -1,0 +1,125 @@
+#ifdef fid_sequences_offset_to_index
+#undef fid_sequences_offset_to_index
+#endif /* fid_sequences_offset_to_index */
+#define fid_sequences_offset_to_index fid_sequences_offset_to_index_32
+
+#ifdef fid_sequences_index_to_boundaries
+#undef fid_sequences_index_to_boundaries
+#endif /* fid_sequences_index_to_boundaries */
+#define fid_sequences_index_to_boundaries fid_sequences_index_to_boundaries_32
+
+#ifdef fid_sequences_offset_to_boundaries
+#undef fid_sequences_offset_to_boundaries
+#endif /* fid_sequences_offset_to_boundaries */
+#define fid_sequences_offset_to_boundaries fid_sequences_offset_to_boundaries_32
+
+#ifdef fid_sequences_iterate_range
+#undef fid_sequences_iterate_range
+#endif /* fid_sequences_iterate_range */
+#define fid_sequences_iterate_range fid_sequences_iterate_range_32
+
+#ifdef fid_sequences_iterate
+#undef fid_sequences_iterate
+#endif /* fid_sequences_iterate */
+#define fid_sequences_iterate fid_sequences_iterate_32
+
+#ifdef fid_sequences_dump_range
+#undef fid_sequences_dump_range
+#endif /* fid_sequences_dump_range */
+#define fid_sequences_dump_range fid_sequences_dump_range_32
+
+#ifdef Appenddesc
+#undef Appenddesc
+#endif /* Appenddesc */
+#define Appenddesc Appenddesc_32
+
+#ifdef Nextsequence
+#undef Nextsequence
+#endif /* Nextsequence */
+#define Nextsequence Nextsequence_32
+
+#ifdef Parserfuns
+#undef Parserfuns
+#endif /* Parserfuns */
+#define Parserfuns Parserfuns_32
+
+#ifdef TO_UINT
+#undef TO_UINT
+#endif /* TO_UINT */
+#define TO_UINT TO_UINT_32
+
+#ifdef UINT
+#undef UINT
+#endif /* UINT */
+#define UINT fid_Uint32
+
+#ifdef UINTFMT
+#undef UINTFMT
+#endif /* UINTFMT */
+#define UINTFMT fid_U32FMT
+
+#ifdef VU
+#undef VU
+#endif /* VU */
+#define VU v_uint32
+
+#ifdef WSIZECHECK
+#undef WSIZECHECK
+#endif /* WSIZECHECK */
+#define WSIZECHECK WSIZECHECK_32
+
+#ifdef arrays_to_sequences
+#undef arrays_to_sequences
+#endif /* arrays_to_sequences */
+#define arrays_to_sequences arrays_to_sequences_32
+
+#ifdef fid_Sequenceiterfun
+#undef fid_Sequenceiterfun
+#endif /* fid_Sequenceiterfun */
+#define fid_Sequenceiterfun fid_Sequenceiterfun_32
+
+#ifdef fid_UINTSIZE
+#undef fid_UINTSIZE
+#endif /* fid_UINTSIZE */
+#define fid_UINTSIZE fid_UINTSIZE_32
+
+#ifdef next_sequence
+#undef next_sequence
+#endif /* next_sequence */
+#define next_sequence next_sequence_32
+
+#ifdef parse_fasta
+#undef parse_fasta
+#endif /* parse_fasta */
+#define parse_fasta parse_fasta_32
+
+#ifdef parse_from_mem_to_mem
+#undef parse_from_mem_to_mem
+#endif /* parse_from_mem_to_mem */
+#define parse_from_mem_to_mem parse_from_mem_to_mem_32
+
+#ifdef parse_sequences
+#undef parse_sequences
+#endif /* parse_sequences */
+#define parse_sequences parse_sequences_32
+
+#ifdef parse_uniprot
+#undef parse_uniprot
+#endif /* parse_uniprot */
+#define parse_uniprot parse_uniprot_32
+
+#ifdef read_uniprot_descriptions
+#undef read_uniprot_descriptions
+#endif /* read_uniprot_descriptions */
+#define read_uniprot_descriptions read_uniprot_descriptions_32
+
+#ifdef read_uniprot_identifier
+#undef read_uniprot_identifier
+#endif /* read_uniprot_identifier */
+#define read_uniprot_identifier read_uniprot_identifier_32
+
+#ifdef sequences_realize
+#undef sequences_realize
+#endif /* sequences_realize */
+#define sequences_realize sequences_realize_32
+

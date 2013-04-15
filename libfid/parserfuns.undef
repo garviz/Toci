@@ -1,0 +1,12 @@
+#ifdef append_desc_to_dynarrays
+#undef append_desc_to_dynarrays
+#endif /* append_desc_to_dynarrays */
+#ifdef append_desc_to_files
+#undef append_desc_to_files
+#endif /* append_desc_to_files */
+#ifdef next_sequence_to_dynarrays
+#undef next_sequence_to_dynarrays
+#endif /* next_sequence_to_dynarrays */
+#ifdef next_sequence_to_files
+#undef next_sequence_to_files
+#endif /* next_sequence_to_files */

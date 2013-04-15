@@ -70,7 +70,6 @@ int main(int argc, char *argv[])
         ss << line;
      }
     qry.close();
-    //ss << '$';
     const std::string& tmp = ss.str();
     sauchar_t *T = (sauchar_t*) tmp.c_str();
     sauchar_t *bwttab;

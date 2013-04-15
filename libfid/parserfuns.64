@@ -1,0 +1,20 @@
+#ifdef append_desc_to_dynarrays
+#undef append_desc_to_dynarrays
+#endif /* append_desc_to_dynarrays */
+#define append_desc_to_dynarrays append_desc_to_dynarrays_64
+
+#ifdef append_desc_to_files
+#undef append_desc_to_files
+#endif /* append_desc_to_files */
+#define append_desc_to_files append_desc_to_files_64
+
+#ifdef next_sequence_to_dynarrays
+#undef next_sequence_to_dynarrays
+#endif /* next_sequence_to_dynarrays */
+#define next_sequence_to_dynarrays next_sequence_to_dynarrays_64
+
+#ifdef next_sequence_to_files
+#undef next_sequence_to_files
+#endif /* next_sequence_to_files */
+#define next_sequence_to_files next_sequence_to_files_64
+

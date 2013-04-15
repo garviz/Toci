@@ -1,0 +1,75 @@
+#ifdef fid_sequences_offset_to_index
+#undef fid_sequences_offset_to_index
+#endif /* fid_sequences_offset_to_index */
+#ifdef fid_sequences_index_to_boundaries
+#undef fid_sequences_index_to_boundaries
+#endif /* fid_sequences_index_to_boundaries */
+#ifdef fid_sequences_offset_to_boundaries
+#undef fid_sequences_offset_to_boundaries
+#endif /* fid_sequences_offset_to_boundaries */
+#ifdef fid_sequences_iterate_range
+#undef fid_sequences_iterate_range
+#endif /* fid_sequences_iterate_range */
+#ifdef fid_sequences_iterate
+#undef fid_sequences_iterate
+#endif /* fid_sequences_iterate */
+#ifdef fid_sequences_dump_range
+#undef fid_sequences_dump_range
+#endif /* fid_sequences_dump_range */
+#ifdef Appenddesc
+#undef Appenddesc
+#endif /* Appenddesc */
+#ifdef Nextsequence
+#undef Nextsequence
+#endif /* Nextsequence */
+#ifdef Parserfuns
+#undef Parserfuns
+#endif /* Parserfuns */
+#ifdef TO_UINT
+#undef TO_UINT
+#endif /* TO_UINT */
+#ifdef UINT
+#undef UINT
+#endif /* UINT */
+#ifdef UINTFMT
+#undef UINTFMT
+#endif /* UINTFMT */
+#ifdef VU
+#undef VU
+#endif /* VU */
+#ifdef WSIZECHECK
+#undef WSIZECHECK
+#endif /* WSIZECHECK */
+#ifdef arrays_to_sequences
+#undef arrays_to_sequences
+#endif /* arrays_to_sequences */
+#ifdef fid_Sequenceiterfun
+#undef fid_Sequenceiterfun
+#endif /* fid_Sequenceiterfun */
+#ifdef fid_UINTSIZE
+#undef fid_UINTSIZE
+#endif /* fid_UINTSIZE */
+#ifdef next_sequence
+#undef next_sequence
+#endif /* next_sequence */
+#ifdef parse_fasta
+#undef parse_fasta
+#endif /* parse_fasta */
+#ifdef parse_from_mem_to_mem
+#undef parse_from_mem_to_mem
+#endif /* parse_from_mem_to_mem */
+#ifdef parse_sequences
+#undef parse_sequences
+#endif /* parse_sequences */
+#ifdef parse_uniprot
+#undef parse_uniprot
+#endif /* parse_uniprot */
+#ifdef read_uniprot_descriptions
+#undef read_uniprot_descriptions
+#endif /* read_uniprot_descriptions */
+#ifdef read_uniprot_identifier
+#undef read_uniprot_identifier
+#endif /* read_uniprot_identifier */
+#ifdef sequences_realize
+#undef sequences_realize
+#endif /* sequences_realize */

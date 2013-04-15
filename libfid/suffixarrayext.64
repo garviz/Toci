@@ -1,0 +1,25 @@
+#ifdef UINT
+#undef UINT
+#endif /* UINT */
+#define UINT fid_Uint64
+
+#ifdef UINTFMT
+#undef UINTFMT
+#endif /* UINTFMT */
+#define UINTFMT fid_U64FMT
+
+#ifdef VU
+#undef VU
+#endif /* VU */
+#define VU v_uint64
+
+#ifdef sanity_checks
+#undef sanity_checks
+#endif /* sanity_checks */
+#define sanity_checks sanity_checks_64
+
+#ifdef init_from_esa
+#undef init_from_esa
+#endif /* init_from_esa */
+#define init_from_esa init_from_esa_64
+

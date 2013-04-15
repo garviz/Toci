@@ -1,0 +1,102 @@
+#ifdef fid_suffixarray_traverse
+#undef fid_suffixarray_traverse
+#endif /* fid_suffixarray_traverse */
+#ifdef fid_suffixarray_get_intervals
+#undef fid_suffixarray_get_intervals
+#endif /* fid_suffixarray_get_intervals */
+#ifdef fid_suffixarray_find_embedded_interval
+#undef fid_suffixarray_find_embedded_interval
+#endif /* fid_suffixarray_find_embedded_interval */
+#ifdef fid_suffixarray_extend_interval
+#undef fid_suffixarray_extend_interval
+#endif /* fid_suffixarray_extend_interval */
+#ifdef fid_suffixarray_find_interval
+#undef fid_suffixarray_find_interval
+#endif /* fid_suffixarray_find_interval */
+#ifdef fid_suffixarray_find_large_lcp
+#undef fid_suffixarray_find_large_lcp
+#endif /* fid_suffixarray_find_large_lcp */
+#ifdef fid_suffixarray_suffix_length
+#undef fid_suffixarray_suffix_length
+#endif /* fid_suffixarray_suffix_length */
+#ifdef fid_suffixarray_compute_distribution
+#undef fid_suffixarray_compute_distribution
+#endif /* fid_suffixarray_compute_distribution */
+#ifdef fid_suffixarray_dump_intervals
+#undef fid_suffixarray_dump_intervals
+#endif /* fid_suffixarray_dump_intervals */
+#ifdef fid_suffixarray_dump_suffix
+#undef fid_suffixarray_dump_suffix
+#endif /* fid_suffixarray_dump_suffix */
+#ifdef fid_suffixarray_print
+#undef fid_suffixarray_print
+#endif /* fid_suffixarray_print */
+#ifdef fid_suffixinterval_lcpvalue
+#undef fid_suffixinterval_lcpvalue
+#endif /* fid_suffixinterval_lcpvalue */
+#ifdef fid_suffixinterval_to_lcpinterval
+#undef fid_suffixinterval_to_lcpinterval
+#endif /* fid_suffixinterval_to_lcpinterval */
+#ifdef fid_suffixinterval_find_right
+#undef fid_suffixinterval_find_right
+#endif /* fid_suffixinterval_find_right */
+#ifdef fid_suffixinterval_homepos
+#undef fid_suffixinterval_homepos
+#endif /* fid_suffixinterval_homepos */
+#ifdef fid_suffixinterval_dump
+#undef fid_suffixinterval_dump
+#endif /* fid_suffixinterval_dump */
+#ifdef Largelcpentry
+#undef Largelcpentry
+#endif /* Largelcpentry */
+#ifdef Stack
+#undef Stack
+#endif /* Stack */
+#ifdef Stackelem
+#undef Stackelem
+#endif /* Stackelem */
+#ifdef TO_UINT
+#undef TO_UINT
+#endif /* TO_UINT */
+#ifdef UINT
+#undef UINT
+#endif /* UINT */
+#ifdef UINTFMT
+#undef UINTFMT
+#endif /* UINTFMT */
+#ifdef VU
+#undef VU
+#endif /* VU */
+#ifdef binary_search
+#undef binary_search
+#endif /* binary_search */
+#ifdef check_interval
+#undef check_interval
+#endif /* check_interval */
+#ifdef check_intervals
+#undef check_intervals
+#endif /* check_intervals */
+#ifdef fid_Esatraversecallback
+#undef fid_Esatraversecallback
+#endif /* fid_Esatraversecallback */
+#ifdef fid_LCP
+#undef fid_LCP
+#endif /* fid_LCP */
+#ifdef fid_SUFFIXINTERVAL_SINGLETON
+#undef fid_SUFFIXINTERVAL_SINGLETON
+#endif /* fid_SUFFIXINTERVAL_SINGLETON */
+#ifdef fid_Suffixinterval
+#undef fid_Suffixinterval
+#endif /* fid_Suffixinterval */
+#ifdef fid_suffixinterval_init_root
+#undef fid_suffixinterval_init_root
+#endif /* fid_suffixinterval_init_root */
+#ifdef init_stack
+#undef init_stack
+#endif /* init_stack */
+#ifdef suffixarray_dump
+#undef suffixarray_dump
+#endif /* suffixarray_dump */
+#ifdef suffixarray_realize
+#undef suffixarray_realize
+#endif /* suffixarray_realize */

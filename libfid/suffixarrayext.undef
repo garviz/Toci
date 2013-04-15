@@ -1,0 +1,15 @@
+#ifdef UINT
+#undef UINT
+#endif /* UINT */
+#ifdef UINTFMT
+#undef UINTFMT
+#endif /* UINTFMT */
+#ifdef VU
+#undef VU
+#endif /* VU */
+#ifdef sanity_checks
+#undef sanity_checks
+#endif /* sanity_checks */
+#ifdef init_from_esa
+#undef init_from_esa
+#endif /* init_from_esa */

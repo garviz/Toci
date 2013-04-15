@@ -1,0 +1,99 @@
+#ifdef fid_sequences_offset_to_index
+#undef fid_sequences_offset_to_index
+#endif /* fid_sequences_offset_to_index */
+#ifdef fid_sequences_index_to_boundaries
+#undef fid_sequences_index_to_boundaries
+#endif /* fid_sequences_index_to_boundaries */
+#ifdef fid_sequences_offset_to_boundaries
+#undef fid_sequences_offset_to_boundaries
+#endif /* fid_sequences_offset_to_boundaries */
+#ifdef fid_sequences_iterate_range
+#undef fid_sequences_iterate_range
+#endif /* fid_sequences_iterate_range */
+#ifdef fid_sequences_iterate
+#undef fid_sequences_iterate
+#endif /* fid_sequences_iterate */
+#ifdef fid_sequences_dump_range
+#undef fid_sequences_dump_range
+#endif /* fid_sequences_dump_range */
+#ifdef fid_Sequenceiterfun
+#undef fid_Sequenceiterfun
+#endif /* fid_Sequenceiterfun */
+#ifdef fid_SEQUENCE_DESCRIPTION
+#undef fid_SEQUENCE_DESCRIPTION
+#endif /* fid_SEQUENCE_DESCRIPTION */
+#ifdef fid_SEQUENCE_DESCRIPTION_LENGTH
+#undef fid_SEQUENCE_DESCRIPTION_LENGTH
+#endif /* fid_SEQUENCE_DESCRIPTION_LENGTH */
+#ifdef fid_suffixarray_traverse
+#undef fid_suffixarray_traverse
+#endif /* fid_suffixarray_traverse */
+#ifdef fid_suffixarray_get_intervals
+#undef fid_suffixarray_get_intervals
+#endif /* fid_suffixarray_get_intervals */
+#ifdef fid_suffixarray_find_embedded_interval
+#undef fid_suffixarray_find_embedded_interval
+#endif /* fid_suffixarray_find_embedded_interval */
+#ifdef fid_suffixarray_extend_interval
+#undef fid_suffixarray_extend_interval
+#endif /* fid_suffixarray_extend_interval */
+#ifdef fid_suffixarray_find_interval
+#undef fid_suffixarray_find_interval
+#endif /* fid_suffixarray_find_interval */
+#ifdef fid_suffixarray_find_large_lcp
+#undef fid_suffixarray_find_large_lcp
+#endif /* fid_suffixarray_find_large_lcp */
+#ifdef fid_suffixarray_suffix_length
+#undef fid_suffixarray_suffix_length
+#endif /* fid_suffixarray_suffix_length */
+#ifdef fid_suffixarray_compute_distribution
+#undef fid_suffixarray_compute_distribution
+#endif /* fid_suffixarray_compute_distribution */
+#ifdef fid_suffixarray_dump_intervals
+#undef fid_suffixarray_dump_intervals
+#endif /* fid_suffixarray_dump_intervals */
+#ifdef fid_suffixarray_dump_suffix
+#undef fid_suffixarray_dump_suffix
+#endif /* fid_suffixarray_dump_suffix */
+#ifdef fid_suffixarray_print
+#undef fid_suffixarray_print
+#endif /* fid_suffixarray_print */
+#ifdef fid_suffixinterval_lcpvalue
+#undef fid_suffixinterval_lcpvalue
+#endif /* fid_suffixinterval_lcpvalue */
+#ifdef fid_suffixinterval_to_lcpinterval
+#undef fid_suffixinterval_to_lcpinterval
+#endif /* fid_suffixinterval_to_lcpinterval */
+#ifdef fid_suffixinterval_find_right
+#undef fid_suffixinterval_find_right
+#endif /* fid_suffixinterval_find_right */
+#ifdef fid_suffixinterval_homepos
+#undef fid_suffixinterval_homepos
+#endif /* fid_suffixinterval_homepos */
+#ifdef fid_suffixinterval_dump
+#undef fid_suffixinterval_dump
+#endif /* fid_suffixinterval_dump */
+#ifdef fid_LCP
+#undef fid_LCP
+#endif /* fid_LCP */
+#ifdef fid_Suffixinterval
+#undef fid_Suffixinterval
+#endif /* fid_Suffixinterval */
+#ifdef fid_Esatraversecallback
+#undef fid_Esatraversecallback
+#endif /* fid_Esatraversecallback */
+#ifdef fid_SUFFIXINTERVAL_SINGLETON
+#undef fid_SUFFIXINTERVAL_SINGLETON
+#endif /* fid_SUFFIXINTERVAL_SINGLETON */
+#ifdef fid_suffixinterval_init_root
+#undef fid_suffixinterval_init_root
+#endif /* fid_suffixinterval_init_root */
+#ifdef UINT
+#undef UINT
+#endif /* UINT */
+#ifdef UINTFMT
+#undef UINTFMT
+#endif /* UINTFMT */
+#ifdef VU
+#undef VU
+#endif /* VU */
