@@ -1,7 +1,7 @@
 CC = g++
 CXXFLAGS = -O3 -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 
 CFLAGS = -O3 -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2
-LIBS = -lstdc++ -lpapi -lpthread
+LIBS = -lstdc++ -lpapi -lpthread -llikwid
 #LIBS = -lstdc++ -lpapi -lpthread -lcupti -lcudart
 SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp
 LDFLAGS = -Wl,-rpath, -L/soft/papi-5.0.1/lib -L/soft/cuda-5.0/extras/CUPTI/lib64 -L/soft/cuda-5.0/lib64 

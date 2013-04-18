@@ -13,6 +13,7 @@
 #include <map>
 #include <string>
 #include <sstream>
+#include <likwid.h>
 
 #include "vector/vectorclass.h"
 #include "sparseSA.hpp"
@@ -748,9 +749,12 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
   vector<match_t> matches_p;
   vector<match_t> matches;
   double start1, finish1;
+  likwid_markerInit();
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
 #pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p)
-  {
+  { 
+      likwid_markerThreadInit();
+      likwid_markerStartRegion("Compute");
 #pragma omp for schedule(static,1) nowait 
   for (int i=0; i<chunks; ++i)
   {
@@ -758,8 +762,12 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int m
     MAM(P, i, chunks, matches_p, min_len, memCount, false);
   }
 #pragma omp critical
+  {
   matches.insert(matches.end(),matches_p.begin(),matches_p.end());
   }
+  likwid_markerStopRegion("Compute");
+  }
+  likwid_markerClose();
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
   start1 = omp_get_wtime();

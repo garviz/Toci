@@ -40,8 +40,7 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     uint32_t seed = 42; 
     std::string file(project->prjbasename);
     file.append(".ois");
-    ifstream ifs;
-    ifs.open(file);
+    ifstream ifs(file);
     string R;
     if (ifs.is_open())
         getline(ifs, R);
@@ -51,6 +50,7 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     vector<long> LCP; // Simulates a vector<int> LCP.
     vector<long> CHILD; //child table
     vector<vector<long> > offset;
+    long size;
 
     SA.resize(project->totallength);
     ISA.resize(project->totallength);
@@ -60,11 +60,10 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     for (i=0; i<project->totallength-8; i++) {
         MurmurHash3_x86_32(R.data()+esa->suftab.VU[i], 8, seed, &hash);
         fid_LCP(lcp,esa,i+1);
-        SA.push_back(esa->suftab.VU[i]);
-        ISA.push_back(esa->stitab.VU[i]);
+        SA[i]=esa->suftab.VU[i];
+        ISA[i]=esa->stitab.VU[i];
         LCP.push_back(lcp);
         offset[hash].push_back(i);
-        //printf("%ld,%ld,%ld,%ld\n",esa->suftab.VU[i], lcp, esa->stitab.VU[i],hash);
     }
     for(int i = 0; i < project->totallength; i++) {
         CHILD[i] = -1;
@@ -107,15 +106,58 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
                 CHILD[lastIndex] = i;
             }
             stapelNL.push_back(i);
-        }
-        vector< vector<long> >::iterator row;
-        vector<long>::iterator col;
-        for (row = offset.begin(); row != offset.end(); ++row) {
-            for (col = row->begin(); col != row->end(); ++col) {
-                std::cout << col << ",";
-            }
-            std::cout << endl;
-        }
+        } 
+    file(project->prjbasename);
+    file.append(".sa");
+    ofstream sa(file, ios::binary);
+    size = SA.size();
+    sa.write(reinterpret_cast<char*>(&size), sizeof(size));
+    sa.write(reinterpret_cast<char*>(&SA[0]), size*sizeof(SA[0]));
+    sa.close();
+    file(project->prjbasename);
+    file.append(".isa");
+    ofstream isa(file, ios::binary);
+    size = ISA.size();
+    isa.write(reinterpret_cast<char*>(&size), sizeof(size));
+    isa.write(reinterpret_cast<char*>(&ISA[0]), size*sizeof(ISA[0]));
+    isa.close();
+    file(project->prjbasename);
+    file.append(".lcp");
+    ofstream lcp(file, ios::binary);
+    size = LCP.size();
+    lcp.write(reinterpret_cast<char*>(&size), sizeof(size));
+    lcp.write(reinterpret_cast<char*>(&LCP[0]), size*sizeof(LCP[0]));
+    lcp.close();
+    file(project->prjbasename);
+    file.append(".child");
+    ofstream ch(file, ios::binary);
+    size = CHILD.size();
+    ch.write(reinterpret_cast<char*>(&size), sizeof(size));
+    ch.write(reinterpret_cast<char*>(&CHILD[0]), size*sizeof(CHILD[0]));
+    ch.close();
+    file(project->prjbasename);
+    file.append(".off");
+    ofstream of(file, ios::binary);
+    size = offset.size();
+    os.write(reinterpret_cast<char*>(&size), sizeof(size));
+    os.write(reinterpret_cast<char*>(&SA[0]), size*sizeof(SA[0]));
+    os.close();
+/*         ifstream is("suf.dat", ios::binary);
+ *         vector<long> SA2;
+ *         long size2;
+ *         is.read(reinterpret_cast<char*>(&size2), sizeof(size2));
+ *         cout << is.tellg() << endl;
+ *         SA2.resize(size2);
+ *         is.read(reinterpret_cast<char*>(&SA2[0]),size2*sizeof(SA2[0]));
+ *         is.close();
+ */
+/*         for (long i=0; i < offset.size(); ++i) {
+ *             if (offset[i].size() > 0)
+ *                 std::cout << i << ":" << offset[i][0] << "," << offset[i][offset[i].size()-1] << std::endl;
+ *             else
+ *                 std::cout << i << ":" << -1 << std::endl;
+ *         }
+ */
 }
 
 int main (int argc, char *argv[]) {
