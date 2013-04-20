@@ -25,6 +25,7 @@
 #include <limits>
 #include <string>
 #include <fstream>
+#include <unordered_map>
 #include "libfid/libfidxx.h"
 #include "libfid/libfid.64"
 #include "smhasher-read-only/MurmurHash3.h"
@@ -33,11 +34,20 @@
 
 using namespace std;
 
+struct hashMmH3 {
+    size_t operator() (const char *preffix) const
+    {
+        unsigned int hash;
+        uint32_t seed = 42; 
+        MurmurHash3_x86_32(preffix, 8, seed, &hash);
+        return hash;
+    }
+};
+
 void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     UINT lcp=0, i;
     const char *ref;
-    unsigned short hash=0;
-    uint32_t seed = 42; 
+    unsigned int hash;
     std::string file(project->prjbasename);
     file.append(".ois");
     ifstream ifs(file);
@@ -49,21 +59,21 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     vector<long> ISA;  // Inverse suffix array.
     vector<long> LCP; // Simulates a vector<int> LCP.
     vector<long> CHILD; //child table
-    vector<vector<long> > offset;
+    typedef pair<unsigned char, unsigned char> pair_k;
+    unordered_map<char*,vector<long>,hashMmH3> offset;
     long size;
 
     SA.resize(project->totallength);
     ISA.resize(project->totallength);
     CHILD.resize(project->totallength);
     LCP.resize(project->totallength);
-    offset.resize(std::numeric_limits<unsigned short>::max()+1);
+    //offset.resize(std::numeric_limits<unsigned int>::max()+1);
     for (i=0; i<project->totallength-8; i++) {
-        MurmurHash3_x86_32(R.data()+esa->suftab.VU[i], 8, seed, &hash);
         fid_LCP(lcp,esa,i+1);
         SA[i]=esa->suftab.VU[i];
         ISA[i]=esa->stitab.VU[i];
         LCP.push_back(lcp);
-        offset[hash].push_back(i);
+        //offset[hash].push_back(i);
     }
     for(int i = 0; i < project->totallength; i++) {
         CHILD[i] = -1;
@@ -107,41 +117,41 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
             }
             stapelNL.push_back(i);
         } 
-    file(project->prjbasename);
-    file.append(".sa");
-    ofstream sa(file, ios::binary);
+    string file2(project->prjbasename);
+    file2.append(".sa");
+    ofstream sa(file2, ios::binary);
     size = SA.size();
     sa.write(reinterpret_cast<char*>(&size), sizeof(size));
     sa.write(reinterpret_cast<char*>(&SA[0]), size*sizeof(SA[0]));
     sa.close();
-    file(project->prjbasename);
-    file.append(".isa");
-    ofstream isa(file, ios::binary);
+    string file3(project->prjbasename);
+    file3.append(".isa");
+    ofstream isa(file3, ios::binary);
     size = ISA.size();
     isa.write(reinterpret_cast<char*>(&size), sizeof(size));
     isa.write(reinterpret_cast<char*>(&ISA[0]), size*sizeof(ISA[0]));
     isa.close();
-    file(project->prjbasename);
-    file.append(".lcp");
-    ofstream lcp(file, ios::binary);
+    string file4(project->prjbasename);
+    file4.append(".lcp");
+    ofstream lcpf(file4, ios::binary);
     size = LCP.size();
-    lcp.write(reinterpret_cast<char*>(&size), sizeof(size));
-    lcp.write(reinterpret_cast<char*>(&LCP[0]), size*sizeof(LCP[0]));
-    lcp.close();
-    file(project->prjbasename);
-    file.append(".child");
-    ofstream ch(file, ios::binary);
+    lcpf.write(reinterpret_cast<char*>(&size), sizeof(size));
+    lcpf.write(reinterpret_cast<char*>(&LCP[0]), size*sizeof(LCP[0]));
+    lcpf.close();
+    string file5(project->prjbasename);
+    file5.append(".child");
+    ofstream ch(file5, ios::binary);
     size = CHILD.size();
     ch.write(reinterpret_cast<char*>(&size), sizeof(size));
     ch.write(reinterpret_cast<char*>(&CHILD[0]), size*sizeof(CHILD[0]));
     ch.close();
-    file(project->prjbasename);
-    file.append(".off");
-    ofstream of(file, ios::binary);
+    string file6(project->prjbasename);
+    file6.append(".off");
+    ofstream of(file6, ios::binary);
     size = offset.size();
-    os.write(reinterpret_cast<char*>(&size), sizeof(size));
-    os.write(reinterpret_cast<char*>(&SA[0]), size*sizeof(SA[0]));
-    os.close();
+    of.write(reinterpret_cast<char*>(&size), sizeof(size));
+    of.write(reinterpret_cast<char*>(&SA[0]), size*sizeof(SA[0]));
+    of.close();
 /*         ifstream is("suf.dat", ios::binary);
  *         vector<long> SA2;
  *         long size2;
