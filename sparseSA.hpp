@@ -7,9 +7,8 @@
 #include <parallel/algorithm>
 #include <limits>
 #include <omp.h>
-
-#include "vector/vectorclass.h"
-
+#include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,8 +17,8 @@ using namespace std;
 // Simulates a vector<int> LCP;
 struct vec_uchar {
   struct item_t{
-    item_t(size_t i, int v) { idx = i; val = v; }
-    size_t idx; int val;
+    item_t(size_t i, unsigned long v) { idx = i; val = v; }
+    size_t idx; unsigned long val;
     bool operator < (item_t t) const { return idx < t.idx;  }
   };
   vector<unsigned char> vec;  // LCP values from 0-65534
@@ -62,51 +61,58 @@ struct match_t {
 // depth : [start...end] 
 struct interval_t {
   interval_t() { start = 1; end = 0; depth = -1; lb = start; rb = end; }
-  interval_t(long s, long e, long d, long l, long r) { start = s; end = e; depth = d; lb = l; rb = r; }
+  interval_t(unsigned long s, unsigned long e, unsigned long d, unsigned long l, unsigned long r) { start = s; end = e; depth = d; lb = l; rb = r; }
   void reset(long e) { start = 0; end = e; depth = 0; }
-  long depth, start, end, lb, rb;
+  unsigned long depth, start, end, lb, rb;
   long size() { return end - start + 1; }
   bool inside() { if (lb <= start && start <= rb && lb <= end && end <= rb) return true; else return false; }
 };
 
+struct inter {
+    unsigned long l = -1, r = -2;
+    inter() : l(-1), r(-2) {}
+    inter(unsigned long lv, unsigned long rv) : l(lv), r(rv) {}
+    void update(unsigned long val) { 
+        if (val<l) l=val;
+        else if (val>r) r=val;
+    }
+    long size() {return r-l+1;}
+}; 
+
 struct sparseSA {
   vector<string> &descr; // Descriptions of concatenated sequences.
-  vector<long> &startpos; // Lengths of concatenated sequences.
+  vector<unsigned long> &startpos; // Lengths of concatenated sequences.
   long maxdescrlen; // Maximum length of the sequence description, used for formatting.
   bool _4column; // Use 4 column output format.
 
-  long N; //!< Length of the sequence.
-  long logN; // ceil(log(N)) 
-  long NKm1; // N/K - 1
-  string &R; //!< Reference to sequence data.
-  vector<unsigned int> SA;  // Suffix array.
-  vector<int> ISA;  // Inverse suffix array.
+  unsigned long N; //!< Length of the sequence.
+  unsigned long logN; // ceil(log(N)) 
+  unsigned long NKm1; // N/K - 1
+  string Reference; //!< Reference to sequence data.
+  vector<unsigned long> SA;  // Suffix array.
+  vector<unsigned long> ISA;  // Inverse suffix array.
   vec_uchar LCP; // Simulates a vector<int> LCP.
-  vector<int> CHILD; //child table
+  vector<unsigned long> CHILD; //child table
+  unordered_map<string,inter> offset;
 
-  long K; // suffix sampling, K = 1 every suffix, K = 2 every other suffix, K = 3, every 3rd sffix
+  unsigned long K; // suffix sampling, K = 1 every suffix, K = 2 every other suffix, K = 3, every 3rd sffix
   bool hasChild;
   bool hasSufLink;
-  int sparseMult;
+  unsigned long sparseMult;
   bool printSubstring;
 
   // Maps a hit in the concatenated sequence set to a position in that sequence.
   void from_set(long hit, long &seq, long &seqpos) {
     // Use binary search to locate index of sequence and position
     // within sequence.
-    vector<long>::iterator it = upper_bound(startpos.begin(), startpos.end(), hit);   // SG: should use vector<long>::const_iterator
+    vector<unsigned long>::iterator it = upper_bound(startpos.begin(), startpos.end(), hit);   // SG: should use vector<long>::const_iterator
     seq = distance(startpos.begin(), it) - 1;
     it--;
     seqpos = hit - *it;
   } 
 
   // Constructor builds sparse suffix array. 
-  sparseSA(string &S_, vector<string> &descr_, vector<long> &startpos_, bool __4column, long K_, bool suflink_, bool child_, int sparseMult_, bool printSubstring_);
-
-  // Modified Kasai et all for LCP computation.
-  void computeLCP();
-  //Modified Abouelhoda et all for CHILD Computation.
-  void computeChild();
+  sparseSA(string &S_, vector<string> &descr_, vector<unsigned long> &startpos_, bool __4column, unsigned long K_, bool suflink_, bool child_, int sparseMult_, bool printSubstring_);
 
   // Radix sort required to construct transformed text for sparse SA construction.
   void radixStep(int *t_new, int *SA, long &bucketNr, long *BucketBegin, long l, long r, long h);
@@ -117,41 +123,41 @@ struct sparseSA {
   void print_match(string meta, vector<match_t> &buf, bool rc); // buffered version
 
   // Binary search for left boundry of interval.
-  inline long bsearch_left(char c, long i, long s, long e);
+  inline long bsearch_left(char c, unsigned long i, unsigned long s, unsigned long e);
   // Binary search for right boundry of interval.
-  inline long bsearch_right(char c, long i, long s, long e);
+  inline long bsearch_right(char c, unsigned long i, unsigned long s, unsigned long e);
 
   // Simple suffix array search.
-  inline bool search(string &P, long &start, long &end);
+  inline bool search(string &P, unsigned long &start, unsigned long &end);
 
   // Simple top down traversal of a suffix array.
-  inline bool top_down(char c, long i, long &start, long &end);
-  inline bool top_down_faster(char c, long i, long &start, long &end);
+  inline bool top_down(char c, unsigned long i, unsigned long &start, unsigned long &end);
+  inline bool top_down_faster(char c, unsigned long i, unsigned long &start, unsigned long &end);
   inline bool top_down_child(char c, interval_t &cur);
 
   // Traverse pattern P starting from a given prefix and interval
   // until mismatch or min_len characters reached.
-  inline void traverse(string &P, long prefix, interval_t &cur, int min_len);
-  inline void traverse_faster(const string &P,const long prefix, interval_t &cur, int min_len);
+  inline void traverse(string &P, long prefix, interval_t &cur, unsigned long min_len);
+  inline void traverse_faster(const string &P,const unsigned long prefix, interval_t &cur, unsigned long min_len);
 
   // Simulate a suffix link.
   inline bool suffixlink(interval_t &m);
 
   // Expand ISA/LCP interval. Used to simulate suffix links.
   inline bool expand_link(interval_t &link) {
-    long thresh = 2 * link.depth * logN, exp = 0; // Threshold link expansion.
-    long start = link.start;
-    long end = link.end;
-    while(LCP[start] >= link.depth) { 
+    unsigned long thresh = 2 * link.depth * logN, exp = 0; // Threshold link expansion.
+    unsigned long start = link.start;
+    unsigned long end = link.end;
+    while(LCP[start] >= (long) link.depth) { 
       exp++; 
       if(exp >= thresh) {
           return false;
       }
       start--; 
     }
-    while(end < NKm1 && LCP[end+1] >= link.depth) { 
+    while(end < NKm1 && (unsigned long) LCP[end+1] >= link.depth) { 
       exp++; 
-      if(exp >= thresh) {
+      if(exp >= thresh)  {
           return false;
       }
       end++; 
@@ -163,17 +169,17 @@ struct sparseSA {
 
   // Given a position i in S, finds a left maximal match of minimum
   // length within K steps.
-  inline void find_Lmaximal(string &P, long prefix, long i, long len, vector<match_t> &matches, int min_len, bool print);
+  inline void find_Lmaximal(string &P, unsigned long prefix, unsigned long i, unsigned long len, vector<match_t> &matches, unsigned long min_len, bool print);
 
   // Given an interval where the given prefix is matched up to a
   // mismatch, find all MEMs up to a minimum match depth.
-  void collectMEMs(string &P, long prefix, interval_t mli, interval_t xmi, vector<match_t> &matches, int min_len, bool print);
+  void collectMEMs(string &P, unsigned long prefix, interval_t mli, interval_t xmi, vector<match_t> &matches, unsigned long min_len, bool print);
 
   // Find all MEMs given a prefix pattern offset k.
-  void findMEM(long k, string &P, vector<match_t> &matches, int min_len, bool print);
+  void findMEM(unsigned long k, string &P, vector<match_t> &matches, unsigned long min_len, bool print);
 
   // NOTE: min_len must be > 1
-  void findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& memCount, bool print);
+  void findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, unsigned long min_len, unsigned long& memCount, bool print);
   inline bool is_leftmaximal(string &P, long p1, long p2);
 
   // Maximal Almost-Unique Match (MAM). Match is unique in the indexed
@@ -181,19 +187,19 @@ struct sparseSA {
   // et. al. Note this is a "one-sided" query. It "streams" the query
   // P throught he index.  Consequently, repeats can occur in the
   // pattern P.
-  void MAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& memCount, bool print) { 
+  void MAM(string &P, int chunk, int chunks, vector<match_t> &matches, unsigned long min_len, unsigned long& memCount, bool print) { 
     if(K != 1) return;  // Only valid for full suffix array.
     findMAM(P, chunk, chunks, matches, min_len, memCount, print);  
   }
 
   // Find Maximal Exact Matches (MEMs) 
-  void MEM(string &P, vector<match_t> &matches, int min_len, bool print, long& memCount, int num_threads = 1);
+  void MEM(string &P, vector<match_t> &matches, unsigned long min_len, bool print, unsigned long& memCount, int num_threads = 1);
 
   // Maximal Unique Match (MUM) 
-  void MUM(string &P, vector<match_t> &unique, int min_len, long& memCount, bool print);  
+  void MUM(string &P, vector<match_t> &unique, unsigned long min_len, unsigned long& memCount, bool print);  
 
   // Maximal Unique Match (MUM) with OpenMP
-  void MUMParallel(string &P, int chunks, vector<match_t> &unique, int min_len, long& currentCount, bool print);
+  void MUMParallel(string &P, int chunks, vector<match_t> &unique, unsigned long min_len, unsigned long& currentCount, bool print);
 };
 
 

@@ -17,7 +17,7 @@
  */
 #include <iostream>
 #include <vector>
-#include <mpi.h>
+//#include <mpi.h>
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
@@ -26,6 +26,8 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
+#include <map>
+#include <parallel/algorithm>
 #include "libfid/libfidxx.h"
 #include "libfid/libfid.64"
 #include "smhasher-read-only/MurmurHash3.h"
@@ -33,6 +35,43 @@
 #define SIZE 5
 
 using namespace std;
+
+struct vec_uchar {
+  struct item_t{
+    item_t(size_t i, int v) { idx = i; val = v; }
+    size_t idx; int val;
+    bool operator < (item_t t) const { return idx < t.idx;  }
+  };
+  vector<unsigned char> vec;  // LCP values from 0-65534
+  vector<item_t> M;
+  void resize(size_t N) { vec.resize(N); }
+  // Vector X[i] notation to get LCP values.
+ int operator[] (size_t idx) {
+    if(vec[idx] == numeric_limits<unsigned char>::max()) 
+      return lower_bound(M.begin(), M.end(), item_t(idx,0))->val;
+    else
+      return vec[idx]; 
+  }
+  // Actually set LCP values, distinguishes large and small LCP
+  // values.
+  void set(size_t idx, int v) {
+    if (v >= numeric_limits<unsigned char>::max()) {
+      vec.at(idx) = numeric_limits<unsigned char>::max();
+      M.push_back(item_t(idx, v));
+    }
+    else { 
+        vec.at(idx) = (unsigned char)v; 
+    }
+  }
+  // Once all the values are set, call init. This will assure the
+  // values >= 255 are sorted by index for fast retrieval.
+  void init() {
+      __gnu_parallel::sort(M.begin(), M.end()); 
+  }
+  size_t size(void) {
+    return vec.size()+M.size();
+  }
+};
 
 struct hashMmH3 {
     size_t operator() (const char *preffix) const
@@ -42,6 +81,17 @@ struct hashMmH3 {
         MurmurHash3_x86_32(preffix, 8, seed, &hash);
         return hash;
     }
+};
+
+struct inter {
+    long l = -1, r = -2;
+    inter() : l(-1), r(-2) {}
+    inter(long lv, long rv) : l(lv), r(rv) {}
+    void update(long val) {
+        if (val<l) l=val;
+        else if (val>r) r=val;
+    }
+    long size() {return r-l+1;}
 };
 
 void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
@@ -57,10 +107,13 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     ifs.close();
     vector<long> SA;  // Suffix array.
     vector<long> ISA;  // Inverse suffix array.
-    vector<long> LCP; // Simulates a vector<int> LCP.
+    //vector<long> LCP; // Simulates a vector<int> LCP.
+    vec_uchar LCP; // Simulates a vector<int> LCP.
     vector<long> CHILD; //child table
     typedef pair<unsigned char, unsigned char> pair_k;
-    unordered_map<char*,vector<long>,hashMmH3> offset;
+    //unordered_map<const char*,long,hashMmH3> offset;
+    unordered_map<string,inter> offset;
+    //map<string,long> offset;
     long size;
 
     SA.resize(project->totallength);
@@ -72,9 +125,19 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
         fid_LCP(lcp,esa,i+1);
         SA[i]=esa->suftab.VU[i];
         ISA[i]=esa->stitab.VU[i];
-        LCP.push_back(lcp);
-        //offset[hash].push_back(i);
+        long m = ISA[i]; 
+        if(m==0) LCP.set(m, 0); 
+        else LCP.set(m, lcp); 
+        //LCP.push_back(lcp);
+        //offset[R.substr(SA[i],8).c_str()]=i;
+        if (offset.count(R.substr(SA[i],8))>0) {
+            offset[R.substr(SA[i],8)].update(i);
+        } else {
+            inter t(i,i);
+            offset[R.substr(SA[i],8)]=t;
+        }    
     }
+    LCP.init();
     for(int i = 0; i < project->totallength; i++) {
         CHILD[i] = -1;
     }
@@ -118,28 +181,31 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
             stapelNL.push_back(i);
         } 
     string file2(project->prjbasename);
-    file2.append(".sa");
+    file2.append(".SA");
     ofstream sa(file2, ios::binary);
     size = SA.size();
     sa.write(reinterpret_cast<char*>(&size), sizeof(size));
     sa.write(reinterpret_cast<char*>(&SA[0]), size*sizeof(SA[0]));
     sa.close();
     string file3(project->prjbasename);
-    file3.append(".isa");
+    file3.append(".ISA");
     ofstream isa(file3, ios::binary);
     size = ISA.size();
     isa.write(reinterpret_cast<char*>(&size), sizeof(size));
     isa.write(reinterpret_cast<char*>(&ISA[0]), size*sizeof(ISA[0]));
     isa.close();
     string file4(project->prjbasename);
-    file4.append(".lcp");
-    ofstream lcpf(file4, ios::binary);
+    file4.append(".LCP");
+    ofstream lcpf(file4);
     size = LCP.size();
-    lcpf.write(reinterpret_cast<char*>(&size), sizeof(size));
-    lcpf.write(reinterpret_cast<char*>(&LCP[0]), size*sizeof(LCP[0]));
+    lcpf << size << endl;
+    //lcpf.write(reinterpret_cast<char*>(&size), sizeof(size));
+    for (long i=0;i<LCP.size(); i++)
+        lcpf << LCP[i] << endl;
+    //lcpf.write(reinterpret_cast<char*>(&LCP[0]), size*sizeof(LCP[0]));
     lcpf.close();
     string file5(project->prjbasename);
-    file5.append(".child");
+    file5.append(".CHILD");
     ofstream ch(file5, ios::binary);
     size = CHILD.size();
     ch.write(reinterpret_cast<char*>(&size), sizeof(size));
@@ -147,10 +213,9 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     ch.close();
     string file6(project->prjbasename);
     file6.append(".off");
-    ofstream of(file6, ios::binary);
-    size = offset.size();
-    of.write(reinterpret_cast<char*>(&size), sizeof(size));
-    of.write(reinterpret_cast<char*>(&SA[0]), size*sizeof(SA[0]));
+    ofstream of(file6);
+    for (auto it = offset.begin(); it != offset.end(); ++it)
+        of << it->first << " " << it->second.l << " " << it->second.r << endl;
     of.close();
 /*         ifstream is("suf.dat", ios::binary);
  *         vector<long> SA2;
@@ -161,13 +226,6 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
  *         is.read(reinterpret_cast<char*>(&SA2[0]),size2*sizeof(SA2[0]));
  *         is.close();
  */
-/*         for (long i=0; i < offset.size(); ++i) {
- *             if (offset[i].size() > 0)
- *                 std::cout << i << ":" << offset[i][0] << "," << offset[i][offset[i].size()-1] << std::endl;
- *             else
- *                 std::cout << i << ":" << -1 << std::endl;
- *         }
- */
 }
 
 int main (int argc, char *argv[]) {
@@ -177,10 +235,10 @@ int main (int argc, char *argv[]) {
     fid_Projectfile prjfile;
     fid_Suffixarray esa;
     fid_Suffixinterval_64 interval;
-    MPI::Init( argc, argv );
+/*    MPI::Init( argc, argv );
     p = MPI::COMM_WORLD.Get_size();
     id = MPI::COMM_WORLD.Get_rank();
-    if (id==0) {
+    if (id==0) {*/
         fid_error_init_default(&error);
         fid_suffixarray_init(&esa,fid_UINTSIZE_64);
     	retcode = fid_projectfile_parse_from_file(&prjfile, argv[1], &error);
@@ -193,7 +251,7 @@ int main (int argc, char *argv[]) {
         }
         printESA(&esa, &prjfile);
 
-        //fprintf(stdout,"depth=%ld,left=%ld,right=%ld\n", interval.depth, interval.left, interval.right);
+/*        //fprintf(stdout,"depth=%ld,left=%ld,right=%ld\n", interval.depth, interval.left, interval.right);
         long pos[SIZE];
         std::srand(std::time(0));
         int value;
@@ -209,5 +267,6 @@ int main (int argc, char *argv[]) {
         MPI::COMM_WORLD.Recv(&rec, SIZE, MPI::LONG, 0, 0);
     }
     MPI::Finalize ( );
+ */
     return 0;
 }

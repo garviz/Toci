@@ -48,7 +48,7 @@ struct query_arg {
 
 void *query_thread(void *arg_) {
   query_arg *arg = (query_arg *)arg_;
-  long memCounter = 0;
+  unsigned long memCounter = 0;
   string meta, line;
   ifstream data(query_fasta.c_str());
 
@@ -240,17 +240,17 @@ int main(int argc, char* argv[]) {
   string ref;
   
   vector<string> refdescr; 
-  vector<long> startpos;
+  vector<unsigned long> startpos;
 
-  load_fasta(ref_fasta, ref, refdescr, startpos);
+  //load_fasta(ref_fasta, ref, refdescr, startpos);
 
   // Automatically use 4 column format if there are multiple reference sequences.
   if(startpos.size() > 1) _4column = true;
-  if(automatic){
+  if(automatic) {
       suflink = K < 4;
       child = K >= 4;
   }
-  if(automaticSkip){
+  if(automaticSkip) {
       if(suflink && !child) sparseMult = 1;
       else{
           if(K >= 4) sparseMult = (int) (min_len-10)/K;
@@ -279,9 +279,9 @@ int main(int argc, char* argv[]) {
       forwards = false;
   double s, e;
   s = omp_get_wtime();
-  sa = new sparseSA(ref, refdescr, startpos, _4column, K, suflink, true, sparseMult, printSubstring);
+  sa = new sparseSA(ref_fasta, refdescr, startpos, _4column, K, suflink, true, sparseMult, printSubstring);
   e = omp_get_wtime();
-  cerr << ",sparseSA=" << e-s;
+  cout << ",sparseSA=" << e-s;
   pthread_attr_t attr;  pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
