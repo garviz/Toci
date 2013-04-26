@@ -48,7 +48,7 @@ struct query_arg {
 
 void *query_thread(void *arg_) {
   query_arg *arg = (query_arg *)arg_;
-  unsigned long memCounter = 0;
+  long long memCounter = 0;
   string meta, line;
   ifstream data(query_fasta.c_str());
 
@@ -86,7 +86,7 @@ void *query_thread(void *arg_) {
       if(meta != "") {
 	if(seq_cnt % arg->skip == arg->skip0) {
 	  // Process P.
-	  cerr << ",Q.length=" << P->length() << endl;
+	  cout << ",Q.length=" << P->length() << endl;
       if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
@@ -143,7 +143,7 @@ void *query_thread(void *arg_) {
   // Handle very last sequence.
   if(meta != "") {
     if(seq_cnt % arg->skip == arg->skip0) {
-      cerr << ",Q.length=" << P->length() << endl;
+      cout << ",Q.length=" << P->length() << endl;
       if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
@@ -237,10 +237,8 @@ int main(int argc, char* argv[]) {
   string ref_fasta = argv[optind]; 
   query_fasta = argv[optind+1];
 
-  string ref;
-  
   vector<string> refdescr; 
-  vector<unsigned long> startpos;
+  vector<long long> startpos;
 
   //load_fasta(ref_fasta, ref, refdescr, startpos);
 

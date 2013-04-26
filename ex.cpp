@@ -26,7 +26,7 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
-#include <map>
+#include <stack>
 #include <parallel/algorithm>
 #include "libfid/libfidxx.h"
 #include "libfid/libfid.64"
@@ -105,11 +105,11 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     if (ifs.is_open())
         getline(ifs, R);
     ifs.close();
-    vector<long> SA;  // Suffix array.
-    vector<long> ISA;  // Inverse suffix array.
+    vector<long long> SA;  // Suffix array.
+    vector<long long> ISA;  // Inverse suffix array.
     //vector<long> LCP; // Simulates a vector<int> LCP.
     vec_uchar LCP; // Simulates a vector<int> LCP.
-    vector<long> CHILD; //child table
+    vector<long long> CHILD; //child table
     typedef pair<unsigned char, unsigned char> pair_k;
     //unordered_map<const char*,long,hashMmH3> offset;
     unordered_map<string,inter> offset;
@@ -138,48 +138,46 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
         }    
     }
     LCP.init();
-    for(int i = 0; i < project->totallength; i++) {
-        CHILD[i] = -1;
+    fill(CHILD.begin(), CHILD.end(),-1);
+    //Compute up and down values
+    long long lastIndex  = -1;
+    stack<long long,vector<long long> > stapelUD;
+    stapelUD.push(0);
+    for(long long i = 1; i  < project->totallength; i++){
+        while(LCP[i] < LCP[stapelUD.top()]){
+            lastIndex = stapelUD.top();
+            stapelUD.pop();
+            if(LCP[i] <= LCP[stapelUD.top()] && LCP[stapelUD.top()] != LCP[lastIndex]){
+                CHILD[stapelUD.top()] = lastIndex;
+            }
+        }
+        //now LCP[i] >= LCP[top] holds
+        if(lastIndex != -1){
+            CHILD[i-1] = lastIndex;
+            lastIndex = -1;
+        }
+        stapelUD.push(i);
     }
-        //Compute up and down values
-        int lastIndex  = -1;
-        vector<int> stapelUD;
-        stapelUD.push_back(0);
-        for(int i = 1; i < project->totallength; i++){
-            while(LCP[i] < LCP[stapelUD.back()]){
-                lastIndex = stapelUD.back();
-                stapelUD.pop_back();
-                if(LCP[i] <= LCP[stapelUD.back()] && LCP[stapelUD.back()] != LCP[lastIndex]){
-                    CHILD[stapelUD.back()] = lastIndex;
-                }
-            }
-            //now LCP[i] >= LCP[top] holds
-            if(lastIndex != -1){
-                CHILD[i-1] = lastIndex;
-                lastIndex = -1;
-            }
-            stapelUD.push_back(i);
+    while(0 < LCP[stapelUD.top()]){//last row (fix for last character of sequence not being unique
+        lastIndex = stapelUD.top();
+        stapelUD.pop();
+        if(0 <= LCP[stapelUD.top()] && LCP[stapelUD.top()] != LCP[lastIndex]){
+            CHILD[stapelUD.top()] = lastIndex;
         }
-        while(0 < LCP[stapelUD.back()]){//last row (fix for last character of sequence not being unique
-            lastIndex = stapelUD.back();
-            stapelUD.pop_back();
-            if(0 <= LCP[stapelUD.back()] && LCP[stapelUD.back()] != LCP[lastIndex]){
-                CHILD[stapelUD.back()] = lastIndex;
-            }
-        }
-        //Compute Next L-index values
-        vector<int> stapelNL;
-        stapelNL.push_back(0);
-        for(int i = 1; i < project->totallength; i++){
-            while(LCP[i] < LCP[stapelNL.back()])
-                stapelNL.pop_back();
-            lastIndex = stapelNL.back();
+    }
+    //Compute Next L-index values
+    stack<long long,vector<long long> > stapelNL;
+    stapelNL.push(0);
+    for(long long i = 1; i < project->totallength; i++){
+        while(LCP[i] < LCP[stapelNL.top()])
+            stapelNL.pop();
+            lastIndex = stapelNL.top();
             if(LCP[i] == LCP[lastIndex]){
-                stapelNL.pop_back();
+                stapelNL.pop();
                 CHILD[lastIndex] = i;
             }
-            stapelNL.push_back(i);
-        } 
+            stapelNL.push(i);
+    }  
     string file2(project->prjbasename);
     file2.append(".SA");
     ofstream sa(file2, ios::binary);

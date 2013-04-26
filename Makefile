@@ -1,11 +1,11 @@
 CC = g++
-CXXFLAGS = -O3 -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 -std=c++11
-CFLAGS = -O3 -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2
-LIBS = -lstdc++ -lpapi -lpthread
+CXXFLAGS = -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 -std=c++11 -std=gnu++11
+CFLAGS = -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2
+LIBS = -lstdc++ -lpthread
 #LIBS = -lstdc++ -lpapi -lpthread -lcupti -lcudart
 SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp
-LDFLAGS = -Wl,-rpath, -L/soft/papi-5.0.1/lib -L/soft/cuda-5.0/extras/CUPTI/lib64 -L/soft/cuda-5.0/lib64 
-INCLUDE = -I/soft/papi-5.0.1/include
+#LDFLAGS = -Wl,-rpath, -L/soft/papi-5.0.1/lib -L/soft/cuda-5.0/extras/CUPTI/lib64 -L/soft/cuda-5.0/lib64 
+#INCLUDE = -I/soft/papi-5.0.1/include
 
 #include ~/tau-2.22.1/x86_64/lib/Makefile.tau-papi-pdt-openmp-opari-trace
 
@@ -31,7 +31,6 @@ doc:
 	doxygen
 clean: 
 	rm -f *.o *~ .depend essaMEM
-	rm *opari.*
 
 # Create all the dependencies between the source files. 
 .depend:
