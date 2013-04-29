@@ -1,6 +1,6 @@
 CC = g++
-CXXFLAGS = -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 -std=c++11 -std=gnu++11
-CFLAGS = -g -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2
+CXXFLAGS = -g -pg -O3 -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 -std=c++11 -std=gnu++11
+CFLAGS = -g -pg -O3 -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2
 LIBS = -lstdc++ -lpthread
 #LIBS = -lstdc++ -lpapi -lpthread -lcupti -lcudart
 SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp

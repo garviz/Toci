@@ -128,10 +128,11 @@ void *query_thread(void *arg_) {
     else { // Collect sequence data.
       trim(line, start,end);
       for(long i = start; i <= end; i++) {
-		char c = std::tolower(line[i]);
+		//char c = std::tolower(line[i]);        
+		char c = line[i];        
 		if(nucleotides_only) {
 	  		switch(c) {
-	  			case 'a': case 't': case 'g': case 'c': break;
+	  			case 'A': case 'T': case 'G': case 'C': break;
 	  			default:
 	    			c = '~';
 	  		}
@@ -237,6 +238,8 @@ int main(int argc, char* argv[]) {
   string ref_fasta = argv[optind]; 
   query_fasta = argv[optind+1];
 
+  string ref;
+  
   vector<string> refdescr; 
   vector<long long> startpos;
 

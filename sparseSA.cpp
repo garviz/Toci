@@ -23,7 +23,7 @@
         cLCP = LCP[childcE];\
     else\
         cLCP = LCP[CHILD[cS]];
-//#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);
+//#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);cin.get();
 #define PRINT
 using namespace std;
 
@@ -56,7 +56,7 @@ sparseSA::sparseSA(string &R_, vector<string> &descr_, vector<long long> &startp
   else
       cerr << R_ << " ERROR reading file\n";
   ifs.close();
-  transform(Reference.begin(), Reference.end(), Reference.begin(), ::tolower);
+  //transform(Reference.begin(), Reference.end(), Reference.begin(), ::tolower);
   N = Reference.length();
   cout << "# R.length=" << N;
   /*-----------------------------------------------------------------------------
@@ -133,21 +133,12 @@ sparseSA::sparseSA(string &R_, vector<string> &descr_, vector<long long> &startp
   string dat;
   long long l, r;
   while (ifs >> dat >> l >> r) {
-      inter t(l,r);
+      interval_t t(l,r,8);
       offset[dat]=t;
   }
   ifs.close();
-        
-  //ifs.open("/tmp/esa.orig");
-  //if (ifs.is_open()) {
-  //  while (ifs >> sa >> isa >> child >> lcp) 
-  //      SA[i]=sa;ISA[i]=isa;CHILD[i]=child;LCP.set(i,lcp);i++;
-  /*}
-  else
-      cerr << file << " ERROR reading file\n";*/
-  //ifs.close();
- // for (long long i=0;i<SA.size();i++)
- //     fprintf(stderr,"%lld,%ld,%ld,%ld\n",SA[i],ISA[i],CHILD[i],LCP[i]);
+  //for (long i=0;i<SA.size();i++)
+  //    fprintf(stderr,"%lld,%lld,%lld,%lld\n",SA[i],ISA[i],CHILD[i],LCP[i]);
   // Adjust to "sampled" size. 
   N = SA.size();
   logN = (long)ceil(log(N/K) / log(2.0));
@@ -234,7 +225,10 @@ void sparseSA::traverse_faster(const string &P,const long long prefix, interval_
     bool intervalFound = c < lengthP;
     long long curLCP;//check if this is correct for root interval (unlikely case)
     register long long sa_cS;
-    LCPCHILD(curLCP,cur.start,cur.end);
+    if(cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
+        curLCP = LCP[CHILD[cur.end]];
+    else
+        curLCP = LCP[CHILD[cur.start]];
     if(intervalFound && cur.size() > 1 && curLCP == cur.depth)
         intervalFound = top_down_child(P[c], cur);
     else if(intervalFound)
@@ -249,7 +243,10 @@ void sparseSA::traverse_faster(const string &P,const long long prefix, interval_
             long long childLCP;
             //calculate LCP of child node, which is now cur. the LCP value
             //of the parent is currently c - prefix
-            LCPCHILD(childLCP,cur.start,cur.end);
+            if(cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
+                childLCP = LCP[CHILD[cur.end]];
+            else
+                childLCP = LCP[CHILD[cur.start]];
             long long minimum = min(childLCP,min_len);
             //match along branch
             while(!mismatchFound && c < lengthP && cur.depth < minimum){
@@ -274,10 +271,11 @@ void sparseSA::traverse_faster(const string &P,const long long prefix, interval_
 bool sparseSA::top_down_child(char c, interval_t &cur){
     long long left = cur.start;
     long long right = CHILD[cur.end];
-    //cout << right << "," << cur.end << endl;
-    if (cur.start >= right || right > cur.end) 
+    PRINT
+    if(cur.start >= right || right > cur.end)
         right = CHILD[cur.start];
-    if (Reference[SA[cur.start]+cur.depth] == c) {
+    //now left and right point to first child
+    if(Reference[SA[cur.start]+cur.depth] == c){
         cur.end = right-1;
         PRINT
         return true;
@@ -375,8 +373,8 @@ void sparseSA::findMEM(long long k, string &P, vector<match_t> &matches, long lo
   if(k < 0 || k >= K) { cerr << "Invalid k." << endl; return; }
   // Offset all intervals at different start points.
   long long prefix = k;
-  interval_t mli(0,N/K-1,0,0,N/K-1); // min length interval
-  interval_t xmi(0,N/K-1,0,0,N/K-1); // max match interval
+  interval_t mli(0,N/K-1,0); // min length interval
+  interval_t xmi(0,N/K-1,0); // max match interval
   
   // Right-most match used to terminate search.
   long long min_lenK = min_len - (sparseMult*K-1);
@@ -553,17 +551,30 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
   double start,finish;
   start = omp_get_wtime();
   memCount = 0;
-  long lborder = 0, rborder = N;
-  interval_t cur(lborder, rborder, 0, lborder, rborder);
-  PRINT
+  inter t;
+  long lborder = 0, rborder = N-1;
+  interval_t cur(lborder, rborder, 0);
+  unordered_map<string,interval_t>::const_iterator got;
   long prefix = P.length()/chunks*chunk;
   const long end = (long) (P.length()/chunks*(chunk+1));
+  got = offset.find(P.substr(prefix,8));
+  if (got == offset.end()) {
+      cur.depth = 0; cur.start = 0; cur.end = N;
+  } else
+      cur = got->second;
   __builtin_prefetch(LCP.vec.data()); 
   while(prefix < end) {
-  PRINT
+      PRINT
     traverse_faster(P, prefix, cur, end);
-  PRINT
-    if(cur.depth <= 1) { cur.depth = 0; cur.start = lborder; cur.end = rborder; prefix++;PRINT continue; }
+    if (cur.depth <= 1) { 
+        /*got = offset.find(P.substr(prefix,8));
+        if (got == offset.end()) {*/
+            cur.depth = 0; cur.start = lborder; cur.end = rborder;
+        /*} else
+            cur = got->second;*/
+        prefix++;
+        continue;
+    }
     if(cur.size() == 1 && cur.depth >= min_len) {//unique match 
   PRINT
       if(is_leftmaximal(P, prefix, SA[cur.start])) {

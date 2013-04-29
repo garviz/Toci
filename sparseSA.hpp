@@ -60,12 +60,11 @@ struct match_t {
 
 // depth : [start...end] 
 struct interval_t {
-  interval_t() { start = 1; end = 0; depth = -1; lb = start; rb = end; }
-  interval_t(long long s, long long e, long long d, long long l, long long r) { start = s; end = e; depth = d; lb = l; rb = r; }
+  interval_t() { start = 1; end = 0; depth = -1; }
+  interval_t(long long s, long long e, long long d) { start = s; end = e; depth = d; }
   void reset(long e) { start = 0; end = e; depth = 0; }
-  long long depth, start, end, lb, rb;
+  long long depth, start, end;
   long size() { return end - start + 1; }
-  bool inside() { if (lb <= start && start <= rb && lb <= end && end <= rb) return true; else return false; }
 };
 
 struct inter {
@@ -93,7 +92,7 @@ struct sparseSA {
   vector<long long> ISA;  // Inverse suffix array.
   vec_uchar LCP; // Simulates a vector<int> LCP.
   vector<long long> CHILD; //child table
-  unordered_map<string,inter> offset;
+  unordered_map<string,interval_t> offset;
 
   long long K; // suffix sampling, K = 1 every suffix, K = 2 every other suffix, K = 3, every 3rd sffix
   bool hasChild;
