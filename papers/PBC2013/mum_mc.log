@@ -1,0 +1,629 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  30 APR 2013 15:39
+entering extended mode
+ %&-line parsing enabled.
+**mum_mc.tex
+(./mum_mc.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(./llncs.cls
+Document Class: llncs 2010/07/12 v2.17 
+ LaTeX document class for Lecture Notes in Computer Science
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
+Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
+\c@tracingmulticols=\count87
+\mult@box=\box26
+\multicol@leftmargin=\dimen103
+\c@unbalance=\count88
+\c@collectmore=\count89
+\doublecol@number=\count90
+\multicoltolerance=\count91
+\multicolpretolerance=\count92
+\full@width=\dimen104
+\page@free=\dimen105
+\premulticols=\dimen106
+\postmulticols=\dimen107
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count93
+\c@finalcolumnbadness=\count94
+\last@try=\dimen108
+\multicolovershoot=\dimen109
+\multicolundershoot=\dimen110
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/aliascnt.sty
+Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
+
+(/usr/share/texmf-texlive/tex/latex/carlisle/remreset.sty))
+\c@chapter=\count95
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 365.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 366.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 367.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 368.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
+\tocchpnum=\dimen111
+\tocsecnum=\dimen112
+\tocsectotal=\dimen113
+\tocsubsecnum=\dimen114
+\tocsubsectotal=\dimen115
+\tocsubsubsecnum=\dimen116
+\tocsubsubsectotal=\dimen117
+\tocparanum=\dimen118
+\tocparatotal=\dimen119
+\tocsubparanum=\dimen120
+\@tempcntc=\count96
+\fnindent=\dimen121
+\c@@inst=\count97
+\c@@auth=\count98
+\c@auco=\count99
+\instindent=\dimen122
+\authrun=\box52
+\authorrunning=\toks14
+\tocauthor=\toks15
+\titrun=\box53
+\titlerunning=\toks16
+\toctitle=\toks17
+\c@theorem=\count100
+\c@case=\count101
+\c@conjecture=\count102
+\c@corollary=\count103
+\c@definition=\count104
+\c@example=\count105
+\c@exercise=\count106
+\c@lemma=\count107
+\c@note=\count108
+\c@problem=\count109
+\c@property=\count110
+\c@proposition=\count111
+\c@question=\count112
+\c@solution=\count113
+\c@remark=\count114
+\headlineindent=\dimen123
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+)
+(/usr/share/texmf-texlive/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen126
+\extrarowheight=\dimen127
+\NC@list=\toks19
+\extratabsurround=\skip45
+\backup@length=\skip46
+)
+\TX@col@width=\dimen128
+\TX@old@table=\dimen129
+\TX@old@col=\dimen130
+\TX@target=\dimen131
+\TX@delta=\dimen132
+\TX@cols=\count115
+\TX@ftn=\toks20
+)
+(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip47
+\subfigcapskip=\skip48
+\subfigcaptopadj=\dimen133
+\subfigbottomskip=\skip49
+\subfigcapmargin=\dimen134
+\subfiglabelskip=\skip50
+\c@subfigure=\count116
+\c@lofdepth=\count117
+\c@subtable=\count118
+\c@lotdepth=\count119
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip51
+\subfig@bottom=\skip52
+)
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks21
+\inpenc@posthook=\toks22
+
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/ulem.sty
+\UL@box=\box54
+\UL@hyphenbox=\box55
+\UL@skip=\skip53
+\UL@hook=\toks23
+\UL@pe=\count120
+\UL@pixel=\dimen135
+\ULC@box=\box56
+Package: ulem 2000/05/26
+\ULdepth=\dimen136
+)
+(/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2005/10/04 v3.9 algorithms environments
+\c@AlgoLine=\count121
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+********************************************************
+Package `algorithm2e' Release 3.9 -- october 04 2005 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (fiorio@lirmm.fr)
+********************************************************
+\skiptotal=\skip54
+\skiprule=\skip55
+\skiphlne=\skip56
+\skiptext=\skip57
+\skiplength=\skip58
+\algomargin=\skip59
+\skipalgocfslide=\skip60
+\algowidth=\dimen137
+\inoutsize=\dimen138
+\inoutline=\dimen139
+\algocf@inoutbox=\box57
+\algocf@inputbox=\box58
+\AlCapSkip=\skip61
+\AlCapHSkip=\skip62
+\algocf@capbox=\box59
+\c@algocfline=\count122
+\c@algocf=\count123
+\algocf@algoframe=\box60
+\algocf@algobox=\box61
+) (./mum_mc.aux)
+\openout1 = `mum_mc.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 25.
+
+
+LaTeX Warning: Citation `Delcher2003' on page 1 undefined on input line 43.
+
+[1
+
+
+]
+
+LaTeX Warning: Citation `Delcher1999' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `OguzhanKulekci2011' on page 2 undefined on input line 
+46.
+
+
+LaTeX Warning: Citation `Mongelli' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `Kouzinopoulos2005' on page 2 undefined on input line 4
+6.
+
+
+LaTeX Warning: Citation `Meng2005' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `Encarnac2011' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `Vyverman2013' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `OguzhanKulekci2011' on page 2 undefined on input line 
+46.
+
+
+LaTeX Warning: Citation `Khan2009' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `OhlebuschGK10' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `Gusfield1997' on page 2 undefined on input line 50.
+
+
+LaTeX Warning: Citation `Gusfield1997' on page 2 undefined on input line 53.
+
+
+LaTeX Warning: Citation `Abouelhoda2004' on page 2 undefined on input line 55.
+
+[2]
+
+LaTeX Warning: Citation `Abouelhoda2004' on page 3 undefined on input line 57.
+
+
+LaTeX Warning: Citation `Abouelhoda2004' on page 3 undefined on input line 60.
+
+File: child.eps Graphic file (type eps)
+<child.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 107.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 107.
+
+Underfull \hbox (badness 10000) detected at line 123
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 172
+[][]
+ []
+
+File: Whole-MUM.eps Graphic file (type eps)
+<Whole-MUM.eps>
+File: Phases.ps Graphic file (type eps)
+ <Phases.ps>
+Overfull \hbox (223.00647pt too wide) in paragraph at lines 184--185
+ [][] 
+ []
+
+[3] [4]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 195--210
+
+ []
+
+[6]
+
+LaTeX Warning: File `construction.eps' not found on input line 214.
+
+
+! LaTeX Error: File `construction.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.214 ...ludegraphics[scale=0.6]{construction.eps}
+                                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in construction.eps (no Boundin
+gBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.214 ...ludegraphics[scale=0.6]{construction.eps}
+                                                  
+? 
+File: construction.eps Graphic file (type eps)
+<construction.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `speedup-MUM.eps' not found on input line 222.
+
+
+! LaTeX Error: File `speedup-MUM.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.222 ...ludegraphics[scale=0.65]{speedup-MUM.eps}
+                                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in speedup-MUM.eps (no Bounding
+Box).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.222 ...ludegraphics[scale=0.65]{speedup-MUM.eps}
+                                                  
+? 
+File: speedup-MUM.eps Graphic file (type eps)
+<speedup-MUM.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `ecoli-MUM.eps' not found on input line 231.
+
+
+! LaTeX Error: File `ecoli-MUM.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.231 ...ncludegraphics[scale=0.65]{ecoli-MUM.eps}
+                                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in ecoli-MUM.eps (no BoundingBo
+x).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.231 ...ncludegraphics[scale=0.65]{ecoli-MUM.eps}
+                                                  
+? 
+File: ecoli-MUM.eps Graphic file (type eps)
+<ecoli-MUM.eps>
+
+LaTeX Warning: File `ecoli-RAM.eps' not found on input line 238.
+
+
+! LaTeX Error: File `ecoli-RAM.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.238 ...ncludegraphics[scale=0.65]{ecoli-RAM.eps}
+                                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in ecoli-RAM.eps (no BoundingBo
+x).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.238 ...ncludegraphics[scale=0.65]{ecoli-RAM.eps}
+                                                  
+? 
+File: ecoli-RAM.eps Graphic file (type eps)
+<ecoli-RAM.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7]
+
+LaTeX Warning: File `fly-MUM.eps' not found on input line 247.
+
+
+! LaTeX Error: File `fly-MUM.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247   \includegraphics[scale=0.3]{fly-MUM.eps}
+                                                
+? 
+
+! LaTeX Error: Cannot determine size of graphic in fly-MUM.eps (no BoundingBox)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247   \includegraphics[scale=0.3]{fly-MUM.eps}
+                                                
+? 
+File: fly-MUM.eps Graphic file (type eps)
+<fly-MUM.eps>
+
+LaTeX Warning: File `fly-RAM.eps' not found on input line 254.
+
+
+! LaTeX Error: File `fly-RAM.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.254   \includegraphics[scale=0.65]{fly-RAM.eps}
+                                                 
+? 
+
+! LaTeX Error: Cannot determine size of graphic in fly-RAM.eps (no BoundingBox)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.254   \includegraphics[scale=0.65]{fly-RAM.eps}
+                                                 
+? 
+File: fly-RAM.eps Graphic file (type eps)
+<fly-RAM.eps>
+Underfull \hbox (badness 7030) in paragraph at lines 255--255
+[]\OT1/cmr/bx/n/9 Fig.9. \OT1/cmr/m/n/9 RAM con-sump-tion to search for MUMs fo
+r D.melanogaster and
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `chicken-MUM.eps' not found on input line 262.
+
+
+! LaTeX Error: File `chicken-MUM.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.262 ...cludegraphics[scale=0.3]{chicken-MUM.eps}
+                                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in chicken-MUM.eps (no Bounding
+Box).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.262 ...cludegraphics[scale=0.3]{chicken-MUM.eps}
+                                                  
+? 
+File: chicken-MUM.eps Graphic file (type eps)
+<chicken-MUM.eps>
+
+LaTeX Warning: File `chicken-RAM.eps' not found on input line 269.
+
+
+! LaTeX Error: File `chicken-RAM.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.269 ...ludegraphics[scale=0.65]{chicken-RAM.eps}
+                                                  
+? 
+
+! LaTeX Error: Cannot determine size of graphic in chicken-RAM.eps (no Bounding
+Box).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.269 ...ludegraphics[scale=0.65]{chicken-RAM.eps}
+                                                  
+? 
+File: chicken-RAM.eps Graphic file (type eps)
+<chicken-RAM.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+No file mum_mc.bbl.
+
+Underfull \vbox (badness 1668) has occurred while \output is active []
+
+ [8]
+[9] [10] [11] [12] (./mum_mc.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2509 strings out of 493849
+ 30288 string characters out of 1152846
+ 126559 words of memory out of 3000000
+ 5772 multiletter control sequences out of 15000+50000
+ 9396 words of font info for 34 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 33i,22n,26p,1131b,535s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on mum_mc.dvi (12 pages, 32408 bytes).

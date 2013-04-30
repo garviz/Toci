@@ -10,6 +10,8 @@
 #include <unordered_map>
 #include <algorithm>
 
+#include "smhasher-read-only/MurmurHash3.h"
+
 using namespace std;
 
 // Stores the LCP array in an long char (0-255).  Values larger
@@ -67,16 +69,15 @@ struct interval_t {
   long size() { return end - start + 1; }
 };
 
-struct inter {
-    long long l = -1, r = -2;
-    inter() : l(-1), r(-2) {}
-    inter(long long lv, long long rv) : l(lv), r(rv) {}
-    void update(long long val) { 
-        if (val<l) l=val;
-        else if (val>r) r=val;
+struct hashMmH3 { 
+    size_t operator() (string preffix) const
+    { 
+        unsigned int hash;
+        uint32_t seed = 42; 
+        MurmurHash3_x86_32(preffix.c_str(), 8, seed, &hash);
+        return hash;
     }
-    long size() {return r-l+1;}
-}; 
+};
 
 struct sparseSA {
   vector<string> &descr; // Descriptions of concatenated sequences.
@@ -92,7 +93,8 @@ struct sparseSA {
   vector<long long> ISA;  // Inverse suffix array.
   vec_uchar LCP; // Simulates a vector<int> LCP.
   vector<long long> CHILD; //child table
-  unordered_map<string,interval_t> offset;
+  //unordered_map<string,interval_t> offset;
+  unordered_map<string,interval_t,hashMmH3> offset;
 
   long long K; // suffix sampling, K = 1 every suffix, K = 2 every other suffix, K = 3, every 3rd sffix
   bool hasChild;
@@ -147,7 +149,7 @@ struct sparseSA {
     long long thresh = 2 * link.depth * logN, exp = 0; // Threshold link expansion.
     long long start = link.start;
     long long end = link.end;
-    while(LCP[start] >= (long) link.depth) { 
+    while(LCP[start] >= link.depth) { 
       exp++; 
       if(exp >= thresh) {
           return false;

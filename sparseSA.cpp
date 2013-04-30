@@ -14,6 +14,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <mmintrin.h>
 
 #include "sparseSA.hpp"
 
@@ -26,6 +27,7 @@
 //#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);cin.get();
 #define PRINT
 using namespace std;
+
 
 // LS suffix sorter (integer alphabet). 
 extern "C" { void suffixsort(int *x, int *p, int n, int k, int l); };
@@ -551,18 +553,18 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
   double start,finish;
   start = omp_get_wtime();
   memCount = 0;
-  inter t;
   long lborder = 0, rborder = N-1;
   interval_t cur(lborder, rborder, 0);
-  unordered_map<string,interval_t>::const_iterator got;
+  unordered_map<string,interval_t,hashMmH3>::const_iterator got;
   long prefix = P.length()/chunks*chunk;
   const long end = (long) (P.length()/chunks*(chunk+1));
-  got = offset.find(P.substr(prefix,8));
+  /*got = offset.find(P.substr(prefix,8));
   if (got == offset.end()) {
       cur.depth = 0; cur.start = 0; cur.end = N;
   } else
-      cur = got->second;
-  __builtin_prefetch(LCP.vec.data()); 
+      cur = got->second;*/
+  /*for (long i=0; i<LCP.vec.size(); i+=64)
+    _mm_prefetch(&(LCP.vec[i]),_MM_HINT_NTA); */
   while(prefix < end) {
       PRINT
     traverse_faster(P, prefix, cur, end);
@@ -584,6 +586,7 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
 	    else  matches.push_back(m); 
       }
     }
+    //__builtin_prefetch(LCP.vec.data(),0,3);
     do {
       cur.depth = cur.depth-1;
       cur.start = ISA[SA[cur.start] + 1];  

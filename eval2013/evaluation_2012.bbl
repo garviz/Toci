@@ -1,0 +1,67 @@
+\begin{thebibliography}{}
+
+\bibitem[Clifford, 2005]{Clifford2005}
+Clifford, R. (2005).
+\newblock {Distributed suffix trees}.
+\newblock {\em Journal of Discrete Algorithms}, (October 2006).
+
+\bibitem[Ghoting and Makarychev, 2010]{Ghoting2010}
+Ghoting, A. and Makarychev, K. (2010).
+\newblock {I/O efficient algorithms for serial and parallel suffix tree
+  construction}.
+\newblock {\em ACM Transactions on Database Systems}, 35(4):1--37.
+
+\bibitem[Gusfield, 2007]{Gusfield2007Algorithms}
+Gusfield, D. (2007).
+\newblock {\em {Algorithms on strings, trees, and sequences : computer science
+  and computational biology}}.
+\newblock Cambridge Univ. Press.
+
+\bibitem[Japp, 2004]{Japp2004}
+Japp, R. (2004).
+\newblock {The Top-Compressed Suffix Tree A Disk-Resident Index for Large
+  Sequences}.
+\newblock {\em Bioinformatics Workshop 21st Annual British national Conference
+  on Databases}, (January).
+
+\bibitem[Kurtz et~al., 2004]{Mummer3}
+Kurtz, S., Phillippy, A., Delcher, A.~L., Smoot, M., Shumway, M., Antonescu,
+  C., and Salzberg, S.~L. (2004).
+\newblock Versatile and open software for comparing large genomes.
+\newblock {\em Genome Biology}, 5(R12):R12.1--R12.9.
+
+\bibitem[Mansour, 2012]{Mansour2012}
+Mansour, E. (2012).
+\newblock {ERA : Efficient Serial and Parallel Suffix Tree Construction for
+  Very Long Strings}.
+\newblock 5(1):49--60.
+
+\bibitem[McCreight, 1976]{McCreight:1976:SST:321941.321946}
+McCreight, E.~M. (1976).
+\newblock A space-economical suffix tree construction algorithm.
+\newblock {\em J. ACM}, 23:262--272.
+
+\bibitem[Needleman and Wunsch, 1970]{Needleman1970General}
+Needleman, S.~B. and Wunsch, C.~D. (1970).
+\newblock {A general method applicable to the search for similarities in the
+  amino acid sequence of two proteins.}
+\newblock {\em Journal of molecular biology}, 48(3):443--453.
+
+\bibitem[Sadakane, ]{Sadakane}
+Sadakane, K.
+\newblock {Compressed Suffix Trees with Full Functionality}.
+\newblock {\em Communication}, 4:1--18.
+
+\bibitem[Smith and Waterman, 1981]{Waterman}
+Smith, T.~F. and Waterman, M.~S. (1981).
+\newblock Identification of common molecular subsequences.
+\newblock {\em Journal of Molecular Biology}, 147:195--197.
+
+\bibitem[Ukkonen, 1992]{Ukkonen1992}
+Ukkonen, E. (1992).
+\newblock {Constructing Suffix Trees On-Line in Linear Time}.
+\newblock In {Van Leeuwen}, J., editor, {\em Proceedings of the IFIP 12th World
+  Computer Congress on Algorithms Software Architecture Information Processing
+  92 Volume 1}, volume~1, pages 484--492. North-Holland Publishing Co.
+
+\end{thebibliography}

@@ -73,12 +73,12 @@ struct vec_uchar {
   }
 };
 
-struct hashMmH3 {
-    size_t operator() (const char *preffix) const
-    {
+struct hashMmH3 { 
+    size_t operator() (string preffix) const
+    { 
         unsigned int hash;
         uint32_t seed = 42; 
-        MurmurHash3_x86_32(preffix, 8, seed, &hash);
+        MurmurHash3_x86_32(preffix.c_str(), 8, seed, &hash);
         return hash;
     }
 };
@@ -102,6 +102,8 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     file.append(".ois");
     ifstream ifs(file);
     string R;
+    uint32_t seed = 42; 
+
     if (ifs.is_open())
         getline(ifs, R);
     ifs.close();
@@ -110,10 +112,13 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     //vector<long> LCP; // Simulates a vector<int> LCP.
     vec_uchar LCP; // Simulates a vector<int> LCP.
     vector<long long> CHILD; //child table
-    typedef pair<unsigned char, unsigned char> pair_k;
-    //unordered_map<const char*,long,hashMmH3> offset;
-    unordered_map<string,inter> offset;
+    unordered_map<string,inter,hashMmH3> offset;
+    //unordered_map<string,inter> offset;
     //map<string,long> offset;
+/*    for (unsigned int i=0; i < offset.size(); i++) {
+        inter t(0,0);
+        offset[i]=t;
+    }*/
     long size;
 
     SA.resize(project->totallength);
@@ -128,8 +133,6 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
         long m = ISA[i]; 
         if(m==0) LCP.set(m, 0); 
         else LCP.set(m, lcp); 
-        //LCP.push_back(lcp);
-        //offset[R.substr(SA[i],8).c_str()]=i;
         if (offset.count(R.substr(SA[i],8))>0) {
             offset[R.substr(SA[i],8)].update(i);
         } else {
@@ -137,7 +140,7 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
             offset[R.substr(SA[i],8)]=t;
         }    
     }
-    LCP.init();
+/*    LCP.init();
     fill(CHILD.begin(), CHILD.end(),-1);
     //Compute up and down values
     long long lastIndex  = -1;
@@ -208,7 +211,7 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     size = CHILD.size();
     ch.write(reinterpret_cast<char*>(&size), sizeof(size));
     ch.write(reinterpret_cast<char*>(&CHILD[0]), size*sizeof(CHILD[0]));
-    ch.close();
+    ch.close();*/
     string file6(project->prjbasename);
     file6.append(".off");
     ofstream of(file6);
@@ -228,7 +231,6 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
 
 int main (int argc, char *argv[]) {
     int id, p, retcode;
-    unsigned short offset[USHRT_MAX];
     fid_Error error;
     fid_Projectfile prjfile;
     fid_Suffixarray esa;
