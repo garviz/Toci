@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  30 APR 2013 15:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  1 MAY 2013 19:32
 entering extended mode
  %&-line parsing enabled.
 **mum_mc.tex
@@ -259,287 +259,71 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 ) (./mum_mc.aux)
 \openout1 = `mum_mc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 25.
+(Font)              <7> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 25.
-
-
-LaTeX Warning: Citation `Delcher2003' on page 1 undefined on input line 43.
-
-[1
+(Font)              <5> on input line 24.
+ [1
 
 
 ]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 111.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 111.
 
-LaTeX Warning: Citation `Delcher1999' on page 2 undefined on input line 46.
-
-
-LaTeX Warning: Citation `OguzhanKulekci2011' on page 2 undefined on input line 
-46.
-
-
-LaTeX Warning: Citation `Mongelli' on page 2 undefined on input line 46.
-
-
-LaTeX Warning: Citation `Kouzinopoulos2005' on page 2 undefined on input line 4
-6.
+Underfull \hbox (badness 10000) detected at line 127
+[][]
+ []
 
 
-LaTeX Warning: Citation `Meng2005' on page 2 undefined on input line 46.
-
-
-LaTeX Warning: Citation `Encarnac2011' on page 2 undefined on input line 46.
-
-
-LaTeX Warning: Citation `Vyverman2013' on page 2 undefined on input line 46.
-
-
-LaTeX Warning: Citation `OguzhanKulekci2011' on page 2 undefined on input line 
-46.
-
-
-LaTeX Warning: Citation `Khan2009' on page 2 undefined on input line 46.
-
-
-LaTeX Warning: Citation `OhlebuschGK10' on page 2 undefined on input line 46.
-
-
-LaTeX Warning: Citation `Gusfield1997' on page 2 undefined on input line 50.
-
-
-LaTeX Warning: Citation `Gusfield1997' on page 2 undefined on input line 53.
-
-
-LaTeX Warning: Citation `Abouelhoda2004' on page 2 undefined on input line 55.
+Underfull \hbox (badness 10000) detected at line 179
+[][]
+ []
 
 [2]
 
-LaTeX Warning: Citation `Abouelhoda2004' on page 3 undefined on input line 57.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: Citation `Abouelhoda2004' on page 3 undefined on input line 60.
-
-File: child.eps Graphic file (type eps)
-<child.eps>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 107.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 107.
-
-Underfull \hbox (badness 10000) detected at line 123
-[][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 172
-[][]
- []
-
-File: Whole-MUM.eps Graphic file (type eps)
-<Whole-MUM.eps>
 File: Phases.ps Graphic file (type eps)
- <Phases.ps>
-Overfull \hbox (223.00647pt too wide) in paragraph at lines 184--185
- [][] 
- []
+<Phases.ps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3] [4]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 195--210
+Underfull \hbox (badness 10000) in paragraph at lines 203--218
 
  []
 
-[6]
-
-LaTeX Warning: File `construction.eps' not found on input line 214.
-
-
-! LaTeX Error: File `construction.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.214 ...ludegraphics[scale=0.6]{construction.eps}
-                                                  
-? 
-
-! LaTeX Error: Cannot determine size of graphic in construction.eps (no Boundin
-gBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.214 ...ludegraphics[scale=0.6]{construction.eps}
-                                                  
-? 
+[5]
 File: construction.eps Graphic file (type eps)
-<construction.eps>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: File `speedup-MUM.eps' not found on input line 222.
-
-
-! LaTeX Error: File `speedup-MUM.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.222 ...ludegraphics[scale=0.65]{speedup-MUM.eps}
-                                                  
-? 
-
-! LaTeX Error: Cannot determine size of graphic in speedup-MUM.eps (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.222 ...ludegraphics[scale=0.65]{speedup-MUM.eps}
-                                                  
-? 
-File: speedup-MUM.eps Graphic file (type eps)
-<speedup-MUM.eps>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: File `ecoli-MUM.eps' not found on input line 231.
-
-
-! LaTeX Error: File `ecoli-MUM.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...ncludegraphics[scale=0.65]{ecoli-MUM.eps}
-                                                  
-? 
-
-! LaTeX Error: Cannot determine size of graphic in ecoli-MUM.eps (no BoundingBo
-x).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...ncludegraphics[scale=0.65]{ecoli-MUM.eps}
-                                                  
-? 
+ <construction.eps>
 File: ecoli-MUM.eps Graphic file (type eps)
-<ecoli-MUM.eps>
-
-LaTeX Warning: File `ecoli-RAM.eps' not found on input line 238.
-
-
-! LaTeX Error: File `ecoli-RAM.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.238 ...ncludegraphics[scale=0.65]{ecoli-RAM.eps}
-                                                  
-? 
-
-! LaTeX Error: Cannot determine size of graphic in ecoli-RAM.eps (no BoundingBo
-x).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.238 ...ncludegraphics[scale=0.65]{ecoli-RAM.eps}
-                                                  
-? 
+ <ecoli-MUM.eps>
 File: ecoli-RAM.eps Graphic file (type eps)
-<ecoli-RAM.eps>
+ <ecoli-RAM.eps>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7]
-
-LaTeX Warning: File `fly-MUM.eps' not found on input line 247.
-
-
-! LaTeX Error: File `fly-MUM.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.247   \includegraphics[scale=0.3]{fly-MUM.eps}
-                                                
-? 
-
-! LaTeX Error: Cannot determine size of graphic in fly-MUM.eps (no BoundingBox)
-.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.247   \includegraphics[scale=0.3]{fly-MUM.eps}
-                                                
-? 
+[6]
 File: fly-MUM.eps Graphic file (type eps)
-<fly-MUM.eps>
-
-LaTeX Warning: File `fly-RAM.eps' not found on input line 254.
-
-
-! LaTeX Error: File `fly-RAM.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.254   \includegraphics[scale=0.65]{fly-RAM.eps}
-                                                 
-? 
-
-! LaTeX Error: Cannot determine size of graphic in fly-RAM.eps (no BoundingBox)
-.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.254   \includegraphics[scale=0.65]{fly-RAM.eps}
-                                                 
-? 
+ <fly-MUM.eps>
 File: fly-RAM.eps Graphic file (type eps)
-<fly-RAM.eps>
-Underfull \hbox (badness 7030) in paragraph at lines 255--255
-[]\OT1/cmr/bx/n/9 Fig.9. \OT1/cmr/m/n/9 RAM con-sump-tion to search for MUMs fo
+ <fly-RAM.eps>
+Underfull \hbox (badness 7030) in paragraph at lines 264--264
+[]\OT1/cmr/bx/n/9 Fig.6. \OT1/cmr/m/n/9 RAM con-sump-tion to search for MUMs fo
 r D.melanogaster and
  []
 
@@ -549,81 +333,28 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: File `chicken-MUM.eps' not found on input line 262.
-
-
-! LaTeX Error: File `chicken-MUM.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.262 ...cludegraphics[scale=0.3]{chicken-MUM.eps}
-                                                  
-? 
-
-! LaTeX Error: Cannot determine size of graphic in chicken-MUM.eps (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.262 ...cludegraphics[scale=0.3]{chicken-MUM.eps}
-                                                  
-? 
 File: chicken-MUM.eps Graphic file (type eps)
 <chicken-MUM.eps>
-
-LaTeX Warning: File `chicken-RAM.eps' not found on input line 269.
-
-
-! LaTeX Error: File `chicken-RAM.eps' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.269 ...ludegraphics[scale=0.65]{chicken-RAM.eps}
-                                                  
-? 
-
-! LaTeX Error: Cannot determine size of graphic in chicken-RAM.eps (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.269 ...ludegraphics[scale=0.65]{chicken-RAM.eps}
-                                                  
-? 
 File: chicken-RAM.eps Graphic file (type eps)
-<chicken-RAM.eps>
+ <chicken-RAM.eps> [7]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-No file mum_mc.bbl.
 
-Underfull \vbox (badness 1668) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-[9] [10] [11] [12] (./mum_mc.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[9] (./mum_mc.bbl) [10] (./mum_mc.aux) ) 
 Here is how much of TeX's memory you used:
- 2509 strings out of 493849
- 30288 string characters out of 1152846
- 126559 words of memory out of 3000000
- 5772 multiletter control sequences out of 15000+50000
- 9396 words of font info for 34 fonts, out of 3000000 for 9000
+ 2503 strings out of 493849
+ 30202 string characters out of 1152846
+ 122559 words of memory out of 3000000
+ 5768 multiletter control sequences out of 15000+50000
+ 9037 words of font info for 33 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 33i,22n,26p,1131b,535s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,22n,26p,1130b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on mum_mc.dvi (12 pages, 32408 bytes).
+Output written on mum_mc.dvi (10 pages, 29544 bytes).

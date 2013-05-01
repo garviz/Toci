@@ -1,0 +1,73 @@
+\begin{thebibliography}{10}
+
+\bibitem{Abouelhoda2004}
+M.~I. Abouelhoda, S.~Kurtz, and E.~Ohlebusch.
+\newblock {Replacing suffix trees with enhanced suffix arrays}.
+\newblock {\em Journal of Discrete Algorithms}, 2(1):53--86, Mar. 2004.
+
+\bibitem{Delcher1999}
+A.~L. Delcher, S.~Kasif, R.~D. Fleischmann, J.~Peterson, O.~White, and S.~L.
+  Salzberg.
+\newblock {Alignment of whole genomes MUMMER}.
+\newblock {\em Nucl Acids Res}, 27(11):2369, 1999.
+
+\bibitem{Delcher2003}
+A.~L. Delcher, S.~L. Salzberg, and A.~M. Phillippy.
+\newblock {Using MUMmer to identify similar regions in large sequence sets.}
+\newblock {\em Current protocols in bioinformatics editoral board Andreas D
+  Baxevanis et al}, Chapter 10(1934-340X (Electronic) LA - eng PT - Journal
+  Article SB - IM):Unit 10.3, 2003.
+
+\bibitem{Encarnac2011}
+G.~Encarnac and N.~Roma.
+\newblock {Advantages and GPU Implementation of High-Performance Indexed DNA
+  Search based on Suffix Arrays}.
+\newblock {\em Architecture}, pages 49--55, 2011.
+
+\bibitem{Gusfield1997}
+D.~Gusfield.
+\newblock {\em {Algorithms on strings, trees, and sequences: computer science
+  and computational biology}}.
+\newblock Cambridge University Press, 1997.
+
+\bibitem{Khan2009}
+Z.~Khan, J.~S. Bloom, L.~Kruglyak, and M.~Singh.
+\newblock {A practical algorithm for finding maximal exact matches in large
+  sequence datasets using sparse suffix arrays}.
+\newblock {\em Bioinformatics}, 25(13):1609--1616, July 2009.
+
+\bibitem{Kouzinopoulos2005}
+C.~S. Kouzinopoulos, P.~D. Michailidis, and K.~G. Margaritis.
+\newblock Parallel processing of multiple pattern matching algorithms for
+  biological sequences : Methods and performance results.
+\newblock {\em Systems and Computational Biology - Bioinformatics and
+  Computational Modeling}, 2005.
+
+\bibitem{Meng2005}
+X.~Meng and V.~Chaudhary.
+\newblock {Exploiting multi-level parallelism for homology search using general
+  purpose processors}.
+\newblock {\em October}, 2005.
+
+\bibitem{Mongelli}
+H.~Mongelli.
+\newblock {Efficient Two-Dimensional Parallel Pattern Matching with Scaling}.
+
+\bibitem{OhlebuschGK10}
+E.~Ohlebusch, S.~Gog, and A.~K{\"u}gel.
+\newblock Computing matching statistics and maximal exact matches on compressed
+  full-text indexes.
+\newblock In {\em SPIRE}, pages 347--358, 2010.
+
+\bibitem{OguzhanKulekci2011}
+M.~{O\v{g}uzhan K\"{u}lekci}, W.-K. Hon, R.~Shah, J.~{Scott Vitter}, and B.~Xu.
+\newblock {$\Psi$-RA: a parallel sparse index for genomic read alignment.}
+\newblock {\em BMC genomics}, 12 Suppl 2:S7, Jan. 2011.
+
+\bibitem{Vyverman2013}
+M.~Vyverman, B.~{De Baets}, V.~Fack, and P.~Dawyndt.
+\newblock {essaMEM: finding maximal exact matches using enhanced sparse suffix
+  arrays.}
+\newblock {\em Bioinformatics (Oxford, England)}, pages 2--4, Feb. 2013.
+
+\end{thebibliography}

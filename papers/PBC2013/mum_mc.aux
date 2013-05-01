@@ -10,46 +10,52 @@
 \citation{Encarnac2011}
 \citation{Vyverman2013,OguzhanKulekci2011,Khan2009,OhlebuschGK10}
 \citation{Gusfield1997}
-\citation{Gusfield1997}
+\citation{Abouelhoda2004}
 \citation{Abouelhoda2004}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Preliminaries}{2}}
-\citation{Abouelhoda2004}
-\citation{Abouelhoda2004}
+\newlabel{algST}{{1}{3}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Search for MUMs in a Suffix Tree.}}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{3}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Search for MUMs in a Suffix Tree.}}{4}}
+\newlabel{algESA}{{2}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Search for MUMs in an Enhanced Suffix Array.}}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Enhanced Suffix Array for string R=acaaacatat\$. Child interval 1-[0..5] where CHILD[6].up=2, CHILD[2].down=1, CHILD[2].nextlindex=4.}}{5}}
-\newlabel{fig:esa}{{1}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces To get a MUM, it requires an important feature its uniqueness. Uniqueness can only be found when a whole genome is checked. While reading Query we find MUM candidates that need to be verified if they are unique in both Reference and Query genomes.}}{5}}
-\newlabel{Whole-MUM}{{2}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{6}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces List of Genomes used in experiments.}}{7}}
-\newlabel{genomes}{{1}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Construction of Full-text index data structure}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Search for MUMs in multi-core architectures}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{EcoliK12 vs. EcoliO157H7}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Our approach is divided in three phases: Creation of Suffix Tree or Enhanced Suffix Array; Splitting query genome data (chunks) according to the number of available cores using 1 thread per core and parallel execution of the search for MUMs for every chunk, then every thread has its own list of MUM candidates; and Get MUMs from list of MUM candidates of all threads.}}{4}}
+\newlabel{phases}{{1}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{5}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces List of Genomes used in experiments.}}{5}}
+\newlabel{genomes}{{1}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Construction of Full-text index data structure}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Construction of Suffix Tree and Enhanced Suffix Array for several genomes sizes. Our approach stores the whole Reference genome indexed by a Suffix Tree (ST) or an Enhanced Suffix Array (ESA) in main memory.}}{6}}
+\newlabel{fig:construction}{{2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Search for MUMs in multi-core architectures}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{EcoliK12 vs. EcoliO157H7}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Search for MUMs time for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}}{7}}
+\newlabel{fig:ecoli-mum}{{3}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces RAM consumption to search for MUMs for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}}{7}}
+\newlabel{fig:ecoli-ram}{{4}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{D.melanogaster vs. D.pseudoobscura}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Search for MUMs time for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}}{8}}
+\newlabel{fig:fly-mum}{{5}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces RAM consumption to search for MUMs for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}}{8}}
+\newlabel{fig:fly-ram}{{6}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{Chicken vs. Zebrafish}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Search for MUMs time for Chicken and Zebrafish in multi-core architectures with ST and ESA.}}{9}}
+\newlabel{fig:chicken-mum}{{7}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces RAM consumption to search for MUMs for Chicken and Zebrafish in multi-core architectures with ST and ESA.}}{9}}
+\newlabel{fig:chicken-ram}{{8}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{9}}
 \bibstyle{abbrv}
 \bibdata{mum-mc}
-\@writefile{toc}{\contentsline {subsubsection}{D.melanogaster vs. D.pseudoobscura}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{Chicken vs. Zebrafish}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Acknowledgments}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Our approach is divided in three phases: Creation of Suffix Tree or Enhanced Suffix Array; Splitting query genome data (chunks) according to the number of available cores using 1 thread per core and parallel execution of the search for MUMs for every chunk, then every thread has its own list of MUM candidates; and Get MUMs from list of MUM candidates of all threads.}}{10}}
-\newlabel{phases}{{3}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Construction of Suffix Tree and Enhanced Suffix Array for several genomes sizes. Our approach stores the whole Reference genome indexed by a Suffix Tree (ST) or an Enhanced Suffix Array (ESA) in main memory.}}{11}}
-\newlabel{fig:construction}{{4}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Speedup of our approach to search MUMs in multi-core architectures with OpenMP in ST and ESA.}}{11}}
-\newlabel{fig:speedup}{{5}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Search for MUMs time for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}}{11}}
-\newlabel{fig:ecoli-mum}{{6}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces RAM consumption to search for MUMs for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}}{11}}
-\newlabel{fig:ecoli-ram}{{7}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Search for MUMs time for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}}{11}}
-\newlabel{fig:fly-mum}{{8}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces RAM consumption to search for MUMs for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}}{11}}
-\newlabel{fig:fly-ram}{{9}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Search for MUMs time for Chicken and Zebrafish in multi-core architectures with ST and ESA.}}{12}}
-\newlabel{fig:chicken-mum}{{10}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces RAM consumption to search for MUMs for Chicken and Zebrafish in multi-core architectures with ST and ESA.}}{12}}
-\newlabel{fig:chicken-ram}{{11}{12}}
+\bibcite{Abouelhoda2004}{1}
+\bibcite{Delcher1999}{2}
+\bibcite{Delcher2003}{3}
+\bibcite{Encarnac2011}{4}
+\bibcite{Gusfield1997}{5}
+\bibcite{Khan2009}{6}
+\bibcite{Kouzinopoulos2005}{7}
+\bibcite{Meng2005}{8}
+\bibcite{Mongelli}{9}
+\bibcite{OhlebuschGK10}{10}
+\bibcite{OguzhanKulekci2011}{11}
+\bibcite{Vyverman2013}{12}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Acknowledgments}{10}}
