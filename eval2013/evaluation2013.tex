@@ -62,7 +62,7 @@ Whole genome alignment in high performance computing environments.}\\}
 \begin{center}
 \begin{tabular}{ c c c }
 Director & Director & Estudiante\\
-Antonio Espinos & Juan Carlos Moure & Julio C\'esar García Vizcaíno\\
+Antonio Espinosa & Juan Carlos Moure & Julio C\'esar García Vizcaíno\\
 \end{tabular}
 \end{center}
 \pagebreak
@@ -95,7 +95,7 @@ Formalmente el problema de la búsqueda de coincidencias exactas máximas se def
 Existen diferentes aproximaciones para resolver el problema ver Figura \ref{fig:state}, todas ellas involucran un sacrificio de recursos de cómputo (memoria, procesador).
 \begin{figure}[h] 
    \centering 
-   \includegraphics[scale=0.3]{state.png} 
+   \includegraphics[scale=0.3]{state.eps} 
    \caption{Diferentes estructuras de indexación para el problema de la búsqueda de coincidencias exactas máximas para el genoma humano como referencia.} 
    \label{fig:state} 
  \end{figure}
@@ -109,7 +109,7 @@ En consecuencia se busca \textbf{acelerar la búsqueda eficiente de
 coincidencias exactas y que tenga en cuenta el uso de recursos de cómputo y
 memoria en un clúster multicore}. Las consideraciones que se toman en cuenta son:
 \begin{itemize}
-\item Reducir el número de operaciones en la búsqueda de MEMs: al agilizar la búsqueda se reduce el tiempo utilizado por cada MEM encontrado debido a que los MEMs son dependientes de los datos de entrada.
+\item Reducir el número de operaciones en la búsqueda de MUMs: al agilizar la búsqueda se reduce el tiempo utilizado por cada MEM encontrado debido a que los MEMs son dependientes de los datos de entrada.
 \item Almacenar genomas de mayor tamaño con la memoria disponible: al utilizar un árbol de sufijos como estructura de indexación el tamaño del árbol se convierte en un problema cuando este no cabe en la memoria disponible. Se hace necesario diseñar estructuras de datos que permitan la indexación de genomas mayores.
 \item Reducir los problemas de localidad en el árbol de sufijos: al navegar en un árbol de sufijos puede ocurrir que ocurran fallos de cache.
 \end{itemize}
@@ -145,7 +145,7 @@ El objetivo es buscar todas aquellas subcadenas que son comunes a las secuencias
  bioinformáticas, incluyendo: alineamiento de genomas \cite{Mummer3}.\\
    \begin{figure}[h] 
    \centering 
-   \includegraphics[scale=0.8]{st-mum.png} 
+   \includegraphics[scale=0.8]{st-mum.eps} 
    \caption{Árbol de sufijos para la palabra atgtgtgtc\$.} 
    \label{fig:st} 
  \end{figure}
@@ -409,10 +409,8 @@ resolverse con estructuras de datos como el árbol de sufijos.
 %\label{tab:estructuras}
 %\end{table}
 \indent
-Independientemente de la estructura de datos utilizada, lo que se desea es poder
-realizar búsquedas de coincidencias exactas a esa estructura de manera eficiente. 
-Una de las consultas en que se requiere realizar rápidamente, para el alineamiento 
-de genomas, es la búsqueda exacta de coincidencias máximas. 
+Independientemente de la estructura de datos utilizada, lo que se desea es poder realizar búsquedas de coincidencias exactas a esa estructura de manera eficiente. 
+Una de las consultas en que se requiere realizar rápidamente, para el alineamiento de genomas, es la búsqueda de coincidencias máximas únicas. 
 \section{Estado de la investigación}
 \subsection{Paralelización a nivel de datos: alineamiento de genomas}
 \indent
@@ -421,7 +419,7 @@ La versión secuencial del algoritmo de MUMmer\footnote{Aplicación para el alin
 Es por ello que se realizó una evaluación de la viabilidad de utilizar la t\'ecnica de paralelización de datos en el alineamiento de genomas. Específicamente se evalúa que t\'ecnica de paralelización es mejor: dividir el genoma de referencia o dividir el genoma de consulta. En la figura \ref{fig:algo} se muestra la propuesta evaluada de paralelización a nivel de datos. La paralelización involucra que se realice una división del genoma con un tamaño fijo y una área de solapamiento. El tamaño del bloque es determinado por el número de instancias de ejecución que se tendrán y el solapamiento es utilizado para evitar perder alguna coincidencia debido a la división del genoma. Una vez hecha la división se procede a ejecutar la búsqueda de coincidencias exactas máximas. Al realizar la búsqueda de MEMs se tiene un conjunto de listas parciales de MEMs que se mezclan para obtener la lista global de MEMs que debe ser la misma a una ejecución serie.\\
    \begin{figure}[h] 
    \centering 
-   \includegraphics[scale=0.4]{algorithm.png} 
+   \includegraphics[scale=0.4]{algorithm.eps} 
    \caption{Paralelización del alineamiento de genomas.} 
    \label{fig:algo} 
  \end{figure}

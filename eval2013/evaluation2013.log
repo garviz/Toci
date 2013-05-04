@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  30 APR 2013 15:43
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  3 MAY 2013 13:10
 entering extended mode
  %&-line parsing enabled.
 **evaluation2013.tex
@@ -887,92 +887,31 @@ File: omsptm.fd
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
+ [1]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 87.
-
-
-LaTeX Warning: Citation `Needleman1970General' on page 1 undefined on input lin
-e 87.
-
-
-LaTeX Warning: Citation `Waterman' on page 1 undefined on input line 87.
-
-[1]
-
-! LaTeX Error: Cannot determine size of graphic in state.png (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.98    \includegraphics[scale=0.3]{state.png}
-                                              
-? 
-File: state.png Graphic file (type eps)
-<state.png> [2]
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 93.
+File: state.eps Graphic file (type eps)
+ <state.eps>
+[2]
 Underfull \hbox (badness 10000) in paragraph at lines 135--137
 
  []
 
-
-LaTeX Warning: Citation `Gusfield2007Algorithms' on page 3 undefined on input l
-ine 143.
-
-
-LaTeX Warning: Citation `Mummer3' on page 3 undefined on input line 145.
-
-
-! LaTeX Error: Cannot determine size of graphic in st-mum.png (no BoundingBox).
-
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.148    \includegraphics[scale=0.8]{st-mum.png}
-                                                
-? 
-File: st-mum.png Graphic file (type eps)
-<st-mum.png>
-
-LaTeX Warning: Citation `McCreight:1976:SST:321941.321946' on page 3 undefined 
-on input line 186.
-
-
-LaTeX Warning: Citation `Ukkonen1992' on page 3 undefined on input line 187.
-
-
+[3]
+File: st-mum.eps Graphic file (type eps)
+ <st-mum.eps>
 Underfull \hbox (badness 10000) in paragraph at lines 138--238
 
  []
 
-[3] [4]
-
-LaTeX Warning: Citation `Mummer3' on page 5 undefined on input line 240.
-
-
-Overfull \hbox (7.83345pt too wide) in paragraph at lines 239--416
+[4] [5]
+Overfull \hbox (7.83345pt too wide) in paragraph at lines 239--414
 \T1/ptm/m/n/12 re-sol-ver-se con es-truc-tu-ras de da-tos co-mo el ár-bol de su
 -fi-jos. []Independientemente
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[5]
-
-! LaTeX Error: Cannot determine size of graphic in algorithm.png (no BoundingBo
-x).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.424 ...includegraphics[scale=0.4]{algorithm.png}
-                                                  
-? 
-File: algorithm.png Graphic file (type eps)
-<algorithm.png>
+File: algorithm.eps Graphic file (type eps)
+<algorithm.eps>
 
 ! LaTeX Error: Cannot determine size of graphic in ecoli2012.pdf (no BoundingBo
 x).
@@ -981,7 +920,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.432 ...includegraphics[scale=0.4]{ecoli2012.pdf}
+l.430 ...includegraphics[scale=0.4]{ecoli2012.pdf}
                                                   
 ? 
 File: ecoli2012.pdf Graphic file (type eps)
@@ -993,11 +932,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.438    \includegraphics[scale=0.4]{hspan.pdf}
+l.436    \includegraphics[scale=0.4]{hspan.pdf}
                                                
 ? 
 File: hspan.pdf Graphic file (type eps)
-<hspan.pdf> [6] [7] [8]
+<hspan.pdf> [6]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7] [8] [9]
 
 ! LaTeX Error: Cannot determine size of graphic in ecoli2012.pdf (no BoundingBo
 x).
@@ -1006,7 +955,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.530 ...includegraphics[scale=0.4]{ecoli2012.pdf}
+l.528 ...includegraphics[scale=0.4]{ecoli2012.pdf}
                                                   
 ? 
 File: ecoli2012.pdf Graphic file (type eps)
@@ -1018,7 +967,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.536    \includegraphics[scale=0.7]{ex3.png}
+l.534    \includegraphics[scale=0.7]{ex3.png}
                                              
 ? 
 File: ex3.png Graphic file (type eps)
@@ -1030,7 +979,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.542    \includegraphics[scale=0.7]{ex6.png}
+l.540    \includegraphics[scale=0.7]{ex6.png}
                                              
 ? 
 File: ex6.png Graphic file (type eps)
@@ -1042,7 +991,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.550    \includegraphics[scale=0.4]{hspan.pdf}
+l.548    \includegraphics[scale=0.4]{hspan.pdf}
                                                
 ? 
 File: hspan.pdf Graphic file (type eps)
@@ -1055,11 +1004,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.556 ...degraphics[scale=0.4]{hspanMEMGlobal.pdf}
+l.554 ...degraphics[scale=0.4]{hspanMEMGlobal.pdf}
                                                   
 ? 
 File: hspanMEMGlobal.pdf Graphic file (type eps)
-<hspanMEMGlobal.pdf> [9]
+<hspanMEMGlobal.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1068,17 +1017,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10]
 
-LaTeX Warning: Citation `Mansour2012' on page 11 undefined on input line 579.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: Citation `Japp2004' on page 11 undefined on input line 580.
-
-
-LaTeX Warning: Citation `Ghoting2010' on page 11 undefined on input line 580.
-
-
-LaTeX Warning: Citation `Sadakane' on page 11 undefined on input line 580.
-
+[11]
 
 ! LaTeX Error: Cannot determine size of graphic in distributed.png (no Bounding
 Box).
@@ -1087,29 +1028,24 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.585 \includegraphics[scale=0.8]{distributed.png}
+l.583 \includegraphics[scale=0.8]{distributed.png}
                                                   
 ? 
 File: distributed.png Graphic file (type eps)
 <distributed.png>
+Overfull \hbox (12.04622pt too wide) in paragraph at lines 575--592
+\T1/ptm/m/n/12 al-gu-nos con-cep-tos, ex-traí-dos de [[]] y [[]].
+ []
 
-LaTeX Warning: Citation `Clifford2005' on page 11 undefined on input line 592.
-
-
-LaTeX Warning: Citation `Ghoting2010' on page 11 undefined on input line 592.
-
-[11]
-
-LaTeX Warning: Citation `Ghoting2010' on page 12 undefined on input line 601.
-
-Package hyperref Info: bookmark level for unknown myeq defaults to 0 on input l
-ine 607.
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 650--656
+Package hyperref Info: bookmark level for unknown myeq defaults to 0 on input l
+ine 605.
+ [13]
+Underfull \hbox (badness 10000) in paragraph at lines 648--654
 
  []
 
-[13]
+[14]
 
 ! LaTeX Error: Cannot determine size of graphic in sl-nosl.png (no BoundingBox)
 .
@@ -1118,7 +1054,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.685 \includegraphics[scale=0.4]{sl-nosl.png}
+l.683 \includegraphics[scale=0.4]{sl-nosl.png}
                                               
 ? 
 File: sl-nosl.png Graphic file (type eps)
@@ -1130,7 +1066,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.693 \includegraphics[scale=0.4]{mems.png}
+l.691 \includegraphics[scale=0.4]{mems.png}
                                            
 ? 
 File: mems.png Graphic file (type eps)
@@ -1143,7 +1079,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.704 \includegraphics[scale=0.4]{use-sl.png}
+l.702 \includegraphics[scale=0.4]{use-sl.png}
                                              
 ? 
 File: use-sl.png Graphic file (type eps)
@@ -1151,10 +1087,7 @@ File: use-sl.png Graphic file (type eps)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14] [15]
+[15] [16]
 
 ! LaTeX Error: Cannot determine size of graphic in human-freq2.png (no Bounding
 Box).
@@ -1163,7 +1096,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.733 \includegraphics[scale=0.6]{human-freq2.png}
+l.731 \includegraphics[scale=0.6]{human-freq2.png}
                                                   
 ? 
 File: human-freq2.png Graphic file (type eps)
@@ -1176,12 +1109,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.739 \includegraphics[scale=0.6]{human-freq3.png}
+l.737 \includegraphics[scale=0.6]{human-freq3.png}
                                                   
 ? 
 File: human-freq3.png Graphic file (type eps)
 <human-freq3.png>
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 731--743
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 729--741
 [][] [] 
  []
 
@@ -1193,7 +1126,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.751 \includegraphics[scale=0.4]{table-freq2.png}
+l.749 \includegraphics[scale=0.4]{table-freq2.png}
                                                   
 ? 
 File: table-freq2.png Graphic file (type eps)
@@ -1206,12 +1139,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.757 \includegraphics[scale=0.4]{table-freq3.png}
+l.755 \includegraphics[scale=0.4]{table-freq3.png}
                                                   
 ? 
 File: table-freq3.png Graphic file (type eps)
 <table-freq3.png>
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 749--761
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 747--759
 [][] [] 
  []
 
@@ -1222,7 +1155,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.766 \includegraphics[scale=0.4]{dsl1.png}
+l.764 \includegraphics[scale=0.4]{dsl1.png}
                                            
 ? 
 File: dsl1.png Graphic file (type eps)
@@ -1234,12 +1167,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.772 \includegraphics[scale=0.4]{dsl2.png}
+l.770 \includegraphics[scale=0.4]{dsl2.png}
                                            
 ? 
 File: dsl2.png Graphic file (type eps)
 <dsl2.png>
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 764--776
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 762--774
 [][] [] 
  []
 
@@ -1250,16 +1183,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.783 \includegraphics[scale=0.4]{dst2.png}
+l.781 \includegraphics[scale=0.4]{dst2.png}
                                            
 ? 
 File: dst2.png Graphic file (type eps)
 <dst2.png>
-Underfull \hbox (badness 10000) in paragraph at lines 724--794
+Underfull \hbox (badness 10000) in paragraph at lines 722--792
 
  []
 
-[16] [17]
+[17] [18]
 
 ! LaTeX Error: Cannot determine size of graphic in dst_search.png (no BoundingB
 ox).
@@ -1268,30 +1201,23 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.818 \includegraphics[scale=0.4]{dst_search.png}
+l.816 \includegraphics[scale=0.4]{dst_search.png}
                                                  
 ? 
 File: dst_search.png Graphic file (type eps)
-<dst_search.png> [18]
-Underfull \hbox (badness 10000) in paragraph at lines 844--848
+<dst_search.png> [19]
+Underfull \hbox (badness 10000) in paragraph at lines 842--846
 
  []
 
-[19] (./evaluation2013.bbl [20]) [21] (./evaluation2013.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[20] (./evaluation2013.bbl [21]) [22] (./evaluation2013.aux) ) 
 Here is how much of TeX's memory you used:
- 14660 strings out of 493849
- 234425 string characters out of 1152846
- 327074 words of memory out of 3000000
+ 14661 strings out of 493849
+ 234429 string characters out of 1152846
+ 326074 words of memory out of 3000000
  17610 multiletter control sequences out of 15000+50000
  44739 words of font info for 56 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 47i,18n,49p,28197b,788s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 47i,18n,49p,6475b,950s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on evaluation2013.dvi (23 pages, 116084 bytes).
+Output written on evaluation2013.dvi (24 pages, 120444 bytes).
