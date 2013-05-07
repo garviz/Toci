@@ -66,32 +66,12 @@ Antonio Espinosa & Juan Carlos Moure & Julio C\'esar García Vizcaíno\\
 \pagenumbering{arabic}
 \section{Resumen}
 \indent
-Actualmente la generación de nueva información genómica ha creado la necesidad de almacenar y procesar estos nuevos datos computacionalmente hablando. Una de las tareas en la que nos centramos es el alineamiento de genomas ya que es una tarea computacionalmente intensiva. La información básica de un genoma es el ADN. El ADN es una cadena compuesta por el alfabeto $\sigma={a,c,g,t}$, cada uno de estos elementos es llamado nucleótido. El alineamiento de genomas consiste en encontrar un mapeo de cada posición en un genoma de consulta a su correspondiente posición en el genoma de referencia. Es decir, encontrar las similitudes y diferencias de las cadenas de ADN entre genomas.\\
-El alineamiento de genomas es un modelo matemático utilizado por los biólogos para determinar la similitud entre genomas. 
-<<<<<<< HEAD
-=======
-%Un alineamiento involucra tres operaciones básicas:
-%\begin{itemize}
-%  \item Coincidencia: los nucleótido en ambos genomas son iguales.
-%  \item Discrepancia: los nucleótidos no coinciden en ambos genomas.
-%  \item Mutaciones: uno o varios cambios de nucleótidos en el genoma:
-%    \begin{itemize}
-%      \item Sustitución: un nucleótido es reemplazado por otro.
-%      \item Inserción: uno o varios nucleótidos se insertan en una posición en el genoma.
-%      \item Eliminación: uno o varios nucleótidos se borran del genoma.
-%    \end{itemize}
-%\end{itemize}
-%Los algoritmos utilizados para el alineamiento de genomas presentan una alta demanda computacional debido al tamaño de los datos genómicos.\\
-\indent
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
-Existe diferentes algoritmos propuestos para el alineamiento de dos secuencias como \cite{Needleman1970General} y \cite{Waterman}. Estos algoritmos funcionan bien con tamaños de secuencias pequeños como un gen, 20-30kbp\footnote{bp es la únidad básica de medida en las secuencias de ADN y representa la longitud de un nucleótido}. Sin embargo, son ineficaces al alinear genomas enteros. La complejidad computacional y espacial es $O(nm)$, donde $n$ y $m$ son las longitudes de los genomas a alinear. Estos algoritmos tienen problemas de mayores requerimientos de memoria o de tiempos de ejecución inaceptables.\\
+Actualmente la generación de nueva información genómica ha creado la necesidad de almacenar y procesar estos nuevos datos computacionalmente hablando. Una de las tareas en la que nos centramos es el alineamiento de genomas ya que es una tarea computacionalmente intensiva. La información básica de un genoma es el ADN. El ADN es una cadena compuesta por el alfabeto $\sigma={a,c,g,t}$, cada uno de estos elementos es llamado nucleótido. El alineamiento de genomas consiste en encontrar un mapeo de cada posición en un genoma de consulta a su correspondiente posición en el genoma de referencia. Es decir, encontrar las similitudes y diferencias de las cadenas de ADN entre genomas.
+
+El alineamiento de genomas es un modelo matemático utilizado por los biólogos para determinar la similitud entre genomas. Existe diferentes algoritmos propuestos para el alineamiento de dos secuencias como \cite{Needleman1970General} y \cite{Waterman}. Estos algoritmos funcionan bien con tamaños de secuencias pequeños como un gen, 20-30kbp\footnote{bp es la únidad básica de medida en las secuencias de ADN y representa la longitud de un nucleótido}. Sin embargo, son ineficaces al alinear genomas enteros. La complejidad computacional y espacial es $O(nm)$, donde $n$ y $m$ son las longitudes de los genomas a alinear. Estos algoritmos tienen problemas de mayores requerimientos de memoria o de tiempos de ejecución inaceptables.
+
 Para grandes secuencias, como el genoma humano (3Gbp), el uso de recursos computacionales pueden ser extremadamente grande y con un largo tiempo de ejecución. Es por ello que han surgido alternativas para reducir el tiempo de ejecución del alineamiento de secuencias, como \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005,Encarnac2011,Vyverman2013,OguzhanKulekci2011,Khan2009,OhlebuschGK10}. Una de esas alternativas es la utilización de la heurística basada en las coincidencias exactas máximas en las secuencias a alinear. Al encontrar las coincidencias máximas  únicas se puede realizar el alineamiento de genomas enteros reduciendo el espacio del alineamiento a las regiones entre las coincidencias máximas únicas.\\
 \indent
-<<<<<<< HEAD
-=======
-Para grandes secuencias, como el genoma humano (3Gbp), el uso de recursos computacionales pueden ser extremadamente grande y con un largo tiempo de ejecución. Es por ello que han surgido alternativas para reducir el tiempo de ejecución del alineamiento de secuencias. Una de esas alternativas es la utilización de la heurística basada en las coincidencias exactas máximas en las secuencias a alinear. Al encontrar las coincidencias máximas  únicas se puede realizar el alineamiento de genomas enteros reduciendo el espacio del alineamiento a las regiones entre las coincidencias máximas únicas.\\
-\indent
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 Formalmente el problema de la búsqueda de coincidencias máximas únicas se define como:
 \begin{mydef}
   Dadas dos secuencias (genomas) $R=r_{1}r_{2}\hdots r_{n}$ y $Q=q_{1}q_{2}\hdots q_{m}$, y una longitud mínima $l$, se requiere encontrar todas las ocurrencias de las coincidencias máximas únicas de longitud mínima $l$, entre $R$ y $Q$.
@@ -233,11 +213,7 @@ En consecuencia, para resolver este problema se utiliza alguna estructura de dat
 permita realizar una búsqueda distribuida de coincidencias máximas únicas de forma ágil 
 en el genoma entero. 
 \indent
-<<<<<<< HEAD
 En resumen la búsqueda de coincidencias únicas máximas en una cadena, como el 
-=======
-En resumen la búsqueda de coincidencias exactas máximas en una cadena, como el 
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 genoma humano, es un problema computacionalmente intensivo que es posible 
 resolverse con estructuras de datos de indexación de cadenas. 
 \indent
@@ -245,11 +221,7 @@ Independientemente de la estructura de datos utilizada, lo que se desea es poder
 Una de las consultas en que se requiere realizar rápidamente, para el alineamiento de genomas, es la búsqueda de coincidencias únicas máximas. 
 \section{Estado de la investigación}
 La búsqueda de MUMS entre un genoma de Referencia y uno de Consulta tiene una característica importante que puede ayudarnos a paralizar su búsqueda: podemos buscar más de un sufijo a la vez del genoma de Consulta. Utilizando una estructura de datos de indexación para buscar MUMs, encontramos MUM candidatos al ir recorriendo el genoma de Consulta. Un MUM candidato es un MUM que se almacena como un posible MUM pero que se tiene que verificar al final de la fase de búsqueda para garantizar que es un MUM único en el genoma de Consulta.
-<<<<<<< HEAD
 El estado actual de la investigación consiste en la evaluación de la estructura de datos (árbol de sufijos) utilizada en el algoritmo actual de la aplicación MUMmer, determinar los problemas de rendimiento entre el algoritmo y la estructura de datos y finalmente estudiar, evaluar y modificar la estructura de datos (Arreglo de sufijos mejorado, \cite{Abouelhoda2004}) que permite reducir el tiempo de ejecución, mejor localidad espacial y temporal y la reducción en el uso de memoria.
-=======
-El estado actual de la investigación consiste en la evaluación de la estructura de datos (árbol de sufijos) utilizada en el algoritmo actual de la aplicación MUMmer, determinar los problemas de rendimiento entre el algoritmo y la estructura de datos y finalmente estudiar, evaluar y modificar la estructura de datos (Arreglo de sufijos mejorado) que permite reducir el tiempo de ejecución, mejor localidad espacial y temporal y la reducción en el uso de memoria.
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 Finalmente se ha realizado una paralelización de la búsqueda de MUMs mediante OpenMP para su utilización en arquitecturas multi-core con el árbol de sufijos y con el arreglo de sufijos mejorado.
 Todos los experimentos se han desarrollado en el siguiente entorno:
 \begin{enumerate}
@@ -257,7 +229,6 @@ Todos los experimentos se han desarrollado en el siguiente entorno:
 \item MUMmer 3.23
 \item 2 procesadores Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz, con 6 cores cada procesador: 32KB cache L1 por core, 256KB cache L2 por core y 12MB cache L3 compartida.
 \item RAM 96GB
-<<<<<<< HEAD
 \end{enumerate}
 \subsection{Problemas de rendimiento en el árbol de sufijos}
 La búsqueda de MUMs mediante un árbol de sufijos tiene una complejidad lineal debido al uso de los enlaces de sufijos. El enlace de sufijo permite saltar a otra posición del árbol de sufijos con el siguiente sufijo evitando la necesidad de recorrer el árbol de sufijos desde el inicio del sufijo. 
@@ -271,30 +242,14 @@ Para demostrar la falta de localidad espacial del árbol de sufijos se estudiaro
 \item Árbol de sufijos cabe en el último nivel de cache.
 \item Árbol de sufijos cabe en memoria principal.
 \end{enumerate}
-=======
-\end{enumerate}
-\subsection{Problemas de rendimiento en el árbol de sufijos}
-La búsqueda de MUMs mediante un árbol de sufijos tiene una complejidad lineal debido al uso de los enlaces de sufijos. El enlace de sufijo permite saltar a otra posición del árbol de sufijos con el siguiente sufijo evitando la necesidad de recorrer el árbol de sufijos desde el inicio del sufijo. 
-Sin embargo el árbol de sufijos sufre de un problema de localidad espacial y temporal. Lo que convierte a la estructura en el cuello de botella del rendimiento del algoritmo de búsqueda de MUMs.
-Para demostrar que el árbol de sufijos sufre de problemas de localidad espacial y temporal se ha realizado una evaluación experimental para determinar el efecto de mantener un árbol de sufijos en el último nivel de cache y mantener el árbol de sufijos en memoria principal.
-\subsubsection{Evaluación experimental}
-\indent
-Al mantener la estructura de datos en cache la búsqueda de MUMs será más rápida. Al crecer la estructura de datos se debe mantener en memoria principal, lo que ocasiona una disminución en las prestaciones del algoritmo de búsqueda de MUMs.
-Para demostrar la falta de localidad espacial del árbol de sufijos se estudiaron dos escenarios:
-\begin{enumerate}
-\item Árbol de sufijos cabe en el último nivel de cache.
-\item Árbol de sufijos cabe en memoria principal.
-\end{enumerate}
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 Los genomas de Referencia utilizados fueron de 312Kbp y 170Mbp, el genoma de Consulta fue de 169Mbp en todos los experimentos. Al mantener la longitud del genoma de consulta constante garantizamos mantener la complejidad de la búsqueda de MUMs.
 El primer parámetro medido fue el CPI, al tener el árbol de sufijos en cache el CPI es de 1.61 y al tener el árbol de sufijos en memoria principal el CPI aumenta a 4.98, 3 veces mas que mantener el árbol de sufijos en cache. La razón de este aumento es el crecimiento de los ciclos de reloj en el segundo escenario, ya que las instrucciones ejecutadas prácticamente es el mismo en ambos escenarios.
 Respecto a los fallos de cache por instrucción, en L1 aumentan 12\% con respecto al escenario 1, en L2 23.79\% y en L3 los fallos pasan de 0.01\% a 2.83\%. Eso nos demuestra que la falta de localidad espacial del árbol de sufijos es relevante cuando el genoma de referencia indexado no se puede almacenar en algún nivel de cache. Las instrucciones de Load y Store se mantienen prácticamente igual. Adicionalmente el ancho de banda en la jerarquía de memoria es mayor en cache 2 y 3 en el escenario 1; en el escenario 2 el ancho de banda es mayor en memoria principal, pero en cache 2 cae un 64\% y en cache 3 cae un 65\% con respecto al escenario 1.
 \subsection{Paralelización de búsqueda de MUMs en Árbol de sufijos}
-<<<<<<< HEAD
 Debido a los problemas de localidad espacial del árbol de sufijos se elaboró una propuesta de paralelización, ver Figura \ref{phases}, para aprovechar el tiempo de espera del core. 
  \begin{figure}[h!] 
    \centering 
-   \includegraphics[scale=0.5]{Phases.ps} 
+   \includegraphics[scale=0.5]{phases.eps} 
     \caption{Búsqueda de MUMs en architecturas Multi-core.} 
    \label{phases} 
  \end{figure}
@@ -311,18 +266,6 @@ Los resultados de los genomas en la Tabla \ref{genomes} se muestran en la Figura
   \hline
 \end{tabular}
 \end{table}
-=======
-Debido a los problemas de localidad espacial del árbol de sufijos se elaboró una propuesta de paralización
-\indent
-Los genomas utilizados en las pruebas fueron:
-\begin{itemize}
-\item Genoma humano (2,96Gbp).
-\item Cromosoma 2 humano (238,6Mbp).
-\item Cromosoma 1 chimpancé (232,7Mbp).
-\item EcoliK12 (4,6Mbp).
-\item EcoliO157H7 (5,3Mbp).
-\end{itemize}
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 
   \begin{figure}[h] 
    \centering 
@@ -366,20 +309,32 @@ Redactar la tesis doctoral y preparar su defensa.
 \section{Análisis de las publicaciones pendientes de publicar}
 Search for Maximal Unique Matches in Multi-core architectures en Workshop on Parallel Computational Biology, que forma parte de International Conference on Parallel Processing and Applied Mathematics. La fecha de aceptación es el 22 de junio de 2013.
 \section{Publicaciones previstas}
+IEEE Computational Systems Bioinformatics Conference, CORE A, 30 de junio de 2013. 
+
+Symposium on Principles and Practice of Parallel Programming, CORE A, 2014.
+
+IEEE Bioinformatics and Bioengineering, CORE C, 1 de julio de 2013.
+
+BioMed 2014, Microsoft academic search \#1, 2014.
+
+International Conference on Intelligent Systems for Molecular Biology, Microsoft academic search \#2, Septiembre 2013.
+
+Revista: Bioinformatics, Impact factor: 5.468
+
+Revista: BMC Bioinformatics, Impact factor: 2.75
 \section{Conclusiones}
 \indent
 Durante este segundo año de investigación doctoral se ha identificado el cuello de botella del árbol de sufijos: la falta de localidad espacial.
 
 Se ha estudiado y evaluado otra estructura de datos para la búsqueda de MUMs.
 
-Se ha paralizado la búsqueda de MUMs en arquitectural Multi-core.
+Se ha paralizado la búsqueda de MUMs en arquitectural Multi-core. Aún falta resolver los problemas de escalabilidad de la paralelización.
 
-Se está estudiando una distribución del arreglo de sufijos mejorado para su utilización en cluster multi-core.
 En el siguiente año se busca determinar si la propuesta de búsqueda de coincidencias exactas/únicas máximas en el arreglo de sufijos mejorado distribuido permite reducir el tiempo de ejecución bajo entornos de HPC multi-core. Adicionalmente se tendrán que resolver los siguientes problemas
 \begin{itemize}
-  \item Política de carga de trabajo para cada worker: garantizar que todas las búsquedas se resuelvan de manera local.
+  \item Política de carga de trabajo para cada thread/core: garantizar que todas las búsquedas se resuelvan de manera local.
   \item Optimizar las fases de agrupamiento y alineamiento local de la metodología de alineamiento de genomas.
 \end{itemize}
-\bibliographystyle{apalike} 
+\bibliographystyle{acm} 
 \bibliography{references}	
 \end{document}

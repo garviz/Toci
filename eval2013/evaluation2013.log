@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=latex 2009.11.7)  7 MAY 2013 11:28
-=======
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=latex 2009.11.7)  5 MAY 2013 21:57
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=latex 2009.11.7)  7 MAY 2013 17:14
 entering extended mode
  %&-line parsing enabled.
 **evaluation2013.tex
@@ -831,15 +827,11 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \c@mydef=\count145
 \c@myeq=\count146
 
-<<<<<<< HEAD
 (./evaluation2013.aux
 
 LaTeX Warning: Label `fig:stmc' multiply defined.
 
 )
-=======
-(./evaluation2013.aux)
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 \openout1 = `evaluation2013.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
@@ -857,12 +849,7 @@ LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 31.
-<<<<<<< HEAD
  (/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/t1ptm.fd
-=======
-
-(/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/t1ptm.fd
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -922,94 +909,48 @@ Overfull \hbox (2.22073pt too wide) in paragraph at lines 36--59
 
 [2]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-<<<<<<< HEAD
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 67.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 72.
 
-
-LaTeX Warning: Citation `OguzhanKulekci2011' on page 1 undefined on input line 
-72.
-=======
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 71.
-
-Overfull \hbox (16.20834pt too wide) in paragraph at lines 72--94
+Overfull \hbox (16.20834pt too wide) in paragraph at lines 71--72
 \T1/ptm/m/n/12 pues-tos pa-ra el ali-nea-mien-to de dos se-cuen-cias co-mo [[]]
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
+
+ []
 
 
-<<<<<<< HEAD
-LaTeX Warning: Citation `Mongelli' on page 1 undefined on input line 72.
+Overfull \hbox (132.15285pt too wide) in paragraph at lines 73--77
+[]\T1/ptm/m/n/12 , [], [], [],
+ []
 
-
-LaTeX Warning: Citation `Kouzinopoulos2005' on page 1 undefined on input line 7
-2.
-
-
-LaTeX Warning: Citation `Encarnac2011' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `Vyverman2013' on page 1 undefined on input line 72.
-
-
-LaTeX Warning: Citation `OguzhanKulekci2011' on page 1 undefined on input line 
-72.
-
-=======
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 94.
-File: state.eps Graphic file (type eps)
-<state.eps>
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
-
-LaTeX Warning: Citation `Khan2009' on page 1 undefined on input line 72.
-
-
-<<<<<<< HEAD
-LaTeX Warning: Citation `OhlebuschGK10' on page 1 undefined on input line 72.
-
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
 File: state.eps Graphic file (type eps)
 <state.eps>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 117--119
+Underfull \hbox (badness 10000) in paragraph at lines 118--120
 
-=======
-[1] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
-
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
  []
 
 File: st-mum.eps Graphic file (type eps)
 <st-mum.eps>
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 120--179
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 138--197
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
+Underfull \hbox (badness 10000) in paragraph at lines 121--180
 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<<<<<<< HEAD
-[3] [4]
-
-LaTeX Warning: Citation `Abouelhoda2004' on page 5 undefined on input line 223.
-
-
-[5] [6]
-File: Phases.ps Graphic file (type eps)
- <Phases.ps>
+[3] [4] [5] [6]
+File: phases.eps Graphic file (type eps)
+ <phases.eps>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[7]
 File: st1.eps Graphic file (type eps)
-<st1.eps>
+ <st1.eps>
 File: st2.eps Graphic file (type eps)
  <st2.eps>
 File: st3.eps Graphic file (type eps)
@@ -1017,64 +958,43 @@ File: st3.eps Graphic file (type eps)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7]
 File: esa1.eps Graphic file (type eps)
- <esa1.eps>
+<esa1.eps>
 File: esa2.eps Graphic file (type eps)
  <esa2.eps>
 File: esa3.eps Graphic file (type eps)
  <esa3.eps>
-=======
-[3] [4] [5] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 297--301
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8] [9]
-Overfull \hbox (1.57765pt too wide) in paragraph at lines 315--316
+[8] [9] [10]
+Overfull \hbox (1.57765pt too wide) in paragraph at lines 329--330
 []\T1/ptm/m/n/12 Se ha es-tu-dia-do y eva-lua-do otra es-truc-tu-ra de da-tos p
 a-ra la bús-que-da de MUMs. 
  []
 
-<<<<<<< HEAD
-[10] (./evaluation2013.bbl [11])
+(./evaluation2013.bbl
+Underfull \hbox (badness 1383) in paragraph at lines 4--7
+[]\T1/ptm/m/n/12 Abouelhoda, M. I., Kurtz, S., and Oh-le-busch, E.
+ []
+
+[11])
 
 Package caption Warning: Unused \captionsetup[myeq] on input line 20.
 See the caption package documentation for explanation.
 
 [12] (./evaluation2013.aux)
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14572 strings out of 493849
- 236982 string characters out of 3149230
- 324074 words of memory out of 3000000
- 17536 multiletter control sequences out of 15000+200000
-=======
-[8] [9] (./evaluation2013.bbl)
-
-Package caption Warning: Unused \captionsetup[myeq] on input line 20.
-See the caption package documentation for explanation.
-
-[10] (./evaluation2013.aux) ) 
-Here is how much of TeX's memory you used:
- 14536 strings out of 493849
- 236572 string characters out of 3149230
- 324074 words of memory out of 3000000
- 17508 multiletter control sequences out of 15000+200000
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
+ 14565 strings out of 493849
+ 236880 string characters out of 3149230
+ 325074 words of memory out of 3000000
+ 17530 multiletter control sequences out of 15000+200000
  43095 words of font info for 55 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  47i,18n,49p,866b,455s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-<<<<<<< HEAD
-Output written on evaluation2013.dvi (14 pages, 58872 bytes).
-=======
-Output written on evaluation2013.dvi (12 pages, 55136 bytes).
->>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
+Output written on evaluation2013.dvi (14 pages, 62588 bytes).
