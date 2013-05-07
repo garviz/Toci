@@ -7,7 +7,10 @@
 \BOOKMARK [2][-]{subsection.3.1}{Problemas de rendimiento en el \341rbol de sufijos}{section.3}
 \BOOKMARK [3][-]{subsubsection.3.1.1}{Evaluaci\363n experimental}{subsection.3.1}
 \BOOKMARK [2][-]{subsection.3.2}{Paralelizaci\363n de b\372squeda de MUMs en \301rbol de sufijos}{section.3}
+<<<<<<< HEAD
 \BOOKMARK [2][-]{subsection.3.3}{Paralelizaci\363n de b\372squeda de MUMs en Arreglo de sufijos mejorado}{section.3}
+=======
+>>>>>>> b5eb2bcb5be3cb9845e4fd8c3156e23ef49045b4
 \BOOKMARK [1][-]{section.4}{Publicaciones}{}
 \BOOKMARK [1][-]{section.5}{Seguimiento}{}
 \BOOKMARK [1][-]{section.6}{Planificaci\363n}{}
