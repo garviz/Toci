@@ -4,11 +4,10 @@
 \BOOKMARK [2][-]{subsection.2.2}{\301rbol de sufijos}{section.2}
 \BOOKMARK [2][-]{subsection.2.3}{Definici\363n del problema a resolver}{section.2}
 \BOOKMARK [1][-]{section.3}{Estado de la investigaci\363n}{}
-\BOOKMARK [2][-]{subsection.3.1}{Paralelizaci\363n a nivel de datos: alineamiento de genomas}{section.3}
-\BOOKMARK [2][-]{subsection.3.2}{B\372squeda distribuida de coincidencias exactas: \341rbol de sufijos distribuido}{section.3}
-\BOOKMARK [2][-]{subsection.3.3}{Importancia del enlace de sufijo}{section.3}
-\BOOKMARK [2][-]{subsection.3.4}{Evaluaci\363n experimental}{section.3}
-\BOOKMARK [2][-]{subsection.3.5}{B\372squeda de coincidencias exactas en un DST}{section.3}
+\BOOKMARK [2][-]{subsection.3.1}{Problemas de rendimiento en el \341rbol de sufijos}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Evaluaci\363n experimental}{subsection.3.1}
+\BOOKMARK [2][-]{subsection.3.2}{Paralelizaci\363n de b\372squeda de MUMs en \301rbol de sufijos}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Paralelizaci\363n de b\372squeda de MUMs en Arreglo de sufijos mejorado}{section.3}
 \BOOKMARK [1][-]{section.4}{Publicaciones}{}
 \BOOKMARK [1][-]{section.5}{Seguimiento}{}
 \BOOKMARK [1][-]{section.6}{Planificaci\363n}{}

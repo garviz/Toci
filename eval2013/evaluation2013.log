@@ -1,20 +1,20 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  3 MAY 2013 13:10
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=latex 2009.11.7)  7 MAY 2013 11:28
 entering extended mode
  %&-line parsing enabled.
 **evaluation2013.tex
 (./evaluation2013.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
-(/usr/share/texmf-texlive/tex/latex/base/article.cls
+yphenation, german-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, ku
+rmanji, latin, latvian, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, po
+lish, portuguese, romanian, russian, sanskrit, serbian, slovak, slovenian, span
+ish, swedish, turkish, ukenglish, ukrainian, uppersorbian, welsh, loaded.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -29,13 +29,13 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/var/lib/texmf/tex/generic/babel/babel.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2008/07/06 v3.8l The Babel package
 
-(/usr/share/texmf-texlive/tex/generic/babel/spanish.ldf
+(/usr/local/texlive/2009/texmf-dist/tex/generic/babel/spanish.ldf
 Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
 
-(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+(/usr/local/texlive/2009/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
@@ -48,19 +48,19 @@ Package babel Info: Making . an active character on input line 585.
 Package babel Info: Making < an active character on input line 630.
 Package babel Info: Making > an active character on input line 630.
 ))
-(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 
-(/usr/share/texmf-texlive/tex/latex/base/utf8.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.dfu
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -210,7 +210,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/share/texmf-texlive/tex/latex/base/ot1enc.dfu
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -241,7 +241,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/share/texmf-texlive/tex/latex/base/omsenc.dfu
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -265,53 +265,53 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/dvips.def
 File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \epsfxsize=\dimen106
 \epsfysize=\dimen107
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks18
 \ex@=\dimen108
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen109
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count90
@@ -352,10 +352,10 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
-(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2009/10/09 v3.1k Customizing captions (AR)
 
-(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
 \captionmargin=\dimen117
 \captionmargin@=\dimen118
@@ -366,11 +366,11 @@ Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
 )
 \c@ContinuedFloat=\count102
 )
-(/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(/usr/share/texmf-texlive/tex/latex/float/float.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count103
 \float@exts=\toks23
@@ -378,13 +378,13 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box29
 )
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks25
 \c@algorithm=\count104
 )
-(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@unique=\count105
 \c@ALC@line=\count106
@@ -393,44 +393,44 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip46
 \algorithmicindent=\skip47
 )
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in pdf mode not detected.
 )
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
 )
-(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/hycolor.sty
 Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
 O)
 
-(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/xcolor-patch.sty
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen123
 \Hy@linkcounter=\count109
 \Hy@pagecounter=\count110
 
-(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
 )
 Package etexcmds Info: Could not find \expanded.
@@ -438,13 +438,13 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )
-(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
 t (HO)
 ))
@@ -457,24 +457,24 @@ Package hyperref Info: Backreferencing OFF on input line 2995.
 Implicit mode ON; LaTeX internals redefined
 Package hyperref Info: Bookmarks ON on input line 3191.
 LaTeX Info: Redefining \url on input line 3428.
-(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/bitset.sty
 Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/intcalc.sty
 Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
 )
-(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/bigintcalc.sty
 Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
  (HO)
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
 )
 )
@@ -494,7 +494,7 @@ Package hyperref Info: Link coloring OFF on input line 4397.
 Package hyperref Info: Link coloring with OCG OFF on input line 4402.
 Package hyperref Info: PDF/A mode OFF on input line 4407.
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
 \Hy@abspage=\count112
@@ -502,10 +502,10 @@ Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 \c@Hfootnote=\count114
 )
 *hyperref using default driver hdvips*
-(/usr/share/texmf-texlive/tex/latex/hyperref/hdvips.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/hdvips.def
 File: hdvips.def 2009/10/09 v6.79a Hyperref driver for dvips
 
-(/usr/share/texmf-texlive/tex/latex/hyperref/pdfmark.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/pdfmark.def
 File: pdfmark.def 2009/10/09 v6.79a Hyperref definitions for pdfmark specials
 \pdf@docset=\toks27
 \pdf@box=\box30
@@ -513,28 +513,28 @@ File: pdfmark.def 2009/10/09 v6.79a Hyperref definitions for pdfmark specials
 \pdf@defaulttoks=\toks29
 \Fld@listcount=\count115
 ))
-(/usr/share/texmf-texlive/tex/latex/psnfss/times.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/etc/texmf/tex/latex/config/color.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: dvips.def on input line 130.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count116
 \lst@gtempboxa=\box31
 \lst@token=\toks30
@@ -548,35 +548,34 @@ File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 \lst@lineno=\count121
 \lst@maxwidth=\dimen129
 
-(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 \c@lstnumber=\count122
 \lst@skipnumbers=\count123
 \lst@framebox=\box32
 )
-(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
 \pgfutil@everybye=\toks31
 )
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def)
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 Package: pgfrcs 2008/02/20 v2.00 (rcs-revision 1.21)
 ))
 Package: pgf 2008/01/15 v2.00 (rcs-revision 1.12)
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2008/02/07 v2.00 (rcs-revision 1.31)
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks32
 \pgfkeys@temptoks=\toks33
 )
@@ -592,31 +591,33 @@ Package: pgfsys 2008/02/07 v2.00 (rcs-revision 1.31)
 \c@pgf@countb=\count125
 \c@pgf@countc=\count126
 \c@pgf@countd=\count127
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/01/13  (rcs-revision 1.6)
 )
 Package pgfsys Info: Driver file for pgf: pgfsys-dvips.def on input line 885.
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.de
+f
 File: pgfsys-dvips.def 2007/12/12  (rcs-revision 1.19)
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-postscript.def
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+ostscript.def
 File: pgfsys-common-postscript.def 2008/02/07  (rcs-revision 1.18)
 \pgf@objectcount=\count128
 )))
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
 File: pgfsyssoftpath.code.tex 2008/01/23  (rcs-revision 1.6)
 \pgfsyssoftpath@smallbuffer@items=\count129
 \pgfsyssoftpath@bigbuffer@items=\count130
 )
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
-))
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+)) (/usr/local/texlive/2009/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/etc/texmf/tex/latex/config/color.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: dvips.def on input line 225.
@@ -630,26 +631,28 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2008/01/15 v2.00 (rcs-revision 1.6)
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
 \pgfmath@box=\box33
 )
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@stack=\toks34
 \c@pgfmath@parsecounta=\count131
 \c@pgfmath@parsecountb=\count132
 \c@pgfmath@parsecountc=\count133
 \pgfmath@parsex=\dimen138
 )
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathoperations.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathtrig.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathrnd.code.tex))
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathbase.code.tex)))
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathoperations.code
+.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathtrig.code.tex)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathrnd.code.tex))
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/math/pgfmathbase.code.tex))
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
 File: pgfcorepoints.code.tex 2008/02/03  (rcs-revision 1.13)
 \pgf@picminx=\dimen139
 \pgf@picmaxx=\dimen140
@@ -666,90 +669,110 @@ File: pgfcorepoints.code.tex 2008/02/03  (rcs-revision 1.13)
 \pgf@zx=\dimen151
 \pgf@zy=\dimen152
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2008/02/13  (rcs-revision 1.14)
 \pgf@path@lastx=\dimen153
 \pgf@path@lasty=\dimen154
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
 File: pgfcorepathusage.code.tex 2008/01/23  (rcs-revision 1.11)
 \pgf@shorten@end@additional=\dimen155
 \pgf@shorten@start@additional=\dimen156
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
 File: pgfcorescopes.code.tex 2008/01/15  (rcs-revision 1.26)
 \pgfpic=\box34
 \pgf@hbox=\box35
 \pgf@layerbox@main=\box36
 \pgf@picture@serial@count=\count134
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
 File: pgfcoregraphicstate.code.tex 2007/12/12  (rcs-revision 1.8)
 \pgflinewidth=\dimen157
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
 File: pgfcoretransformations.code.tex 2008/02/04  (rcs-revision 1.10)
 \pgf@pt@x=\dimen158
 \pgf@pt@y=\dimen159
 \pgf@pt@temp=\dimen160
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
 File: pgfcorequick.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
 File: pgfcorepathprocessing.code.tex 2008/01/23  (rcs-revision 1.7)
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
 File: pgfcorearrows.code.tex 2007/06/07  (rcs-revision 1.8)
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
 File: pgfcoreshade.code.tex 2007/12/10  (rcs-revision 1.9)
 \pgf@max=\dimen161
 \pgf@sys@shading@range@num=\count135
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
 File: pgfcoreimage.code.tex 2008/01/15  (rcs-revision 1.1)
 \pgfexternal@startupbox=\box37
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
 File: pgfcorelayers.code.tex 2008/01/15  (rcs-revision 1.1)
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
 File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
 File: pgfcorepatterns.code.tex 2008/01/15  (rcs-revision 1.1)
 )))
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
 File: pgfmoduleshapes.code.tex 2008/02/13  (rcs-revision 1.4)
 \pgfnodeparttextbox=\box38
 \toks@savedmacro=\toks35
 )
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
 File: pgfmoduleplot.code.tex 2008/01/15  (rcs-revision 1.1)
 \pgf@plotwrite=\write3
 )
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v2.00 (rcs-revision 1.7)
 \pgf@nodesepstart=\dimen162
 \pgf@nodesepend=\dimen163
 )
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v2.00 (rcs-revision 1.1)
 ))
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2007/11/07 v2.00 (rcs-revision 1.8)
 \pgffor@iter=\dimen164
 \pgffor@skip=\dimen165
 ))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
 Package: tikz 2008/02/13 v2.00 (rcs-revision 1.27)
 
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2007/03/09 v2.00 (rcs-revision 1.9)
 \pgf@plot@mark@count=\count136
 \pgfplotmarksize=\dimen166
@@ -767,7 +790,8 @@ File: pgflibraryplothandlers.code.tex 2007/03/09 v2.00 (rcs-revision 1.9)
 \tikznumberofcurrentchild=\count139
 \tikz@fig@count=\count140
 
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
 File: pgfmodulematrix.code.tex 2008/01/15  (rcs-revision 1.1)
 \pgfmatrixcurrentrow=\count141
 \pgfmatrixcurrentcolumn=\count142
@@ -775,20 +799,21 @@ File: pgfmodulematrix.code.tex 2008/01/15  (rcs-revision 1.1)
 )
 \tikz@expandcount=\count144
 
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex
+(/usr/local/texlive/2009/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/01/09 v2.00 (rcs-revision 1.1)
-))) (/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+)))
+(/usr/local/texlive/2009/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks36
 \verbatim@line=\toks37
 \verbatim@in@stream=\read1
 )
-(/usr/share/texmf-texlive/tex/latex/carlisle/scalefnt.sty)
-(/usr/share/texmf-texlive/tex/latex/colortbl/colortbl.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2001/02/13 v0.1j Color table columns (DPC)
 
-(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen173
 \extrarowheight=\dimen174
@@ -801,7 +826,12 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 )
 \c@mydef=\count145
 \c@myeq=\count146
- (./evaluation2013.aux)
+
+(./evaluation2013.aux
+
+LaTeX Warning: Label `fig:stmc' multiply defined.
+
+)
 \openout1 = `evaluation2013.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
@@ -819,8 +849,7 @@ LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 31.
-
-(/usr/share/texmf-texlive/tex/latex/psnfss/t1ptm.fd
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -830,10 +859,10 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 31.
 
-(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
-(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count147
@@ -862,362 +891,130 @@ Overfull \hbox (33.67696pt too wide) in paragraph at lines 35--35
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 36.
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--62
+Underfull \hbox (badness 10000) in paragraph at lines 36--59
 
  []
 
 
-Overfull \hbox (11.1029pt too wide) in paragraph at lines 36--62
+Overfull \hbox (11.1029pt too wide) in paragraph at lines 36--59
 \T1/ptm/m/n/17.28 Directores de la te-sis: An-to-nio Es-pi-no-sa, Juan Car-los 
 Mou-
  []
 
 
-Overfull \hbox (2.22073pt too wide) in paragraph at lines 36--62
+Overfull \hbox (2.22073pt too wide) in paragraph at lines 36--59
 \T1/ptm/m/n/17.28 Año pre-vis-to pa-ra la pre-sen-ta-ción de Te-sis Doc-to-ral:
  2014 
  []
 
 [2]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 71.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 80.
- (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
- [1]
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 93.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 72.
+
+
+LaTeX Warning: Citation `OguzhanKulekci2011' on page 1 undefined on input line 
+72.
+
+
+LaTeX Warning: Citation `Mongelli' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `Kouzinopoulos2005' on page 1 undefined on input line 7
+2.
+
+
+LaTeX Warning: Citation `Encarnac2011' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `Vyverman2013' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `OguzhanKulekci2011' on page 1 undefined on input line 
+72.
+
+
+LaTeX Warning: Citation `Khan2009' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `OhlebuschGK10' on page 1 undefined on input line 72.
+
 File: state.eps Graphic file (type eps)
- <state.eps>
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
+<state.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 117--119
 
  []
 
-[3]
 File: st-mum.eps Graphic file (type eps)
- <st-mum.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 138--238
+<st-mum.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 120--179
 
  []
-
-[4] [5]
-Overfull \hbox (7.83345pt too wide) in paragraph at lines 239--414
-\T1/ptm/m/n/12 re-sol-ver-se con es-truc-tu-ras de da-tos co-mo el ár-bol de su
--fi-jos. []Independientemente
- []
-
-File: algorithm.eps Graphic file (type eps)
-<algorithm.eps>
-
-! LaTeX Error: Cannot determine size of graphic in ecoli2012.pdf (no BoundingBo
-x).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.430 ...includegraphics[scale=0.4]{ecoli2012.pdf}
-                                                  
-? 
-File: ecoli2012.pdf Graphic file (type eps)
-<ecoli2012.pdf>
-
-! LaTeX Error: Cannot determine size of graphic in hspan.pdf (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.436    \includegraphics[scale=0.4]{hspan.pdf}
-                                               
-? 
-File: hspan.pdf Graphic file (type eps)
-<hspan.pdf> [6]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[3] [4]
+
+LaTeX Warning: Citation `Abouelhoda2004' on page 5 undefined on input line 223.
+
+
+[5] [6]
+File: Phases.ps Graphic file (type eps)
+ <Phases.ps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: st1.eps Graphic file (type eps)
+<st1.eps>
+File: st2.eps Graphic file (type eps)
+ <st2.eps>
+File: st3.eps Graphic file (type eps)
+ <st3.eps>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] [8] [9]
-
-! LaTeX Error: Cannot determine size of graphic in ecoli2012.pdf (no BoundingBo
-x).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.528 ...includegraphics[scale=0.4]{ecoli2012.pdf}
-                                                  
-? 
-File: ecoli2012.pdf Graphic file (type eps)
-<ecoli2012.pdf>
-
-! LaTeX Error: Cannot determine size of graphic in ex3.png (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.534    \includegraphics[scale=0.7]{ex3.png}
-                                             
-? 
-File: ex3.png Graphic file (type eps)
-<ex3.png>
-
-! LaTeX Error: Cannot determine size of graphic in ex6.png (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.540    \includegraphics[scale=0.7]{ex6.png}
-                                             
-? 
-File: ex6.png Graphic file (type eps)
-<ex6.png>
-
-! LaTeX Error: Cannot determine size of graphic in hspan.pdf (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.548    \includegraphics[scale=0.4]{hspan.pdf}
-                                               
-? 
-File: hspan.pdf Graphic file (type eps)
-<hspan.pdf>
-
-! LaTeX Error: Cannot determine size of graphic in hspanMEMGlobal.pdf (no Bound
-ingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.554 ...degraphics[scale=0.4]{hspanMEMGlobal.pdf}
-                                                  
-? 
-File: hspanMEMGlobal.pdf Graphic file (type eps)
-<hspanMEMGlobal.pdf>
+[7]
+File: esa1.eps Graphic file (type eps)
+ <esa1.eps>
+File: esa2.eps Graphic file (type eps)
+ <esa2.eps>
+File: esa3.eps Graphic file (type eps)
+ <esa3.eps>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[11]
-
-! LaTeX Error: Cannot determine size of graphic in distributed.png (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.583 \includegraphics[scale=0.8]{distributed.png}
-                                                  
-? 
-File: distributed.png Graphic file (type eps)
-<distributed.png>
-Overfull \hbox (12.04622pt too wide) in paragraph at lines 575--592
-\T1/ptm/m/n/12 al-gu-nos con-cep-tos, ex-traí-dos de [[]] y [[]].
+[8] [9]
+Overfull \hbox (1.57765pt too wide) in paragraph at lines 315--316
+[]\T1/ptm/m/n/12 Se ha es-tu-dia-do y eva-lua-do otra es-truc-tu-ra de da-tos p
+a-ra la bús-que-da de MUMs. 
  []
 
-[12]
-Package hyperref Info: bookmark level for unknown myeq defaults to 0 on input l
-ine 605.
- [13]
-Underfull \hbox (badness 10000) in paragraph at lines 648--654
+[10] (./evaluation2013.bbl [11])
 
- []
+Package caption Warning: Unused \captionsetup[myeq] on input line 20.
+See the caption package documentation for explanation.
 
-[14]
+[12] (./evaluation2013.aux)
 
-! LaTeX Error: Cannot determine size of graphic in sl-nosl.png (no BoundingBox)
-.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.683 \includegraphics[scale=0.4]{sl-nosl.png}
-                                              
-? 
-File: sl-nosl.png Graphic file (type eps)
-<sl-nosl.png>
-
-! LaTeX Error: Cannot determine size of graphic in mems.png (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.691 \includegraphics[scale=0.4]{mems.png}
-                                           
-? 
-File: mems.png Graphic file (type eps)
-<mems.png>
-
-! LaTeX Error: Cannot determine size of graphic in use-sl.png (no BoundingBox).
+LaTeX Warning: There were undefined references.
 
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.702 \includegraphics[scale=0.4]{use-sl.png}
-                                             
-? 
-File: use-sl.png Graphic file (type eps)
-<use-sl.png>
+LaTeX Warning: There were multiply-defined labels.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[15] [16]
-
-! LaTeX Error: Cannot determine size of graphic in human-freq2.png (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.731 \includegraphics[scale=0.6]{human-freq2.png}
-                                                  
-? 
-File: human-freq2.png Graphic file (type eps)
-<human-freq2.png>
-
-! LaTeX Error: Cannot determine size of graphic in human-freq3.png (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.737 \includegraphics[scale=0.6]{human-freq3.png}
-                                                  
-? 
-File: human-freq3.png Graphic file (type eps)
-<human-freq3.png>
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 729--741
-[][] [] 
- []
-
-
-! LaTeX Error: Cannot determine size of graphic in table-freq2.png (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.749 \includegraphics[scale=0.4]{table-freq2.png}
-                                                  
-? 
-File: table-freq2.png Graphic file (type eps)
-<table-freq2.png>
-
-! LaTeX Error: Cannot determine size of graphic in table-freq3.png (no Bounding
-Box).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.755 \includegraphics[scale=0.4]{table-freq3.png}
-                                                  
-? 
-File: table-freq3.png Graphic file (type eps)
-<table-freq3.png>
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 747--759
-[][] [] 
- []
-
-
-! LaTeX Error: Cannot determine size of graphic in dsl1.png (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.764 \includegraphics[scale=0.4]{dsl1.png}
-                                           
-? 
-File: dsl1.png Graphic file (type eps)
-<dsl1.png>
-
-! LaTeX Error: Cannot determine size of graphic in dsl2.png (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.770 \includegraphics[scale=0.4]{dsl2.png}
-                                           
-? 
-File: dsl2.png Graphic file (type eps)
-<dsl2.png>
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 762--774
-[][] [] 
- []
-
-
-! LaTeX Error: Cannot determine size of graphic in dst2.png (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.781 \includegraphics[scale=0.4]{dst2.png}
-                                           
-? 
-File: dst2.png Graphic file (type eps)
-<dst2.png>
-Underfull \hbox (badness 10000) in paragraph at lines 722--792
-
- []
-
-[17] [18]
-
-! LaTeX Error: Cannot determine size of graphic in dst_search.png (no BoundingB
-ox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.816 \includegraphics[scale=0.4]{dst_search.png}
-                                                 
-? 
-File: dst_search.png Graphic file (type eps)
-<dst_search.png> [19]
-Underfull \hbox (badness 10000) in paragraph at lines 842--846
-
- []
-
-[20] (./evaluation2013.bbl [21]) [22] (./evaluation2013.aux) ) 
+ ) 
 Here is how much of TeX's memory you used:
- 14661 strings out of 493849
- 234429 string characters out of 1152846
- 326074 words of memory out of 3000000
- 17610 multiletter control sequences out of 15000+50000
- 44739 words of font info for 56 fonts, out of 3000000 for 9000
+ 14572 strings out of 493849
+ 236982 string characters out of 3149230
+ 324074 words of memory out of 3000000
+ 17536 multiletter control sequences out of 15000+200000
+ 43095 words of font info for 55 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 47i,18n,49p,6475b,950s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 47i,18n,49p,866b,455s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on evaluation2013.dvi (24 pages, 120444 bytes).
+Output written on evaluation2013.dvi (14 pages, 58872 bytes).
