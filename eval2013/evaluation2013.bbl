@@ -1,5 +1,6 @@
 \begin{thebibliography}{10}
 
+<<<<<<< HEAD
 \bibitem{Abouelhoda2004}
 {\sc Abouelhoda, M.~I., Kurtz, S., and Ohlebusch, E.}
 \newblock {Replacing suffix trees with enhanced suffix arrays}.
@@ -10,6 +11,18 @@
 \newblock {Advantages and GPU Implementation of High-Performance Indexed DNA
   Search based on Suffix Arrays}.
 \newblock {\em Architecture\/} (2011), 49--55.
+=======
+\bibitem[Abouelhoda et~al., 2004]{Abouelhoda2004}
+Abouelhoda, M.~I., Kurtz, S., and Ohlebusch, E. (2004).
+\newblock {Replacing suffix trees with enhanced suffix arrays}.
+\newblock {\em Journal of Discrete Algorithms}, 2(1):53--86.
+
+\bibitem[Encarnac and Roma, 2011]{Encarnac2011}
+Encarnac, G. and Roma, N. (2011).
+\newblock {Advantages and GPU Implementation of High-Performance Indexed DNA
+  Search based on Suffix Arrays}.
+\newblock {\em Architecture}, pages 49--55.
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 
 \bibitem{Gusfield2007Algorithms}
 {\sc Gusfield, D.}
@@ -17,11 +30,26 @@
   and computational biology}}.
 \newblock Cambridge Univ. Press, Jan. 2007.
 
+<<<<<<< HEAD
 \bibitem{Khan2009}
 {\sc Khan, Z., Bloom, J.~S., Kruglyak, L., and Singh, M.}
 \newblock {A practical algorithm for finding maximal exact matches in large
   sequence datasets using sparse suffix arrays}.
 \newblock {\em Bioinformatics 25}, 13 (July 2009), 1609--1616.
+=======
+\bibitem[Khan et~al., 2009]{Khan2009}
+Khan, Z., Bloom, J.~S., Kruglyak, L., and Singh, M. (2009).
+\newblock {A practical algorithm for finding maximal exact matches in large
+  sequence datasets using sparse suffix arrays}.
+\newblock {\em Bioinformatics}, 25(13):1609--1616.
+
+\bibitem[Kouzinopoulos et~al., 2005]{Kouzinopoulos2005}
+Kouzinopoulos, C.~S., Michailidis, P.~D., and Margaritis, K.~G. (2005).
+\newblock Parallel processing of multiple pattern matching algorithms for
+  biological sequences : Methods and performance results.
+\newblock {\em Systems and Computational Biology - Bioinformatics and
+  Computational Modeling}.
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 
 \bibitem{Kouzinopoulos2005}
 {\sc Kouzinopoulos, C.~S., Michailidis, P.~D., and Margaritis, K.~G.}
@@ -30,6 +58,7 @@
 \newblock {\em Systems and Computational Biology - Bioinformatics and
   Computational Modeling\/} (2005).
 
+<<<<<<< HEAD
 \bibitem{Mummer3}
 {\sc Kurtz, S., Phillippy, A., Delcher, A.~L., Smoot, M., Shumway, M.,
   Antonescu, C., and Salzberg, S.~L.}
@@ -38,6 +67,10 @@
 
 \bibitem{Mongelli}
 {\sc Mongelli, H.}
+=======
+\bibitem[Mongelli, ]{Mongelli}
+Mongelli, H.
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 \newblock {Efficient Two-Dimensional Parallel Pattern Matching with Scaling}.
 
 \bibitem{Needleman1970General}
@@ -52,21 +85,43 @@
   full-text indexes.
 \newblock In {\em SPIRE\/} (2010), pp.~347--358.
 
+<<<<<<< HEAD
 \bibitem{OguzhanKulekci2011}
 {\sc {O\v{g}uzhan K\"{u}lekci}, M., Hon, W.-K., Shah, R., {Scott Vitter}, J.,
   and Xu, B.}
 \newblock {$\Psi$-RA: a parallel sparse index for genomic read alignment.}
 \newblock {\em BMC genomics 12 Suppl 2\/} (Jan. 2011), S7.
+=======
+\bibitem[Ohlebusch et~al., 2010]{OhlebuschGK10}
+Ohlebusch, E., Gog, S., and K{\"u}gel, A. (2010).
+\newblock Computing matching statistics and maximal exact matches on compressed
+  full-text indexes.
+\newblock In {\em SPIRE}, pages 347--358.
+
+\bibitem[{O\v{g}uzhan K\"{u}lekci} et~al., 2011]{OguzhanKulekci2011}
+{O\v{g}uzhan K\"{u}lekci}, M., Hon, W.-K., Shah, R., {Scott Vitter}, J., and
+  Xu, B. (2011).
+\newblock {$\Psi$-RA: a parallel sparse index for genomic read alignment.}
+\newblock {\em BMC genomics}, 12 Suppl 2:S7.
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 
 \bibitem{Waterman}
 {\sc Smith, T.~F., and Waterman, M.~S.}
 \newblock Identification of common molecular subsequences.
 \newblock {\em Journal of Molecular Biology 147\/} (1981), 195--197.
 
+<<<<<<< HEAD
 \bibitem{Vyverman2013}
 {\sc Vyverman, M., {De Baets}, B., Fack, V., and Dawyndt, P.}
 \newblock {essaMEM: finding maximal exact matches using enhanced sparse suffix
   arrays.}
 \newblock {\em Bioinformatics (Oxford, England)\/} (Feb. 2013), 2--4.
+=======
+\bibitem[Vyverman et~al., 2013]{Vyverman2013}
+Vyverman, M., {De Baets}, B., Fack, V., and Dawyndt, P. (2013).
+\newblock {essaMEM: finding maximal exact matches using enhanced sparse suffix
+  arrays.}
+\newblock {\em Bioinformatics (Oxford, England)}, pages 2--4.
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 
 \end{thebibliography}

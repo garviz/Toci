@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  8 MAY 2013 16:17
+=======
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=latex 2009.11.7)  7 MAY 2013 17:14
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 entering extended mode
  %&-line parsing enabled.
 **evaluation2013.tex
@@ -805,6 +809,13 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 
 LaTeX Warning: Label `fig:stmc' multiply defined.
 
+<<<<<<< HEAD
+=======
+(./evaluation2013.aux
+
+LaTeX Warning: Label `fig:stmc' multiply defined.
+
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 )
 \openout1 = `evaluation2013.aux'.
 
@@ -823,7 +834,11 @@ LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 31.
+<<<<<<< HEAD
  (/usr/share/texmf-texlive/tex/latex/psnfss/t1ptm.fd
+=======
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/t1ptm.fd
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -884,6 +899,20 @@ Overfull \hbox (2.22073pt too wide) in paragraph at lines 36--59
 [2]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 67.
+<<<<<<< HEAD
+=======
+
+Overfull \hbox (16.20834pt too wide) in paragraph at lines 71--72
+\T1/ptm/m/n/12 pues-tos pa-ra el ali-nea-mien-to de dos se-cuen-cias co-mo [[]]
+
+ []
+
+
+Overfull \hbox (132.15285pt too wide) in paragraph at lines 73--77
+[]\T1/ptm/m/n/12 , [], [], [],
+ []
+
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 77.
 File: state.eps Graphic file (type eps)
@@ -898,8 +927,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--120
 
 [3]
 File: st-mum.eps Graphic file (type eps)
+<<<<<<< HEAD
  <st-mum.eps>
 Underfull \hbox (badness 10000) in paragraph at lines 168--227
+=======
+<st-mum.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 121--180
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 
  []
 
@@ -918,38 +952,90 @@ File: st3.eps Graphic file (type eps)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+<<<<<<< HEAD
+=======
+[3] [4] [5] [6]
+File: phases.eps Graphic file (type eps)
+ <phases.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7]
+File: st1.eps Graphic file (type eps)
+ <st1.eps>
+File: st2.eps Graphic file (type eps)
+ <st2.eps>
+File: st3.eps Graphic file (type eps)
+ <st3.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 File: esa1.eps Graphic file (type eps)
 <esa1.eps>
 File: esa2.eps Graphic file (type eps)
  <esa2.eps>
 File: esa3.eps Graphic file (type eps)
+<<<<<<< HEAD
  <esa3.eps> [8]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [9] [10] [11]
 Overfull \hbox (1.57765pt too wide) in paragraph at lines 338--339
+=======
+ <esa3.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8] [9] [10]
+Overfull \hbox (1.57765pt too wide) in paragraph at lines 329--330
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 []\T1/ptm/m/n/12 Se ha es-tu-dia-do y eva-lua-do otra es-truc-tu-ra de da-tos p
 a-ra la bús-que-da de MUMs. 
  []
 
+<<<<<<< HEAD
 (./evaluation2013.bbl [12])
+=======
+(./evaluation2013.bbl
+Underfull \hbox (badness 1383) in paragraph at lines 4--7
+[]\T1/ptm/m/n/12 Abouelhoda, M. I., Kurtz, S., and Oh-le-busch, E.
+ []
+
+[11])
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 
 Package caption Warning: Unused \captionsetup[myeq] on input line 20.
 See the caption package documentation for explanation.
 
+<<<<<<< HEAD
 [13] (./evaluation2013.aux)
+=======
+[12] (./evaluation2013.aux)
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  14566 strings out of 493849
  233240 string characters out of 1152846
  324074 words of memory out of 3000000
  17529 multiletter control sequences out of 15000+50000
+=======
+ 14565 strings out of 493849
+ 236880 string characters out of 3149230
+ 325074 words of memory out of 3000000
+ 17530 multiletter control sequences out of 15000+200000
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
  43095 words of font info for 55 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  47i,18n,49p,1470b,455s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+<<<<<<< HEAD
 Output written on evaluation2013.dvi (15 pages, 65212 bytes).
+=======
+Output written on evaluation2013.dvi (14 pages, 62588 bytes).
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925

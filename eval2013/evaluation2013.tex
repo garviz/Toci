@@ -70,7 +70,11 @@ Actualmente la generación de nueva información genómica ha creado la necesida
 
 El alineamiento de genomas es un modelo matemático utilizado por los biólogos para determinar la similitud entre genomas. Existe diferentes algoritmos propuestos para el alineamiento de dos secuencias como \cite{Needleman1970General} y \cite{Waterman}. Estos algoritmos funcionan bien con tamaños de secuencias pequeños como un gen, 20-30kbp\footnote{bp es la únidad básica de medida en las secuencias de ADN y representa la longitud de un nucleótido}. Sin embargo, son ineficaces al alinear genomas enteros. La complejidad computacional y espacial es $O(nm)$, donde $n$ y $m$ son las longitudes de los genomas a alinear. Estos algoritmos tienen problemas de mayores requerimientos de memoria o de tiempos de ejecución inaceptables.
 
+<<<<<<< HEAD
 Para grandes secuencias, como el genoma humano (3Gbp), el uso de recursos computacionales pueden ser extremadamente grande y con un largo tiempo de ejecución. Es por ello que han surgido alternativas para reducir el tiempo de ejecución del alineamiento de secuencias, como \cite{Mongelli,Kouzinopoulos2005,Encarnac2011,Vyverman2013,OguzhanKulekci2011,Khan2009,OhlebuschGK10}. Una de esas alternativas es la utilización de la heurística basada en las coincidencias \'unicas máximas en las secuencias a alinear. Al encontrar las coincidencias máximas  únicas se puede realizar el alineamiento de genomas enteros reduciendo el espacio del alineamiento a las regiones entre las coincidencias máximas únicas. Esto permite reducir la complejidad de un alineamiento \'optimo O(nm) a la b\'usqueda de coincidencias m\'aximas \'unicas que puede resolver de manera lineal O(m) mediante estructuras de datos de indexaci\'on como el \'arbol de sufijos.\\
+=======
+Para grandes secuencias, como el genoma humano (3Gbp), el uso de recursos computacionales pueden ser extremadamente grande y con un largo tiempo de ejecución. Es por ello que han surgido alternativas para reducir el tiempo de ejecución del alineamiento de secuencias, como \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005,Encarnac2011,Vyverman2013,OguzhanKulekci2011,Khan2009,OhlebuschGK10}. Una de esas alternativas es la utilización de la heurística basada en las coincidencias exactas máximas en las secuencias a alinear. Al encontrar las coincidencias máximas  únicas se puede realizar el alineamiento de genomas enteros reduciendo el espacio del alineamiento a las regiones entre las coincidencias máximas únicas.\\
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 \indent
 Formalmente el problema de la búsqueda de coincidencias máximas únicas se define como:
 \begin{mydef}
@@ -223,6 +227,7 @@ carácter arbitrario y $S$ es posiblemente una subcadena vacía. Los enlaces de
 sufijos permiten agilizar el recorrido del árbol sin visitar la raíz del árbol 
 debido a que apuntan a la siguiente extensión del sufijo. Los enlaces de sufijos 
 y la compresión de las etiquetas de las aristas son los requerimientos claves 
+<<<<<<< HEAD
 para la implementación del árbol de sufijos en $O(m)$.\\
 \subsection{Arreglo de sufijos mejorado}
 El arreglo de sufijos mejorado es una estructura de datos que consiste de un arreglo de sufijos, un arreglo de sufijos invertido, una tabla de valores LCP y una tabla hijo que almacena los nodos virtuales del \'arbol de sufijos. Cada algoritmo basado en un \'arbol de sufijos puede ser implementado para usar un arreglo de sufijos mejorado. Esto permite resolver el problema de la b\'usqueda de coincidencias \'unicas m\'aximas con la misma complejidad que el \'arbol de sufijos.
@@ -236,6 +241,53 @@ La tabla de LCP almacena los valores del prefijo com\'un m\'as largo entre dos s
 La tabla hijo contiene tres valores por \'indice: arriba, abajo, sig$l$indice. Esta tabla mantiene de manera virtual los nodos internos del \'arbol de sufijos. La tabla hijo puede comprimirse para usar un solo campo en lugar de los tres valores mencionados anteriormente, ya que contiene informac\'on redundante. El requisito de espacio es 4n bytes.
 \section{Estado de la investigación}
 La búsqueda de MUMS entre un genoma de Referencia y uno de Consulta tiene una característica importante que puede ayudarnos a paralelizar su búsqueda: podemos buscar más de un sufijo a la vez del genoma de Consulta. Utilizando una estructura de datos de indexación para buscar MUMs, encontramos MUM candidatos al ir recorriendo el genoma de Consulta. Un MUM candidato es un MUM que se almacena como un posible MUM pero que se tiene que verificar al final de la fase de búsqueda para garantizar que es un MUM único en el genoma de Consulta.
+=======
+para la implementación del árbol de sufijos en $O(n)$.\\
+\subsection{Definición del problema a resolver}
+\indent
+El problema de la búsqueda de las coincidencias máximas únicas de una longitud mínima ha sido identificado en varias aplicaciones, entre ellas MUMmer \cite{Mummer3}. Aunque el algoritmo de MUMmer realiza la búsqueda de coincidencias exactas máximas, los requerimientos de recursos de cómputo aún son altos debido al tamaño de los datos de entrada.\\
+\indent
+Si la longitud de los genomas son muy grandes, ver Cuadro \ref{tab:buscar3}, 
+la cantidad de búsquedas aumentan, el tiempo de búsqueda
+crece linealmente y el uso de memoria se convierte en un problema a resolver si
+se considera la disponibilidad finita de memoria en la mayoría de sistemas de
+cómputo personales.\\
+\begin{table}[ h!]
+  \begin{small}
+    \begin{center}
+      \begin{tabular}{lllll}
+        Estructura & L [bp\footnote{Par base, unidad básica de medición de nucleótidos en una secuencia de ADN.}] & Cantidad  & Búsqueda [s] & Uso de\\
+        & & de búsquedas & & memoria [MB]\\
+        \hline
+        Árbol de sufijos & 20 & 9,87\e{18}  & 169189,4 & 48665,12\\
+        \hline
+        %Arreglo de sufijos & 20 & 9,87\e{18}  & 593019,3 & 32241,9\\
+        %\hline
+      \end{tabular}
+    \end{center}
+  \end{small}
+  \caption{Búsqueda coincidencias exactas para una cadena de referencia de 
+  2960,21Mbp y una cadena de consulta de 2716,96Mbp}
+  \label{tab:buscar3}
+\end{table}
+\indent
+De acuerdo a los datos del Cuadrs \ref{tab:buscar3} se hace necesario la búsqueda de alternativas que 
+permitan llevar a cabo la búsqueda de manera eficiente. El uso de HPC nos permitiría
+resolver los problemas de escalabilidad (tiempo de búsqueda, uso de memoria) cuando 
+se tienen cadenas muy grandes, como el genoma humano.\\
+En consecuencia, para resolver este problema se utiliza alguna estructura de datos que 
+permita realizar una búsqueda distribuida de coincidencias máximas únicas de forma ágil 
+en el genoma entero. 
+\indent
+En resumen la búsqueda de coincidencias únicas máximas en una cadena, como el 
+genoma humano, es un problema computacionalmente intensivo que es posible 
+resolverse con estructuras de datos de indexación de cadenas. 
+\indent
+Independientemente de la estructura de datos utilizada, lo que se desea es poder realizar búsquedas de coincidencias exactas a esa estructura de manera eficiente. 
+Una de las consultas en que se requiere realizar rápidamente, para el alineamiento de genomas, es la búsqueda de coincidencias únicas máximas. 
+\section{Estado de la investigación}
+La búsqueda de MUMS entre un genoma de Referencia y uno de Consulta tiene una característica importante que puede ayudarnos a paralizar su búsqueda: podemos buscar más de un sufijo a la vez del genoma de Consulta. Utilizando una estructura de datos de indexación para buscar MUMs, encontramos MUM candidatos al ir recorriendo el genoma de Consulta. Un MUM candidato es un MUM que se almacena como un posible MUM pero que se tiene que verificar al final de la fase de búsqueda para garantizar que es un MUM único en el genoma de Consulta.
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 El estado actual de la investigación consiste en la evaluación de la estructura de datos (árbol de sufijos) utilizada en el algoritmo actual de la aplicación MUMmer, determinar los problemas de rendimiento entre el algoritmo y la estructura de datos y finalmente estudiar, evaluar y modificar la estructura de datos (Arreglo de sufijos mejorado, \cite{Abouelhoda2004}) que permite reducir el tiempo de ejecución, mejor localidad espacial y temporal y la reducción en el uso de memoria.
 Finalmente se ha realizado una paralelización de la búsqueda de MUMs mediante OpenMP para su utilización en arquitecturas multi-core con el árbol de sufijos y con el arreglo de sufijos mejorado.
 Todos los experimentos se han desarrollado en el siguiente entorno:
@@ -301,9 +353,21 @@ Ya que se ha propuesto cambiar la estructura de datos para la búsqueda de MUMs 
   \caption{Búsqueda de MUMs en Arreglo de sufijos mejorado para architecturas Multi-core.} 
    \label{fig:stmc} 
  \end{figure}
+<<<<<<< HEAD
 Los resultados nos demuestran que existe una escalabilidad casí lineal hasta 12 cores y cuando aumentamos más de un thread por core, el tiempo de ejecución ya no escala linealmente. El efecto del uso de multithreading se sigue investigando para mejorar la escalabilidad de la paralelizaci\'on.
 \section{Publicaciones}
 Se envío un artículo al Workshop on "Biomedical and Bioinformatics Challenges for Computer Science" que forma parte de International Conference on Computational Science. El artículo fue rechazado.
+=======
+Los resultados nos demuestran que existe una escalabilidad casí lineal hasta 12 cores y cuando aumentamos más de un thread por core, el tiempo de ejecución ya no escala linealmente. Esto se debe a que se ha saturado el uso del procesador.
+\section{Publicaciones}
+Se envío un artículo al Workshop on "Biomedical and Bioinformatics Challenges for Computer Science" que forma parte de International Conference on Computational Science. El artículo fue rechazado.
+
+Comentarios de los revisores:
+
+"The paper presents a performance analysis of searching MUMs on a multi-core architectures using OpenMP. The topic covered by this paper is definitely relevant to the workshop even if not completely new. However, the main problems of this paper are its organization, readability, and quality of English. It is organized more as a technical report than as a scientific paper"
+
+"The English needs to be checked by an native speaker."
+>>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 \section{Seguimiento}
 En el primer año se ha estudiado el árbol de sufijos y el algoritmo para la búsqueda de MUMs.
 En el segundo año se ha determinado una estrategia de paralelización de búsqueda de MUMs en arquitecturas Multi-core. Se ha evaluado el cambio del árbol de sufijos por el arreglo de sufijos mejorado y se ha implementado la estrategia de paralelización utilizada con el árbol de sufijos. Se está definiendo la estrategia de distribución del arreglo de sufijos mejorado en un cluster bajo el paradigma master/worker para la búsqueda de MUMs.
