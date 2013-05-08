@@ -1,12 +1,14 @@
 \BOOKMARK [1][-]{section.1}{Resumen}{}
 \BOOKMARK [1][-]{section.2}{Introducci\363n}{}
 \BOOKMARK [2][-]{subsection.2.1}{MUM y MEM}{section.2}
-\BOOKMARK [2][-]{subsection.2.2}{\301rbol de sufijos}{section.2}
-\BOOKMARK [2][-]{subsection.2.3}{Definici\363n del problema a resolver}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Definici\363n del problema a resolver}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{\301rbol de sufijos}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Arreglo de sufijos mejorado}{section.2}
 \BOOKMARK [1][-]{section.3}{Estado de la investigaci\363n}{}
 \BOOKMARK [2][-]{subsection.3.1}{Problemas de rendimiento en el \341rbol de sufijos}{section.3}
 \BOOKMARK [3][-]{subsubsection.3.1.1}{Evaluaci\363n experimental}{subsection.3.1}
 \BOOKMARK [2][-]{subsection.3.2}{Paralelizaci\363n de b\372squeda de MUMs en \301rbol de sufijos}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Paralelizaci\363n de b\372squeda de MUMs en Arreglo de sufijos mejorado}{section.3}
 \BOOKMARK [1][-]{section.4}{Publicaciones}{}
 \BOOKMARK [1][-]{section.5}{Seguimiento}{}
 \BOOKMARK [1][-]{section.6}{Planificaci\363n}{}
