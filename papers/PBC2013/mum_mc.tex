@@ -6,6 +6,7 @@
 \usepackage{url}
 \usepackage[normalem]{ulem}
 \usepackage[ruled,vlined]{algorithm2e}
+\usepackage{float}
 
 \urldef{\mailsa}\path|{jcgarcia,aespinosa}@caos.uab.cat| 
 \urldef{\mailsb}\path|{juancarlos.moure,porfidio.hernandez}@uab.es|
@@ -29,7 +30,7 @@
 \end{center}
 
 \begin{abstract}
-  Maximal Unique Matches (MUMs) are common substrings that match a Reference and a Query genome. They are exact, unique and maximal. The search for MUMs in large genomes is a heavy and repetitive task, so there is a fair chance of parallelize and execute this search in multi-core architectures. This research evaluates an approach to parallelize the search for MUMs in genomic sequences within multi-core architectures. The Reference genome is indexed by using a Suffix Tree or Enhanced Suffix Array in main memory and then a parallelized algorithm searches for MUMs between Reference genome and Query genome. Query genome is read by several threads in chunks of fixed size. This approach is based on MUMmer, a genome alignment tool, which is able to find Maximal Unique Matches (MUMs). 
+  Maximal Unique Matches (MUMs) are common substrings that match a Reference and a Query genome. They are exact, unique and maximal. The search for MUMs in large genomes is a heavy and repetitive task, so there is a fair chance of parallelize and execute this search in multi-core architectures. This research evaluates a parallelization of the search for MUMs in genomic sequences within multi-core architectures. The Reference genome is indexed by using a Suffix Tree or Enhanced Suffix Array in main memory and then a parallelized algorithm searches for MUMs between Reference genome and Query genome. Query genome is read by several threads in chunks of fixed size. This approach is based on MUMmer, a genome alignment tool, which is able to find Maximal Unique Matches (MUMs). Results show a reduction in search time and less usage of memory.
 
 \keywords{Indexed Search, Bioinformatics, Maximal Unique Match, Multi-core architectures, Parallelization}
 \end{abstract}
@@ -40,7 +41,10 @@ Modern sequencing and computational technologies and advances in bioinformatics 
 Assume we are given two sequences R,Q $\in \Sigma^*$, and a number L > 0. The maximal unique matches problem (MUM-problem) is to find all sequences u $\in \Sigma^*$ with: $|u|\geq L$, u occurs exactly once in R and once in Q, and for any character a $\in \Sigma^*$ neither ua nor au occurs both in R and Q.
 \end{definition}
 The problem of searching maximal unique matches for a minimum length between a Reference genome and a Query genome has been identified in several applications, one of them is MUMmer \cite{Delcher2003}. MUMmer's algorithm can perform searches for Maximal Unique Matches (MUMs), although with a high use of main memory to store the Reference genome and a null use of multi-core architectures.
+
 We designed and tested a data-level parallelism to use in multi-core architectures with two different data structures: Suffix Tree and Enhanced Suffix Array.
+
+The rest of this paper is organized as follows. Section 2 discusses the related work. Section 3 defines some definitions used in this paper. Section 4 shows our implementation of parallelization of search for MUMs. Section 5 discusses the results of our parallelization. Section 6 concludes the paper.
 \section{Related work}
 Search for Maximal Unique Matches to do Whole Genome Alignment was proposed in \cite{Delcher1999}. There have been some previous work in the parallelization of search of matches in genomic data, like \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}, however these works are focused in fixed patterns and read alignment. On the other hand, there have been achievements in parallelization of Whole Genome Alignment like \cite{Meng2005}. The parallelization of searching for MUMs with a full-text index data structure is a research field not covered very deep, there is only one approach in \cite{Encarnac2011} but without access to source code to check their implementation and it is more focused with GPU and CPU hybrid architectures and Suffix Array. There are other implementations in \cite{Vyverman2013,OguzhanKulekci2011,Khan2009,OhlebuschGK10} but they search for Maximal Exact Matches with threads and not Maximal Unique Matches . We propose the use of OpenMP to search for MUMs in multi-core architectures with two full-text index data structures: Suffix Tree and Enhanced Suffix Array.
 \section{Preliminaries}
@@ -50,6 +54,10 @@ A suffix Tree, $ST$, for an n-character string $R$ is a rooted directed tree wit
 \end{definition}
 \begin{definition}
   An enhanced suffix array consists of four arrays (suffix, longest common prefix (LCP), child and inverse suffix arrays) that have parts of the information saved in a suffix tree. \cite{Abouelhoda2004}.
+\end{definition}
+We also define a suffix link, which an important trick to achieve linear complexity to search for MUMs in both Suffix Tree and Enhanced Suffix Array.
+\begin{definition}
+A suffix link is a pointer from string $\overline{aw}$ to substring $\overline{w}$.
 \end{definition}
 For reasons of space we recommend the reader to check \cite{Abouelhoda2004} for full description of Enhanced Suffix Array.
 %\begin{definition}
@@ -87,11 +95,11 @@ A search for a MUM between a Reference genome, $|R|=n$, and a Query genome, $|Q|
 %  \caption{Enhanced Suffix Array for string R=acaaacatat\$. Child interval 1-[0..5] where CHILD[6].up=2, CHILD[2].down=1, CHILD[2].nextlindex=4.}
 %  \label{fig:esa}
 % \end{figure}  
-Once we have defined the resources used to index a Reference genome, we need to answer the question: Where are the MUMs of $R$ and $Q$ of some minimum length $L$? We show the algorithms used to answer this question using a Suffix Tree and a Enhanced Suffix Array.
-\linesnumbered
-\begin{algorithm}[h!]
+Once we have defined the resources used to index a Reference genome, we need to answer the question: Where are the MUMs of $R$ and $Q$ of some minimum length $L$? We show the algorithms used to answer this question using a Suffix Tree, see Algorithm \ref{algST}, and a Enhanced Suffix Array, see Algorithm \ref{algESA}.
+%\linesnumbered
+\begin{algorithm}[h]
   \label{algST}
-  \dontprintsemicolon
+%  \dontprintsemicolon
   \SetKwInOut{Input}{input}
   \SetKwInOut{Output}{output}
   \SetKwData{R}{R}
@@ -125,10 +133,10 @@ Once we have defined the resources used to index a Reference genome, we need to 
   }
   \caption{Search for MUMs in a Suffix Tree.}
 \end{algorithm}
-\linesnumbered
-\begin{algorithm}[h!]
+%\linesnumbered
+\begin{algorithm}[h]
   \label{algESA}
-  \dontprintsemicolon
+%  \dontprintsemicolon
   \SetKwInOut{Input}{input}
   \SetKwInOut{Output}{output}
   \SetKwData{R}{R}
@@ -178,29 +186,24 @@ Once we have defined the resources used to index a Reference genome, we need to 
   \caption{Search for MUMs in an Enhanced Suffix Array.}
 \end{algorithm}
 \section{Implementation}
-The search for MUMs between a Reference and Query genome has an important feature which may help us to parallelize these algorithms: we can check more than one suffix of Query genome at the same time in Reference genome. Using a full-text index data structure to search for MUMs, we find MUM candidates while we stream the Query genome against the data structure. A MUM candidate is a MUM which is not unique in Query genome but only in Reference genome. To get a MUM we require to reach the end of Query genome to discard those MUM candidates which are not unique in both Reference and Query genome, see Figure \ref{phases}.
-\begin{figure}[h!] 
+The search for MUMs between a Reference and Query genome has an important feature which may help us to parallelize these algorithms: we can check more than one suffix of Query genome at the same time in Reference genome. Using a full-text index data structure to search for MUMs, we find MUM candidates while we stream the Query genome against the data structure. A MUM candidate is a MUM which is not unique in Query genome but only in Reference genome. To get a MUM we require to reach the end of Query genome to discard those MUM candidates which are not unique in both Reference and Query genome. Our approach, see Figure \ref{phases}, is divided in three phases: Creation of Suffix Tree or Enhanced Suffix Array; Splitting query genome data (chunks) according to the number of available cores using 1 thread per core and parallel execution of the search for MUMs for every chunk, then every thread has its own list of MUM candidates; and Get MUMs from list of MUM candidates of all threads. 
+\begin{figure}[H] 
 \centering 
-\includegraphics[scale=0.35]{Phases.ps}
-\caption{Our approach is divided in three phases: Creation of Suffix Tree or Enhanced Suffix Array; Splitting query genome data (chunks) according to the number of available cores using 1 thread per core and parallel execution of the search for MUMs for every chunk, then every thread has its own list of MUM candidates; and Get MUMs from list of MUM candidates of all threads.}
+\includegraphics[scale=0.5]{phases.png}
+\caption{Approach to search for MUMs in multi-core architectures with Suffix Tree or Enhanced Suffix Array.}
   \label{phases}
 \end{figure}
-%, see Figure \ref{Whole-MUM}.\\ 
-%\begin{figure}[h]
-%\centering 
-%  \includegraphics[scale=0.4]{Whole-MUM.eps}
-%\caption{To get a MUM, it requires an important feature its uniqueness. Uniqueness can only be found when a whole genome is checked. While reading Query we find MUM candidates that need to be verified if they are unique in both Reference and Query genomes.} 
-%\label{Whole-MUM} 
-%\end{figure}
 A data-level parallelism to search for MUMs requires to split the Query genome in chunks and stream each chunk against the full-text index data structure. This search is independent of each other chunk. The final stage to filter MUMs must be performed with a full Query genome and with chunks of Query genome is more obvious too. This approach is suitable to be performed in multi-core architectures because chunks can be assigned to each core and search for MUMs in the full-text index data structure which is stored in main memory. So that a very good choice of parallelization involves a data partition technique.
-%Meanwhile we may speed up the MUM search we need to deal with the discard of MUM candidates which are not a real MUM. So that, after finding all MUM candidates for every thread we need to verify which of MUM candidates are MUMs. Therefore this phase of discarding MUM candidates must always be performed. However, the search for MUM candidates can be performed in any position of the Query genome and then apply the last phase to filter the MUMs.\\
-%If some part of it is only evaluated we could miss the rest of the genome. In other words, after finding MUMs within a chunk it is not possible to determine if the MUM found is or not a "unique" MUM, globally in the query genome,  because these MUMs are unique only in the chunk that has been read, the rest of the genome it is not known until all query genome has been read. In Figure \ref{Whole-MUM} is shown the consequences of using chunks for query genome.\\
-Memory usage is improved, within this approach, with multiple reads to the full-text index data structure, instead of one read at a time with a serial execution. CPU usage is really used with multi-core architectures. Since a SPMD paradigm is used to solve the MUM-problem, we must tackle the common issues which arise when using multi-core architectures: cache issues, memory bandwidth and multithreading.\\
-The division of Query genome uses the paradigm of data-level parallelism which consists of a generation of chunks of a Query genome with a fixed size. The chunk size was computed with Query genome length divided by number of available threads. Chunk size is a performance factor because we need to have a balanced workload among threads.\\
-We evaluated two different full-text index data structures: a Suffix Tree and an Enhanced Suffix Array. We applied our approach, Figure \ref{phases}, by using OpenMP in the phase 2: search for MUMs with a static OpenMP schedule.\\
+
+Memory usage is improved, within this approach, with multiple reads to the full-text index data structure, instead of one read at a time with a serial execution.We take advantage of multi-core architectures with our approach. Since a SPMD paradigm is used to solve the MUM-problem, we must tackle the common issues which arise when using multi-core architectures: cache issues, memory bandwidth and multithreading.
+
+The division of Query genome uses the paradigm of data-level parallelism which consists of a generation of chunks of a Query genome with a fixed size. The chunk size was computed with Query genome length divided by number of available threads. Chunk size is a performance factor because we need to have a balanced workload among threads.
+
 Phase 1 is the construction of the data structure: Suffix Tree or Enhanced Suffix Array; this phase is executed in a serial way. Phase 2 requires the parallel execution of the Algorithm (\ref{algST} or \ref{algESA}) to search for MUMs, the first step in Phase 2 is the split of Query genome in as many chunks as available threads. The split defines the start and end position in Query genome which is held in main memory and shared by all threads. The chunk size is fixed according to the number of threads. The parallel search for MUMs gets a list of MUM-candidates which are ordered in each thread by its position in Query genome. Phase 3 is performed after all threads have finished its execution and it merges the lists of MUM-candidates and it is ordered by position in Query genome (this step is needed because the merge process may have unordered lists); this unique list is checked to discard those MUM-candidates which are not unique in the Query genome. This check is performed in a serial way.
+
+We evaluated two different full-text index data structures: a Suffix Tree and an Enhanced Suffix Array. We applied our approach, Figure \ref{phases}, by using OpenMP in the phase 2: search for MUMs with a static OpenMP schedule.
 \section{Results}
-To verify that our approach, can have a better performance to search for MUMs of a Reference and Query genome, in Table \ref{genomes}, we verify that output of MUMmer and our approach to check that they produce the same MUMs. Tests were carried out in the following node: 2 Processor Intel(R) Xeon(R) E5645 @ 2.4GHz of 6 cores each one, 32KB L1 cache, 256KB L2 and 12MB L3 shared cache per socket. RAM: 96 GB. GCC 4.7.0 with OpenMP support + Linux. 
+To verify that our approach, can have a better performance to search for MUMs of a Reference and Query genome, in Table \ref{genomes}, we verify that output of MUMmer and our approach have the same MUMs. Tests were carried out in the following node: 2 Processor Intel(R) Xeon(R) E5645 @ 2.4GHz of 6 cores each one, 32KB L1 cache, 256KB L2 and 12MB L3 shared cache per socket. RAM: 96 GB. GCC 4.7.0 with OpenMP support + Linux. 
 \begin{table} 
 \centering
 \caption{List of Genomes used in experiments.}
@@ -214,73 +217,69 @@ To verify that our approach, can have a better performance to search for MUMs of
 \end{table}
 The main goal of these tests was to check the performance to search for MUMs in multi-core architectures by using OpenMP (threads). This performance involves the usage of Memory and CPU (execution time to search for MUMs).\\
 %One key aspect of the several tests executed was to assure the execution of every thread in a single core, that is no other thread is competing for the same cache. With affinity we ensure the scalability of our proposal, without affinity even a number of threads below the number of cores might be in the same core. \\
-Times were collected during the execution of the experiments: construction time of data structure and execution time to search for mums with the function omp\_get\_wtime of OpenMP.\\
+Times were collected during the execution of the experiments: construction time of data structure and execution time to search for MUMs with the function omp\_get\_wtime of OpenMP.\\
 \subsection{Construction of Full-text index data structure}
-This paper compares the performance of two data structures to search for MUMs in multi-core architectures, two features for these structures are: construction time and memory footprint. Full-text indexes allow fast access to substrings of any length, but they have a great memory and construction cost. %This cost is affected by the type and implementation of the index data structure used. 
-We measure the construction time for the set of genomes in Table\ref{genomes}. Figure \ref{fig:construction} shows that a ESA has a lower construction time for all the Reference genomes used. Since a full-text index data structure has to be build every time a search for MUMs is performed, a reduction in the construction phase in Figure \ref{phases} would allow us to improve the overall execution time. A future improvement would be to build the full-text index data structure in parallel or load from a file.
- \begin{figure}[h]
+This paper compares the performance of two data structures to search for MUMs in multi-core architectures, two features for these structures are: construction time and memory footprint. Full-text indexes allow fast access to substrings of any length, but they have a great memory and construction cost. This cost is affected by the type and implementation of the full-text index data structure used. 
+We measure the construction time for the set of genomes in Table\ref{genomes}. Figure \ref{fig:construction} shows that an ESA has a lower construction time for all the Reference genomes used. Since a full-text index data structure has to be build every time a search for MUMs is performed, a reduction in the construction phase in Figure \ref{phases} would allow us to improve the overall execution time. A future improvement would be to build the full-text index data structure in parallel or load from a file.
+ \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{construction.eps}
   \caption{Construction of Suffix Tree and Enhanced Suffix Array for several genomes sizes. Our approach stores the whole Reference genome indexed by a Suffix Tree (ST) or an Enhanced Suffix Array (ESA) in main memory.}
   \label{fig:construction}
  \end{figure}  
+%\vspace{1cm}
  \subsection{Search for MUMs in multi-core architectures}
-Our main goal is to show that we can use multi-core architectures to reduce the execution time to search for MUMs.
-%\begin{figure}[h]
-%  \centering
-%   \includegraphics[scale=0.65]{speedup-MUM.eps}
-%  \caption{Speedup of our approach to search MUMs in multi-core architectures with OpenMP in ST and ESA.}
-%  \label{fig:speedup}
-%\end{figure}  
-Now we focus in the experiment to search for MUMs of minimum length 20[bp]. Our goal is to get the best performance of a multi-core architecture while searching for MUMs.
+We focus in the experiment to search for MUMs of minimum length 20[bp]. Our goal is to get the best performance of a multi-core architecture while searching for MUMs with a Suffix Tree and Enhanced Suffix Array.
 \subsubsection{EcoliK12 vs. EcoliO157H7}
-The set 1 in Table \ref{genomes} was used to search for MUMs in a ST and ESA. In Figure \ref{fig:ecoli-mum} we show that both data structures have a similar search time.
-\begin{figure}[h]
+The set 1 in Table \ref{genomes} was used to search for MUMs in a ST and ESA. In Figure \ref{fig:ecoli-mum}, we show that ESA has a better search time, see Figure \ref{fig:ecoli-mum}.
+ \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{ecoli-MUM.eps}
   \caption{Search for MUMs time for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}
   \label{fig:ecoli-mum}
 \end{figure}  
-However, the space consumption in Figure \ref{fig:ecoli-ram} shows that ESA has a better memory footprint.
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.3]{ecoli-RAM.eps}
-  \caption{RAM consumption to search for MUMs for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}
-  \label{fig:ecoli-ram}
-\end{figure}  
-This first experiment shows that it is possible to search for MUMs with two different full-text index data structures with the same search time but with a lower memory consumption for ESA.
+However, the space consumption shows that ESA has a better memory footprint, a reduction of 44\% of memory space compare to Suffix Tree (159 MB).
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[scale=0.3]{ecoli-RAM.eps}
+%  \caption{RAM consumption to search for MUMs for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}
+%  \label{fig:ecoli-ram}
+%\end{figure}  
+This first experiment shows that it is possible to search for MUMs with two different full-text index data structures with thea reduction in search time but with a lower memory consumption for ESA.
 \subsubsection{D.melanogaster vs. D.pseudoobscura}
-The set 2 in Table \ref{genomes} increases the genome size and we show in Figure \ref{fig:fly-mum} that ST and ESA have small differences in search time.
-\begin{figure}[h]
+The set 2 in Table \ref{genomes} increases the genome size and we show in Figure \ref{fig:fly-mum} that ESA has a smaller search time.
+ \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{fly-MUM.eps}
   \caption{Search for MUMs time for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}
   \label{fig:fly-mum}
 \end{figure}  
-On the other hand, the space consumption is almost constant in both data structures. However, again ESA has a better usage of memory. The reduction in ESA is near to the half of the ST, see Figure \ref{fig:fly-ram}.
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.3]{fly-RAM.eps}
-  \caption{RAM consumption to search for MUMs for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}
-  \label{fig:fly-ram}
-\end{figure}  
+However, there is a problem with scalability between 12 and 24 threads. Our approach does not scale good with ESA. Although ST has a better speedup, we require to reduce the search time.
+On the other hand, the space consumption is almost constant in both data structures. However, again ESA has a better usage of memory. The reduction in memory footprint for ESA is near to the half of the ST.%, see Figure \ref{fig:fly-ram}.
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[scale=0.3]{fly-RAM.eps}
+%  \caption{RAM consumption to search for MUMs for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}
+%  \label{fig:fly-ram}
+%\end{figure}  
 \subsubsection{Chicken vs. Zebrafish}
-The set 3 in Table \ref{genomes} have genomes of more than 1 [Gbp] and we show in Figure \ref{fig:chicken-mum} that an execution with one thread has a better performance in search time in ST over SA. However, when using multi-core architecture the search time is almost the same. So that the choice between a ST or ESA depends on the use of multi-core architectures, ST is more suitable in a serial way. However ST has a larger memory footprint than a ESA.
-\begin{figure}[h]
+The set 3 in Table \ref{genomes} have genomes of more than 1 [Gbp] and we show in Figure \ref{fig:chicken-mum} that an execution with one thread has a better performance in search time in ESA over ST. 
+ \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{chicken-MUM.eps}
   \caption{Search for MUMs time for Chicken and Zebrafish in multi-core architectures with ST and ESA.}
   \label{fig:chicken-mum}
 \end{figure}  
 In order to understand which full-text index data structure (ST, ESA) use to search for MUMs we check the memory footprint in Figure \ref{fig:chicken-ram}. The ESA has a better use of memory with the same search time.
-\begin{figure}[h]
+ \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{chicken-RAM.eps}
   \caption{RAM consumption to search for MUMs for Chicken and Zebrafish in multi-core architectures with ST and ESA.}
   \label{fig:chicken-ram}
 \end{figure}  
 \section{Conclusions}
-This paper presents an evaluation of performance to search for MUMs between Reference genome and Query genome in multi-core architectures with OpenMP in a Suffix Tree and an Enhanced Suffix Array. The search for MUMs is performed in a Suffix Tree or an Enhanced Suffix Array and the list of MUMs can help in the process of Whole Genome Alignment. The results show that MUM-problem can be solved with a ST or ESA and with the use of a multi-core architecture we reduce the execution time. There is a reduction in memory usage with an Enhanced Suffix Array over a Suffix Tree. We have evaluated a different data structure which provides the same functionality of a Suffix Tree to search for MUMs, with less use of memory in multi-core architectures.\\
+This paper presents an evaluation of performance to search for MUMs between Reference genome and Query genome in multi-core architectures with OpenMP in a Suffix Tree and an Enhanced Suffix Array. The search for MUMs is performed in a Suffix Tree or an Enhanced Suffix Array and the list of MUMs can help in the process of Whole Genome Alignment. The results show that MUM-problem can be solved with a ST or ESA and with the use of a multi-core architecture we reduce the execution time. There is a reduction in memory usage with an Enhanced Suffix Array over a Suffix Tree. We have evaluated a different data structure which provides the same functionality of a Suffix Tree to search for MUMs, with less use of memory in multi-core architectures.
+
 Improvements involve a better use of CPU when we have more than one thread per core. From the results obtained we conclude that an Enhanced Suffix Array is suitable to solve the MUM-problem. To improve the performance in CPU usage of our approach, the following proposals may be used: Prefetching: this may work because we know in advance what intervals to look for in ESA and Query genome; Data cache management: we may need to store the interval of ESA in some cache-level of processor. Since we need to get the interval of search by checking the first character of the suffix within the interval, we may use some SSE instructions to check more than one suffix at the same time.
 \section{Acknowledgments}
 This work was supported by grant from "Ejecuci\'on eficiente de aplicaciones multidisciplinares: nuevos desaf\'ios en la era multi/many core", with reference TIN2011-28689-C02-01.
