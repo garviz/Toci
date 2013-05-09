@@ -1,12 +1,11 @@
-\documentclass[runningheads,a4paper]{llncs}
+\documentclass[runningheads,a5paper]{llncs}
 \usepackage{graphicx}
 \usepackage{tabularx}
-\usepackage[tight,footnotesize]{subfigure}
 \usepackage[latin1]{inputenc}
 \usepackage{url}
 \usepackage[normalem]{ulem}
 \usepackage[ruled,vlined]{algorithm2e}
-\usepackage{float}
+%\usepackage{float}
 
 \urldef{\mailsa}\path|{jcgarcia,aespinosa}@caos.uab.cat| 
 \urldef{\mailsb}\path|{juancarlos.moure,porfidio.hernandez}@uab.es|
@@ -96,10 +95,10 @@ A search for a MUM between a Reference genome, $|R|=n$, and a Query genome, $|Q|
 %  \label{fig:esa}
 % \end{figure}  
 Once we have defined the resources used to index a Reference genome, we need to answer the question: Where are the MUMs of $R$ and $Q$ of some minimum length $L$? We show the algorithms used to answer this question using a Suffix Tree, see Algorithm \ref{algST}, and a Enhanced Suffix Array, see Algorithm \ref{algESA}.
-%\linesnumbered
+\linesnumbered
 \begin{algorithm}[h]
   \label{algST}
-%  \dontprintsemicolon
+  \dontprintsemicolon
   \SetKwInOut{Input}{input}
   \SetKwInOut{Output}{output}
   \SetKwData{R}{R}
@@ -133,10 +132,10 @@ Once we have defined the resources used to index a Reference genome, we need to 
   }
   \caption{Search for MUMs in a Suffix Tree.}
 \end{algorithm}
-%\linesnumbered
+\linesnumbered
 \begin{algorithm}[h]
   \label{algESA}
-%  \dontprintsemicolon
+  \dontprintsemicolon
   \SetKwInOut{Input}{input}
   \SetKwInOut{Output}{output}
   \SetKwData{R}{R}
@@ -187,9 +186,9 @@ Once we have defined the resources used to index a Reference genome, we need to 
 \end{algorithm}
 \section{Implementation}
 The search for MUMs between a Reference and Query genome has an important feature which may help us to parallelize these algorithms: we can check more than one suffix of Query genome at the same time in Reference genome. Using a full-text index data structure to search for MUMs, we find MUM candidates while we stream the Query genome against the data structure. A MUM candidate is a MUM which is not unique in Query genome but only in Reference genome. To get a MUM we require to reach the end of Query genome to discard those MUM candidates which are not unique in both Reference and Query genome. Our approach, see Figure \ref{phases}, is divided in three phases: Creation of Suffix Tree or Enhanced Suffix Array; Splitting query genome data (chunks) according to the number of available cores using 1 thread per core and parallel execution of the search for MUMs for every chunk, then every thread has its own list of MUM candidates; and Get MUMs from list of MUM candidates of all threads. 
-\begin{figure}[H] 
+\begin{figure}
 \centering 
-\includegraphics[scale=0.5]{phases.png}
+\includegraphics[scale=0.5]{phases.eps}
 \caption{Approach to search for MUMs in multi-core architectures with Suffix Tree or Enhanced Suffix Array.}
   \label{phases}
 \end{figure}
@@ -221,7 +220,7 @@ Times were collected during the execution of the experiments: construction time 
 \subsection{Construction of Full-text index data structure}
 This paper compares the performance of two data structures to search for MUMs in multi-core architectures, two features for these structures are: construction time and memory footprint. Full-text indexes allow fast access to substrings of any length, but they have a great memory and construction cost. This cost is affected by the type and implementation of the full-text index data structure used. 
 We measure the construction time for the set of genomes in Table\ref{genomes}. Figure \ref{fig:construction} shows that an ESA has a lower construction time for all the Reference genomes used. Since a full-text index data structure has to be build every time a search for MUMs is performed, a reduction in the construction phase in Figure \ref{phases} would allow us to improve the overall execution time. A future improvement would be to build the full-text index data structure in parallel or load from a file.
- \begin{figure}[H]
+ \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=0.3]{construction.eps}
   \caption{Construction of Suffix Tree and Enhanced Suffix Array for several genomes sizes. Our approach stores the whole Reference genome indexed by a Suffix Tree (ST) or an Enhanced Suffix Array (ESA) in main memory.}
@@ -232,7 +231,7 @@ We measure the construction time for the set of genomes in Table\ref{genomes}. F
 We focus in the experiment to search for MUMs of minimum length 20[bp]. Our goal is to get the best performance of a multi-core architecture while searching for MUMs with a Suffix Tree and Enhanced Suffix Array.
 \subsubsection{EcoliK12 vs. EcoliO157H7}
 The set 1 in Table \ref{genomes} was used to search for MUMs in a ST and ESA. In Figure \ref{fig:ecoli-mum}, we show that ESA has a better search time, see Figure \ref{fig:ecoli-mum}.
- \begin{figure}[H]
+ \begin{figure}[!h]
   \centering
   \includegraphics[scale=0.3]{ecoli-MUM.eps}
   \caption{Search for MUMs time for Ecolik12 and EcoliO157H7 in multi-core architectures with ST and ESA.}
@@ -248,7 +247,7 @@ However, the space consumption shows that ESA has a better memory footprint, a r
 This first experiment shows that it is possible to search for MUMs with two different full-text index data structures with thea reduction in search time but with a lower memory consumption for ESA.
 \subsubsection{D.melanogaster vs. D.pseudoobscura}
 The set 2 in Table \ref{genomes} increases the genome size and we show in Figure \ref{fig:fly-mum} that ESA has a smaller search time.
- \begin{figure}[H]
+ \begin{figure}[!h]
   \centering
   \includegraphics[scale=0.3]{fly-MUM.eps}
   \caption{Search for MUMs time for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}
@@ -264,14 +263,14 @@ On the other hand, the space consumption is almost constant in both data structu
 %\end{figure}  
 \subsubsection{Chicken vs. Zebrafish}
 The set 3 in Table \ref{genomes} have genomes of more than 1 [Gbp] and we show in Figure \ref{fig:chicken-mum} that an execution with one thread has a better performance in search time in ESA over ST. 
- \begin{figure}[H]
+ \begin{figure}[!h]
   \centering
   \includegraphics[scale=0.3]{chicken-MUM.eps}
   \caption{Search for MUMs time for Chicken and Zebrafish in multi-core architectures with ST and ESA.}
   \label{fig:chicken-mum}
 \end{figure}  
 In order to understand which full-text index data structure (ST, ESA) use to search for MUMs we check the memory footprint in Figure \ref{fig:chicken-ram}. The ESA has a better use of memory with the same search time.
- \begin{figure}[H]
+ \begin{figure}[!h]
   \centering
   \includegraphics[scale=0.3]{chicken-RAM.eps}
   \caption{RAM consumption to search for MUMs for Chicken and Zebrafish in multi-core architectures with ST and ESA.}

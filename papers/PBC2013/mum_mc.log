@@ -1,48 +1,47 @@
-This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.8)  9 MAY 2013 15:42
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  9 MAY 2013 16:01
 entering extended mode
-**C:/Users/jcgarcia/Documents/Toci/papers/PBC2013/mum_mc.tex
-(C:/Users/jcgarcia/Documents/Toci/papers/PBC2013/mum_mc.tex
+ %&-line parsing enabled.
+**mum_mc.tex
+(./mum_mc.tex
 LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
-vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
-an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
-romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
-sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
-senglishmax, welsh, loaded.
-(C:\Users\jcgarcia\Documents\Toci\papers\PBC2013\llncs.cls
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(./llncs.cls
 Document Class: llncs 2010/07/12 v2.17 
  LaTeX document class for Lecture Notes in Computer Science
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\multicol.sty"
+(/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
 Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
-\c@tracingmulticols=\count88
+\c@tracingmulticols=\count87
 \mult@box=\box26
 \multicol@leftmargin=\dimen103
-\c@unbalance=\count89
-\c@collectmore=\count90
-\doublecol@number=\count91
-\multicoltolerance=\count92
-\multicolpretolerance=\count93
+\c@unbalance=\count88
+\c@collectmore=\count89
+\doublecol@number=\count90
+\multicoltolerance=\count91
+\multicolpretolerance=\count92
 \full@width=\dimen104
 \page@free=\dimen105
 \premulticols=\dimen106
@@ -72,19 +71,19 @@ Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
 \@tempa=\box47
 \@tempa=\box48
 \@tempa=\box49
-\c@columnbadness=\count94
-\c@finalcolumnbadness=\count95
+\c@columnbadness=\count93
+\c@finalcolumnbadness=\count94
 \last@try=\dimen108
 \multicolovershoot=\dimen109
 \multicolundershoot=\dimen110
 \mult@nat@firstbox=\box50
 \colbreak@box=\box51
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\aliascnt.sty"
+(/usr/share/texmf-texlive/tex/latex/oberdiek/aliascnt.sty
 Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\carlisle\remreset.sty"))
-\c@chapter=\count96
+(/usr/share/texmf-texlive/tex/latex/carlisle/remreset.sty))
+\c@chapter=\count95
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
 LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
@@ -106,11 +105,11 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \tocparanum=\dimen118
 \tocparatotal=\dimen119
 \tocsubparanum=\dimen120
-\@tempcntc=\count97
+\@tempcntc=\count96
 \fnindent=\dimen121
-\c@@inst=\count98
-\c@@auth=\count99
-\c@auco=\count100
+\c@@inst=\count97
+\c@@auth=\count98
+\c@auco=\count99
 \instindent=\dimen122
 \authrun=\box52
 \authorrunning=\toks14
@@ -118,52 +117,51 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \titrun=\box53
 \titlerunning=\toks16
 \toctitle=\toks17
-\c@theorem=\count101
-\c@case=\count102
-\c@conjecture=\count103
-\c@corollary=\count104
-\c@definition=\count105
-\c@example=\count106
-\c@exercise=\count107
-\c@lemma=\count108
-\c@note=\count109
-\c@problem=\count110
-\c@property=\count111
-\c@proposition=\count112
-\c@question=\count113
-\c@solution=\count114
-\c@remark=\count115
+\c@theorem=\count100
+\c@case=\count101
+\c@conjecture=\count102
+\c@corollary=\count103
+\c@definition=\count104
+\c@example=\count105
+\c@exercise=\count106
+\c@lemma=\count107
+\c@note=\count108
+\c@problem=\count109
+\c@property=\count110
+\c@proposition=\count111
+\c@question=\count112
+\c@solution=\count113
+\c@remark=\count114
 \headlineindent=\dimen123
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks18
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: xetex.def on input line 91.
+Package graphics Info: Driver file: dvips.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\xelatex\xetex-def\xetex.def"
-File: xetex.def 2009/11/22 v0.94 LaTeX color/graphics driver for XeTeX (RRM/JK)
-
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen124
 \Gin@req@width=\dimen125
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\tabularx.sty"
+(/usr/share/texmf-texlive/tex/latex/tools/tabularx.sty
 Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen126
 \extrarowheight=\dimen127
@@ -176,217 +174,148 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \TX@old@col=\dimen130
 \TX@target=\dimen131
 \TX@delta=\dimen132
-\TX@cols=\count116
+\TX@cols=\count115
 \TX@ftn=\toks20
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
-Package: subfigure 2002/07/30 v2.1.4 subfigure package
-\subfigtopskip=\skip47
-\subfigcapskip=\skip48
-\subfigcaptopadj=\dimen133
-\subfigbottomskip=\skip49
-\subfigcapmargin=\dimen134
-\subfiglabelskip=\skip50
-\c@subfigure=\count117
-\c@lofdepth=\count118
-\c@subtable=\count119
-\c@lotdepth=\count120
-
-****************************************
-* Local config file subfigure.cfg used *
-****************************************
-("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
-\subfig@top=\skip51
-\subfig@bottom=\skip52
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks21
 \inpenc@posthook=\toks22
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin1.def"
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ))
-("C:\Program Files\MiKTeX 2.9\tex\xelatex\xetexurl\url.sty"
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip10
-Package: url 2004/03/15  ver 3.1  Verb mode for urls, etc.
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\ulem\ulem.sty"
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/ulem.sty
 \UL@box=\box54
 \UL@hyphenbox=\box55
-\UL@skip=\skip53
+\UL@skip=\skip47
 \UL@hook=\toks23
-\UL@height=\dimen135
-\UL@pe=\count121
-\UL@pixel=\dimen136
+\UL@pe=\count116
+\UL@pixel=\dimen133
 \ULC@box=\box56
-Requested font "lasy6" scaled 1000
- -> lasy6
-Package: ulem 2012/05/18
-\ULdepth=\dimen137
+Package: ulem 2000/05/26
+\ULdepth=\dimen134
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
-Invalid UTF-8 byte or sequence at line 164 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 414 replaced by U+FFFD.
-Package: algorithm2e 2013/01/06 v5.00 algorithms environments
-\c@AlgoLine=\count122
+(/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2005/10/04 v3.9 algorithms environments
+\c@AlgoLine=\count117
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
-Package: relsize 2003/07/04 ver 3.1
-)
 ********************************************************
-Package `algorithm2e' Release 5.0 -- january 06 2013 --
+Package `algorithm2e' Release 3.9 -- october 04 2005 --
 - algorithm2e-announce@lirmm.fr mailing list for announcement about releases
 - algorithm2e-discussion@lirmm.fr mailing list for discussion about package
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (cfiorio@um2.fr)
+- Author: Christophe Fiorio (fiorio@lirmm.fr)
 ********************************************************
-\skiptotal=\skip54
-\skiplinenumber=\skip55
-\skiprule=\skip56
-\skiphlne=\skip57
-\skiptext=\skip58
-\skiplength=\skip59
-\algomargin=\skip60
-\skipalgocfslide=\skip61
-\algowidth=\dimen138
-\inoutsize=\dimen139
-\inoutindent=\dimen140
-\interspacetitleruled=\dimen141
-\interspacealgoruled=\dimen142
-\interspacetitleboxruled=\dimen143
+\skiptotal=\skip48
+\skiprule=\skip49
+\skiphlne=\skip50
+\skiptext=\skip51
+\skiplength=\skip52
+\algomargin=\skip53
+\skipalgocfslide=\skip54
+\algowidth=\dimen135
+\inoutsize=\dimen136
+\inoutline=\dimen137
 \algocf@inoutbox=\box57
 \algocf@inputbox=\box58
-\AlCapSkip=\skip62
-\AlCapHSkip=\skip63
-\algoskipindent=\skip64
-\algocf@nlbox=\box59
-\algocf@hangingbox=\box60
-\algocf@untilbox=\box61
-\algocf@skipuntil=\skip65
-\algocf@capbox=\box62
-\algoheightruledefault=\skip66
-\algoheightrule=\skip67
-\algotitleheightruledefault=\skip68
-\algotitleheightrule=\skip69
-\c@algocfline=\count123
-\c@algocfproc=\count124
-\c@algocf=\count125
-\algocf@algoframe=\box63
-\algocf@algobox=\box64
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count126
-\float@exts=\toks24
-\float@box=\box65
-\@float@everytoks=\toks25
-\@floatcapt=\box66
-)
-(C:\Users\jcgarcia\Documents\Toci\papers\PBC2013\mum_mc.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-Requested font "cmr12" at 14.4pt
- -> cmr12
-Requested font "cmbx12" at 14.4pt
- -> cmbx12
+\AlCapSkip=\skip55
+\AlCapHSkip=\skip56
+\algocf@capbox=\box59
+\c@algocfline=\count118
+\c@algocf=\count119
+\algocf@algoframe=\box60
+\algocf@algobox=\box61
+) (./mum_mc.aux)
+\openout1 = `mum_mc.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 25.
+(Font)              <7> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 25.
-Requested font "cmr9" at 9.0pt
- -> cmr9
-Requested font "cmtt10" at 10.0pt
- -> cmtt10
-Requested font "cmbx9" at 9.0pt
- -> cmbx9
-Requested font "cmr12" at 12.0pt
- -> cmr12
-Requested font "cmbx12" at 12.0pt
- -> cmbx12
-Requested font "cmbx10" at 10.0pt
- -> cmbx10
-Requested font "cmti10" at 10.0pt
- -> cmti10
+(Font)              <5> on input line 24.
  [1
 
 
 ] [2]
-Requested font "cmss9" at 9.0pt
- -> cmss9
-Requested font "cmr6" at 6.0pt
- -> cmr6
-Requested font "cmmi9" at 9.0pt
- -> cmmi9
-Requested font "cmmi6" at 6.0pt
- -> cmmi6
-Requested font "cmsy9" at 9.0pt
- -> cmsy9
-Requested font "cmsy6" at 6.0pt
- -> cmsy6
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 119.
+(Font)              <9> on input line 118.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 119.
-Requested font "cmtt9" at 9.0pt
- -> cmtt9
-Requested font "cmti9" at 9.0pt
- -> cmti9
+(Font)              <6> on input line 118.
+
+Underfull \hbox (badness 10000) detected at line 134
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 186
+[][]
+ []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: phases.png Graphic file (type QTm)
-<use  "phases.png" > [3]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4]
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 206--221
+File: phases.eps Graphic file (type eps)
+<phases.eps> [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 205--220
 
  []
 
-File: construction.eps Graphic file (type eps)
-<construction.eps> [6]
-File: ecoli-MUM.eps Graphic file (type eps)
- <ecoli-MUM.eps>
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
-File: fly-MUM.eps Graphic file (type eps)
+ [5]
+File: construction.eps Graphic file (type eps)
 
-<fly-MUM.eps> [8]
+<construction.eps>
+File: ecoli-MUM.eps Graphic file (type eps)
+ <ecoli-MUM.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6]
+File: fly-MUM.eps Graphic file (type eps)
+ <fly-MUM.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7]
 File: chicken-MUM.eps Graphic file (type eps)
  <chicken-MUM.eps>
 File: chicken-RAM.eps Graphic file (type eps)
  <chicken-RAM.eps>
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9]
-(C:\Users\jcgarcia\Documents\Toci\papers\PBC2013\mum_mc.bbl [10]) [11]
-(C:\Users\jcgarcia\Documents\Toci\papers\PBC2013\mum_mc.aux) ) 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8] (./mum_mc.bbl [9]) [10] (./mum_mc.aux) ) 
 Here is how much of TeX's memory you used:
- 2957 strings out of 429293
- 37062 string characters out of 3170421
- 121997 words of memory out of 3000000
- 6197 multiletter control sequences out of 15000+200000
- 8727 words of font info for 32 fonts, out of 3000000 for 9000
- 669 hyphenation exceptions out of 8191
- 32i,22n,27p,1178b,533s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 2333 strings out of 493849
+ 27880 string characters out of 1152846
+ 118723 words of memory out of 3000000
+ 5607 multiletter control sequences out of 15000+50000
+ 9037 words of font info for 33 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 33i,22n,26p,1130b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on mum_mc.pdf (11 pages).
+Output written on mum_mc.dvi (10 pages, 29956 bytes).

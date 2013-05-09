@@ -1,3 +1,45 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: mum_mc.aux
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: mum_mc.aux
 The style file: abbrv.bst
 Database file #1: mum-mc.bib
+You've used 12 entries,
+            2118 wiz_defined-function locations,
+            586 strings with 6327 characters,
+and the built_in function-call counts, 4125 in all, are:
+= -- 391
+> -- 219
+< -- 3
++ -- 86
+- -- 74
+* -- 296
+:= -- 699
+add.period$ -- 35
+call.type$ -- 12
+change.case$ -- 72
+chr.to.int$ -- 0
+cite$ -- 12
+duplicate$ -- 151
+empty$ -- 303
+format.name$ -- 74
+if$ -- 851
+int.to.chr$ -- 0
+int.to.str$ -- 12
+missing$ -- 12
+newline$ -- 62
+num.names$ -- 24
+pop$ -- 74
+preamble$ -- 1
+purify$ -- 61
+quote$ -- 0
+skip$ -- 115
+stack$ -- 0
+substring$ -- 223
+swap$ -- 34
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 46
+warning$ -- 0
+while$ -- 39
+width$ -- 14
+write$ -- 127
