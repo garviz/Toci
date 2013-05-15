@@ -164,7 +164,7 @@ struct sparseSA {
       end++; 
     }
     link.start = start; link.end = end;
-    //fprintf(stdout,"%d| el s:%ld,e:%ld,d:%ld\n",__LINE__,link.start,link.end,link.depth);
+    //fprintf(stderr,"%d el s:%ld,e:%ld,d:%ld t:%ld exp:%ld\n",__LINE__,link.start,link.end,link.depth, thresh, exp);
     return true;
   }
 

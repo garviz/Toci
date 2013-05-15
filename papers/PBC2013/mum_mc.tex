@@ -35,7 +35,7 @@
 \end{abstract}
 
 \section{Introduction} 
-Modern sequencing and computational technologies and advances in bioinformatics has made whole genome sequencing possible. One resulting challenge is the fast alignment of whole genomes. Dynamic programming is too slow for aligning two large genomes, hundreds of Mbp. One very successful approach to perform a whole genome alignment is based on identifying ``maximal unique matches''. This heuristic is based on the assumption that one expects substrings occurring in two similar genomes. Maximal unique matches (MUMs) are almost surely part of a good alignment of the two sequences and so the whole genome alignment problem can be reduced to aligning the sequence in the gaps between the MUMs.
+Modern sequencing and computational technologies and advances in bioinformatics has made whole genome sequencing possible. One resulting challenge is the fast alignment of whole genomes. Dynamic programming is too slow for aligning two large genomes, hundreds of Mbp. One very successful approach to performing a whole genome alignment is based on identifying ``maximal unique matches''. This heuristic is based on the assumption that one expects substrings occurring in two similar genomes. Maximal unique matches (MUMs) are almost surely part of a good alignment of the two sequences and so the whole genome alignment problem can be reduced to aligning the sequence in the gaps between the MUMs.
 \begin{definition}
 Assume we are given two sequences R,Q $\in \Sigma^*$, and a number L > 0. The maximal unique matches problem (MUM-problem) is to find all sequences u $\in \Sigma^*$ with: $|u|\geq L$, u occurs exactly once in R and once in Q, and for any character a $\in \Sigma^*$ neither ua nor au occurs both in R and Q.
 \end{definition}
@@ -45,7 +45,7 @@ We designed and tested a data-level parallelism to use in multi-core architectur
 
 The rest of this paper is organized as follows. Section 2 discusses the related work. Section 3 defines some definitions used in this paper. Section 4 shows our implementation of parallelization of search for MUMs. Section 5 discusses the results of our parallelization. Section 6 concludes the paper.
 \section{Related work}
-Search for Maximal Unique Matches to do Whole Genome Alignment was proposed in \cite{Delcher1999}. There have been some previous work in the parallelization of search of matches in genomic data, like \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}, however these works are focused in fixed patterns and read alignment. On the other hand, there have been achievements in parallelization of Whole Genome Alignment like \cite{Meng2005}. The parallelization of searching for MUMs with a full-text index data structure is a research field not covered very deep, there is only one approach in \cite{Encarnac2011} but without access to source code to check their implementation and it is more focused with GPU and CPU hybrid architectures and Suffix Array. There are other implementations in \cite{Vyverman2013,OguzhanKulekci2011,Khan2009,OhlebuschGK10} but they search for Maximal Exact Matches with threads and not Maximal Unique Matches . We propose the use of OpenMP to search for MUMs in multi-core architectures with two full-text index data structures: Suffix Tree and Enhanced Suffix Array.
+Search for Maximal Unique Matches to do Whole Genome Alignment was proposed in \cite{Delcher1999}. There have been some previous work in the parallelization of search of matches in genomic data, like \cite{OguzhanKulekci2011,Mongelli,Kouzinopoulos2005}, however these works are focused in fixed patterns and read alignment. On the other hand, there have been achievements in parallelization of Whole Genome Alignment like \cite{Meng2005}. The parallelization of searching for MUMs with a full-text index data structure is a research field not covered deeply, there is only one approach in \cite{Encarnac2011} but without access to source code to check their implementation and it is more focused with GPU and CPU hybrid architectures and Suffix Array. There are other implementations in \cite{Vyverman2013,OguzhanKulekci2011,Khan2009,OhlebuschGK10} but they search for Maximal Exact Matches with threads and not Maximal Unique Matches . We propose the use of OpenMP to search for MUMs in multi-core architectures with two full-text index data structures: Suffix Tree and Enhanced Suffix Array.
 \section{Preliminaries}
 Let's assume the Reference genome $R[0,\ldots, n-1]$ of size $|R|=n$ over an alphabet $\Sigma={ \$, A, C, G, T}$ which has a sentinel character $R[n-1] = \$$ that occurs nowhere else in the Reference genome and is lexicographically less than all the characters that occur in the alphabet. The suffixes of the Reference genome are zero indexed by their position in the original Reference by a full-text index data structure like a Suffix Tree or an Enhanced Suffix Array. 
 \begin{definition}
@@ -54,7 +54,7 @@ A suffix Tree, $ST$, for an n-character string $R$ is a rooted directed tree wit
 \begin{definition}
   An enhanced suffix array consists of four arrays (suffix, longest common prefix (LCP), child and inverse suffix arrays) that have parts of the information saved in a suffix tree. \cite{Abouelhoda2004}.
 \end{definition}
-We also define a suffix link, which an important trick to achieve linear complexity to search for MUMs in both Suffix Tree and Enhanced Suffix Array.
+We also define a suffix link, which is an important trick to achieve linear complexity to search for MUMs in both Suffix Tree and Enhanced Suffix Array.
 \begin{definition}
 A suffix link is a pointer from string $\overline{aw}$ to substring $\overline{w}$.
 \end{definition}
@@ -192,7 +192,7 @@ The search for MUMs between a Reference and Query genome has an important featur
 \caption{Approach to search for MUMs in multi-core architectures with Suffix Tree or Enhanced Suffix Array.}
   \label{phases}
 \end{figure}
-A data-level parallelism to search for MUMs requires to split the Query genome in chunks and stream each chunk against the full-text index data structure. This search is independent of each other chunk. The final stage to filter MUMs must be performed with a full Query genome and with chunks of Query genome is more obvious too. This approach is suitable to be performed in multi-core architectures because chunks can be assigned to each core and search for MUMs in the full-text index data structure which is stored in main memory. So that a very good choice of parallelization involves a data partition technique.
+A data-level parallelism to search for MUMs requires to split the Query genome in chunks and stream each chunk against the full-text index data structure. This search is independent of each other chunk. The final stage to filter MUMs must be performed with a full Query genome and with chunks of Query genome is more obvious too. This approach is suitable to be performed in multi-core architectures because chunks can be assigned to each core and search for MUMs in the full-text index data structure which is stored in main memory. So a very good choice of parallelization involves a data partition technique.
 
 Memory usage is improved, within this approach, with multiple reads to the full-text index data structure, instead of one read at a time with a serial execution.We take advantage of multi-core architectures with our approach. Since a SPMD paradigm is used to solve the MUM-problem, we must tackle the common issues which arise when using multi-core architectures: cache issues, memory bandwidth and multithreading.
 
@@ -253,7 +253,7 @@ The set 2 in Table \ref{genomes} increases the genome size and we show in Figure
   \caption{Search for MUMs time for D.melanogaster and D.pseudoobscura in multi-core architectures with ST and ESA.}
   \label{fig:fly-mum}
 \end{figure}  
-However, there is a problem with scalability between 12 and 24 threads. Our approach does not scale good with ESA. Although ST has a better speedup, we require to reduce the search time.
+However, there is a problem with scalability between 12 and 24 threads. Our approach does not scale well with ESA. Although ST has a better speedup, we need to reduce the search time.
 On the other hand, the space consumption is almost constant in both data structures. However, again ESA has a better usage of memory. The reduction in memory footprint for ESA is near to the half of the ST.%, see Figure \ref{fig:fly-ram}.
 %\begin{figure}[h]
 %  \centering

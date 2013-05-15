@@ -1,5 +1,5 @@
 CC = g++
-CXXFLAGS = -g -pg -O3 -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 -std=c++11 
+CXXFLAGS = -g -O3 -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 -std=c++11 
 LIBS = -lstdc++ -lpthread
 #LIBS = -lstdc++ -lpapi -lpthread -lcupti -lcudart
 SRC = mummer.cpp qsufsort.c sparseSA.cpp fasta.cpp smhasher-read-only/libSMHasherSupport.a

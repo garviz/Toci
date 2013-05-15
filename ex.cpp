@@ -115,10 +115,10 @@ void printESA(const fid_Suffixarray *esa, fid_Projectfile *project) {
     unordered_map<string,inter,hashMmH3> offset;
     //unordered_map<string,inter> offset;
     //map<string,long> offset;
-/*    for (unsigned int i=0; i < offset.size(); i++) {
+    for (unsigned int i=0; i < offset.size(); i++) {
         inter t(0,0);
         offset[i]=t;
-    }*/
+    }
     long size;
 
     SA.resize(project->totallength);

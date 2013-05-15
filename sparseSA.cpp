@@ -24,8 +24,9 @@
         cLCP = LCP[childcE];\
     else\
         cLCP = LCP[CHILD[cS]];
-//#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);cin.get();
-#define PRINT
+#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);
+//cin.get();
+//#define PRINT
 using namespace std;
 
 
@@ -273,7 +274,6 @@ void sparseSA::traverse_faster(const string &P,const long long prefix, interval_
 bool sparseSA::top_down_child(char c, interval_t &cur){
     long long left = cur.start;
     long long right = CHILD[cur.end];
-    PRINT
     if(cur.start >= right || right > cur.end)
         right = CHILD[cur.start];
     //now left and right point to first child
@@ -295,9 +295,9 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
     }
     //last interval
     if(Reference[SA[left]+cur.depth] == c){
-            cur.start = left;
-            PRINT
-            return true;
+        cur.start = left;
+        PRINT
+        return true;
     }
     PRINT
     return false;
@@ -566,7 +566,6 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
   /*for (long i=0; i<LCP.vec.size(); i+=64)
     _mm_prefetch(&(LCP.vec[i]),_MM_HINT_NTA); */
   while(prefix < end) {
-      PRINT
     traverse_faster(P, prefix, cur, end);
     if (cur.depth <= 1) { 
         /*got = offset.find(P.substr(prefix,8));
@@ -578,17 +577,17 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
         continue;
     }
     if(cur.size() == 1 && cur.depth >= min_len) {//unique match 
-  PRINT
       if(is_leftmaximal(P, prefix, SA[cur.start])) {
-  PRINT
 	    match_t m; m.ref = SA[cur.start]; m.query = prefix; m.len = cur.depth;
 	    if(print) print_match(m);
 	    else  matches.push_back(m); 
       }
     }
-    //__builtin_prefetch(LCP.vec.data(),0,3);
+    /*cur.depth = 0; cur.start = lborder; cur.end = rborder;
+    prefix++;
+    PRINT*/
     do {
-      cur.depth = cur.depth-1;
+      cur.depth--;
       cur.start = ISA[SA[cur.start] + 1];  
       cur.end = ISA[SA[cur.end] + 1]; 
       prefix++;
@@ -662,6 +661,7 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, long 
   vector<match_t> matches;
   double start1, finish1;
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
+  
 #pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, cerr, matches) private(matches_p)
   { 
 #pragma omp for schedule(static,1) nowait 

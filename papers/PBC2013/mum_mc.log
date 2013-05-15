@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  9 MAY 2013 16:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  10 MAY 2013 08:47
 entering extended mode
  %&-line parsing enabled.
 **mum_mc.tex
@@ -312,10 +312,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Here is how much of TeX's memory you used:
  2333 strings out of 493849
  27880 string characters out of 1152846
- 118723 words of memory out of 3000000
+ 117723 words of memory out of 3000000
  5607 multiletter control sequences out of 15000+50000
  9037 words of font info for 33 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 33i,22n,26p,1130b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,22n,26p,1127b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on mum_mc.dvi (10 pages, 29956 bytes).
