@@ -7,14 +7,14 @@
 #include <assert.h>
 #include <string.h>
 #include <parallel/algorithm>
-#include <papi.h>
 #include <omp.h>
 #include <vector>
 #include <map>
 #include <string>
 #include <sstream>
 #include <fstream>
-#include <mmintrin.h>
+#include <xmmintrin.h>
+#include <likwid.h>
 
 #include "sparseSA.hpp"
 
@@ -24,9 +24,9 @@
         cLCP = LCP[childcE];\
     else\
         cLCP = LCP[CHILD[cS]];
-#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);
+//#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);
 //cin.get();
-//#define PRINT
+#define PRINT
 using namespace std;
 
 
@@ -173,7 +173,6 @@ long sparseSA::bsearch_right(char c, long long i, long long s, long long e) {
   return l;
 }
 
-
 // Simple top down traversal of a suffix array.
 bool sparseSA::top_down(char c, long long i, long long &start, long long &end) {
   if(c < Reference[SA[start]+i]) return false;
@@ -198,7 +197,6 @@ bool sparseSA::search(string &P, long long &start, long long &end) {
   return true;
 }
 
-
 // Traverse pattern P starting from a given prefix and interval
 // until mismatch or min_len characters reached.
 void sparseSA::traverse(string &P, long prefix, interval_t &cur, long long min_len) {
@@ -222,6 +220,7 @@ void sparseSA::traverse(string &P, long prefix, interval_t &cur, long long min_l
 // until mismatch or min_len characters reached.
 // Uses the child table for faster traversal
 void sparseSA::traverse_faster(const string &P,const long long prefix, interval_t &cur, long long min_len){
+#pragma pomp inst begin(traverse_faster)
     if(cur.depth >= min_len) return;
     long long c = prefix + cur.depth;
     register long long lengthP = P.length();
@@ -266,29 +265,36 @@ void sparseSA::traverse_faster(const string &P,const long long prefix, interval_
             }
         }
     }
+#pragma pomp inst end(traverse_faster)
 }
 
 //finds the child interval of cur that starts with character c
 //updates left and right bounds of cur to child interval if found, or returns
 //cur if not found (also returns true/false if found or not)
 bool sparseSA::top_down_child(char c, interval_t &cur){
+#pragma pomp inst begin(top_down_child)
     long long left = cur.start;
     long long right = CHILD[cur.end];
-    if(cur.start >= right || right > cur.end)
+    //fprintf(stderr,"%d %ld,%ld %c\n",__LINE__,left,right, c);
+    if (cur.start >= right || right > cur.end) {
         right = CHILD[cur.start];
+    }
     //now left and right point to first child
-    if(Reference[SA[cur.start]+cur.depth] == c){
+    if( Reference[SA[left]+cur.depth] == c){
         cur.end = right-1;
         PRINT
+#pragma pomp inst altend(top_down_child)
         return true;
     }
     left = right;
     //while has next L-index
     while(CHILD[right] > right && LCP[right] == LCP[CHILD[right]]){
+        //cerr << right << endl;
         right = CHILD[right];
         if(Reference[SA[left]+cur.depth] == c){
             cur.start = left; cur.end = right - 1;
             PRINT
+#pragma pomp inst altend(top_down_child)
             return true;
         }
         left = right;
@@ -297,9 +303,11 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
     if(Reference[SA[left]+cur.depth] == c){
         cur.start = left;
         PRINT
+#pragma pomp inst altend(top_down_child)
         return true;
     }
     PRINT
+#pragma pomp inst end(top_down_child)
     return false;
 }
 
@@ -555,7 +563,8 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
   memCount = 0;
   long lborder = 0, rborder = N-1;
   interval_t cur(lborder, rborder, 0);
-  unordered_map<string,interval_t,hashMmH3>::const_iterator got;
+  //unordered_map<string,interval_t,hashMmH3>::const_iterator got;
+  fprintf(stderr,"%p %p %p\n",SA.data(),ISA.data(),CHILD.data());
   long prefix = P.length()/chunks*chunk;
   const long end = (long) (P.length()/chunks*(chunk+1));
   /*got = offset.find(P.substr(prefix,8));
@@ -565,6 +574,7 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
       cur = got->second;*/
   /*for (long i=0; i<LCP.vec.size(); i+=64)
     _mm_prefetch(&(LCP.vec[i]),_MM_HINT_NTA); */
+#pragma pomp inst begin(loop)  
   while(prefix < end) {
     traverse_faster(P, prefix, cur, end);
     if (cur.depth <= 1) { 
@@ -574,6 +584,7 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
         /*} else
             cur = got->second;*/
         prefix++;
+        PRINT
         continue;
     }
     if(cur.size() == 1 && cur.depth >= min_len) {//unique match 
@@ -587,15 +598,18 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
     prefix++;
     PRINT*/
     do {
+#pragma pomp inst begin(suffixlink)
       cur.depth--;
       cur.start = ISA[SA[cur.start] + 1];  
       cur.end = ISA[SA[cur.end] + 1]; 
       prefix++;
-  PRINT
+      PRINT
+#pragma pomp inst end(suffixlink)
       if( cur.depth == 0 || expand_link(cur) == false ) { cur.depth = 0; cur.start = lborder; cur.end = rborder;PRINT break; }
     } while(cur.depth > 0 && cur.size() == 1);
   }
   currentCount = memCount;
+#pragma pomp inst end(loop)  
   finish = omp_get_wtime();
   fprintf(stdout,"# Search=%f\n", (double) (finish-start));
 }
@@ -661,7 +675,7 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, long 
   vector<match_t> matches;
   double start1, finish1;
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
-  
+#pragma pomp inst begin(MUMParallel)  
 #pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, cerr, matches) private(matches_p)
   { 
 #pragma omp for schedule(static,1) nowait 
@@ -710,6 +724,7 @@ void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, long 
   currentCount = unique.size();
   //fprintf(stderr,",OMP=%lf,Merge=%lf,LCPAcc=%ld,",(double) (finish-start), (double) (finish1-start1), LCP.access);
   fprintf(stdout,"# Merge=%lf,Matches=%lld,Thrd=%d\n", (double) (finish1-start1), currentCount, chunks);
+#pragma pomp inst end(MUMParallel)  
 }
 
 void *MEMthread(void *arg) {

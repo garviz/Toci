@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <likwid.h>
 
 #include "sparseSA.hpp"
 #include "fasta.hpp"
@@ -17,7 +18,6 @@
 #include <time.h>
 #include <sys/time.h>
 #include <sys/resource.h>
-#include <papi.h>
 
 #include <cctype>                                                  
 
@@ -54,7 +54,7 @@ struct query_arg {
 
 void *query_thread(void *arg_) {
   query_arg *arg = (query_arg *)arg_;
-  long memCounter = 0;
+  long long memCounter = 0;
   string meta, line;
   ifstream data(query_fasta.c_str());
 
@@ -92,7 +92,7 @@ void *query_thread(void *arg_) {
       if(meta != "") {
 	if(seq_cnt % arg->skip == arg->skip0) {
 	  // Process P.
-	  cerr << ",Q.length=" << P->length() << endl;
+	  cout << ",Q.length=" << P->length() << endl;
       if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
@@ -134,10 +134,11 @@ void *query_thread(void *arg_) {
     else { // Collect sequence data.
       trim(line, start,end);
       for(long i = start; i <= end; i++) {
-		char c = std::tolower(line[i]);
+		//char c = std::tolower(line[i]);        
+		char c = line[i];        
 		if(nucleotides_only) {
 	  		switch(c) {
-	  			case 'a': case 't': case 'g': case 'c': break;
+	  			case 'A': case 'T': case 'G': case 'C': break;
 	  			default:
 	    			c = '~';
 	  		}
@@ -149,7 +150,7 @@ void *query_thread(void *arg_) {
   // Handle very last sequence.
   if(meta != "") {
     if(seq_cnt % arg->skip == arg->skip0) {
-      cerr << ",Q.length=" << P->length() << endl;
+      cout << ",Q.length=" << P->length() << endl;
       if(forwards){
         if(print){ 
             if(print_length) printf("> %s\tLen = %ld\n", meta.c_str(), P->length()); 
@@ -181,8 +182,10 @@ void *query_thread(void *arg_) {
 }
 
 int main(int argc, char* argv[]) {
-POMP_Begin(&omp_rd_1);
-#line 179 "mummer.cpp"
+POMP_Init();
+#line 180 "mummer.cpp"
+  LIKWID_MARKER_INIT;
+  LIKWID_MARKER_START("MUM");
   // Collect parameters from the command line.
     rusage memory;
   while (1) {
@@ -199,7 +202,7 @@ POMP_Begin(&omp_rd_1);
       {"n", 0, 0, 0}, // 9
       {"qthreads", 1, 0, 0}, // 10
       {"suflink", 1, 0, 0}, // 11
-      {"chunks", 1, 0, 0}, // 12
+      {"C", 1, 0, 0}, // 12
       {"skip", 1, 0, 0}, // 13
       {"L", 0, 0, 0}, // 14
       {"r", 0, 0, 0}, // 15
@@ -248,17 +251,19 @@ POMP_Begin(&omp_rd_1);
   string ref;
   
   vector<string> refdescr; 
-  vector<long> startpos;
+  vector<long long> startpos;
 
-  load_fasta(ref_fasta, ref, refdescr, startpos);
+  LIKWID_MARKER_STOP("MUM");
+  LIKWID_MARKER_CLOSE;
+  //load_fasta(ref_fasta, ref, refdescr, startpos);
 
   // Automatically use 4 column format if there are multiple reference sequences.
   if(startpos.size() > 1) _4column = true;
-  if(automatic){
+  if(automatic) {
       suflink = K < 4;
       child = K >= 4;
   }
-  if(automaticSkip){
+  if(automaticSkip) {
       if(suflink && !child) sparseMult = 1;
       else{
           if(K >= 4) sparseMult = (int) (min_len-10)/K;
@@ -287,9 +292,9 @@ POMP_Begin(&omp_rd_1);
       forwards = false;
   double s, e;
   s = omp_get_wtime();
-  sa = new sparseSA(ref, refdescr, startpos, _4column, K, suflink, true, sparseMult, printSubstring);
+  sa = new sparseSA(ref_fasta, refdescr, startpos, _4column, K, suflink, true, sparseMult, printSubstring);
   e = omp_get_wtime();
-  cerr << ",sparseSA=" << e-s;
+  cout << ",sparseSA=" << e-s;
   pthread_attr_t attr;  pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
@@ -313,8 +318,6 @@ POMP_Begin(&omp_rd_1);
   getrusage(RUSAGE_SELF, &memory);
   cout << "# RSS=" << memory.ru_maxrss << endl;
   delete sa;
-POMP_End(&omp_rd_1);
-#line 310 "mummer.cpp"
 }
 
 
@@ -335,7 +338,7 @@ void usage(string prog) {
   cerr << "-L             print length of query sequence in header of matches" << endl;
   cerr << "-r             compute only reverse complement matches" << endl;
   cerr << "-s             print first 53 characters of the matching substring" << endl;
-  cerr << "-chunks        number of chunks to split query" << endl;
+  cerr << "-C        number of chunks to split query" << endl;
   cerr << endl;
   
   exit(1);

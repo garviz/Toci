@@ -1,175 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="84">
+<configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df name="Toci" root=".">
-      <df name="eval2012">
+    <df root="." name="Toci">
+      <df name="smhasher-read-only">
+        <in>MurmurHash3.h</in>
       </df>
-      <df name="fasta">
-        <df name="ECOLIO157H7">
-          <df name="1000">
-            <df name="2">
-            </df>
-            <df name="4">
-            </df>
-            <df name="8">
-            </df>
-          </df>
-        </df>
-        <df name="PANCHR19">
-          <df name="1000">
-            <df name="16">
-            </df>
-            <df name="2">
-            </df>
-            <df name="4">
-            </df>
-            <df name="8">
-            </df>
-          </df>
-        </df>
-      </df>
-      <df name="papers">
-        <df name="ALGORITMO">
-        </df>
-        <df name="APBC2012">
-        </df>
-        <df name="BBC2013">
-        </df>
-        <df name="CIBCB2013">
-        </df>
-        <df name="JP2012">
-        </df>
-      </df>
-      <df name="presentations">
-        <df name="LLEIDA">
-        </df>
-      </df>
-      <df name="results">
-      </df>
-      <df name="sparsehash-2.0.2">
-        <df name="doc">
-        </df>
-        <df name="experimental">
-          <in>example.c</in>
-          <in>libchash.c</in>
-          <in>libchash.h</in>
-        </df>
-        <df name="m4">
-        </df>
-        <df name="packages">
-          <df name="deb">
-          </df>
-          <df name="rpm">
-          </df>
-        </df>
-        <df name="src">
-          <df name="google">
-            <df name="sparsehash">
-              <in>densehashtable.h</in>
-              <in>hashtable-common.h</in>
-              <in>libc_allocator_with_realloc.h</in>
-              <in>sparsehashtable.h</in>
-            </df>
-            <in>template_util.h</in>
-            <in>type_traits.h</in>
-          </df>
-          <df name="sparsehash">
-            <df name="internal">
-              <in>densehashtable.h</in>
-              <in>hashtable-common.h</in>
-              <in>libc_allocator_with_realloc.h</in>
-              <in>sparseconfig.h</in>
-              <in>sparsehashtable.h</in>
-            </df>
-            <in>template_util.h</in>
-            <in>type_traits.h</in>
-          </df>
-          <df name="windows">
-            <df name="google">
-              <df name="sparsehash">
-                <in>sparseconfig.h</in>
-              </df>
-            </df>
-            <df name="sparsehash">
-              <df name="internal">
-                <in>sparseconfig.h</in>
-              </df>
-            </df>
-            <in>config.h</in>
-            <in>port.cc</in>
-            <in>port.h</in>
-          </df>
-          <in>config.h</in>
-          <in>hash_test_interface.h</in>
-          <in>hashtable_test.cc</in>
-          <in>libc_allocator_with_realloc_test.cc</in>
-          <in>simple_compat_test.cc</in>
-          <in>simple_test.cc</in>
-          <in>sparsetable_unittest.cc</in>
-          <in>template_util_unittest.cc</in>
-          <in>testutil.h</in>
-          <in>time_hash_map.cc</in>
-          <in>type_traits_unittest.cc</in>
-        </df>
-        <df name="vsprojects">
-          <df name="hashtable_test">
-          </df>
-          <df name="libc_allocator_with_realloc_test">
-          </df>
-          <df name="simple_test">
-          </df>
-          <df name="sparsetable_unittest">
-          </df>
-          <df name="time_hash_map">
-          </df>
-          <df name="type_traits_unittest">
-          </df>
-        </df>
-      </df>
-      <in>access.cpp</in>
-      <in>args.h</in>
-      <in>arraydef.h</in>
-      <in>chardef.h</in>
-      <in>cleanMUMcand.cpp</in>
-      <in>construct.cpp</in>
-      <in>depthtab.cpp</in>
-      <in>dfs.cpp</in>
-      <in>distribute.cpp</in>
-      <in>distribute.h</in>
-      <in>errordef.h</in>
-      <in>findmaxmat.cpp</in>
-      <in>findmumcand.cpp</in>
-      <in>intbits.h</in>
-      <in>linkloc.cpp</in>
-      <in>mapfile.cpp</in>
-      <in>maxmatdef.h</in>
-      <in>maxmatinp.cpp</in>
-      <in>maxmatopt.cpp</in>
-      <in>minmax.h</in>
-      <in>multidef.h</in>
-      <in>multiseq.cpp</in>
-      <in>mumcand.h</in>
+      <in>fasta.cpp.opari.inc</in>
+      <in>fasta.hpp</in>
+      <in>fasta.mod.cpp</in>
+      <in>mummer.cpp.opari.inc</in>
+      <in>mummer.mod.cpp</in>
       <in>opari.tab.c</in>
-      <in>optdesc.h</in>
-      <in>pompregions.c</in>
-      <in>procmaxmat.cpp</in>
-      <in>procopt.cpp</in>
-      <in>protodef.h</in>
-      <in>safescpy.cpp</in>
-      <in>scanpref.cpp</in>
-      <in>seterror.cpp</in>
-      <in>space.cpp</in>
-      <in>spacedef.h</in>
-      <in>streeacc.h</in>
-      <in>streedbg.cpp</in>
-      <in>streedef.h</in>
-      <in>streehuge.h</in>
-      <in>streemac.h</in>
-      <in>streetyp.h</in>
-      <in>symboldef.h</in>
-      <in>toci.cpp</in>
-      <in>types.h</in>
-      <in>visible.h</in>
+      <in>qsufsort.c.opari.inc</in>
+      <in>qsufsort.mod.c</in>
+      <in>sparseSA.cpp.opari.inc</in>
+      <in>sparseSA.hpp</in>
+      <in>sparseSA.mod.cpp</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -187,7 +33,9 @@
     <conf name="Default" type="0">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>GNU|GNU</compilerSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <codeAssistance>
       </codeAssistance>
@@ -197,252 +45,51 @@
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath></executablePath>
+          <cTool>
+            <incDir>
+              <pElem>/usr/include</pElem>
+            </incDir>
+          </cTool>
           <ccTool>
             <incDir>
-              <pElem>../ompp/include</pElem>
-              <pElem>/soft/papi-5.0.1/include/</pElem>
+              <pElem>/usr/include</pElem>
             </incDir>
             <preprocessorList>
+              <Elem>_GLIBCXX_PARALLEL</Elem>
               <Elem>_OPENMP=200505</Elem>
             </preprocessorList>
           </ccTool>
         </makeTool>
       </makefileType>
-      <item path="access.cpp" ex="false" tool="1" flavor2="8">
+      <item path="fasta.cpp.opari.inc" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="fasta.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="fasta.mod.cpp" ex="false" tool="1" flavor2="8">
         <ccTool>
         </ccTool>
       </item>
-      <item path="args.h" ex="true" tool="3" flavor2="0">
+      <item path="mummer.cpp.opari.inc" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="cleanMUMcand.cpp" ex="false" tool="1" flavor2="8">
+      <item path="mummer.mod.cpp" ex="false" tool="1" flavor2="8">
         <ccTool>
         </ccTool>
       </item>
-      <item path="construct.cpp" ex="false" tool="1" flavor2="8">
+      <item path="opari.tab.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="qsufsort.c.opari.inc" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="qsufsort.mod.c" ex="false" tool="1" flavor2="8">
         <ccTool>
         </ccTool>
       </item>
-      <item path="depthtab.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
+      <item path="smhasher-read-only/MurmurHash3.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="dfs.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
+      <item path="sparseSA.cpp.opari.inc" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="distribute.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
+      <item path="sparseSA.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="findmaxmat.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="findmumcand.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="linkloc.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="mapfile.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="maxmatinp.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="maxmatopt.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="multiseq.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="opari.tab.c" ex="true" tool="0" flavor2="0">
-      </item>
-      <item path="pompregions.c" ex="true" tool="0" flavor2="0">
-      </item>
-      <item path="procmaxmat.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="procopt.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="safescpy.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="scanpref.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="seterror.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="space.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="sparsehash-2.0.2/experimental/example.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/experimental/libchash.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/experimental/libchash.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/config.h" ex="true" tool="3" flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/google/sparsehash/densehashtable.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/google/sparsehash/hashtable-common.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/google/sparsehash/libc_allocator_with_realloc.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/google/sparsehash/sparsehashtable.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/google/template_util.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/google/type_traits.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/hash_test_interface.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/hashtable_test.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/libc_allocator_with_realloc_test.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/simple_compat_test.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/simple_test.cc" ex="true" tool="1" flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsehash/internal/densehashtable.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsehash/internal/hashtable-common.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsehash/internal/libc_allocator_with_realloc.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsehash/internal/sparseconfig.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsehash/internal/sparsehashtable.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsehash/template_util.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsehash/type_traits.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/sparsetable_unittest.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/template_util_unittest.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/testutil.h" ex="true" tool="3" flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/time_hash_map.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/type_traits_unittest.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/windows/config.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/windows/google/sparsehash/sparseconfig.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/windows/port.cc"
-            ex="true"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/windows/port.h" ex="true" tool="3" flavor2="0">
-      </item>
-      <item path="sparsehash-2.0.2/src/windows/sparsehash/internal/sparseconfig.h"
-            ex="true"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="streedbg.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool>
-        </ccTool>
-      </item>
-      <item path="toci.cpp" ex="false" tool="1" flavor2="8">
+      <item path="sparseSA.mod.cpp" ex="false" tool="1" flavor2="8">
         <ccTool>
         </ccTool>
       </item>

@@ -1,21 +1,91 @@
 #include "pomp_lib.h"
 
 
-extern struct ompregdescr omp_rd_1;
-extern struct ompregdescr omp_rd_2;
-extern struct ompregdescr omp_rd_3;
-extern struct ompregdescr omp_rd_4;
-extern struct ompregdescr omp_rd_5;
-extern struct ompregdescr omp_rd_6;
+extern struct ompregdescr omp_rd_67;
+extern struct ompregdescr omp_rd_68;
+extern struct ompregdescr omp_rd_69;
+extern struct ompregdescr omp_rd_70;
+extern struct ompregdescr omp_rd_71;
+extern struct ompregdescr omp_rd_72;
+extern struct ompregdescr omp_rd_73;
+extern struct ompregdescr omp_rd_74;
 
-int POMP_MAX_ID = 7;
+int POMP_MAX_ID = 75;
 
-struct ompregdescr* pomp_rd_table[7] = {
+struct ompregdescr* pomp_rd_table[75] = {
   0,
-  &omp_rd_1,
-  &omp_rd_2,
-  &omp_rd_3,
-  &omp_rd_4,
-  &omp_rd_5,
-  &omp_rd_6,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  &omp_rd_67,
+  &omp_rd_68,
+  &omp_rd_69,
+  &omp_rd_70,
+  &omp_rd_71,
+  &omp_rd_72,
+  &omp_rd_73,
+  &omp_rd_74,
 };

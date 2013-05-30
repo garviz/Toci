@@ -1,23 +1,18 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.9.27)  10 MAY 2013 08:47
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.24)  27 MAY 2013 16:33
 entering extended mode
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **mum_mc.tex
 (./mum_mc.tex
-LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
+aded.
 (./llncs.cls
 Document Class: llncs 2010/07/12 v2.17 
  LaTeX document class for Lecture Notes in Computer Science
-(/usr/share/texmf-texlive/tex/latex/base/article.cls
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,8 +27,8 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
-Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \c@tracingmulticols=\count87
 \mult@box=\box26
 \multicol@leftmargin=\dimen103
@@ -78,12 +73,13 @@ Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
 \multicolundershoot=\dimen110
 \mult@nat@firstbox=\box50
 \colbreak@box=\box51
+\multicol@sort@counter=\count95
 )
-(/usr/share/texmf-texlive/tex/latex/oberdiek/aliascnt.sty
-Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/aliascnt.sty
+Package: aliascnt 2009/09/08 v1.3 Alias counters (HO)
 
-(/usr/share/texmf-texlive/tex/latex/carlisle/remreset.sty))
-\c@chapter=\count95
+(/usr/share/texlive/texmf-dist/tex/latex/carlisle/remreset.sty))
+\c@chapter=\count96
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
 LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
@@ -105,11 +101,11 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \tocparanum=\dimen118
 \tocparatotal=\dimen119
 \tocsubparanum=\dimen120
-\@tempcntc=\count96
+\@tempcntc=\count97
 \fnindent=\dimen121
-\c@@inst=\count97
-\c@@auth=\count98
-\c@auco=\count99
+\c@@inst=\count98
+\c@@auth=\count99
+\c@auco=\count100
 \instindent=\dimen122
 \authrun=\box52
 \authorrunning=\toks14
@@ -117,51 +113,59 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \titrun=\box53
 \titlerunning=\toks16
 \toctitle=\toks17
-\c@theorem=\count100
-\c@case=\count101
-\c@conjecture=\count102
-\c@corollary=\count103
-\c@definition=\count104
-\c@example=\count105
-\c@exercise=\count106
-\c@lemma=\count107
-\c@note=\count108
-\c@problem=\count109
-\c@property=\count110
-\c@proposition=\count111
-\c@question=\count112
-\c@solution=\count113
-\c@remark=\count114
+\c@theorem=\count101
+\c@case=\count102
+\c@conjecture=\count103
+\c@corollary=\count104
+\c@definition=\count105
+\c@example=\count106
+\c@exercise=\count107
+\c@lemma=\count108
+\c@note=\count109
+\c@problem=\count110
+\c@property=\count111
+\c@proposition=\count112
+\c@question=\count113
+\c@solution=\count114
+\c@remark=\count115
 \headlineindent=\dimen123
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks18
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count116
 ))
 \Gin@req@height=\dimen124
 \Gin@req@width=\dimen125
 )
-(/usr/share/texmf-texlive/tex/latex/tools/tabularx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
 
-(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen126
 \extrarowheight=\dimen127
@@ -174,68 +178,93 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \TX@old@col=\dimen130
 \TX@target=\dimen131
 \TX@delta=\dimen132
-\TX@cols=\count115
+\TX@cols=\count117
 \TX@ftn=\toks20
 )
-(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks21
 \inpenc@posthook=\toks22
 
-(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ))
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/ulem.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box54
 \UL@hyphenbox=\box55
 \UL@skip=\skip47
 \UL@hook=\toks23
-\UL@pe=\count116
-\UL@pixel=\dimen133
+\UL@height=\dimen133
+\UL@pe=\count118
+\UL@pixel=\dimen134
 \ULC@box=\box56
-Package: ulem 2000/05/26
-\ULdepth=\dimen134
+Package: ulem 2012/05/18
+\ULdepth=\dimen135
 )
-(/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
-Package: algorithm2e 2005/10/04 v3.9 algorithms environments
-\c@AlgoLine=\count117
+(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2008/00/00 v3.10 algorithms environments
+\c@AlgoLine=\count119
 
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
-Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2011/09/21 ver 4.0
+
+Examine \normalsize starts \@setfontsize size may be \@xpt. 
+Examine \small starts \@setfontsize size may be \@ixpt. 
+Examine \footnotesize starts \@setfontsize size may be \@ixpt. 
+Examine \large starts \@setfontsize size may be \@xiipt. 
+Examine \Large starts \@setfontsize size may be \@xivpt. 
+Examine \LARGE starts \@setfontsize size may be \@xviipt. 
+Examine \scriptsize starts \@setfontsize size may be \@viipt. 
+Examine \tiny starts \@setfontsize size may be \@vpt. 
+Examine \huge starts \@setfontsize size may be \@xxpt. 
+Examine \Huge starts \@setfontsize size may be \@xxvpt. )
 ********************************************************
-Package `algorithm2e' Release 3.9 -- october 04 2005 --
+Package `algorithm2e' Release 4.01 -- december 14 2009 --
 - algorithm2e-announce@lirmm.fr mailing list for announcement about releases
 - algorithm2e-discussion@lirmm.fr mailing list for discussion about package
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 - Author: Christophe Fiorio (fiorio@lirmm.fr)
 ********************************************************
 \skiptotal=\skip48
-\skiprule=\skip49
-\skiphlne=\skip50
-\skiptext=\skip51
-\skiplength=\skip52
-\algomargin=\skip53
-\skipalgocfslide=\skip54
-\algowidth=\dimen135
-\inoutsize=\dimen136
-\inoutline=\dimen137
+\skiplinenumber=\skip49
+\skiprule=\skip50
+\skiphlne=\skip51
+\skiptext=\skip52
+\skiplength=\skip53
+\algomargin=\skip54
+\skipalgocfslide=\skip55
+\algowidth=\dimen136
+\inoutsize=\dimen137
+\inoutline=\dimen138
+\interspacetitleruled=\dimen139
+\interspacealgoruled=\dimen140
+\interspacetitleboxruled=\dimen141
 \algocf@inoutbox=\box57
 \algocf@inputbox=\box58
-\AlCapSkip=\skip55
-\AlCapHSkip=\skip56
-\algocf@capbox=\box59
-\c@algocfline=\count118
-\c@algocf=\count119
-\algocf@algoframe=\box60
-\algocf@algobox=\box61
+\AlCapSkip=\skip56
+\AlCapHSkip=\skip57
+\algocf@nlbox=\box59
+\algocf@hangingbox=\box60
+\algocf@capbox=\box61
+\algoheightruledefault=\skip58
+\algoheightrule=\skip59
+\algotitleheightruledefault=\skip60
+\algotitleheightrule=\skip61
+\c@algocfline=\count120
+\c@algocfproc=\count121
+\c@algocf=\count122
+\algocf@algoframe=\box62
+\algocf@algobox=\box63
 ) (./mum_mc.aux)
 \openout1 = `mum_mc.aux'.
 
@@ -251,33 +280,139 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count123
+\scratchdimen=\dimen142
+\scratchbox=\box64
+\nofMPsegments=\count124
+\nofMParguments=\count125
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen143
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
+\everyMPtoPDFconversion=\toks25
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 24.
- [1
+
+[1
 
 
-] [2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+! Undefined control sequence.
+l.98 \linesnumbered
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.101   \dontprintsemicolon
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 118.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 118.
+! Undefined control sequence.
+l.135 \linesnumbered
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-Underfull \hbox (badness 10000) detected at line 134
-[][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 186
-[][]
- []
+! Undefined control sequence.
+l.138   \dontprintsemicolon
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: phases.eps Graphic file (type eps)
-<phases.eps> [3] [4]
+Package epstopdf Info: Source file: <phases.eps>
+(epstopdf)                    date: 2013-05-09 15:55:11
+(epstopdf)                    size: 8140129 bytes
+(epstopdf)             Output file: <phases-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=phases-eps-converted-to.pd
+f phases.eps>
+(epstopdf)             \includegraphics on input line 191.
+runsystem(repstopdf --outfile=phases-eps-converted-to.pdf phases.eps)...execute
+d safely (allowed).
+
+Package epstopdf Info: Result file: <phases-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-05-27 16:33:56
+(epstopdf)                    size: 233744 bytes.
+<phases-eps-converted-to.pdf, id=19, 669.50125pt x 463.7325pt>
+File: phases-eps-converted-to.pdf Graphic file (type pdf)
+
+<use phases-eps-converted-to.pdf>
+Package pdftex.def Info: phases-eps-converted-to.pdf used on input line 191.
+(pdftex.def)             Requested size: 334.7498pt x 231.86568pt.
+ [3] [4]
 Underfull \hbox (badness 10000) in paragraph at lines 205--220
 
  []
@@ -285,37 +420,153 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--220
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5]
-File: construction.eps Graphic file (type eps)
+ [5 <./phases-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <construction.eps>
+(epstopdf)                    date: 2013-05-09 15:53:04
+(epstopdf)                    size: 171764 bytes
+(epstopdf)             Output file: <construction-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=construction-eps-converted
+-to.pdf construction.eps>
+(epstopdf)             \includegraphics on input line 225.
+runsystem(repstopdf --outfile=construction-eps-converted-to.pdf construction.ep
+s)...executed safely (allowed).
 
-<construction.eps>
-File: ecoli-MUM.eps Graphic file (type eps)
- <ecoli-MUM.eps>
+Package epstopdf Info: Result file: <construction-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-05-27 16:33:57
+(epstopdf)                    size: 26983 bytes.
+
+<construction-eps-converted-to.pdf, id=37, 768.8725pt x 479.7925pt>
+File: construction-eps-converted-to.pdf Graphic file (type pdf)
+
+<use construction-eps-converted-to.pdf>
+Package pdftex.def Info: construction-eps-converted-to.pdf used on input line 2
+25.
+(pdftex.def)             Requested size: 230.66353pt x 143.93884pt.
+Package epstopdf Info: Source file: <ecoli-MUM.eps>
+(epstopdf)                    date: 2013-05-09 15:53:04
+(epstopdf)                    size: 158523 bytes
+(epstopdf)             Output file: <ecoli-MUM-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=ecoli-MUM-eps-converted-to
+.pdf ecoli-MUM.eps>
+(epstopdf)             \includegraphics on input line 236.
+runsystem(repstopdf --outfile=ecoli-MUM-eps-converted-to.pdf ecoli-MUM.eps)...e
+xecuted safely (allowed).
+
+Package epstopdf Info: Result file: <ecoli-MUM-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-05-27 16:33:58
+(epstopdf)                    size: 24804 bytes.
+
+<ecoli-MUM-eps-converted-to.pdf, id=38, 808.01875pt x 487.8225pt>
+File: ecoli-MUM-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ecoli-MUM-eps-converted-to.pdf>
+Package pdftex.def Info: ecoli-MUM-eps-converted-to.pdf used on input line 236.
+
+(pdftex.def)             Requested size: 242.4075pt x 146.34787pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [6]
-File: fly-MUM.eps Graphic file (type eps)
- <fly-MUM.eps>
+Package epstopdf Info: Source file: <fly-MUM.eps>
+(epstopdf)                    date: 2013-05-09 15:53:04
+(epstopdf)                    size: 194725 bytes
+(epstopdf)             Output file: <fly-MUM-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=fly-MUM-eps-converted-to.p
+df fly-MUM.eps>
+(epstopdf)             \includegraphics on input line 252.
+runsystem(repstopdf --outfile=fly-MUM-eps-converted-to.pdf fly-MUM.eps)...execu
+ted safely (allowed).
+
+Package epstopdf Info: Result file: <fly-MUM-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-05-27 16:33:59
+(epstopdf)                    size: 27388 bytes.
+ <fly-MUM-eps-converted-to.pdf, id=42, 806.01125pt x 478.78876pt>
+File: fly-MUM-eps-converted-to.pdf Graphic file (type pdf)
+
+<use fly-MUM-eps-converted-to.pdf>
+Package pdftex.def Info: fly-MUM-eps-converted-to.pdf used on input line 252.
+(pdftex.def)             Requested size: 241.80524pt x 143.63773pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7]
-File: chicken-MUM.eps Graphic file (type eps)
- <chicken-MUM.eps>
-File: chicken-RAM.eps Graphic file (type eps)
- <chicken-RAM.eps>
+[7 <./construction-eps-converted-to.pdf> <./ecoli-MUM-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <chicken-MUM.eps>
+(epstopdf)                    date: 2013-05-09 15:53:04
+(epstopdf)                    size: 176591 bytes
+(epstopdf)             Output file: <chicken-MUM-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=chicken-MUM-eps-converted-
+to.pdf chicken-MUM.eps>
+(epstopdf)             \includegraphics on input line 268.
+runsystem(repstopdf --outfile=chicken-MUM-eps-converted-to.pdf chicken-MUM.eps)
+...executed safely (allowed).
+
+Package epstopdf Info: Result file: <chicken-MUM-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-05-27 16:34:00
+(epstopdf)                    size: 26866 bytes.
+
+<chicken-MUM-eps-converted-to.pdf, id=53, 806.01125pt x 478.78876pt>
+File: chicken-MUM-eps-converted-to.pdf Graphic file (type pdf)
+
+<use chicken-MUM-eps-converted-to.pdf>
+Package pdftex.def Info: chicken-MUM-eps-converted-to.pdf used on input line 26
+8.
+(pdftex.def)             Requested size: 241.80524pt x 143.63773pt.
+Package epstopdf Info: Source file: <chicken-RAM.eps>
+(epstopdf)                    date: 2013-05-09 15:53:04
+(epstopdf)                    size: 261455 bytes
+(epstopdf)             Output file: <chicken-RAM-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=chicken-RAM-eps-converted-
+to.pdf chicken-RAM.eps>
+(epstopdf)             \includegraphics on input line 275.
+runsystem(repstopdf --outfile=chicken-RAM-eps-converted-to.pdf chicken-RAM.eps)
+...executed safely (allowed).
+
+Package epstopdf Info: Result file: <chicken-RAM-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-05-27 16:34:01
+(epstopdf)                    size: 27061 bytes.
+
+<chicken-RAM-eps-converted-to.pdf, id=54, 787.94376pt x 480.79625pt>
+File: chicken-RAM-eps-converted-to.pdf Graphic file (type pdf)
+
+<use chicken-RAM-eps-converted-to.pdf>
+Package pdftex.def Info: chicken-RAM-eps-converted-to.pdf used on input line 27
+5.
+(pdftex.def)             Requested size: 236.38495pt x 144.23997pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8] (./mum_mc.bbl [9]) [10] (./mum_mc.aux) ) 
+[8 <./fly-MUM-eps-converted-to.pdf> <./chicken-MUM-eps-converted-to.pdf>]
+(./mum_mc.bbl [9 <./chicken-RAM-eps-converted-to.pdf>]) [10] (./mum_mc.aux) ) 
 Here is how much of TeX's memory you used:
- 2333 strings out of 493849
- 27880 string characters out of 1152846
- 117723 words of memory out of 3000000
- 5607 multiletter control sequences out of 15000+50000
- 9037 words of font info for 33 fonts, out of 3000000 for 9000
- 714 hyphenation exceptions out of 8191
- 33i,22n,26p,1127b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 3436 strings out of 495059
+ 46110 string characters out of 3182030
+ 133176 words of memory out of 3000000
+ 6570 multiletter control sequences out of 15000+200000
+ 8727 words of font info for 32 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 38i,22n,26p,1127b,525s stack positions out of 5000i,500n,10000p,200000b,50000s
+</
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on mum_mc.pdf (10 pages, 582598 bytes).
+PDF statistics:
+ 121 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on mum_mc.dvi (10 pages, 29956 bytes).

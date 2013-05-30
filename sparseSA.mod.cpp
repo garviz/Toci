@@ -14,19 +14,27 @@
 #include <assert.h>
 #include <string.h>
 #include <parallel/algorithm>
-#include <papi.h>
+#include <vector>
+#include <map>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <xmmintrin.h>
+#include <likwid.h>
 
-#include "vector/vectorclass.h"
 #include "sparseSA.hpp"
 
 #define LCPCHILD(cLCP,cS,cE) \
-    long childcE = CHILD[cE];\
+    long long childcE = CHILD[cE];\
     if (cS < childcE && childcE <= cE)\
         cLCP = LCP[childcE];\
     else\
         cLCP = LCP[CHILD[cS]];
-
+//#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);
+//cin.get();
+#define PRINT
 using namespace std;
+
 
 // LS suffix sorter (integer alphabet). 
 extern "C" { void suffixsort(int *x, int *p, int n, int k, int l); };
@@ -35,266 +43,146 @@ pthread_mutex_t cout_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 long memCount = 0;
 
-sparseSA::sparseSA(string &R_, vector<string> &descr_, vector<long> &startpos_, bool __4column, long K_, bool suflink_, bool child_, int sparseMult_, bool printSubstring_) : 
-  descr(descr_), startpos(startpos_), R(R_) {
+sparseSA::sparseSA(string &R_, vector<string> &descr_, vector<long long> &startpos_, bool __4column, long long K_, bool suflink_, bool child_, int sparseMult_, bool printSubstring_) : 
+  descr(descr_), startpos(startpos_) {
   _4column = __4column;
   hasChild = child_;
   hasSufLink = suflink_;
   sparseMult = sparseMult_;
   printSubstring = printSubstring_;
+  string line;
+  //long long sa=0, isa=0, child=0, lcp=0, i=0;
 
-  // Get maximum query sequence description length.
-  maxdescrlen = 0;
-  for(long i = 0; i < (long)descr.size(); i++) {
-    if(maxdescrlen < (long)descr[i].length())  maxdescrlen = descr[i].length();
-  }
   K = K_;
 
-  // Increase string length so divisible by K. 
-  // Don't forget to count $ termination character. 
-  if(R.length() % K != 0) {
-    long appendK = K - R.length() % K ;
-    for(long i = 0; i < appendK; i++) R += '$';
+  /*-----------------------------------------------------------------------------
+   *  Load Reference genome file in R string.
+   *-----------------------------------------------------------------------------*/
+  string file(R_+".ois");
+  ifstream ifs(file);
+  if (ifs.is_open())
+      getline(ifs, Reference);
+  else
+      cerr << R_ << " ERROR reading file\n";
+  ifs.close();
+  //transform(Reference.begin(), Reference.end(), Reference.begin(), ::tolower);
+  N = Reference.length();
+  cout << "# R.length=" << N;
+  /*-----------------------------------------------------------------------------
+   *  Load Suffix array from file
+   *-----------------------------------------------------------------------------*/
+  unsigned long size;
+  file.assign(R_+".SA");
+  ifs.open(file.c_str(), ios::binary);
+  if (ifs.is_open()) {
+      ifs.read(reinterpret_cast<char*>(&size), sizeof(size));
+      SA.resize(size);
+      ifs.read(reinterpret_cast<char*>(&SA[0]),size*sizeof(SA[0]));
   }
-  // Make sure last K-sampled characeter is this special character as well!!
-  for(long i = 0; i < K; i++) R += '$'; // Append "special" end character. Note: It must be lexicographically less.
-  N = R.length();
+  else
+      cerr << file << " ERROR reading file\n";
+  ifs.close();
 
-  if(K > 1) {
-    long bucketNr = 1;
-    int *intSA = new int[N/K+1];  for(int i = 0; i < N/K; i++) intSA[i] = i; // Init SA.
-    int* t_new = new int[N/K+1];
-    long* BucketBegin = new long[256]; // array to save current bucket beginnings
-    radixStep(t_new, intSA, bucketNr, BucketBegin, 0, N/K-1, 0); // start radix sort
-    t_new[N/K] = 0; // Terminate new integer string.
-    delete[] BucketBegin;
-
-    // Suffix sort integer text.
-    cerr << "# suffixsort()" << endl;
-    suffixsort(t_new, intSA, N/K, bucketNr, 0);
-    cerr << "# DONE suffixsort()" << endl;
-
-    delete[] t_new;
-
-    // Translate suffix array. 
-    SA.resize(N/K);
-    for (long i=0; i<N/K; i++) SA[i] = (unsigned int)intSA[i+1] * K;
-    delete[] intSA;
-
-    // Build ISA using sparse SA. 
-    ISA.resize(N/K);             
-    for(long i = 0; i < N/K; i++) { ISA[SA[i]/K] = i; }
+  /*-----------------------------------------------------------------------------
+   *  Load Inversed Suffix array from file
+   *-----------------------------------------------------------------------------*/
+  //vector<unsigned long> ISA;
+  file.assign(R_+".ISA");
+  ifs.open(file.c_str(), ios::binary);
+  if (ifs.is_open()) {
+      ifs.read(reinterpret_cast<char*>(&size), sizeof(size));
+//      /*ifs.seekg(10,ifs.cur);
+//      cout << ifs.tellg() << endl;*/
+      ISA.resize(size);
+      ifs.read(reinterpret_cast<char*>(&ISA[0]),size*sizeof(ISA[0]));
   }
-  else {
-    SA.resize(N);
-    ISA.resize(N);
-    int char2int[UCHAR_MAX+1]; // Map from char to integer alphabet.
+  else
+      cerr << file << " ERROR reading file\n";
+  ifs.close();
 
-    // Zero char2int mapping.
-    for (int i=0; i<=UCHAR_MAX; i++) char2int[i]=0;
-
-    // Determine which characters are used in the string S.
-    for (long i = 0; i < N; i++) char2int[(int)R[i]]=1;
-
-    // Count the size of the alphabet. 
-    int alphasz = 0; 
-    for(int i=0; i <= UCHAR_MAX; i++) {
-      if (char2int[i]) char2int[i]=alphasz++;
-      else char2int[i] = -1;
-    }
-
-    // Remap the alphabet. 
-    for(long i = 0; i < N; i++) ISA[i] = (int)R[i]; 
-    for (long i = 0; i < N; i++) ISA[i]=char2int[ISA[i]] + 1; 
-    // First "character" equals 1 because of above plus one, l=1 in suffixsort(). 
-    int alphalast = alphasz + 1;
-    
-    // Use LS algorithm to construct the suffix array.
-    int *SAint = (int*)(&SA[0]);
-    suffixsort(&ISA[0], SAint , N-1, alphalast, 1);
+  /*-----------------------------------------------------------------------------
+   *  Load Child table from file
+   *-----------------------------------------------------------------------------*/
+  //vector<unsigned long> CHILD;
+  file.assign(R_+".CHILD");
+  ifs.open(file.c_str(), ios::binary);
+  if (ifs.is_open()) {
+      ifs.read(reinterpret_cast<char*>(&size), sizeof(size));
+      CHILD.resize(size);
+      ifs.read(reinterpret_cast<char*>(&CHILD[0]),size*sizeof(CHILD[0]));
   }
+  else
+      cerr << file << " ERROR reading file\n";
+  ifs.close();
+  /*-----------------------------------------------------------------------------
+   *  Load LCP table from file
+   *-----------------------------------------------------------------------------*/
+  file.assign(R_+".LCP");
+  ifs.open(file.c_str());
+  if (ifs.is_open()) {
+      getline(ifs,line);
+      size = strtol(line.c_str(),NULL,0);
+      LCP.resize(size);
+      long lcp;
+      for (long long i=0; i<(long long)size; ++i) {
+          getline(ifs,line);
+          lcp = strtol(line.c_str(),NULL,0);
+          LCP.set(i, lcp); 
+      }
+  }
+  else
+      cerr << file << " ERROR reading file\n";
+  ifs.close();
 
-  //cerr << "N=" << N << endl;
-
+  /*-----------------------------------------------------------------------------
+   *  Load offset table from file
+   *-----------------------------------------------------------------------------*/
+  file.assign(R_+".off");
+  ifs.open(file.c_str());
+  string dat;
+  long long l, r;
+  while (ifs >> dat >> l >> r) {
+      interval_t t(l,r,8);
+      offset[dat]=t;
+  }
+  ifs.close();
+  //for (long i=0;i<SA.size();i++)
+  //    fprintf(stderr,"%lld,%lld,%lld,%lld\n",SA[i],ISA[i],CHILD[i],LCP[i]);
   // Adjust to "sampled" size. 
+  N = SA.size();
   logN = (long)ceil(log(N/K) / log(2.0));
 
-  LCP.resize(N/K);
-  //cerr << "N/K=" << N/K << endl;
-  // Use algorithm by Kasai et al to construct LCP array.
-  computeLCP();  // SA + ISA -> LCP
-  LCP.init();
-  if(!hasSufLink){
-      {
-          vector<int> tmp;
-          ISA.swap(tmp);
-      }
-    //ISA.clear();
-  }
-  if (hasChild){
-    CHILD.resize(N/K);
-    //Use algorithm by Abouelhoda et al to construct CHILD array
-    computeChild();
-  }
-  NKm1 = N/K-1;
-}
-
-// Uses the algorithm of Kasai et al 2001 which was described in
-// Manzini 2004 to compute the LCP array. Modified to handle sparse
-// suffix arrays and inverse sparse suffix arrays.
-void sparseSA::computeLCP() {
-  long h=0;
-  for(long i = 0; i < N; i+=K) { 
-    long m = ISA[i/K]; 
-    if(m==0) LCP.set(m, 0); // LCP[m]=0;
-    else {
-      long j = SA[m-1];
-      while(i+h < N && j+h < N && R[i+h] == R[j+h])  h++;
-      LCP.set(m, h); //LCP[m] = h;
-    }
-    h = max(0L, h - K);
-  }
-}
-
-// Child array construction algorithm
-void sparseSA::computeChild() {
-POMP_Parallel_fork(&omp_rd_2);
-#line 155 "sparseSA.cpp"
-#pragma omp parallel     
-{ POMP_Parallel_begin(&omp_rd_2);
-POMP_For_enter(&omp_rd_2);
-#line 155 "sparseSA.cpp"
-#pragma omp          for  nowait
-    for(int i = 0; i < N/K; i++){
-        CHILD[i] = -1;
-    }
-POMP_Barrier_enter(&omp_rd_2);
-#pragma omp barrier
-POMP_Barrier_exit(&omp_rd_2);
-POMP_For_exit(&omp_rd_2);
-POMP_Parallel_end(&omp_rd_2); }
-POMP_Parallel_join(&omp_rd_2);
-#line 159 "sparseSA.cpp"
-        //Compute up and down values
-        int lastIndex  = -1;
-        stack<int,vector<int> > stapelUD;
-        stapelUD.push(0);
-        for(int i = 1; i < N/K; i++){
-            while(LCP[i] < LCP[stapelUD.top()]){
-                lastIndex = stapelUD.top();
-                stapelUD.pop();
-                if(LCP[i] <= LCP[stapelUD.top()] && LCP[stapelUD.top()] != LCP[lastIndex]){
-                    CHILD[stapelUD.top()] = lastIndex;
-                }
-            }
-            //now LCP[i] >= LCP[top] holds
-            if(lastIndex != -1){
-                CHILD[i-1] = lastIndex;
-                lastIndex = -1;
-            }
-            stapelUD.push(i);
-        }
-        while(0 < LCP[stapelUD.top()]){//last row (fix for last character of sequence not being unique
-            lastIndex = stapelUD.top();
-            stapelUD.pop();
-            if(0 <= LCP[stapelUD.top()] && LCP[stapelUD.top()] != LCP[lastIndex]){
-                CHILD[stapelUD.top()] = lastIndex;
-            }
-        }
-        //Compute Next L-index values
-        stack<int,vector<int> > stapelNL;
-        stapelNL.push(0);
-        for(int i = 1; i < N/K; i++){
-            while(LCP[i] < LCP[stapelNL.top()])
-                stapelNL.pop();
-            lastIndex = stapelNL.top();
-            if(LCP[i] == LCP[lastIndex]){
-                stapelNL.pop();
-                CHILD[lastIndex] = i;
-            }
-            stapelNL.push(i);
-        }
-}
-
-// Implements a variant of American flag sort (McIlroy radix sort).
-// Recurse until big-K size prefixes are sorted. Adapted from the C++
-// source code for the wordSA implementation from the following paper:
-// Ferragina and Fischer. Suffix Arrays on Words. CPM 2007.
-void sparseSA::radixStep(int *t_new, int *SA, long &bucketNr, long *BucketBegin, long l, long r, long h) {
-  if(h >= K) return;
-  // first pass: count
-  vector<long> Sigma(256, 0); // Sigma counts occurring characters in bucket
-  for (long i = l; i <= r; i++) Sigma[ R[ SA[i]*K + h ] ]++; // count characters
-  BucketBegin[0] = l; for (long i = 1; i < 256; i++) { BucketBegin[i] = Sigma[i-1] + BucketBegin[i-1]; } // accumulate
-
-  // second pass: move (this variant does *not* need an additional array!)
-  unsigned char currentKey = 0;    // character of current bucket
-  long end = l-1+Sigma[currentKey]; // end of current bucket
-  long pos = l;                     // 'pos' is current position in bucket
-  while (1) {
-    if (pos > end) { // Reached the end of the bucket.
-      if (currentKey == 255) break; // Last character?
-      currentKey++; // Advance to next characer.
-      pos = BucketBegin[currentKey]; // Next bucket start.
-      end += Sigma[currentKey]; // Next bucket end.
-    }
-    else {
-      // American flag sort of McIlroy et al. 1993. BucketBegin keeps
-      // track of current position where to add to bucket set.
-      int tmp = SA[ BucketBegin[ (int) R[ SA[pos]*K + h ] ] ]; 
-      SA[ BucketBegin[ (int) R[ SA[pos]*K + h] ]++ ] = SA[pos];  // Move bucket beginning to the right, and replace 
-      SA[ pos ] = tmp; // Save value at bucket beginning.
-      if (R[ SA[pos]*K + h ] == currentKey) pos++; // Advance to next position if the right character.
-    }
-  }
-  // recursively refine buckets and calculate new text:
-  long beg = l; end = l-1;
-  for (long i = 1; i < 256; i++) { // step through Sigma to find bucket borders
-    end += Sigma[i];
-    if (beg <= end) {
-      if(h == K-1) {
-	for (long j = beg; j <= end; j++) {
-	  t_new[ SA[j] ] = bucketNr; // set new text
-	}
-	bucketNr++;
-      }
-      else {
-	radixStep(t_new, SA, bucketNr, BucketBegin, beg, end, h+1); // recursive refinement
-      }
-      beg = end + 1; // advance to next bucket
-    }
-  }
+  NKm1 = N;
 }
 
 // Binary search for left boundry of interval.
-long sparseSA::bsearch_left(char c, long i, long s, long e) {
-  if(c == R[SA[s]+i]) return s;
+long sparseSA::bsearch_left(char c, long long i, long long s, long long e) {
+  if(c == Reference[SA[s]+i]) return s;
   long l = s, r = e;
   while (r - l > 1) {
     long m = (l+r) / 2;
-    if (c <= R[SA[m] + i]) r = m;
+    if (c <= Reference[SA[m] + i]) r = m;
     else l = m;
   }
   return r;
 }
 
 // Binary search for right boundry of interval.
-long sparseSA::bsearch_right(char c, long i, long s, long e) {
-  if(c == R[SA[e]+i]) return e;
+long sparseSA::bsearch_right(char c, long long i, long long s, long long e) {
+  if(c == Reference[SA[e]+i]) return e;
   long l = s, r = e;
   while (r - l > 1) {
     long m = (l+r) / 2;
-    if (c < R[SA[m] + i]) r = m;
+    if (c < Reference[SA[m] + i]) r = m;
     else l = m;
   }
   return l;
 }
 
-
 // Simple top down traversal of a suffix array.
-bool sparseSA::top_down(char c, long i, long &start, long &end) {
-  if(c < R[SA[start]+i]) return false;
-  if(c > R[SA[end]+i]) return false;
+bool sparseSA::top_down(char c, long long i, long long &start, long long &end) {
+  if(c < Reference[SA[start]+i]) return false;
+  if(c > Reference[SA[end]+i]) return false;
   long l = bsearch_left(c, i, start, end);
   long l2 = bsearch_right(c, i, start, end);
   start = l; end = l2;
@@ -303,7 +191,7 @@ bool sparseSA::top_down(char c, long i, long &start, long &end) {
 
 // Top down traversal of the suffix array to match a pattern.  NOTE:
 // NO childtab as in the enhanced suffix array (ESA).
-bool sparseSA::search(string &P, long &start, long &end) {
+bool sparseSA::search(string &P, long long &start, long long &end) {
   start = 0; end = N - 1;
   long i = 0;
   while(i < (long)P.length()) {
@@ -315,14 +203,14 @@ bool sparseSA::search(string &P, long &start, long &end) {
   return true;
 }
 
-
 // Traverse pattern P starting from a given prefix and interval
 // until mismatch or min_len characters reached.
-void sparseSA::traverse(string &P, long prefix, interval_t &cur, int min_len) {
+void sparseSA::traverse(string &P, long prefix, interval_t &cur, long long min_len) {
+  long long lengthP = P.length();
   if(cur.depth >= min_len) return;
 
-  while(prefix+cur.depth < (long)P.length()) {
-    long start = cur.start; long end = cur.end;
+  while(prefix+cur.depth < lengthP) {
+    long long start = cur.start; long long end = cur.end;
     // If we reach a mismatch, stop.
     if(top_down_faster(P[prefix+cur.depth], cur.depth, start, end) == false) return;
 
@@ -337,79 +225,102 @@ void sparseSA::traverse(string &P, long prefix, interval_t &cur, int min_len) {
 // Traverse pattern P starting from a given prefix and interval
 // until mismatch or min_len characters reached.
 // Uses the child table for faster traversal
-void sparseSA::traverse_faster(const string &P,const long prefix, interval_t &cur, int min_len){
+void sparseSA::traverse_faster(const string &P,const long long prefix, interval_t &cur, long long min_len){
+POMP_Begin(&omp_rd_67);
+#line 224 "sparseSA.cpp"
     if(cur.depth >= min_len) return;
-    unsigned int c = prefix + cur.depth;
-    bool intervalFound = c < P.length();
-    int curLCP;//check if this is correct for root interval (unlikely case)
-    register unsigned long sa_cS;
-    register unsigned long lengthP = P.length();
-    LCPCHILD(curLCP,cur.start,cur.end);
-    /*if (cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
-            curLCP = LCP[CHILD[cur.end]];
+    long long c = prefix + cur.depth;
+    register long long lengthP = P.length();
+    bool intervalFound = c < lengthP;
+    long long curLCP;//check if this is correct for root interval (unlikely case)
+    register long long sa_cS;
+    if(cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
+        curLCP = LCP[CHILD[cur.end]];
     else
-        curLCP = LCP[CHILD[cur.start]];*/
+        curLCP = LCP[CHILD[cur.start]];
     if(intervalFound && cur.size() > 1 && curLCP == cur.depth)
         intervalFound = top_down_child(P[c], cur);
     else if(intervalFound)
-        intervalFound = P[c] == R[SA[cur.start]+cur.depth];
+        intervalFound = P[c] == Reference[SA[cur.start]+cur.depth]; 
+  PRINT
     bool mismatchFound = false;
     while(intervalFound && !mismatchFound && c < lengthP && cur.depth < min_len){
         c++;
         cur.depth++;
         sa_cS = SA[cur.start];
         if(cur.start != cur.end){
-            int childLCP;
+            long long childLCP;
             //calculate LCP of child node, which is now cur. the LCP value
             //of the parent is currently c - prefix
-            LCPCHILD(childLCP,cur.start,cur.end);
-            int minimum = min(childLCP,min_len);
+            if(cur.start < CHILD[cur.end] && CHILD[cur.end] <= cur.end)
+                childLCP = LCP[CHILD[cur.end]];
+            else
+                childLCP = LCP[CHILD[cur.start]];
+            long long minimum = min(childLCP,min_len);
             //match along branch
             while(!mismatchFound && c < lengthP && cur.depth < minimum){
-                mismatchFound = R[sa_cS+cur.depth] != P[c++];
+                mismatchFound = Reference[sa_cS+cur.depth] != P[c++];
                 cur.depth += !mismatchFound;
             }
             intervalFound = c < lengthP && !mismatchFound && cur.depth < min_len && top_down_child(P[c], cur);
         }
         else{
-            register unsigned long lengthR = R.length();
+            register long long lengthR = Reference.length();
             while(!mismatchFound && c < lengthP && cur.depth < min_len){
-                mismatchFound = (unsigned long) (sa_cS+cur.depth) >= lengthR || R[sa_cS+cur.depth] != P[c++];
+                mismatchFound = sa_cS+cur.depth >= lengthR || Reference[sa_cS+cur.depth] != P[c++];
                 cur.depth += !mismatchFound;
             }
         }
     }
+POMP_End(&omp_rd_67);
+#line 269 "sparseSA.cpp"
 }
 
 //finds the child interval of cur that starts with character c
 //updates left and right bounds of cur to child interval if found, or returns
 //cur if not found (also returns true/false if found or not)
 bool sparseSA::top_down_child(char c, interval_t &cur){
-    long left = cur.start;
-    long right = CHILD[cur.end];
-    if(cur.start >= right || right > cur.end)
+POMP_Begin(&omp_rd_68);
+#line 276 "sparseSA.cpp"
+    long long left = cur.start;
+    long long right = CHILD[cur.end];
+    //fprintf(stderr,"%d %ld,%ld %c\n",__LINE__,left,right, c);
+    if (cur.start >= right || right > cur.end) {
         right = CHILD[cur.start];
-    if(R[SA[cur.start]+cur.depth] == c){
+    }
+    //now left and right point to first child
+    if( Reference[SA[left]+cur.depth] == c){
         cur.end = right-1;
+        PRINT
+POMP_End(&omp_rd_68);
+#line 287 "sparseSA.cpp"
         return true;
     }
     left = right;
-    register long rightCHILD = CHILD[right];
     //while has next L-index
-    while(rightCHILD > right && LCP[right] == LCP[rightCHILD]){
-        right = rightCHILD;
-        if(R[SA[left]+cur.depth] == c){
+    while(CHILD[right] > right && LCP[right] == LCP[CHILD[right]]){
+        //cerr << right << endl;
+        right = CHILD[right];
+        if(Reference[SA[left]+cur.depth] == c){
             cur.start = left; cur.end = right - 1;
+            PRINT
+POMP_End(&omp_rd_68);
+#line 298 "sparseSA.cpp"
             return true;
         }
         left = right;
-        rightCHILD = CHILD[right];
     }
     //last interval
-    if(R[SA[left]+cur.depth] == c){
-            cur.start = left;
-            return true;
+    if(Reference[SA[left]+cur.depth] == c){
+        cur.start = left;
+        PRINT
+POMP_End(&omp_rd_68);
+#line 307 "sparseSA.cpp"
+        return true;
     }
+    PRINT
+POMP_End(&omp_rd_68);
+#line 311 "sparseSA.cpp"
     return false;
 }
 
@@ -417,11 +328,11 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
 // position i in the search string. Adapted from the C++ source code
 // for the wordSA implementation from the following paper: Ferragina
 // and Fischer. Suffix Arrays on Words. CPM 2007.
-bool sparseSA::top_down_faster(char c, long i, long &start, long &end) {
+bool sparseSA::top_down_faster(char c, long long i, long long &start, long long &end) {
   long l, r, m, r2=end, l2=start, vgl;
   bool found = false;
-  long cmp_with_first = (long)c - (long)R[SA[start]+i];
-  long cmp_with_last = (long)c - (long)R[SA[end]+i];
+  long cmp_with_first = (long)c - (long)Reference[SA[start]+i];
+  long cmp_with_last = (long)c - (long)Reference[SA[end]+i];
   if(cmp_with_first < 0) { 
     l = start+1; l2 = start; // pattern doesn't occur!  
   }
@@ -438,7 +349,7 @@ bool sparseSA::top_down_faster(char c, long i, long &start, long &end) {
     else {
       while (r - l > 1) {
 	m = (l+r) / 2;
-	vgl = (long)c - (long)R[SA[m] + i];
+	vgl = (long)c - (long)Reference[SA[m] + i];
 	if (vgl <= 0) {
 	  if (!found && vgl == 0) {
 	    found = true;
@@ -460,7 +371,7 @@ bool sparseSA::top_down_faster(char c, long i, long &start, long &end) {
     else {
       while (r2 - l2 > 1) {
 	m = (l2 + r2) / 2;
-	vgl = (long)c - (long)R[SA[m] + i];
+	vgl = (long)c - (long)Reference[SA[m] + i];
 	if (vgl < 0) r2 = m;
 	else l2 = m;
       }
@@ -481,17 +392,17 @@ bool sparseSA::suffixlink(interval_t &m) {
 }
 
 // For a given offset in the prefix k, find all MEMs.
-void sparseSA::findMEM(long k, string &P, vector<match_t> &matches, int min_len, bool print) {
+void sparseSA::findMEM(long long k, string &P, vector<match_t> &matches, long long min_len, bool print) {
   if(k < 0 || k >= K) { cerr << "Invalid k." << endl; return; }
   // Offset all intervals at different start points.
-  long prefix = k;
+  long long prefix = k;
   interval_t mli(0,N/K-1,0); // min length interval
   interval_t xmi(0,N/K-1,0); // max match interval
   
   // Right-most match used to terminate search.
-  int min_lenK = min_len - (sparseMult*K-1);
+  long long min_lenK = min_len - (sparseMult*K-1);
 
-  while( prefix <= (long)P.length() - (K-k)) {
+  while( prefix <= (long long)P.length() - (K-k)) {
 #ifndef NDEBUG
 //      interval_t mliCopy(mli.start,mli.end,mli.depth);
 //      traverse(P, prefix, mliCopy, min_lenK);    // Traverse until minimum length matched.
@@ -527,7 +438,7 @@ void sparseSA::findMEM(long k, string &P, vector<match_t> &matches, int min_len,
       prefix+=sparseMult*K;	
       if( !hasSufLink ){ mli.reset(N/K-1); xmi.reset(N/K-1); continue; }
       else{
-          int i = 0;
+          long long i = 0;
           bool succes  = true;
           while(i < sparseMult && (succes = suffixlink(mli))){
               suffixlink(xmi);
@@ -543,7 +454,7 @@ void sparseSA::findMEM(long k, string &P, vector<match_t> &matches, int min_len,
       prefix+=sparseMult*K;	
       if( !hasSufLink) { mli.reset(N/K-1); xmi.reset(N/K-1); continue; }
       else{
-          int i = 0;
+          long long i = 0;
           bool succes  = true;
           while(i < sparseMult && (succes = suffixlink(mli))){
               i++;
@@ -561,15 +472,15 @@ void sparseSA::findMEM(long k, string &P, vector<match_t> &matches, int min_len,
 
 // Use LCP information to locate right maximal matches. Test each for
 // left maximality.
-void sparseSA::collectMEMs(string &P, long prefix, interval_t mli, interval_t xmi, vector<match_t> &matches, int min_len, bool print) {
+void sparseSA::collectMEMs(string &P, long long prefix, interval_t mli, interval_t xmi, vector<match_t> &matches, long long min_len, bool print) {
   // All of the suffixes in xmi's interval are right maximal.
-  for(long i = xmi.start; i <= xmi.end; i++) find_Lmaximal(P, prefix, SA[i], xmi.depth, matches, min_len, print);
+  for(long long i = xmi.start; i <= xmi.end; i++) find_Lmaximal(P, prefix, SA[i], xmi.depth, matches, min_len, print);
 
   if(mli.start == xmi.start && mli.end == xmi.end) return;
 
   while(xmi.depth >= mli.depth) {
     // Attempt to "unmatch" xmi using LCP information.
-    if(xmi.end+1 < N/K) xmi.depth = max(LCP[xmi.start], LCP[xmi.end+1]);
+    if(xmi.end+1 < N) xmi.depth = max(LCP[xmi.start], LCP[xmi.end+1]);
     else xmi.depth = LCP[xmi.start];
 
     // If unmatched XMI is > matched depth from mli, then examine rmems.
@@ -580,7 +491,7 @@ void sparseSA::collectMEMs(string &P, long prefix, interval_t mli, interval_t xm
 	find_Lmaximal(P, prefix, SA[xmi.start], xmi.depth, matches, min_len, print);
       }
       // Find RMEMs to the right, check their left maximality.
-      while(xmi.end+1 < N/K && LCP[xmi.end+1] >= xmi.depth) { 
+      while((long long) (xmi.end+1) < N/K && (long long) LCP[xmi.end+1] >= xmi.depth) { 
 	xmi.end++;  
 	find_Lmaximal(P, prefix, SA[xmi.end], xmi.depth, matches, min_len, print);
       }
@@ -590,9 +501,9 @@ void sparseSA::collectMEMs(string &P, long prefix, interval_t mli, interval_t xm
 
 
 // Finds left maximal matches given a right maximal match at position i.
-void sparseSA::find_Lmaximal(string &P, long prefix, long i, long len, vector<match_t> &matches, int min_len, bool print) {
+void sparseSA::find_Lmaximal(string &P, long long prefix, long long i, long long len, vector<match_t> &matches, long long min_len, bool print) {
   // Advance to the left up to K steps.
-  for(long k = 0; k < sparseMult*K; k++) {
+  for(long long k = 0; k < sparseMult*K; k++) {
     // If we reach the end and the match is long enough, print.
     if(prefix == 0 || i == 0) {
       if(len >= min_len) {
@@ -601,7 +512,7 @@ void sparseSA::find_Lmaximal(string &P, long prefix, long i, long len, vector<ma
       }
       return; // Reached mismatch, done.
     }
-    else if(P[prefix-1] != R[i-1]){
+    else if(P[prefix-1] != Reference[i-1]){
       // If we reached a mismatch, print the match if it is long enough.
       if(len >= min_len) {
 	if(print) print_match(match_t(i, prefix, len), matches);
@@ -659,35 +570,63 @@ void sparseSA::print_match(string meta, vector<match_t> &buf, bool rc) {
 
 // Finds maximal almost-unique matches (MAMs) These can repeat in the
 // given query pattern P, but occur uniquely in the indexed reference S.
-void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, int min_len, long& currentCount, bool print) {
+void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matches, long long min_len, long long& currentCount, bool print) {
   double start,finish;
   start = omp_get_wtime();
   memCount = 0;
-  interval_t cur(0, N-1, 0);
+  long lborder = 0, rborder = N-1;
+  interval_t cur(lborder, rborder, 0);
+  //unordered_map<string,interval_t,hashMmH3>::const_iterator got;
+  fprintf(stderr,"%p %p %p\n",SA.data(),ISA.data(),CHILD.data());
   long prefix = P.length()/chunks*chunk;
   const long end = (long) (P.length()/chunks*(chunk+1));
-    //__builtin_prefetch(LCP.vec.data()); 
+  /*got = offset.find(P.substr(prefix,8));
+  if (got == offset.end()) {
+      cur.depth = 0; cur.start = 0; cur.end = N;
+  } else
+      cur = got->second;*/
+  /*for (long i=0; i<LCP.vec.size(); i+=64)
+    _mm_prefetch(&(LCP.vec[i]),_MM_HINT_NTA); */
+POMP_Begin(&omp_rd_69);
+#line 578 "sparseSA.cpp"
   while(prefix < end) {
-    // Traverse SA top down until mismatch or full string is matched.
-    traverse_faster(P, prefix, cur, P.length());
-    if(cur.depth <= 1) { cur.depth = 0; cur.start = 0; cur.end = N-1; prefix++; continue; }
+    traverse_faster(P, prefix, cur, end);
+    if (cur.depth <= 1) { 
+        /*got = offset.find(P.substr(prefix,8));
+        if (got == offset.end()) {*/
+            cur.depth = 0; cur.start = lborder; cur.end = rborder;
+        /*} else
+            cur = got->second;*/
+        prefix++;
+        PRINT
+        continue;
+    }
     if(cur.size() == 1 && cur.depth >= min_len) {//unique match 
       if(is_leftmaximal(P, prefix, SA[cur.start])) {
-	    // Yes, it's a MAM.
 	    match_t m; m.ref = SA[cur.start]; m.query = prefix; m.len = cur.depth;
 	    if(print) print_match(m);
 	    else  matches.push_back(m); 
       }
     }
+    /*cur.depth = 0; cur.start = lborder; cur.end = rborder;
+    prefix++;
+    PRINT*/
     do {
-      cur.depth = cur.depth-1;
+POMP_Begin(&omp_rd_70);
+#line 602 "sparseSA.cpp"
+      cur.depth--;
       cur.start = ISA[SA[cur.start] + 1];  
       cur.end = ISA[SA[cur.end] + 1]; 
       prefix++;
-      if( cur.depth == 0 || expand_link(cur) == false ) { cur.depth = 0; cur.start = 0; cur.end = N-1; break; }
+      PRINT
+POMP_End(&omp_rd_70);
+#line 608 "sparseSA.cpp"
+      if( cur.depth == 0 || expand_link(cur) == false ) { cur.depth = 0; cur.start = lborder; cur.end = rborder;PRINT break; }
     } while(cur.depth > 0 && cur.size() == 1);
   }
   currentCount = memCount;
+POMP_End(&omp_rd_69);
+#line 613 "sparseSA.cpp"
   finish = omp_get_wtime();
   fprintf(stdout,"# Search=%f\n", (double) (finish-start));
 }
@@ -696,14 +635,14 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
 // reference is left maximal.
 bool sparseSA::is_leftmaximal(string &P, long p1, long p2) {
   if(p1 == 0 || p2 == 0) return true;
-  else return P[p1-1] != R[p2-1];
+  else return P[p1-1] != Reference[p2-1];
 }
 
 
 struct by_ref { bool operator() (const match_t &a, const match_t &b) const { if(a.ref == b.ref) return a.len > b.len; else return a.ref < b.ref; }  };
 
 // Maximal Unique Match (MUM) 
-void sparseSA::MUM(string &P, vector<match_t> &unique, int min_len, long& currentCount, bool print) {
+void sparseSA::MUM(string &P, vector<match_t> &unique, long long min_len, long long& currentCount, bool print) {
   // Find unique MEMs.
   vector<match_t> matches;
   MAM(P, 0, 1, matches, min_len, currentCount, false);
@@ -748,52 +687,53 @@ struct thread_data {
   string *P; // Query string.
 };
 
-void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, int min_len, long& currentCount, bool print) {
+void sparseSA::MUMParallel(string &P, int chunks, vector<match_t> &unique, long long min_len, long long& currentCount, bool print) {
   vector<match_t> matches_p;
   vector<match_t> matches;
   double start1, finish1;
   _mm_prefetch(LCP.vec.data(), _MM_HINT_NTA);
-POMP_Begin(&omp_rd_3);
-#line 738 "sparseSA.cpp"
-POMP_Parallel_fork(&omp_rd_4);
-#line 738 "sparseSA.cpp"
-#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, matches) private(matches_p) POMP_DLIST_00004
-{ POMP_Parallel_begin(&omp_rd_4);
-#line 739 "sparseSA.cpp"
-  {
-POMP_For_enter(&omp_rd_5);
-#line 740 "sparseSA.cpp"
+POMP_Begin(&omp_rd_71);
+#line 679 "sparseSA.cpp"
+POMP_Parallel_fork(&omp_rd_72);
+#line 679 "sparseSA.cpp"
+#pragma omp parallel default(none) shared(P, min_len, chunks, stderr, cout, cerr, matches) private(matches_p) POMP_DLIST_00072
+{ POMP_Parallel_begin(&omp_rd_72);
+#line 680 "sparseSA.cpp"
+  { 
+POMP_For_enter(&omp_rd_73);
+#line 681 "sparseSA.cpp"
 #pragma omp for schedule(static,1) nowait 
   for (int i=0; i<chunks; ++i)
   {
-    long memCount = 0;
-    MAM(P, i, chunks, matches_p, min_len, memCount, false);
+    long long memCount = 0;
+    findMAM(P, i, chunks, matches_p, min_len, memCount, false);
   }
-POMP_For_exit(&omp_rd_5);
-#line 746 "sparseSA.cpp"
-POMP_Critical_enter(&omp_rd_6);
-#line 746 "sparseSA.cpp"
+POMP_For_exit(&omp_rd_73);
+#line 687 "sparseSA.cpp"
+POMP_Critical_enter(&omp_rd_74);
+#line 687 "sparseSA.cpp"
 #pragma omp critical
-{ POMP_Critical_begin(&omp_rd_6);
-#line 747 "sparseSA.cpp"
+{ POMP_Critical_begin(&omp_rd_74);
+#line 688 "sparseSA.cpp"
+  {
   matches.insert(matches.end(),matches_p.begin(),matches_p.end());
-POMP_Critical_end(&omp_rd_6); }
-POMP_Critical_exit(&omp_rd_6);
-#line 748 "sparseSA.cpp"
   }
-POMP_Barrier_enter(&omp_rd_4);
+POMP_Critical_end(&omp_rd_74); }
+POMP_Critical_exit(&omp_rd_74);
+#line 691 "sparseSA.cpp"
+  }
+POMP_Barrier_enter(&omp_rd_72);
 #pragma omp barrier
-POMP_Barrier_exit(&omp_rd_4);
-POMP_Parallel_end(&omp_rd_4); }
-POMP_Parallel_join(&omp_rd_4);
-#line 749 "sparseSA.cpp"
-POMP_End(&omp_rd_3);
-#line 750 "sparseSA.cpp"
+POMP_Barrier_exit(&omp_rd_72);
+POMP_Parallel_end(&omp_rd_72); }
+POMP_Parallel_join(&omp_rd_72);
+#line 692 "sparseSA.cpp"
   long currentright, dbright = 0;
   bool ignorecurrent, ignoreprevious = false;
   start1 = omp_get_wtime();
   __gnu_parallel::sort(matches.begin(), matches.end(), by_ref());
-  for(long i = 0; i < (long)matches.size(); i++) { 
+  if (matches.size()>0) {
+  for(long long i = 0; i < (long long)matches.size(); i++) { 
     ignorecurrent = false;
     currentright = matches[i].ref + matches[i].len - 1;
     if(dbright > currentright) 
@@ -818,10 +758,13 @@ POMP_End(&omp_rd_3);
     if(print) print_match(matches[matches.size()-1]);
     else unique.push_back(matches[matches.size()-1]);
   }
+  }
   finish1 = omp_get_wtime();
   currentCount = unique.size();
   //fprintf(stderr,",OMP=%lf,Merge=%lf,LCPAcc=%ld,",(double) (finish-start), (double) (finish1-start1), LCP.access);
-  fprintf(stdout,"# Merge=%lf,Matches=%ld,Thrd=%d\n", (double) (finish1-start1), currentCount, chunks);
+  fprintf(stdout,"# Merge=%lf,Matches=%lld,Thrd=%d\n", (double) (finish1-start1), currentCount, chunks);
+POMP_End(&omp_rd_71);
+#line 728 "sparseSA.cpp"
 }
 
 void *MEMthread(void *arg) {
@@ -839,11 +782,11 @@ void *MEMthread(void *arg) {
   pthread_exit(NULL);
 }
 
-void sparseSA::MEM(string &P, vector<match_t> &matches, int min_len, bool print, long& currentCount, int num_threads) {
+void sparseSA::MEM(string &P, vector<match_t> &matches, long long min_len, bool print, long long& currentCount, int num_threads) {
   if(min_len < K) return;
   memCount=0;
   if(num_threads == 1) {
-    for(int k = 0; k < K; k++) { findMEM(k, P, matches, min_len, print); }
+    for(long long k = 0; k < K; k++) { findMEM(k, P, matches, min_len, print); }
     currentCount += memCount;
   }
   else if(num_threads > 1) {
@@ -856,7 +799,7 @@ void sparseSA::MEM(string &P, vector<match_t> &matches, int min_len, bool print,
 
     // Distribute K-values evenly between num_threads.
     int t = 0;
-    for(int k = 0; k < K; k++) {
+    for(long long k = 0; k < K; k++) {
       data[t].Kvalues.push_back(k);
       t++;
       if(t == num_threads) t = 0;

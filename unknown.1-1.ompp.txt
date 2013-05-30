@@ -1,0 +1,188 @@
+----------------------------------------------------------------------
+----     ompP General Information     --------------------------------
+----------------------------------------------------------------------
+Start Date      : Fri May 17 16:08:02 2013
+End Date        : Fri May 17 16:08:24 2013
+Duration        : 21.62 sec
+Application Name: unknown
+Type of Report  : final
+User Time       : 21.40 sec
+System Time     : 0.19 sec
+Max Threads     : 1
+ompP Version    : 0.8.0
+ompP Build Date : May 17 2013 15:54:44
+PAPI Support    : not available
+
+----------------------------------------------------------------------
+----     ompP Region Overview     ------------------------------------
+----------------------------------------------------------------------
+PARALLEL: 1 region:
+ * R00006 sparseSA.cpp (681-693)
+
+LOOP: 1 region:
+ * R00007 sparseSA.cpp (683-688)
+
+USER REGION: 5 regions:
+ * R00005 sparseSA.cpp (680-729) ('MUMParallel')
+ * R00003 sparseSA.cpp (579-614) ('loop')
+ * R00001 sparseSA.cpp (225-270) ('traverse_faster')
+ * R00002 sparseSA.cpp (277-312) ('top_down_child')
+ * R00004 sparseSA.cpp (603-609) ('suffixlink')
+
+CRITICAL: 1 region:
+ * R00008 sparseSA.cpp (689-692) (unnamed)
+
+----------------------------------------------------------------------
+----     ompP Callgraph     ------------------------------------------
+----------------------------------------------------------------------
+
+  Inclusive  (%)   Exclusive  (%)
+  21.62 (100.0%)    0.57 ( 2.64%)           [unknown: 1 threads]
+  21.05 (97.36%)    0.00 ( 0.02%)  USERREG  +-R00005 sparseSA.cpp (680-729) ('MUMParallel')
+  21.05 (97.34%)    0.00 ( 0.00%) PARALLEL     +-R00006 sparseSA.cpp (681-693)
+  21.05 (97.34%)    0.00 ( 0.00%)     LOOP        |-R00007 sparseSA.cpp (683-688)
+  21.05 (97.34%)    8.09 (37.43%)  USERREG        |  +-R00003 sparseSA.cpp (579-614) ('loop')
+   7.31 (33.83%)    4.54 (20.99%)  USERREG        |     |-R00001 sparseSA.cpp (225-270) ('traverse_faster')
+   2.78 (12.84%)    2.78 (12.84%)  USERREG        |     |  +-R00002 sparseSA.cpp (277-312) ('top_down_child')
+   5.64 (26.09%)    5.64 (26.09%)  USERREG        |     +-R00004 sparseSA.cpp (603-609) ('suffixlink')
+   0.00 (0.002%)    0.00 (0.002%) CRITICAL        +-R00008 sparseSA.cpp (689-692) (unnamed)
+
+----------------------------------------------------------------------
+----     ompP Flat Region Profile (inclusive data)     ---------------
+----------------------------------------------------------------------
+R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+ TID      execT      execC
+   0      21.05          1
+ SUM      21.05          1
+
+R00006 sparseSA.cpp (681-693) PARALLEL
+ TID      execT      execC      bodyT   exitBarT   startupT   shutdwnT      taskT
+   0      21.05          1      21.05       0.00       0.00       0.00       0.00
+ SUM      21.05          1      21.05       0.00       0.00       0.00       0.00
+
+R00007 sparseSA.cpp (683-688) LOOP
+ TID      execT      execC      bodyT   exitBarT      taskT
+   0      21.05          1      21.05       0.00       0.00
+ SUM      21.05          1      21.05       0.00       0.00
+
+R00003 sparseSA.cpp (579-614) ('loop') USER REGION
+ TID      execT      execC
+   0      21.05          1
+ SUM      21.05          1
+
+R00001 sparseSA.cpp (225-270) ('traverse_faster') USER REGION
+ TID      execT      execC
+   0       7.33    1806584
+ SUM       7.33    1806584
+
+R00002 sparseSA.cpp (277-312) ('top_down_child') USER REGION
+ TID      execT      execC
+   0       2.80    2481879
+ SUM       2.80    2481879
+
+R00004 sparseSA.cpp (603-609) ('suffixlink') USER REGION
+ TID      execT      execC
+   0       5.69    5498449
+ SUM       5.69    5498449
+
+R00008 sparseSA.cpp (689-692) (unnamed) CRITICAL
+ TID      execT      execC      bodyT     enterT      exitT
+   0       0.00          1       0.00       0.00       0.00
+ SUM       0.00          1       0.00       0.00       0.00
+
+----------------------------------------------------------------------
+----     ompP Callgraph Region Profiles (incl./excl. data)     -------
+----------------------------------------------------------------------
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+ TID    execT/I    execT/E      execC
+   0      21.05       0.00          1
+ SUM      21.05       0.00          1
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+[+02] R00006 sparseSA.cpp (681-693) PARALLEL
+ TID      execT      execC    bodyT/I    bodyT/E   exitBarT   startupT   shutdwnT      taskT
+   0      21.05          1      21.05       0.00       0.00       0.00       0.00       0.00
+ SUM      21.05          1      21.05       0.00       0.00       0.00       0.00       0.00
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+[+02] R00006 sparseSA.cpp (681-693) PARALLEL
+[+03] R00007 sparseSA.cpp (683-688) LOOP
+ TID      execT      execC    bodyT/I    bodyT/E   exitBarT      taskT
+   0      21.05          1      21.05       0.00       0.00       0.00
+ SUM      21.05          1      21.05       0.00       0.00       0.00
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+[+02] R00006 sparseSA.cpp (681-693) PARALLEL
+[+03] R00007 sparseSA.cpp (683-688) LOOP
+[+04] R00003 sparseSA.cpp (579-614) ('loop') USER REGION
+ TID    execT/I    execT/E      execC
+   0      21.05       8.09          1
+ SUM      21.05       8.09          1
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+[+02] R00006 sparseSA.cpp (681-693) PARALLEL
+[+03] R00007 sparseSA.cpp (683-688) LOOP
+[+04] R00003 sparseSA.cpp (579-614) ('loop') USER REGION
+[+05] R00001 sparseSA.cpp (225-270) ('traverse_faster') USER REGION
+ TID    execT/I    execT/E      execC
+   0       7.31       4.54    1806584
+ SUM       7.31       4.54    1806584
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+[+02] R00006 sparseSA.cpp (681-693) PARALLEL
+[+03] R00007 sparseSA.cpp (683-688) LOOP
+[+04] R00003 sparseSA.cpp (579-614) ('loop') USER REGION
+[+05] R00001 sparseSA.cpp (225-270) ('traverse_faster') USER REGION
+[=06] R00002 sparseSA.cpp (277-312) ('top_down_child') USER REGION
+ TID    execT/I    execT/E      execC
+   0       2.78       2.78    2481879
+ SUM       2.78       2.78    2481879
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+[+02] R00006 sparseSA.cpp (681-693) PARALLEL
+[+03] R00007 sparseSA.cpp (683-688) LOOP
+[+04] R00003 sparseSA.cpp (579-614) ('loop') USER REGION
+[=05] R00004 sparseSA.cpp (603-609) ('suffixlink') USER REGION
+ TID    execT/I    execT/E      execC
+   0       5.64       5.64    5498449
+ SUM       5.64       5.64    5498449
+
+[*00] unknown
+[+01] R00005 sparseSA.cpp (680-729) ('MUMParallel') USER REGION
+[+02] R00006 sparseSA.cpp (681-693) PARALLEL
+[=03] R00008 sparseSA.cpp (689-692) (unnamed) CRITICAL
+ TID      execT      execC    bodyT/I    bodyT/E     enterT      exitT
+   0       0.00          1       0.00       0.00       0.00       0.00
+ SUM       0.00          1       0.00       0.00       0.00       0.00
+
+
+----------------------------------------------------------------------
+----     ompP Overhead Analysis Report     ---------------------------
+----------------------------------------------------------------------
+Total runtime (wallclock)   : 21.62 sec [1 thread]
+Number of parallel regions  : 1
+Parallel coverage           : 21.05 sec (97.34%)
+
+Parallel regions sorted by wallclock time:
+            Type                            Location      Wallclock (%) 
+R00006  PARALLEL              sparseSA.cpp (681-693)      21.05 (97.34) 
+                                                 SUM      21.05 (97.34) 
+
+Overheads wrt. each individual parallel region:
+          Total        Ovhds (%)  =   Synch  (%)  +  Imbal   (%)  +   Limpar (%)   +    Mgmt (%)
+R00006    21.05     0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)
+
+Overheads wrt. whole program:
+          Total        Ovhds (%)  =   Synch  (%)  +  Imbal   (%)  +   Limpar (%)   +    Mgmt (%)
+R00006    21.05     0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)
+   SUM    21.05     0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)    0.00 ( 0.00)
+
+

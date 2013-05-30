@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <omp.h>
+#include <likwid.h>
 
 #include "sparseSA.hpp"
 #include "fasta.hpp"
@@ -11,7 +12,6 @@
 #include <time.h>
 #include <sys/time.h>
 #include <sys/resource.h>
-#include <papi.h>
 
 #include <cctype> // std::tolower(), uppercase/lowercase conversion
 
@@ -176,6 +176,9 @@ void *query_thread(void *arg_) {
 }
 
 int main(int argc, char* argv[]) {
+#pragma pomp inst init
+  LIKWID_MARKER_INIT;
+  LIKWID_MARKER_START("MUM");
   // Collect parameters from the command line.
     rusage memory;
   while (1) {
@@ -243,6 +246,8 @@ int main(int argc, char* argv[]) {
   vector<string> refdescr; 
   vector<long long> startpos;
 
+  LIKWID_MARKER_STOP("MUM");
+  LIKWID_MARKER_CLOSE;
   //load_fasta(ref_fasta, ref, refdescr, startpos);
 
   // Automatically use 4 column format if there are multiple reference sequences.
