@@ -6,6 +6,30 @@
       </df>
       <df name="eval2013">
       </df>
+      <df name="fasta">
+        <df name="ECOLIO157H7">
+          <df name="1000">
+            <df name="2">
+            </df>
+            <df name="4">
+            </df>
+            <df name="8">
+            </df>
+          </df>
+        </df>
+        <df name="PANCHR19">
+          <df name="1000">
+            <df name="16">
+            </df>
+            <df name="2">
+            </df>
+            <df name="4">
+            </df>
+            <df name="8">
+            </df>
+          </df>
+        </df>
+      </df>
       <df name="libfid">
         <in>alphabet.c</in>
         <in>alphabet.h</in>
@@ -327,45 +351,88 @@
       </df>
       <df name="Toci.old">
         <in>access.cpp</in>
+        <in>access.cpp.opari.inc</in>
+        <in>access.mod.cpp</in>
         <in>args.h</in>
         <in>arraydef.h</in>
         <in>chardef.h</in>
         <in>cleanMUMcand.cpp</in>
+        <in>cleanMUMcand.cpp.opari.inc</in>
+        <in>cleanMUMcand.mod.cpp</in>
         <in>construct.cpp</in>
+        <in>construct.cpp.opari.inc</in>
+        <in>construct.mod.cpp</in>
         <in>depthtab.cpp</in>
+        <in>depthtab.cpp.opari.inc</in>
+        <in>depthtab.mod.cpp</in>
         <in>dfs.cpp</in>
+        <in>dfs.cpp.opari.inc</in>
+        <in>dfs.mod.cpp</in>
         <in>distribute.cpp</in>
+        <in>distribute.cpp.opari.inc</in>
         <in>distribute.h</in>
+        <in>distribute.mod.cpp</in>
         <in>errordef.h</in>
         <in>findmaxmat.cpp</in>
+        <in>findmaxmat.cpp.opari.inc</in>
+        <in>findmaxmat.mod.cpp</in>
         <in>findmumcand.cpp</in>
+        <in>findmumcand.cpp.opari.inc</in>
+        <in>findmumcand.mod.cpp</in>
         <in>intbits.h</in>
         <in>linkloc.cpp</in>
+        <in>linkloc.cpp.opari.inc</in>
+        <in>linkloc.mod.cpp</in>
         <in>mapfile.cpp</in>
+        <in>mapfile.cpp.opari.inc</in>
+        <in>mapfile.mod.cpp</in>
         <in>maxmatdef.h</in>
         <in>maxmatinp.cpp</in>
+        <in>maxmatinp.cpp.opari.inc</in>
+        <in>maxmatinp.mod.cpp</in>
         <in>maxmatopt.cpp</in>
+        <in>maxmatopt.cpp.opari.inc</in>
+        <in>maxmatopt.mod.cpp</in>
         <in>minmax.h</in>
         <in>multidef.h</in>
         <in>multiseq.cpp</in>
+        <in>multiseq.cpp.opari.inc</in>
+        <in>multiseq.mod.cpp</in>
         <in>mumcand.h</in>
+        <in>opari.tab.c</in>
         <in>optdesc.h</in>
         <in>procmaxmat.cpp</in>
+        <in>procmaxmat.cpp.opari.inc</in>
+        <in>procmaxmat.mod.cpp</in>
         <in>procopt.cpp</in>
+        <in>procopt.cpp.opari.inc</in>
+        <in>procopt.mod.cpp</in>
         <in>protodef.h</in>
         <in>safescpy.cpp</in>
+        <in>safescpy.cpp.opari.inc</in>
+        <in>safescpy.mod.cpp</in>
         <in>scanpref.cpp</in>
+        <in>scanpref.cpp.opari.inc</in>
+        <in>scanpref.mod.cpp</in>
         <in>seterror.cpp</in>
+        <in>seterror.cpp.opari.inc</in>
+        <in>seterror.mod.cpp</in>
         <in>space.cpp</in>
+        <in>space.cpp.opari.inc</in>
+        <in>space.mod.cpp</in>
         <in>spacedef.h</in>
         <in>streeacc.h</in>
         <in>streedbg.cpp</in>
+        <in>streedbg.cpp.opari.inc</in>
+        <in>streedbg.mod.cpp</in>
         <in>streedef.h</in>
         <in>streehuge.h</in>
         <in>streemac.h</in>
         <in>streetyp.h</in>
         <in>symboldef.h</in>
         <in>toci.cpp</in>
+        <in>toci.cpp.opari.inc</in>
+        <in>toci.mod.cpp</in>
         <in>types.h</in>
         <in>visible.h</in>
       </df>
@@ -388,25 +455,71 @@
         <in>vectori256.h</in>
         <in>vectori256e.h</in>
       </df>
+      <in>PapiCounter.h</in>
+      <in>access.cpp</in>
+      <in>args.h</in>
+      <in>arraydef.h</in>
+      <in>chardef.h</in>
+      <in>cleanMUMcand.cpp</in>
+      <in>construct.cpp</in>
+      <in>depthtab.cpp</in>
+      <in>dfs.cpp</in>
       <in>distribute.cpp</in>
       <in>distribute.h</in>
+      <in>errordef.h</in>
       <in>ex.cpp</in>
       <in>fasta.cpp</in>
       <in>fasta.cpp.opari.inc</in>
       <in>fasta.hpp</in>
       <in>fasta.mod.cpp</in>
+      <in>fasta.s</in>
+      <in>findmaxmat.cpp</in>
+      <in>findmumcand.cpp</in>
+      <in>intbits.h</in>
+      <in>linkloc.cpp</in>
+      <in>mapfile.cpp</in>
+      <in>maxmatdef.h</in>
+      <in>maxmatinp.cpp</in>
+      <in>maxmatopt.cpp</in>
+      <in>minmax.h</in>
+      <in>multidef.h</in>
+      <in>multiseq.cpp</in>
+      <in>mumcand.h</in>
       <in>mummer.cpp</in>
       <in>mummer.cpp.opari.inc</in>
       <in>mummer.mod.cpp</in>
+      <in>mummer.pomp.cpp</in>
+      <in>mummer.s</in>
       <in>opari.tab.c</in>
+      <in>optdesc.h</in>
+      <in>pompregions.c</in>
+      <in>procmaxmat.cpp</in>
+      <in>procopt.cpp</in>
+      <in>protodef.h</in>
       <in>qsufsort.c</in>
       <in>qsufsort.c.opari.inc</in>
       <in>qsufsort.mod.c</in>
-      <in>sparseSA.cpp</in>
+      <in>qsufsort.s</in>
+      <in>safescpy.cpp</in>
+      <in>scanpref.cpp</in>
+      <in>seterror.cpp</in>
+      <in>space.cpp</in>
+      <in>spacedef.h</in>
       <in>sparseSA.cpp.opari.inc</in>
       <in>sparseSA.hpp</in>
       <in>sparseSA.mod.cpp</in>
+      <in>sparseSA.pomp.cpp</in>
       <in>sparseSA.s</in>
+      <in>streeacc.h</in>
+      <in>streedbg.cpp</in>
+      <in>streedef.h</in>
+      <in>streehuge.h</in>
+      <in>streemac.h</in>
+      <in>streetyp.h</in>
+      <in>symboldef.h</in>
+      <in>toci.cpp</in>
+      <in>types.h</in>
+      <in>visible.h</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

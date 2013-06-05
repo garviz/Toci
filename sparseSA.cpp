@@ -24,6 +24,8 @@
         cLCP = LCP[childcE];\
     else\
         cLCP = LCP[CHILD[cS]];
+
+#define LINE 64
 //#define PRINT fprintf(stderr,"%d %lld,%lld,%lld\n",__LINE__,cur.start,cur.end,cur.depth);
 //cin.get();
 #define PRINT
@@ -597,11 +599,18 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
     /*cur.depth = 0; cur.start = lborder; cur.end = rborder;
     prefix++;
     PRINT*/
+    long long cS, cE;
     do {
+        __builtin_prefetch(SA[cur.start-LINE].data(),0,3);
+        __builtin_prefetch(SA[cur.end+LINE].data(),0,3);
+        cS = SA[cur.start]+1;
+        cE = SA[cur.end]+1;
+        __builtin_prefetch(ISA[cS-LINE].data(),0,3);
+        __builtin_prefetch(ISA[cE+LINE].data(),0,3);
 #pragma pomp inst begin(suffixlink)
       cur.depth--;
-      cur.start = ISA[SA[cur.start] + 1];  
-      cur.end = ISA[SA[cur.end] + 1]; 
+      cur.start = ISA[cS];  
+      cur.end = ISA[cE]; 
       prefix++;
       PRINT
 #pragma pomp inst end(suffixlink)

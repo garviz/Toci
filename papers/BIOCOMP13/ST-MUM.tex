@@ -29,7 +29,10 @@
   % every instance of \includegraphics
   % \DeclareGraphicsExtensions{.eps}
 \fi
-\usepackage{amsthm}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usetikzlibrary{shadows,trees}
 \usepackage[ruled,vlined]{algorithm2e}
 
 \usepackage[cmex10]{amsmath}
@@ -287,11 +290,105 @@ Once we have defined the preliminaries in the MUM-problem, we need to answer the
 In Algorithm \ref{algST} there are two functions related to suffix tree. TraverseSuffixTree performs the traversal of the suffix tree with the current string  and it starts in some given node. suffixlink is a function which gets the suffix link from the current node pointed out by loc.node. If $b$ is an internal node $v$ of suffix tree, then the algorithm can follow its suffix link to a node $s(v)$. If $b$ is not an internal node, then the algorithm can back up to the node $v$ just above $b$. If $v$ is the root, then the search starts in root. But if $v$ is not the root, then the algorithm follows the suffix link from $v$ to $s(v)$.
 \section{Suffix tree bottleneck}
 Suffix tree is the archetypical index structure used in bioinformatics. For large-scale bioinformatics applications, however, memory consumption really becomes a bottleneck. Moreover, the algorithm to search for MUMs involves comparing the search of a character to the character stored at a specific node at every level of the tree, and traversing a child node based on the comparison results. Only one node at each level is actually accessed, resulting in ineffective cache line utilization, to the linear storage of the tree. Since the result of the comparison is required before loading the appropiate child node, cache line prefetches cannot be issued beforehand. Moreover, meanwhile the Algorithm \ref{algST} shows a $O(m)$ complexity by using suffix links, this feature has the disadvantage of a quite random access to the next node used to traverse the suffix tree. As a consequence a search for MUM typically involves a long-latency TLB/cache miss followed by small number of arithmetic operations at each level of the tree, leading to ineffective utilization of the processor resources.
-The best scenario (short-latency and no TLB/cache miss) in a search for MUM is a layout of a whole branch in a cache line size. The worst scenario (long-latency and TLB/cahce miss) is a layout of only one branch read in a cache line size. In Figure \ref{suftree} the suffix tree is implemented with two tables as in Figure \ref{tables}. The layout of branch table has a poor temporal and spatial locality. If string "ba" is searched in the suffix tree by using Algorithm \ref{algST}, then branch node number 1 in Figure \ref{tables} is accessed, it follows an access to branch node number 3 and finally leaf number 3. Use of tables leaf and branch in Figure \ref{tables} helps to traverse a suffix tree, but since each branch node is implemented as a linked list this is a serious performance issue. The linked list have items in disjoint areas of memory. To traverse the list the cache lines cannot be utilized effectively. One could say that the linked list is cache line hostile, or that the linked list maximizes cache line misses. The disjoint memory will make traversing of the linked list slow because RAM fetching will be used extensively.
+
+To show this layout of suffix tree in main memory, it is provided the first two levels of a suffix tree for a reference sequence of 1000bp:
+\begin{figure}
+\begin{verbatim}
+root
+|
+|-a 0xc8f618
+| |-a 0xc8fb00
+| |-c 0xc8fba0
+| |-g 0xc8f7e0
+| |-t 0xc8f860
+|
+|-c 0xc8f658
+| |-a 0xc8f630
+| |-c 0xc8fa20
+| |-g 0xc8f7b8
+| |-t 0xc8f700
+|
+|-g 0xc8f6a8
+| |-a 0xc8f790
+| |-c 0xc8fb50
+| |-g 0xc8f5f0
+| |-t 0xc8f768
+|
+|-t 0xc8f728
+| |-a 0xc8f940
+| |-c 0xc8fa48
+| |-g 0xc8fc30
+| |-t 0xc8fb28
+\end{verbatim}
+\label{stlayout}
+\caption{First two levels of suffix tree in main memory.}
+\end{figure}
+
+%\begin{figure}
+%\begin{tikzpicture}[level 1/.style={sibling distance=30mm}, level 2/.style={sibling distance=15mm}]
+%\tikzstyle{every node}=[draw,shape=circle,minimum size=0.1cm,inner sep=0]
+%\node [] (z){}
+%  child {node (a) {}
+%    child {node (b) {}
+%      child {node (w) {}
+%        child {node (d) {}}
+%        child {node [rectangle,draw] (e) {$1$}}
+%      } 
+%      child {node (f) {}}
+%    }
+%    child {node [circle,draw] (g) {}
+%      child {node (h) {}}
+%      child {node (i) {}}
+%    }
+%  }
+%  child {node {}
+%    child {node {}
+%    }
+%    child {node {}
+%    }
+%    child {node {}
+%    }
+%    child {node {}
+%    }
+%  }
+%  child {node {}
+%    child {node {}
+%    }
+%    child {node {}
+%    }
+%  }
+%  child {node (j) {}
+%    child {node (k) {}
+%      child {node (m) {}}
+%      child {node (n) {}}
+%    }
+%  }
+%  child {node (l) {}
+%    child {node {}}
+%    child {node (c){}
+%      child {node (o) {}}
+%      child {node (p) {}
+%        child {node (q) {} }
+%      }
+%    }
+%  };
+%(z) edge node {a} (a);
+%\end{tikzpicture}
+%\end{figure}
+The best scenario (short-latency and no TLB/cache miss) in a search for MUM is a layout of a whole branch in a cache line size. The worst scenario (long-latency and TLB/cahce miss) is a layout of only one branch read in a cache line size. In Figure \ref{suftree} the suffix tree is implemented with two tables as in Figure \ref{tables}. The layout of branch table has a poor temporal and spatial locality. 
+
+If we search for MUMs of length equal or greater than 5bp in the suffix tree Figure \ref{stlayout} for a query sequence $ttcgttactt\ldots$, we have the following memory pattern access:
+\begin{enumerate}
+\item[$ttcgttactt\ldots$] $0xc8f728[t]\rightarrow 0xc8fb28[t]\rightarrow 0xc8fbf0[c]\rightarrow 0xc913a0[g]$
+\item[$tcgttactt\ldots$]\footnote{A suffix link is used: $0xc90388\overset{tc}{\rightarrow}0xc8fc08$.} $0xc8fc08[g]\rightarrow 0xc93550[t]$
+\item[$cgttactt\ldots$]\footnote{A suffix link is used: $0xc93550\overset{cg}{\rightarrow}0xc92c90$ } $0xc92c90[t]$
+\item[$gttactt\ldots$]\footnote{A suffix links is used: $0xc92c90\overset{g}{\rightarrow}0xc8f860$} $0xc8f860[t]\rightarrow 0xc91d88[t]\rightarrow 0xc94290[a]$
+\end{enumerate}
+Use of tables leaf and branch in Figure \ref{tables} helps to traverse a suffix tree, but since each branch node is implemented as a linked list this is a serious performance issue. The linked list have items in disjoint areas of memory. To traverse the list the cache lines cannot be utilized effectively. One could say that the linked list is cache line hostile, or that the linked list maximizes cache line misses. The disjoint memory will make traversing of the linked list slow because RAM fetching will be used extensively.
 \subsection{Memory reference locality}
 This layout in Figure \ref{tables} of a suffix tree and the random search of strings do not help to a better use of processor resources. The use of suffix links reduces the time complexity of a search for a MUM in a suffix tree but it is not very cache-friendly.
 
-As a proof a poor memory reference locality of this data structure, two experiments were carried out. The features of the computer used are: 2 Processor Intel(R) Xeon(R) E5645 @ 2.4GHz of 6 cores each one, 32KB L1 cache, 256KB L2 and 12MB L3 shared cache per socket. RAM: 96 GB. GCC 4.7.0 with OpenMP support + Linux.
+As a proof of a poor memory reference locality of this data structure, two experiments were carried out. The features of the computer used are: 2 Processor Intel(R) Xeon(R) E5645 @ 2.4GHz of 6 cores each one, 32KB L1 cache, 256KB L2 and 12MB L3 shared cache per socket. RAM: 96 GB. GCC 4.7.0 with OpenMP support + Linux.
 
 The genomes used were a reference genome of 312Kbp\footnote{Measure unit in DNA genomes.} and 169Mbp, a query genome of 2.91Gbp and a minimum length of MUM of 20bp.
 
@@ -353,24 +450,7 @@ By using the memory heriarchy, we may overlap the latency of a random traversal 
 % \footnotesize as IEEE normally uses this smaller font for tables.
 % The \label must come after \caption as always.
 %
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+
 
 
 % Note that IEEE does not put floats in the very first column - or typically
