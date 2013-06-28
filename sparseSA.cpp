@@ -282,7 +282,7 @@ bool sparseSA::top_down_child(char c, interval_t &cur){
         right = CHILD[cur.start];
     }
     //now left and right point to first child
-    if( Reference[SA[left]+cur.depth] == c){
+    if (Reference[SA[left]+cur.depth] == c){
         cur.end = right-1;
         PRINT
 #pragma pomp inst altend(top_down_child)

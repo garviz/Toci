@@ -5,6 +5,11 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
+\bibitem{Delcher1999}
+A.~L. Delcher, S.~Kasif, R.~D. Fleischmann, J.~Peterson, O.~White, S.~L.
+  Salzberg, {Alignment of whole genomes MUMMER}, Nucl Acids Res 27~(11) (1999)
+  2369.
+
 \bibitem{Delcher2003}
 A.~L. Delcher, S.~L. Salzberg, A.~M. Phillippy,
   \href{http://www.ncbi.nlm.nih.gov/pubmed/18428693}{{Using MUMmer to identify
@@ -19,11 +24,6 @@ A.~L. Delcher, A.~Phillippy, J.~Carlton, S.~L. Salzberg,
   comparative applications Fast algorithms for large-scale genome alignment and
   comparison}}, Nucleic Acids Research 30 (2002) 2478--2483.
 \newline\urlprefix\url{http://www.tigr.org/software/mummer/applications.html}
-
-\bibitem{Delcher1999}
-A.~L. Delcher, S.~Kasif, R.~D. Fleischmann, J.~Peterson, O.~White, S.~L.
-  Salzberg, {Alignment of whole genomes MUMMER}, Nucl Acids Res 27~(11) (1999)
-  2369.
 
 \bibitem{OguzhanKulekci2011}
 M.~{Oğuzhan K\"{u}lekci}, W.-K. Hon, R.~Shah, J.~{Scott Vitter}, B.~Xu,
@@ -53,5 +53,14 @@ X.~Meng, V.~Chaudhary,
 \bibitem{Encarnac2011}
 G.~Encarnac, N.~Roma, {Advantages and GPU Implementation of High-Performance
   Indexed DNA Search based on Suffix Arrays}, Architecture (2011) 49--55.
+
+\bibitem{Schatz2007}
+M.~C. Schatz, C.~Trapnell, A.~L. Delcher, A.~Varshney,
+  \href{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2222658\&tool=pmcentrez\&rendertype=abstract}{{High-throughput
+  sequence alignment using Graphics Processing Units.}}, BMC bioinformatics 8
+  (2007) 474.
+\newblock \href {http://dx.doi.org/10.1186/1471-2105-8-474}
+  {\path{doi:10.1186/1471-2105-8-474}}.
+\newline\urlprefix\url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2222658\&tool=pmcentrez\&rendertype=abstract}
 
 \end{thebibliography}
