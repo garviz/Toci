@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related work}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Organization of suffix tree in memory}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Search for MUMs in suffix tree}{}% 4
+\BOOKMARK [1][-]{section.4}{Suffix tree bottleneck}{}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Memory reference locality}{section.4}% 6
+\BOOKMARK [1][-]{section.5}{Enhanced traversal of Suffix Tree with SIMD instruction}{}% 7
+\BOOKMARK [1][-]{section.6}{Experimental evaluation}{}% 8
+\BOOKMARK [1][-]{section.7}{Search for MUMs in Multicore architectures}{}% 9
+\BOOKMARK [2][-]{subsection.7.1}{Implementation}{section.7}% 10
+\BOOKMARK [1][-]{section.8}{Experimental evaluation in Multicore archictectures}{}% 11
+\BOOKMARK [1][-]{section.9}{Conclusion}{}% 12
+\BOOKMARK [1][-]{section*.7}{References}{}% 13
