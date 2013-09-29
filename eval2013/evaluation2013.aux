@@ -3,20 +3,21 @@
 \catcode`<\active
 \catcode`>\active
 \@nameuse{es@quoting}
-\ifx\hyper@anchor\@undefined
-\global \let \oldcontentsline\contentsline
-\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
-\global \let \oldnewlabel\newlabel
-\gdef \newlabel#1#2{\newlabelxx{#1}#2}
-\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\let \contentsline\oldcontentsline
-\let \newlabel\oldnewlabel}
-\else
-\global \let \hyper@last\relax 
-\fi
-
-\providecommand*\HyPL@Entry[1]{}
-\HyPL@Entry{0<</S/r>>}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
 \select@language{spanish}
 \@writefile{toc}{\select@language{spanish}}
 \@writefile{lof}{\select@language{spanish}}
@@ -27,10 +28,6 @@
 \@writefile{lot}{\select@language{spanish}}
 \citation{Needleman1970General}
 \citation{Waterman}
-<<<<<<< HEAD
-=======
-\citation{OguzhanKulekci2011}
->>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
 \citation{Mongelli}
 \citation{Kouzinopoulos2005}
 \citation{Encarnac2011}
@@ -38,50 +35,55 @@
 \citation{OguzhanKulekci2011}
 \citation{Khan2009}
 \citation{OhlebuschGK10}
-\HyPL@Entry{2<</S/D>>}
+\citation{OguzhanKulekci2011}
+\citation{Mongelli}
+\citation{Kouzinopoulos2005}
+\citation{Encarnac2011}
+\citation{Vyverman2013}
+\citation{OguzhanKulekci2011}
+\citation{Khan2009}
+\citation{OhlebuschGK10}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Resumen}{1}{section.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Diferentes estructuras de indexaci\IeC {\'o}n para el problema de la b\IeC {\'u}squeda de coincidencias exactas m\IeC {\'a}ximas para el genoma humano como referencia.\relax }}{2}{figure.caption.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:state}{{1}{2}{Diferentes estructuras de indexación para el problema de la búsqueda de coincidencias exactas máximas para el genoma humano como referencia.\relax \relax }{figure.caption.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{2}{section.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}MUM y MEM}{2}{subsection.2.1}}
 \citation{Mummer3}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{3}{section.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}MUM y MEM}{3}{subsection.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Definici\IeC {\'o}n del problema a resolver}{3}{subsection.2.2}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces B\IeC {\'u}squeda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax }}{3}{table.caption.2}}
-\newlabel{tab:buscar3}{{1}{3}{Búsqueda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax \relax }{table.caption.2}{}}
 \citation{Gusfield2007Algorithms}
 \citation{Mummer3}
-<<<<<<< HEAD
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces B\IeC {\'u}squeda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax }}{4}{table.caption.2}}
+\newlabel{tab:buscar3}{{1}{4}{Búsqueda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax \relax }{table.caption.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}\IeC {\'A}rbol de sufijos}{4}{subsection.2.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \IeC {\'A}rbol de sufijos para la palabra atgtgtgtc\$.\relax }}{4}{figure.caption.3}}
-\newlabel{fig:st}{{2}{4}{Árbol de sufijos para la palabra atgtgtgtc\$.\relax \relax }{figure.caption.3}{}}
-\citation{Abouelhoda2004}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \IeC {\'A}rbol de sufijos para la palabra atgtgtgtc\$.\relax }}{5}{figure.caption.3}}
+\newlabel{fig:st}{{2}{5}{Árbol de sufijos para la palabra atgtgtgtc\$.\relax \relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Arreglo de sufijos mejorado}{6}{subsection.2.4}}
-=======
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Definici\IeC {\'o}n del problema a resolver}{5}{subsection.2.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces B\IeC {\'u}squeda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax }}{5}{table.caption.3}}
-\newlabel{tab:buscar3}{{1}{5}{Búsqueda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax \relax }{table.caption.3}{}}
+\citation{Mummer3}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Estado de la investigaci\IeC {\'o}n}{7}{section.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Definici\IeC {\'o}n del problema a resolver}{7}{subsection.3.1}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces B\IeC {\'u}squeda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax }}{7}{table.caption.4}}
+\newlabel{tab:buscar3}{{2}{7}{Búsqueda coincidencias exactas para una cadena de referencia de 2960,21Mbp y una cadena de consulta de 2716,96Mbp\relax \relax }{table.caption.4}{}}
 \citation{Abouelhoda2004}
->>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
-\@writefile{toc}{\contentsline {section}{\numberline {3}Estado de la investigaci\IeC {\'o}n}{6}{section.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problemas de rendimiento en el \IeC {\'a}rbol de sufijos}{7}{subsection.3.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Evaluaci\IeC {\'o}n experimental}{7}{subsubsection.3.1.1}}
-<<<<<<< HEAD
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Paralelizaci\IeC {\'o}n de b\IeC {\'u}squeda de MUMs en \IeC {\'A}rbol de sufijos}{8}{subsection.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces B\IeC {\'u}squeda de MUMs en architecturas Multi-core.\relax }}{9}{figure.caption.4}}
-\newlabel{phases}{{3}{9}{Búsqueda de MUMs en architecturas Multi-core.\relax \relax }{figure.caption.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Genomas usados en experimentos.\relax }}{9}{table.caption.5}}
-\newlabel{genomes}{{2}{9}{Genomas usados en experimentos.\relax \relax }{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Paralelizaci\IeC {\'o}n de b\IeC {\'u}squeda de MUMs en Arreglo de sufijos mejorado}{9}{subsection.3.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Publicaciones}{9}{section.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces B\IeC {\'u}squeda de MUMs en \IeC {\'A}rbol de sufijos para architecturas Multi-core.\relax }}{10}{figure.caption.6}}
-\newlabel{fig:stmc}{{4}{10}{Búsqueda de MUMs en Árbol de sufijos para architecturas Multi-core.\relax \relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Seguimiento}{10}{section.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Planificaci\IeC {\'o}n}{10}{section.6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces B\IeC {\'u}squeda de MUMs en Arreglo de sufijos mejorado para architecturas Multi-core.\relax }}{11}{figure.caption.7}}
-\newlabel{fig:stmc}{{5}{11}{Búsqueda de MUMs en Arreglo de sufijos mejorado para architecturas Multi-core.\relax \relax }{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}An\IeC {\'a}lisis de las publicaciones pendientes de publicar}{11}{section.7}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Publicaciones previstas}{11}{section.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Estado de la investigaci\IeC {\'o}n}{8}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Problemas de rendimiento en el \IeC {\'a}rbol de sufijos}{8}{subsection.4.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Evaluaci\IeC {\'o}n experimental}{9}{subsubsection.4.1.1}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Genomas usados en experimentos.\relax }}{10}{table.caption.6}}
+\newlabel{genomes}{{3}{10}{Genomas usados en experimentos.\relax \relax }{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Paralelizaci\IeC {\'o}n de b\IeC {\'u}squeda de MUMs en \IeC {\'A}rbol de sufijos}{10}{subsection.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces B\IeC {\'u}squeda de MUMs en architecturas Multi-core.\relax }}{10}{figure.caption.5}}
+\newlabel{phases}{{3}{10}{Búsqueda de MUMs en architecturas Multi-core.\relax \relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces B\IeC {\'u}squeda de MUMs en \IeC {\'A}rbol de sufijos para architecturas Multi-core.\relax }}{11}{figure.caption.7}}
+\newlabel{fig:stmc}{{4}{11}{Búsqueda de MUMs en Árbol de sufijos para architecturas Multi-core.\relax \relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Paralelizaci\IeC {\'o}n de b\IeC {\'u}squeda de MUMs en Arreglo de sufijos mejorado}{11}{subsection.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Publicaciones}{11}{section.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces B\IeC {\'u}squeda de MUMs en Arreglo de sufijos mejorado para architecturas Multi-core.\relax }}{12}{figure.caption.8}}
+\newlabel{fig:stmc}{{5}{12}{Búsqueda de MUMs en Arreglo de sufijos mejorado para architecturas Multi-core.\relax \relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Publicaciones}{12}{section.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Seguimiento}{12}{section.7}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Planificaci\IeC {\'o}n}{13}{section.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}An\IeC {\'a}lisis de las publicaciones pendientes de publicar}{13}{section.9}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Publicaciones previstas}{13}{section.10}}
 \bibstyle{acm}
 \bibdata{references}
 \bibcite{Abouelhoda2004}{1}
@@ -89,43 +91,11 @@
 \bibcite{Gusfield2007Algorithms}{3}
 \bibcite{Khan2009}{4}
 \bibcite{Kouzinopoulos2005}{5}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusiones}{12}{section.9}}
 \bibcite{Mummer3}{6}
+\@writefile{toc}{\contentsline {section}{\numberline {11}Conclusiones}{14}{section.11}}
 \bibcite{Mongelli}{7}
 \bibcite{Needleman1970General}{8}
 \bibcite{OhlebuschGK10}{9}
 \bibcite{OguzhanKulekci2011}{10}
 \bibcite{Waterman}{11}
 \bibcite{Vyverman2013}{12}
-=======
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Paralelizaci\IeC {\'o}n de b\IeC {\'u}squeda de MUMs en \IeC {\'A}rbol de sufijos}{7}{subsection.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces B\IeC {\'u}squeda de MUMs en architecturas Multi-core.\relax }}{8}{figure.caption.4}}
-\newlabel{phases}{{3}{8}{Búsqueda de MUMs en architecturas Multi-core.\relax \relax }{figure.caption.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Genomas usados en experimentos.\relax }}{8}{table.caption.5}}
-\newlabel{genomes}{{2}{8}{Genomas usados en experimentos.\relax \relax }{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Paralelizaci\IeC {\'o}n de b\IeC {\'u}squeda de MUMs en Arreglo de sufijos mejorado}{8}{subsection.3.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces B\IeC {\'u}squeda de MUMs en \IeC {\'A}rbol de sufijos para architecturas Multi-core.\relax }}{9}{figure.caption.6}}
-\newlabel{fig:stmc}{{4}{9}{Búsqueda de MUMs en Árbol de sufijos para architecturas Multi-core.\relax \relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Publicaciones}{9}{section.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Seguimiento}{9}{section.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces B\IeC {\'u}squeda de MUMs en Arreglo de sufijos mejorado para architecturas Multi-core.\relax }}{10}{figure.caption.7}}
-\newlabel{fig:stmc}{{5}{10}{Búsqueda de MUMs en Arreglo de sufijos mejorado para architecturas Multi-core.\relax \relax }{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Planificaci\IeC {\'o}n}{10}{section.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}An\IeC {\'a}lisis de las publicaciones pendientes de publicar}{10}{section.7}}
-\bibstyle{acm}
-\bibdata{references}
-\bibcite{Abouelhoda2004}{Abouelhoda et\unhbox \voidb@x \penalty \@M \ al., 2004}
-\bibcite{Encarnac2011}{Encarnac and Roma, 2011}
-\bibcite{Gusfield2007Algorithms}{Gusfield, 2007}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Publicaciones previstas}{11}{section.8}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusiones}{11}{section.9}}
-\bibcite{Khan2009}{Khan et\unhbox \voidb@x \penalty \@M \ al., 2009}
-\bibcite{Kouzinopoulos2005}{Kouzinopoulos et\unhbox \voidb@x \penalty \@M \ al., 2005}
-\bibcite{Mummer3}{Kurtz et\unhbox \voidb@x \penalty \@M \ al., 2004}
-\bibcite{Mongelli}{Mongelli, }
-\bibcite{Needleman1970General}{Needleman and Wunsch, 1970}
-\bibcite{OhlebuschGK10}{Ohlebusch et\unhbox \voidb@x \penalty \@M \ al., 2010}
-\bibcite{OguzhanKulekci2011}{{O\v {g}uzhan K\"{u}lekci} et\unhbox \voidb@x \penalty \@M \ al., 2011}
-\bibcite{Waterman}{Smith and Waterman, 1981}
-\bibcite{Vyverman2013}{Vyverman et\unhbox \voidb@x \penalty \@M \ al., 2013}
->>>>>>> a552f9ed4cc87dc80b8f186df0ba8fbc06dd0925
