@@ -282,7 +282,7 @@ static Sint showmaximalmatch (void *info,
                               /*@unused@*/ Uint seqnum,
                               Uint querystart)
 {
-  Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
+  /*Matchprocessinfo *matchprocessinfo = (Matchprocessinfo *) info;
 
   if(matchprocessinfo->subjectmultiseq->numofsequences == UintConst(1)
      &&
@@ -312,7 +312,7 @@ static Sint showmaximalmatch (void *info,
   {
     printf ("%8lu  ", (Showuint) (querystart+1));
   }
-  printf ("%8lu\n", (Showuint) matchlength);
+  printf ("%8lu\n", (Showuint) matchlength);*/
   return 0;
 }
 
@@ -514,9 +514,6 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   fprintf(stderr,"# CONSTRUCTIONTIME %s %s %.2f\n",
          &mmcallinfo->program[0],&mmcallinfo->subjectfile[0],
          getruntime());
-#ifdef DEBUG
-  showtable(&matchprocessinfo.stree, False);
-#endif
   matchprocessinfo.subjectmultiseq = subjectmultiseq;
   matchprocessinfo.minmatchlength = mmcallinfo->minmatchlength;
   matchprocessinfo.showstring = mmcallinfo->showstring;
@@ -527,6 +524,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   matchprocessinfo.cmum = mmcallinfo->cmum;
   matchprocessinfo.cmumcand = mmcallinfo->cmumcand;
   matchprocessinfo.reversecomplement = mmcallinfo->reversecomplement;
+  showtable(&matchprocessinfo.stree, False);
   if(mmcallinfo->cmum)
   {
     INITARRAY(&matchprocessinfo.mumcandtab,MUMcandidate);
@@ -539,7 +537,7 @@ Sint procmaxmatches(MMcallinfo *mmcallinfo,Multiseq *subjectmultiseq)
   matchprocessinfo.maxdesclength = (Uint) retcode;
   for(filenum=0; filenum < mmcallinfo->numofqueryfiles; filenum++)
   {
-    filecontent = CREATEMEMORYMAP (mmcallinfo->queryfilelist[filenum],
+    filecontent = (Uchar *)CREATEMEMORYMAP (mmcallinfo->queryfilelist[filenum],
                                    True, 
                                    &filelen);
     if (filecontent == NULL || filelen == 0)

@@ -453,7 +453,7 @@ ac_pwd='/Users/garvizmx/Dropbox/Toci/sparsehash-2.0.2'
 srcdir='.'
 INSTALL='/opt/local/bin/ginstall -c'
 MKDIR_P='/opt/local/bin/gmkdir -p'
-AWK='awk'
+AWK='gawk'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
 ac_need_defaults=:
@@ -677,7 +677,7 @@ S["am__tar"]="${AMTAR} chof - \"$$tardir\""
 S["AMTAR"]="${SHELL} /Users/garvizmx/Dropbox/Toci/sparsehash-2.0.2/missing --run tar"
 S["am__leading_dot"]="."
 S["SET_MAKE"]=""
-S["AWK"]="awk"
+S["AWK"]="gawk"
 S["mkdir_p"]="/opt/local/bin/gmkdir -p"
 S["MKDIR_P"]="/opt/local/bin/gmkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"

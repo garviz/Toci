@@ -1,91 +1,91 @@
-cleanMUMcand.dbg.o:cleanMUMcand.c
-	$(CC) $(CFLAGS) -DDEBUG -c cleanMUMcand.c -o $@
+cleanMUMcand.dbg.o:cleanMUMcand.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c cleanMUMcand.cpp -o $@
 
-clock.dbg.o:clock.c
-	$(CC) $(CFLAGS) -DDEBUG -c clock.c -o $@
+clock.dbg.o:clock.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c clock.cpp -o $@
 
-debug.dbg.o:debug.c
-	$(CC) $(CFLAGS) -DDEBUG -c debug.c -o $@
+debug.dbg.o:debug.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c debug.cpp -o $@
 
-mapfile.dbg.o:mapfile.c
-	$(CC) $(CFLAGS) -DDEBUG -c mapfile.c -o $@
+mapfile.dbg.o:mapfile.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c mapfile.cpp -o $@
 
-multiseq.dbg.o:multiseq.c
-	$(CC) $(CFLAGS) -DDEBUG -c multiseq.c -o $@
+multiseq.dbg.o:multiseq.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c multiseq.cpp -o $@
 
-procopt.dbg.o:procopt.c
-	$(CC) $(CFLAGS) -DDEBUG -c procopt.c -o $@
+procopt.dbg.o:procopt.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c procopt.cpp -o $@
 
-safescpy.dbg.o:safescpy.c
-	$(CC) $(CFLAGS) -DDEBUG -c safescpy.c -o $@
+safescpy.dbg.o:safescpy.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c safescpy.cpp -o $@
 
-seterror.dbg.o:seterror.c
-	$(CC) $(CFLAGS) -DDEBUG -c seterror.c -o $@
+seterror.dbg.o:seterror.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c seterror.cpp -o $@
 
-space.dbg.o:space.c
-	$(CC) $(CFLAGS) -DDEBUG -c space.c -o $@
+space.dbg.o:space.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c space.cpp -o $@
 
-cleanMUMcand.prepro:cleanMUMcand.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c cleanMUMcand.c -o $@
+cleanMUMcand.prepro:cleanMUMcand.cpppp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c cleanMUMcand.cpppp -o $@
 
-clock.prepro:clock.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c clock.c -o $@
+clock.prepro:clock.cpppp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c clock.cpp -o $@
 
-debug.prepro:debug.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c debug.c -o $@
+debug.prepro:debug.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c debug.cpp -o $@
 
-mapfile.prepro:mapfile.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c mapfile.c -o $@
+mapfile.prepro:mapfile.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c mapfile.cpp -o $@
 
-multiseq.prepro:multiseq.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c multiseq.c -o $@
+multiseq.prepro:multiseq.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c multiseq.cpp -o $@
 
-procopt.prepro:procopt.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c procopt.c -o $@
+procopt.prepro:procopt.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c procopt.cpp -o $@
 
-safescpy.prepro:safescpy.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c safescpy.c -o $@
+safescpy.prepro:safescpy.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c safescpy.cpp -o $@
 
-seterror.prepro:seterror.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c seterror.c -o $@
+seterror.prepro:seterror.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c seterror.cpp -o $@
 
-space.prepro:space.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c space.c -o $@
+space.prepro:space.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c space.cpp -o $@
 
-cleanMUMcand.splint:cleanMUMcand.c
-	splint ${SPLINTFLAGS} cleanMUMcand.c
+cleanMUMcand.splint:cleanMUMcand.cpp
+	splint ${SPLINTFLAGS} cleanMUMcand.cpp
 	touch cleanMUMcand.splint
 
-clock.splint:clock.c
-	splint ${SPLINTFLAGS} clock.c
+clock.splint:clock.cpp
+	splint ${SPLINTFLAGS} clock.cpp
 	touch clock.splint
 
-debug.splint:debug.c
-	splint ${SPLINTFLAGS} debug.c
+debug.splint:debug.cpp
+	splint ${SPLINTFLAGS} debug.cpp
 	touch debug.splint
 
-mapfile.splint:mapfile.c
-	splint ${SPLINTFLAGS} mapfile.c
+mapfile.splint:mapfile.cpp
+	splint ${SPLINTFLAGS} mapfile.cpp
 	touch mapfile.splint
 
-multiseq.splint:multiseq.c
-	splint ${SPLINTFLAGS} multiseq.c
+multiseq.splint:multiseq.cpp
+	splint ${SPLINTFLAGS} multiseq.cpp
 	touch multiseq.splint
 
-procopt.splint:procopt.c
-	splint ${SPLINTFLAGS} procopt.c
+procopt.splint:procopt.cpp
+	splint ${SPLINTFLAGS} procopt.cpp
 	touch procopt.splint
 
-safescpy.splint:safescpy.c
-	splint ${SPLINTFLAGS} safescpy.c
+safescpy.splint:safescpy.cpp
+	splint ${SPLINTFLAGS} safescpy.cpp
 	touch safescpy.splint
 
-seterror.splint:seterror.c
-	splint ${SPLINTFLAGS} seterror.c
+seterror.splint:seterror.cpp
+	splint ${SPLINTFLAGS} seterror.cpp
 	touch seterror.splint
 
-space.splint:space.c
-	splint ${SPLINTFLAGS} space.c
+space.splint:space.cpp
+	splint ${SPLINTFLAGS} space.cpp
 	touch space.splint
 
 splintall:${SPLINTALL}

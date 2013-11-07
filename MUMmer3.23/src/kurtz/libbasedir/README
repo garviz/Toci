@@ -2,7 +2,7 @@
 This directory contains basic functions which are useful for other
 software. That is why I have put it in a seperate directory.
 
-cleanMUMcand.c: cleaning tables of MUM candidates
+cleanMUMcand.cpp: cleaning tables of MUM candidates
 clock.c: timing the program
 debug.c: throwing debugging messages
 distri.c: incrementally computing distributions of integers

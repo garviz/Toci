@@ -31,12 +31,12 @@ void setdebuglevel(void);
 void setdebuglevelfilename(char *filename);
 FILE *getdbgfp(void);
 void debugclosefile(void);
-Sint simplefileOpen(char *filename,Uint *numofbytes);
-/*@null@*/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,
+Sint simplefileOpen(const char *filename,Uint *numofbytes);
+/*@null@*/ void *creatememorymapforfiledesc(const char *file,Uint line,Sint fd,
                                             BOOL writemap,Uint numofbytes);
-/*@null@*/ void *creatememorymap(char *file,Uint line,char *filename,
+/*@null@*/ void *creatememorymap(const char *file,Uint line,const char *filename,
                                  BOOL writemap,Uint *numofbytes);
-Sint deletememorymap(char *file,Uint line,void *mappedfile);
+Sint deletememorymap(const char *file,Uint line,void *mappedfile);
 void mmcheckspaceleak(void);
 Sint mmwrapspace(void);
 void mmshowspace(void);
@@ -68,11 +68,11 @@ char *messagespace(void);
 void seterror(Sint code);
 Sint geterror(void);
 void reseterror(void);
-/*@notnull@*/ void *allocandusespaceviaptr(char *file,Uint line,
+/*@notnull@*/ void *allocandusespaceviaptr(const char *file,Uint line,
                                            /*@null@*/ void *ptr,
                                            Uint size,Uint number);
-/*@notnull@*/ char *dynamicstrdup(char *file,Uint line,char *source);
-void freespaceviaptr(char *file,Uint line,void *ptr);
+/*@notnull@*/ char *dynamicstrdup(const char *file,Uint line,char *source);
+void freespaceviaptr(const char *file,Uint line,void *ptr);
 void wrapspace(void);
 void activeblocks(void);
 void checkspaceleak(void);

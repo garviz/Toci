@@ -231,7 +231,7 @@ Sint getmaxmatinput (Multiseq *subjectmultiseq,
   Uint filelen;
   Uchar *filecontent;
 
-  filecontent = CREATEMEMORYMAP (subjectfile, True, &filelen);
+  filecontent = (Uchar *)CREATEMEMORYMAP (subjectfile, True, &filelen);
   if (filecontent == NULL || filelen == 0)
   {
     ERROR2("cannot open file \"%s\" or file \"%s\" is empty",subjectfile,

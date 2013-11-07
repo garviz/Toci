@@ -1,196 +1,196 @@
-access.dbg.o:access.c
-	$(CC) $(CFLAGS) -DDEBUG -c access.c -o $@
+access.dbg.o:access.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c access.cpp -o $@
 
-addleafcount.dbg.o:addleafcount.c
-	$(CC) $(CFLAGS) -DDEBUG -c addleafcount.c -o $@
+addleafcount.dbg.o:addleafcount.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c addleafcount.cpp -o $@
 
-construct.dbg.o:construct.c
-	$(CC) $(CFLAGS) -DDEBUG -c construct.c -o $@
+construct.dbg.o:construct.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c construct.cpp -o $@
 
-depthtab.dbg.o:depthtab.c
-	$(CC) $(CFLAGS) -DDEBUG -c depthtab.c -o $@
+depthtab.dbg.o:depthtab.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c depthtab.cpp -o $@
 
-dfs.dbg.o:dfs.c
-	$(CC) $(CFLAGS) -DDEBUG -c dfs.c -o $@
+dfs.dbg.o:dfs.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c dfs.cpp -o $@
 
-ex2leav.dbg.o:ex2leav.c
-	$(CC) $(CFLAGS) -DDEBUG -c ex2leav.c -o $@
+ex2leav.dbg.o:ex2leav.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c ex2leav.cpp -o $@
 
-iterator.dbg.o:iterator.c
-	$(CC) $(CFLAGS) -DDEBUG -c iterator.c -o $@
+iterator.dbg.o:iterator.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c iterator.cpp -o $@
 
-linkloc.dbg.o:linkloc.c
-	$(CC) $(CFLAGS) -DDEBUG -c linkloc.c -o $@
+linkloc.dbg.o:linkloc.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c linkloc.cpp -o $@
 
-loc.dbg.o:loc.c
-	$(CC) $(CFLAGS) -DDEBUG -c loc.c -o $@
+loc.dbg.o:loc.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c loc.cpp -o $@
 
-overmax.dbg.o:overmax.c
-	$(CC) $(CFLAGS) -DDEBUG -c overmax.c -o $@
+overmax.dbg.o:overmax.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c overmax.cpp -o $@
 
-oversucc.dbg.o:oversucc.c
-	$(CC) $(CFLAGS) -DDEBUG -c oversucc.c -o $@
+oversucc.dbg.o:oversucc.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c oversucc.cpp -o $@
 
-scanpref.dbg.o:scanpref.c
-	$(CC) $(CFLAGS) -DDEBUG -c scanpref.c -o $@
+scanpref.dbg.o:scanpref.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c scanpref.cpp -o $@
 
-stree.dbg.o:stree.c
-	$(CC) $(CFLAGS) -DDEBUG -c stree.c -o $@
+stree.dbg.o:stree.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c stree.cpp -o $@
 
-streedbg.dbg.o:streedbg.c
-	$(CC) $(CFLAGS) -DDEBUG -c streedbg.c -o $@
+streedbg.dbg.o:streedbg.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c streedbg.cpp -o $@
 
-streefiledoc.dbg.o:streefiledoc.c
-	$(CC) $(CFLAGS) -DDEBUG -c streefiledoc.c -o $@
+streefiledoc.dbg.o:streefiledoc.cpp
+	$(CC) $(CFLAGS) -DDEBUG -c streefiledoc.cpp -o $@
 
-access.prepro:access.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c access.c -o $@
+access.prepro:access.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c access.cpp -o $@
 
-addleafcount.prepro:addleafcount.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c addleafcount.c -o $@
+addleafcount.prepro:addleafcount.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c addleafcount.cpp -o $@
 
-construct.prepro:construct.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c construct.c -o $@
+construct.prepro:construct.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c construct.cpp -o $@
 
-depthtab.prepro:depthtab.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c depthtab.c -o $@
+depthtab.prepro:depthtab.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c depthtab.cpp -o $@
 
-dfs.prepro:dfs.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c dfs.c -o $@
+dfs.prepro:dfs.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c dfs.cpp -o $@
 
-ex2leav.prepro:ex2leav.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c ex2leav.c -o $@
+ex2leav.prepro:ex2leav.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c ex2leav.cpp -o $@
 
-iterator.prepro:iterator.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c iterator.c -o $@
+iterator.prepro:iterator.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c iterator.cpp -o $@
 
-linkloc.prepro:linkloc.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c linkloc.c -o $@
+linkloc.prepro:linkloc.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c linkloc.cpp -o $@
 
-loc.prepro:loc.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c loc.c -o $@
+loc.prepro:loc.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c loc.cpp -o $@
 
-overmax.prepro:overmax.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c overmax.c -o $@
+overmax.prepro:overmax.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c overmax.cpp -o $@
 
-oversucc.prepro:oversucc.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c oversucc.c -o $@
+oversucc.prepro:oversucc.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c oversucc.cpp -o $@
 
-scanpref.prepro:scanpref.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c scanpref.c -o $@
+scanpref.prepro:scanpref.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c scanpref.cpp -o $@
 
-stree.prepro:stree.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c stree.c -o $@
+stree.prepro:stree.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c stree.cpp -o $@
 
-streedbg.prepro:streedbg.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c streedbg.c -o $@
+streedbg.prepro:streedbg.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c streedbg.cpp -o $@
 
-streefiledoc.prepro:streefiledoc.c
-	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c streefiledoc.c -o $@
+streefiledoc.prepro:streefiledoc.cpp
+	$(CC) -E -g3 $(CFLAGS) -DDEBUG -c streefiledoc.cpp -o $@
 
-access.pr:access.c
-	skproto.x access.c > $@
+access.pr:access.cpp
+	skproto.x access.cpp > $@
 
-addleafcount.pr:addleafcount.c
-	skproto.x addleafcount.c > $@
+addleafcount.pr:addleafcount.cpp
+	skproto.x addleafcount.cpp > $@
 
-construct.pr:construct.c
-	skproto.x construct.c > $@
+construct.pr:construct.cpp
+	skproto.x construct.cpp > $@
 
-depthtab.pr:depthtab.c
-	skproto.x depthtab.c > $@
+depthtab.pr:depthtab.cpp
+	skproto.x depthtab.cpp > $@
 
-dfs.pr:dfs.c
-	skproto.x dfs.c > $@
+dfs.pr:dfs.cpp
+	skproto.x dfs.cpp > $@
 
-ex2leav.pr:ex2leav.c
-	skproto.x ex2leav.c > $@
+ex2leav.pr:ex2leav.cpp
+	skproto.x ex2leav.cpp > $@
 
-iterator.pr:iterator.c
-	skproto.x iterator.c > $@
+iterator.pr:iterator.cpp
+	skproto.x iterator.cpp > $@
 
-linkloc.pr:linkloc.c
-	skproto.x linkloc.c > $@
+linkloc.pr:linkloc.cpp
+	skproto.x linkloc.cpp > $@
 
-loc.pr:loc.c
-	skproto.x loc.c > $@
+loc.pr:loc.cpp
+	skproto.x loc.cpp > $@
 
-overmax.pr:overmax.c
-	skproto.x overmax.c > $@
+overmax.pr:overmax.cpp
+	skproto.x overmax.cpp > $@
 
-oversucc.pr:oversucc.c
-	skproto.x oversucc.c > $@
+oversucc.pr:oversucc.cpp
+	skproto.x oversucc.cpp > $@
 
-scanpref.pr:scanpref.c
-	skproto.x scanpref.c > $@
+scanpref.pr:scanpref.cpp
+	skproto.x scanpref.cpp > $@
 
-stree.pr:stree.c
-	skproto.x stree.c > $@
+stree.pr:stree.cpp
+	skproto.x stree.cpp > $@
 
-streedbg.pr:streedbg.c
-	skproto.x streedbg.c > $@
+streedbg.pr:streedbg.cpp
+	skproto.x streedbg.cpp > $@
 
-streefiledoc.pr:streefiledoc.c
-	skproto.x streefiledoc.c > $@
+streefiledoc.pr:streefiledoc.cpp
+	skproto.x streefiledoc.cpp > $@
 
-access.splint:access.c
-	splint ${SPLINTFLAGS} access.c
+access.splint:access.cpp
+	splint ${SPLINTFLAGS} access.cpp
 	touch access.splint
 
-addleafcount.splint:addleafcount.c
-	splint ${SPLINTFLAGS} addleafcount.c
+addleafcount.splint:addleafcount.cpp
+	splint ${SPLINTFLAGS} addleafcount.cpp
 	touch addleafcount.splint
 
-construct.splint:construct.c
-	splint ${SPLINTFLAGS} construct.c
+construct.splint:construct.cpp
+	splint ${SPLINTFLAGS} construct.cpp
 	touch construct.splint
 
-depthtab.splint:depthtab.c
-	splint ${SPLINTFLAGS} depthtab.c
+depthtab.splint:depthtab.cpp
+	splint ${SPLINTFLAGS} depthtab.cpp
 	touch depthtab.splint
 
-dfs.splint:dfs.c
-	splint ${SPLINTFLAGS} dfs.c
+dfs.splint:dfs.cpp
+	splint ${SPLINTFLAGS} dfs.cpp
 	touch dfs.splint
 
-ex2leav.splint:ex2leav.c
-	splint ${SPLINTFLAGS} ex2leav.c
+ex2leav.splint:ex2leav.cpp
+	splint ${SPLINTFLAGS} ex2leav.cpp
 	touch ex2leav.splint
 
-iterator.splint:iterator.c
-	splint ${SPLINTFLAGS} iterator.c
+iterator.splint:iterator.cpp
+	splint ${SPLINTFLAGS} iterator.cpp
 	touch iterator.splint
 
-linkloc.splint:linkloc.c
-	splint ${SPLINTFLAGS} linkloc.c
+linkloc.splint:linkloc.cpp
+	splint ${SPLINTFLAGS} linkloc.cpp
 	touch linkloc.splint
 
-loc.splint:loc.c
-	splint ${SPLINTFLAGS} loc.c
+loc.splint:loc.cpp
+	splint ${SPLINTFLAGS} loc.cpp
 	touch loc.splint
 
-overmax.splint:overmax.c
-	splint ${SPLINTFLAGS} overmax.c
+overmax.splint:overmax.cpp
+	splint ${SPLINTFLAGS} overmax.cpp
 	touch overmax.splint
 
-oversucc.splint:oversucc.c
-	splint ${SPLINTFLAGS} oversucc.c
+oversucc.splint:oversucc.cpp
+	splint ${SPLINTFLAGS} oversucc.cpp
 	touch oversucc.splint
 
-scanpref.splint:scanpref.c
-	splint ${SPLINTFLAGS} scanpref.c
+scanpref.splint:scanpref.cpp
+	splint ${SPLINTFLAGS} scanpref.cpp
 	touch scanpref.splint
 
-stree.splint:stree.c
-	splint ${SPLINTFLAGS} stree.c
+stree.splint:stree.cpp
+	splint ${SPLINTFLAGS} stree.cpp
 	touch stree.splint
 
-streedbg.splint:streedbg.c
-	splint ${SPLINTFLAGS} streedbg.c
+streedbg.splint:streedbg.cpp
+	splint ${SPLINTFLAGS} streedbg.cpp
 	touch streedbg.splint
 
-streefiledoc.splint:streefiledoc.c
-	splint ${SPLINTFLAGS} streefiledoc.c
+streefiledoc.splint:streefiledoc.cpp
+	splint ${SPLINTFLAGS} streefiledoc.cpp
 	touch streefiledoc.splint
 
 splintall:${SPLINTALL}

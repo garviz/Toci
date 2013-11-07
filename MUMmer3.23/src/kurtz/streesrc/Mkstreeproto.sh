@@ -26,7 +26,7 @@ extern "C" {
 
 ENDOFINCLUDE
 
-grep -h '^#define CONSTRUCT' construct.c |\
+grep -h '^#define CONSTRUCT' construct.cpp |\
     sed -e 's/^#define CONSTRUCT \(.*\)/\1;/'
 
 cat << ENDOFINCLUDE

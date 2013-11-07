@@ -199,7 +199,7 @@ AMTAR = ${SHELL} /Users/garvizmx/Dropbox/Toci/sparsehash-2.0.2/missing --run tar
 AUTOCONF = ${SHELL} /Users/garvizmx/Dropbox/Toci/sparsehash-2.0.2/missing --run autoconf
 AUTOHEADER = ${SHELL} /Users/garvizmx/Dropbox/Toci/sparsehash-2.0.2/missing --run autoheader
 AUTOMAKE = ${SHELL} /Users/garvizmx/Dropbox/Toci/sparsehash-2.0.2/missing --run automake-1.11
-AWK = awk
+AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2

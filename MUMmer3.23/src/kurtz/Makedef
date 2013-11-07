@@ -7,6 +7,6 @@
 # This files contains some basic definitions to be included in the
 # makefiles.
 
-CC=gcc
-DEFINECFLAGS=-Wall -Werror -O3 -g -DDEBUG
+CC=/Users/jvizcaino/gcc-4.8.1/bin/g++
+DEFINECFLAGS=-Wall -Werror -O3 -g
 DEFINELDFLAGS=

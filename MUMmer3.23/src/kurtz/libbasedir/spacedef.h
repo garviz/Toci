@@ -17,16 +17,16 @@
   extern "C" {
 #endif
 
-/*@notnull@*/ void *allocandusespaceviaptr(char *file,Uint line,
+/*@notnull@*/ void *allocandusespaceviaptr(const char *file,Uint line,
                                            /*@null@*/ void *ptr,
                                            Uint size,Uint number);
-/*@notnull@*/ char *dynamicstrdup(char *file,Uint line,char *source);
-void freespaceviaptr(char *file,Uint line,void *ptr);
-/*@null@*/ void *creatememorymapforfiledesc(char *file,Uint line,Sint fd,
+/*@notnull@*/ char *dynamicstrdup(const char *file,Uint line,char *source);
+void freespaceviaptr(const char *file,Uint line,void *ptr);
+/*@null@*/ void *creatememorymapforfiledesc(const char *file,Uint line,Sint fd,
                                             BOOL writemap,Uint numofbytes);
-/*@null@*/ void *creatememorymap(char *file,Uint line,char *filename,
+/*@null@*/ void *creatememorymap(const char *file,Uint line,const char *filename,
                                  BOOL writemap,Uint *numofbytes);
-Sint deletememorymap(char *file,Uint line,void *mappedfile);
+Sint deletememorymap(const char *file,Uint line,void *mappedfile);
 
 #ifdef __cplusplus
 }

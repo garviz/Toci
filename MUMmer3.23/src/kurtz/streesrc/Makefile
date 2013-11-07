@@ -1,7 +1,7 @@
 #-- Imported variables from top level makefile
 # BIN_DIR AUX_BIN_DIR CXX CC CFLAGS CXXFLAGS LDFLAGS
 
-##include ../Makedef
+include ../Makedef
 
 LIBBASEDIR=../libbasedir
 INCLUDEDIR=../libbasedir
@@ -17,8 +17,8 @@ INCLUDEDIR=../libbasedir
 SIZEFLAG=-DSTREEHUGE
 
 override CFLAGS+=-I$(INCLUDEDIR) $(SIZEFLAG)
-##CFLAGS=${DEFINECFLAGS} -I$(INCLUDEDIR) $(SIZEFLAG)
-##LDFLAGS=${DEFINELDFLAGS}
+CFLAGS=${DEFINECFLAGS} -I$(INCLUDEDIR) $(SIZEFLAG)
+LDFLAGS=${DEFINELDFLAGS}
 SPLINTFLAGS=${SIZEFLAG} -I${INCLUDEDIR} -f ../Splintoptions -DDEBUG
 
 #-DSTARTFACTOR=0.5
@@ -28,9 +28,9 @@ LD=${CC}
 LIBBASE=${LIBBASEDIR}/libbase.a
 LIBBASEDBG=${LIBBASEDIR}/libbase.dbg.a
 
-PROTOFILES=access.c scanpref.c linkloc.c depthtab.c\
-           ex2leav.c dfs.c overmax.c oversucc.c\
-           addleafcount.c iterator.c streedbg.c
+PROTOFILES=access.cpp scanpref.cpp linkloc.cpp depthtab.cpp\
+           ex2leav.cpp dfs.cpp overmax.cpp oversucc.cpp\
+           addleafcount.cpp iterator.cpp streedbg.cpp
 
 OBJECTS4=construct.4.o access.4.o scanpref.4.o linkloc.4.o depthtab.4.o\
           ex2leav.4.o dfs.4.o overmax.4.o oversucc.4.o\

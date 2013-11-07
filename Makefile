@@ -1,4 +1,4 @@
-CC = g++
+CC = /Users/jvizcaino/gcc-4.8.1/bin/g++
 #CC = kinst-ompp g++
 CXXFLAGS = -g -O3 -m64 -fopenmp -D_GLIBCXX_PARALLEL -msse4.2 -std=c++11
 LIBS = -lstdc++ -lpthread -llikwid
