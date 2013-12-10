@@ -8,7 +8,7 @@ using namespace std;
 
 void reverse_complement(string &seq_rc, bool nucleotides_only);
 void trim(string &line, long &start, long &end);
-void load_fasta(string filename, string &S, vector<string> &descr, vector<long> &startpos);
+void load_fasta(string filename, string &S, vector<string> &descr, vector<long long> &startpos);
 
 #endif // __FASTA_HPP__
 

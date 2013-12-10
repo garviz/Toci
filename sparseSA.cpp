@@ -14,8 +14,9 @@
 #include <sstream>
 #include <fstream>
 #include <xmmintrin.h>
-#include <likwid.h>
-
+#include <google/sparsetable>
+#include <sparsehash/sparse_hash_map>
+#include "smhasher-read-only/MurmurHash3.h"
 #include "sparseSA.hpp"
 
 #define LCPCHILD(cLCP,cS,cE) \
@@ -30,7 +31,9 @@
 //cin.get();
 #define PRINT
 using namespace std;
-
+using google::sparsetable;
+using google::sparse_hash_map;
+using tr1::hash;
 
 // LS suffix sorter (integer alphabet). 
 extern "C" { void suffixsort(int *x, int *p, int n, int k, int l); };
@@ -47,108 +50,39 @@ sparseSA::sparseSA(string &R_, vector<string> &descr_, vector<long long> &startp
   sparseMult = sparseMult_;
   printSubstring = printSubstring_;
   string line;
-  //long long sa=0, isa=0, child=0, lcp=0, i=0;
+  unsigned int hash;
+  uint32_t seed = 42; 
+  unsigned int SIZE = 4;
+  unsigned int max_value = pow(4,SIZE);
+  SA.resize(R_.size());
+ /*   int char2int[UCHAR_MAX+1]; // Map from char to integer alphabet.
 
-  K = K_;
+    // Zero char2int mapping.
+    for (int i=0; i<=UCHAR_MAX; i++) char2int[i]=0;
 
-  /*-----------------------------------------------------------------------------
-   *  Load Reference genome file in R string.
-   *-----------------------------------------------------------------------------*/
-  string file(R_+".ois");
-  ifstream ifs(file);
-  if (ifs.is_open())
-      getline(ifs, Reference);
-  else
-      cerr << R_ << " ERROR reading file\n";
-  ifs.close();
-  //transform(Reference.begin(), Reference.end(), Reference.begin(), ::tolower);
-  N = Reference.length();
-  cout << "# R.length=" << N;
-  /*-----------------------------------------------------------------------------
-   *  Load Suffix array from file
-   *-----------------------------------------------------------------------------*/
-  unsigned long size;
-  file.assign(R_+".SA");
-  ifs.open(file.c_str(), ios::binary);
-  if (ifs.is_open()) {
-      ifs.read(reinterpret_cast<char*>(&size), sizeof(size));
-      SA.resize(size);
-      ifs.read(reinterpret_cast<char*>(&SA[0]),size*sizeof(SA[0]));
-  }
-  else
-      cerr << file << " ERROR reading file\n";
-  ifs.close();
+    // Determine which characters are used in the string S.
+    //for (long i = 0; i < N; i++) char2int[(int)R_[i]]=1;
 
-  /*-----------------------------------------------------------------------------
-   *  Load Inversed Suffix array from file
-   *-----------------------------------------------------------------------------*/
-  //vector<unsigned long> ISA;
-  file.assign(R_+".ISA");
-  ifs.open(file.c_str(), ios::binary);
-  if (ifs.is_open()) {
-      ifs.read(reinterpret_cast<char*>(&size), sizeof(size));
-//      /*ifs.seekg(10,ifs.cur);
-//      cout << ifs.tellg() << endl;*/
-      ISA.resize(size);
-      ifs.read(reinterpret_cast<char*>(&ISA[0]),size*sizeof(ISA[0]));
-  }
-  else
-      cerr << file << " ERROR reading file\n";
-  ifs.close();
+    // Count the size of the alphabet. 
+    int alphasz = 0; 
+    for(int i=0; i <= UCHAR_MAX; i++) {
+      if (char2int[i]) char2int[i]=alphasz++;
+      else char2int[i] = -1;
+    }
 
-  /*-----------------------------------------------------------------------------
-   *  Load Child table from file
-   *-----------------------------------------------------------------------------*/
-  //vector<unsigned long> CHILD;
-  file.assign(R_+".CHILD");
-  ifs.open(file.c_str(), ios::binary);
-  if (ifs.is_open()) {
-      ifs.read(reinterpret_cast<char*>(&size), sizeof(size));
-      CHILD.resize(size);
-      ifs.read(reinterpret_cast<char*>(&CHILD[0]),size*sizeof(CHILD[0]));
-  }
-  else
-      cerr << file << " ERROR reading file\n";
-  ifs.close();
-  /*-----------------------------------------------------------------------------
-   *  Load LCP table from file
-   *-----------------------------------------------------------------------------*/
-  file.assign(R_+".LCP");
-  ifs.open(file.c_str());
-  if (ifs.is_open()) {
-      getline(ifs,line);
-      size = strtol(line.c_str(),NULL,0);
-      LCP.resize(size);
-      long lcp;
-      for (long long i=0; i<(long long)size; ++i) {
-          getline(ifs,line);
-          lcp = strtol(line.c_str(),NULL,0);
-          LCP.set(i, lcp); 
-      }
-  }
-  else
-      cerr << file << " ERROR reading file\n";
-  ifs.close();
+    // Remap the alphabet. 
+    for(long i = 0; i < N; i++) ISA[i] = (int)R_[i]; 
+    for (long i = 0; i < N; i++) ISA[i]=char2int[ISA[i]] + 1; 
+    // First "character" equals 1 because of above plus one, l=1 in suffixsort(). 
+    int alphalast = alphasz + 1;
+    */
+    // Use LS algorithm to construct the suffix array.
+    //int *SAint = (int*)(&SA[0]);
+    //suffixsort(&ISA[0], SAint , N-1, alphalast, 1);
+  //N = SA.size();
+  //logN = (long)ceil(log(N/K) / log(2.0));
 
-  /*-----------------------------------------------------------------------------
-   *  Load offset table from file
-   *-----------------------------------------------------------------------------*/
-  file.assign(R_+".off");
-  ifs.open(file.c_str());
-  string dat;
-  long long l, r;
-  while (ifs >> dat >> l >> r) {
-      interval_t t(l,r,8);
-      offset[dat]=t;
-  }
-  ifs.close();
-  //for (long i=0;i<SA.size();i++)
-  //    fprintf(stderr,"%lld,%lld,%lld,%lld\n",SA[i],ISA[i],CHILD[i],LCP[i]);
-  // Adjust to "sampled" size. 
-  N = SA.size();
-  logN = (long)ceil(log(N/K) / log(2.0));
-
-  NKm1 = N;
+ // NKm1 = N;
 }
 
 // Binary search for left boundry of interval.
@@ -601,12 +535,12 @@ void sparseSA::findMAM(string &P, int chunk, int chunks, vector<match_t> &matche
     PRINT*/
     long long cS, cE;
     do {
-        __builtin_prefetch(SA[cur.start-LINE].data(),0,3);
-        __builtin_prefetch(SA[cur.end+LINE].data(),0,3);
+        //__builtin_prefetch(SA[cur.start-LINE].data(),0,3);
+        //__builtin_prefetch(SA[cur.end+LINE].data(),0,3);
         cS = SA[cur.start]+1;
         cE = SA[cur.end]+1;
-        __builtin_prefetch(ISA[cS-LINE].data(),0,3);
-        __builtin_prefetch(ISA[cE+LINE].data(),0,3);
+        //__builtin_prefetch(ISA[cS-LINE].data(),0,3);
+        //__builtin_prefetch(ISA[cE+LINE].data(),0,3);
 #pragma pomp inst begin(suffixlink)
       cur.depth--;
       cur.start = ISA[cS];  

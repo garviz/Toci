@@ -3,7 +3,7 @@
  *
  *       Filename:  ex.cpp
  *
- *    Description:  send and rec3ive vectors
+ *    Description:  send and receive vectors
  *
  *        Version:  1.0
  *        Created:  10/04/13 13:15:26

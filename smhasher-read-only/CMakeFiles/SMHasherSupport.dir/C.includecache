@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/media/garviz/Toci/smhasher-read-only/PMurHash.c
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.c
 PMurHash.h
-/media/garviz/Toci/smhasher-read-only/PMurHash.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.h
 stdlib.h
 -
 
-/media/garviz/Toci/smhasher-read-only/PMurHash.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.h
 stdint.h
 -
 limits.h

@@ -3,7 +3,6 @@
 #include <fstream>
 #include <vector>
 #include <omp.h>
-#include <likwid.h>
 
 #include "sparseSA.hpp"
 #include "fasta.hpp"
@@ -177,8 +176,6 @@ void *query_thread(void *arg_) {
 
 int main(int argc, char* argv[]) {
 #pragma pomp inst init
-  LIKWID_MARKER_INIT;
-  LIKWID_MARKER_START("MUM");
   // Collect parameters from the command line.
     rusage memory;
   while (1) {
@@ -246,9 +243,7 @@ int main(int argc, char* argv[]) {
   vector<string> refdescr; 
   vector<long long> startpos;
 
-  LIKWID_MARKER_STOP("MUM");
-  LIKWID_MARKER_CLOSE;
-  //load_fasta(ref_fasta, ref, refdescr, startpos);
+  load_fasta(ref_fasta, ref, refdescr, startpos);
 
   // Automatically use 4 column format if there are multiple reference sequences.
   if(startpos.size() > 1) _4column = true;
@@ -285,10 +280,10 @@ int main(int argc, char* argv[]) {
       forwards = false;
   double s, e;
   s = omp_get_wtime();
-  sa = new sparseSA(ref_fasta, refdescr, startpos, _4column, K, suflink, true, sparseMult, printSubstring);
+  sa = new sparseSA(ref, refdescr, startpos, _4column, K, suflink, true, sparseMult, printSubstring);
   e = omp_get_wtime();
   cout << ",sparseSA=" << e-s;
-  pthread_attr_t attr;  pthread_attr_init(&attr);
+/*  pthread_attr_t attr;  pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
   vector<query_arg> args(query_threads);
@@ -307,7 +302,7 @@ int main(int argc, char* argv[]) {
   // Wait for all threads to terminate.
   for(int i = 0; i < query_threads; i++) 
     pthread_join(thread_ids[i], NULL);    
-
+*/
   getrusage(RUSAGE_SELF, &memory);
   cout << "# RSS=" << memory.ru_maxrss << endl;
   delete sa;

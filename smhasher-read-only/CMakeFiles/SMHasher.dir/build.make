@@ -4,7 +4,7 @@
 #=============================================================================
 # Special targets provided by cmake.
 
-# Disable implicit rules so canoncical targets will work.
+# Disable implicit rules so canonical targets will work.
 .SUFFIXES:
 
 # Remove some rules from gmake that .SUFFIXES does not remove.
@@ -26,16 +26,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /opt/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /opt/local/bin/cmake -E remove -f
+
+# Escaping for special characters.
+EQUALS = =
+
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /opt/local/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/garviz/Toci/smhasher-read-only
+CMAKE_SOURCE_DIR = /Users/garvizmx/Dropbox/Toci/smhasher-read-only
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/garviz/Toci/smhasher-read-only
+CMAKE_BINARY_DIR = /Users/garvizmx/Dropbox/Toci/smhasher-read-only
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SMHasher.dir/depend.make
@@ -48,17 +54,17 @@ include CMakeFiles/SMHasher.dir/flags.make
 
 CMakeFiles/SMHasher.dir/main.o: CMakeFiles/SMHasher.dir/flags.make
 CMakeFiles/SMHasher.dir/main.o: main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasher.dir/main.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasher.dir/main.o -c /media/garviz/Toci/smhasher-read-only/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasher.dir/main.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/main.cpp
 
 CMakeFiles/SMHasher.dir/main.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasher.dir/main.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/main.cpp > CMakeFiles/SMHasher.dir/main.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/main.cpp > CMakeFiles/SMHasher.dir/main.i
 
 CMakeFiles/SMHasher.dir/main.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasher.dir/main.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/main.cpp -o CMakeFiles/SMHasher.dir/main.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/main.cpp -o CMakeFiles/SMHasher.dir/main.s
 
 CMakeFiles/SMHasher.dir/main.o.requires:
 .PHONY : CMakeFiles/SMHasher.dir/main.o.requires
@@ -68,7 +74,6 @@ CMakeFiles/SMHasher.dir/main.o.provides: CMakeFiles/SMHasher.dir/main.o.requires
 .PHONY : CMakeFiles/SMHasher.dir/main.o.provides
 
 CMakeFiles/SMHasher.dir/main.o.provides.build: CMakeFiles/SMHasher.dir/main.o
-.PHONY : CMakeFiles/SMHasher.dir/main.o.provides.build
 
 # Object files for target SMHasher
 SMHasher_OBJECTS = \
@@ -78,8 +83,8 @@ SMHasher_OBJECTS = \
 SMHasher_EXTERNAL_OBJECTS =
 
 SMHasher: CMakeFiles/SMHasher.dir/main.o
-SMHasher: libSMHasherSupport.a
 SMHasher: CMakeFiles/SMHasher.dir/build.make
+SMHasher: libSMHasherSupport.a
 SMHasher: CMakeFiles/SMHasher.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable SMHasher"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SMHasher.dir/link.txt --verbose=$(VERBOSE)
@@ -96,6 +101,6 @@ CMakeFiles/SMHasher.dir/clean:
 .PHONY : CMakeFiles/SMHasher.dir/clean
 
 CMakeFiles/SMHasher.dir/depend:
-	cd /media/garviz/Toci/smhasher-read-only && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only/CMakeFiles/SMHasher.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/garvizmx/Dropbox/Toci/smhasher-read-only && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles/SMHasher.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SMHasher.dir/depend
 

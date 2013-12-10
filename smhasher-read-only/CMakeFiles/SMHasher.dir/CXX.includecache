@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/media/garviz/Toci/smhasher-read-only/AvalancheTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/AvalancheTest.h
 Types.h
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 Random.h
-/media/garviz/Toci/smhasher-read-only/Random.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Random.h
 vector
 -
 stdio.h
@@ -18,21 +18,21 @@ stdio.h
 math.h
 -
 
-/media/garviz/Toci/smhasher-read-only/Bitvec.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitvec.h
 Platform.h
-/media/garviz/Toci/smhasher-read-only/Platform.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Platform.h
 vector
 -
 
-/media/garviz/Toci/smhasher-read-only/DifferentialTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/DifferentialTest.h
 Types.h
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 Stats.h
-/media/garviz/Toci/smhasher-read-only/Stats.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Stats.h
 KeysetTest.h
-/media/garviz/Toci/smhasher-read-only/KeysetTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/KeysetTest.h
 Random.h
-/media/garviz/Toci/smhasher-read-only/Random.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Random.h
 vector
 -
 algorithm
@@ -40,47 +40,47 @@ algorithm
 stdio.h
 -
 
-/media/garviz/Toci/smhasher-read-only/Hashes.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Hashes.h
 Types.h
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 MurmurHash1.h
-/media/garviz/Toci/smhasher-read-only/MurmurHash1.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash1.h
 MurmurHash2.h
-/media/garviz/Toci/smhasher-read-only/MurmurHash2.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash2.h
 MurmurHash3.h
-/media/garviz/Toci/smhasher-read-only/MurmurHash3.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash3.h
 
-/media/garviz/Toci/smhasher-read-only/KeysetTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/KeysetTest.h
 Types.h
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 Stats.h
-/media/garviz/Toci/smhasher-read-only/Stats.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Stats.h
 Random.h
-/media/garviz/Toci/smhasher-read-only/Random.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Random.h
 algorithm
 -
 assert.h
 -
 
-/media/garviz/Toci/smhasher-read-only/MurmurHash1.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash1.h
 stdint.h
 -
 
-/media/garviz/Toci/smhasher-read-only/MurmurHash2.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash2.h
 stdint.h
 -
 
-/media/garviz/Toci/smhasher-read-only/MurmurHash3.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash3.h
 stdint.h
 -
 
-/media/garviz/Toci/smhasher-read-only/PMurHash.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.h
 stdint.h
 -
 limits.h
 -
 
-/media/garviz/Toci/smhasher-read-only/Platform.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Platform.h
 stdlib.h
 -
 math.h
@@ -88,23 +88,23 @@ math.h
 intrin.h
 -
 pstdint.h
-/media/garviz/Toci/smhasher-read-only/pstdint.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/pstdint.h
 stdint.h
 -
 strings.h
 -
 
-/media/garviz/Toci/smhasher-read-only/Random.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Random.h
 Types.h
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 
-/media/garviz/Toci/smhasher-read-only/SpeedTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpeedTest.h
 Types.h
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 
-/media/garviz/Toci/smhasher-read-only/Stats.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Stats.h
 Types.h
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 math.h
 -
 vector
@@ -118,11 +118,11 @@ string.h
 stdio.h
 -
 
-/media/garviz/Toci/smhasher-read-only/Types.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.h
 Platform.h
-/media/garviz/Toci/smhasher-read-only/Platform.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Platform.h
 Bitvec.h
-/media/garviz/Toci/smhasher-read-only/Bitvec.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitvec.h
 memory.h
 -
 vector
@@ -132,27 +132,27 @@ map
 set
 -
 
-/media/garviz/Toci/smhasher-read-only/main.cpp
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/main.cpp
 Platform.h
-/media/garviz/Toci/smhasher-read-only/Platform.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Platform.h
 Hashes.h
-/media/garviz/Toci/smhasher-read-only/Hashes.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/Hashes.h
 KeysetTest.h
-/media/garviz/Toci/smhasher-read-only/KeysetTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/KeysetTest.h
 SpeedTest.h
-/media/garviz/Toci/smhasher-read-only/SpeedTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpeedTest.h
 AvalancheTest.h
-/media/garviz/Toci/smhasher-read-only/AvalancheTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/AvalancheTest.h
 DifferentialTest.h
-/media/garviz/Toci/smhasher-read-only/DifferentialTest.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/DifferentialTest.h
 PMurHash.h
-/media/garviz/Toci/smhasher-read-only/PMurHash.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.h
 stdio.h
 -
 time.h
 -
 
-/media/garviz/Toci/smhasher-read-only/pstdint.h
+/Users/garvizmx/Dropbox/Toci/smhasher-read-only/pstdint.h
 stddef.h
 -
 limits.h

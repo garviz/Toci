@@ -1,1 +1,1 @@
-/usr/local/bin/c++   -O3 -DNDEBUG   CMakeFiles/SMHasher.dir/main.o  -o SMHasher -rdynamic libSMHasherSupport.a 
+/usr/bin/c++   -O3 -DNDEBUG -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/SMHasher.dir/main.o  -o SMHasher  libSMHasherSupport.a 

@@ -51,7 +51,7 @@ void trim(string &line, long &start, long &end) {
 
 // Concatenate new sequences to set, keep track of lengths.
 // NOTE: Concatenation using the '`' character to separate strings!
-void load_fasta(string filename, string &S, vector<string> &descr, vector<long> &startpos) {
+void load_fasta(string filename, string &S, vector<string> &descr, vector<long long> &startpos) {
   string meta, line;
   long length = 0;
 
@@ -93,7 +93,16 @@ void load_fasta(string filename, string &S, vector<string> &descr, vector<long> 
     else { // Collect sequence data.
       length += end - start + 1;
       for(long i = start; i <= end; i++) { 
-	S += std::tolower(line[i]);
+          S += std::tolower(line[i]);
+/*          switch (int(line[i]))
+          {
+              case (97,65): S+= '1'; break;
+              case (99): case (67): S+= '2'; break;
+              case (103): case (71): S+= '3'; break;
+              case (116): case (84): S+= '4'; break;
+              default: S+= '5'; break;
+          }
+*/
       }
     }
   }

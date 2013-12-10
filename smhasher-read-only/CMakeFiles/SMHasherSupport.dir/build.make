@@ -4,7 +4,7 @@
 #=============================================================================
 # Special targets provided by cmake.
 
-# Disable implicit rules so canoncical targets will work.
+# Disable implicit rules so canonical targets will work.
 .SUFFIXES:
 
 # Remove some rules from gmake that .SUFFIXES does not remove.
@@ -26,16 +26,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /opt/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /opt/local/bin/cmake -E remove -f
+
+# Escaping for special characters.
+EQUALS = =
+
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /opt/local/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/garviz/Toci/smhasher-read-only
+CMAKE_SOURCE_DIR = /Users/garvizmx/Dropbox/Toci/smhasher-read-only
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/garviz/Toci/smhasher-read-only
+CMAKE_BINARY_DIR = /Users/garvizmx/Dropbox/Toci/smhasher-read-only
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SMHasherSupport.dir/depend.make
@@ -48,17 +54,17 @@ include CMakeFiles/SMHasherSupport.dir/flags.make
 
 CMakeFiles/SMHasherSupport.dir/AvalancheTest.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/AvalancheTest.o: AvalancheTest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/AvalancheTest.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/AvalancheTest.o -c /media/garviz/Toci/smhasher-read-only/AvalancheTest.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/AvalancheTest.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/AvalancheTest.cpp
 
 CMakeFiles/SMHasherSupport.dir/AvalancheTest.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/AvalancheTest.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/AvalancheTest.cpp > CMakeFiles/SMHasherSupport.dir/AvalancheTest.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/AvalancheTest.cpp > CMakeFiles/SMHasherSupport.dir/AvalancheTest.i
 
 CMakeFiles/SMHasherSupport.dir/AvalancheTest.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/AvalancheTest.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/AvalancheTest.cpp -o CMakeFiles/SMHasherSupport.dir/AvalancheTest.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/AvalancheTest.cpp -o CMakeFiles/SMHasherSupport.dir/AvalancheTest.s
 
 CMakeFiles/SMHasherSupport.dir/AvalancheTest.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/AvalancheTest.o.requires
@@ -68,21 +74,20 @@ CMakeFiles/SMHasherSupport.dir/AvalancheTest.o.provides: CMakeFiles/SMHasherSupp
 .PHONY : CMakeFiles/SMHasherSupport.dir/AvalancheTest.o.provides
 
 CMakeFiles/SMHasherSupport.dir/AvalancheTest.o.provides.build: CMakeFiles/SMHasherSupport.dir/AvalancheTest.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/AvalancheTest.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Bitslice.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Bitslice.o: Bitslice.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Bitslice.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Bitslice.o -c /media/garviz/Toci/smhasher-read-only/Bitslice.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Bitslice.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitslice.cpp
 
 CMakeFiles/SMHasherSupport.dir/Bitslice.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Bitslice.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Bitslice.cpp > CMakeFiles/SMHasherSupport.dir/Bitslice.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitslice.cpp > CMakeFiles/SMHasherSupport.dir/Bitslice.i
 
 CMakeFiles/SMHasherSupport.dir/Bitslice.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Bitslice.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Bitslice.cpp -o CMakeFiles/SMHasherSupport.dir/Bitslice.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitslice.cpp -o CMakeFiles/SMHasherSupport.dir/Bitslice.s
 
 CMakeFiles/SMHasherSupport.dir/Bitslice.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Bitslice.o.requires
@@ -92,21 +97,20 @@ CMakeFiles/SMHasherSupport.dir/Bitslice.o.provides: CMakeFiles/SMHasherSupport.d
 .PHONY : CMakeFiles/SMHasherSupport.dir/Bitslice.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Bitslice.o.provides.build: CMakeFiles/SMHasherSupport.dir/Bitslice.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Bitslice.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Bitvec.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Bitvec.o: Bitvec.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Bitvec.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Bitvec.o -c /media/garviz/Toci/smhasher-read-only/Bitvec.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Bitvec.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitvec.cpp
 
 CMakeFiles/SMHasherSupport.dir/Bitvec.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Bitvec.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Bitvec.cpp > CMakeFiles/SMHasherSupport.dir/Bitvec.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitvec.cpp > CMakeFiles/SMHasherSupport.dir/Bitvec.i
 
 CMakeFiles/SMHasherSupport.dir/Bitvec.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Bitvec.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Bitvec.cpp -o CMakeFiles/SMHasherSupport.dir/Bitvec.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Bitvec.cpp -o CMakeFiles/SMHasherSupport.dir/Bitvec.s
 
 CMakeFiles/SMHasherSupport.dir/Bitvec.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Bitvec.o.requires
@@ -116,21 +120,20 @@ CMakeFiles/SMHasherSupport.dir/Bitvec.o.provides: CMakeFiles/SMHasherSupport.dir
 .PHONY : CMakeFiles/SMHasherSupport.dir/Bitvec.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Bitvec.o.provides.build: CMakeFiles/SMHasherSupport.dir/Bitvec.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Bitvec.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/CityTest.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/CityTest.o: CityTest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/CityTest.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/CityTest.o -c /media/garviz/Toci/smhasher-read-only/CityTest.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/CityTest.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CityTest.cpp
 
 CMakeFiles/SMHasherSupport.dir/CityTest.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/CityTest.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/CityTest.cpp > CMakeFiles/SMHasherSupport.dir/CityTest.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CityTest.cpp > CMakeFiles/SMHasherSupport.dir/CityTest.i
 
 CMakeFiles/SMHasherSupport.dir/CityTest.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/CityTest.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/CityTest.cpp -o CMakeFiles/SMHasherSupport.dir/CityTest.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CityTest.cpp -o CMakeFiles/SMHasherSupport.dir/CityTest.s
 
 CMakeFiles/SMHasherSupport.dir/CityTest.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/CityTest.o.requires
@@ -140,21 +143,20 @@ CMakeFiles/SMHasherSupport.dir/CityTest.o.provides: CMakeFiles/SMHasherSupport.d
 .PHONY : CMakeFiles/SMHasherSupport.dir/CityTest.o.provides
 
 CMakeFiles/SMHasherSupport.dir/CityTest.o.provides.build: CMakeFiles/SMHasherSupport.dir/CityTest.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/CityTest.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/City.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/City.o: City.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/City.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/City.o -c /media/garviz/Toci/smhasher-read-only/City.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/City.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/City.cpp
 
 CMakeFiles/SMHasherSupport.dir/City.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/City.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/City.cpp > CMakeFiles/SMHasherSupport.dir/City.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/City.cpp > CMakeFiles/SMHasherSupport.dir/City.i
 
 CMakeFiles/SMHasherSupport.dir/City.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/City.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/City.cpp -o CMakeFiles/SMHasherSupport.dir/City.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/City.cpp -o CMakeFiles/SMHasherSupport.dir/City.s
 
 CMakeFiles/SMHasherSupport.dir/City.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/City.o.requires
@@ -164,21 +166,20 @@ CMakeFiles/SMHasherSupport.dir/City.o.provides: CMakeFiles/SMHasherSupport.dir/C
 .PHONY : CMakeFiles/SMHasherSupport.dir/City.o.provides
 
 CMakeFiles/SMHasherSupport.dir/City.o.provides.build: CMakeFiles/SMHasherSupport.dir/City.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/City.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/crc.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/crc.o: crc.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/crc.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/crc.o -c /media/garviz/Toci/smhasher-read-only/crc.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/crc.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/crc.cpp
 
 CMakeFiles/SMHasherSupport.dir/crc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/crc.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/crc.cpp > CMakeFiles/SMHasherSupport.dir/crc.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/crc.cpp > CMakeFiles/SMHasherSupport.dir/crc.i
 
 CMakeFiles/SMHasherSupport.dir/crc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/crc.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/crc.cpp -o CMakeFiles/SMHasherSupport.dir/crc.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/crc.cpp -o CMakeFiles/SMHasherSupport.dir/crc.s
 
 CMakeFiles/SMHasherSupport.dir/crc.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/crc.o.requires
@@ -188,21 +189,20 @@ CMakeFiles/SMHasherSupport.dir/crc.o.provides: CMakeFiles/SMHasherSupport.dir/cr
 .PHONY : CMakeFiles/SMHasherSupport.dir/crc.o.provides
 
 CMakeFiles/SMHasherSupport.dir/crc.o.provides.build: CMakeFiles/SMHasherSupport.dir/crc.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/crc.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/DifferentialTest.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/DifferentialTest.o: DifferentialTest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/DifferentialTest.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/DifferentialTest.o -c /media/garviz/Toci/smhasher-read-only/DifferentialTest.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/DifferentialTest.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/DifferentialTest.cpp
 
 CMakeFiles/SMHasherSupport.dir/DifferentialTest.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/DifferentialTest.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/DifferentialTest.cpp > CMakeFiles/SMHasherSupport.dir/DifferentialTest.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/DifferentialTest.cpp > CMakeFiles/SMHasherSupport.dir/DifferentialTest.i
 
 CMakeFiles/SMHasherSupport.dir/DifferentialTest.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/DifferentialTest.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/DifferentialTest.cpp -o CMakeFiles/SMHasherSupport.dir/DifferentialTest.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/DifferentialTest.cpp -o CMakeFiles/SMHasherSupport.dir/DifferentialTest.s
 
 CMakeFiles/SMHasherSupport.dir/DifferentialTest.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/DifferentialTest.o.requires
@@ -212,21 +212,20 @@ CMakeFiles/SMHasherSupport.dir/DifferentialTest.o.provides: CMakeFiles/SMHasherS
 .PHONY : CMakeFiles/SMHasherSupport.dir/DifferentialTest.o.provides
 
 CMakeFiles/SMHasherSupport.dir/DifferentialTest.o.provides.build: CMakeFiles/SMHasherSupport.dir/DifferentialTest.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/DifferentialTest.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Hashes.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Hashes.o: Hashes.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Hashes.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Hashes.o -c /media/garviz/Toci/smhasher-read-only/Hashes.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Hashes.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Hashes.cpp
 
 CMakeFiles/SMHasherSupport.dir/Hashes.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Hashes.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Hashes.cpp > CMakeFiles/SMHasherSupport.dir/Hashes.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Hashes.cpp > CMakeFiles/SMHasherSupport.dir/Hashes.i
 
 CMakeFiles/SMHasherSupport.dir/Hashes.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Hashes.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Hashes.cpp -o CMakeFiles/SMHasherSupport.dir/Hashes.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Hashes.cpp -o CMakeFiles/SMHasherSupport.dir/Hashes.s
 
 CMakeFiles/SMHasherSupport.dir/Hashes.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Hashes.o.requires
@@ -236,21 +235,20 @@ CMakeFiles/SMHasherSupport.dir/Hashes.o.provides: CMakeFiles/SMHasherSupport.dir
 .PHONY : CMakeFiles/SMHasherSupport.dir/Hashes.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Hashes.o.provides.build: CMakeFiles/SMHasherSupport.dir/Hashes.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Hashes.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/KeysetTest.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/KeysetTest.o: KeysetTest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/KeysetTest.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/KeysetTest.o -c /media/garviz/Toci/smhasher-read-only/KeysetTest.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/KeysetTest.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/KeysetTest.cpp
 
 CMakeFiles/SMHasherSupport.dir/KeysetTest.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/KeysetTest.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/KeysetTest.cpp > CMakeFiles/SMHasherSupport.dir/KeysetTest.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/KeysetTest.cpp > CMakeFiles/SMHasherSupport.dir/KeysetTest.i
 
 CMakeFiles/SMHasherSupport.dir/KeysetTest.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/KeysetTest.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/KeysetTest.cpp -o CMakeFiles/SMHasherSupport.dir/KeysetTest.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/KeysetTest.cpp -o CMakeFiles/SMHasherSupport.dir/KeysetTest.s
 
 CMakeFiles/SMHasherSupport.dir/KeysetTest.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/KeysetTest.o.requires
@@ -260,21 +258,20 @@ CMakeFiles/SMHasherSupport.dir/KeysetTest.o.provides: CMakeFiles/SMHasherSupport
 .PHONY : CMakeFiles/SMHasherSupport.dir/KeysetTest.o.provides
 
 CMakeFiles/SMHasherSupport.dir/KeysetTest.o.provides.build: CMakeFiles/SMHasherSupport.dir/KeysetTest.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/KeysetTest.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/lookup3.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/lookup3.o: lookup3.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/lookup3.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/lookup3.o -c /media/garviz/Toci/smhasher-read-only/lookup3.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/lookup3.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/lookup3.cpp
 
 CMakeFiles/SMHasherSupport.dir/lookup3.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/lookup3.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/lookup3.cpp > CMakeFiles/SMHasherSupport.dir/lookup3.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/lookup3.cpp > CMakeFiles/SMHasherSupport.dir/lookup3.i
 
 CMakeFiles/SMHasherSupport.dir/lookup3.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/lookup3.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/lookup3.cpp -o CMakeFiles/SMHasherSupport.dir/lookup3.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/lookup3.cpp -o CMakeFiles/SMHasherSupport.dir/lookup3.s
 
 CMakeFiles/SMHasherSupport.dir/lookup3.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/lookup3.o.requires
@@ -284,21 +281,20 @@ CMakeFiles/SMHasherSupport.dir/lookup3.o.provides: CMakeFiles/SMHasherSupport.di
 .PHONY : CMakeFiles/SMHasherSupport.dir/lookup3.o.provides
 
 CMakeFiles/SMHasherSupport.dir/lookup3.o.provides.build: CMakeFiles/SMHasherSupport.dir/lookup3.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/lookup3.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/md5.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/md5.o: md5.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/md5.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/md5.o -c /media/garviz/Toci/smhasher-read-only/md5.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/md5.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/md5.cpp
 
 CMakeFiles/SMHasherSupport.dir/md5.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/md5.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/md5.cpp > CMakeFiles/SMHasherSupport.dir/md5.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/md5.cpp > CMakeFiles/SMHasherSupport.dir/md5.i
 
 CMakeFiles/SMHasherSupport.dir/md5.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/md5.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/md5.cpp -o CMakeFiles/SMHasherSupport.dir/md5.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/md5.cpp -o CMakeFiles/SMHasherSupport.dir/md5.s
 
 CMakeFiles/SMHasherSupport.dir/md5.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/md5.o.requires
@@ -308,21 +304,20 @@ CMakeFiles/SMHasherSupport.dir/md5.o.provides: CMakeFiles/SMHasherSupport.dir/md
 .PHONY : CMakeFiles/SMHasherSupport.dir/md5.o.provides
 
 CMakeFiles/SMHasherSupport.dir/md5.o.provides.build: CMakeFiles/SMHasherSupport.dir/md5.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/md5.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash1.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/MurmurHash1.o: MurmurHash1.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/MurmurHash1.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/MurmurHash1.o -c /media/garviz/Toci/smhasher-read-only/MurmurHash1.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/MurmurHash1.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash1.cpp
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash1.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/MurmurHash1.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/MurmurHash1.cpp > CMakeFiles/SMHasherSupport.dir/MurmurHash1.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash1.cpp > CMakeFiles/SMHasherSupport.dir/MurmurHash1.i
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash1.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/MurmurHash1.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/MurmurHash1.cpp -o CMakeFiles/SMHasherSupport.dir/MurmurHash1.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash1.cpp -o CMakeFiles/SMHasherSupport.dir/MurmurHash1.s
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash1.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash1.o.requires
@@ -332,21 +327,20 @@ CMakeFiles/SMHasherSupport.dir/MurmurHash1.o.provides: CMakeFiles/SMHasherSuppor
 .PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash1.o.provides
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash1.o.provides.build: CMakeFiles/SMHasherSupport.dir/MurmurHash1.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash1.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash2.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/MurmurHash2.o: MurmurHash2.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/MurmurHash2.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/MurmurHash2.o -c /media/garviz/Toci/smhasher-read-only/MurmurHash2.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/MurmurHash2.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash2.cpp
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash2.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/MurmurHash2.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/MurmurHash2.cpp > CMakeFiles/SMHasherSupport.dir/MurmurHash2.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash2.cpp > CMakeFiles/SMHasherSupport.dir/MurmurHash2.i
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash2.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/MurmurHash2.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/MurmurHash2.cpp -o CMakeFiles/SMHasherSupport.dir/MurmurHash2.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash2.cpp -o CMakeFiles/SMHasherSupport.dir/MurmurHash2.s
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash2.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash2.o.requires
@@ -356,21 +350,20 @@ CMakeFiles/SMHasherSupport.dir/MurmurHash2.o.provides: CMakeFiles/SMHasherSuppor
 .PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash2.o.provides
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash2.o.provides.build: CMakeFiles/SMHasherSupport.dir/MurmurHash2.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash2.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash3.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/MurmurHash3.o: MurmurHash3.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/MurmurHash3.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/MurmurHash3.o -c /media/garviz/Toci/smhasher-read-only/MurmurHash3.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/MurmurHash3.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash3.cpp
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash3.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/MurmurHash3.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/MurmurHash3.cpp > CMakeFiles/SMHasherSupport.dir/MurmurHash3.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash3.cpp > CMakeFiles/SMHasherSupport.dir/MurmurHash3.i
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash3.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/MurmurHash3.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/MurmurHash3.cpp -o CMakeFiles/SMHasherSupport.dir/MurmurHash3.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/MurmurHash3.cpp -o CMakeFiles/SMHasherSupport.dir/MurmurHash3.s
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash3.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash3.o.requires
@@ -380,21 +373,20 @@ CMakeFiles/SMHasherSupport.dir/MurmurHash3.o.provides: CMakeFiles/SMHasherSuppor
 .PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash3.o.provides
 
 CMakeFiles/SMHasherSupport.dir/MurmurHash3.o.provides.build: CMakeFiles/SMHasherSupport.dir/MurmurHash3.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/MurmurHash3.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Platform.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Platform.o: Platform.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Platform.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Platform.o -c /media/garviz/Toci/smhasher-read-only/Platform.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Platform.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Platform.cpp
 
 CMakeFiles/SMHasherSupport.dir/Platform.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Platform.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Platform.cpp > CMakeFiles/SMHasherSupport.dir/Platform.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Platform.cpp > CMakeFiles/SMHasherSupport.dir/Platform.i
 
 CMakeFiles/SMHasherSupport.dir/Platform.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Platform.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Platform.cpp -o CMakeFiles/SMHasherSupport.dir/Platform.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Platform.cpp -o CMakeFiles/SMHasherSupport.dir/Platform.s
 
 CMakeFiles/SMHasherSupport.dir/Platform.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Platform.o.requires
@@ -404,21 +396,20 @@ CMakeFiles/SMHasherSupport.dir/Platform.o.provides: CMakeFiles/SMHasherSupport.d
 .PHONY : CMakeFiles/SMHasherSupport.dir/Platform.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Platform.o.provides.build: CMakeFiles/SMHasherSupport.dir/Platform.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Platform.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Random.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Random.o: Random.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Random.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Random.o -c /media/garviz/Toci/smhasher-read-only/Random.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Random.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Random.cpp
 
 CMakeFiles/SMHasherSupport.dir/Random.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Random.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Random.cpp > CMakeFiles/SMHasherSupport.dir/Random.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Random.cpp > CMakeFiles/SMHasherSupport.dir/Random.i
 
 CMakeFiles/SMHasherSupport.dir/Random.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Random.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Random.cpp -o CMakeFiles/SMHasherSupport.dir/Random.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Random.cpp -o CMakeFiles/SMHasherSupport.dir/Random.s
 
 CMakeFiles/SMHasherSupport.dir/Random.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Random.o.requires
@@ -428,21 +419,20 @@ CMakeFiles/SMHasherSupport.dir/Random.o.provides: CMakeFiles/SMHasherSupport.dir
 .PHONY : CMakeFiles/SMHasherSupport.dir/Random.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Random.o.provides.build: CMakeFiles/SMHasherSupport.dir/Random.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Random.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/sha1.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/sha1.o: sha1.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/sha1.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/sha1.o -c /media/garviz/Toci/smhasher-read-only/sha1.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/sha1.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/sha1.cpp
 
 CMakeFiles/SMHasherSupport.dir/sha1.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/sha1.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/sha1.cpp > CMakeFiles/SMHasherSupport.dir/sha1.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/sha1.cpp > CMakeFiles/SMHasherSupport.dir/sha1.i
 
 CMakeFiles/SMHasherSupport.dir/sha1.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/sha1.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/sha1.cpp -o CMakeFiles/SMHasherSupport.dir/sha1.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/sha1.cpp -o CMakeFiles/SMHasherSupport.dir/sha1.s
 
 CMakeFiles/SMHasherSupport.dir/sha1.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/sha1.o.requires
@@ -452,21 +442,20 @@ CMakeFiles/SMHasherSupport.dir/sha1.o.provides: CMakeFiles/SMHasherSupport.dir/s
 .PHONY : CMakeFiles/SMHasherSupport.dir/sha1.o.provides
 
 CMakeFiles/SMHasherSupport.dir/sha1.o.provides.build: CMakeFiles/SMHasherSupport.dir/sha1.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/sha1.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/SpeedTest.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/SpeedTest.o: SpeedTest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/SpeedTest.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/SpeedTest.o -c /media/garviz/Toci/smhasher-read-only/SpeedTest.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/SpeedTest.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpeedTest.cpp
 
 CMakeFiles/SMHasherSupport.dir/SpeedTest.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/SpeedTest.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/SpeedTest.cpp > CMakeFiles/SMHasherSupport.dir/SpeedTest.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpeedTest.cpp > CMakeFiles/SMHasherSupport.dir/SpeedTest.i
 
 CMakeFiles/SMHasherSupport.dir/SpeedTest.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/SpeedTest.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/SpeedTest.cpp -o CMakeFiles/SMHasherSupport.dir/SpeedTest.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpeedTest.cpp -o CMakeFiles/SMHasherSupport.dir/SpeedTest.s
 
 CMakeFiles/SMHasherSupport.dir/SpeedTest.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/SpeedTest.o.requires
@@ -476,21 +465,20 @@ CMakeFiles/SMHasherSupport.dir/SpeedTest.o.provides: CMakeFiles/SMHasherSupport.
 .PHONY : CMakeFiles/SMHasherSupport.dir/SpeedTest.o.provides
 
 CMakeFiles/SMHasherSupport.dir/SpeedTest.o.provides.build: CMakeFiles/SMHasherSupport.dir/SpeedTest.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/SpeedTest.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Spooky.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Spooky.o: Spooky.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Spooky.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Spooky.o -c /media/garviz/Toci/smhasher-read-only/Spooky.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Spooky.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Spooky.cpp
 
 CMakeFiles/SMHasherSupport.dir/Spooky.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Spooky.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Spooky.cpp > CMakeFiles/SMHasherSupport.dir/Spooky.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Spooky.cpp > CMakeFiles/SMHasherSupport.dir/Spooky.i
 
 CMakeFiles/SMHasherSupport.dir/Spooky.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Spooky.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Spooky.cpp -o CMakeFiles/SMHasherSupport.dir/Spooky.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Spooky.cpp -o CMakeFiles/SMHasherSupport.dir/Spooky.s
 
 CMakeFiles/SMHasherSupport.dir/Spooky.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Spooky.o.requires
@@ -500,21 +488,20 @@ CMakeFiles/SMHasherSupport.dir/Spooky.o.provides: CMakeFiles/SMHasherSupport.dir
 .PHONY : CMakeFiles/SMHasherSupport.dir/Spooky.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Spooky.o.provides.build: CMakeFiles/SMHasherSupport.dir/Spooky.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Spooky.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/SpookyTest.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/SpookyTest.o: SpookyTest.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/SpookyTest.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/SpookyTest.o -c /media/garviz/Toci/smhasher-read-only/SpookyTest.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/SpookyTest.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpookyTest.cpp
 
 CMakeFiles/SMHasherSupport.dir/SpookyTest.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/SpookyTest.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/SpookyTest.cpp > CMakeFiles/SMHasherSupport.dir/SpookyTest.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpookyTest.cpp > CMakeFiles/SMHasherSupport.dir/SpookyTest.i
 
 CMakeFiles/SMHasherSupport.dir/SpookyTest.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/SpookyTest.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/SpookyTest.cpp -o CMakeFiles/SMHasherSupport.dir/SpookyTest.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SpookyTest.cpp -o CMakeFiles/SMHasherSupport.dir/SpookyTest.s
 
 CMakeFiles/SMHasherSupport.dir/SpookyTest.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/SpookyTest.o.requires
@@ -524,21 +511,20 @@ CMakeFiles/SMHasherSupport.dir/SpookyTest.o.provides: CMakeFiles/SMHasherSupport
 .PHONY : CMakeFiles/SMHasherSupport.dir/SpookyTest.o.provides
 
 CMakeFiles/SMHasherSupport.dir/SpookyTest.o.provides.build: CMakeFiles/SMHasherSupport.dir/SpookyTest.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/SpookyTest.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Stats.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Stats.o: Stats.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Stats.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Stats.o -c /media/garviz/Toci/smhasher-read-only/Stats.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Stats.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Stats.cpp
 
 CMakeFiles/SMHasherSupport.dir/Stats.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Stats.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Stats.cpp > CMakeFiles/SMHasherSupport.dir/Stats.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Stats.cpp > CMakeFiles/SMHasherSupport.dir/Stats.i
 
 CMakeFiles/SMHasherSupport.dir/Stats.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Stats.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Stats.cpp -o CMakeFiles/SMHasherSupport.dir/Stats.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Stats.cpp -o CMakeFiles/SMHasherSupport.dir/Stats.s
 
 CMakeFiles/SMHasherSupport.dir/Stats.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Stats.o.requires
@@ -548,21 +534,20 @@ CMakeFiles/SMHasherSupport.dir/Stats.o.provides: CMakeFiles/SMHasherSupport.dir/
 .PHONY : CMakeFiles/SMHasherSupport.dir/Stats.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Stats.o.provides.build: CMakeFiles/SMHasherSupport.dir/Stats.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Stats.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/SuperFastHash.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/SuperFastHash.o: SuperFastHash.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/SuperFastHash.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/SuperFastHash.o -c /media/garviz/Toci/smhasher-read-only/SuperFastHash.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/SuperFastHash.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SuperFastHash.cpp
 
 CMakeFiles/SMHasherSupport.dir/SuperFastHash.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/SuperFastHash.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/SuperFastHash.cpp > CMakeFiles/SMHasherSupport.dir/SuperFastHash.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SuperFastHash.cpp > CMakeFiles/SMHasherSupport.dir/SuperFastHash.i
 
 CMakeFiles/SMHasherSupport.dir/SuperFastHash.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/SuperFastHash.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/SuperFastHash.cpp -o CMakeFiles/SMHasherSupport.dir/SuperFastHash.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/SuperFastHash.cpp -o CMakeFiles/SMHasherSupport.dir/SuperFastHash.s
 
 CMakeFiles/SMHasherSupport.dir/SuperFastHash.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/SuperFastHash.o.requires
@@ -572,21 +557,20 @@ CMakeFiles/SMHasherSupport.dir/SuperFastHash.o.provides: CMakeFiles/SMHasherSupp
 .PHONY : CMakeFiles/SMHasherSupport.dir/SuperFastHash.o.provides
 
 CMakeFiles/SMHasherSupport.dir/SuperFastHash.o.provides.build: CMakeFiles/SMHasherSupport.dir/SuperFastHash.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/SuperFastHash.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/Types.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/Types.o: Types.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/SMHasherSupport.dir/Types.o"
-	/usr/local/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Types.o -c /media/garviz/Toci/smhasher-read-only/Types.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/SMHasherSupport.dir/Types.o -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.cpp
 
 CMakeFiles/SMHasherSupport.dir/Types.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SMHasherSupport.dir/Types.i"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/garviz/Toci/smhasher-read-only/Types.cpp > CMakeFiles/SMHasherSupport.dir/Types.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.cpp > CMakeFiles/SMHasherSupport.dir/Types.i
 
 CMakeFiles/SMHasherSupport.dir/Types.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SMHasherSupport.dir/Types.s"
-	/usr/local/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/garviz/Toci/smhasher-read-only/Types.cpp -o CMakeFiles/SMHasherSupport.dir/Types.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/Types.cpp -o CMakeFiles/SMHasherSupport.dir/Types.s
 
 CMakeFiles/SMHasherSupport.dir/Types.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/Types.o.requires
@@ -596,21 +580,20 @@ CMakeFiles/SMHasherSupport.dir/Types.o.provides: CMakeFiles/SMHasherSupport.dir/
 .PHONY : CMakeFiles/SMHasherSupport.dir/Types.o.provides
 
 CMakeFiles/SMHasherSupport.dir/Types.o.provides.build: CMakeFiles/SMHasherSupport.dir/Types.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/Types.o.provides.build
 
 CMakeFiles/SMHasherSupport.dir/PMurHash.o: CMakeFiles/SMHasherSupport.dir/flags.make
 CMakeFiles/SMHasherSupport.dir/PMurHash.o: PMurHash.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/garviz/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/SMHasherSupport.dir/PMurHash.o"
-	/usr/local/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/SMHasherSupport.dir/PMurHash.o   -c /media/garviz/Toci/smhasher-read-only/PMurHash.c
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/SMHasherSupport.dir/PMurHash.o   -c /Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.c
 
 CMakeFiles/SMHasherSupport.dir/PMurHash.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SMHasherSupport.dir/PMurHash.i"
-	/usr/local/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /media/garviz/Toci/smhasher-read-only/PMurHash.c > CMakeFiles/SMHasherSupport.dir/PMurHash.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.c > CMakeFiles/SMHasherSupport.dir/PMurHash.i
 
 CMakeFiles/SMHasherSupport.dir/PMurHash.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SMHasherSupport.dir/PMurHash.s"
-	/usr/local/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /media/garviz/Toci/smhasher-read-only/PMurHash.c -o CMakeFiles/SMHasherSupport.dir/PMurHash.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /Users/garvizmx/Dropbox/Toci/smhasher-read-only/PMurHash.c -o CMakeFiles/SMHasherSupport.dir/PMurHash.s
 
 CMakeFiles/SMHasherSupport.dir/PMurHash.o.requires:
 .PHONY : CMakeFiles/SMHasherSupport.dir/PMurHash.o.requires
@@ -620,7 +603,6 @@ CMakeFiles/SMHasherSupport.dir/PMurHash.o.provides: CMakeFiles/SMHasherSupport.d
 .PHONY : CMakeFiles/SMHasherSupport.dir/PMurHash.o.provides
 
 CMakeFiles/SMHasherSupport.dir/PMurHash.o.provides.build: CMakeFiles/SMHasherSupport.dir/PMurHash.o
-.PHONY : CMakeFiles/SMHasherSupport.dir/PMurHash.o.provides.build
 
 # Object files for target SMHasherSupport
 SMHasherSupport_OBJECTS = \
@@ -717,6 +699,6 @@ CMakeFiles/SMHasherSupport.dir/clean:
 .PHONY : CMakeFiles/SMHasherSupport.dir/clean
 
 CMakeFiles/SMHasherSupport.dir/depend:
-	cd /media/garviz/Toci/smhasher-read-only && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only /media/garviz/Toci/smhasher-read-only/CMakeFiles/SMHasherSupport.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/garvizmx/Dropbox/Toci/smhasher-read-only && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only /Users/garvizmx/Dropbox/Toci/smhasher-read-only/CMakeFiles/SMHasherSupport.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SMHasherSupport.dir/depend
 

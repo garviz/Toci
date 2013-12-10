@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <algorithm>
 
+
 #include "smhasher-read-only/MurmurHash3.h"
 
 using namespace std;
@@ -74,7 +75,7 @@ struct hashMmH3 {
     { 
         unsigned int hash;
         uint32_t seed = 42; 
-        MurmurHash3_x86_32(preffix.c_str(), 8, seed, &hash);
+        MurmurHash3_x86_32(preffix.c_str(), 16, seed, &hash);
         return hash;
     }
 };
